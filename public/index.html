@@ -1,0 +1,54 @@
+<!doctype html>
+<meta charset="utf-8">
+<script src="https://distill.pub/template.v1.js"></script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/front-matter">
+  title: "Article Title"
+  description: "Description of the post"
+  authors:
+  - Vincent Dumoulin: https://vdumoulin.github.io
+  - Ethan Perez: http://ethanperez.net/
+  - Aaron Courville: https://aaroncourville.wordpress.com/
+  - Yoshua Bengio: http://www.iro.umontreal.ca/~bengioy/yoshua_en/
+  affiliations:
+  - MILA: https://mila.quebec/en/
+  - Rice University: http://www.rice.edu/
+  - MILA: https://mila.quebec/en/
+  - MILA: https://mila.quebec/en/
+</script>
+
+<dt-article>
+  <h1>Hello World</h1>
+  <h2>A description of the article</h2>
+  <dt-byline></dt-byline>
+  <p>This is the first paragraph of the article.</p>
+  <p>We can also cite <dt-cite key="perez2017film"></dt-cite> external publications.</p>
+  <p>This is a footnote.<dt-fn>This will become a hoverable footnote.</dt-fn></p>
+  <p>This is a code block:
+    <dt-code block language="python">
+      def hello_world():	 
+          print("Hello, world!")
+    </dt-code>
+  </p>
+  <p>This is an equation: \[y = ax + b\]</p>
+</dt-article>
+
+<dt-appendix>
+  <h3>Acknowledgements</h3>
+  <p>Acknowledgements go here.<p>
+  <h3>Author Contributions</h3>
+  <p>Author contributions go here.<p>
+</dt-appendix>
+
+<script type="text/bibliography">
+  @article{perez2017film,
+    title={FiLM: Visual Reasoning with a General Conditioning Layer},
+    author={Perez, Ethan and Strub, Florian and de Vries, Harm and Dumoulin, Vincent and Courville, Aaron},
+    journal={arXiv preprint arXiv:1709.07871},
+    year={2017},
+    url={https://arxiv.org/pdf/1709.07871.pdf}
+  }
+</script>
