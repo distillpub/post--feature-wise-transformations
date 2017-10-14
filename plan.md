@@ -14,6 +14,8 @@ The submission should answer the following questions:
    conditioned network?
 6. Can we make a case for a soft program synthesis interpretation of FiLM?
 7. Can we relate FiLM to our understanding of how the brain works?
+8. Can we characterize the types of problems where FiLM may help?
+9. Can we connect with zero-shot learning?
 
 ## Milestones
 
@@ -29,7 +31,7 @@ outlined above:
    1. Build a literature survey on conditioning methods in deep learning, with a
       short description of the ideas and the connection to FiLM for each paper.
    2. Turn the literature survey into a fully-fledged article section.
-3. ???
+3. Write a paragraph arguing in favor of feature-wise interactions.
 4. Repeat the analysis on FiLMed networks for other modalities:
    1. Artistic style transfer.
    2. Speech recognition.
@@ -37,3 +39,5 @@ outlined above:
 5. ???
 6. ???
 7. ???
+8. ???
+9. ???
