@@ -21,7 +21,8 @@ _(This will be extremely useful when writing the actual article)_
   author={Author, First and Author, Second},
   title={Paper title},
   booktitle={Proceedings of the International Conference on Something},
-  year={2017}
+  year={2017},
+  url={https://arxiv.org/pdf/1709.07871.pdf},
 }
 ```
 
