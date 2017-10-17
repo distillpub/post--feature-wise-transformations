@@ -93,3 +93,94 @@ the FiLM-ed network is the fast style transfer network.
 ```
 
 -------------------------------------------------------------------------------
+
+## FiLM: Visual Reasoning with a General Conditioning Layer
+
+### Summary
+
+This paper:
+1. Introduces the FiLM formulation.
+2. Shows FiLM achieves state-of-the-art on various CLEVR visual reasoning tasks.
+3. Shows FiLM learns reasoning's underlying structure and modulates features selectively.
+4. Shows FiLM is robust, even w.r.t. placement after normalization.
+5. Shows FiLM generalizes well from little data or even zero-shot.
+
+### Connection to FiLM
+
+This work introduces the FiLM framework and ties together much prior FiLM-related work.
+This work also conducts an extensive analysis of FiLM, building up intuition.
+FiLM's success on visual reasoning also shows FiLM can learn highly complicated,
+structured, and multi-step functions.
+
+### Bibtex
+
+```
+@inproceedings{perez2017film,
+  author={Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin,
+          Vincent and Courville, Aaron C.},
+  title={FiLM: Visual Reasoning with a General Conditioning Layer},
+  journal={arXiv},
+  year={2017},
+  url={https://arxiv.org/pdf/1709.07871.pdf},
+}
+```
+
+-------------------------------------------------------------------------------
+
+## Squeeze-and-Excitation Networks
+
+### Summary
+
+This paper introduces the ImageNet 2017 winning model, a CNN architecture which uses
+feature-wise sigmoidal gating (a restricted version of FiLM) to condition a layer's
+activations on its previous layer
+
+### Connection to FiLM
+
+This work demonstrates the strength of feature-wise modulation...
+1. in a pure vision setting.
+2. when conditioning on the same input.
+
+### Bibtex
+
+```
+@inproceedings{hu2017squeeze,
+  author={Hu, Jie and Shen, Li and Sun, Gang},
+  title={Squeeze-and-Excitation Networks},
+  booktitle={ILSVRC 2017 Workshop at CVPR},
+  year={2017},
+  url={https://arxiv.org/pdf/1709.01507.pdf},
+}
+```
+
+-------------------------------------------------------------------------------
+
+## Convolution Sequence-to-Sequence Learning
+
+### Summary
+
+This paper introduces a purely convolutional model for machine translation that uses
+feature-wise sigmoidal gating, a restricted version of FiLM, to condition a layer's
+activations on its previous layer. Since this model does not forward or backpropagate
+through time, it is faster and more parallelizable.
+
+### Connection to FiLM
+
+This work demonstrates the strength of feature-wise modulation...
+1. in a pure language setting.
+2. when conditioning on the same input.
+
+### Bibtex
+
+```
+@inproceedings{gehring2017convolutional,
+  author={Gehring, Jonas and Auli, Michael and Grangier, David and Yarats, Denis
+          and Dauphin, Yann N.},
+  title={Convolution Sequence-to-Sequence Learning},
+  journal={International Conference on Machine Learning},
+  year={2017},
+  url={https://arxiv.org/pdf/1705.03122.pdf},
+}
+```
+
+-------------------------------------------------------------------------------
