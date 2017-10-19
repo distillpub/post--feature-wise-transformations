@@ -88,7 +88,8 @@ the FiLM-ed network is the fast style transfer network.
   title={Exploring the structure of a real-time, arbitrary neural artistic
          stylization network},
   booktitle={Proceedings of the British Machine Vision Conference},
-  year={2017}
+  year={2017},
+  url={https://arxiv.org/pdf/1705.06830.pdf},
 }
 ```
 
@@ -160,7 +161,7 @@ This work demonstrates the strength of feature-wise modulation...
 ### Summary
 
 This paper introduces a purely convolutional model for machine translation that uses
-feature-wise sigmoidal gating, a restricted version of FiLM, to condition a layer's
+feature-wise sigmoidal gating (a restricted version of FiLM) to condition a layer's
 activations on its previous layer. Since this model does not forward or backpropagate
 through time, it is faster and more parallelizable.
 
@@ -177,9 +178,67 @@ This work demonstrates the strength of feature-wise modulation...
   author={Gehring, Jonas and Auli, Michael and Grangier, David and Yarats, Denis
           and Dauphin, Yann N.},
   title={Convolution Sequence-to-Sequence Learning},
-  journal={International Conference on Machine Learning},
+  booktitle={International Conference on Machine Learning},
   year={2017},
   url={https://arxiv.org/pdf/1705.03122.pdf},
+}
+```
+
+-------------------------------------------------------------------------------
+
+## Long Short-Term Memory
+
+### Summary
+
+This paper introduces the LSTM, a type of RNN built to handle long-term dependencies.
+The LSTM uses feature-wise sigmoidal gating (a restricted version of FiLM) to condition
+activations throughout time, based on the input at each time step.
+
+### Connection to FiLM
+
+This work and its subsequent success demonstrates the strength of feature-wise modulation...
+1. in recurrent and sequential settings.
+2. when conditioning on the same input.
+
+### Bibtex
+
+```
+@article{hochreiter1997long,
+  author={Hochreiter, Sepp and Schmidhuber, J\"{u}rgen},
+  title={Long Short-Term Memory},
+  journal={Neural Comput.},
+  year={1997},
+  url={http://dx.doi.org/10.1162/neco.1997.9.8.1735},
+}
+```
+
+-------------------------------------------------------------------------------
+
+## HyperNetworks
+
+### Summary
+
+"This work explores hypernetworks: an approach of using a one network, also known as a hypernetwork,
+to generate the weights for another network... [H]ypernetworks can generate non-shared weights for
+LSTM and achieve near state-of-the-art results on a variety of sequence modelling tasks...
+[H]ypernetworks applied to convolutional networks still achieve respectable results
+for image recognition tasks compared to state-of-the-art baseline models while
+requiring fewer learnable parameters."
+
+### Connection to FiLM
+
+FiLM can be viewed as using one network to generate parameters of another network,
+making it a form of hypernetwork.
+
+### Bibtex
+
+```
+@inproceedings{ha2016hypernetworks,
+  author={Ha, David and Dai, Andrew and Le, Quoc},
+  title={HyperNetworks},
+  booktitle={International Conference on Learning Representations},
+  year={2016},
+  url={https://arxiv.org/pdf/1609.09106.pdf},
 }
 ```
 
