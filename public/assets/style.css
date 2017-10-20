@@ -18,3 +18,13 @@
   stroke: black;
   stroke-width: 3px;
 }
+
+.box {
+  fill: white;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.label {
+  font-family: "serif";
+}

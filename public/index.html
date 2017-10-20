@@ -36,16 +36,82 @@
       <dt-byline></dt-byline>
 
       <h2>Introduction</h2>
-      <p><span class="todo"> TODO: write an introduction.</span></p>
+      <p>
+        This article examines the way we condition neural networks, i.e., the
+        way in which the computation they carry out is altered by conditioning
+        information.
+      </p>
+      <p>
+        The need for conditioning neural networks arises in many contexts:
+      </p>
+      <ul>
+        <li>
+          A class-conditional generative model generates examples from a
+          requested class.
+        </li>
+        <li>
+          A feedforward style transfer network maps the content image it
+          receives as input to a style-specific stylization.
+        </li>
+        <li>
+          <span class="todo"> TODO: add more examples.</span>
+        </li>
+      </ul>
+      <p>
+        Despite the different problem settings being solved, a lot of recent
+        work makes use of very similar conditioning methods. Moreover, the
+        specific form of the conditioning method is oftentimes accessory to the
+        proposed innovation as opposed to being at the center of the work.
+        Because of that, these similarities can be overlooked when discussing
+        related work. We feel that there is a need to recognize and outline these
+        similarities.
+      </p>
+      <p>
+        This article aims at regrouping these practices under the same
+        framework and providing insights into how these methods work. It is
+        split into three parts:
+      </p>
+      <ol>
+        <li>
+          An exposition to the proposed framework, named
+          <strong>F</strong>eature-w<strong>i</strong>se <strong>L</strong>inear
+          <strong>M</strong>odulation (FiLM).
+        </li>
+        <li>
+          A thorough review of the literature connected to FiLM through the use
+          of conditional affine transformations.
+        </li>
+        <li>
+          A series of empirical observations of the behavior and properties of
+          FiLM layers, leading to a hypothesis for explaining how it manages to
+          condition a neural network.
+        </li>
+      </ol>
 
       <h2>FiLM layers</h2>
-      <p> 
-        A FiLM layer <dt-cite key="perez2017film"></dt-cite> injects
-        conditioning information in a neural network by performing a
-        feature-wise affine transformation on its inputs whose parameters are a
-        function of the conditioning information:
+      <p>
+        The core idea behind FiLM <dt-cite key="perez2017film"></dt-cite> is to
+        inject conditioning information in a neural network through conditional
+        feature-wise affine transformations.
+      </p>
+      <p>
+        A neural network is conditioned using FiLM, or FiLM-ed, by inserting
+        FiLM layers at various stages of the network's hierarchy. A FiLM layer
+        can be thought of as a feature-wise linear layer--that is, affine
+        transformations are applied elementwise, or in the case of
+        convolutional networks, feature map-wise--whose scaling and shifting
+        coefficients are a function of the conditioning information.
       </p>
       <div class="l-body-outset figure" id="film-layer"></div>
+      <p>
+        The function used to compute the FiLM scaling and shifting coefficients
+        is usually implemented as a neural network and called the
+        FiLM-generating network.
+      </p>
+      <div class="l-body-outset figure" id="film-framework"><img src="assets/film_architecture.svg"></img></div>
+      <p>
+        This framework can be used to reason about many previous work.
+      </p>
 
       <h2>Related work</h2>
       <p>
