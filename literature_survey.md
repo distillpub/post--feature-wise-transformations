@@ -4,6 +4,16 @@
 
 * [A learned representation for artistic style](#a-learned-representation-for-artistic-style)
 * [Exploring the structure of a real-time, arbitrary neural artistic stylization network](#exploring-the-structure-of-a-real-time-arbitrary-neural-artistic-stylization-network)
+* [FiLM: Visual Reasoning with a General Conditioning Layer](#film-visual-reasoning-with-a-general-conditioning-layer)
+* [Squeeze-and-Excitation Networks](#squeeze-and-excitation-networks)
+* [Convolution Sequence-to-Sequence Learning](#convolution-sequence-to-sequence-learning)
+* [Long Short-Term Memory](#long-short-term-memory)
+* [HyperNetworks](#hypernetworks)
+* [Adaptive Mixtures of Local Experts](#adaptive-mixtures-of-local-experts)
+* [Hierarchical Mixtures of Experts and the EM Algorithm](#hierarchical-mixtures-of-experts-and-the-em-algorithm)
+* [Learning Factored Representations in a Deep Mixture of Experts](#learning-factored-representations-in-a-deep-mixture-of-experts)
+* [Conditional Image Generation with PixelCNN Decoders](#conditional-image-generation-with-pixelcnn-decoders)
+* [WaveNet: A Generative Model for Raw Audio](#wavenet-a-generative-model-for-raw-audio)
 
 ## Instructions
 
