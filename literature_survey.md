@@ -5,6 +5,7 @@
 * [A learned representation for artistic style](#a-learned-representation-for-artistic-style)
 * [Exploring the structure of a real-time, arbitrary neural artistic stylization network](#exploring-the-structure-of-a-real-time-arbitrary-neural-artistic-stylization-network)
 * [FiLM: Visual Reasoning with a General Conditioning Layer](#film-visual-reasoning-with-a-general-conditioning-layer)
+* [Modulating early visual processing by language](#modulating-early-visual-processing-by-language)
 * [Squeeze-and-Excitation Networks](#squeeze-and-excitation-networks)
 * [Convolution Sequence-to-Sequence Learning](#convolution-sequence-to-sequence-learning)
 * [Long Short-Term Memory](#long-short-term-memory)
@@ -133,6 +134,65 @@ structured, and multi-step functions.
   journal={arXiv},
   year={2017},
   url={https://arxiv.org/pdf/1709.07871.pdf},
+}
+```
+
+
+## Modulating early visual processing by language
+
+### Summary
+
+This paper proposes to fuse language and vision processing from the lowest layer convolutional layers of a ResNet up to the top.
+To do so, the authors formalize Conditional-Batch Normalization and output a change in pre-trained \gamma/\beta parameters of a ResNet from a language input.
+Their approach breaks the classic VQA pipeline where linguistic input and vision input are mostly processed independently before being fused into a single
+representation. 
+
+### Connection to FiLM
+
+This is the seminal work that introduced Conditional-Batch Norm for multimodal inputs.
+FiLM extends and generalizes this initial approach to a single layer and decorallete the signal modulation from Batch-Normalization.
+This paper provides the initial intuition about FiLM by pointing out that conditioning the affine transformation always results in better results than classic finetuning.
+As opposed to FiLM, this work only focuses on modulating the signal on a pre-trained ResNet.
+To that extend, the proposed approach is somehow more related to biological networks while this makes it less practical than FiLM. 
+
+### Bibtex
+
+```
+@inproceedings{de2017modulating,
+  author={de Vries, Harm and Strub, Florian and Mary, J{\'e}r{\'e}mie and Larochelle, Hugo and Pietquin, Olivier and Courville, Aaron},
+  title={Modulating early visual processing by language},
+  booktitle={Advances in Neural Information Processing Systems 30},
+  year={2017},
+  url={https://arxiv.org/pdf/1707.00683.pdf},
+}
+```
+
+## Modulating early visual processing by language
+
+### Summary
+
+This paper proposes to fuse language and vision processing from the lowest layer convolutional layers of a ResNet up to the top.
+To do so, the authors formalize Conditional-Batch Normalization and output a change in pre-trained \gamma/\beta parameters of a ResNet from a language input.
+Their approach breaks the classic VQA pipeline where linguistic input and vision input are mostly processed independently before being fused into a single
+representation. 
+
+### Connection to FiLM
+
+This is the seminal work that introduced Conditional-Batch Norm for multimodal inputs.
+FiLM extends and generalizes this initial approach to a single layer and decorallete the signal modulation from Batch-Normalization.
+This paper provides the initial intuition about FiLM by pointing out that conditioning the affine transformation always results in better results than classic finetuning.
+As opposed to FiLM, this work only focuses on modulating the signal on a pre-trained ResNet.
+To that extend, the proposed approach is somehow more related to biological networks while this makes it less practical than FiLM. 
+
+### Bibtex
+
+```
+@inproceedings{de2017modulating,
+  author={de Vries, Harm and Strub, Florian and Mary, J{\'e}r{\'e}mie and Larochelle, Hugo and Pietquin, Olivier and Courville, Aaron},
+  title={Modulating early visual processing by language},
+  booktitle={Advances in Neural Information Processing Systems 30},
+  year={2017},
+  url={https://arxiv.org/pdf/1707.00683.pdf},
 }
 ```
 
