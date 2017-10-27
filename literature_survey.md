@@ -627,4 +627,5 @@ this information in the sentence encoding output s."
 ----------------------------------------------------------------------
 TODO: 
 - explore the relation to bilinear models: http://web.mit.edu/cocosci/Papers/NC120601.pdf
+- gated linear units: Language modeling with gated linear units
 
