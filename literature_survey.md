@@ -616,6 +616,9 @@ this information in the sentence encoding output s."
 
 ### Bibtex
 
+TODO: explore the relation to bilinear models:
+http://web.mit.edu/cocosci/Papers/NC120601.pdf
+
 ```
 @article{shen2017disan,
   title={DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding},
