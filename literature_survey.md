@@ -625,5 +625,6 @@ this information in the sentence encoding output s."
   year={2017}
 ```
 ----------------------------------------------------------------------
-TODO: explore the relation to bilinear models:
-http://web.mit.edu/cocosci/Papers/NC120601.pdf
+TODO: 
+- explore the relation to bilinear models: http://web.mit.edu/cocosci/Papers/NC120601.pdf
+
