@@ -624,10 +624,96 @@ this information in the sentence encoding output s."
   journal={arXiv preprint arXiv:1709.04696},
   year={2017}
 ```
-----------------------------------------------------------------------
-TODO: 
-- explore the relation to bilinear models: http://web.mit.edu/cocosci/Papers/NC120601.pdf
+-------------------------------------------------------------------------------
+
+## Separating Style and Content with Bilinear Models
+
+### Summary
+Seminal paper that popularized bilinear models. Main contribution is a
+learning algorithm for bilinear models (based on SVD and EM),
+
+### Connection to FiLM
+Can we use LateX here?? I think there is a cute connection
+that makes FiLM a cheap and approximate bilinear model.
+
+For simplicity, I assume features are vectors and not
+feature maps (as in FiLM).
+
+Let x and z be N and M-dimensional feature vectors. A bilinear model
+defines the K-dimensional output vector as:
+y_k = x^T W_k z
+where W_k is a NxM matrix. Note that for each dimension k we have a
+separate matrix W_k, so the weight matrix is 3-tensor.
+
+FiLM can be thought of as a particular 1-rank approximation
+to W_k. Namely:
+y_k = x^T 1_k w_k^T z, where 1_k is a one-hot vector with its
+k-th entry set to one. This approximation further assumes that
+\beta is fixed and set to zero, and that the FiLM projection
+layer does not include a bias.
+
+
+### Bibtex
+```
+@article{Tenenbaum:2000:SSC:1121517.1121518,
+ author = {Tenenbaum, Joshua B. and Freeman, William T.},
+ title = {Separating Style and Content with Bilinear Models},
+ journal = {Neural Comput.},
+ issue_date = {June 2000},
+ volume = {12},
+ number = {6},
+ month = jun,
+ year = {2000},
+ issn = {0899-7667},
+ pages = {1247--1283},
+ numpages = {37},
+ url = {http://dx.doi.org/10.1162/089976600300015349},
+ doi = {10.1162/089976600300015349},
+ acmid = {1121518},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+}
+```
+-------------------------------------------------------------------------------
+
+
+## Learning to Represent Spatial Transformations with Factored Higher-order Boltzmann Machines
+
+### Summary
+Paper introduces an energy-based bilinear model for learning spatial transformations.
+
+TODO: not sure if I understand why multiplicative interactions are
+so powerful for this. Results seems very convincing.
+
+### Connection to FiLM
+The authors propose another low-rank approximation to the 3-tensor weights. Not sure yet
+how it relates to FiLM approximation described above.
+
+
+### Bibtex
+```
+@article{Memisevic:2010:LRS:1806292.1806296,
+ author = {Memisevic, Roland and Hinton, Geoffrey E.},
+ title = {Learning to Represent Spatial Transformations with Factored Higher-order Boltzmann Machines},
+ journal = {Neural Comput.},
+ issue_date = {June 2010},
+ volume = {22},
+ number = {6},
+ month = jun,
+ year = {2010},
+ issn = {0899-7667},
+ pages = {1473--1492},
+ numpages = {20},
+ url = {http://dx.doi.org/10.1162/neco.2010.01-09-953},
+ doi = {10.1162/neco.2010.01-09-953},
+ acmid = {1806296},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+}
+```
+-------------------------------------------------------------------------------
+
+TODO:
 - gated linear units: Language modeling with gated linear units
 - C.L. Giles, T. Maxwell, “Learning, Invariance, and Generalization in High Order Neural Networks,” Applied Optics, 26(23), p. 4972, 1987. Reprinted in: Artificial Neural Networks: Concepts and Theory, (eds) P. Mehra and B. W. Wah, IEEE Computer Society Press, Los Alamitos, CA., 1992.
-- roland (autoencoders with multiplicative interactions)
 - @incollection{NIPS1991_450, title = {The Clusteron: Toward a Simple Abstraction for a Complex Neuron}, author = {Bartlett W. Mel}, booktitle = {Advances in Neural Information Processing Systems 4}, editor = {J. E. Moody and S. J. Hanson and R. P. Lippmann}, pages = {35--42}, year = {1992}, publisher = {Morgan-Kaufmann}, url = {http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf} }
