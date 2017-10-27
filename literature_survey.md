@@ -628,5 +628,5 @@ this information in the sentence encoding output s."
 TODO: 
 - explore the relation to bilinear models: http://web.mit.edu/cocosci/Papers/NC120601.pdf
 - gated linear units: Language modeling with gated linear units
-- giles paper on multiplicative interactions (higher-order recurrent networks)
+- C.L. Giles, T. Maxwell, “Learning, Invariance, and Generalization in High Order Neural Networks,” Applied Optics, 26(23), p. 4972, 1987. Reprinted in: Artificial Neural Networks: Concepts and Theory, (eds) P. Mehra and B. W. Wah, IEEE Computer Society Press, Los Alamitos, CA., 1992.
 - roland (autoencoders with multiplicative interactions)
