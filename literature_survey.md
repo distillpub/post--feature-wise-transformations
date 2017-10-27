@@ -15,6 +15,10 @@
 * [Learning Factored Representations in a Deep Mixture of Experts](#learning-factored-representations-in-a-deep-mixture-of-experts)
 * [Conditional Image Generation with PixelCNN Decoders](#conditional-image-generation-with-pixelcnn-decoders)
 * [WaveNet: A Generative Model for Raw Audio](#wavenet-a-generative-model-for-raw-audio)
+* [Gated-Attention Readers for Text Comprehension](#gated-attention-readers-for-text-comprehension)
+* [Gated-Attention Architectures for Task-Oriented Language Grounding](#gated-attention-architectures-for-task-oriented-language-grounding)
+* [Overcoming catastrophic forgetting in neural networks](#overcoming-catastrophic-forgetting-in-neural-networks)
+* [DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding](#disan-directional-self-attention-network-for-rnn/cnn-free-language-understanding)
 
 ## Instructions
 
@@ -481,3 +485,142 @@ and uses LSTM-like feature-wise sigmoidal self-conditioning (restricted version 
 ```
 
 -------------------------------------------------------------------------------
+
+## Gated-Attention Readers for Text Comprehension
+
+### Summary
+
+This paper introduces the Gated-Attention Reader, which conditions a document
+reading network with an associated query via multiple steps of feature-wise
+sigmoidal gating, obtaining state-of-the-art results for answering
+cloze-style questions.
+
+### Connection to FiLM
+
+The form of gated attention used is feature-wise sigmoidal gating, used
+throughout the hierarchy of a conditioned network. This paper also shows that
+the method is superior to concatentation.
+
+### Bibtex
+
+```
+@article{dhingra2016gated,
+  title={Gated-Attention Readers for Text Comprehension},
+  author={Dhingra, Bhuwan and Liu, Hanxiao and Yang, Zhilin, and
+          Cohen, William W and Salakhutdinov, Ruslan},
+  journal={arXiv preprint arXiv:1606.01549},
+  year={2016}
+}
+```
+
+-------------------------------------------------------------------------------
+
+## Gated-Attention Architectures for Task-Oriented Language Grounding
+
+### Summary
+
+This paper trains an RL agent to follow simple natural language instructions
+in a 3D environment (VizDoom) using Gated-Attention (feature-wise sigmoidal
+gating) and shows that this approach is more successful that conditioning
+via concatenation.
+
+### Connection to FiLM
+
+Conditions the visual input into a policy network via a single application of
+feature-wise sigmoidal gating to allow agent to follow instructions.
+The success of this method shows FiLM-like methods work in RL.
+
+### Bibtex
+
+Cross-Submission Workshop Paper at Language Grounding for Robotics Workshop at ACL 2017.
+```
+@article{DBLP:journals/corr/ChaplotSPRS17,
+  author    = {Devendra Singh Chaplot and
+               Kanthashree Mysore Sathyendra and
+               Rama Kumar Pasumarthi and
+               Dheeraj Rajagopal and
+               Ruslan Salakhutdinov},
+  title     = {Gated-Attention Architectures for Task-Oriented Language Grounding},
+  journal   = {CoRR},
+  volume    = {abs/1706.07230},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1706.07230},
+  archivePrefix = {arXiv},
+  eprint    = {1706.07230},
+  timestamp = {Mon, 03 Jul 2017 13:29:02 +0200},
+  biburl    = {http://dblp.org/rec/bib/journals/corr/ChaplotSPRS17},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+```
+
+-------------------------------------------------------------------------------
+
+## Overcoming catastrophic forgetting in neural networks
+
+### Summary
+
+This paper introduces Elastic Weight Consolidation, a penalty (motivated by
+probability theory and neuroscience) on weights changing across tasks that
+mitigates catastrophic forgetting in the continual learning setting.
+
+### Connection to FiLM
+
+This paper trains one agent that learns to play 10 Atari games using one
+Double DQN with FiLM layers throughout its hierarchy, conditioned on the
+current game. The success of this method shows FiLM works in RL, although
+this result is not the main focus on the paper.
+
+### Bibtex
+
+```
+@article{Kirkpatrick28032017,
+  author = {Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and Veness, Joel and
+            Desjardins, Guillaume and Rusu, Andrei A. and Milan, Kieran and Quan, John and Ramalho,
+            Tiago and Grabska-Barwinska, Agnieszka and Hassabis, Demis and Clopath, Claudia and
+            Kumaran, Dharshan and Hadsell, Raia},
+  title = {Overcoming catastrophic forgetting in neural networks},
+  volume = {114},
+  number = {13},
+  pages = {3521-3526},
+  year = {2017},
+  doi = {10.1073/pnas.1611835114},
+  URL = {http://www.pnas.org/content/114/13/3521.abstract},
+  eprint = {http://www.pnas.org/content/114/13/3521.full.pdf},
+  journal = {Proceedings of the National Academy of Sciences}
+}
+```
+
+-------------------------------------------------------------------------------
+
+## DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding
+
+### Summary
+
+This paper proposes a feature-wise attention mechanism for language understanding,
+showing strong results on datasets such as SNLI.
+
+### Connection to FiLM
+
+The motivation for this FiLM-like approach in this pure
+language setting is similar to that of FiLM for visual
+reasoning or VQA:
+"Word embedding usually suffers from the polysemy
+in natural language. Since traditional attention computes
+a single importance score for each word based on the
+word embedding, it cannot distinguish the meanings of the
+same word in different contexts. Multi-dimensional attention,
+however, computes a score for each feature of each
+word, so it can select the features that can best describe the
+word’s specific meaning in any given context, and include
+this information in the sentence encoding output s."
+
+### Bibtex
+
+```
+@article{shen2017disan,
+  title={DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding},
+  author={Shen, Tao and Zhou, Tianyi and Long, Guodong and Jiang, Jing and Pan, Shirui and
+          Zhang, Chengqi},
+  journal={arXiv preprint arXiv:1709.04696},
+  year={2017}
+```
