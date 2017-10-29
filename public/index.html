@@ -105,7 +105,79 @@
   </p>
 
   <h3>Class-conditional generative modeling</h3>
-  <p><span class="todo"> TODO: write about DCGAN, PixelCNN, and WaveNet.</span></p>
+  <p>
+    Several models in the recent generative modeling literature have a
+    class-conditional variant which leverages conditional feature-wise affine
+    transformations in a way that is very reminiscent to FiLM layers.
+  </p>
+  <p>
+    DCGAN <dt-cite key="radford2016unsupervised"></dt-cite>, a well-recognized
+    class of network architectures for generative adversarial networks (GANs),
+    lends itself to class conditioning by concatenating the class label
+    broadcasted as a feature map to the input of convolutional and transposed
+    convolutional layers in the generator and discriminator networks. An
+    equivalent &mdash; and more efficient &mdash; way to express this operation
+    is in the form of a feature-wise, class-conditional biasing of the output
+    of the convolutional or transposed convolutional layer &mdash; ignoring the
+    border effects due to zero padding. We can therefore view the
+    class-conditional version of DCGAN as inserting FiLM layers after each
+    convolutional and transposed convolutional layer. The FiLM-generating
+    network comes in the form of an embedding lookup on the class labels, with
+    the scaling coefficients set to a constant value of 1.
+  </p>
+  <p>
+    PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and WaveNet
+    <dt-cite key="oord2016wavenet"></dt-cite>, two recent advances in
+    autoregressive modeling of image and audio data, respectively, employ a
+    similar conditional biasing scheme. The inner workings of their
+    autoregressive formulation is beyond the scope of this article, but their
+    conditioning scheme can be explained from the FiLM perspective. 
+  </p>
+  <p>
+    The conditional variant of PixelCNN 
+    <dt-cite key="oord2016wavenet"></dt-cite>, two recent advances in
+    autoregressive modeling of image and audio data, respectively, employ a
+    similar conditional biasing scheme. The inner workings of their
+    autoregressive formulation is beyond the scope of this article, but their
+    conditioning scheme can be explained from the FiLM perspective. 
+  </p>
+  <p>
+    In its simplest form, conditioning in PixelCNN models is achieved by adding
+    feature-wise, class-conditional biases to the output of all convolutional
+    layers. Like for DCGAN, this can be viewed as inserting FiLM layers after
+    each convolutional layer and expressing the FiLM-generating network as an
+    embedding lookup on the class labels, with the scaling coefficients set to
+    a constant value of 1. The authors also describe a location-dependent
+    biasing scheme which cannot be expressed in terms of FiLM layers due to the
+    absence of the feature-wise property.
+  </p>
+  <p>
+    WaveNet describes two ways in which conditional biasing allows external information
+    to modulate the behavior of the model:
+  </p>
+  <ol>
+    <li>
+      <strong>Global conditioning</strong> applies the same conditional bias to
+      the whole generated sequence and is used e.g. to condition on speaker
+      identity.
+    </li>
+    <li>
+      <strong>Local conditioning</strong> applies a conditional bias which
+      varies across time steps of the generated sequence and is used e.g. to
+      let linguistic features in a text-to-speech (TTS) model influence which
+      sounds are produced.
+    </li>
+  </ol>
+  <p>
+    Like DCGAN and PixelCNN, both approaches can be viewed as inserting FiLM
+    layers after each convolutional layer. The main difference lies in the way
+    in which the FiLM-generating network is defined: global conditioning
+    expresses the FiLM-generating network as an embedding lookup which is
+    broadcasted to the whole time series, whereas local conditioning expresses
+    it as a mapping from an input sequence of conditioning information to an
+    output sequence of FiLM parameters.
+  </p>
+  <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
 
   <h3>Self-conditioning</h3>
   <p><span class="todo"> TODO: write about dynamic layer normalization, squeeze-and-excitation networks, "Convolution Sequence-to-Sequence Learning", and LSTMs.</span></p>
@@ -187,6 +259,32 @@
     title={Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization},
     author={Huang, Xun and Belongie, Serge},
     booktitle={Proceedings of the International Conference on Computer Vision},
-    year={2017}
+    year={2017},
+    url={https://arxiv.org/pdf/1703.06868.pdf},
+  }
+  @inproceedings{radford2016unsupervised,
+    author={Radford, Alec and Metz, Luke and Chintala, Soumith},
+    title={Unsupervised Representation Learning with Deep Convolutional
+           Generative Adversarial Networks},
+    booktitle={Proceedings of the International Conference on Learning Representations},
+    year={2016},
+    url={https://arxiv.org/pdf/1511.06434.pdf},
+  }
+  @inproceedings{oord2016conditional,
+    title={Conditional Image Generation with PixelCNN Decoders},
+    author={van den Oord, Aaron and Kalchbrenner, Nal and Espeholt, Lasse and
+            Vinyals, Oriol and Graves, Alex and Kavukcuoglu, Koray},
+    booktitle={Advances in Neural Information Processing Systems},
+    year={2016},
+    url={https://arxiv.org/pdf/1606.05328.pdf}
+  }
+  @article{oord2016wavenet,
+    title={WaveNet: {A} Generative Model for Raw Audio},
+    author={van den Oord, Aaron and Dieleman, Sander and Zen, Heiga and Simonyan,
+            Karen and Vinyals, Oriol and Graves, Alex and Kalchbrenner, Nal and
+            Senior, Andrew and Kavukcuoglu, Koray},
+    journal={arXiv},
+    year={2016},
+    url={https://arxiv.org/pdf/1609.03499.pdf},
   }
 </script>
