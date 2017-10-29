@@ -40,7 +40,87 @@
   <p><span class="todo"> TODO: Explain FiLM.</span></p>
 
   <h2>Related work</h2>
-  <p><span class="todo"> TODO: write a literature review..</span></p>
+  <p>
+    We now turn our attention to the machine learning literature to point out
+    instances of the FiLM framework being used in the wild, explicitly or
+    implicitly. The objective is to show that a number of existing models can
+    be cast as an instantiation of FiLM, which allows us to reason about these
+    methods in a unified framework.
+  </p>
+
+  <h3>Visual question-answering (VQA) and visual reasoning</h3>
+  <p>
+    Work in <dt-cite key="perez2017learning"></dt-cite> and its expanded
+    version <dt-cite key="perez2017film"></dt-cite> introduces the FiLM
+    framework and ties together much prior FiLM-related work. Here, a visual
+    reasoning model is trained on the CLEVR <dt-cite key="johnson2017clevr"></dt-cite>
+    synthetic dataset to answer textual questions about an input image.
+  </p>
+  <div class="l-body-outset figure" id="film-clevr"><img src="assets/film_clevr.svg"></img></div>
+  <p><span class="todo"> TODO: write about "Modulating early visual processing by language".</span></p>
+
+  <h3>Artistic style transfer</h3>
+  <p>
+    On the artistic style transfer front, <dt-cite key="dumoulin2017learned"></dt-cite>
+    and its successor <dt-cite key="ghiasi2017exploring"></dt-cite> implement a
+    specific instantiation of FiLM.
+  </p>
+  <p>
+    The former extends fast feedforward style transfer networks to multiple
+    styles by introducing conditional instance normalization layers. Each style
+    modeled by the network is associated with its own set of instance
+    normalization parameters, and conditioning is achieved by assigning
+    instance normalization parameters their corresponding value for the desired
+    style. The latter introduces a <em>style prediction network</em> which is
+    trained jointly with the style transfer network to predict the instance
+    normalization parameters directly from the style image.
+  </p>
+  <p>
+    Both can be seen as an instantiation of FiLM in which FiLM layers replace
+    the affine transformation step of instance normalization layers and the
+    FiLM-generating network is in the form of an embedding lookup (former work)
+    or a parametrized mapping (latter work).
+  </p>
+  <p>
+    Work in <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
+    alternative for fast and arbitrary style transfer in the form of adaptive
+    instance normalization (AdaIN) layers, which perform instance normalization
+    on a stak of content feature maps and scale and shift them using statistics
+    extracted from a stack of style feature maps.
+  </p>
+  <p>
+    Content and style images are fed through a trained classifier up to some
+    intermediate layer, at which point the stack of content feature maps is
+    instance-normalized and an affine feature-wise transformation is applied to
+    them using the style instance normalization statistics. A decoder then maps
+    the stack of content feature maps back to input space, and the triplet of
+    content-style-stylized images are used to compute the usual style transfer
+    loss.
+  </p>
+  <p>
+    AdaIN can be recognized as a FiLM layer replacing the instance
+    normalization parameters, with the FiLM-generating network taking the form
+    of the same trained classifier being used to extract instance normalization
+    statistics on the style image.
+  </p>
+
+  <h3>Class-conditional generative modeling</h3>
+  <p><span class="todo"> TODO: write about DCGAN, PixelCNN, and WaveNet.</span></p>
+
+  <h3>Self-conditioning</h3>
+  <p><span class="todo"> TODO: write about dynamic layer normalization, squeeze-and-excitation networks, "Convolution Sequence-to-Sequence Learning", and LSTMs.</span></p>
+
+  <h3>Relationship with HyperNetworks</h3>
+  <p><span class="todo"> TODO: write about HyperNetworks.</span></p>
+
+  <h3>Relationship with attention</h3>
+  <p><span class="todo"> TODO: write about "Gated-Attention Readers for Text Comprehension", "Gated-Attention Architectures for Task-Oriented Language Grounding", and "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding".</span></p>
+
+  <h3>Relationship with gating and mixture-of-experts</h3>
+  <p><span class="todo"> TODO: write about "Adaptive Mixtures of Local Experts", "Hierarchical Mixtures of Experts and the EM Algorithm", and "Learning Factored Representations in a Deep Mixture of Experts".</span></p>
+
+  <h3>Application to the reinforcement learning setting</h3>
+  <p><span class="todo"> TODO: write about "Overcoming catastrophic forgetting in neural networks".</span></p>
 
   <h2>Understanding FiLM</h2>
   <p><span class="todo"> TODO: write a section on how FiLM operates.</span></p>
@@ -63,11 +143,50 @@
 </dt-appendix>
 
 <script type="text/bibliography">
-  @article{perez2017film,
-    title={FiLM: Visual Reasoning with a General Conditioning Layer},
-    author={Perez, Ethan and Strub, Florian and de Vries, Harm and Dumoulin, Vincent and Courville, Aaron},
-    journal={arXiv preprint arXiv:1709.07871},
+  @inproceedings{perez2017learning,
+    author={Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin,
+            Vincent and Courville, Aaron},
+    title={Learning visual reasoning without strong priors},
+    booktitle={ICML Workshop on Machine Learning in Speech and Language Processing},
     year={2017},
-    url={https://arxiv.org/pdf/1709.07871.pdf}
+    url={https://arxiv.org/pdf/1707.03017.pdf},
+  }
+  @inproceedings{perez2017film,
+    author={Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin,
+            Vincent and Courville, Aaron},
+    title={FiLM: Visual Reasoning with a General Conditioning Layer},
+    booktitle={arXiv},
+    year={2017},
+    url={https://arxiv.org/pdf/1709.07871.pdf},
+  }
+  @inproceedings{johnson2017clevr,
+    author={Johnson, Justin and Li, Fei-Fei and Hariharan, Bharath and Zitnick,
+            Lawrence C. and van der Maaten, Laurens and Girshick, Ross},
+    title={FiLM: Visual Reasoning with a General Conditioning Layer},
+    booktitle={Proceedings of the Conference on Computer Vision and Pattern Recognition},
+    year={2017},
+    url={https://arxiv.org/pdf/1612.06890.pdf},
+  }
+  @inproceedings{dumoulin2017learned,
+    author={Dumoulin, Vincent and Shlens, Jonathon and Kudlur, Manjunath},
+    title={A Learned Representation for Artistic Style},
+    booktitle={Proceedings of the International Conference on Learning Representations},
+    year={2017},
+    url={https://arxiv.org/pdf/1610.07629.pdf},
+  }
+  @inproceedings{ghiasi2017exploring,
+    author={Ghiasi, Golnaz and Lee, Honglak and Kudlur, Manjunath and Dumoulin,
+            Vincent and Shlens, Jonathon},
+    title={Exploring the structure of a real-time, arbitrary neural artistic
+           stylization network},
+    booktitle={Proceedings of the British Machine Vision Conference},
+    year={2017},
+    url={https://arxiv.org/pdf/1705.06830.pdf},
+  }
+  @inproceedings{huang2017arbitrary,
+    title={Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization},
+    author={Huang, Xun and Belongie, Serge},
+    booktitle={Proceedings of the International Conference on Computer Vision},
+    year={2017}
   }
 </script>
