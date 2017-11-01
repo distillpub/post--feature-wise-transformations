@@ -682,11 +682,11 @@ layer does not include a bias.
 ### Summary
 Paper introduces an energy-based bilinear model for learning spatial transformations.
 
-TODO: not sure if I understand why multiplicative interactions are
+TODO(Harm): not sure if I understand why multiplicative interactions are
 so powerful for this. Results seems very convincing.
 
 ### Connection to FiLM
-The authors propose another low-rank approximation to the 3-tensor weights. Not sure yet
+The authors propose low-rank approximation to the 3-tensor weights. Not sure yet
 how it relates to FiLM approximation described above.
 
 
@@ -714,6 +714,7 @@ how it relates to FiLM approximation described above.
 -------------------------------------------------------------------------------
 
 TODO:
+- check this paper: https://arxiv.org/pdf/1603.04779.pdf
 - gated linear units: Language modeling with gated linear units
 - C.L. Giles, T. Maxwell, “Learning, Invariance, and Generalization in High Order Neural Networks,” Applied Optics, 26(23), p. 4972, 1987. Reprinted in: Artificial Neural Networks: Concepts and Theory, (eds) P. Mehra and B. W. Wah, IEEE Computer Society Press, Los Alamitos, CA., 1992.
 - @incollection{NIPS1991_450, title = {The Clusteron: Toward a Simple Abstraction for a Complex Neuron}, author = {Bartlett W. Mel}, booktitle = {Advances in Neural Information Processing Systems 4}, editor = {J. E. Moody and S. J. Hanson and R. P. Lippmann}, pages = {35--42}, year = {1992}, publisher = {Morgan-Kaufmann}, url = {http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf} }
