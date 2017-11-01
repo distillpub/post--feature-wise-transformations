@@ -19,8 +19,8 @@
 * [Gated-Attention Architectures for Task-Oriented Language Grounding](#gated-attention-architectures-for-task-oriented-language-grounding)
 * [Overcoming catastrophic forgetting in neural networks](#overcoming-catastrophic-forgetting-in-neural-networks)
 * [DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding](#disan-directional-self-attention-network-for-rnn/cnn-free-language-understanding)
-
-* [The Clusteron: Toward a Simple Abstraction for a Complex Neuron ](#the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron)
+* [The Clusteron: Toward a Simple Abstraction for a Complex Neuron](#the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron)
+* [Words jump-start vision: A label advantage in object recognition](#words-jump-start-vision-a-label-advantage-in object-recognition)
 
 ## Instructions
 
@@ -651,6 +651,8 @@ publisher = {Morgan-Kaufmann},
 url = {http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf} }
 ```
 ----------------------------------------------------------------------
+
+## Words jump-start vision: A label advantage in object recognition
 
 ### Summary
 This paper provides new evidence that external language cues alter how visual information is processed in the brain. More precisely, it is observed that P1 signals, which are related to low-level visual features, are modulated while hearing specific words. 
