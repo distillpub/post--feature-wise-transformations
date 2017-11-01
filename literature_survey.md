@@ -21,7 +21,7 @@
 * [DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding](#disan-directional-self-attention-network-for-rnn/cnn-free-language-understanding)
 * [Language Modeling with Gated Convolutional Networks](#language-modeling-with-gated-convolutional-networks)
 * [The Clusteron: Toward a Simple Abstraction for a Complex Neuron](#the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron)
-* [Words jump-start vision: A label advantage in object recognition](#words-jump-start-vision-a-label-advantage-in object-recognition)
+* [Words jump-start vision: A label advantage in object recognition](#words-jump-start-vision-a-label-advantage-in-object-recognition)
 
 ## Instructions
 
