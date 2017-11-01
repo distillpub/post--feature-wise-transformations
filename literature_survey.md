@@ -19,6 +19,7 @@
 * [Gated-Attention Architectures for Task-Oriented Language Grounding](#gated-attention-architectures-for-task-oriented-language-grounding)
 * [Overcoming catastrophic forgetting in neural networks](#overcoming-catastrophic-forgetting-in-neural-networks)
 * [DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding](#disan-directional-self-attention-network-for-rnn/cnn-free-language-understanding)
+* [Language Modeling with Gated Convolutional Networks](#language-modeling-with-gated-convolutional-networks)
 * [The Clusteron: Toward a Simple Abstraction for a Complex Neuron](#the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron)
 * [Words jump-start vision: A label advantage in object recognition](#words-jump-start-vision-a-label-advantage-in object-recognition)
 
@@ -626,6 +627,33 @@ this information in the sentence encoding output s."
   journal={arXiv preprint arXiv:1709.04696},
   year={2017}
 ```
+
+
+----------------------------------------------------------------------
+## Language Modeling with Gated Convolutional Networks
+
+### Summary
+This paper introduces Linear-Gated Units for Convolutional Networks in language task. While gating has been shown to be essential for recurrent neural, they extend this gating mechanism to convolutional networks. This is motivated by the hierarchical structure of convnet close to language modelling and computational aspect. While providing promising results on large-scale dataset with minimum training computation, fine-tuned deep RNN still provides better results (at the cost of a lot additional computational power) 
+
+### Connection to FiLM
+This paper suggests that feature-wise gating mechanism can be extended to a wide range of networks (not only RNN).
+
+### Bibtex
+```
+@inproceedings{DBLP:conf/icml/DauphinFAG17,
+  author    = {Yann N. Dauphin and
+               Angela Fan and
+               Michael Auli and
+               David Grangier},
+  title     = {Language Modeling with Gated Convolutional Networks},
+  booktitle = {Proceedings of the 34th International Conference on Machine Learning,
+               {ICML} 2017, Sydney, NSW, Australia, 6-11 August 2017},
+  year      = {2017},
+  url       = {http://proceedings.mlr.press/v70/dauphin17a.html},
+}
+
+```
+
 ----------------------------------------------------------------------
 
 ## The Clusteron: Toward a Simple Abstraction for a Complex Neuron
