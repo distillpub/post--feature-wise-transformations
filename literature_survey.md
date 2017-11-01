@@ -20,6 +20,8 @@
 * [Overcoming catastrophic forgetting in neural networks](#overcoming-catastrophic-forgetting-in-neural-networks)
 * [DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding](#disan-directional-self-attention-network-for-rnn/cnn-free-language-understanding)
 
+* [The Clusteron: Toward a Simple Abstraction for a Complex Neuron ](#the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron)
+
 ## Instructions
 
 Entries should follow this format:
@@ -625,9 +627,34 @@ this information in the sentence encoding output s."
   year={2017}
 ```
 ----------------------------------------------------------------------
+
+## The Clusteron: Toward a Simple Abstraction for a Complex Neuron
+
+
+### Summary
+In this paper, the authors explore biologically plausible neuron models while drawing a parallel with multi-layer perceptron. They introduce the "Clusteron", a neuron which activations can be amplified by surrounding neurons. This behavior enables to extract non-linearity and high-order statistics from data.
+
+### Connection to FiLM
+The "Clusteron" amplifies his initial neural activations by being conditioned on neighborhood neurons. This collaboration favors clusters of neurons specialized to detect more advanced patterns.  
+The same intuition can be found in FiLM with inner loop modulation; one may strengthen/inhibit specific features required to disentangle complex patterns. Thus, this neural cooperation can be retrieved through layers in Deep Neural Networks.
+
+### Bibtex
+
+```
+@incollection{NIPS1991_450, 
+title = {The Clusteron: Toward a Simple Abstraction for a Complex Neuron}, 
+author = {Bartlett W. Mel}, 
+booktitle = {Advances in Neural Information Processing Systems 4}, 
+editor = {J. E. Moody and S. J. Hanson and R. P. Lippmann}, 
+pages = {35--42}, year = {1992}, 
+publisher = {Morgan-Kaufmann}, 
+url = {http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf} }
+```
+
+----------------------------------------------------------------------
 TODO: 
 - explore the relation to bilinear models: http://web.mit.edu/cocosci/Papers/NC120601.pdf
 - gated linear units: Language modeling with gated linear units
 - C.L. Giles, T. Maxwell, “Learning, Invariance, and Generalization in High Order Neural Networks,” Applied Optics, 26(23), p. 4972, 1987. Reprinted in: Artificial Neural Networks: Concepts and Theory, (eds) P. Mehra and B. W. Wah, IEEE Computer Society Press, Los Alamitos, CA., 1992.
 - roland (autoencoders with multiplicative interactions)
-- @incollection{NIPS1991_450, title = {The Clusteron: Toward a Simple Abstraction for a Complex Neuron}, author = {Bartlett W. Mel}, booktitle = {Advances in Neural Information Processing Systems 4}, editor = {J. E. Moody and S. J. Hanson and R. P. Lippmann}, pages = {35--42}, year = {1992}, publisher = {Morgan-Kaufmann}, url = {http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf} }
+- 
