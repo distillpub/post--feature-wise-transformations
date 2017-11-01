@@ -650,6 +650,28 @@ pages = {35--42}, year = {1992},
 publisher = {Morgan-Kaufmann}, 
 url = {http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf} }
 ```
+----------------------------------------------------------------------
+
+### Summary
+This paper provides new evidence that external language cues alter how visual information is processed in the brain. More precisely, it is observed that P1 signals, which are related to low-level visual features, are modulated while hearing specific words. 
+
+### Connection to FiLM
+This paper shows that the neural pipeline is not a straightforward and neural signal processing can be impacted based on external cues. There is a clear parallel with FiLM where specific neural activations can strengthen/inhibit based on external inputs.
+
+### Bibtex
+```
+@article{boutonnet2015words,
+  title={{Words jump-start vision: A label advantage in object recognition}},
+  author={B. Boutonnet and G. Lupyan},
+  journal={Journal of Neuroscience},
+  volume={35},
+  number={25},
+  pages={9329--9335},
+  year={2015},
+  publisher={Soc Neuroscience}
+}
+```
+
 
 ----------------------------------------------------------------------
 TODO: 
