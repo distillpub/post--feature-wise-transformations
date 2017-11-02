@@ -1,3 +1,30 @@
 .todo {
   color: red;
 }
+
+.node {
+  fill: white;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.edge {
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.information {
+  fill: black;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.box {
+  fill: white;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.label {
+  font-family: "serif";
+}
