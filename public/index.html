@@ -132,7 +132,25 @@
         textual questions about an input image.
       </p>
       <div class="l-body-outset figure" id="film-clevr"><img src="assets/film_clevr.svg"></img></div>
-      <p><span class="todo"> TODO: write about "Modulating early visual processing by language".</span></p>
+      <p>
+        Work in <dt-cite key="vries2017modulating"></dt-cite> introduced
+        conditional batch normalization (CBN) for multimodal inputs in the
+        context of VQA, more specifically the "oracle" sub-task of the
+        GuessWhat?! task, which features natural language questions on images
+        which are answered by yes, no, or N/A.
+      </p>
+      <p>
+        The language pipeline is used to modulate the pre-trained image feature
+        extractor by changing the values of the image feature extractor's batch
+        normalization parameters. This paper also provides initial intuitions
+        about FiLM by pointing out that conditioning the affine transformation
+        always results in better results than classic finetuning.
+      </p>
+      <p>
+        CBN can be viewed as an instance of FiLM where the post-normalization
+        affine transformation is disabled and a FiLM layer is placed
+        immediately after the batch normalization layer.
+      </p>
 
       <h3>Artistic style transfer</h3>
       <p>
@@ -255,7 +273,13 @@
       <p><span class="todo"> TODO: write about dynamic layer normalization, squeeze-and-excitation networks, "Convolution Sequence-to-Sequence Learning", and LSTMs.</span></p>
 
       <h3>Relationship with HyperNetworks</h3>
-      <p><span class="todo"> TODO: write about HyperNetworks.</span></p>
+      <p>
+        It's worth pointing out that FiLM shares with HyperNetworks
+        <dt-cite key="ha2016hypernetworks"></dt-cite> the idea of using one
+        neural network to predict parameters of another neural network. FiLM
+        can be viewed as a specialized instance of a HyperNetwork which predicts
+        the subset of the network's parameters contained in the FiLM layers.
+      </p>
 
       <h3>Relationship with attention</h3>
       <p><span class="todo"> TODO: write about "Gated-Attention Readers for Text Comprehension", "Gated-Attention Architectures for Task-Oriented Language Grounding", and "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding".</span></p>
@@ -278,6 +302,14 @@
       <p><span class="todo"> TODO: WRITEME.</span><p>
 
     <script type="text/bibliography">
+      @inproceedings{vries2017modulating,
+        author={de Vries, Harm and Strub, Florian and Mary, J\'{e}r\'{e}mie and
+                Larochelle, Hugo and Pietquin, Olivier and Courville, Aaron},
+        title={Modulating early visual processing by language},
+        booktitle={Advances in Neural Information Processing Systems},
+        year={2017},
+        url={https://arxiv.org/pdf/1707.00683.pdf},
+      }
       @inproceedings{perez2017learning,
         author={Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin,
                 Vincent and Courville, Aaron},
@@ -350,6 +382,14 @@
         year={2016},
         url={https://arxiv.org/pdf/1609.03499.pdf},
       }
+      @inproceedings{ha2016hypernetworks,
+        author={Ha, David and Dai, Andrew and Le, Quoc},
+        title={HyperNetworks},
+        booktitle={International Conference on Learning Representations},
+        year={2016},
+        url={https://arxiv.org/pdf/1609.09106.pdf},
+      }
     </script>
+    <script src="assets/figures.js"></script>
   </body>
 </html>
