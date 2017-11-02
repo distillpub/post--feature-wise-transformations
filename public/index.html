@@ -59,12 +59,13 @@
       </ul>
       <p>
         Despite the different problem settings being solved, a lot of recent
-        work makes use of very similar conditioning methods. Moreover, the
-        specific form of the conditioning method is oftentimes accessory to the
-        proposed innovation as opposed to being at the center of the work.
-        Because of that, these similarities can be overlooked when discussing
-        related work. We feel that there is a need to recognize and outline these
-        similarities.
+        (and older) work makes use of very similar conditioning methods which
+        revolve around conditional feature-wise affine transformations.
+        Moreover, the specific form of the conditioning method is oftentimes
+        accessory to the proposed innovation as opposed to being at the center
+        of the work. Because of that, these similarities can be overlooked when
+        discussing related work. We feel that there is a need to recognize and
+        outline these similarities.
       </p>
       <p>
         This article aims at regrouping these practices under the same
@@ -78,8 +79,8 @@
           <strong>M</strong>odulation (FiLM).
         </li>
         <li>
-          A thorough review of the literature connected to FiLM through the use
-          of conditional feature-wise affine transformations.
+          A thorough review of the literature connected to the use of
+          conditional feature-wise affine transformations.
         </li>
         <li>
           A series of empirical observations of the behavior and properties of
@@ -109,13 +110,13 @@
         FiLM-generating network.
       </p>
       <div class="l-body-outset figure" id="film-framework"><img src="assets/film_architecture.svg"></img></div>
-      <p>
-        This framework can be used to reason about many previous work.
-      </p>
 
       <h2>Related work</h2>
       <p>
-        We now turn our attention to the machine learning literature to point
+        We now turn our attention to the machine learning literature to expose
+        the various ways in which conditional feature-wise affine
+        transformations are used in practice.
+
         out instances of the FiLM framework being used in the wild, explicitly
         or implicitly. The objective is to show that a number of existing
         models can be cast as an instantiation of FiLM, which allows us to
@@ -143,13 +144,13 @@
         The language pipeline is used to modulate the pre-trained image feature
         extractor by changing the values of the image feature extractor's batch
         normalization parameters. This paper also provides initial intuitions
-        about FiLM by pointing out that conditioning the affine transformation
-        always results in better results than classic finetuning.
+        about FiLM by pointing out that conditioning the feature-wise affine
+        transformation always results in better results than classic finetuning.
       </p>
       <p>
         CBN can be viewed as an instance of FiLM where the post-normalization
-        affine transformation is disabled and a FiLM layer is placed
-        immediately after the batch normalization layer.
+        feature-wise affine transformation is disabled and a FiLM layer is
+        placed immediately after the batch normalization layer.
       </p>
 
       <h3>Artistic style transfer</h3>
@@ -172,9 +173,10 @@
       </p>
       <p>
         Both can be seen as an instantiation of FiLM in which FiLM layers
-        replace the affine transformation step of instance normalization layers
-        and the FiLM-generating network is in the form of an embedding lookup
-        (former work) or a parametrized mapping (latter work).
+        replace the feature-wise affine transformation step of instance
+        normalization layers and the FiLM-generating network is in the form of
+        an embedding lookup (former work) or a parametrized mapping (latter
+        work).
       </p>
       <p>
         Work in <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
@@ -186,7 +188,7 @@
       <p>
         Content and style images are fed through a trained classifier up to
         some intermediate layer, at which point the stack of content feature
-        maps is instance-normalized and an affine feature-wise transformation
+        maps is instance-normalized and a feature-wise affine transformation
         is applied to them using the style instance normalization statistics. A
         decoder then maps the stack of content feature maps back to input
         space, and the triplet of content-style-stylized images are used to
@@ -270,6 +272,51 @@
       <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
 
       <h3>Self-conditioning</h3>
+      <p>
+        So far the applications we have considered condition on <em>external</em>
+        information, but it is also possible (and sometimes desireable) to
+        condition on <em>internal</em> information &mdash; that is, to
+        <em>self-condition</em> a network.
+      </p>
+      <p>
+        In the speech recognition domain, <dt-cite key="kim2017dynamic"></dt-cite>
+        modulates a deep bidirectional LSTM using a form of conditional
+        normalization which the authors call <em>dynamic layer normalization</em>.
+        In analogy to conditional instance normalization and conditional batch
+        normalization, dynamic layer normalization can be seen as an instance of
+        FiLM where the post-normalization feature-wise affine transformation is
+        disabled and a FiLM layer is placed immediately after the instance
+        normalization layer.
+      </p>
+      <p>
+        The key difference here is that the conditioning signal does not come
+        from an external source, but is rather computed from utterance
+        summarization feature vectors extracted in each layer of the network
+        as a way of adapting the neural acoustic model.
+      </p>
+      <p>
+        In the visual domain, the ImageNet 2017 winning model
+        <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
+        scheme in the form of feature-wise sigmoidal gating as a way to
+        condition a layer's activations on its previous layer.
+      </p>
+      <p>
+        In the natural language domain, <dt-cite key="gehring2017convolutional"></dt-cite>
+        introduces a fast and parallelizable model for machine translation in
+        the form of a purely convolutional architecture. Despite not being the
+        main technical innovation, this model also uses feature-wise sigmoidal
+        gating to condition a layer's activations on its previous
+        layer.
+      </p>
+      <p>
+        From the FiLM point of view, feature-wise sigmoidal gating is
+        equivalent to a FiLM layer with the scaling being passed through a
+        sigmoidal non-linearity and the shifting set to 0.
+      </p>
+      <p>
+        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
+        itself
+      </p>
       <p><span class="todo"> TODO: write about dynamic layer normalization, squeeze-and-excitation networks, "Convolution Sequence-to-Sequence Learning", and LSTMs.</span></p>
 
       <h3>Relationship with HyperNetworks</h3>
@@ -385,9 +432,39 @@
       @inproceedings{ha2016hypernetworks,
         author={Ha, David and Dai, Andrew and Le, Quoc},
         title={HyperNetworks},
-        booktitle={International Conference on Learning Representations},
+        booktitle={Proceedings of the International Conference on Learning Representations},
         year={2016},
         url={https://arxiv.org/pdf/1609.09106.pdf},
+      }
+      @inproceedings{kim2017dynamic,
+        author={Kim, Taesup and Song, Inchul and Bengio, Yoshua},
+        title={Dynamic Layer Normalization for Adaptive Neural Acoustic Modeling
+               in Speech Recognition},
+        booktitle={Interspeech},
+        year={2017},
+        url={https://arxiv.org/pdf/1707.06065.pdf},
+      }
+      @inproceedings{hu2017squeeze,
+        author={Hu, Jie and Shen, Li and Sun, Gang},
+        title={Squeeze-and-Excitation Networks},
+        booktitle={CVPR's ILSVRC 2017 Workshop},
+        year={2017},
+        url={https://arxiv.org/pdf/1709.01507.pdf},
+      }
+      @inproceedings{gehring2017convolutional,
+        author={Gehring, Jonas and Auli, Michael and Grangier, David and Yarats,
+                Denis and Dauphin, Yann N.},
+        title={Convolution Sequence-to-Sequence Learning},
+        booktitle={Proceedings of the International Conference on Machine Learning},
+        year={2017},
+        url={https://arxiv.org/pdf/1705.03122.pdf},
+      }
+      @article{hochreiter1997long,
+        author={Hochreiter, Sepp and Schmidhuber, J\"{u}rgen},
+        title={Long Short-Term Memory},
+        journal={Neural Comput.},
+        year={1997},
+        url={http://dx.doi.org/10.1162/neco.1997.9.8.1735},
       }
     </script>
     <script src="assets/figures.js"></script>
