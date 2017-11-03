@@ -166,6 +166,31 @@ var buildFilmLayerFigure = function () {
 
 loopFunctions.push(buildFilmLayerFigure());
 
+// === FiLM layer figure ======================================================
+var buildFilmMLPFigure = function () {
+    // Get the div element for this figure
+    var div = d3.select("div.figure#film-mlp");
+    var svg;
+
+    // Define figure parameters
+    var aspectRatio = 0.6;
+    var width = div.node().getBoundingClientRect().width;
+    var height = Math.floor(aspectRatio * width);
+
+    d3.xml("assets/film_mlp.svg", function(error, documentFragment) {
+        if (error) {console.log(error); return;}
+
+        div.node().appendChild(documentFragment.getElementsByTagName("svg")[0]);
+
+        svg = div.select("svg")
+    });
+
+    var loopFunction = function() {};
+    return loopFunction;
+};
+
+loopFunctions.push(buildFilmMLPFigure());
+
 // === Call all looping functions =============================================
 var loop = function() {
     for(var i = 0; i < loopFunctions.length; i++) {
