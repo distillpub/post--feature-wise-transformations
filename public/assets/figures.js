@@ -170,22 +170,69 @@ loopFunctions.push(buildFilmLayerFigure());
 var buildFilmMLPFigure = function () {
     // Get the div element for this figure
     var div = d3.select("div.figure#film-mlp");
-    var svg;
 
-    // Define figure parameters
-    var aspectRatio = 0.6;
-    var width = div.node().getBoundingClientRect().width;
-    var height = Math.floor(aspectRatio * width);
+    // Data
+    var data = [];
+    for (var k = 2; k >= 0; k--) {
+        for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 4; j++) {
+                var r = Math.floor(Math.random() * 256);
+                var g = Math.floor(Math.random() * 256);
+                var b = Math.floor(Math.random() * 256);
+                data.push({
+                    coordinates: [i, j, k],
+                    pixel: {r: r, g: g, b: b},
+                });
+            }
+        }
+    }
 
-    d3.xml("assets/film_mlp.svg", function(error, documentFragment) {
-        if (error) {console.log(error); return;}
+    // Create SVG element inside div element
+    var svg = div.append("svg")
+        .attr("viewBox", "0 0 800 800");
 
-        div.node().appendChild(documentFragment.getElementsByTagName("svg")[0]);
+    var createFeatureMaps = function () {
+        var featureMaps = svg.append("g");
+        featureMaps.selectAll("polygon")
+                .data(data)
+                .enter()
+            .append("polygon")
+                .attr("points", "25 0 75 0 50 25 0 25")
+                .attr("transform", function(d) {
+                    var x = 100 - 25 * d.coordinates[1] + 50 * d.coordinates[0];
+                    var y = 25 * d.coordinates[1] + 20 * d.coordinates[2];
+                    return "translate(" + x +  ", " + y + ")";
+                })
+                .style("fill", function(d) {
+                    return "rgb(" + d.pixel.r + ", " + d.pixel.g + ", " + d.pixel.b + ")";
+                })
+                .style("stroke-width", 2)
+                .style("stroke", "black");
+        return featureMaps;
+    }
 
-        svg = div.select("svg")
-    });
+    var featureMapsBot = createFeatureMaps()
+        .attr("transform", "translate(450, 650)");
+    var featureMapsTransform = createFeatureMaps()
+        .attr("transform", "translate(450, 650)");
+    var featureMapsTop = createFeatureMaps()
+        .attr("transform", "translate(450, 50)");
 
-    var loopFunction = function() {};
+    var loopFunction = function() {
+        featureMapsTransform.transition()
+                .duration(1000)
+                .attr("transform", "translate(450, 450)")
+            .transition()
+                .duration(1000)
+                .attr("transform", "translate(450, 250)")
+            .transition()
+                .duration(1000)
+                .attr("transform", "translate(450, 50)")
+                .on("end", function() {
+                    d3.select(this).attr("transform", "translate(450, 650)");
+                    loopFunction();
+                });
+    };
     return loopFunction;
 };
 
