@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1600 1600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="feature-map" viewBox="0 0 300 140">
+      <title>Feature map</title>
+      <polygon points="100 0 300 0 200 100 0 100" transform="translate(0, 40)"/>
+      <polygon points="100 0 300 0 200 100 0 100" transform="translate(0, 20)"/>
+      <polygon points="100 0 300 0 200 100 0 100" transform="translate(0, 0)"/>
+    </symbol>
+  </defs>
+  <use width="310" height="150" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);" transform="matrix(2.179268, 0, 0, 2.179268, 924.426941, 1273.109741)" xlink:href="#feature-map"/>
+  <use width="310" height="150" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);" transform="matrix(2.179268, 0, 0, 2.179268, 924.426941, -0.000005)" xlink:href="#feature-map"/>
+</svg>

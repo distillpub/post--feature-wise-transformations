@@ -8,6 +8,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
 
     <script type="text/front-matter">
       title: "Understanding FiLM"
@@ -54,22 +55,28 @@
           receives as input to a style-specific stylization.
         </li>
         <li>
+          A visual question-answering (VQA) model processes an image within the
+          context of a natural language question.
+        </li>
+        <li>
           <span class="todo"> TODO: add more examples.</span>
         </li>
       </ul>
       <p>
-        Despite the different problem settings being solved, a lot of recent
-        work makes use of very similar conditioning methods. Moreover, the
-        specific form of the conditioning method is oftentimes accessory to the
-        proposed innovation as opposed to being at the center of the work.
-        Because of that, these similarities can be overlooked when discussing
-        related work. We feel that there is a need to recognize and outline these
-        similarities.
+        Despite the different problem settings being solved, a lot of work
+        makes use of very similar conditioning methods which revolve around
+        conditional feature-wise affine transformations. Moreover, the specific
+        form of the conditioning method is oftentimes accessory to the proposed
+        innovation as opposed to being at the center of the work. Because of
+        that, these similarities can be overlooked when discussing related
+        work. We feel that there is a need to recognize and outline these
+        similarities, as well as provide a common language to discuss about
+        these approaches.
       </p>
       <p>
-        This article aims at regrouping these practices under the same
-        framework and providing insights into how these methods work. It is
-        split into three parts:
+        This article therefore aims at regrouping these practices under the
+        same framework and providing insights into how these methods work. It
+        is split into three parts:
       </p>
       <ol>
         <li>
@@ -78,8 +85,8 @@
           <strong>M</strong>odulation (FiLM).
         </li>
         <li>
-          A thorough review of the literature connected to FiLM through the use
-          of conditional feature-wise affine transformations.
+          A thorough review of the literature connected to the use of
+          conditional feature-wise affine transformations.
         </li>
         <li>
           A series of empirical observations of the behavior and properties of
@@ -102,24 +109,69 @@
         convolutional networks, feature map-wise--whose scaling and shifting
         coefficients are a function of the conditioning information.
       </p>
-      <div class="l-body-outset figure" id="film-layer"></div>
+      <div class="l-body-outset figure" id="film-mlp"></div>
+      <div class="l-body-outset figure" id="film-cnn"></div>
       <p>
         The function used to compute the FiLM scaling and shifting coefficients
         is usually implemented as a neural network and called the
         FiLM-generating network.
       </p>
       <div class="l-body-outset figure" id="film-framework"><img src="assets/film_architecture.svg"></img></div>
+
+      <h2>Relationship with other frameworks</h2>
+
+      <h3>Bilinear transformations</h3>
       <p>
-        This framework can be used to reason about many previous work.
+        In their seminal paper <dt-cite key="tenenbaum2000separating"></dt-cite>,
+        Tenenbaum Freeman propose a learning algorithm for bilinear models based
+        on SVD and EM.
+      </p>
+      <p>
+        Let \(x\) and \(z\) be \(N\)- and \(M\)-dimensional feature vectors. A
+        bilinear model defines the \(K\)-dimensional output vector as
+
+          \[y_k = x^T W_k z\]
+
+        where \(W_k\) is a \(N \times M\) matrix. Note that for each dimension
+        \(k\) we have a separate matrix \(W_k\), so the weight matrix is a
+        3-tensor.
+      </p>
+      <p>
+        FiLM can be thought of as a particular rank-1 approximation to \(W_k\),
+        namely
+
+          \[y_k = x^T 1_k w_k^T z,\]
+
+        where \(1_k\) is a one-hot vector with its \(k\)-th entry set to one.
+        This approximation further assumes that \(\beta\) is fixed and set to
+        zero, and that the FiLM projection layer does not include a bias.
       </p>
 
-      <h2>Related work</h2>
+      <h3>Spatial and temporal attention</h3>
       <p>
-        We now turn our attention to the machine learning literature to point
-        out instances of the FiLM framework being used in the wild, explicitly
-        or implicitly. The objective is to show that a number of existing
-        models can be cast as an instantiation of FiLM, which allows us to
-        reason about these methods in a unified framework.
+        In a sense, FiLM can be interpreted as a relaxed form of attention over
+        features, which bears resemblance with attention over time or over
+        space.
+      </p>
+      <p><span class="todo"> TODO: write about attention-related papers.</span></p>
+      <p><span class="todo"> TODO: write about connection between attention and bilinear models.</span></p>
+
+      <h3>HyperNetworks</h3>
+      <p>
+        FiLM shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
+        the idea of using one neural network to predict parameters of another
+        neural network. FiLM can be viewed as a specialized instance of a
+        HyperNetwork which predicts the subset of the network's parameters
+        contained in the FiLM layers.
+      </p>
+
+      <h2>Conditional feature-wise affine transformations in the literature</h2>
+      <p>
+        We now turn our attention to the machine learning literature to expose
+        the various ways in which conditional feature-wise affine
+        transformations are used in practice. When appropriate, we will point
+        out how these different ideas can be expressed using the FiLM
+        nomenclature.
       </p>
 
       <h3>Visual question-answering (VQA) and visual reasoning</h3>
@@ -131,8 +183,25 @@
         <dt-cite key="johnson2017clevr"></dt-cite> synthetic dataset to answer
         textual questions about an input image.
       </p>
-      <div class="l-body-outset figure" id="film-clevr"><img src="assets/film_clevr.svg"></img></div>
-      <p><span class="todo"> TODO: write about "Modulating early visual processing by language".</span></p>
+      <p>
+        Work in <dt-cite key="vries2017modulating"></dt-cite> introduced
+        conditional batch normalization (CBN) for multimodal inputs in the
+        context of VQA, more specifically the "oracle" sub-task of the
+        GuessWhat?! task, which features natural language questions on images
+        which are answered by yes, no, or N/A.
+      </p>
+      <p>
+        The language pipeline is used to modulate the pre-trained image feature
+        extractor by changing the values of the image feature extractor's batch
+        normalization parameters. This paper also provides initial intuitions
+        about FiLM by pointing out that conditioning the feature-wise affine
+        transformation always results in better results than classic finetuning.
+      </p>
+      <p>
+        CBN can be viewed as an instance of FiLM where the post-normalization
+        feature-wise affine transformation is disabled and a FiLM layer is
+        placed immediately after the batch normalization layer.
+      </p>
 
       <h3>Artistic style transfer</h3>
       <p>
@@ -154,9 +223,10 @@
       </p>
       <p>
         Both can be seen as an instantiation of FiLM in which FiLM layers
-        replace the affine transformation step of instance normalization layers
-        and the FiLM-generating network is in the form of an embedding lookup
-        (former work) or a parametrized mapping (latter work).
+        replace the feature-wise affine transformation step of instance
+        normalization layers and the FiLM-generating network is in the form of
+        an embedding lookup (former work) or a parametrized mapping (latter
+        work).
       </p>
       <p>
         Work in <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
@@ -168,7 +238,7 @@
       <p>
         Content and style images are fed through a trained classifier up to
         some intermediate layer, at which point the stack of content feature
-        maps is instance-normalized and an affine feature-wise transformation
+        maps is instance-normalized and a feature-wise affine transformation
         is applied to them using the style instance normalization statistics. A
         decoder then maps the stack of content feature maps back to input
         space, and the triplet of content-style-stylized images are used to
@@ -252,13 +322,69 @@
       <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
 
       <h3>Self-conditioning</h3>
-      <p><span class="todo"> TODO: write about dynamic layer normalization, squeeze-and-excitation networks, "Convolution Sequence-to-Sequence Learning", and LSTMs.</span></p>
+      <p>
+        So far the applications we have considered condition on <em>external</em>
+        information, but it is also possible (and sometimes desireable) to
+        condition on <em>internal</em> information &mdash; that is, to
+        <em>self-condition</em> a network.
+      </p>
+      <p>
+        In the speech recognition domain, <dt-cite key="kim2017dynamic"></dt-cite>
+        modulates a deep bidirectional LSTM using a form of conditional
+        normalization which the authors call <em>dynamic layer normalization</em>.
+        In analogy to conditional instance normalization and conditional batch
+        normalization, dynamic layer normalization can be seen as an instance of
+        FiLM where the post-normalization feature-wise affine transformation is
+        disabled and a FiLM layer is placed immediately after the instance
+        normalization layer.
+      </p>
+      <p>
+        The key difference here is that the conditioning signal does not come
+        from an external source, but is rather computed from utterance
+        summarization feature vectors extracted in each layer of the network
+        as a way of adapting the neural acoustic model.
+      </p>
+      <p>
+        In the visual domain, the ImageNet 2017 winning model
+        <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
+        scheme in the form of feature-wise sigmoidal gating as a way to
+        condition a layer's activations on its previous layer.
+      </p>
+      <p>
+        In the natural language domain, <dt-cite key="gehring2017convolutional"></dt-cite>
+        introduces a fast and parallelizable model for machine translation in
+        the form of a purely convolutional architecture. Despite not being the
+        main technical innovation, this model also uses feature-wise sigmoidal
+        gating to condition a layer's activations on its previous
+        layer.
+      </p>
+      <p>
+        From the FiLM point of view, feature-wise sigmoidal gating is
+        equivalent to a FiLM layer with the scaling being passed through a
+        sigmoidal non-linearity and the shifting set to 0.
+      </p>
+      <p>
+        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
+        itself <span class="todo"> TODO: write about LSTMs</span>.
+      </p>
 
-      <h3>Relationship with HyperNetworks</h3>
-      <p><span class="todo"> TODO: write about HyperNetworks.</span></p>
-
-      <h3>Relationship with attention</h3>
-      <p><span class="todo"> TODO: write about "Gated-Attention Readers for Text Comprehension", "Gated-Attention Architectures for Task-Oriented Language Grounding", and "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding".</span></p>
+      <h3>Attention over features</h3>
+      <p>
+        Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
+        Gated-Attention Reader, which conditions a document reading network
+        with an associated query via multiple steps of feature-wise sigmoidal
+        gating, and work in <dt-cite key="chaplot2017gated"></dt-cite> trains a
+        reinforcement learning (RL) agent to follow simple natural language
+        instructions in a 3D environment (VizDoom) using the same feature-wise
+        sigmoidal gating mechanism. Both papers show improvement over
+        conditioning via concatenation.
+      </p>
+      <p>
+        Feature-wise sigmoidal gating can be seen as inserting a FiLM layer
+        with scaling constrained to be between 0 and 1 via a sigmoidal layer
+        and shifting set to zero.
+      </p>
+      <p><span class="todo"> TODO: write about "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding".</span></p>
 
       <h3>Relationship with gating and mixture-of-experts</h3>
       <p><span class="todo"> TODO: write about "Adaptive Mixtures of Local Experts", "Hierarchical Mixtures of Experts and the EM Algorithm", and "Learning Factored Representations in a Deep Mixture of Experts".</span></p>
@@ -278,6 +404,14 @@
       <p><span class="todo"> TODO: WRITEME.</span><p>
 
     <script type="text/bibliography">
+      @inproceedings{vries2017modulating,
+        author={de Vries, Harm and Strub, Florian and Mary, J\'{e}r\'{e}mie and
+                Larochelle, Hugo and Pietquin, Olivier and Courville, Aaron},
+        title={Modulating early visual processing by language},
+        booktitle={Advances in Neural Information Processing Systems},
+        year={2017},
+        url={https://arxiv.org/pdf/1707.00683.pdf},
+      }
       @inproceedings{perez2017learning,
         author={Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin,
                 Vincent and Courville, Aaron},
@@ -342,7 +476,7 @@
         url={https://arxiv.org/pdf/1606.05328.pdf}
       }
       @article{oord2016wavenet,
-        title={WaveNet: {A} Generative Model for Raw Audio},
+        title={WaveNet: A Generative Model for Raw Audio},
         author={van den Oord, Aaron and Dieleman, Sander and Zen, Heiga and
                 Simonyan, Karen and Vinyals, Oriol and Graves, Alex and
                 Kalchbrenner, Nal and Senior, Andrew and Kavukcuoglu, Koray},
@@ -350,6 +484,78 @@
         year={2016},
         url={https://arxiv.org/pdf/1609.03499.pdf},
       }
+      @inproceedings{ha2016hypernetworks,
+        author={Ha, David and Dai, Andrew and Le, Quoc},
+        title={HyperNetworks},
+        booktitle={Proceedings of the International Conference on Learning Representations},
+        year={2016},
+        url={https://arxiv.org/pdf/1609.09106.pdf},
+      }
+      @inproceedings{kim2017dynamic,
+        author={Kim, Taesup and Song, Inchul and Bengio, Yoshua},
+        title={Dynamic Layer Normalization for Adaptive Neural Acoustic Modeling
+               in Speech Recognition},
+        booktitle={Interspeech},
+        year={2017},
+        url={https://arxiv.org/pdf/1707.06065.pdf},
+      }
+      @inproceedings{hu2017squeeze,
+        author={Hu, Jie and Shen, Li and Sun, Gang},
+        title={Squeeze-and-Excitation Networks},
+        booktitle={CVPR's ILSVRC 2017 Workshop},
+        year={2017},
+        url={https://arxiv.org/pdf/1709.01507.pdf},
+      }
+      @inproceedings{gehring2017convolutional,
+        author={Gehring, Jonas and Auli, Michael and Grangier, David and Yarats,
+                Denis and Dauphin, Yann N.},
+        title={Convolution Sequence-to-Sequence Learning},
+        booktitle={Proceedings of the International Conference on Machine Learning},
+        year={2017},
+        url={https://arxiv.org/pdf/1705.03122.pdf},
+      }
+      @article{hochreiter1997long,
+        title={Long Short-Term Memory},
+        author={Hochreiter, Sepp and Schmidhuber, J{\"u}rgen},
+        journal={Neural Computation},
+        volume={9},
+        number={8},
+        pages={1735--1780},
+        year={1997},
+        publisher={MIT Press},
+        url={http://dx.doi.org/10.1162/neco.1997.9.8.1735},
+      }
+      @article{tenenbaum2000separating,
+        title={Separating Style and Content with Bilinear Models},
+        author={Tenenbaum, Joshua B. and Freeman, William T.},
+        journal={Neural Computation},
+        volume={12},
+        number={6},
+        pages={1247--1283},
+        year={2000},
+        publisher={MIT Press},
+        url={http://dx.doi.org/10.1162/089976600300015349},
+      }
+      @article{dhingra2017gated,
+        title={Gated-Attention Readers for Text Comprehension},
+        author={Dhingra, Bhuwan and Liu, Hanxiao and Yang, Zhilin, and
+                Cohen, William W and Salakhutdinov, Ruslan},
+        booktitle={Proceedings of the Annual Meeting of the Association for
+                   Computational Linguistics},
+        year={2017},
+        url={https://arxiv.org/pdf/1606.01549.pdf},
+      }
+      @inproceedings{chaplot2017gated,
+        title={Gated-Attention Architectures for Task-Oriented Language Grounding},
+        author={Chaplot, Devendra Singh and Sathyendra, Kanthashree Mysore and
+                Pasumarthi, Rama Kumar and Rajagopal, Dheeraj and Salakhutdinov,
+                Ruslan},
+        booktitle={ACL Workshop on Language Grounding for Robotics},
+        year={2017},
+        url={https://arxiv.org/pdf/1706.07230.pdf},
+      }
     </script>
+    <script src="assets/figure_film_mlp.js"></script>
+    <script src="assets/figure_film_cnn.js"></script>
   </body>
 </html>
