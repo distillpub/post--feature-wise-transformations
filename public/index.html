@@ -398,7 +398,10 @@
       </p>
       <p>
         The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
-        itself <span class="todo"> TODO: write about LSTMs</span>.
+        itself can be viewed from the perspective of self-conditioned
+        feature-wise affine transformations: the input, forget, and output gates
+        can be seen as FiLM layers with a sigmoid-constrained \(\gamma\) and
+        with \(\beta = 0\).
       </p>
       <div class="l-body-outset figure" id="lstm-diagram"></div>
 
@@ -419,16 +422,69 @@
         with scaling constrained to be between 0 and 1 via a sigmoidal layer
         and shifting set to zero.
       </p>
-      <p><span class="todo"> TODO: write about "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding".</span></p>
+      <p>
+        Work in <dt-cite key="shen2017disan"></dt-cite> proposes a feature-wise
+        attention mechanism for language understanding, showing strong results
+        on datasets such as SNLI <dt-cite key="bowman2015large"></dt-cite>:
+      </p>
+      <p>
+        <em>Word embedding usually suffers from the polysemy in natural language.
+        Since traditional attention computes a single importance score for
+        each word based on the word embedding, it cannot distinguish the
+        meanings of the same word in different contexts. Multi-dimensional
+        attention, however, computes a score for each feature of each word, so
+        it can select the features that can best describe the word’s specific
+        meaning in any given context, and include this information in the
+        sentence encoding outputs. </em>
+        <span class="todo"> TODO: this is verbatim, we need to change it.</span>
+      </p>
+      <p></p>
       <div class="l-body-outset figure" id="disan-diagram"></div>
 
       <h3>Relationship with gating and mixture-of-experts</h3>
-      <p><span class="todo"> TODO: write about "Adaptive Mixtures of Local Experts", "Hierarchical Mixtures of Experts and the EM Algorithm", and "Learning Factored Representations in a Deep Mixture of Experts".</span></p>
+      <p>
+        Work on mixture-of-experts models
+        <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep"></dt-cite>
+        also exhibit a strong relationship with conditional feature-wise affine
+        transformations.
+      </p>
+      <p><span class="todo"> TODO: explain the relationship.</span></p>
       <div class="l-body-outset figure" id="moe-diagram"></div>
 
       <h3>Application to the reinforcement learning setting</h3>
-      <p><span class="todo"> TODO: write about "Overcoming catastrophic forgetting in neural networks".</span></p>
+      <p>
+        In the reinforcement learning setting, work in
+        <dt-cite key="kirkpatrick2017overcoming"></dt-cite> briefly touches the
+        idea of applying conditional feature-wise affine transformations to
+        reinforcement learning problems by training an agent that learns to play
+        10 Atari games using a single Double DQN network with what can be
+        thought of as FiLM layers throughout its hierarchy, conditioned on the
+        current game.
+      </p>
       <div class="l-body-outset figure" id="rl-diagram"></div>
+
+      <h2>Feature-wise modulation in the neuroscience literature</h2>
+      <p>
+        Although attempts to connect deep learning results to the way the brain
+        works should always be treated carefully, it is interesting to note that
+        the idea of feature-wise modulation finds a modest amount of support in
+        the neuroscience literature.
+      </p>
+      <p>
+        In an attempt to explore biologically plausible neuron models while
+        drawing a parallel with multi-layer perceptrons,
+        <dt-cite key="mel1992clusteron"></dt-cite> introduces the
+        <em>Clusteron</em>, a neuron whose activations can be amplified by
+        surrounding neurons. This behavior enables to extract non-linearity and
+        high-order statistics from data.
+      </p>
+      <p>
+        Work in <dt-cite key="boutonnet2015words"></dt-cite> provides new
+        evidence that external language cues alter how visual information is
+        processed in the brain. More precisely, it is observed that P1 signals,
+        which are related to low-level visual features, are modulated while
+        hearing specific words.
+      </p>
 
       <h2>Understanding FiLM</h2>
       <p><span class="todo"> TODO: write a section on how FiLM operates.</span></p>
@@ -591,6 +647,86 @@
         booktitle={ACL Workshop on Language Grounding for Robotics},
         year={2017},
         url={https://arxiv.org/pdf/1706.07230.pdf},
+      }
+      @inproceedings{shen2017disan,
+        title={DiSAN: Directional Self-Attention Network for RNN/CNN-free
+               Language Understanding},
+        author={Shen, Tao and Zhou, Tianyi and Long, Guodong and Jiang, Jing and
+                Pan, Shirui and Zhang, Chengqi},
+        booktitle={arXiv},
+        year={2017},
+        url={https://arxiv.org/pdf/1709.04696.pdf},
+      }
+      @inproceedings{bowman2015large,
+        title={A large annotated corpus for learning natural language inference},
+        author={Bowman, Samuel R. and Angeli, Gabor and Potts, Christopher, and
+                Manning, Christopher D.},
+        booktitle={Proceedings of the Conference on Empirical Methods in Natural
+                   Language Processing},
+        year={2015},
+        url={https://nlp.stanford.edu/pubs/snli_paper.pdf},
+      }
+      @article{jacobs1991adaptive,
+        title={Adaptive Mixtures of Local Experts},
+        author={Jacobs, Robert A. and Jordan, Michael I. and Nowlan, Steven J.
+                and Hinton, Geoffrey E.},
+        journal={Neural Computation},
+        volume={3},
+        number={1},
+        pages={79--87},
+        year={1991},
+        publisher={MIT Press},
+        url={http://dx.doi.org/10.1162/neco.1991.3.1.79},
+      }
+      @article{jordan1994hierarchical,
+        title={Hierarchical Mixtures of Experts and the EM Algorithm},
+        author={Jordan, Michael I. and Jacobs, Robert A.},
+        journal={Neural Computation},
+        volume={6},
+        number={2},
+        pages={181--214},
+        year={1994},
+        publisher={MIT Press},
+        url={http://dx.doi.org/10.1162/neco.1994.6.2.181},
+      }
+      @inproceedings{eigen2014deep,
+        author={Eigen, David and Ranzato, Marc'Aurelio and Sutskever, Ilya},
+        title={Learning Factored Representations in a Deep Mixture of Experts},
+        booktitle={Proceedings of the ICLR Workshops},
+        year={2014},
+        url={https://arxiv.org/pdf/1312.4314.pdf},
+      }
+      @article{kirkpatrick2017overcoming,
+        title={Overcoming catastrophic forgetting in neural networks},
+        author={Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and
+                Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A. and
+                Milan, Kieran and Quan, John and Ramalho, Tiago and
+                Grabska-Barwinska, Agnieszka and Hassabis, Demis and Clopath,
+                Claudia and Kumaran, Dharshan and Hadsell, Raia},
+        journal={Proceedings of the National Academy of Sciences},
+        volume={114},
+        number={13},
+        pages={3521--3526},
+        year={2017},
+        url={http://www.pnas.org/content/114/13/3521.abstract},
+      }
+      @inproceedings{mel1992clusteron,
+        title={The Clusteron: Toward a Simple Abstraction for a Complex Neuron},
+        author={Mel, Bartlett W},
+        booktitle={Advances in Neural Information Processing Systems},
+        year={1992},
+        url={http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf},
+      }
+      @article{boutonnet2015words,
+        title={Words jump-start vision: A label advantage in object recognition},
+        author={B. Boutonnet and G. Lupyan},
+        journal={Journal of Neuroscience},
+        volume={35},
+        number={25},
+        pages={9329--9335},
+        year={2015},
+        publisher={Society for Neuroscience},
+        url={},
       }
     </script>
     <script src="assets/utils.js"></script>
