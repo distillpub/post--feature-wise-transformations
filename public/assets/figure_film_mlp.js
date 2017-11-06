@@ -1,10 +1,6 @@
-// === Array of all looping functions =========================================
-var loopFunctions = [];
-
-// === FiLM layer figure ======================================================
-var buildFilmLayerFigure = function () {
+var buildFigure = function () {
     // Get the div element for this figure
-    var div = d3.select("div.figure#film-layer");
+    var div = d3.select("div.figure#film-mlp");
 
     // Define figure parameters
     var aspectRatio = 0.6;
@@ -161,87 +157,8 @@ var buildFilmLayerFigure = function () {
                 d3.select(this).attr("cy", Math.floor((0.4 + 0.5 * 0.35) * topHeight));
             });
     };
-    return loopFunction;
+
+    loopFunction();
 };
 
-loopFunctions.push(buildFilmLayerFigure());
-
-// === FiLM layer figure ======================================================
-var buildFilmMLPFigure = function () {
-    // Get the div element for this figure
-    var div = d3.select("div.figure#film-mlp");
-
-    // Data
-    var data = [];
-    for (var k = 2; k >= 0; k--) {
-        for (var i = 0; i < 4; i++) {
-            for (var j = 0; j < 4; j++) {
-                var r = Math.floor(Math.random() * 256);
-                var g = Math.floor(Math.random() * 256);
-                var b = Math.floor(Math.random() * 256);
-                data.push({
-                    coordinates: [i, j, k],
-                    pixel: {r: r, g: g, b: b},
-                });
-            }
-        }
-    }
-
-    // Create SVG element inside div element
-    var svg = div.append("svg")
-        .attr("viewBox", "0 0 800 800");
-
-    var createFeatureMaps = function () {
-        var featureMaps = svg.append("g");
-        featureMaps.selectAll("polygon")
-                .data(data)
-                .enter()
-            .append("polygon")
-                .attr("points", "25 0 75 0 50 25 0 25")
-                .attr("transform", function(d) {
-                    var x = 100 - 25 * d.coordinates[1] + 50 * d.coordinates[0];
-                    var y = 25 * d.coordinates[1] + 20 * d.coordinates[2];
-                    return "translate(" + x +  ", " + y + ")";
-                })
-                .style("fill", function(d) {
-                    return "rgb(" + d.pixel.r + ", " + d.pixel.g + ", " + d.pixel.b + ")";
-                })
-                .style("stroke-width", 2)
-                .style("stroke", "black");
-        return featureMaps;
-    }
-
-    var featureMapsBot = createFeatureMaps()
-        .attr("transform", "translate(450, 650)");
-    var featureMapsTransform = createFeatureMaps()
-        .attr("transform", "translate(450, 650)");
-    var featureMapsTop = createFeatureMaps()
-        .attr("transform", "translate(450, 50)");
-
-    var loopFunction = function() {
-        featureMapsTransform.transition()
-                .duration(1000)
-                .attr("transform", "translate(450, 450)")
-            .transition()
-                .duration(1000)
-                .attr("transform", "translate(450, 250)")
-            .transition()
-                .duration(1000)
-                .attr("transform", "translate(450, 50)")
-                .on("end", function() {
-                    d3.select(this).attr("transform", "translate(450, 650)");
-                    loopFunction();
-                });
-    };
-    return loopFunction;
-};
-
-loopFunctions.push(buildFilmMLPFigure());
-
-// === Call all looping functions =============================================
-var loop = function() {
-    for(var i = 0; i < loopFunctions.length; i++) {
-        loopFunctions[i]();
-    }
-};
-loop();
+buildFigure();

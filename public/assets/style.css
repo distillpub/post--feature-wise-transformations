@@ -28,3 +28,8 @@
 .label {
   font-family: "serif";
 }
+
+.pixel {
+  stroke: black;
+  stroke-width: 2px;
+}
