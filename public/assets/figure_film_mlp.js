@@ -1,9 +1,8 @@
 var buildFigure = function () {
-    // --- Create svg element -------------------------------------------------
-    var svg = d3.select("div.figure#film-mlp")
-      .append("svg")
-        // Width corresponds to the width of the body-outset class (744px)
-        .attr("viewBox", "0 0 744 500");
+    // --- Create group element -----------------------------------------------
+    var group = d3.select("div.figure#film-diagram").select("svg")
+      .append("g")
+        .attrs({"id": "mlp", "visibility": "visible"});
 
     // --- Create data --------------------------------------------------------
     // Features
@@ -35,38 +34,38 @@ var buildFigure = function () {
 
     // --- Create figure elements ---------------------------------------------
     // Conditioning information label
-    var staticConditioningLabel = svg.append("text")
+    var staticConditioningLabel = group.append("text")
         .classed("label", true)
         .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
         .text("Conditioning");
-    var conditioningLabel = svg.append("text")
+    var conditioningLabel = group.append("text")
         .classed("label", true)
         .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
         .text("Conditioning");
 
     // FiLM-generator box
-    svg.append("line")
+    group.append("line")
         .classed("edge", true)
         .attrs({"x1": 10, "y1": 250, "x2": 150, "y2": 250});
-    var filmGenerator = svg.append("rect")
+    var filmGenerator = group.append("rect")
         .classed("box", true)
         .attrs({"x": 150, "y": 100, "width": 150, "height": 300})
         .style("stroke-width", 3);
-    svg.append("line")
+    group.append("line")
         .classed("edge", true)
         .attrs({"x1": 300, "y1": 296.5, "x2": 341, "y2": 296.5});
-    svg.append("line")
+    group.append("line")
         .classed("edge", true)
         .attrs({"x1": 300, "y1": 164.5, "x2": 341, "y2": 164.5});
 
     // FiLM-generator label
-    var filmGeneratorLabel = svg.append("text")
+    var filmGeneratorLabel = group.append("text")
         .classed("label", true)
         .attrs({"x": 225, "y": 430, "text-anchor": "middle"})
         .text("FiLM generator");
 
     // Scaling
-    var scaling = svg.append("g")
+    var scaling = group.append("g")
         .attr("transform", "translate(341, 281.5)")
       .selectAll("rect")
         .data(gamma)
@@ -81,7 +80,7 @@ var buildFigure = function () {
         .style("fill", "white");
 
     // Shifting
-    var shifting = svg.append("g")
+    var shifting = group.append("g")
         .attr("transform", "translate(341, 149.5)")
       .selectAll("rect")
         .data(beta)
@@ -96,7 +95,7 @@ var buildFigure = function () {
         .style("fill", "white");
 
     // Scaling operator
-    var scalingOperator = svg.append("g")
+    var scalingOperator = group.append("g")
         .attr("opacity", 0);
     scalingOperator.append("circle")
         .classed("node", true)
@@ -106,7 +105,7 @@ var buildFigure = function () {
         .attrs({"cx": 500, "cy": 296.5, "r": 1});
 
     // Shifting operator
-    var shiftingOperator = svg.append("g")
+    var shiftingOperator = group.append("g")
         .attr("opacity", 0);
     shiftingOperator.append("circle")
         .classed("node", true)
@@ -121,7 +120,7 @@ var buildFigure = function () {
     // Helper function to create a group element containing the feature
     // rectangles.
     var createFeatureVector = function () {
-        var featureVector = svg.append("g");
+        var featureVector = group.append("g");
         featureVector
           .selectAll("rect")
             .data(data)

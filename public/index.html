@@ -80,7 +80,7 @@
       </p>
       <ol>
         <li>
-          An exposition to the proposed framework, named
+          An exposition to the proposed framework and nomenclature, named
           <strong>F</strong>eature-w<strong>i</strong>se <strong>L</strong>inear
           <strong>M</strong>odulation (FiLM).
         </li>
@@ -95,28 +95,48 @@
         </li>
       </ol>
 
-      <h2>FiLM layers</h2>
+      <h2>FiLM</h2>
       <p>
-        The core idea behind FiLM <dt-cite key="perez2017film"></dt-cite> is to
-        inject conditioning information in a neural network through conditional
-        feature-wise affine transformations.
+        Like mentioned above, conditional feature-wise affine transformations
+        oftentimes appear in the literature in various form factors, and we
+        currently lack a common vocabulary to describe and discuss these
+        approaches.
       </p>
       <p>
-        A neural network is conditioned using FiLM, or FiLM-ed, by inserting
-        FiLM layers at various stages of the network's hierarchy. A FiLM layer
-        can be thought of as a feature-wise linear layer--that is, affine
-        transformations are applied elementwise, or in the case of
+        In line with <dt-cite key="perez2017film"></dt-cite>, we propose to use
+        the term FiLM, for <strong>F</strong>eature-w<strong>i</strong>se
+        <strong>L</strong>inear <strong>M</strong>odulation, to describe
+        conditional feature-wise affine transformations. In this framework, a
+        neural network is conditioned using FiLM, or FiLM-ed, by inserting FiLM
+        layers at various stages of the network's hierarchy.
+      </p>
+      <p>
+        A FiLM layer can be thought of as a feature-wise linear layer--that is,
+        affine transformations are applied elementwise, or in the case of
         convolutional networks, feature map-wise--whose scaling and shifting
-        coefficients are a function of the conditioning information.
+        coefficients are a function of the conditioning information. In other
+        words,
+
+        \[
+            \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{c}) \odot \mathbf{x}
+                                                           + \beta(\mathbf{c}),
+        \]
+
+        where \(\mathbf{x}\) is the FiLM layer's input and \(\mathbf{c}\) is the
+        conditioning information. The mapping from conditioning information to
+        FiLM parameters is called the FiLM generator. It receives \(\mathbf{c}\)
+        as input and outputs \(\gamma\) and \(\beta\):
+
+        \[
+          \textrm{FiLM}_{\textrm{gen}}(\mathbf{c}) = [\gamma(\mathbf{c}),
+                                                      \beta(\mathbf{c})].
+        \]
       </p>
-      <div class="l-body-outset figure" id="film-mlp"></div>
-      <div class="l-body-outset figure" id="film-cnn"></div>
       <p>
-        The function used to compute the FiLM scaling and shifting coefficients
-        is usually implemented as a neural network and called the
-        FiLM-generating network.
+        You can examine the relationship between the various FiLM components in
+        the following diagram:
       </p>
-      <div class="l-body-outset figure" id="film-framework"><img src="assets/film_architecture.svg"></img></div>
+      <div class="l-body-outset figure" id="film-diagram"></div>
 
       <h2>Relationship with other frameworks</h2>
 
@@ -555,7 +575,9 @@
         url={https://arxiv.org/pdf/1706.07230.pdf},
       }
     </script>
+    <script src="assets/figure_film.js"></script>
     <script src="assets/figure_film_mlp.js"></script>
     <script src="assets/figure_film_cnn.js"></script>
+    <script src="assets/figure_film_architecture.js"></script>
   </body>
 </html>
