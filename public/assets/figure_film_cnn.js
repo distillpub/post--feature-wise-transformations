@@ -16,6 +16,19 @@ var buildFigure = function () {
     var gamma = [1.6, 0.2, 2.0];
     var beta = [-25, 100, -100];
 
+    // Helper function to convert a pixel value to RGB string representation
+    var toRGB = function (k, value, scale, shift) {
+        var intensity = Math.min(
+            Math.max(Math.floor(scale * value + shift), 0),
+            255
+        );
+        switch (k) {
+            case 0: return "rgb(0, 0, " + intensity + ")";
+            case 1: return "rgb(0, " + intensity + ", 0)";
+            case 2: return "rgb(" + intensity + ", 0, 0)";
+        }
+    };
+
     // Format data to be D3-friendly
     var data = [];
     for (var n = 0; n < 48; n++) {
@@ -23,19 +36,6 @@ var buildFigure = function () {
         var j = Math.floor(n / 3) % 4;
         var k = n % 3;
 
-        // Tile colors (shade of red, green, or blue, depending on the feature
-        // map)
-        var toRGB = function (k, value, scale, shift) {
-            var intensity = Math.min(
-                Math.max(Math.floor(scale * value + shift), 0),
-                255
-            );
-            switch (k) {
-                case 0: return "rgb(0, 0, " + intensity + ")";
-                case 1: return "rgb(0, " + intensity + ", 0)";
-                case 2: return "rgb(" + intensity + ", 0, 0)";
-            }
-        };
         data.push({
             coordinates: [i, j, k],
             color: toRGB(k, image[i][j][k], 1, 0),
@@ -47,52 +47,33 @@ var buildFigure = function () {
     // --- Create figure elements ---------------------------------------------
     // Conditioning information label
     var staticConditioningLabel = svg.append("text")
-        .attr("class", "label")
-        .attr("opacity", 1)
-        .attr("x", 10)
-        .attr("y", 240)
-        .attr("text-anchor", "left")
+        .classed("label", true)
+        .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
         .text("Conditioning");
     var conditioningLabel = svg.append("text")
-        .attr("class", "label")
-        .attr("opacity", 1)
-        .attr("x", 10)
-        .attr("y", 240)
-        .attr("text-anchor", "left")
+        .classed("label", true)
+        .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
         .text("Conditioning");
 
     // FiLM-generator box
     svg.append("line")
-        .attr("class", "edge")
-        .attr("x1", 10)
-        .attr("y1", 250)
-        .attr("x2", 150)
-        .attr("y2", 250);
+        .classed("edge", true)
+        .attrs({"x1": 10, "y1": 250, "x2": 150, "y2": 250});
     var filmGenerator = svg.append("rect")
-        .attr("class", "box")
-        .attr("x", 150)
-        .attr("y", 100)
-        .attr("width", 150)
-        .attr("height", 300)
+        .classed("box", true)
+        .attrs({"x": 150, "y": 100, "width": 150, "height": 300})
         .style("stroke-width", 3);
     svg.append("line")
-        .attr("class", "edge")
-        .attr("x1", 300)
-        .attr("y1", 315)
-        .attr("x2", 420)
-        .attr("y2", 315);
+        .classed("edge", true)
+        .attrs({"x1": 300, "y1": 315, "x2": 420, "y2": 315});
     svg.append("line")
-        .attr("class", "edge")
-        .attr("x1", 300)
-        .attr("y1", 185)
-        .attr("x2", 420)
-        .attr("y2", 185);
+        .classed("edge", true)
+        .attrs({"x1": 300, "y1": 185, "x2": 420, "y2": 185});
 
     // FiLM-generator label
     var filmGeneratorLabel = svg.append("text")
-        .attr("class", "label")
-        .attr("x", 225)
-        .attr("y", 430) .attr("text-anchor", "middle")
+        .classed("label", true)
+        .attrs({"x": 225, "y": 430, "text-anchor": "middle"})
         .text("FiLM generator");
 
     // Scaling
@@ -100,11 +81,9 @@ var buildFigure = function () {
       .selectAll("rect")
         .data(gamma)
       .enter().append("rect")
-        .attr("class", "box")
-        .attr("x", 420)
-        .attr("y", function(d, i) { return 270 + 30 * (2 - i); })
-        .attr("width", 30)
-        .attr("height", 30)
+        .classed("box", true)
+        .attrs({"x": 420, "width": 30, "height": 30,
+                "y": function(d, i) { return 270 + 30 * (2 - i); }})
         .style("fill", "white");
 
     // Shifting
@@ -112,47 +91,33 @@ var buildFigure = function () {
       .selectAll("rect")
         .data(beta)
       .enter().append("rect")
-        .attr("class", "box")
-        .attr("x", 420)
-        .attr("y", function(d, i) { return 140 + 30 * (2 - i); })
-        .attr("width", 30)
-        .attr("height", 30)
+        .classed("box", true)
+        .attrs({"x": 420, "width": 30, "height": 30,
+                "y": function(d, i) { return 140 + 30 * (2 - i); }})
         .style("fill", "white");
 
     // Scaling operator
     var scalingOperator = svg.append("g")
         .attr("opacity", 0);
     scalingOperator.append("circle")
-        .attr("class", "node")
-        .attr("cx", 500)
-        .attr("cy", 315)
-        .attr("r", 15);
+        .classed("node", true)
+        .attrs({"cx": 500, "cy": 315, "r": 15});
     scalingOperator.append("circle")
-        .attr("class", "node")
-        .attr("cx", 500)
-        .attr("cy", 315)
-        .attr("r", 1);
+        .classed("node", true)
+        .attrs({"cx": 500, "cy": 315, "r": 1});
 
     // Shifting operator
     var shiftingOperator = svg.append("g")
         .attr("opacity", 0);
     shiftingOperator.append("circle")
-        .attr("class", "node")
-        .attr("cx", 500)
-        .attr("cy", 185)
-        .attr("r", 15);
+        .classed("node", true)
+        .attrs({"cx": 500, "cy": 185, "r": 15});
     shiftingOperator.append("line")
-        .attr("class", "edge")
-        .attr("x1", 493)
-        .attr("y1", 185)
-        .attr("x2", 507)
-        .attr("y2", 185);
+        .classed("edge", true)
+        .attrs({"x1": 493, "y1": 185, "x2": 507, "y2": 185});
     shiftingOperator.append("line")
-        .attr("class", "edge")
-        .attr("x1", 500)
-        .attr("y1", 178)
-        .attr("x2", 500)
-        .attr("y2", 192);
+        .classed("edge", true)
+        .attrs({"x1": 500, "y1": 178, "x2": 500, "y2": 192});
 
     // Helper function to create a group element containing the feature map
     // polygons.
@@ -162,12 +127,14 @@ var buildFigure = function () {
           .selectAll("polygon")
             .data(data)
           .enter().append("polygon")
-            .attr("class", "pixel")
-            .attr("points", "15 0 45 0 30 15 0 15")
-            .attr("transform", function(d) {
-                var x = 60 - 15 * d.coordinates[1] + 30 * d.coordinates[0];
-                var y = 15 * d.coordinates[1] + 12 * (2 - d.coordinates[2]);
-                return "translate(" + x +  ", " + y + ")";
+            .classed("pixel", true)
+            .attrs({
+                "points": "15 0 45 0 30 15 0 15",
+                "transform": function(d) {
+                    var x = 60 - 15 * d.coordinates[1] + 30 * d.coordinates[0];
+                    var y = 15 * d.coordinates[1] + 12 * (2 - d.coordinates[2]);
+                    return "translate(" + x +  ", " + y + ")";
+                }
             })
             .style("fill", function(d) { return d.color; });
         return featureMaps;
