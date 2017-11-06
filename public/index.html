@@ -166,6 +166,7 @@
         This approximation further assumes that \(\beta\) is fixed and set to
         zero, and that the FiLM projection layer does not include a bias.
       </p>
+      <div class="l-body-outset figure" id="bilinear-diagram"></div>
 
       <h3>Spatial and temporal attention</h3>
       <p>
@@ -184,6 +185,7 @@
         HyperNetwork which predicts the subset of the network's parameters
         contained in the FiLM layers.
       </p>
+      <div class="l-body-outset figure" id="hypernetwork-diagram"></div>
 
       <h2>Conditional feature-wise affine transformations in the literature</h2>
       <p>
@@ -203,6 +205,7 @@
         <dt-cite key="johnson2017clevr"></dt-cite> synthetic dataset to answer
         textual questions about an input image.
       </p>
+      <div class="l-body-outset figure" id="clevr-diagram"></div>
       <p>
         Work in <dt-cite key="vries2017modulating"></dt-cite> introduced
         conditional batch normalization (CBN) for multimodal inputs in the
@@ -217,11 +220,13 @@
         about FiLM by pointing out that conditioning the feature-wise affine
         transformation always results in better results than classic finetuning.
       </p>
+      <div class="l-body-outset figure" id="guesswhat-diagram"></div>
       <p>
         CBN can be viewed as an instance of FiLM where the post-normalization
         feature-wise affine transformation is disabled and a FiLM layer is
         placed immediately after the batch normalization layer.
       </p>
+      <p><span class="todo"> TODO: Talk about conditioning in relation networks.</span></p>
 
       <h3>Artistic style transfer</h3>
       <p>
@@ -238,9 +243,10 @@
         instance normalization parameters their corresponding value for the
         desired style. The latter introduces a <em>style prediction
         network</em> which is trained jointly with the style transfer network
-      to predict the instance normalization parameters directly from the style
-      image.
+        to predict the instance normalization parameters directly from the style
+        image.
       </p>
+      <div class="l-body-outset figure" id="alrfas-diagram"></div>
       <p>
         Both can be seen as an instantiation of FiLM in which FiLM layers
         replace the feature-wise affine transformation step of instance
@@ -264,6 +270,7 @@
         space, and the triplet of content-style-stylized images are used to
         compute the usual style transfer loss.
       </p>
+      <div class="l-body-outset figure" id="adain-diagram"></div>
       <p>
         AdaIN can be recognized as a FiLM layer replacing the instance
         normalization parameters, with the FiLM-generating network taking the
@@ -294,6 +301,7 @@
         an embedding lookup on the class labels, with the scaling coefficients
         set to a constant value of 1.
       </p>
+      <div class="l-body-outset figure" id="dcgan-diagram"></div>
       <p>
         PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and WaveNet
         <dt-cite key="oord2016wavenet"></dt-cite>, two recent advances in
@@ -313,6 +321,7 @@
         expressed in terms of FiLM layers due to the absence of the
         feature-wise property.
       </p>
+      <div class="l-body-outset figure" id="pixelcnn-diagram"></div>
       <p>
         WaveNet describes two ways in which conditional biasing allows external
         information to modulate the behavior of the model:
@@ -330,6 +339,7 @@
           which sounds are produced.
         </li>
       </ol>
+      <div class="l-body-outset figure" id="wavenet-diagram"></div>
       <p>
         Like DCGAN and PixelCNN, both approaches can be viewed as inserting
         FiLM layers after each convolutional layer. The main difference lies in
@@ -358,6 +368,7 @@
         disabled and a FiLM layer is placed immediately after the instance
         normalization layer.
       </p>
+      <div class="l-body-outset figure" id="dln-diagram"></div>
       <p>
         The key difference here is that the conditioning signal does not come
         from an external source, but is rather computed from utterance
@@ -370,6 +381,7 @@
         scheme in the form of feature-wise sigmoidal gating as a way to
         condition a layer's activations on its previous layer.
       </p>
+      <div class="l-body-outset figure" id="squeeze-diagram"></div>
       <p>
         In the natural language domain, <dt-cite key="gehring2017convolutional"></dt-cite>
         introduces a fast and parallelizable model for machine translation in
@@ -378,6 +390,7 @@
         gating to condition a layer's activations on its previous
         layer.
       </p>
+      <div class="l-body-outset figure" id="convseq2seq-diagram"></div>
       <p>
         From the FiLM point of view, feature-wise sigmoidal gating is
         equivalent to a FiLM layer with the scaling being passed through a
@@ -387,6 +400,7 @@
         The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
         itself <span class="todo"> TODO: write about LSTMs</span>.
       </p>
+      <div class="l-body-outset figure" id="lstm-diagram"></div>
 
       <h3>Attention over features</h3>
       <p>
@@ -399,18 +413,22 @@
         sigmoidal gating mechanism. Both papers show improvement over
         conditioning via concatenation.
       </p>
+      <div class="l-body-outset figure" id="gated-attention-diagram"></div>
       <p>
         Feature-wise sigmoidal gating can be seen as inserting a FiLM layer
         with scaling constrained to be between 0 and 1 via a sigmoidal layer
         and shifting set to zero.
       </p>
       <p><span class="todo"> TODO: write about "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding".</span></p>
+      <div class="l-body-outset figure" id="disan-diagram"></div>
 
       <h3>Relationship with gating and mixture-of-experts</h3>
       <p><span class="todo"> TODO: write about "Adaptive Mixtures of Local Experts", "Hierarchical Mixtures of Experts and the EM Algorithm", and "Learning Factored Representations in a Deep Mixture of Experts".</span></p>
+      <div class="l-body-outset figure" id="moe-diagram"></div>
 
       <h3>Application to the reinforcement learning setting</h3>
       <p><span class="todo"> TODO: write about "Overcoming catastrophic forgetting in neural networks".</span></p>
+      <div class="l-body-outset figure" id="rl-diagram"></div>
 
       <h2>Understanding FiLM</h2>
       <p><span class="todo"> TODO: write a section on how FiLM operates.</span></p>
@@ -575,9 +593,27 @@
         url={https://arxiv.org/pdf/1706.07230.pdf},
       }
     </script>
+    <script src="assets/utils.js"></script>
     <script src="assets/figure_film.js"></script>
     <script src="assets/figure_film_mlp.js"></script>
     <script src="assets/figure_film_cnn.js"></script>
     <script src="assets/figure_film_architecture.js"></script>
+    <script src="assets/figure_bilinear.js"></script>
+    <script src="assets/figure_hypernetwork.js"></script>
+    <script src="assets/figure_clevr.js"></script>
+    <script src="assets/figure_guesswhat.js"></script>
+    <script src="assets/figure_alrfas.js"></script>
+    <script src="assets/figure_adain.js"></script>
+    <script src="assets/figure_dcgan.js"></script>
+    <script src="assets/figure_pixelcnn.js"></script>
+    <script src="assets/figure_wavenet.js"></script>
+    <script src="assets/figure_dln.js"></script>
+    <script src="assets/figure_squeeze.js"></script>
+    <script src="assets/figure_convseq2seq.js"></script>
+    <script src="assets/figure_lstm.js"></script>
+    <script src="assets/figure_gated_attention.js"></script>
+    <script src="assets/figure_disan.js"></script>
+    <script src="assets/figure_moe.js"></script>
+    <script src="assets/figure_rl.js"></script>
   </body>
 </html>
