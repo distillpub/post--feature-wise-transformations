@@ -1,35 +1,42 @@
+.figure-circle {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.figure-line {
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.figure-path {
+  fill: #666;
+}
+
+.figure-polygon {
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.figure-rect {
+  fill: none;
+  pointer-events: bounding-box;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.figure-rounded {
+  stroke-miterlimit: 10px;
+  rx: 6px;
+  ry: 6px;
+}
+
+.figure-text {
+  opacity: 0.6;
+  font-size: 13px;
+  font-family: "Open Sans";
+}
+
 .todo {
   color: red;
-}
-
-.node {
-  fill: white;
-  stroke: black;
-  stroke-width: 3px;
-}
-
-.edge {
-  stroke: black;
-  stroke-width: 3px;
-}
-
-.information {
-  fill: black;
-  stroke: black;
-  stroke-width: 3px;
-}
-
-.box {
-  fill: white;
-  stroke: black;
-  stroke-width: 3px;
-}
-
-.label {
-  font-family: "serif";
-}
-
-.pixel {
-  stroke: black;
-  stroke-width: 2px;
 }

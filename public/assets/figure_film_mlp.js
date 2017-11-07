@@ -35,32 +35,25 @@ var buildFigure = function () {
     // --- Create figure elements ---------------------------------------------
     // Conditioning information label
     var staticConditioningLabel = group.append("text")
-        .classed("label", true)
+        .classed("figure-text", true)
         .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
         .text("Conditioning");
     var conditioningLabel = group.append("text")
-        .classed("label", true)
+        .classed("figure-text", true)
         .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
         .text("Conditioning");
 
     // FiLM-generator box
-    group.append("line")
-        .classed("edge", true)
-        .attrs({"x1": 10, "y1": 250, "x2": 150, "y2": 250});
     var filmGenerator = group.append("rect")
-        .classed("box", true)
-        .attrs({"x": 150, "y": 100, "width": 150, "height": 300})
-        .style("stroke-width", 3);
-    group.append("line")
-        .classed("edge", true)
-        .attrs({"x1": 300, "y1": 296.5, "x2": 341, "y2": 296.5});
-    group.append("line")
-        .classed("edge", true)
-        .attrs({"x1": 300, "y1": 164.5, "x2": 341, "y2": 164.5});
+        .classed("figure-rect figure-rounded", true)
+        .attrs({"x": 150, "y": 100, "width": 150, "height": 300});
+    figureRightArrow(group, "right", 10, 250, 150, 250);
+    figureRightArrow(group, "right", 300, 296.5, 341, 296.5);
+    figureRightArrow(group, "right", 300, 164.5, 341, 164.5);
 
     // FiLM-generator label
     var filmGeneratorLabel = group.append("text")
-        .classed("label", true)
+        .classed("figure-text", true)
         .attrs({"x": 225, "y": 430, "text-anchor": "middle"})
         .text("FiLM generator");
 
@@ -70,7 +63,7 @@ var buildFigure = function () {
       .selectAll("rect")
         .data(gamma)
       .enter().append("rect")
-        .classed("box", true)
+        .classed("figure-rect", true)
         .attrs({
             "width": 30, "height": 30,
             "transform": function(d, i) {
@@ -85,7 +78,7 @@ var buildFigure = function () {
       .selectAll("rect")
         .data(beta)
       .enter().append("rect")
-        .classed("box", true)
+        .classed("figure-rect", true)
         .attrs({
             "width": 30, "height": 30,
             "transform": function(d, i) {
@@ -98,23 +91,23 @@ var buildFigure = function () {
     var scalingOperator = group.append("g")
         .attr("opacity", 0);
     scalingOperator.append("circle")
-        .classed("node", true)
+        .classed("figure-circle", true)
         .attrs({"cx": 500, "cy": 296.5, "r": 15});
     scalingOperator.append("circle")
-        .classed("node", true)
+        .classed("figure-circle", true)
         .attrs({"cx": 500, "cy": 296.5, "r": 1});
 
     // Shifting operator
     var shiftingOperator = group.append("g")
         .attr("opacity", 0);
     shiftingOperator.append("circle")
-        .classed("node", true)
+        .classed("figure-circle", true)
         .attrs({"cx": 500, "cy": 164.5, "r": 15});
     shiftingOperator.append("line")
-        .classed("edge", true)
+        .classed("figure-line", true)
         .attrs({"x1": 493, "y1": 164.5, "x2": 507, "y2": 164.5});
     shiftingOperator.append("line")
-        .classed("edge", true)
+        .classed("figure-line", true)
         .attrs({"x1": 500, "y1": 157.5, "x2": 500, "y2": 171.5});
 
     // Helper function to create a group element containing the feature
@@ -125,7 +118,7 @@ var buildFigure = function () {
           .selectAll("rect")
             .data(data)
           .enter().append("rect")
-            .classed("box", true)
+            .classed("figure-rect", true)
             .attrs({
                 "x": 0, "y": 0, "width": 45, "height": 45,
                 "transform": function(d) {

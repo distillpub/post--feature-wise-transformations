@@ -46,32 +46,25 @@ var buildFigure = function () {
     // --- Create figure elements ---------------------------------------------
     // Conditioning information label
     var staticConditioningLabel = group.append("text")
-        .classed("label", true)
-        .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
+        .classed("figure-text", true)
+        .attrs({"x": 10, "y": 240, "text-anchor": "left"})
         .text("Conditioning");
     var conditioningLabel = group.append("text")
-        .classed("label", true)
-        .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
+        .classed("figure-text", true)
+        .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 0.6})
         .text("Conditioning");
 
     // FiLM-generator box
-    group.append("line")
-        .classed("edge", true)
-        .attrs({"x1": 10, "y1": 250, "x2": 150, "y2": 250});
     var filmGenerator = group.append("rect")
-        .classed("box", true)
-        .attrs({"x": 150, "y": 100, "width": 150, "height": 300})
-        .style("stroke-width", 3);
-    group.append("line")
-        .classed("edge", true)
-        .attrs({"x1": 300, "y1": 315, "x2": 420, "y2": 315});
-    group.append("line")
-        .classed("edge", true)
-        .attrs({"x1": 300, "y1": 185, "x2": 420, "y2": 185});
+        .classed("figure-rect figure-rounded", true)
+        .attrs({"x": 150, "y": 100, "width": 150, "height": 300});
+    figureRightArrow(group, "right", 10, 250, 150, 250);
+    figureRightArrow(group, "right", 300, 315, 420, 315);
+    figureRightArrow(group, "right", 300, 185, 420, 185);
 
     // FiLM-generator label
     var filmGeneratorLabel = group.append("text")
-        .classed("label", true)
+        .classed("figure-text", true)
         .attrs({"x": 225, "y": 430, "text-anchor": "middle"})
         .text("FiLM generator");
 
@@ -80,7 +73,7 @@ var buildFigure = function () {
       .selectAll("rect")
         .data(gamma)
       .enter().append("rect")
-        .classed("box", true)
+        .classed("figure-rect", true)
         .attrs({"x": 420, "width": 30, "height": 30,
                 "y": function(d, i) { return 270 + 30 * (2 - i); }})
         .style("fill", "white");
@@ -90,7 +83,7 @@ var buildFigure = function () {
       .selectAll("rect")
         .data(beta)
       .enter().append("rect")
-        .classed("box", true)
+        .classed("figure-rect", true)
         .attrs({"x": 420, "width": 30, "height": 30,
                 "y": function(d, i) { return 140 + 30 * (2 - i); }})
         .style("fill", "white");
@@ -99,23 +92,23 @@ var buildFigure = function () {
     var scalingOperator = group.append("g")
         .attr("opacity", 0);
     scalingOperator.append("circle")
-        .classed("node", true)
+        .classed("figure-circle", true)
         .attrs({"cx": 500, "cy": 315, "r": 15});
     scalingOperator.append("circle")
-        .classed("node", true)
+        .classed("figure-circle", true)
         .attrs({"cx": 500, "cy": 315, "r": 1});
 
     // Shifting operator
     var shiftingOperator = group.append("g")
         .attr("opacity", 0);
     shiftingOperator.append("circle")
-        .classed("node", true)
+        .classed("figure-circle", true)
         .attrs({"cx": 500, "cy": 185, "r": 15});
     shiftingOperator.append("line")
-        .classed("edge", true)
+        .classed("figure-line", true)
         .attrs({"x1": 493, "y1": 185, "x2": 507, "y2": 185});
     shiftingOperator.append("line")
-        .classed("edge", true)
+        .classed("figure-line", true)
         .attrs({"x1": 500, "y1": 178, "x2": 500, "y2": 192});
 
     // Helper function to create a group element containing the feature map
@@ -126,7 +119,7 @@ var buildFigure = function () {
           .selectAll("polygon")
             .data(data)
           .enter().append("polygon")
-            .classed("pixel", true)
+            .classed("figure-polygon", true)
             .attrs({
                 "points": "15 0 45 0 30 15 0 15",
                 "transform": function(d) {
@@ -217,7 +210,7 @@ var buildFigure = function () {
             .on("end", function() {
                 d3.select(this)
                     .attr("x", 10)
-                    .attr("opacity", 1);
+                    .attr("opacity", 0.6);
             });
 
         // Animate scaling vector

@@ -12,25 +12,25 @@ var buildFigure = function () {
         .on("click", function () {
             svg.select("g#mlp-button")
               .select("rect")
-                .style("fill", "rgb(200,200,200)");
+                .style("fill", "#f0f0f0");
             svg.select("g#mlp").attr("visibility", "visible");
 
             svg.select("g#cnn-button")
               .select("rect")
-                .style("fill", "white");
+                .style("fill", "none");
             svg.select("g#cnn").attr("visibility", "hidden");
 
             svg.select("g#architecture-button")
               .select("rect")
-                .style("fill", "white");
+                .style("fill", "none");
             svg.select("g#architecture").attr("visibility", "hidden");
         });
     mlpButton.append("rect")
-        .classed("box", true)
+        .classed("figure-rect figure-rounded", true)
         .attrs({"x": 10, "y": 450, "width": 100, "height": 40})
-        .style("fill", "rgb(200,200,200)");
+        .style("fill", "f0f0f0");
     mlpButton.append("text")
-        .classed("label", true)
+        .classed("figure-text", true)
         .attrs({"x": 60, "y": 470, "dy": "0.4em", "text-anchor": "middle"})
         .text("MLP");
 
@@ -40,24 +40,24 @@ var buildFigure = function () {
         .on("click", function () {
             svg.select("g#mlp-button")
               .select("rect")
-                .style("fill", "white");
+                .style("fill", "none");
             svg.select("g#mlp").attr("visibility", "hidden");
 
             svg.select("g#cnn-button")
               .select("rect")
-                .style("fill", "rgb(200,200,200)");
+                .style("fill", "#f0f0f0");
             svg.select("g#cnn").attr("visibility", "visible");
 
             svg.select("g#architecture-button")
               .select("rect")
-                .style("fill", "white");
+                .style("fill", "none");
             svg.select("g#architecture").attr("visibility", "hidden");
         });
     cnnButton.append("rect")
-        .classed("box", true)
+        .classed("figure-rect figure-rounded", true)
         .attrs({"x": 120, "y": 450, "width": 100, "height": 40})
     cnnButton.append("text")
-        .classed("label", true)
+        .classed("figure-text", true)
         .attrs({"x": 170, "y": 470, "dy": "0.4em", "text-anchor": "middle"})
         .text("CNN");
 
@@ -67,24 +67,24 @@ var buildFigure = function () {
         .on("click", function () {
             svg.select("g#mlp-button")
               .select("rect")
-                .style("fill", "white");
+                .style("fill", "none");
             svg.select("g#mlp").attr("visibility", "hidden");
 
             svg.select("g#cnn-button")
               .select("rect")
-                .style("fill", "white");
+                .style("fill", "none");
             svg.select("g#cnn").attr("visibility", "hidden");
 
             svg.select("g#architecture-button")
               .select("rect")
-                .style("fill", "rgb(200,200,200)");
+                .style("fill", "#f0f0f0");
             svg.select("g#architecture").attr("visibility", "visible");
         });
     architectureButton.append("rect")
-        .classed("box", true)
+        .classed("figure-rect figure-rounded", true)
         .attrs({"x": 230, "y": 450, "width": 100, "height": 40});
     architectureButton.append("text")
-        .classed("label", true)
+        .classed("figure-text", true)
         .attrs({"x": 280, "y": 470, "dy": "0.4em", "text-anchor": "middle"})
         .text("All");
 };
