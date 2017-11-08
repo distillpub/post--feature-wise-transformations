@@ -18,7 +18,7 @@ var buildFigure = function () {
     group.append("rect")
         .classed("figure-rect figure-rounded", true)
         .attrs({"x": 150, "y": 100, "width": 150, "height": 300});
-    figureRightArrow(group, "right", 10, 250, 150, 250);
+    figureArrow(group, "right", 10, 250, 150, 250);
 
     // FiLM-generator label
     group.append("text")
@@ -37,7 +37,7 @@ var buildFigure = function () {
     filmedNetwork.selectAll("g")
         .data(data)
       .enter().each(function (d, i) {
-          figureRightArrow(
+          figureArrow(
               d3.select(this),
               "up",
               609,
@@ -46,7 +46,7 @@ var buildFigure = function () {
               390 - 75 * (4 - i)
           );
       });
-    figureRightArrow(group, "up", 609, 490, 609, 465);
+    figureArrow(group, "up", 609, 490, 609, 465);
     filmedNetwork.selectAll("text")
         .data(data)
       .enter().append("text")
@@ -57,8 +57,8 @@ var buildFigure = function () {
     filmedNetwork.selectAll("line#gen-to-net")
         .data(data)
       .enter().each(function (d, i) {
-          figureRightArrow(d3.select(this), "right", 300, 440 - 75 * (4 - i),
-                           484, 440 - 75 * (4 - i))
+          figureArrow(d3.select(this), "right", 300, 440 - 75 * (4 - i),
+                      484, 440 - 75 * (4 - i))
               .attr("opacity", d == "FiLM" ? 1 : 0);
       })
 };
