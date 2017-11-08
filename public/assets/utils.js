@@ -10,8 +10,8 @@ var todoFigure = function (svg) {
         .text("TODO: WRITEME");
 };
 
-var figureRightArrow = function (selection, orientation, x1, y1, x2, y2) {
-    group = selection.append("g");
+var figureArrow = function (selection, orientation, x1, y1, x2, y2) {
+    var group = selection.append("g");
     group.append("line")
         .classed("figure-line", true)
         .attrs({"x1": x1, "y1": y1, "x2": x2, "y2": y2});
@@ -37,4 +37,36 @@ var figureRightArrow = function (selection, orientation, x1, y1, x2, y2) {
         .attr("d", dString)
         .attr("transform", "translate(" + x2 + "," + y2 + ")");
     return group;
+};
+
+var figureLayer = function (selection, x, y, width, height, caption) {
+    var xText = width / 2;
+    var yText = height / 2;
+    var group = selection.append("g")
+        .attr("transform", "translate(" + x + " " + y + ")");
+    group.append("rect")
+        .classed("figure-rect figure-rounded", true)
+        .attrs({"x": 0, "y": 0, "width": width, "height": height})
+        .style("fill", "#fff")
+        .style("fill-opacity", 0.8);
+    group.append("text")
+        .classed("figure-text", true)
+        .attrs({"x": xText, "y": yText, "dy": "0.4em", "text-anchor": "middle",
+                "transform": "rotate(270 " + xText + " " + yText + ")"})
+        .text(caption);
+    return group;
+};
+
+var figureNetwork = function(selection, x, y, width, height, caption) {
+    var group = selection.append("g")
+        .attr("transform", "translate(" + x + " " + y + ")");
+    group.append("rect")
+        .attrs({"x": 0, "y": 0, "rx": 10, "ry": 10, "width": width, "height": height})
+        .style("fill", "#f0f0f5");
+    group.append("text")
+        .classed("figure-text", true)
+        .attrs({"x": width / 2, "y": height + 10, "dy": "0.4em",
+                "text-anchor": "middle"})
+        .text(caption);
+    return group
 };

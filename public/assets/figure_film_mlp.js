@@ -47,9 +47,9 @@ var buildFigure = function () {
     var filmGenerator = group.append("rect")
         .classed("figure-rect figure-rounded", true)
         .attrs({"x": 150, "y": 100, "width": 150, "height": 300});
-    figureRightArrow(group, "right", 10, 250, 150, 250);
-    figureRightArrow(group, "right", 300, 296.5, 341, 296.5);
-    figureRightArrow(group, "right", 300, 164.5, 341, 164.5);
+    figureArrow(group, "right", 10, 250, 150, 250);
+    figureArrow(group, "right", 300, 296.5, 341, 296.5);
+    figureArrow(group, "right", 300, 164.5, 341, 164.5);
 
     // FiLM-generator label
     var filmGeneratorLabel = group.append("text")
