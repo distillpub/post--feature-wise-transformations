@@ -1,11 +1,21 @@
-var buildFigure = function () {
-    // --- Create svg element -------------------------------------------------
-    var svg = d3.select("div.figure#gated-attention-diagram")
-      .append("svg")
-        // Width corresponds to the width of the body-outset class (744px)
-        .attr("viewBox", "0 0 744 500");
+function buildFigure () {
+    function styleFigure () {
+        // --- Retrieve svg element -------------------------------------------
+        var svg = d3.select("div.figure#gated-attention-diagram").select("svg");
 
-    todoFigure(svg);
-};
+        // --- Clear element-specific styling ---------------------------------
+        svg.selectAll(".figure-layer").style("fill", null);
+        svg.selectAll(".figure-network").style("fill", null);
+        svg.selectAll(".figure-text").style("font-size", null);
+    }
+
+    d3.xml("assets/gated_attention.svg").mimeType("image/svg+xml").get(function(error, xml) {
+        if (error) throw error;
+        d3.select("div.figure#gated-attention-diagram").each(function () {
+            this.appendChild(xml.documentElement);
+        });
+        styleFigure();
+    });
+}
 
 buildFigure();

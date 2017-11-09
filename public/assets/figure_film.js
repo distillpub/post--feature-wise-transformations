@@ -26,7 +26,6 @@ var buildFigure = function () {
             svg.select("g#architecture").attr("visibility", "hidden");
         });
     mlpButton.append("rect")
-        .classed("figure-rect figure-rounded", true)
         .attrs({"x": 10, "y": 450, "width": 100, "height": 40})
         .style("fill", "f0f0f0");
     mlpButton.append("text")
@@ -54,7 +53,6 @@ var buildFigure = function () {
             svg.select("g#architecture").attr("visibility", "hidden");
         });
     cnnButton.append("rect")
-        .classed("figure-rect figure-rounded", true)
         .attrs({"x": 120, "y": 450, "width": 100, "height": 40})
     cnnButton.append("text")
         .classed("figure-text", true)
@@ -81,7 +79,6 @@ var buildFigure = function () {
             svg.select("g#architecture").attr("visibility", "visible");
         });
     architectureButton.append("rect")
-        .classed("figure-rect figure-rounded", true)
         .attrs({"x": 230, "y": 450, "width": 100, "height": 40});
     architectureButton.append("text")
         .classed("figure-text", true)
