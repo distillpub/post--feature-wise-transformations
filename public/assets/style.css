@@ -1,7 +1,30 @@
 .figure-circle {
-  fill: none;
   stroke: #666;
   stroke-width: 1.5px;
+}
+
+.figure-rect {
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.figure-layer {
+    fill: #fff;
+    fill-opacity: 0.8;
+    rx: 6px;
+    ry: 6px;
+    stroke: #666;
+    stroke-miterlimit: 10px;
+    stroke-width: 1.5px;
+}
+
+.figure-network {
+    fill: #f0f0f5;
+    rx: 6px;
+    ry: 6px;
+    stroke: none;
+    stroke-miterlimit: 10px;
+    stroke-width: 1.5px;
 }
 
 .figure-line {
@@ -18,13 +41,6 @@
   stroke-width: 1.5px;
 }
 
-.figure-rect {
-  fill: none;
-  pointer-events: bounding-box;
-  stroke: #666;
-  stroke-width: 1.5px;
-}
-
 .figure-rounded {
   stroke-miterlimit: 10px;
   rx: 6px;
@@ -32,6 +48,7 @@
 }
 
 .figure-text {
+  fill: #000;
   opacity: 0.6;
   font-size: 13px;
   font-family: "Open Sans";

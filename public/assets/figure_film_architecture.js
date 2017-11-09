@@ -18,7 +18,6 @@ var buildFigure = function () {
     group.append("rect")
         .classed("figure-rect figure-rounded", true)
         .attrs({"x": 150, "y": 100, "width": 150, "height": 300});
-    figureArrow(group, "right", 10, 250, 150, 250);
 
     // FiLM-generator label
     group.append("text")
@@ -34,19 +33,6 @@ var buildFigure = function () {
         .classed("figure-rect figure-rounded", true)
         .attrs({"x": 484, "width": 250, "height": 50,
                 "y": function(d, i) { return 415 - 75 * (4 - i); }});
-    filmedNetwork.selectAll("g")
-        .data(data)
-      .enter().each(function (d, i) {
-          figureArrow(
-              d3.select(this),
-              "up",
-              609,
-              415 - 75 * (4 - i),
-              609,
-              390 - 75 * (4 - i)
-          );
-      });
-    figureArrow(group, "up", 609, 490, 609, 465);
     filmedNetwork.selectAll("text")
         .data(data)
       .enter().append("text")
@@ -54,13 +40,6 @@ var buildFigure = function () {
         .attrs({"x": 609, "text-anchor": "middle", "dy": "0.4em",
                 "y": function(d, i) { return 440 - 75 * (4 - i); }})
         .text(function (d) { return d; });
-    filmedNetwork.selectAll("line#gen-to-net")
-        .data(data)
-      .enter().each(function (d, i) {
-          figureArrow(d3.select(this), "right", 300, 440 - 75 * (4 - i),
-                      484, 440 - 75 * (4 - i))
-              .attr("opacity", d == "FiLM" ? 1 : 0);
-      })
 };
 
 buildFigure();

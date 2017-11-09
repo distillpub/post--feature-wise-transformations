@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="133.432" y="30" width="414.357" height="207.099" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+  <rect x="157.884" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+  <rect x="420.586" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+  <rect x="223.559" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+  <rect x="289.235" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+  <rect x="354.91" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+  <rect x="486.261" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+  <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 46.281189, 322.783386)" class="figure-text">convolution</text>
+  <text x="481.441" y="304.003" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999997, 0.000002, 140.155991, 675.493713)" class="figure-text">batch normalization</text>
+  <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 119.725937, 549.134949)" class="figure-text">FiLM</text>
+  <text x="538.433" y="126.872" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 251.619821, 707.611511)" class="figure-text">convolution</text>
+  <text x="510.559" y="77.567" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999999, 0, 169.565643, 704.603699)" class="figure-text">batch normalization</text>
+  <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 477.048767, 752.009949)" class="figure-text">FiLM</text>
+  <rect x="260.634" y="283.92" width="287.155" height="102.75" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+  <text x="357.797" y="340.332" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM generator</text>
+  <rect x="10" y="367.168" width="96" height="96" style="fill: rgb(216, 216, 216);" id="style-image-placeholder"/>
+  <rect x="10" y="30" width="96" height="96" style="fill: rgb(216, 216, 216);" id="content-image-placeholder"/>
+  <rect x="596.61" y="84.391" width="96" height="96" style="fill: rgb(216, 216, 216);" id="stylized-image-placeholder"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="125.36634063720703" y1="305.775634765625" x2="125.36634063720703" y2="251.6800079345703"/>
+</svg>
