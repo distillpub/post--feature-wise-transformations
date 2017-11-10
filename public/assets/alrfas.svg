@@ -1,22 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="133.432" y="30" width="414.357" height="207.099" style="fill: rgb(195, 170, 170);" class="figure-network"/>
-  <rect x="157.884" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-  <rect x="420.586" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-  <rect x="223.559" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-  <rect x="289.235" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-  <rect x="354.91" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-  <rect x="486.261" y="48.664" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-  <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 46.281189, 322.783386)" class="figure-text">convolution</text>
-  <text x="481.441" y="304.003" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999997, 0.000002, 140.155991, 675.493713)" class="figure-text">batch normalization</text>
-  <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 119.725937, 549.134949)" class="figure-text">FiLM</text>
-  <text x="538.433" y="126.872" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 251.619821, 707.611511)" class="figure-text">convolution</text>
-  <text x="510.559" y="77.567" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999999, 0, 169.565643, 704.603699)" class="figure-text">batch normalization</text>
-  <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 477.048767, 752.009949)" class="figure-text">FiLM</text>
-  <rect x="260.634" y="283.92" width="287.155" height="102.75" style="fill: rgb(195, 170, 170);" class="figure-network"/>
-  <text x="357.797" y="340.332" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM generator</text>
-  <rect x="10" y="367.168" width="96" height="96" style="fill: rgb(216, 216, 216);" id="style-image-placeholder"/>
-  <rect x="10" y="30" width="96" height="96" style="fill: rgb(216, 216, 216);" id="content-image-placeholder"/>
-  <rect x="596.61" y="84.391" width="96" height="96" style="fill: rgb(216, 216, 216);" id="stylized-image-placeholder"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="125.36634063720703" y1="305.775634765625" x2="125.36634063720703" y2="251.6800079345703"/>
+  <defs>
+    <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
+      <path d="M 0 0 L 50 0 L 50 100 L 0 100 Z" style="fill: black;"/>
+    </pattern>
+    <linearGradient id="gradient-0" gradientUnits="userSpaceOnUse" x1="722.886" y1="0" x2="722.886" y2="500" gradientTransform="matrix(0, -0.083327, 0.210855, 0, 681.502075, 308.729199)">
+      <stop offset="0" style="stop-color: rgb(240, 240, 245);"/>
+      <stop offset="1" style="stop-color: rgba(240, 240, 245, 0);"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <title>Style transfer network</title>
+    <rect x="127.32" y="60.059" width="414.357" height="207.099" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <g>
+      <title>convolution 1</title>
+      <rect x="151.772" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 1, 0, 40.169159, 352.842407)" class="figure-text">convolution</text>
+    </g>
+    <line style="stroke: rgb(0, 0, 0);" x1="188.847" y1="163.608" x2="217.447" y2="163.608" class="figure-line"/>
+    <path style="fill: rgb(0, 0, 0);" d="M 217.447 163.608 C 214.668 164.607 212.071 166.053 209.757 167.888 L 211.307 163.608 L 209.757 159.328 C 212.071 161.163 214.668 162.608 217.447 163.608 Z" class="figure-path"/>
+    <g>
+      <title>batch normalization 1</title>
+      <rect x="217.447" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
+      <text x="510.559" y="77.567" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 0.999999, 0, 163.453613, 734.66272)" class="figure-text">batch normalization</text>
+    </g>
+    <line style="stroke: rgb(0, 0, 0);" x1="254.522" y1="163.608" x2="283.123" y2="163.608" class="figure-line"/>
+    <path style="fill: rgb(0, 0, 0);" d="M 283.123 163.608 C 280.344 164.607 277.747 166.053 275.433 167.888 L 276.983 163.608 L 275.433 159.328 C 277.747 161.163 280.344 162.608 283.123 163.608 Z" class="figure-path"/>
+    <g>
+      <title>FiLM 1</title>
+      <rect x="283.123" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 113.613937, 579.19397)" class="figure-text">FiLM</text>
+    </g>
+    <line style="stroke: rgb(0, 0, 0);" x1="320.198" y1="163.608" x2="348.798" y2="163.608" class="figure-line"/>
+    <path style="fill: rgb(0, 0, 0);" d="M 348.798 163.608 C 346.019 164.607 343.422 166.053 341.108 167.888 L 342.658 163.608 L 341.108 159.328 C 343.422 161.163 346.019 162.608 348.798 163.608 Z" class="figure-path"/>
+    <g>
+      <title>convolution 2</title>
+      <rect x="348.798" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
+      <text x="538.433" y="126.872" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 1, 0, 245.508188, 737.670532)" class="figure-text">convolution</text>
+    </g>
+    <line style="stroke: rgb(0, 0, 0);" x1="385.873" y1="163.608" x2="414.474" y2="163.608" class="figure-line"/>
+    <path style="fill: rgb(0, 0, 0);" d="M 414.474 163.608 C 411.695 164.607 409.098 166.053 406.784 167.888 L 408.334 163.608 L 406.784 159.328 C 409.098 161.163 411.695 162.608 414.474 163.608 Z" class="figure-path"/>
+    <g>
+      <title>batch normalization 2</title>
+      <rect x="414.474" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
+      <text x="481.441" y="304.003" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 0.999997, 0.000002, 134.043961, 705.552734)" class="figure-text">batch normalization</text>
+    </g>
+    <line style="stroke: rgb(0, 0, 0);" x1="451.549" y1="163.608" x2="480.149" y2="163.608" class="figure-line"/>
+    <path style="fill: rgb(0, 0, 0);" d="M 480.149 163.608 C 477.37 164.607 474.773 166.053 472.459 167.888 L 474.009 163.608 L 472.459 159.328 C 474.773 161.163 477.37 162.608 480.149 163.608 Z" class="figure-path"/>
+    <g>
+      <title>FiLM 2</title>
+      <rect x="480.149" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 470.936768, 782.06897)" class="figure-text">FiLM</text>
+    </g>
+  </g>
+  <g>
+    <title>FiLM generator</title>
+    <rect x="254.522" y="297.865" width="287.155" height="102.75" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM generator</text>
+  </g>
+  <g>
+    <title>Style loss</title>
+    <rect x="680.075" width="106.859" height="500" style="fill: url(#gradient-0);"/>
+    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
+  </g>
+  <rect x="10" y="367.168" width="96" height="96" style="fill: rgb(216, 216, 216);" id="style-image-placeholder">
+    <title>Style image placeholder</title>
+  </rect>
+  <rect x="10" y="30" width="96" height="96" style="fill: rgb(216, 216, 216);" id="content-image-placeholder">
+    <title>Content image placeholder</title>
+  </rect>
+  <rect x="567.893" y="114.45" width="96" height="96" style="fill: rgb(216, 216, 216);" id="stylized-image-placeholder">
+    <title>Stylized image placeholder</title>
+  </rect>
+  <line style="stroke: rgb(0, 0, 0);" x1="301.66" y1="297.865" x2="301.66" y2="248.493" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="498.686" y1="297.865" x2="498.686" y2="248.493" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="517.224" y1="163.608" x2="567.893" y2="163.608" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 106 416.729 L 154.369 416.729 L 154.369 349.24 L 254.522 349.24" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 57.061 126 L 57.061 163.608 L 151.772 163.608" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 106 78.723 L 117.15 78.723 L 117.15 45.649 L 697.717 45.649" class="figure-line"/>
+  <path style="fill: rgb(0, 0, 0);" d="M 567.893 163.608 C 565.114 164.607 562.517 166.053 560.203 167.888 L 561.753 163.608 L 560.203 159.328 C 562.517 161.163 565.114 162.608 567.893 163.608 Z" class="figure-path"/>
+  <path style="fill: rgb(0, 0, 0);" d="M 254.522 349.24 C 251.743 350.239 249.146 351.685 246.832 353.52 L 248.382 349.24 L 246.832 344.96 C 249.146 346.795 251.743 348.24 254.522 349.24 Z" class="figure-path"/>
+  <path style="fill: rgb(0, 0, 0);" d="M 151.772 163.608 C 148.993 164.607 146.396 166.053 144.082 167.888 L 145.632 163.608 L 144.082 159.328 C 146.396 161.163 148.993 162.608 151.772 163.608 Z" class="figure-path"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="697.717" y1="416.729" x2="106" y2="416.729" class="figure-line"/>
+  <path style="fill: rgb(0, 0, 0);" d="M 697.717 416.73 C 694.938 417.729 692.341 419.175 690.027 421.01 L 691.577 416.73 L 690.027 412.45 C 692.341 414.285 694.938 415.73 697.717 416.73 Z" class="figure-path"/>
+  <path style="fill: rgb(0, 0, 0);" d="M 697.717 45.65 C 694.938 46.649 692.341 48.095 690.027 49.93 L 691.577 45.65 L 690.027 41.37 C 692.341 43.205 694.938 44.65 697.717 45.65 Z" class="figure-path"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="697.717" y1="163.608" x2="663.893" y2="163.608" class="figure-line"/>
+  <path style="fill: rgb(0, 0, 0);" d="M 697.717 163.608 C 694.938 164.607 692.341 166.053 690.027 167.888 L 691.577 163.608 L 690.027 159.328 C 692.341 161.163 694.938 162.608 697.717 163.608 Z" class="figure-path"/>
 </svg>

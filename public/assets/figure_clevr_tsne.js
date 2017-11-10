@@ -33,7 +33,7 @@ var buildFigure = function () {
                 d3.scaleLinear()
                     .domain([d3.min(dataset, function (d) { return coordinates(d, i).x; }),
                              d3.max(dataset, function (d) { return coordinates(d, i).x; })])
-                    .rangeRound([10, 604])
+                    .rangeRound([10, 490])
             );
             yScales.push(
                 d3.scaleLinear()
@@ -58,25 +58,38 @@ var buildFigure = function () {
     });
 
     // --- Create UI elements -------------------------------------------------
+    var selectedButton = svg.append("rect")
+        .classed("figure-rect figure-rounded", true)
+        .attrs({
+            "x": 0, "y": 0, "width": 100, "height": 40,
+            "transform": "translate(520 260)",
+        });
     for (var k = 0; k < 6; k++) {
         var button = svg.append("g")
             .attrs({
                 "id": k,
-                "transform": "translate(" + 634 + " " + (10 + (5 - k) * 50) + ")"
+                "transform": "translate(520 " + (10 + (5 - k) * 50) + ")"
             })
             .on("click", function () {
                 var layer = parseInt(d3.select(this).attr("id"));
                 svg.selectAll("circle")
                     .transition()
-                    .duration(1000)
+                    .duration(500)
                     .attrs({
                         "cx": function(d) { return xScales[layer](coordinates(d, layer).x); },
                         "cy": function(d) { return yScales[layer](coordinates(d, layer).y); }
                     });
+                selectedButton
+                    .transition()
+                    .duration(500)
+                    .attrs({
+                        "transform": "translate(520 " + (10 + (5 - layer) * 50) + ")"
+                    });
             });
         button.append("rect")
             .classed("figure-rect figure-rounded", true)
-            .attrs({"x": 0, "y": 0, "width": 100, "height": 40});
+            .attrs({"x": 0, "y": 0, "width": 100, "height": 40})
+            .style("stroke", "none");
         button.append("text")
             .classed("figure-text", true)
             .attrs({"x": 50, "y": 20, "dy": "0.4em", "text-anchor": "middle"})
