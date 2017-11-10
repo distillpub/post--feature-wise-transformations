@@ -1,89 +1,134 @@
-var buildFigure = function () {
-    // --- Create svg element -------------------------------------------------
-    var svg = d3.select("div.figure#film-diagram")
-      .append("svg")
-        // Width corresponds to the width of the body-outset class (744px)
-        .attr("viewBox", "0 0 744 500");
 
-    // --- Create UI elements -------------------------------------------------
-    // MLP button
-    var mlpButton = svg.append("g")
-        .attr("id", "mlp-button")
-        .on("click", function () {
-            svg.select("g#mlp-button")
-              .select("rect")
-                .style("fill", "#f0f0f0");
-            svg.select("g#mlp").attr("visibility", "visible");
+function buildFigure () {
+    function styleFigure () {
+        // --- Retrieve svg element -------------------------------------------
+        var svg = d3.select("div.figure#film-diagram").select("svg");
 
-            svg.select("g#cnn-button")
-              .select("rect")
-                .style("fill", "none");
-            svg.select("g#cnn").attr("visibility", "hidden");
+        // --- Clear element-specific styling ---------------------------------
+        svg.selectAll(".figure-layer").style("fill", null);
+        svg.selectAll(".figure-network").style("fill", null);
+        svg.selectAll(".figure-text").style("font-size", null);
+        svg.selectAll(".figure-line").style("stroke", null);
+        svg.selectAll(".figure-path").style("fill", null);
 
-            svg.select("g#architecture-button")
-              .select("rect")
-                .style("fill", "none");
-            svg.select("g#architecture").attr("visibility", "hidden");
+        // --- Set initial visibility -----------------------------------------
+        svg.select("g#mlp-figure").attr("visibility", "visible");
+        svg.select("g#cnn-figure").attr("visibility", "hidden");
+        svg.select("g#full-figure").attr("visibility", "hidden");
+
+        // --- Program UI elements --------------------------------------------
+        svg.select("g#mlp-button")
+            .on("click", function () {
+                svg.select("g#mlp-figure").attr("visibility", "visible");
+                svg.select("g#cnn-figure").attr("visibility", "hidden");
+                svg.select("g#full-figure").attr("visibility", "hidden");
+            });
+        svg.select("g#cnn-button")
+            .on("click", function () {
+                svg.select("g#mlp-figure").attr("visibility", "hidden");
+                svg.select("g#cnn-figure").attr("visibility", "visible");
+                svg.select("g#full-figure").attr("visibility", "hidden");
+            });
+        svg.select("g#full-button")
+            .on("click", function () {
+                svg.select("g#mlp-figure").attr("visibility", "hidden");
+                svg.select("g#cnn-figure").attr("visibility", "hidden");
+                svg.select("g#full-figure").attr("visibility", "visible");
+            });
+
+        // --- Style sub-figures ----------------------------------------------
+        styleMLPFigure();
+    }
+
+    function styleMLPFigure () {
+        // --- Retrieve svg element -------------------------------------------
+        var svg = d3.select("div.figure#film-diagram").select("svg");
+
+        // --- Create data ----------------------------------------------------
+        // Features
+        var features = [30, 200, 100, 230];
+
+        var colorScale = d3.scaleLinear()
+            .domain([0, 255])
+            .range(["#0089c1", "#ffffff"])
+            .clamp(true);
+
+        // Scaling and shifting coefficients
+        var gamma = [1.6, 0.2, 2.0, 0.0];
+        var beta = [-25, 100, -100, 0];
+
+        // Helper function to convert a feature value to RGB string representation
+        var toRGB = function (value, scale, shift) {
+            var intensity = Math.min(
+                Math.max(Math.floor(scale * value + shift), 0),
+                255
+            );
+            return colorScale(intensity);
+        };
+
+        // Format data to be D3-friendly
+        var data = [];
+        for (var i = 0; i < 4; i++) {
+            data.push({
+                index: i,
+                color: toRGB(features[i], 1, 0),
+                scaledColor: toRGB(features[i], gamma[i], 0),
+                scaledShiftedColor: toRGB(features[i], gamma[i], beta[i]),
+            });
+        }
+
+        // --- Style figure elements ------------------------------------------
+        svg.select("g#mlp-figure g#input-layer")
+          .selectAll("rect")
+            .data(data)
+            .style("fill", function(d) { return d.color; });
+        svg.select("g#mlp-figure g#intermediate-layer")
+          .selectAll("rect")
+            .data(data)
+            .style("fill", function(d) { return d.color; });
+        svg.select("g#mlp-figure g#output-layer")
+          .selectAll("rect")
+            .style("fill", "#ffffff");
+
+        // --- Animate dynamic elements ---------------------------------------
+        function loopFunction() {
+            svg.select("g#mlp-figure g#intermediate-layer")
+                // First transition: translate to scaling "station"
+                .transition()
+                .delay(1000)
+                .duration(1000)
+                .attr("transform", svg.select("g#mlp-figure rect#scaling-guide").attr("transform"))
+                // Second transition: translate to shifting "station"
+                .transition()
+                .delay(1000)
+                .duration(1000)
+                .attr("transform", svg.select("g#mlp-figure rect#shifting-guide").attr("transform"))
+                // Third transition: translate to output
+                .transition()
+                .delay(1000)
+                .duration(1000)
+                .attr("transform", svg.select("g#mlp-figure g#output-layer").attr("transform"))
+                // Final transition: loop back
+                .transition()
+                .delay(1000)
+                .duration(0)
+                .on("end", function() {
+                    d3.select(this)
+                        // Replace feature maps over input
+                        .attr("transform", svg.select("g#mlp-figure g#input-layer").attr("transform"))
+                    loopFunction();
+                });
+        }
+        loopFunction();
+    }
+
+    d3.xml("assets/film.svg").mimeType("image/svg+xml").get(function(error, xml) {
+        if (error) throw error;
+        d3.select("div.figure#film-diagram").each(function () {
+            this.appendChild(xml.documentElement);
         });
-    mlpButton.append("rect")
-        .attrs({"x": 10, "y": 450, "width": 100, "height": 40})
-        .style("fill", "f0f0f0");
-    mlpButton.append("text")
-        .classed("figure-text", true)
-        .attrs({"x": 60, "y": 470, "dy": "0.4em", "text-anchor": "middle"})
-        .text("MLP");
-
-    // CNN button
-    cnnButton = svg.append("g")
-        .attr("id", "cnn-button")
-        .on("click", function () {
-            svg.select("g#mlp-button")
-              .select("rect")
-                .style("fill", "none");
-            svg.select("g#mlp").attr("visibility", "hidden");
-
-            svg.select("g#cnn-button")
-              .select("rect")
-                .style("fill", "#f0f0f0");
-            svg.select("g#cnn").attr("visibility", "visible");
-
-            svg.select("g#architecture-button")
-              .select("rect")
-                .style("fill", "none");
-            svg.select("g#architecture").attr("visibility", "hidden");
-        });
-    cnnButton.append("rect")
-        .attrs({"x": 120, "y": 450, "width": 100, "height": 40})
-    cnnButton.append("text")
-        .classed("figure-text", true)
-        .attrs({"x": 170, "y": 470, "dy": "0.4em", "text-anchor": "middle"})
-        .text("CNN");
-
-    // Architecture button
-    architectureButton = svg.append("g")
-        .attr("id", "architecture-button")
-        .on("click", function () {
-            svg.select("g#mlp-button")
-              .select("rect")
-                .style("fill", "none");
-            svg.select("g#mlp").attr("visibility", "hidden");
-
-            svg.select("g#cnn-button")
-              .select("rect")
-                .style("fill", "none");
-            svg.select("g#cnn").attr("visibility", "hidden");
-
-            svg.select("g#architecture-button")
-              .select("rect")
-                .style("fill", "#f0f0f0");
-            svg.select("g#architecture").attr("visibility", "visible");
-        });
-    architectureButton.append("rect")
-        .attrs({"x": 230, "y": 450, "width": 100, "height": 40});
-    architectureButton.append("text")
-        .classed("figure-text", true)
-        .attrs({"x": 280, "y": 470, "dy": "0.4em", "text-anchor": "middle"})
-        .text("All");
-};
+        styleFigure();
+    });
+}
 
 buildFigure();
