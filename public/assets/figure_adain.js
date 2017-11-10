@@ -7,6 +7,34 @@ function buildFigure () {
         svg.selectAll(".figure-layer").style("fill", null);
         svg.selectAll(".figure-network").style("fill", null);
         svg.selectAll(".figure-text").style("font-size", null);
+        svg.selectAll(".figure-line").style("stroke", null);
+        svg.selectAll(".figure-path").style("fill", null);
+
+        // --- Create figure elements -----------------------------------------
+        // Content image
+        svg.append("image")
+            .attrs({
+                "width": 96, "height": 96,
+                "x": svg.select("#content-image-placeholder").attr("x"),
+                "y": svg.select("#content-image-placeholder").attr("y"),
+                "href": "assets/tuebingen_neckarfront.jpg",
+            });
+        // Style image
+        svg.append("image")
+            .attrs({
+                "width": 96, "height": 96,
+                "x": svg.select("#style-image-placeholder").attr("x"),
+                "y": svg.select("#style-image-placeholder").attr("y"),
+                "href": "assets/cassis_cap_lombard_opus_196.jpg",
+            });
+        // Stylized image
+        svg.append("image")
+            .attrs({
+                "width": 96, "height": 96,
+                "x": svg.select("#stylized-image-placeholder").attr("x"),
+                "y": svg.select("#stylized-image-placeholder").attr("y"),
+                "href": "assets/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg",
+            });
     }
 
     d3.xml("assets/adain.svg").mimeType("image/svg+xml").get(function(error, xml) {

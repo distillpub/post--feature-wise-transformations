@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="724" height="480" style="stroke: rgb(255, 0, 0); stroke-width: 1.5; fill: none;"/>
-  <text x="319.596" y="255.041" class="figure-text" style="fill: rgb(255, 0, 0); font-size: 13px; white-space: pre;">TODO: WRITEME</text>
+<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
+      <path d="M 0 0 L 50 0 L 50 100 L 0 100 Z" style="fill: black;"/>
+    </pattern>
+    <linearGradient id="gradient-0" gradientUnits="userSpaceOnUse" x1="722.886" y1="0" x2="722.886" y2="500" gradientTransform="matrix(0, -0.083327, 0.210855, 0, 681.502075, 308.729199)">
+      <stop offset="0" style="stop-color: rgb(240, 240, 245);"/>
+      <stop offset="1" style="stop-color: rgba(240, 240, 245, 0);"/>
+    </linearGradient>
+    <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
+      <title>Right arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-up" viewBox="0 0 8.56 7.69">
+      <title>Up arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-left" viewBox="0 0 7.69 8.56">
+      <title>Left arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-down" viewBox="0 0 8.56 7.69">
+      <title>Down arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
+    </symbol>
+  </defs>
+  <g transform="matrix(1, 0, 0, 0.975379, 1.038848, 90.419724)">
+    <title>Encoder network</title>
+    <rect x="127.32" y="60.059" width="126.574" height="207.099" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -225.117813, -29.481613)" class="figure-text">Encoder</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 0.975379, 294.457733, 90.419685)">
+    <title>Decoder network</title>
+    <rect x="127.32" y="60.059" width="126.574" height="207.099" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -225.872208, -29.481606)" class="figure-text">Decoder</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 0.975379, 147.748291, 90.419693)">
+    <title>AdaIN</title>
+    <rect x="127.32" y="60.059" width="126.574" height="207.099" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <g transform="matrix(1, 0, 0, 1.025243, -342.066162, -4.129364)">
+      <title>Instance normalization</title>
+      <rect x="480.149" y="86.381" width="37.075" height="154.454" style="fill: rgb(216, 216, 216);" class="figure-layer" transform="matrix(0.999999, 0, 0, 1, 5.410094, 0)"/>
+      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 476.307007, 830.428284)" class="figure-text">Instance normalizaiton</text>
+    </g>
+    <line style="stroke: rgb(0, 0, 0);" x1="200.646" y1="198.124" x2="180.567" y2="198.124" class="figure-line"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1.025242, 192.956055, 193.740372)" xlink:href="#arrow-right"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="200.646" y1="129.092" x2="180.567" y2="129.092" class="figure-line"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1.025242, 192.955994, 124.700562)" xlink:href="#arrow-right"/>
+    <g transform="matrix(1, 0, 0, 1.025243, -284.912201, -4.12937)">
+      <title>FiLM</title>
+      <rect x="480.149" y="86.381" width="37.075" height="154.454" style="fill: rgb(216, 216, 216);" class="figure-layer" transform="matrix(0.999999, 0, 0, 1, 5.410094, 0)"/>
+      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1.000002, 0, 475.994471, 782.076721)" class="figure-text">FiLM</text>
+    </g>
+    <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -218.488281, 63.35326)" class="figure-text">AdaIN</text>
+  </g>
+  <g>
+    <title>Style loss</title>
+    <rect x="680.075" width="106.859" height="500" style="fill: url(#gradient-0);"/>
+    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
+  </g>
+  <rect x="10" y="351" width="96" height="96" style="fill: rgb(216, 216, 216);" id="style-image-placeholder">
+    <title>Style image placeholder</title>
+  </rect>
+  <rect x="10" y="53" width="96" height="96" style="fill: rgb(216, 216, 216);" id="content-image-placeholder">
+    <title>Content image placeholder</title>
+  </rect>
+  <rect x="567.893" y="202" width="96" height="96" style="fill: rgb(216, 216, 216);" id="stylized-image-placeholder">
+    <title>Stylized image placeholder</title>
+  </rect>
+  <line style="stroke: rgb(0, 0, 0);" x1="692.668" y1="399" x2="106" y2="399" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="692.668" y1="101" x2="106" y2="101" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="692.668" y1="250" x2="663.893" y2="250" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="567.893" y1="250" x2="548.352" y2="250" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="421.778" y1="250" x2="385.133" y2="250" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="291.243" y1="283.666" x2="254.933" y2="283.666" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 684.978027, 96.720001)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 684.977966, 245.720016)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 684.978088, 394.720032)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 560.203003, 245.720016)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 414.087738, 245.720001)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 283.553009, 279.390015)" xlink:href="#arrow-right"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 58 149 L 58 216.333 L 128.359 216.333" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 173.753 208.516 L 103.395 208.516 L 103.395 275.85" class="figure-line" transform="matrix(1, 0, 0, 1, -45.394582678329456, 75.14978334780287)"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 120.668427, 279.390015)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 120.668427, 212.050003)" xlink:href="#arrow-right"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="291.243" y1="216.333" x2="254.933" y2="216.333" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 283.553009, 212.050018)" xlink:href="#arrow-right"/>
 </svg>
