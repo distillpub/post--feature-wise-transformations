@@ -8,6 +8,7 @@ function buildFigure () {
         svg.selectAll(".figure-network").style("fill", null);
         svg.selectAll(".figure-text").style("font-size", null);
         svg.selectAll(".figure-line").style("stroke", null);
+        svg.selectAll(".figure-path").style("fill", null);
 
         // --- Create figure elements -----------------------------------------
         // Content image
