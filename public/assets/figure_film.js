@@ -1,4 +1,3 @@
-
 function buildFigure () {
     function styleFigure () {
         // --- Retrieve svg element -------------------------------------------
@@ -10,31 +9,7 @@ function buildFigure () {
         svg.selectAll(".figure-text").style("font-size", null);
         svg.selectAll(".figure-line").style("stroke", null);
         svg.selectAll(".figure-path").style("fill", null);
-
-        // --- Set initial visibility -----------------------------------------
-        svg.select("g#mlp-figure").attr("visibility", "visible");
-        svg.select("g#cnn-figure").attr("visibility", "hidden");
-        svg.select("g#full-figure").attr("visibility", "hidden");
-
-        // --- Program UI elements --------------------------------------------
-        svg.select("g#mlp-button")
-            .on("click", function () {
-                svg.select("g#mlp-figure").attr("visibility", "visible");
-                svg.select("g#cnn-figure").attr("visibility", "hidden");
-                svg.select("g#full-figure").attr("visibility", "hidden");
-            });
-        svg.select("g#cnn-button")
-            .on("click", function () {
-                svg.select("g#mlp-figure").attr("visibility", "hidden");
-                svg.select("g#cnn-figure").attr("visibility", "visible");
-                svg.select("g#full-figure").attr("visibility", "hidden");
-            });
-        svg.select("g#full-button")
-            .on("click", function () {
-                svg.select("g#mlp-figure").attr("visibility", "hidden");
-                svg.select("g#cnn-figure").attr("visibility", "hidden");
-                svg.select("g#full-figure").attr("visibility", "visible");
-            });
+        svg.selectAll(".figure-operator").style("fill", null);
 
         // --- Style sub-figures ----------------------------------------------
         styleMLPFigure();
@@ -46,80 +21,76 @@ function buildFigure () {
 
         // --- Create data ----------------------------------------------------
         // Features
-        var features = [30, 200, 100, 230];
-
-        var colorScale = d3.scaleLinear()
-            .domain([0, 255])
-            .range(["#0089c1", "#ffffff"])
-            .clamp(true);
-
-        // Scaling and shifting coefficients
-        var gamma = [1.6, 0.2, 2.0, 0.0];
-        var beta = [-25, 100, -100, 0];
-
-        // Helper function to convert a feature value to RGB string representation
-        var toRGB = function (value, scale, shift) {
-            var intensity = Math.min(
-                Math.max(Math.floor(scale * value + shift), 0),
-                255
-            );
-            return colorScale(intensity);
-        };
-
-        // Format data to be D3-friendly
+        var features = [0.9, 0.0, -0.5, -0.8];
+        var gammas = [-1.6, -1.4, 0.8, 1.8];
+        var betas = [0.0, 1.3, 0.5, -0.5];
         var data = [];
         for (var i = 0; i < 4; i++) {
             data.push({
-                index: i,
-                color: toRGB(features[i], 1, 0),
-                scaledColor: toRGB(features[i], gamma[i], 0),
-                scaledShiftedColor: toRGB(features[i], gamma[i], beta[i]),
+                feature: features[i],
+                gamma: gammas[i],
+                beta: betas[i],
             });
         }
 
-        // --- Style figure elements ------------------------------------------
-        svg.select("g#mlp-figure g#input-layer")
-          .selectAll("rect")
-            .data(data)
-            .style("fill", function(d) { return d.color; });
-        svg.select("g#mlp-figure g#intermediate-layer")
-          .selectAll("rect")
-            .data(data)
-            .style("fill", function(d) { return d.color; });
-        svg.select("g#mlp-figure g#output-layer")
-          .selectAll("rect")
-            .style("fill", "#ffffff");
+        var amplitudeScale = d3.scaleSqrt()
+            .domain([0.0, 2.0])
+            .range([0.0, 1.0])
+            .clamp(true);
 
-        // --- Animate dynamic elements ---------------------------------------
-        function loopFunction() {
-            svg.select("g#mlp-figure g#intermediate-layer")
-                // First transition: translate to scaling "station"
-                .transition()
-                .delay(1000)
-                .duration(1000)
-                .attr("transform", svg.select("g#mlp-figure rect#scaling-guide").attr("transform"))
-                // Second transition: translate to shifting "station"
-                .transition()
-                .delay(1000)
-                .duration(1000)
-                .attr("transform", svg.select("g#mlp-figure rect#shifting-guide").attr("transform"))
-                // Third transition: translate to output
-                .transition()
-                .delay(1000)
-                .duration(1000)
-                .attr("transform", svg.select("g#mlp-figure g#output-layer").attr("transform"))
-                // Final transition: loop back
-                .transition()
-                .delay(1000)
-                .duration(0)
-                .on("end", function() {
-                    d3.select(this)
-                        // Replace feature maps over input
-                        .attr("transform", svg.select("g#mlp-figure g#input-layer").attr("transform"))
-                    loopFunction();
-                });
+        var mouseScale = d3.scaleLinear()
+            .domain([0.0, 40.0])
+            .range([2.0, -2.0])
+            .clamp(true);
+
+        // Scaling and shifting coefficients
+
+        // --- Style figure elements ------------------------------------------
+        svg.select("g#mlp-figure text#gamma-label").style("font-size", 26);
+        svg.select("g#mlp-figure text#beta-label").style("font-size", 26);
+
+        svg.select("g#mlp-figure g#input-layer").selectAll("g.feature").data(data);
+        svg.select("g#mlp-figure g#gamma").selectAll("g.feature").data(data);
+        svg.select("g#mlp-figure g#beta").selectAll("g.feature").data(data);
+        svg.select("g#mlp-figure g#scaled-layer").selectAll("g.feature").data(data);
+        svg.select("g#mlp-figure g#shifted-layer").selectAll("g.feature").data(data);
+
+        function updateSingle(selection, accessor) {
+            selection.selectAll("g.feature").each(function (d, i) {
+                var r = accessor(d);
+                var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+                d3.select(this)
+                  .select("g")
+                    .attr("transform", "matrix(" + [s, 0, 0, s, 20, 20] + ")");
+            });
         }
-        loopFunction();
+
+        function update() {
+            updateSingle(svg.select("g#mlp-figure g#input-layer"), function(d) { return d.feature; });
+            updateSingle(svg.select("g#mlp-figure g#gamma"), function(d) { return d.gamma; });
+            updateSingle(svg.select("g#mlp-figure g#beta"), function(d) { return d.beta; });
+            updateSingle(svg.select("g#mlp-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
+            updateSingle(svg.select("g#mlp-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
+        }
+
+        update();
+
+        svg.select("g#mlp-figure g#gamma")
+          .selectAll("g.feature")
+            .on("mousemove", function (d) {
+                if (d3.event.buttons == 1) {
+                    d.gamma = mouseScale(d3.mouse(this)[1]);
+                    update();
+                }
+            });
+        svg.select("g#mlp-figure g#beta")
+          .selectAll("g.feature")
+            .on("mousemove", function (d, i) {
+                if (d3.event.buttons == 1) {
+                    d.beta = mouseScale(d3.mouse(this)[1]);
+                    update();
+                }
+            });
     }
 
     d3.xml("assets/film.svg").mimeType("image/svg+xml").get(function(error, xml) {
