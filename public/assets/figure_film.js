@@ -76,18 +76,14 @@ function buildFigure () {
         svg.select("g#mlp-figure g#gamma")
           .selectAll("g.feature")
             .on("mousemove", function (d) {
-                if (d3.event.buttons == 1) {
-                    d.gamma = mouseScale(d3.mouse(this)[1]);
-                    update();
-                }
+                d.gamma = mouseScale(d3.mouse(this)[1]);
+                update();
             });
         svg.select("g#mlp-figure g#beta")
           .selectAll("g.feature")
             .on("mousemove", function (d, i) {
-                if (d3.event.buttons == 1) {
-                    d.beta = mouseScale(d3.mouse(this)[1]);
-                    update();
-                }
+                d.beta = mouseScale(d3.mouse(this)[1]);
+                update();
             });
     }
 
@@ -162,24 +158,20 @@ function buildFigure () {
         svg.select("g#cnn-figure g#gamma")
           .selectAll("g.feature")
             .on("mousemove", function (d) {
-                if (d3.event.buttons == 1) {
-                    var newValue = mouseScale(d3.mouse(this)[1]);
-                    for (var i = 0; i < 9; i++) {
-                        d[i].gamma = newValue;
-                    }
-                    update();
+                var newValue = mouseScale(d3.mouse(this)[1]);
+                for (var i = 0; i < 9; i++) {
+                    d[i].gamma = newValue;
                 }
+                update();
             });
         svg.select("g#cnn-figure g#beta")
           .selectAll("g.feature")
             .on("mousemove", function (d, i) {
-                if (d3.event.buttons == 1) {
-                    var newValue = mouseScale(d3.mouse(this)[1]);
-                    for (var i = 0; i < 9; i++) {
-                        d[i].beta = newValue;
-                    }
-                    update();
+                var newValue = mouseScale(d3.mouse(this)[1]);
+                for (var i = 0; i < 9; i++) {
+                    d[i].beta = newValue;
                 }
+                update();
             });
     }
 
