@@ -1,45 +1,23 @@
-var buildFigure = function () {
-    // --- Create group element -----------------------------------------------
-    var group = d3.select("div.figure#film-diagram").select("svg")
-      .append("g")
-        .attrs({"id": "architecture", "visibility": "hidden"});
+function buildFigure () {
+    function styleFigure () {
+        // --- Retrieve svg element -------------------------------------------
+        var svg = d3.select("div.figure#film-architecture-diagram").select("svg");
 
-    // --- Create data --------------------------------------------------------
-    var data = ["Sub-network", "FiLM", "Sub-network", "FiLM", "Sub-network"];
+        // --- Clear element-specific styling ---------------------------------
+        svg.selectAll(".figure-layer").style("fill", null);
+        svg.selectAll(".figure-network").style("fill", null);
+        svg.selectAll(".figure-text").style("font-size", null);
+        svg.selectAll(".figure-line").style("stroke", null);
+        svg.selectAll(".figure-path").style("fill", null);
+    }
 
-    // --- Create figure elements ---------------------------------------------
-    // Conditioning information label
-    group.append("text")
-        .classed("figure-text", true)
-        .attrs({"x": 10, "y": 240, "text-anchor": "left", "opacity": 1})
-        .text("Conditioning");
-
-    // FiLM-generator box
-    group.append("rect")
-        .classed("figure-rect figure-rounded", true)
-        .attrs({"x": 150, "y": 100, "width": 150, "height": 300});
-
-    // FiLM-generator label
-    group.append("text")
-        .classed("figure-text", true)
-        .attrs({"x": 225, "y": 430, "text-anchor": "middle"})
-        .text("FiLM generator");
-
-    // FiLM-ed network
-    filmedNetwork = group.append("g");
-    filmedNetwork.selectAll("rect")
-        .data(data)
-      .enter().append("rect")
-        .classed("figure-rect figure-rounded", true)
-        .attrs({"x": 484, "width": 250, "height": 50,
-                "y": function(d, i) { return 415 - 75 * (4 - i); }});
-    filmedNetwork.selectAll("text")
-        .data(data)
-      .enter().append("text")
-        .classed("figure-text", true)
-        .attrs({"x": 609, "text-anchor": "middle", "dy": "0.4em",
-                "y": function(d, i) { return 440 - 75 * (4 - i); }})
-        .text(function (d) { return d; });
-};
+    d3.xml("assets/film_architecture.svg").mimeType("image/svg+xml").get(function(error, xml) {
+        if (error) throw error;
+        d3.select("div.figure#film-architecture-diagram").each(function () {
+            this.appendChild(xml.documentElement);
+        });
+        styleFigure();
+    });
+}
 
 buildFigure();

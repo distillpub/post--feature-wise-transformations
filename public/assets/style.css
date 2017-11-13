@@ -1,30 +1,36 @@
-.figure-circle {
+.figure-operator {
+  fill: #fff;
+  fill-opacity: 0.8;
   stroke: #666;
+  stroke-miterlimit: 10px;
   stroke-width: 1.5px;
 }
 
-.figure-rect {
+.figure-unit {
+  fill: #fff;
+  fill-opacity: 0.8;
   stroke: #666;
+  stroke-miterlimit: 10px;
   stroke-width: 1.5px;
 }
 
 .figure-layer {
-    fill: #fff;
-    fill-opacity: 0.8;
-    rx: 6px;
-    ry: 6px;
-    stroke: #666;
-    stroke-miterlimit: 10px;
-    stroke-width: 1.5px;
+  fill: #fff;
+  fill-opacity: 0.8;
+  rx: 6px;
+  ry: 6px;
+  stroke: #666;
+  stroke-miterlimit: 10px;
+  stroke-width: 1.5px;
 }
 
 .figure-network {
-    fill: #f0f0f5;
-    rx: 6px;
-    ry: 6px;
-    stroke: none;
-    stroke-miterlimit: 10px;
-    stroke-width: 1.5px;
+  fill: #f0f0f5;
+  rx: 6px;
+  ry: 6px;
+  stroke: none;
+  stroke-miterlimit: 10px;
+  stroke-width: 1.5px;
 }
 
 .figure-line {
@@ -35,17 +41,6 @@
 .figure-path {
   fill: #666;
   stroke: #666;
-}
-
-.figure-polygon {
-  stroke: #666;
-  stroke-width: 1.5px;
-}
-
-.figure-rounded {
-  stroke-miterlimit: 10px;
-  rx: 6px;
-  ry: 6px;
 }
 
 .figure-text {
