@@ -24,7 +24,7 @@ function buildFigure () {
         // Features
         var features = [0.9, -0.5, -0.8];
         var gammas = [-1.6, 0.8, 1.8];
-        var betas = [0.0, 0.5, -0.5];
+        var betas = [1.0, 0.5, -0.5];
         var data = [];
         for (var i = 0; i < 3; i++) {
             data.push({

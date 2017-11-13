@@ -17,6 +17,21 @@
       <title>Down arrow</title>
       <path style="fill: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
     </symbol>
+    <symbol id="interactive" viewBox="0 0 25.86 25.86">
+      <circle cx="13.43" cy="13.43" r="12.93" fill="none" stroke="#ffdc8c" stroke-miterlimit="10" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
+      <circle cx="13.43" cy="13.43" r="10.38" fill="#ffb200" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
+      <polygon points="11.32 19.26 11.32 17.43 10.72 17.43 10.71 16.14 10.1 16.21 10.1 15 9.54 14.99 9.46 13.78 8.88 13.78 8.89 13.16 8.28 13.16 8.28 11.34 10.11 11.34 10.11 11.94 10.71 11.94 10.71 6.46 11.33 6.45 11.33 5.86 12.54 5.86 12.54 6.45 13.16 6.47 13.16 8.89 14.37 8.89 14.39 9.49 16.21 9.51 16.21 10.12 17.43 10.12 17.43 10.79 18.04 10.73 18.05 11.39 18.65 11.33 18.65 15.61 18.04 15.52 17.98 17.43 17.43 17.43 17.43 19.26 11.32 19.26" fill="#fff" opacity="0.2" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
+      <g transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)">
+        <path d="M10.11,11.94c0-.09,0-0.19,0-0.28s0-.21,0-0.32H8.28v1.82H8.89V11.95h1.23v0.63h0.6v0.6h0.61V13.09q0-2.4,0-4.8,0-.92,0-1.85h1.21V5.85H11.33v0.6H10.71v5.47h-0.6Zm4.28-2.44a0.45,0.45,0,0,1,0-.07c0-.15,0-0.3,0-0.45s0,0,0-.08H13.16V6.47H12.55v5.47h0.61V9.51h1.24s0,0.06,0,.09q0,1.12,0,2.25s0,0.07,0,.1H15V10.12h1.23v2.43h0.6V10.71l0.57,0s0,0,0,.05,0,0.29,0,.44,0,0.07,0,.11H18a0,0,0,0,1,.06.06c0,0.24,0,.48,0,0.72q0,1.71,0,3.41s0,0,0,.08h-0.6s0,0,0,0q0,0.86,0,1.72s0,0,0,.06H16.81v1.21H11.94V17.42H11.33V16.21h-0.6a11.4,11.4,0,0,0,0,1.22h0.6v1.83c2,0,4.07,0,6.11,0,0-.1,0-0.19,0-0.28,0-.46,0-0.93,0-1.39a1.53,1.53,0,0,0,0-.16H18c0.05,0,.07,0,0.07-0.07,0-.45,0-0.89,0-1.34,0-.13,0-0.26,0-0.4l0.3,0h0.3V11.33H18v-0.6H17.43V10.11H16.21V9.51H14.39ZM10.1,15v1.21h0.52a0.07,0.07,0,0,0,.08-0.08c0-.32,0-0.65,0-1,0-.06,0-0.11,0-0.17H10.11V13.77H9.49V13.16H8.91a2.7,2.7,0,0,0,0,.62H9.47s0,0,0,.07,0,0.27,0,.41,0,0.45,0,.68a0,0,0,0,0,.05.06H10.1Z" fill="#fff"/>
+        <path d="M17.43,17.43s0,0,0-.06q0-.86,0-1.72s0,0,0,0H18s0-.06,0-0.08q0-1.71,0-3.41c0-.24,0-0.48,0-0.72A0,0,0,0,0,18,11.33H17.44s0-.07,0-0.11,0-.29,0-0.44,0-.05,0-0.05l-0.57,0v1.84h-0.6V10.12H15v1.82H14.38s0-.07,0-0.1q0-1.12,0-2.25s0-.06,0-0.09h1.81v0.6h1.22v0.62H18v0.6h0.61v4.28h-0.3l-0.3,0c0,0.14,0,.27,0,0.4,0,0.45,0,.89,0,1.34,0,0.05,0,.07-0.07.07H17.43Z" fill="#fff"/>
+        <path d="M17.43,17.43a1.53,1.53,0,0,1,0,.16c0,0.46,0,.93,0,1.39,0,0.09,0,.17,0,0.28-2,0-4.06,0-6.11,0V17.43h-0.6a11.4,11.4,0,0,1,0-1.22h0.6v1.21h0.61v1.22h4.88V17.43h0.62Z" fill="#fff"/>
+        <path d="M11.33,6.45q0,0.92,0,1.85,0,2.4,0,4.8v0.07H10.72v-0.6h-0.6V11.93h0.6V6.46h0.61Z" fill="#fff"/>
+        <path d="M14.39,9.49H13.16v2.43H12.55V6.47h0.61V8.89h1.21s0,0.06,0,.08,0,0.3,0,.45a0.44,0.44,0,0,0,0,.07h0Z" fill="#fff"/>
+        <path d="M10.1,15H9.54a0,0,0,0,1-.05-0.06c0-.23,0-0.45,0-0.68s0-.27,0-0.41,0,0,0-.07H8.88a2.7,2.7,0,0,1,0-.62H9.49v0.61h0.62V15h0.61c0,0.06,0,.12,0,0.17,0,0.32,0,.65,0,1a0.07,0.07,0,0,1-.08.08H10.1V15Z" fill="#fff"/>
+        <path d="M10.11,11.93H8.89v1.21H8.28V11.34h1.83c0,0.11,0,.21,0,0.32s0,0.19,0,.28h0Z" fill="#fff"/>
+        <path d="M11.33,6.45V5.85h1.21v0.6H11.33Z" fill="#fff"/>
+      </g>
+    </symbol>
   </defs>
   <g transform="matrix(1, 0, 0, 1, 10, 50.000008)" id="mlp-figure">
     <title>MLP Figure</title>
@@ -73,7 +88,8 @@
         </g>
       </g>
     </g>
-    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -49.45306, 32.976532)" id="gamma-label">γ</text>
+    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -49.45306, 32.976532)">γ</text>
+    <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 74.00749206542969, 301.63995361328125)" xlink:href="#interactive"/>
     <line style="stroke: rgb(0, 0, 0);" x1="146.938" y1="352.5" x2="186.937" y2="352.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 179.24746704101562, 348.219970703125)" xlink:href="#arrow-right"/>
     <g transform="matrix(1, 0, 0, 1, 206.937469, 352.499969)">
@@ -133,7 +149,8 @@
         </g>
       </g>
     </g>
-    <text x="9.797" y="142.628" class="figure-text" style="font-size: 13px; white-space: pre;" id="beta-label">β</text>
+    <text x="9.797" y="142.628" class="figure-text" style="font-size: 13px; white-space: pre;">β</text>
+    <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 74.00748443603516, 86.6399917602539)" xlink:href="#interactive"/>
     <line style="stroke: rgb(0, 0, 0);" x1="146.938" y1="137.5" x2="186.937" y2="137.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 179.24746704101562, 133.21998596191406)" xlink:href="#arrow-right"/>
     <g transform="matrix(1, 0, 0, 1, 206.937469, 137.499985)">
@@ -168,7 +185,7 @@
         </g>
       </g>
     </g>
-    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -49.453068, 77.552032)" id="text-1">FiLM layer (fully-connected)</text>
+    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -49.453068, 77.552032)">FiLM layer (fully-connected)</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, 377, 60.000008)" id="cnn-figure">
     <title>CNN Figure</title>
@@ -377,8 +394,8 @@
       </g>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.962" y1="419.825" x2="261.962" y2="362.5" class="figure-line"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.683014, 362.5)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 74.462982, 322.499939)" id="g-3">
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6830139160156, 362.5)" xlink:href="#arrow-up"/>
+    <g transform="matrix(1, 0, 0, 1, 74.462982, 322.499939)" id="gamma">
       <title>Gamma</title>
       <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
         <path style="fill: none" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
@@ -402,17 +419,18 @@
         </g>
       </g>
     </g>
-    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -2.052547, 22.953083)" id="text-2">γ</text>
+    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -2.052547, 22.953083)">γ</text>
+    <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 121.53299, 291.639954)" xlink:href="#interactive"/>
     <line style="stroke: rgb(0, 0, 0);" x1="194.251" y1="342.5" x2="241.963" y2="342.5" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 234.27298, 338.21994)" xlink:href="#arrow-right"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 234.27297973632812, 338.2199401855469)" xlink:href="#arrow-right"/>
     <g transform="matrix(1, 0, 0, 1, 261.962982, 342.499939)">
       <title>Scaling Operator</title>
       <ellipse style="fill: rgb(216, 216, 216);" cx="0" cy="0" rx="20" ry="20" class="figure-operator"/>
       <ellipse rx="4" ry="4" style="fill: rgb(102, 102, 102);"/>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.963" y1="322.5" x2="261.963" y2="286.402" class="figure-line"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.683014, 286.402496)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 239.462997, 231.402496)" id="g-2">
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6830139160156, 286.4024963378906)" xlink:href="#arrow-up"/>
+    <g transform="matrix(1, 0, 0, 1, 239.462997, 231.402496)" id="scaled-layer">
       <title>Scaled Layer</title>
       <g>
         <title>Feature Map</title>
@@ -614,8 +632,8 @@
       </g>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.963" y1="181.212" x2="261.963" y2="147.5" class="figure-line"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.683014, 147.5)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 74.251129, 107.499985)" id="g-4">
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6830139160156, 147.5)" xlink:href="#arrow-up"/>
+    <g transform="matrix(1, 0, 0, 1, 74.251129, 107.499985)" id="beta">
       <title>Beta</title>
       <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
         <path style="fill: none" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
@@ -639,9 +657,10 @@
         </g>
       </g>
     </g>
-    <text x="57.398" y="132.597" class="figure-text" style="font-size: 13px; white-space: pre;" id="text-3">β</text>
+    <text x="57.398" y="132.597" class="figure-text" style="font-size: 13px; white-space: pre;">β</text>
+    <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 121.53299, 76.639984)" xlink:href="#interactive"/>
     <line style="stroke: rgb(0, 0, 0);" x1="194.251" y1="127.5" x2="241.963" y2="127.5" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 234.27298, 123.219971)" xlink:href="#arrow-right"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 234.27297973632812, 123.219970703125)" xlink:href="#arrow-right"/>
     <g transform="matrix(1, 0, 0, 1, 261.962982, 127.499992)">
       <title>Shifting Operator</title>
       <ellipse style="fill: rgb(216, 216, 216);" cx="0" cy="0" rx="20" ry="20" class="figure-operator"/>
@@ -649,8 +668,8 @@
       <line style="stroke: rgb(0, 0, 0);" x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.963" y1="107.5" x2="261.963" y2="50" class="figure-line"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.682983, 50.000004)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 239.462967, -4.999995)" id="g-1">
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6829833984375, 50.000003814697266)" xlink:href="#arrow-up"/>
+    <g transform="matrix(1, 0, 0, 1, 239.462967, -4.999995)" id="shifted-layer">
       <title>Shifted Layer</title>
       <g>
         <title>Feature Map</title>
@@ -851,6 +870,6 @@
         </g>
       </g>
     </g>
-    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -2.052034, 67.552025)" id="text-4">FiLM layer (convolutional)</text>
+    <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -2.052034, 67.552025)">FiLM layer (convolutional)</text>
   </g>
 </svg>
