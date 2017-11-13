@@ -46,8 +46,8 @@ function buildFigure () {
         // Scaling and shifting coefficients
 
         // --- Style figure elements ------------------------------------------
-        svg.select("g#mlp-figure text#gamma-label").style("font-size", 26);
-        svg.select("g#mlp-figure text#beta-label").style("font-size", 26);
+        svg.select("g#mlp-figure text#gamma-label").style("font-size", 20);
+        svg.select("g#mlp-figure text#beta-label").style("font-size", 20);
 
         svg.select("g#mlp-figure g#input-layer").selectAll("g.feature").data(data);
         svg.select("g#mlp-figure g#gamma").selectAll("g.feature").data(data);
