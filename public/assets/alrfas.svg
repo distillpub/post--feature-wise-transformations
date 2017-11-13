@@ -4,10 +4,6 @@
     <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
       <path d="M 0 0 L 50 0 L 50 100 L 0 100 Z" style="fill: black;"/>
     </pattern>
-    <linearGradient id="gradient-0" gradientUnits="userSpaceOnUse" x1="722.886" y1="0" x2="722.886" y2="500" gradientTransform="matrix(0, -0.083327, 0.210855, 0, 681.502075, 308.729199)">
-      <stop offset="0" style="stop-color: rgb(240, 240, 245);"/>
-      <stop offset="1" style="stop-color: rgba(240, 240, 245, 0);"/>
-    </linearGradient>
     <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
       <title>Right arrow</title>
       <path style="fill: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
@@ -24,91 +20,115 @@
       <title>Down arrow</title>
       <path style="fill: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
     </symbol>
+    <linearGradient id="gradient-1" gradientUnits="userSpaceOnUse" x1="722.886" y1="0" x2="722.886" y2="500" gradientTransform="matrix(0, -0.083327, 0.210855, 0, 681.502075, 308.729199)">
+      <stop offset="0" style="stop-color: rgb(240, 240, 245);"/>
+      <stop offset="1" style="stop-color: rgba(240, 240, 245, 0);"/>
+    </linearGradient>
+    <symbol id="interactive" viewBox="0 0 25.86 25.86">
+      <circle cx="13.43" cy="13.43" r="12.93" fill="none" stroke="#ffdc8c" stroke-miterlimit="10" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
+      <circle cx="13.43" cy="13.43" r="10.38" fill="#ffb200" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
+      <polygon points="11.32 19.26 11.32 17.43 10.72 17.43 10.71 16.14 10.1 16.21 10.1 15 9.54 14.99 9.46 13.78 8.88 13.78 8.89 13.16 8.28 13.16 8.28 11.34 10.11 11.34 10.11 11.94 10.71 11.94 10.71 6.46 11.33 6.45 11.33 5.86 12.54 5.86 12.54 6.45 13.16 6.47 13.16 8.89 14.37 8.89 14.39 9.49 16.21 9.51 16.21 10.12 17.43 10.12 17.43 10.79 18.04 10.73 18.05 11.39 18.65 11.33 18.65 15.61 18.04 15.52 17.98 17.43 17.43 17.43 17.43 19.26 11.32 19.26" fill="#fff" opacity="0.2" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
+      <g transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)">
+        <path d="M10.11,11.94c0-.09,0-0.19,0-0.28s0-.21,0-0.32H8.28v1.82H8.89V11.95h1.23v0.63h0.6v0.6h0.61V13.09q0-2.4,0-4.8,0-.92,0-1.85h1.21V5.85H11.33v0.6H10.71v5.47h-0.6Zm4.28-2.44a0.45,0.45,0,0,1,0-.07c0-.15,0-0.3,0-0.45s0,0,0-.08H13.16V6.47H12.55v5.47h0.61V9.51h1.24s0,0.06,0,.09q0,1.12,0,2.25s0,0.07,0,.1H15V10.12h1.23v2.43h0.6V10.71l0.57,0s0,0,0,.05,0,0.29,0,.44,0,0.07,0,.11H18a0,0,0,0,1,.06.06c0,0.24,0,.48,0,0.72q0,1.71,0,3.41s0,0,0,.08h-0.6s0,0,0,0q0,0.86,0,1.72s0,0,0,.06H16.81v1.21H11.94V17.42H11.33V16.21h-0.6a11.4,11.4,0,0,0,0,1.22h0.6v1.83c2,0,4.07,0,6.11,0,0-.1,0-0.19,0-0.28,0-.46,0-0.93,0-1.39a1.53,1.53,0,0,0,0-.16H18c0.05,0,.07,0,0.07-0.07,0-.45,0-0.89,0-1.34,0-.13,0-0.26,0-0.4l0.3,0h0.3V11.33H18v-0.6H17.43V10.11H16.21V9.51H14.39ZM10.1,15v1.21h0.52a0.07,0.07,0,0,0,.08-0.08c0-.32,0-0.65,0-1,0-.06,0-0.11,0-0.17H10.11V13.77H9.49V13.16H8.91a2.7,2.7,0,0,0,0,.62H9.47s0,0,0,.07,0,0.27,0,.41,0,0.45,0,.68a0,0,0,0,0,.05.06H10.1Z" fill="#fff"/>
+        <path d="M17.43,17.43s0,0,0-.06q0-.86,0-1.72s0,0,0,0H18s0-.06,0-0.08q0-1.71,0-3.41c0-.24,0-0.48,0-0.72A0,0,0,0,0,18,11.33H17.44s0-.07,0-0.11,0-.29,0-0.44,0-.05,0-0.05l-0.57,0v1.84h-0.6V10.12H15v1.82H14.38s0-.07,0-0.1q0-1.12,0-2.25s0-.06,0-0.09h1.81v0.6h1.22v0.62H18v0.6h0.61v4.28h-0.3l-0.3,0c0,0.14,0,.27,0,0.4,0,0.45,0,.89,0,1.34,0,0.05,0,.07-0.07.07H17.43Z" fill="#fff"/>
+        <path d="M17.43,17.43a1.53,1.53,0,0,1,0,.16c0,0.46,0,.93,0,1.39,0,0.09,0,.17,0,0.28-2,0-4.06,0-6.11,0V17.43h-0.6a11.4,11.4,0,0,1,0-1.22h0.6v1.21h0.61v1.22h4.88V17.43h0.62Z" fill="#fff"/>
+        <path d="M11.33,6.45q0,0.92,0,1.85,0,2.4,0,4.8v0.07H10.72v-0.6h-0.6V11.93h0.6V6.46h0.61Z" fill="#fff"/>
+        <path d="M14.39,9.49H13.16v2.43H12.55V6.47h0.61V8.89h1.21s0,0.06,0,.08,0,0.3,0,.45a0.44,0.44,0,0,0,0,.07h0Z" fill="#fff"/>
+        <path d="M10.1,15H9.54a0,0,0,0,1-.05-0.06c0-.23,0-0.45,0-0.68s0-.27,0-0.41,0,0,0-.07H8.88a2.7,2.7,0,0,1,0-.62H9.49v0.61h0.62V15h0.61c0,0.06,0,.12,0,0.17,0,0.32,0,.65,0,1a0.07,0.07,0,0,1-.08.08H10.1V15Z" fill="#fff"/>
+        <path d="M10.11,11.93H8.89v1.21H8.28V11.34h1.83c0,0.11,0,.21,0,0.32s0,0.19,0,.28h0Z" fill="#fff"/>
+        <path d="M11.33,6.45V5.85h1.21v0.6H11.33Z" fill="#fff"/>
+      </g>
+    </symbol>
   </defs>
-  <g>
-    <title>Style transfer network</title>
-    <rect x="127.32" y="60.059" width="414.357" height="207.099" style="fill: rgb(195, 170, 170);" class="figure-network"/>
-    <g>
-      <title>convolution 1</title>
-      <rect x="151.772" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 1, 0, 40.169159, 352.842407)" class="figure-text">convolution</text>
+  <g transform="matrix(1, 0, 0, 1, 0.000002, 0.000002)">
+    <title>style loss</title>
+    <rect x="680.075" width="106.859" height="500" style="fill: url(#gradient-1);"/>
+    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
+  </g>
+  <rect x="10" y="394" width="96" height="96" style="fill: rgb(216, 216, 216);" id="style-image-placeholder">
+    <title>style image placeholder</title>
+  </rect>
+  <line style="stroke: rgb(0, 0, 0);" x1="698.717" y1="442" x2="106" y2="442" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 691.0270385742188, 437.7200012207031)" xlink:href="#arrow-right"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 58 394 L 58 382.67 L 230.257 382.67" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 222.5673828125, 378.3904724121094)" xlink:href="#arrow-right"/>
+  <rect x="10" y="10" width="96" height="96" style="fill: rgb(216, 216, 216);" id="content-image-placeholder">
+    <title>content image placeholder</title>
+  </rect>
+  <line style="stroke: rgb(0, 0, 0);" x1="698.717" y1="58" x2="106" y2="58" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 691.0269775390625, 53.720001220703125)" xlink:href="#arrow-right"/>
+  <g transform="matrix(1, 0, 0, 1, 5.541511, 45.940998)" class="style-transfer-network">
+    <title>style transfer network</title>
+    <rect x="107.35" y="33.418" width="434.327" height="251.118" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -253.024689, -311.238251)">style transfer network</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -23.859468, 45.941475)">
+    <title>convolution</title>
+    <rect x="151.772" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 40.169159, 352.842407)" class="figure-text">convolution</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 2.767178, 45.941475)">
+    <title>instance normalization</title>
+    <rect x="178.614" y="68.259" width="140.477" height="207.091" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+    <g transform="matrix(1, 0, 0, 1, -19.969992, 0)">
+      <title>normalization</title>
+      <rect x="217.447" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <text x="510.559" y="77.567" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999999, 0, 163.445511, 711.811096)" class="figure-text">normalization</text>
     </g>
-    <line style="stroke: rgb(0, 0, 0);" x1="188.847" y1="163.608" x2="217.447" y2="163.608" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 209.7570037841797, 159.32798767089844)" xlink:href="#arrow-right"/>
-    <g>
-      <title>batch normalization 1</title>
-      <rect x="217.447" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-      <text x="510.559" y="77.567" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 0.999999, 0, 163.453613, 734.66272)" class="figure-text">batch normalization</text>
-    </g>
-    <line style="stroke: rgb(0, 0, 0);" x1="254.522" y1="163.608" x2="283.123" y2="163.608" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 275.4329833984375, 159.32798767089844)" xlink:href="#arrow-right"/>
-    <g>
-      <title>FiLM 1</title>
+    <line style="stroke: rgb(0, 0, 0);" x1="234.552" y1="163.608" x2="263.153" y2="163.608" class="figure-line"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 255.46299743652344, 159.32798767089844)" xlink:href="#arrow-right"/>
+    <g transform="matrix(1, 0, 0, 1, -19.969992, 0)" class="film-layer">
+      <title>affine transformation</title>
       <rect x="283.123" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-      <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 113.613937, 579.19397)" class="figure-text">FiLM</text>
+      <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 113.60582, 622.748596)" class="figure-text">affine transformation</text>
     </g>
-    <line style="stroke: rgb(0, 0, 0);" x1="320.198" y1="163.608" x2="348.798" y2="163.608" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 341.1080322265625, 159.32798767089844)" xlink:href="#arrow-right"/>
+    <text x="355.784" y="362.401" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -204.096985, -94.868759)">instance norm.</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -10.546171, 45.941475)">
+    <title>convolution</title>
+    <rect x="348.798" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+    <text x="538.433" y="126.872" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 245.508188, 737.670532)" class="figure-text">convolution</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -3.889478, 45.941475)">
+    <title>instance normalization</title>
+    <rect x="395.61" y="68.259" width="140.477" height="207.09" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
     <g>
-      <title>convolution 2</title>
-      <rect x="348.798" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-      <text x="538.433" y="126.872" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 1, 0, 245.508188, 737.670532)" class="figure-text">convolution</text>
-    </g>
-    <line style="stroke: rgb(0, 0, 0);" x1="385.873" y1="163.608" x2="414.474" y2="163.608" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 406.78399658203125, 159.32798767089844)" xlink:href="#arrow-right"/>
-    <g>
-      <title>batch normalization 2</title>
-      <rect x="414.474" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-      <text x="481.441" y="304.003" style="font-size: 13px; white-space: pre; opacity: 0.3;" transform="matrix(0, -1, 0.999997, 0.000002, 134.043961, 705.552734)" class="figure-text">batch normalization</text>
+      <title>normalization</title>
+      <rect x="414.474" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <text x="481.441" y="304.003" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999997, 0.000002, 134.035843, 682.701172)" class="figure-text">normalization</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="451.549" y1="163.608" x2="480.149" y2="163.608" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 472.458984375, 159.32798767089844)" xlink:href="#arrow-right"/>
-    <g>
-      <title>FiLM 2</title>
+    <g class="film-layer">
+      <title>affine transformation</title>
       <rect x="480.149" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
-      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 470.936768, 782.06897)" class="figure-text">FiLM</text>
+      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999998, 0, 470.928746, 825.623596)" class="figure-text">affine transformation</text>
     </g>
+    <text x="355.784" y="362.401" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, 12.89897, -94.869759)">instance norm.</text>
   </g>
-  <g>
-    <title>FiLM generator</title>
-    <rect x="254.522" y="297.865" width="287.155" height="102.75" style="fill: rgb(195, 170, 170);" class="figure-network"/>
-    <rect x="263.295" y="305.75" width="24.295" height="86.98" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-    <rect x="304.181" y="305.75" width="24.295" height="86.98" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-    <rect x="345.067" y="305.75" width="24.295" height="86.98" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-    <rect x="385.953" y="305.75" width="24.295" height="86.98" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-    <rect x="426.839" y="305.75" width="24.295" height="86.98" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-    <rect x="467.725" y="305.75" width="24.295" height="86.98" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-    <rect x="508.609" y="305.75" width="24.295" height="86.98" style="fill: rgb(216, 216, 216); opacity: 0.3;" class="figure-layer"/>
-    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM generator</text>
+  <line style="stroke: rgb(0, 0, 0);" x1="164.988" y1="209.549" x2="200.245" y2="209.549" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 192.554199, 205.268982)" xlink:href="#arrow-right"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="302.996" y1="209.549" x2="338.251" y2="209.549" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 330.561829, 205.268982)" xlink:href="#arrow-right"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="375.327" y1="209.549" x2="410.585" y2="209.549" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 402.894531, 205.268982)" xlink:href="#arrow-right"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 58 106 L 58 209.55 L 127.913 209.55" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 120.22252655029297, 205.2694854736328)" xlink:href="#arrow-right"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="513.335" y1="209.55" x2="565.647" y2="209.55" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 557.9569702148438, 205.27000427246094)" xlink:href="#arrow-right"/>
+  <g transform="matrix(1.103799, 0, 0, 1, -50.683739, 25.233994)" class="style-prediction-network">
+    <title>style prediction network</title>
+    <rect x="254.522" y="314.258" width="287.155" height="86.357" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text">style prediction network</text>
   </g>
-  <g>
-    <title>Style loss</title>
-    <rect x="680.075" width="106.859" height="500" style="fill: url(#gradient-0);"/>
-    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
-  </g>
-  <rect x="10" y="367.168" width="96" height="96" style="fill: rgb(216, 216, 216);" id="style-image-placeholder">
-    <title>Style image placeholder</title>
+  <line style="stroke: rgb(0, 0, 0);" x1="284.458" y1="339.492" x2="284.458" y2="294.434" class="figure-line"/>
+  <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 280.17767333984375, 294.4339904785156)" xlink:href="#arrow-up"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="494.797" y1="339.492" x2="494.797" y2="294.434" class="figure-line"/>
+  <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 490.51702880859375, 294.43402099609375)" xlink:href="#arrow-up"/>
+  <rect x="565.647" y="161.55" width="96" height="96" style="fill: rgb(216, 216, 216);" id="stylized-image-placeholder">
+    <title>stylized image placeholder</title>
   </rect>
-  <rect x="10" y="30" width="96" height="96" style="fill: rgb(216, 216, 216);" id="content-image-placeholder">
-    <title>Content image placeholder</title>
-  </rect>
-  <rect x="567.893" y="114.45" width="96" height="96" style="fill: rgb(216, 216, 216);" id="stylized-image-placeholder">
-    <title>Stylized image placeholder</title>
-  </rect>
-  <line style="stroke: rgb(0, 0, 0);" x1="301.66" y1="297.865" x2="301.66" y2="248.493" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="498.686" y1="297.865" x2="498.686" y2="248.493" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="517.224" y1="163.608" x2="567.893" y2="163.608" class="figure-line"/>
-  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 106 416.729 L 154.369 416.729 L 154.369 349.24 L 254.522 349.24" class="figure-line"/>
-  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 57.061 126 L 57.061 163.608 L 151.772 163.608" class="figure-line"/>
-  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 106 78.723 L 117.15 78.723 L 117.15 45.649 L 697.717 45.649" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="697.717" y1="416.729" x2="106" y2="416.729" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="697.717" y1="163.608" x2="663.893" y2="163.608" class="figure-line"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 246.83200073242188, 344.9599914550781)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 690.0269775390625, 41.369998931884766)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 690.0269775390625, 412.358642578125)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 560.2030029296875, 159.3300018310547)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 144.0819854736328, 159.3300018310547)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 690.0269775390625, 159.3300018310547)" xlink:href="#arrow-right"/>
-  <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 297.380005, 248.492996)" xlink:href="#arrow-up"/>
-  <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 494.309998, 248.492981)" xlink:href="#arrow-up"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="698.717" y1="209.55" x2="661.647" y2="209.55" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 691.0269775390625, 205.27000427246094)" xlink:href="#arrow-right"/>
+  <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 80.139999, 304.617004)" xlink:href="#interactive"/>
 </svg>
