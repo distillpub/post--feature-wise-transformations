@@ -1,11 +1,16 @@
 .figure-operator {
-  fill: none;
+  fill: #fff;
+  fill-opacity: 0.8;
   stroke: #666;
+  stroke-miterlimit: 10px;
   stroke-width: 1.5px;
 }
 
 .figure-unit {
+  fill: #fff;
+  fill-opacity: 0.8;
   stroke: #666;
+  stroke-miterlimit: 10px;
   stroke-width: 1.5px;
 }
 
