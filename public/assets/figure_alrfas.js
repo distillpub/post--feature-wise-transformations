@@ -35,6 +35,63 @@ function buildFigure () {
                 "y": svg.select("#stylized-image-placeholder").attr("y"),
                 "href": "assets/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg",
             });
+
+        // --- Hoverable content ----------------------------------------------
+        svg.select("g.style-transfer-network")
+            .on("mouseenter", function () {
+                d3.select(this).select("g.style-transfer-network > text")
+                    .text("FiLM-ed network");
+                d3.select(this).select("g.style-transfer-network > rect")
+                    .style("fill", "#f8ed62")
+                    .style("fill-opacity", 0.5)
+                    .style("stroke", "#f8ed62");
+            })
+            .on("mouseleave", function () {
+                d3.select(this).select("g.style-transfer-network > text")
+                    .text("style transfer network");
+                d3.select(this).select("g.style-transfer-network > rect")
+                    .style("fill", null)
+                    .style("fill-opacity", null)
+                    .style("stroke", "#dab600");
+            })
+          .select("rect")
+            .style("stroke", "#dab600");
+
+        svg.select("g.style-prediction-network")
+            .on("mouseenter", function () {
+                d3.select(this).select("text").text("FiLM generator");
+                d3.select(this).select("rect")
+                    .style("fill", "#f8ed62")
+                    .style("fill-opacity", 0.5)
+                    .style("stroke", "#f8ed62");
+            })
+            .on("mouseleave", function () {
+                d3.select(this).select("text").text("style prediction network");
+                d3.select(this).select("rect")
+                    .style("fill", null)
+                    .style("fill-opacity", null)
+                    .style("stroke", "#dab600");
+            })
+          .select("rect")
+            .style("stroke", "#dab600");
+
+        svg.selectAll("g.film-layer")
+            .on("mouseenter", function () {
+                d3.selectAll("g.film-layer").select("text").text("FiLM");
+                d3.selectAll("g.film-layer").select("rect")
+                    .style("fill", "#f8ed62")
+                    .style("fill-opacity", 0.5)
+                    .style("stroke", "#f8ed62");
+            })
+            .on("mouseleave", function () {
+                d3.selectAll("g.film-layer").select("text").text("affine transformation");
+                d3.selectAll("g.film-layer").select("rect")
+                    .style("fill", null)
+                    .style("fill-opacity", null)
+                    .style("stroke", "#dab600");
+            })
+          .select("rect")
+            .style("stroke", "#dab600");
     }
 
     d3.xml("assets/alrfas.svg").mimeType("image/svg+xml").get(function(error, xml) {
