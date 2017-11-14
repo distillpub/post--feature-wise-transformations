@@ -179,17 +179,133 @@
         the FiLM generator can be viewed as a specialized instance of a
         HyperNetwork which predicts the FiLM parameters of the FiLM-ed network.
       </p>
-
-      <h2>Conditional feature-wise affine transformations in the literature</h2>
       <p>
-        We now turn our attention to the machine learning literature to expose
-        the various ways in which conditional feature-wise affine
-        transformations are used in practice. When appropriate, we will point
-        out how these different ideas can be expressed using the FiLM
-        nomenclature.
+        Finally, although attempts to connect deep learning results to the way
+        the brain works should always be treated carefully, it is interesting to
+        note that the idea of feature-wise modulation finds a modest amount of
+        support in the neuroscience literature.
+      </p>
+      <p>
+        In an attempt to explore biologically plausible neuron models while
+        drawing a parallel with multi-layer perceptrons,
+        <dt-cite key="mel1992clusteron"></dt-cite> introduces the
+        <em>Clusteron</em>, a neuron whose activations can be amplified by
+        surrounding neurons. This behavior enables to extract non-linearity and
+        high-order statistics from data.
+      </p>
+      <p>
+        Work in <dt-cite key="boutonnet2015words"></dt-cite> provides new
+        evidence that external language cues alter how visual information is
+        processed in the brain. More precisely, it is observed that P1 signals,
+        which are related to low-level visual features, are modulated while
+        hearing specific words.
+      </p>
+      <p>
+        In the spirit of the <a href="https://distill.pub/2016/augmented-rnns/">
+        Distill article</a> on attention, we outlined four directions through
+        which feature-wise affine transformations express themselves in the
+        literature:
       </p>
 
-      <h3>Visual question-answering (VQA) and visual reasoning</h3>
+      <figure class="l-body-outset previews">
+        <a href="#conditioning">
+          <img src="assets/preview_external.svg" />
+          <figcaption>Conditioning on external information</figcaption>
+        </a>
+        <a href="#self-conditioning">
+          <img src="assets/preview_self.svg" />
+          <figcaption>Self-conditioning</figcaption>
+        </a>
+        <a href="#attention-over-features">
+          <img src="assets/preview_attention.svg" />
+          <figcaption>Attention over features</figcaption>
+        </a>
+        <a href="#gating">
+          <img src="assets/preview_gating.svg" />
+          <figcaption>Gating</figcaption>
+        </a>
+      </figure>
+
+      <p>
+        We also attempt to characterize and explain the behavior of FiLM-ed
+        networks through analyses on toy and real-world tasks:
+      </p>
+
+      <figure class="l-body-outset previews">
+        <a href="#film-as-task-embeddings">
+          <img src="assets/preview_tsne.svg" />
+          <figcaption>FiLM parameters as task embeddings</figcaption>
+        </a>
+      </figure>
+
+      <style>
+        .previews a {
+          text-decoration: none;
+          overflow: hidden;
+          margin-bottom: 12px;
+          display: block;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          margin-bottom: 12px;
+          padding-bottom: 12px;
+        }
+        .previews figcaption {
+          margin-left: 100px;
+        }
+        .previews svg, .previews img {
+          width: 80px;
+          float: left;
+        }
+        @media(min-width: 768px) {
+          .previews {
+            overflow: hidden;
+            margin-top: 48px;
+            margin-bottom: 48px;
+          }
+          .previews figcaption {
+            margin-left: 0;
+          }
+          .previews figcaption b {
+            display: block;
+          }
+          .previews figcaption b span {
+            display: block;
+          }
+          .previews a {
+            position: relative;
+            float: left;
+            width: 19%;
+            margin-right: 3.6%;
+            padding-right: 3.6%;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+          }
+          .previews a:last-child {
+            margin-right: 0;
+            padding-right: 0;
+            border-right: 0;
+          }
+          .previews svg, .previews img {
+            margin-bottom: 18px;
+            display: block;
+            width: 100%;
+            float: none;
+          }
+        }
+        @media(min-width: 1024px) {
+          .previews {
+            margin-top: 90px;
+            margin-bottom: 90px;
+          }
+        }
+      </style>
+
+      <hr />
+
+      <h1>Feature-wise affine transformations in the literature</h1>
+
+      <h2 id="conditioning">Conditioning on external information</h2>
       <p>
         Work in <dt-cite key="perez2017learning"></dt-cite> and its expanded
         version <dt-cite key="perez2017film"></dt-cite> introduces the FiLM
@@ -220,8 +336,6 @@
         placed immediately after the batch normalization layer.
       </p>
       <p><span class="todo"> TODO: Talk about conditioning in relation networks.</span></p>
-
-      <h3>Artistic style transfer</h3>
       <p>
         On the artistic style transfer front,
         <dt-cite key="dumoulin2017learned"></dt-cite> and its successor
@@ -239,7 +353,7 @@
         to predict the instance normalization parameters directly from the style
         image.
       </p>
-      <div class="l-body-outset figure" id="alrfas-diagram"><a id="alrfas-figure"></a></div>
+      <div class="l-body-outset figure" id="alrfas-diagram"></div>
       <p>
         Both can be seen as an instantiation of FiLM in which FiLM layers
         replace the feature-wise affine transformation step of instance
@@ -270,8 +384,6 @@
         form of the same trained classifier being used to extract instance
         normalization statistics on the style image.
       </p>
-
-      <h3>Class-conditional generative modeling</h3>
       <p>
         Several models in the recent generative modeling literature have a
         class-conditional variant which leverages conditional feature-wise
@@ -343,8 +455,18 @@
         conditioning information to an output sequence of FiLM parameters.
       </p>
       <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
+      <p>
+        In the reinforcement learning setting, work in
+        <dt-cite key="kirkpatrick2017overcoming"></dt-cite> briefly touches the
+        idea of applying conditional feature-wise affine transformations to
+        reinforcement learning problems by training an agent that learns to play
+        10 Atari games using a single Double DQN network with what can be
+        thought of as FiLM layers throughout its hierarchy, conditioned on the
+        current game.
+      </p>
+      <div class="l-body-outset figure" id="rl-diagram"></div>
 
-      <h3>Self-conditioning</h3>
+      <h2 id="self-conditioning">Self-conditioning</h2>
       <p>
         So far the applications we have considered condition on <em>external</em>
         information, but it is also possible (and sometimes desireable) to
@@ -398,7 +520,7 @@
       </p>
       <div class="l-body-outset figure" id="lstm-diagram"></div>
 
-      <h3>Attention over features</h3>
+      <h2 id="attention-over-features">Attention over features</h2>
       <p>
         Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
         Gated-Attention Reader, which conditions a document reading network
@@ -434,7 +556,7 @@
       <p></p>
       <div class="l-body-outset figure" id="disan-diagram"></div>
 
-      <h3>Relationship with gating and mixture-of-experts</h3>
+      <h2 id="gating">Gating</h2>
       <p>
         Work on mixture-of-experts models
         <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep"></dt-cite>
@@ -444,47 +566,13 @@
       <p><span class="todo"> TODO: explain the relationship.</span></p>
       <div class="l-body-outset figure" id="moe-diagram"></div>
 
-      <h3>Application to the reinforcement learning setting</h3>
-      <p>
-        In the reinforcement learning setting, work in
-        <dt-cite key="kirkpatrick2017overcoming"></dt-cite> briefly touches the
-        idea of applying conditional feature-wise affine transformations to
-        reinforcement learning problems by training an agent that learns to play
-        10 Atari games using a single Double DQN network with what can be
-        thought of as FiLM layers throughout its hierarchy, conditioned on the
-        current game.
-      </p>
-      <div class="l-body-outset figure" id="rl-diagram"></div>
+      <hr />
 
-      <h2>Feature-wise modulation in the neuroscience literature</h2>
-      <p>
-        Although attempts to connect deep learning results to the way the brain
-        works should always be treated carefully, it is interesting to note that
-        the idea of feature-wise modulation finds a modest amount of support in
-        the neuroscience literature.
-      </p>
-      <p>
-        In an attempt to explore biologically plausible neuron models while
-        drawing a parallel with multi-layer perceptrons,
-        <dt-cite key="mel1992clusteron"></dt-cite> introduces the
-        <em>Clusteron</em>, a neuron whose activations can be amplified by
-        surrounding neurons. This behavior enables to extract non-linearity and
-        high-order statistics from data.
-      </p>
-      <p>
-        Work in <dt-cite key="boutonnet2015words"></dt-cite> provides new
-        evidence that external language cues alter how visual information is
-        processed in the brain. More precisely, it is observed that P1 signals,
-        which are related to low-level visual features, are modulated while
-        hearing specific words.
-      </p>
+      <h1>Understanding FiLM-ed networks</h1>
 
-      <h2>Understanding FiLM</h2>
-      <p><span class="todo"> TODO: write a section on how FiLM operates.</span></p>
-      <div class="l-body-outset figure" id="clevr-tsne"><a id="clevr-tsne-figure"></a></div>
 
-      <h2>Going forward</h2>
-      <p><span class="todo"> TODO: write an opening statement on where to go next.</span></p>
+      <h2 id="film-as-task-embeddings">FiLM parameters as task embeddings</h2>
+      <div class="l-body-outset figure" id="clevr-tsne"></div>
     </dt-article>
 
     <dt-appendix>
