@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <link href="assets/style.css" type="text/css" rel="stylesheet">
     <script src="https://distill.pub/template.v1.js"></script>
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
 
@@ -26,6 +24,7 @@
       - Rice University: http://www.rice.edu/
       - Inria SequeL: https://team.inria.fr/sequel/
       - MILA: https://mila.quebec/en/
+      - Element AI: https://element.ai/
       - MILA: https://mila.quebec/en/
       - MILA: https://mila.quebec/en/
     </script>
@@ -119,20 +118,21 @@
         coefficients are a function of the conditioning information. In other
         words,
 
-        \[
+        <dt-math block>
             \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{c}) \odot \mathbf{x}
                                                            + \beta(\mathbf{c}),
-        \]
+        </dt-math>
 
-        where \(\mathbf{x}\) is the FiLM layer's input and \(\mathbf{c}\) is the
-        conditioning information. The mapping from conditioning information to
-        FiLM parameters is called the FiLM generator. It receives \(\mathbf{c}\)
-        as input and outputs \(\gamma\) and \(\beta\):
+        where <dt-math>\mathbf{x}</dt-math> is the FiLM layer's input and
+        <dt-math>\mathbf{c}</dt-math> is the conditioning information. The
+        mapping from conditioning information to FiLM parameters is called the
+        FiLM generator. It receives <dt-math>\mathbf{c}</dt-math> as input and
+        outputs <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math>:
 
-        \[
+        <dt-math block>
           \textrm{FiLM}_{\textrm{gen}}(\mathbf{c}) = [\gamma(\mathbf{c}),
                                                       \beta(\mathbf{c})].
-        \]
+        </dt-math>
       </p>
       <div class="l-body-outset figure" id="film-diagram"><a id="film-figure"></a></div>
 
@@ -145,24 +145,31 @@
         on SVD and EM.
       </p>
       <p>
-        Let \(x\) and \(z\) be \(N\)- and \(M\)-dimensional feature vectors. A
-        bilinear model defines the \(K\)-dimensional output vector as
+        Let <dt-math>x</dt-math> and <dt-math>z</dt-math> be
+        <dt-math>N</dt-math>- and <dt-math>M</dt-math>-dimensional feature
+        vectors. A bilinear model defines the <dt-math>K</dt-math>-dimensional
+        output vector as
 
-          \[y_k = x^T W_k z\]
+        <dt-math block>
+          y_k = x^T W_k z
+        </dt-math>
 
-        where \(W_k\) is a \(N \times M\) matrix. Note that for each dimension
-        \(k\) we have a separate matrix \(W_k\), so the weight matrix is a
-        3-tensor.
+        where <dt-math>W_k</dt-math> is a <dt-math>N \times M</dt-math> matrix.
+        Note that for each dimension <dt-math>k</dt-math> we have a separate
+        matrix <dt-math>W_k</dt-math>, so the weight matrix is a 3-tensor.
       </p>
       <p>
-        FiLM can be thought of as a particular rank-1 approximation to \(W_k\),
-        namely
+        FiLM can be thought of as a particular rank-1 approximation to
+        <dt-math>W_k</dt-math>, namely
 
-          \[y_k = x^T 1_k w_k^T z,\]
+        <dt-math block>
+          y_k = x^T 1_k w_k^T z,
+        </dt-math>
 
-        where \(1_k\) is a one-hot vector with its \(k\)-th entry set to one.
-        This approximation further assumes that \(\beta\) is fixed and set to
-        zero, and that the FiLM projection layer does not include a bias.
+        where <dt-math>1_k</dt-math> is a one-hot vector with its
+        <dt-math>k</dt-math>-th entry set to one.  This approximation further
+        assumes that <dt-math>\beta</dt-math> is fixed and set to zero, and
+        that the FiLM projection layer does not include a bias.
       </p>
       <div class="l-body-outset figure" id="bilinear-diagram"></div>
 
@@ -398,8 +405,8 @@
         The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
         itself can be viewed from the perspective of self-conditioned
         feature-wise affine transformations: the input, forget, and output gates
-        can be seen as FiLM layers with a sigmoid-constrained \(\gamma\) and
-        with \(\beta = 0\).
+        can be seen as FiLM layers with a sigmoid-constrained
+        <dt-math>\gamma</dt-math> and with <dt-math>\beta = 0</dt-math>.
       </p>
       <div class="l-body-outset figure" id="lstm-diagram"></div>
 
