@@ -7,6 +7,9 @@ function buildFigure () {
         svg.selectAll(".figure-layer").style("fill", null);
         svg.selectAll(".figure-network").style("fill", null);
         svg.selectAll(".figure-text").style("font-size", null);
+        svg.selectAll(".figure-line").style("stroke", null);
+        svg.selectAll(".figure-path").style("fill", null);
+        svg.selectAll(".figure-operator").style("fill", null);
     }
 
     d3.xml("assets/bilinear.svg").mimeType("image/svg+xml").get(function(error, xml) {

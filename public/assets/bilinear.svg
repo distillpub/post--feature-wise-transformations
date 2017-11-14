@@ -1,5 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="724" height="480" style="stroke: rgb(255, 0, 0); stroke-width: 1.5; fill: none;"/>
-  <text x="319.596" y="255.041" class="figure-text" style="fill: rgb(255, 0, 0); font-size: 13px; white-space: pre;">TODO: WRITEME</text>
+<svg viewBox="0 0 744 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
+      <title>Right arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-up" viewBox="0 0 8.56 7.69">
+      <title>Up arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-left" viewBox="0 0 7.69 8.56">
+      <title>Left arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-down" viewBox="0 0 8.56 7.69">
+      <title>Down arrow</title>
+      <path style="fill: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
+    </symbol>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 10, 50.000008)" id="mlp-figure">
+    <title>bilinear</title>
+    <g transform="matrix(1, 0, 0, 1, 178.216843, 491.664093)">
+      <title>x</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-layer"/>
+      </g>
+      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -2.499939, -269.171844)">x</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 38.216843, 491.664063)">
+      <title>z</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-layer"/>
+      </g>
+      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -2.49211, -269.164062)">z</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 17.831703, 238.915817)">
+      <title>x_1</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 165.477921, 241.055618)">
+      <title>x_2</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 287.389465, 241.055618)">
+      <title>x_3</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+    <g transform="matrix(0, 1, -1, 0, 17.831699, 178.915817)">
+      <title>z_1</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+    <g transform="matrix(0, 1, -1, 0, 165.477921, 181.055618)">
+      <title>z_2</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+    <g transform="matrix(0, 1, -1, 0, 287.389465, 181.055618)">
+      <title>z_3</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 377, 60.000008)" id="cnn-figure">
+      <title>FiLM</title>
+    </g>
+    <g transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 108.31670840911826, 37.09840350251898)">
+      <title>y</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 60, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 120, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 17.831703, 150.915817)">
+      <title>W_1</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 20)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 20)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 20)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 40)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 20, 40)" class="feature">
+        <path style="fill: rgb(200, 200, 200)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-layer"/>
+      </g>
+    </g>
+  </g>
+  <line x1="362.194" y1="540.364" x2="362.194" y2="59.636" style="stroke: rgb(211, 211, 211);"/>
 </svg>

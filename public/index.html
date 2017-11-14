@@ -36,87 +36,38 @@
 
       <dt-byline></dt-byline>
 
-      <h2>Introduction</h2>
       <p>
-        This article examines the way we condition neural networks, i.e., the
-        way in which the computation they carry out is altered by conditioning
-        information.
+        Much like attentional interfaces, which have been the subject of a
+        previous <a href="https://distill.pub/2016/augmented-rnns/">Distill
+        article</a>, feature-wise affine transformations have emerged as a
+        powerful mechanism which allows to modulate the computation carried out
+        by a neural network.
       </p>
       <p>
-        The need for conditioning neural networks arises in many contexts:
-      </p>
-      <ul>
-        <li>
-          A class-conditional generative model generates examples from a
-          requested class.
-        </li>
-        <li>
-          A feedforward style transfer network maps the content image it
-          receives as input to a style-specific stylization.
-        </li>
-        <li>
-          A visual question-answering (VQA) model processes an image within the
-          context of a natural language question.
-        </li>
-        <li>
-          <span class="todo"> TODO: add more examples.</span>
-        </li>
-      </ul>
-      <p>
-        Despite the different problem settings being solved, a lot of work
-        makes use of very similar conditioning methods which revolve around
-        conditional feature-wise affine transformations. Moreover, the specific
-        form of the conditioning method is oftentimes accessory to the proposed
-        innovation as opposed to being at the center of the work. Because of
-        that, these similarities can be overlooked when discussing related
-        work. We feel that there is a need to recognize and outline these
-        similarities, as well as provide a common language to discuss about
-        these approaches.
+        To center the discussion around a common language, we propose to use
+        the nomenclature of <dt-cite key="perez2017film"></dt-cite>, which
+        calls these transformations <em>FiLM</em>, for
+        <strong>F</strong>eature-w<strong>i</strong>se <strong>L</strong>inear
+        <strong>M</strong>odulation.<dt-fn>Strictly speaking, <em>linear</em>
+        is a misnomer, as we allow biasing, but we hope the more rigorous-minded
+        reader will forgive us for the sake of a better-sounding acronym.</dt-fn>
       </p>
       <p>
-        This article therefore aims at regrouping these practices under the
-        same framework and providing insights into how these methods work. It
-        is split into three parts:
+        We say that a neural network is modulated using FiLM, or
+        <em>FiLM-ed</em>, through the insertion of <em>FiLM layers</em> in its
+        architecture. These are parametrized by some form of conditioning
+        information, and the mapping from conditioning information to FiLM
+        parameters is called the <em>FiLM generator</em>. For simplicity, you
+        can assume that the FiLM generator outputs the concatenation of all
+        FiLM parameters for the network architecture.
       </p>
-      <ol>
-        <li>
-          An exposition to the proposed framework and nomenclature, named
-          <strong>F</strong>eature-w<strong>i</strong>se <strong>L</strong>inear
-          <strong>M</strong>odulation (FiLM).
-        </li>
-        <li>
-          A thorough review of the literature connected to the use of
-          conditional feature-wise affine transformations.
-        </li>
-        <li>
-          A series of empirical observations of the behavior and properties of
-          FiLM layers, leading to a hypothesis for explaining how it manages to
-          condition a neural network.
-        </li>
-      </ol>
-
-      <h2>FiLM</h2>
+      <div class="l-body-outset figure" id="film-architecture-diagram"></div>
       <p>
-        Like mentioned above, conditional feature-wise affine transformations
-        oftentimes appear in the literature in various form factors, and we
-        currently lack a common vocabulary to describe and discuss these
-        approaches.
-      </p>
-      <p>
-        In line with <dt-cite key="perez2017film"></dt-cite>, we propose to use
-        the term FiLM, for <strong>F</strong>eature-w<strong>i</strong>se
-        <strong>L</strong>inear <strong>M</strong>odulation, to describe
-        conditional feature-wise affine transformations. In this framework, a
-        neural network is conditioned using FiLM, or FiLM-ed, by inserting FiLM
-        layers at various stages of the network's hierarchy.
-      </p>
-      <div class="l-body-outset figure" id="film-architecture-diagram"><a id="film-architecture-figure"></a></div>
-      <p>
-        A FiLM layer can be thought of as a feature-wise linear layer--that is,
-        affine transformations are applied elementwise, or in the case of
-        convolutional networks, feature map-wise--whose scaling and shifting
-        coefficients are a function of the conditioning information. In other
-        words,
+        As the name implies, a FiLM layer applies a feature-wise affine
+        transformation to its input. The parameters of that transformation are
+        also provided as input. By <em>feature-wise</em>, we mean that scaling
+        and shifting are applied elementwise, or in the case of convolutional
+        networks, feature map-wise. In other words,
 
         <dt-math block>
             \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{c}) \odot \mathbf{x}
@@ -124,63 +75,68 @@
         </dt-math>
 
         where <dt-math>\mathbf{x}</dt-math> is the FiLM layer's input and
-        <dt-math>\mathbf{c}</dt-math> is the conditioning information. The
-        mapping from conditioning information to FiLM parameters is called the
-        FiLM generator. It receives <dt-math>\mathbf{c}</dt-math> as input and
-        outputs <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math>:
-
-        <dt-math block>
-          \textrm{FiLM}_{\textrm{gen}}(\mathbf{c}) = [\gamma(\mathbf{c}),
-                                                      \beta(\mathbf{c})].
-        </dt-math>
+        <dt-math>\mathbf{c}</dt-math> is the conditioning information. You can
+        interact with the following fully-connected and convolutional FiLM
+        layers to get an intuition of the sort of modulation they allow:
       </p>
       <div class="l-body-outset figure" id="film-diagram"><a id="film-figure"></a></div>
-
-      <h2>Relationship with other frameworks</h2>
-
-      <h3>Bilinear transformations</h3>
       <p>
-        In their seminal paper <dt-cite key="tenenbaum2000separating"></dt-cite>,
-        Tenenbaum Freeman propose a learning algorithm for bilinear models based
-        on SVD and EM.
+        <span class="todo">TODO: say a few words about what this allows us to do
+        (e.g., shutting off feature maps)</span>
       </p>
       <p>
-        Let <dt-math>x</dt-math> and <dt-math>z</dt-math> be
-        <dt-math>N</dt-math>- and <dt-math>M</dt-math>-dimensional feature
-        vectors. A bilinear model defines the <dt-math>K</dt-math>-dimensional
-        output vector as
+        You may also think of FiLM as an efficient rank-1 approximation of a
+        bilinear transformation <dt-cite key="tenenbaum2000separating"></dt-cite>.
+        In general, a bilinear transformation is defined as
 
         <dt-math block>
-          y_k = x^T W_k z
+          y_k = \mathbf{x}^T W_k \mathbf{z}
         </dt-math>
 
-        where <dt-math>W_k</dt-math> is a <dt-math>N \times M</dt-math> matrix.
-        Note that for each dimension <dt-math>k</dt-math> we have a separate
-        matrix <dt-math>W_k</dt-math>, so the weight matrix is a 3-tensor.
+        where <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
+        are <dt-math>N</dt-math>- and <dt-math>M</dt-math>-dimensional feature
+        vectors, <dt-math>y_k</dt-math> is the <dt-math>k^{th}</dt-math>
+        output, and <dt-math>W_k</dt-math> is a <dt-math>N \times M</dt-math>
+        matrix. Note that for each output <dt-math>y_k</dt-math> we have a
+        separate matrix <dt-math>W_k</dt-math>, so the full set of weights
+        forms a 3-tensor.
       </p>
       <p>
-        FiLM can be thought of as a particular rank-1 approximation to
-        <dt-math>W_k</dt-math>, namely
+        We can cast FiLM as a bilinear transformation by considering the
+        equation
 
         <dt-math block>
-          y_k = x^T 1_k w_k^T z,
+          y_k = \tilde{\mathbf{x}}^T W_k f(\mathbf{c})
         </dt-math>
 
-        where <dt-math>1_k</dt-math> is a one-hot vector with its
-        <dt-math>k</dt-math>-th entry set to one.  This approximation further
-        assumes that <dt-math>\beta</dt-math> is fixed and set to zero, and
-        that the FiLM projection layer does not include a bias.
+        where <dt-math>\tilde{\mathbf{x}}</dt-math> is the input
+        <dt-math>\mathbf{x}</dt-math> augmented with a
+        <dt-math>1</dt-math>-valued constant feature &mdash; a common trick to
+        turn a linear transformation into an affine transformation &mdash; and
+        <dt-math>\mathbf{z}</dt-math> has been replaced with
+        <dt-math>f(\mathbf{c})</dt-math> to emphasize its role as a
+        representation of the conditioning information.
+      </p>
+      <p>
+        The weight matrix <dt-math>W_k</dt-math> is filled with zeros in such a
+        way that
+
+        <dt-math block>
+          W_k f(\mathbf{c}) = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)
+        </dt-math>
+
+        where <dt-math>\gamma_k</dt-math> and <dt-math>\beta_k</dt-math> are
+        the FiLM scaling and shifting coefficients for the
+        <dt-math>k^{th}</dt-math> feature, and <dt-math>\gamma_k</dt-math> is
+        the <dt-math>k^{th}</dt-math> element of the vector.
       </p>
       <div class="l-body-outset figure" id="bilinear-diagram"></div>
-
-      <h3>Spatial and temporal attention</h3>
       <p>
-        In a sense, FiLM can be interpreted as a relaxed form of attention over
-        features, which bears resemblance with attention over time or over
-        space.
+        Interestingly, spatial and temporal attention can also be viewed as
+        low-rank approximations of a bilinear transformation. <span
+        class="todo"> TODO: elaborate.</span> Furthermore, FiLM itself can be
+        interpreted as a relaxed form of attention over features.
       </p>
-      <p><span class="todo"> TODO: write about attention-related papers.</span></p>
-      <p><span class="todo"> TODO: write about connection between attention and bilinear models.</span></p>
 
       <h3>HyperNetworks</h3>
       <p>
