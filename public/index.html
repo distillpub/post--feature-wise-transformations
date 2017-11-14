@@ -61,7 +61,13 @@
         can assume that the FiLM generator outputs the concatenation of all
         FiLM parameters for the network architecture.
       </p>
-      <div class="l-body-outset figure" id="film-architecture-diagram"></div>
+      <figure class="l-body-outset figure" id="film-architecture-diagram">
+        <figcaption>
+          In this example, a network is FiLM-ed by inserting two FiLM layers in
+          its architecture. The FiLM parameters are computed using the FiLM
+          generator, which processes the conditioning information.
+        </figcaption>
+      </figure>
       <p>
         As the name implies, a FiLM layer applies a feature-wise affine
         transformation to its input. The parameters of that transformation are
@@ -79,7 +85,17 @@
         interact with the following fully-connected and convolutional FiLM
         layers to get an intuition of the sort of modulation they allow:
       </p>
-      <div class="l-body-outset figure" id="film-diagram"><a id="film-figure"></a></div>
+      <figure class="l-body-outset figure" id="film-diagram">
+        <figcaption>
+          A FiLM layers applied on a fully-connected input (left) and on a
+          convolutional input (right). In both cases, the scaling and shifting
+          vectors <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math> are
+          passed as input and are computed by the FiLM generator. Try
+          interacting with the <dt-math>\gamma</dt-math> and
+          <dt-math>\beta</dt-math> values by hovering over their corresponding
+          diagram elements and observe the resulting change in the output.
+        </figcaption>
+      </figure>
       <p>
         <span class="todo">TODO: say a few words about what this allows us to do
         (e.g., shutting off feature maps)</span>
@@ -101,6 +117,26 @@
         separate matrix <dt-math>W_k</dt-math>, so the full set of weights
         forms a 3-tensor.
       </p>
+      <figure class="l-body-outset figure" id="bilinear-diagram">
+        <figcaption>
+          Casting the FiLM layer as a low-rank approximation of a bilinear
+          transformation. <strong>(Top)</strong> A bilinear transformation
+          mapping <dt-math>\mathbf{x}</dt-math> and
+          <dt-math>\mathbf{z}</dt-math> &mdash; both 3-dimensional &mdash; to a
+          3-dimensional output. Each output element <dt-math>y_k</dt-math> is
+          computed as a vector-matrix-vector product using a separate matrix
+          <dt-math>W_k</dt-math>. <strong>(Bottom)</strong> We can achieve the
+          feature-wise affine transformation carried out by FiLM using a
+          bilinear transformation. The input <dt-math>\mathbf{x}</dt-math> is
+          augmented with a <dt-math>1</dt-math>-valued constant feature, and all
+          rows in the weight matrices <dt-math>W_k</dt-math> except the
+          <dt-math>k^{th}</dt-math> row and the last row are zeroed out (shown
+          in grey in the figure). The name of the input
+          <dt-math>\mathbf{z}</dt-math> has been changed to
+          <dt-math>f(\mathbf{c})</dt-math> to emphasize the fact that it depends
+          on the conditioning information.
+        </figcaption>
+      </figure>
       <p>
         We can cast FiLM as a bilinear transformation by considering the
         equation
@@ -130,23 +166,19 @@
         <dt-math>k^{th}</dt-math> feature, and <dt-math>\gamma_k</dt-math> is
         the <dt-math>k^{th}</dt-math> element of the vector.
       </p>
-      <div class="l-body-outset figure" id="bilinear-diagram"></div>
       <p>
         Interestingly, spatial and temporal attention can also be viewed as
         low-rank approximations of a bilinear transformation. <span
         class="todo"> TODO: elaborate.</span> Furthermore, FiLM itself can be
         interpreted as a relaxed form of attention over features.
       </p>
-
-      <h3>HyperNetworks</h3>
       <p>
-        FiLM shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
-        the idea of using one neural network to predict parameters of another
-        neural network. FiLM can be viewed as a specialized instance of a
-        HyperNetwork which predicts the subset of the network's parameters
-        contained in the FiLM layers.
+        FiLM also shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
+        the architectural feature that a secondary neural network computes some
+        of the parameter values in the primary network. From that perspective,
+        the FiLM generator can be viewed as a specialized instance of a
+        HyperNetwork which predicts the FiLM parameters of the FiLM-ed network.
       </p>
-      <div class="l-body-outset figure" id="hypernetwork-diagram"></div>
 
       <h2>Conditional feature-wise affine transformations in the literature</h2>
       <p>
@@ -694,7 +726,6 @@
     <script src="assets/figure_film.js"></script>
     <script src="assets/figure_film_architecture.js"></script>
     <script src="assets/figure_bilinear.js"></script>
-    <script src="assets/figure_hypernetwork.js"></script>
     <script src="assets/figure_clevr.js"></script>
     <script src="assets/figure_guesswhat.js"></script>
     <script src="assets/figure_alrfas.js"></script>
