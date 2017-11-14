@@ -24,6 +24,16 @@
   stroke-width: 1.5px;
 }
 
+.figure-faded {
+  fill: #aaa;
+  fill-opacity: 0.8;
+  rx: 6px;
+  ry: 6px;
+  stroke: #666;
+  stroke-miterlimit: 10px;
+  stroke-width: 1.5px;
+}
+
 .figure-network {
   fill: #f0f0f5;
   rx: 6px;
@@ -48,6 +58,11 @@
   opacity: 0.6;
   font-size: 13px;
   font-family: "Open Sans";
+}
+
+.subscript {
+  vertical-align: sub;
+  font-size: 8px;
 }
 
 .todo {

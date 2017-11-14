@@ -1,7 +1,7 @@
 function buildFigure () {
     function styleFigure () {
         // --- Retrieve svg element -------------------------------------------
-        var svg = d3.select("div.figure#film-architecture-diagram").select("svg");
+        var svg = d3.select("figure.figure#film-architecture-diagram").select("svg");
 
         // --- Clear element-specific styling ---------------------------------
         svg.selectAll(".figure-layer").style("fill", null);
@@ -13,8 +13,8 @@ function buildFigure () {
 
     d3.xml("assets/film_architecture.svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
-        d3.select("div.figure#film-architecture-diagram").each(function () {
-            this.appendChild(xml.documentElement);
+        d3.select("figure.figure#film-architecture-diagram").each(function () {
+            this.insertBefore(xml.documentElement, this.firstChild);
         });
         styleFigure();
     });
