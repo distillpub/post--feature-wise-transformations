@@ -304,91 +304,131 @@
       <hr />
 
       <h1>Feature-wise affine transformations in the literature</h1>
+      <p>
+        Throughout this section, we will present various models which take
+        advantage of feature-wise affine transformations to show how widely
+        applied this computational mechanism is in practice.
+      </p>
+      <p>
+        In the interest of not being confusing to readers already familiar with
+        these models, we chose to stick to the nomenclature used in the original
+        papers, but we do draw connections to the FiLM nomenclature where
+        appropriate. Readers interested in those connections are encouraged
+        to take a closer look at the model diagrams, in which elements relevant
+        to the FiLM nomenclature have been color-coded in yellow and can be
+        hovered over to reveal more information.
+      </p>
 
       <h2 id="conditioning">Conditioning on external information</h2>
       <p>
-        Work in <dt-cite key="perez2017learning"></dt-cite> and its expanded
-        version <dt-cite key="perez2017film"></dt-cite> introduces the FiLM
-        framework and ties together much prior FiLM-related work. Here, a visual
-        reasoning model is trained on the CLEVR
-        <dt-cite key="johnson2017clevr"></dt-cite> synthetic dataset to answer
-        textual questions about an input image.
+        Feature-wise affine transformations can be used as a conditioning
+        mechanism to incorporate external information such as context
+        representation, task description, class information, or user
+        information.
+      </p>
+      <p>
+        For instance, we can use FiLM layers to condition a visual processing
+        pipeline to answer textual questions about an image.
+      </p>
+      <p>
+        In <dt-cite key="perez2017learning"></dt-cite>, and in its expanded
+        version <dt-cite key="perez2017film"></dt-cite>, a visual reasoning
+        model is trained on the CLEVR dataset <dt-cite key="johnson2017clevr"></dt-cite>
+        to answer synthetic questions about a synthetic input image.
       </p>
       <div class="l-body-outset figure" id="clevr-diagram"></div>
       <p>
-        Work in <dt-cite key="vries2017modulating"></dt-cite> introduced
-        conditional batch normalization (CBN) for multimodal inputs in the
-        context of VQA, more specifically the "oracle" sub-task of the
-        GuessWhat?! task, which features natural language questions on images
-        which are answered by yes, no, or N/A.
+        The model features a FiLM generator in the form of a linguistic pipeline
+        extracting a question representation which is then linearly mapped to
+        the FiLM parameter values. The visual pipeline is conditioned by
+        inserting a FiLM layer in the residual pathway of each residual block of
+        the convolutional neural network. The model is trained end-to-end on
+        image-question-answer tuples.
       </p>
       <p>
-        The language pipeline is used to modulate the pre-trained image feature
-        extractor by changing the values of the image feature extractor's batch
-        normalization parameters. This paper also provides initial intuitions
-        about FiLM by pointing out that conditioning the feature-wise affine
-        transformation always results in better results than classic finetuning.
+        We can also leverage feature-wise affine transformations to condition a
+        pre-trained network. In in <dt-cite key="vries2017modulating"></dt-cite>,
+        the visual pipeline of a visual question-answering (VQA) model is
+        modulated by the model's linguistic pipeline through conditional batch
+        normalization (CBN). The model is trained on the "oracle" sub-task of
+        the GuessWhat?! task <dt-cite key="vries2017guesswhat"></dt-cite>,
+        which features natural language questions on images which are answered
+        by yes, no, or N/A.
       </p>
       <div class="l-body-outset figure" id="guesswhat-diagram"></div>
       <p>
+        The visual pipeline consists of a pre-trained residual network and is
+        kept fixed throughout training. The linguistic pipeline interacts with
+        the visual pipeline by predicting perturbations to the residual
+        network's batch normalization parameters.
+      </p>
+      <p>
         CBN can be viewed as an instance of FiLM where the post-normalization
-        feature-wise affine transformation is disabled and a FiLM layer is
-        placed immediately after the batch normalization layer.
+        feature-wise affine transformation is replaced with a FiLM layer.
       </p>
       <p><span class="todo"> TODO: Talk about conditioning in relation networks.</span></p>
       <p>
-        On the artistic style transfer front,
-        <dt-cite key="dumoulin2017learned"></dt-cite> and its successor
-        <dt-cite key="ghiasi2017exploring"></dt-cite> implement a specific
-        instantiation of FiLM.
+        We can also use FiLM layers to condition a style transfer network on a
+        chosen style image.
       </p>
       <p>
-        The former extends fast feedforward style transfer networks to multiple
-        styles by introducing conditional instance normalization layers. Each
-        style modeled by the network is associated with its own set of instance
+        In <dt-cite key="dumoulin2017learned"></dt-cite>, fast feedforward style
+        transfer networks are extended to accommodate multiple styles by
+        introducing conditional instance normalization (CIN) layers. Each style
+        modeled by the network is associated with its own set of instance
         normalization parameters, and conditioning is achieved by assigning
         instance normalization parameters their corresponding value for the
-        desired style. The latter introduces a <em>style prediction
-        network</em> which is trained jointly with the style transfer network
-        to predict the instance normalization parameters directly from the style
-        image.
+        desired style.
       </p>
       <div class="l-body-outset figure" id="alrfas-diagram"></div>
       <p>
-        Both can be seen as an instantiation of FiLM in which FiLM layers
-        replace the feature-wise affine transformation step of instance
-        normalization layers and the FiLM-generating network is in the form of
-        an embedding lookup (former work) or a parametrized mapping (latter
-        work).
+        This intuition is pushed further by <dt-cite key="ghiasi2017exploring"></dt-cite>
+        with the introduction of a <em>style prediction network</em> which is
+        trained jointly with the style transfer network to predict the instance
+        normalization parameters directly from a given style image.
       </p>
       <p>
-        Work in <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
-        alternative for fast and arbitrary style transfer in the form of
-        adaptive instance normalization (AdaIN) layers, which perform instance
-        normalization on a stak of content feature maps and scale and shift
-        them using statistics extracted from a stack of style feature maps.
+        Like CBN, CIN can be seen as an instance of FiLM where the
+        post-normalization feature-wise affine transformation is replaced with a
+        FiLM layer. The main differentiator between <dt-cite key="dumoulin2017learned"></dt-cite>
+        and <dt-cite key="ghiasi2017exploring"></dt-cite> is the FiLM generator
+        implementation: in the former the generator is a simple embedding
+        lookup, whereas in the latter the generator is a convolutional neural
+        network.
       </p>
       <p>
-        Content and style images are fed through a trained classifier up to
-        some intermediate layer, at which point the stack of content feature
-        maps is instance-normalized and a feature-wise affine transformation
-        is applied to them using the style instance normalization statistics. A
-        decoder then maps the stack of content feature maps back to input
-        space, and the triplet of content-style-stylized images are used to
-        compute the usual style transfer loss.
+        So far, the distinction between the FiLM generator and the FiLM-ed
+        network has been rather clear, but it is not strictly necessary. As an
+        example, in <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
+        alternative for fast and arbitrary style transfer in the form of an
+        adaptive instance normalization (AdaIN) layer.
       </p>
       <div class="l-body-outset figure" id="adain-diagram"></div>
       <p>
-        AdaIN can be recognized as a FiLM layer replacing the instance
-        normalization parameters, with the FiLM-generating network taking the
-        form of the same trained classifier being used to extract instance
-        normalization statistics on the style image.
+        The model architecture consists of an encoder-decoder pair. The encoder
+        is the same classifier that is used to compute the content and style
+        losses, and is kept fixed throughout training. A content/style image
+        pair is first encoded, and the encoded stack of <em>content</em> feature
+        maps is instance-normalized. Instance normalization statistics are then
+        computed for the encoded stask of <em>style</em> feature maps and used
+        to perform a feature-wise affine transformation on the normalized stack
+        of content feature maps. The result is then passed through the decoder
+        to obtain the stylized image, and the triplet of content/style/stylized
+        images is used to compute the style transfer loss. The decoder is
+        trained on many content/style image pairs to minimize this loss.
       </p>
       <p>
-        Several models in the recent generative modeling literature have a
-        class-conditional variant which leverages conditional feature-wise
-        affine transformations in a way that is very reminiscent to FiLM
-        layers.
+        Interestingly, the encoder can be seen as both <em>both</em> a part of
+        the FiLM-ed network, <em>and</em> the FiLM generator <em>itself</em>.
+        Therefore, AdaIN can be recognized as a FiLM layer replacing the
+        instance normalization parameters, with the FiLM-generating network
+        taking the form of the same trained classifier being used to extract
+        instance normalization statistics on the style image.
+      </p>
+      <p>
+        FiLM can also be used to modulate a neural network in a categorical
+        fashion, as evidenced by several class-conditional models in the recent
+        generative modeling literature.
       </p>
       <p>
         DCGAN <dt-cite key="radford2016unsupervised"></dt-cite>, a
@@ -454,15 +494,13 @@
         conditioning expresses it as a mapping from an input sequence of
         conditioning information to an output sequence of FiLM parameters.
       </p>
-      <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
       <p>
-        In the reinforcement learning setting, work in
-        <dt-cite key="kirkpatrick2017overcoming"></dt-cite> briefly touches the
-        idea of applying conditional feature-wise affine transformations to
-        reinforcement learning problems by training an agent that learns to play
-        10 Atari games using a single Double DQN network with what can be
-        thought of as FiLM layers throughout its hierarchy, conditioned on the
-        current game.
+        Categorical conditioning can also found in the reinforcement learning
+        setting. In <dt-cite key="kirkpatrick2017overcoming"></dt-cite>, the
+        authors briefly touch the idea of applying conditional feature-wise
+        affine transformations to a reinforcement learning problem. They train
+        an agent that learns to play 10 Atari games using a single Double DQN
+        network with FiLM layers inserted throughout its hierarchy.
       </p>
       <div class="l-body-outset figure" id="rl-diagram"></div>
 
@@ -563,6 +601,7 @@
         also exhibit a strong relationship with conditional feature-wise affine
         transformations.
       </p>
+      <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
       <p><span class="todo"> TODO: explain the relationship.</span></p>
       <div class="l-body-outset figure" id="moe-diagram"></div>
 
@@ -587,6 +626,14 @@
         booktitle={Advances in Neural Information Processing Systems},
         year={2017},
         url={https://arxiv.org/pdf/1707.00683.pdf},
+      }
+      @inproceedings{vries2017guesswhat,
+        title={GuessWhat?! Visual object discovery through multi-modal dialogue},
+        author={de Vries, Harm and Strub, Florian and Chandar, Sarath and
+                Pietquin, Olivier and Larochelle, Hugo and Courville, Aaron},
+        booktitle={Proceedings of the Conference on Computer Vision and Pattern
+                   Recognition},
+        year={2017}
       }
       @inproceedings{perez2017learning,
         author={Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin,
