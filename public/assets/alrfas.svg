@@ -45,63 +45,63 @@
     <rect x="680.075" width="106.859" height="500" style="fill: url(#gradient-1);"/>
     <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
   </g>
-  <rect x="10" y="394" width="96" height="96" style="fill: rgb(216, 216, 216);" id="style-image-placeholder">
+  <rect x="10" y="394" width="96" height="96" style="fill: none; stroke: rgb(0, 0, 0);" id="style-image-placeholder">
     <title>style image placeholder</title>
   </rect>
   <line style="stroke: rgb(0, 0, 0);" x1="698.717" y1="442" x2="106" y2="442" class="figure-line"/>
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 691.0270385742188, 437.7200012207031)" xlink:href="#arrow-right"/>
   <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 58 394 L 58 382.67 L 230.257 382.67" class="figure-line"/>
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 222.5673828125, 378.3904724121094)" xlink:href="#arrow-right"/>
-  <rect x="10" y="10" width="96" height="96" style="fill: rgb(216, 216, 216);" id="content-image-placeholder">
+  <rect x="10" y="10" width="96" height="96" style="fill: none; stroke: rgb(0, 0, 0);" id="content-image-placeholder">
     <title>content image placeholder</title>
   </rect>
   <line style="stroke: rgb(0, 0, 0);" x1="698.717" y1="58" x2="106" y2="58" class="figure-line"/>
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 691.0269775390625, 53.720001220703125)" xlink:href="#arrow-right"/>
   <g transform="matrix(1, 0, 0, 1, 5.541511, 45.940998)" class="style-transfer-network">
     <title>style transfer network</title>
-    <rect x="107.35" y="33.418" width="434.327" height="251.118" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="107.35" y="33.418" width="434.327" height="251.118" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -253.024689, -311.238251)">style transfer network</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, -23.859468, 45.941475)">
     <title>convolution</title>
-    <rect x="151.772" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <rect x="151.772" y="78.723" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 40.169159, 352.842407)" class="figure-text">convolution</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, 2.767178, 45.941475)">
     <title>instance normalization</title>
-    <rect x="178.614" y="68.259" width="140.477" height="207.091" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <rect x="178.614" y="68.259" width="140.477" height="207.091" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <g transform="matrix(1, 0, 0, 1, -19.969992, 0)">
       <title>normalization</title>
-      <rect x="217.447" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <rect x="217.447" y="78.723" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="510.559" y="77.567" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999999, 0, 163.445511, 711.811096)" class="figure-text">normalization</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="234.552" y1="163.608" x2="263.153" y2="163.608" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 255.46299743652344, 159.32798767089844)" xlink:href="#arrow-right"/>
     <g transform="matrix(1, 0, 0, 1, -19.969992, 0)" class="film-layer">
       <title>affine transformation</title>
-      <rect x="283.123" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <rect x="283.123" y="78.723" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 113.60582, 622.748596)" class="figure-text">affine transformation</text>
     </g>
     <text x="355.784" y="362.401" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -204.096985, -94.868759)">instance norm.</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, -10.546171, 45.941475)">
     <title>convolution</title>
-    <rect x="348.798" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <rect x="348.798" y="78.723" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <text x="538.433" y="126.872" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 245.508188, 737.670532)" class="figure-text">convolution</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, -3.889478, 45.941475)">
     <title>instance normalization</title>
-    <rect x="395.61" y="68.259" width="140.477" height="207.09" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <rect x="395.61" y="68.259" width="140.477" height="207.09" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <g>
       <title>normalization</title>
-      <rect x="414.474" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <rect x="414.474" y="78.723" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="481.441" y="304.003" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999997, 0.000002, 134.035843, 682.701172)" class="figure-text">normalization</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="451.549" y1="163.608" x2="480.149" y2="163.608" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 472.458984375, 159.32798767089844)" xlink:href="#arrow-right"/>
     <g class="film-layer">
       <title>affine transformation</title>
-      <rect x="480.149" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <rect x="480.149" y="78.723" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999998, 0, 470.928746, 825.623596)" class="figure-text">affine transformation</text>
     </g>
     <text x="355.784" y="362.401" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, 12.89897, -94.869759)">instance norm.</text>
@@ -118,14 +118,14 @@
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 557.9569702148438, 205.27000427246094)" xlink:href="#arrow-right"/>
   <g transform="matrix(1.103799, 0, 0, 1, -50.683739, 25.233994)" class="style-prediction-network">
     <title>style prediction network</title>
-    <rect x="254.522" y="314.258" width="287.155" height="86.357" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="254.522" y="314.258" width="287.155" height="86.357" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text">style prediction network</text>
   </g>
   <line style="stroke: rgb(0, 0, 0);" x1="284.458" y1="339.492" x2="284.458" y2="294.434" class="figure-line"/>
   <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 280.17767333984375, 294.4339904785156)" xlink:href="#arrow-up"/>
   <line style="stroke: rgb(0, 0, 0);" x1="494.797" y1="339.492" x2="494.797" y2="294.434" class="figure-line"/>
   <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 490.51702880859375, 294.43402099609375)" xlink:href="#arrow-up"/>
-  <rect x="565.647" y="161.55" width="96" height="96" style="fill: rgb(216, 216, 216);" id="stylized-image-placeholder">
+  <rect x="565.647" y="161.55" width="96" height="96" style="fill: none; stroke: rgb(0, 0, 0);" id="stylized-image-placeholder">
     <title>stylized image placeholder</title>
   </rect>
   <line style="stroke: rgb(0, 0, 0);" x1="698.717" y1="209.55" x2="661.647" y2="209.55" class="figure-line"/>

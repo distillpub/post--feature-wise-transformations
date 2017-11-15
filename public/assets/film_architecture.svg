@@ -23,19 +23,19 @@
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 126.45600128173828, 245.71998596191406)" xlink:href="#arrow-right"/>
   <g transform="matrix(1, 0, 0, 1, 42.585468, 8.635989)">
     <title>FiLM Generator</title>
-    <rect x="91.561" y="92.492" width="179.844" height="297.744" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="91.561" y="92.492" width="179.844" height="297.744" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 130.045502, -8.63625)" style="font-size: 13px; white-space: pre;">FiLM generator</text>
   </g>
   <line style="stroke: rgb(0, 0, 0);" x1="313.99" y1="250" x2="380" y2="250" class="figure-line"/>
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 372.3102722167969, 245.72000122070312)" xlink:href="#arrow-right"/>
   <g transform="matrix(1, 0, 0, 1, -70.334694, -46.605865)">
     <title>FiLM Parameters</title>
-    <rect x="450.335" y="186.802" width="33.305" height="227.974" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <rect x="450.335" y="186.802" width="33.305" height="227.974" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <text x="450.706" y="274.215" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 197.729706, 797.351501)">FiLM parameters</text>
   </g>
   <g id="full-figure">
     <title>FiLM-ed Network</title>
-    <rect x="479.315" y="47.559" width="259.685" height="405.803" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="479.315" y="47.559" width="259.685" height="405.803" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <g>
       <title>Input</title>
       <text x="5.004" y="254.928" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 590.454407, 225.003632)">input</text>
@@ -44,35 +44,35 @@
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 437.0520324707031)" xlink:href="#arrow-up"/>
     <g transform="matrix(1, 0, 0, 1, 378.391449, 166.016449)">
       <title>Subnetwork</title>
-      <rect x="119.766" y="208.684" width="222" height="62.352" style="stroke: rgb(0, 0, 0); opacity: 0.3;" class="figure-element figure-box"/>
+      <rect x="119.766" y="208.684" width="222" height="62.352" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="195.98" y="244.6" style="font-size: 13px; white-space: pre; opacity: 0.3;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="374.7" x2="609.157" y2="350.692" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 350.6918640136719)" xlink:href="#arrow-up"/>
     <g transform="matrix(1, 0, 0, 1, 144.902435, 27.552868)">
       <title>FiLM</title>
-      <rect x="353.255" y="278.092" width="222" height="45.047" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <rect x="353.255" y="278.092" width="222" height="45.047" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="450.695" y="305.358" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.158" y1="305.645" x2="609.158" y2="281.636" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 281.6359558105469)" xlink:href="#arrow-up"/>
     <g transform="matrix(1, 0, 0, 1, 378.391479, 38.774292)">
       <title>Subnetwork</title>
-      <rect x="119.766" y="180.51" width="222" height="62.352" style="stroke: rgb(0, 0, 0); opacity: 0.3;" class="figure-element figure-box"/>
+      <rect x="119.766" y="180.51" width="222" height="62.352" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="195.979" y="216.426" style="font-size: 13px; white-space: pre; opacity: 0.3;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="219.284" x2="609.157" y2="195.276" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 195.27598571777344)" xlink:href="#arrow-up"/>
     <g transform="matrix(1, 0, 0, 1, 144.902481, -96.725906)">
       <title>FiLM</title>
-      <rect x="353.255" y="246.955" width="222" height="45.047" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <rect x="353.255" y="246.955" width="222" height="45.047" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="450.706" y="274.215" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="150.229" x2="609.157" y2="126.221" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 126.22064208984375)" xlink:href="#arrow-up"/>
     <g transform="matrix(1, 0, 0, 1, 378.391479, -85.694366)">
       <title>Subnetwork</title>
-      <rect x="119.766" y="149.563" width="222" height="62.352" style="stroke: rgb(0, 0, 0); opacity: 0.3;" class="figure-element figure-box"/>
+      <rect x="119.766" y="149.563" width="222" height="62.352" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="195.979" y="185.479" style="font-size: 13px; white-space: pre; opacity: 0.3;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="63.869" x2="609.157" y2="32.531" class="figure-line"/>

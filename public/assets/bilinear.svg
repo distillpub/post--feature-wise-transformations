@@ -20,7 +20,7 @@
   </defs>
   <g transform="matrix(1, 0, 0, 1, 12.167987, -20.096207)" id="mlp-figure">
     <title>bilinear</title>
-    <rect x="-2.168" y="37.098" width="724" height="270.866" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="-2.168" y="37.098" width="724" height="270.866" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="5.819" y="57.768" style="font-size: 13px; white-space: pre;" class="figure-text">Bilinear transformation</text>
     <g transform="matrix(1, 0, 0, 1, 79.770432, -94.220444)">
       <title>y_1</title>
@@ -134,7 +134,7 @@
   </g>
   <g transform="matrix(1, 0, 0, 1, 12.167987, 275.03421)" id="g-1">
     <title>FiLM</title>
-    <rect x="-2.168" y="37.098" width="724" height="270.866" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="-2.168" y="37.098" width="724" height="270.866" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="5.819" y="57.768" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
     <g transform="matrix(1, 0, 0, 1, 89.770439, -94.220444)">
       <title>y_1</title>

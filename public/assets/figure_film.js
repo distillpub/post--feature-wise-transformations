@@ -5,6 +5,7 @@ function buildFigure () {
 
         // --- Clear element-specific styling ---------------------------------
         svg.selectAll(".figure-element, .figure-group, .figure-line, .figure-path")
+            .style("fill", null)
             .style("stroke", null);
         svg.selectAll(".figure-text").style("font-size", null);
 
