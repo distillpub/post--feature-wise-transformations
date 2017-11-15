@@ -9,6 +9,10 @@
   fill-opacity: 0.8;
 }
 
+.figure-line {
+  fill: none;
+}
+
 .figure-path {
   fill: #666;
   stroke-width: 1px;
