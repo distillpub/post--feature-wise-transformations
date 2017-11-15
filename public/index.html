@@ -103,69 +103,69 @@
       <p>
         You may also think of FiLM as an efficient rank-1 approximation of a
         bilinear transformation <dt-cite key="tenenbaum2000separating"></dt-cite>.
-        In general, a bilinear transformation is defined as
+        In general, a bilinear transformation defines the relationship between
+        two inputs <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
+        and the <dt-math>k^{th}</dt-math> output feature <dt-math>y_k</dt-math> as
 
         <dt-math block>
-          y_k = \mathbf{x}^T W_k \mathbf{z}
+          y_k = \mathbf{x}^T W_k \mathbf{z}.
         </dt-math>
 
-        where <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
-        are <dt-math>N</dt-math>- and <dt-math>M</dt-math>-dimensional feature
-        vectors, <dt-math>y_k</dt-math> is the <dt-math>k^{th}</dt-math>
-        output, and <dt-math>W_k</dt-math> is a <dt-math>N \times M</dt-math>
-        matrix. Note that for each output <dt-math>y_k</dt-math> we have a
-        separate matrix <dt-math>W_k</dt-math>, so the full set of weights
-        forms a 3-tensor.
+        Note that for each output feature <dt-math>y_k</dt-math> we have a
+        separate matrix <dt-math>W_k</dt-math>, so the full set of weights forms
+        a 3-tensor.
       </p>
       <figure class="l-body-outset figure" id="bilinear-diagram">
         <figcaption>
-          Casting the FiLM layer as a low-rank approximation of a bilinear
-          transformation. <strong>(Top)</strong> A bilinear transformation
-          mapping <dt-math>\mathbf{x}</dt-math> and
+          A bilinear transformation mapping <dt-math>\mathbf{x}</dt-math> and
           <dt-math>\mathbf{z}</dt-math> &mdash; both 3-dimensional &mdash; to a
           3-dimensional output. Each output element <dt-math>y_k</dt-math> is
           computed as a vector-matrix-vector product using a separate matrix
-          <dt-math>W_k</dt-math>. <strong>(Bottom)</strong> We can achieve the
-          feature-wise affine transformation carried out by FiLM using a
-          bilinear transformation. The input <dt-math>\mathbf{x}</dt-math> is
-          augmented with a <dt-math>1</dt-math>-valued constant feature, and all
-          rows in the weight matrices <dt-math>W_k</dt-math> except the
-          <dt-math>k^{th}</dt-math> row and the last row are zeroed out (shown
-          in grey in the figure). The name of the input
-          <dt-math>\mathbf{z}</dt-math> has been changed to
-          <dt-math>f(\mathbf{c})</dt-math> to emphasize the fact that it depends
-          on the conditioning information.
+          <dt-math>W_k</dt-math>.
         </figcaption>
       </figure>
       <p>
-        We can cast FiLM as a bilinear transformation by considering the
-        equation
-
-        <dt-math block>
-          y_k = \tilde{\mathbf{x}}^T W_k f(\mathbf{c})
-        </dt-math>
-
-        where <dt-math>\tilde{\mathbf{x}}</dt-math> is the input
-        <dt-math>\mathbf{x}</dt-math> augmented with a
-        <dt-math>1</dt-math>-valued constant feature &mdash; a common trick to
-        turn a linear transformation into an affine transformation &mdash; and
-        <dt-math>\mathbf{z}</dt-math> has been replaced with
+        We can cast FiLM as a bilinear transformation by appending a constant
+        <dt-math>1</dt-math>-valued feature to the input
+        <dt-math>\mathbf{x}</dt-math> (let's call the result
+        <dt-math>\tilde{\mathbf{x}}</dt-math> to disambiguate between the two)
+        and zeroing out the appropriate rows in <dt-math>W_k</dt-math> (calling
+        the result <dt-math>\tilde{W}_k</dt-math>, once again to disambiguate
+        between the two). For good measure, let's also change the name of the
+        second input vector from <dt-math>\mathbf{z}</dt-math> to
         <dt-math>f(\mathbf{c})</dt-math> to emphasize its role as a
-        representation of the conditioning information.
+        representation of the conditioning information
+        <dt-math>\mathbf{c}</dt-math>.
       </p>
       <p>
-        The weight matrix <dt-math>W_k</dt-math> is filled with zeros in such a
-        way that
+        Assuming that <dt-math>\gamma_k</dt-math> and <dt-math>\beta_k</dt-math>
+        are the FiLM scaling and shifting coefficients for the
+        <dt-math>k^{th}</dt-math> feature, the is idea is to fill
+        <dt-math>W_k</dt-math> with zeros in such a way that
 
         <dt-math block>
-          W_k f(\mathbf{c}) = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)
+          W_k f(\mathbf{c}) = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)^T,
         </dt-math>
 
-        where <dt-math>\gamma_k</dt-math> and <dt-math>\beta_k</dt-math> are
-        the FiLM scaling and shifting coefficients for the
-        <dt-math>k^{th}</dt-math> feature, and <dt-math>\gamma_k</dt-math> is
-        the <dt-math>k^{th}</dt-math> element of the vector.
+        where <dt-math>\gamma_k</dt-math> is the <dt-math>k^{th}</dt-math>
+        element of the resulting vector. The bilinear equation then becomes
+
+        <dt-math block>
+            y_k = \tilde{\mathbf{x}}^T \tilde{W}_k f(\mathbf{c}).
+        </dt-math>
       </p>
+      <figure class="l-body-outset figure" id="film-as-bilinear-diagram">
+        <figcaption>
+          We can achieve the feature-wise affine transformation carried out by
+          FiLM using a bilinear transformation. The input <dt-math>\mathbf{x}</dt-math>
+          is augmented with a <dt-math>1</dt-math>-valued constant feature, and
+          all rows in the weight matrices <dt-math>W_k</dt-math> except the
+          <dt-math>k^{th}</dt-math> row and the last row are zeroed out (shown
+          in grey in the figure). The name of the input <dt-math>\mathbf{z}</dt-math>
+          has been changed to <dt-math>f(\mathbf{c})</dt-math> to emphasize the
+          fact that it depends on the conditioning information.
+        </figcaption>
+      </figure>
       <p>
         Interestingly, spatial and temporal attention can also be viewed as
         low-rank approximations of a bilinear transformation. <span
@@ -798,6 +798,7 @@
     <script src="assets/figure_film.js"></script>
     <script src="assets/figure_film_architecture.js"></script>
     <script src="assets/figure_bilinear.js"></script>
+    <script src="assets/figure_film_as_bilinear.js"></script>
     <script src="assets/figure_clevr.js"></script>
     <script src="assets/figure_guesswhat.js"></script>
     <script src="assets/figure_alrfas.js"></script>
