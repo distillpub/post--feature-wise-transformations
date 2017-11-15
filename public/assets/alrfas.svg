@@ -6,19 +6,19 @@
     </pattern>
     <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
       <title>Right arrow</title>
-      <path style="fill: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
+      <path style="stroke: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
     </symbol>
     <symbol id="arrow-up" viewBox="0 0 8.56 7.69">
       <title>Up arrow</title>
-      <path style="fill: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
+      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
     </symbol>
     <symbol id="arrow-left" viewBox="0 0 7.69 8.56">
       <title>Left arrow</title>
-      <path style="fill: rgb(0, 0, 0);" d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" class="figure-path"/>
+      <path style="stroke: rgb(0, 0, 0);" d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" class="figure-path"/>
     </symbol>
     <symbol id="arrow-down" viewBox="0 0 8.56 7.69">
       <title>Down arrow</title>
-      <path style="fill: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
+      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
     </symbol>
     <linearGradient id="gradient-1" gradientUnits="userSpaceOnUse" x1="722.886" y1="0" x2="722.886" y2="500" gradientTransform="matrix(0, -0.083327, 0.210855, 0, 681.502075, 308.729199)">
       <stop offset="0" style="stop-color: rgb(240, 240, 245);"/>
@@ -59,49 +59,49 @@
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 691.0269775390625, 53.720001220703125)" xlink:href="#arrow-right"/>
   <g transform="matrix(1, 0, 0, 1, 5.541511, 45.940998)" class="style-transfer-network">
     <title>style transfer network</title>
-    <rect x="107.35" y="33.418" width="434.327" height="251.118" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <rect x="107.35" y="33.418" width="434.327" height="251.118" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -253.024689, -311.238251)">style transfer network</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, -23.859468, 45.941475)">
     <title>convolution</title>
-    <rect x="151.772" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+    <rect x="151.772" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 40.169159, 352.842407)" class="figure-text">convolution</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, 2.767178, 45.941475)">
     <title>instance normalization</title>
-    <rect x="178.614" y="68.259" width="140.477" height="207.091" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+    <rect x="178.614" y="68.259" width="140.477" height="207.091" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <g transform="matrix(1, 0, 0, 1, -19.969992, 0)">
       <title>normalization</title>
-      <rect x="217.447" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <rect x="217.447" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="510.559" y="77.567" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999999, 0, 163.445511, 711.811096)" class="figure-text">normalization</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="234.552" y1="163.608" x2="263.153" y2="163.608" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 255.46299743652344, 159.32798767089844)" xlink:href="#arrow-right"/>
     <g transform="matrix(1, 0, 0, 1, -19.969992, 0)" class="film-layer">
       <title>affine transformation</title>
-      <rect x="283.123" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <rect x="283.123" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 113.60582, 622.748596)" class="figure-text">affine transformation</text>
     </g>
     <text x="355.784" y="362.401" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -204.096985, -94.868759)">instance norm.</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, -10.546171, 45.941475)">
     <title>convolution</title>
-    <rect x="348.798" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+    <rect x="348.798" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <text x="538.433" y="126.872" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 245.508188, 737.670532)" class="figure-text">convolution</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, -3.889478, 45.941475)">
     <title>instance normalization</title>
-    <rect x="395.61" y="68.259" width="140.477" height="207.09" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+    <rect x="395.61" y="68.259" width="140.477" height="207.09" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
     <g>
       <title>normalization</title>
-      <rect x="414.474" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <rect x="414.474" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="481.441" y="304.003" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999997, 0.000002, 134.035843, 682.701172)" class="figure-text">normalization</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="451.549" y1="163.608" x2="480.149" y2="163.608" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 472.458984375, 159.32798767089844)" xlink:href="#arrow-right"/>
     <g class="film-layer">
       <title>affine transformation</title>
-      <rect x="480.149" y="78.723" width="37.075" height="169.77" style="fill: rgb(216, 216, 216);" class="figure-layer"/>
+      <rect x="480.149" y="78.723" width="37.075" height="169.77" style="stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 0.999998, 0, 470.928746, 825.623596)" class="figure-text">affine transformation</text>
     </g>
     <text x="355.784" y="362.401" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, 12.89897, -94.869759)">instance norm.</text>
@@ -118,7 +118,7 @@
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 557.9569702148438, 205.27000427246094)" xlink:href="#arrow-right"/>
   <g transform="matrix(1.103799, 0, 0, 1, -50.683739, 25.233994)" class="style-prediction-network">
     <title>style prediction network</title>
-    <rect x="254.522" y="314.258" width="287.155" height="86.357" style="fill: rgb(195, 170, 170);" class="figure-network"/>
+    <rect x="254.522" y="314.258" width="287.155" height="86.357" style="stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text">style prediction network</text>
   </g>
   <line style="stroke: rgb(0, 0, 0);" x1="284.458" y1="339.492" x2="284.458" y2="294.434" class="figure-line"/>
