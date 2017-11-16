@@ -22,150 +22,159 @@
     <title>gating</title>
     <rect x="-2.168" y="37.098" width="724" height="320" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="5.819" y="57.768" style="font-size: 13px; white-space: pre;" class="figure-text">Gating</text>
-    <g transform="matrix(1, 0, 0, 1, 79.770432, -57.220444)">
+    <g transform="matrix(1, 0, 0, 1, 57.770432, -57.220444)">
       <title>y_1</title>
-      <g transform="matrix(1, 0, 0, 1, 14.739582, 217.867477)">
+      <g transform="matrix(1, 0, 0, 1, 25.519566, 232.12146)">
         <title>x</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -32.593624, -291.984375)">x</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 9 6 C 9 2.686 11.686 0 15 0 L 29 0 L 29 20 L 15 20 C 11.686 20 9 17.314 9 14 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 29 0 L 49 0 L 49 20 L 29 20 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 49 0 L 63 0 C 66.314 0 69 2.686 69 6 L 69 14 C 69 17.314 66.314 20 63 20 L 49 20 Z" class="figure-element"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -23.593624, -291.984375)"><tspan style="font-weight: bold;">x</tspan></text>
       </g>
-      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -35.80299, 25.788195)">σ</text>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 374.971 43.317 374.971" class="figure-line"/>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 145.282 316.121 C 136.351 316.121 136.351 374.971 145.282 374.971" class="figure-line" transform="matrix(-1, 0, 0, -1, 283.865761, 691.092065)"/>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 36.619 313.121 C 36.619 297.121 90.95 313.121 90.95 297.121 C 90.95 313.121 145.282 297.121 145.282 313.121"/>
+      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text figure-large-text" transform="matrix(0.999998, 0, 0, 1, -43.80299, 36.425694)">σ</text>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 396.121 43.317 396.121" class="figure-line"/>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 184.421 316.121 C 175.49 316.121 175.49 396.121 184.421 396.121" class="figure-line" transform="matrix(-1, 0, 0, -1, 362.143725, 712.242023)"/>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 36.619 313.121 C 36.619 297.121 110.519 313.121 110.519 297.121 C 110.519 313.121 184.421 297.121 184.421 313.121"/>
       <g transform="matrix(1, 0, 0, 1, 48.316677, 316.120758)">
         <title>W_1</title>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-black"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 40)" d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 40)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 40)" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-faded"/>
-        <text x="24.008" y="75.43" style="font-size: 13px; white-space: pre;" class="figure-text">W</text>
-        <text x="36.004" y="77.425" class="figure-text subscript" style="font-size: 13px; white-space: pre;">1</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 40)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 40)" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-black"/>
+        <text x="24.008" y="75.43" style="font-size: 13px; white-space: pre;" class="figure-text"><tspan>W</tspan><tspan dy="0.5ex" class="subscript">1</tspan></text>
       </g>
-      <g transform="matrix(0, 1, -1, 0, 133.316681, 316.120728)">
+      <g transform="matrix(0, 1, -1, 0, 153.316681, 316.121033)">
         <title>z</title>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -251.984375, 72.593506)">z</text>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -289.773437, 54.452892)"><tspan>f(</tspan><tspan style="font-weight: bold;">c</tspan><tspan>)</tspan></text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 60 6 C 60 2.686 62.687 0 66 0 L 74 0 C 77.314 0 80 2.686 80 6 L 80 14 C 80 17.314 77.314 20 74 20 L 66 20 C 62.687 20 60 17.314 60 14 Z" class="figure-element" transform="matrix(0, -1, 1, 0, 60.000005, 80.00001)"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999998, 1, 0, -249.718582, 72.327972)">1</text>
       </g>
       <g transform="matrix(0, 1, -1, 0, 99.739563, 217.867462)">
         <title>W_1 z</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-faded"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -251.984375, 81.702843)">W  z</text>
-        <text x="89.886" y="282.322" class="figure-text subscript" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, -205.73082, 100.816574)">1</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 14.254 -13.78 C 14.254 -17.094 16.94 -19.78 20.254 -19.78 L 34.254 -19.78 L 34.254 0.22 L 20.254 0.22 C 16.94 0.22 14.254 -2.466 14.254 -5.78 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 34.254 -19.78 L 54.254 -19.78 L 54.254 0.22 L 34.254 0.22 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 54.254 -19.78 L 68.254 -19.78 C 71.567 -19.78 74.254 -17.094 74.254 -13.78 L 74.254 -5.78 C 74.254 -2.466 71.567 0.22 68.254 0.22 L 54.254 0.22 Z" class="figure-element"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -275.51944, 34.67289)"><tspan>W</tspan><tspan dy="0.5ex" class="subscript">1</tspan><tspan dy="-0.5ex" > f(</tspan><tspan style="font-weight: bold;">c</tspan><tspan>)</tspan></text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M -38.326 29.8 C -38.326 15.513 4.109 29.8 4.109 15.513 C 4.109 29.8 46.546 15.513 46.546 29.8" transform="matrix(0, -1, 1, 0, -18.546503, 26.766502)"/>
       </g>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 14.74 217.867 C 14.74 203.58 59.575 217.867 59.575 203.58 C 59.575 217.867 104.411 203.58 104.411 217.867"/>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 284.960052, -57.220451)">
+    <g transform="matrix(1, 0, 0, 1, 262.960052, -57.220451)">
       <title>y_2</title>
-      <g transform="matrix(1, 0, 0, 1, 14.739582, 217.867477)">
+      <g transform="matrix(1, 0, 0, 1, 34.519562, 232.12146)">
         <title>x</title>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -32.593624, -291.984375)">x</text>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -32.593624, -291.984375)"><tspan style="font-weight: bold;">x</tspan></text>
       </g>
-      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -35.80299, 25.788195)">σ</text>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 374.971 43.317 374.971" class="figure-line"/>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 145.282 316.121 C 136.351 316.121 136.351 374.971 145.282 374.971" class="figure-line" transform="matrix(-1, 0, 0, -1, 283.865761, 691.092065)"/>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 36.619 313.121 C 36.619 297.121 90.95 313.121 90.95 297.121 C 90.95 313.121 145.282 297.121 145.282 313.121"/>
+      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text figure-large-text" transform="matrix(0.999998, 0, 0, 1, -43.80299, 36.425694)">σ</text>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 396.121 43.317 396.121" class="figure-line"/>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 184.421 316.121 C 175.49 316.121 175.49 396.121 184.421 396.121" class="figure-line" transform="matrix(-1, 0, 0, -1, 362.14375, 712.242)"/>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 36.619 313.121 C 36.619 297.121 110.519 313.121 110.519 297.121 C 110.519 313.121 184.421 297.121 184.421 313.121"/>
       <g transform="matrix(1, 0, 0, 1, 48.316677, 316.120758)">
         <title>W_2</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" class="figure-element figure-black"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 40)" d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 40)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 40)" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-faded"/>
-        <text x="24.008" y="75.43" style="font-size: 13px; white-space: pre;" class="figure-text">W</text>
-        <text x="36.004" y="77.425" class="figure-text subscript" style="font-size: 13px; white-space: pre;">2</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 40)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 40)" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-black"/>
+        <text x="24.008" y="75.43" style="font-size: 13px; white-space: pre;" class="figure-text"><tspan>W</tspan><tspan dy="0.5ex" class="subscript">2</tspan></text>
       </g>
-      <g transform="matrix(0, 1, -1, 0, 133.316681, 316.120728)">
+      <g transform="matrix(0, 1, -1, 0, 153.316681, 316.121033)">
         <title>z</title>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -251.984375, 72.593506)">z</text>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -289.773437, 54.452877)"><tspan>f(</tspan><tspan style="font-weight: bold;">c</tspan><tspan>)</tspan></text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 60 6 C 60 2.686 62.687 0 66 0 L 74 0 C 77.314 0 80 2.686 80 6 L 80 14 C 80 17.314 77.314 20 74 20 L 66 20 C 62.687 20 60 17.314 60 14 Z" class="figure-element" transform="matrix(0, -1, 1, 0, 60.000005, 79.999994)"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999998, 1, 0, -249.718552, 72.327957)">1</text>
       </g>
-      <g transform="matrix(0, 1, -1, 0, 99.739563, 217.867462)">
+      <g transform="matrix(0, 1, -1, 0, 108.739563, 217.867462)">
         <title>W_2 z</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-faded"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -251.984375, 81.702843)">W  z</text>
-        <text x="89.886" y="282.322" class="figure-text subscript" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, -205.73082, 100.816574)">2</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 14.254 -4.78 C 14.254 -8.094 16.94 -10.78 20.254 -10.78 L 34.254 -10.78 L 34.254 9.22 L 20.254 9.22 C 16.94 9.22 14.254 6.534 14.254 3.22 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 34.254 -10.78 L 54.254 -10.78 L 54.254 9.22 L 34.254 9.22 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 54.254 -10.78 L 68.254 -10.78 C 71.567 -10.78 74.254 -8.094 74.254 -4.78 L 74.254 3.22 C 74.254 6.534 71.567 9.22 68.254 9.22 L 54.254 9.22 Z" class="figure-element"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -275.51944, 44.672928)"><tspan>W</tspan><tspan dy="0.5ex" class="subscript">2</tspan><tspan dy="-0.5ex" > f(</tspan><tspan style="font-weight: bold;">c</tspan><tspan>)</tspan></text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M -38.814 39.288 C -38.814 25.001 4.109 39.288 4.109 25.001 C 4.109 39.288 47.034 25.001 47.034 39.288" transform="matrix(0, -1, 1, 0, -28.034491, 36.254504)"/>
       </g>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 14.74 217.867 C 14.74 203.58 59.575 217.867 59.575 203.58 C 59.575 217.867 104.411 203.58 104.411 217.867"/>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 509.290375, -57.220451)">
+    <g transform="matrix(1, 0, 0, 1, 487.290375, -57.220451)">
       <title>y_3</title>
-      <g transform="matrix(1, 0, 0, 1, 14.739582, 217.867477)">
+      <g transform="matrix(1, 0, 0, 1, 34.519588, 237.12146)">
         <title>x</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -32.593624, -291.984375)">x</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 0 1 C 0 -2.314 2.686 -5 6 -5 L 20 -5 L 20 15 L 6 15 C 2.686 15 0 12.314 0 9 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 20 -5 L 40 -5 L 40 15 L 20 15 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 40 -5 L 54 -5 C 57.314 -5 60 -2.314 60 1 L 60 9 C 60 12.314 57.314 15 54 15 L 40 15 Z" class="figure-element"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -32.593624, -299.984375)"><tspan style="font-weight: bold;">x</tspan></text>
       </g>
-      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999998, 0, 0, 1, -35.80299, 25.788195)">σ</text>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 374.971 43.317 374.971" class="figure-line"/>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 145.282 316.121 C 136.351 316.121 136.351 374.971 145.282 374.971" class="figure-line" transform="matrix(-1, 0, 0, -1, 283.865761, 691.092065)"/>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 36.619 313.121 C 36.619 297.121 90.95 313.121 90.95 297.121 C 90.95 313.121 145.282 297.121 145.282 313.121"/>
+      <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text figure-large-text" transform="matrix(0.999998, 0, 0, 1, -43.80299, 36.425694)">σ</text>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 396.121 43.317 396.121" class="figure-line"/>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 184.421 316.121 C 175.49 316.121 175.49 396.121 184.421 396.121" class="figure-line" transform="matrix(-1, 0, 0, -1, 362.143755, 712.242)"/>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 36.619 313.121 C 36.619 297.121 110.519 313.121 110.519 297.121 C 110.519 313.121 184.421 297.121 184.421 313.121"/>
       <g transform="matrix(1, 0, 0, 1, 48.316677, 316.120758)">
         <title>W_3</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" class="figure-element figure-black"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 40)" d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 40)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 40)" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-faded"/>
-        <text x="24.008" y="75.43" style="font-size: 13px; white-space: pre;" class="figure-text">W</text>
-        <text x="36.004" y="77.425" class="figure-text subscript" style="font-size: 13px; white-space: pre;">3</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 20)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-black"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 40)" d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 40)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 40)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 60, 40)" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-faded"/>
+        <text x="24.008" y="75.43" style="font-size: 13px; white-space: pre;" class="figure-text"><tspan>W</tspan><tspan dy="0.5ex" class="subscript">3</tspan></text>
       </g>
-      <g transform="matrix(0, 1, -1, 0, 133.316681, 316.120728)">
+      <g transform="matrix(0, 1, -1, 0, 153.316681, 316.121033)">
         <title>z</title>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -251.984375, 72.593506)">z</text>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -289.773437, 54.452888)"><tspan>f(</tspan><tspan style="font-weight: bold;">c</tspan><tspan>)</tspan></text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 60 6 C 60 2.686 62.687 0 66 0 L 74 0 C 77.314 0 80 2.686 80 6 L 80 14 C 80 17.314 77.314 20 74 20 L 66 20 C 62.687 20 60 17.314 60 14 Z" class="figure-element" transform="matrix(0, -1, 1, 0, 60.000004, 79.999995)"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999998, 1, 0, -249.718811, 72.328453)">1</text>
       </g>
-      <g transform="matrix(0, 1, -1, 0, 99.739563, 217.867462)">
+      <g transform="matrix(0, 1, -1, 0, 108.739563, 217.867462)">
         <title>W_3 z</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 20, 0)" d="M 0 0 l 20 0 l 0 20 l -20 0 Z" class="figure-element figure-faded"/>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" class="figure-element figure-faded"/>
-        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -251.984375, 81.702843)">W  z</text>
-        <text x="89.886" y="282.322" class="figure-text subscript" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, -205.73082, 100.816574)">3</text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 14.254 -4.78 C 14.254 -8.094 16.94 -10.78 20.254 -10.78 L 34.254 -10.78 L 34.254 9.22 L 20.254 9.22 C 16.94 9.22 14.254 6.534 14.254 3.22 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 34.254 -10.78 L 54.254 -10.78 L 54.254 9.22 L 34.254 9.22 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 54.254 -10.78 L 68.254 -10.78 C 71.567 -10.78 74.254 -8.094 74.254 -4.78 L 74.254 3.22 C 74.254 6.534 71.567 9.22 68.254 9.22 L 54.254 9.22 Z" class="figure-element"/>
+        <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -275.51944, 43.672878)"><tspan>W</tspan><tspan dy="0.5ex" class="subscript">3</tspan><tspan dy="-0.5ex" > f(</tspan><tspan style="font-weight: bold;">c</tspan><tspan>)</tspan></text>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M -38.957 39.431 C -38.957 25.144 4.11 39.431 4.11 25.144 C 4.11 39.431 47.178 25.144 47.178 39.431" transform="matrix(0, -1, 1, 0, -28.177028, 36.398006)"/>
       </g>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 14.74 217.867 C 14.74 203.58 59.575 217.867 59.575 203.58 C 59.575 217.867 104.411 203.58 104.411 217.867"/>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 299.83194, 47.13044)">
+    <g transform="matrix(1, 0, 0, 1, 277.83194, 47.13044)">
       <title>y</title>
       <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 0, 0)" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
       <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 40, 0)" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
       <path style="fill: none; stroke: rgb(0, 0, 0);" transform="matrix(1, 0, 0, 1, 80, 0)" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
       <text x="-11.49" y="25.033" style="font-size: 13px; white-space: pre;" class="figure-text">y</text>
     </g>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 315.55194091796875, 87.13043975830078)" xlink:href="#arrow-up"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 355.5519104003906, 87.13043975830078)" xlink:href="#arrow-up"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 395.55194091796875, 87.13043975830078)" xlink:href="#arrow-up"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 399.832 87.13 C 390.684 146.36 568.465 108.805 568.465 140.037"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 359.832 87.13 C 364.112 121.964 345.196 121.278 345.196 140.037"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 319.832 87.13 C 329.905 146.36 139.486 101.777 139.486 140.037"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 293.55194091796875, 87.13043975830078)" xlink:href="#arrow-up"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 333.5519104003906, 87.13043975830078)" xlink:href="#arrow-up"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 373.55194091796875, 87.13043975830078)" xlink:href="#arrow-up"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 377.832 87.13 C 368.684 146.36 562.778 118.052 562.778 149.284"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 337.832 87.13 C 337.832 117.175 338.09 131.911 338.436 149.977"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 297.832 87.13 C 307.905 146.36 133.764 111.717 133.764 149.977"/>
   </g>
 </svg>

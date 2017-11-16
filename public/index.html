@@ -125,19 +125,15 @@
         </figcaption>
       </figure>
       <p>
-        We can cast FiLM as a bilinear transformation by appending a constant
-        <dt-math>1</dt-math>-valued feature to the input
-        <dt-math>\mathbf{x}</dt-math> (let's call the result
-        <dt-math>\tilde{\mathbf{x}}</dt-math> to disambiguate between the two)
-        and zeroing out the appropriate rows in <dt-math>W_k</dt-math> (calling
-        the result <dt-math>\tilde{W}_k</dt-math>, once again to disambiguate
-        between the two). For good measure, let's also change the name of the
-        second input vector from <dt-math>\mathbf{z}</dt-math> to
-        <dt-math>f(\mathbf{c})</dt-math> to emphasize its role as a
-        representation of the conditioning information
+        From now on, let's change the name of the second input vector from
+        <dt-math>\mathbf{z}</dt-math> to <dt-math>f(\mathbf{c})</dt-math> to
+        emphasize its role as a representation of the conditioning information
         <dt-math>\mathbf{c}</dt-math>.
       </p>
       <p>
+        We can cast FiLM as a bilinear transformation by appending a constant
+        <dt-math>1</dt-math>-valued feature to the input <dt-math>\mathbf{x}</dt-math>
+        and zeroing out the appropriate rows in <dt-math>W_k</dt-math>.
         Assuming that <dt-math>\gamma_k</dt-math> and <dt-math>\beta_k</dt-math>
         are the FiLM scaling and shifting coefficients for the
         <dt-math>k^{th}</dt-math> feature, the is idea is to fill
@@ -148,11 +144,7 @@
         </dt-math>
 
         where <dt-math>\gamma_k</dt-math> is the <dt-math>k^{th}</dt-math>
-        element of the resulting vector. The bilinear equation then becomes
-
-        <dt-math block>
-            y_k = \tilde{\mathbf{x}}^T \tilde{W}_k f(\mathbf{c}).
-        </dt-math>
+        element of the resulting vector.
       </p>
       <figure class="l-body-outset figure" id="film-as-bilinear-diagram">
         <figcaption>
@@ -161,22 +153,61 @@
           weight matrices <dt-math>W_k</dt-math> are zeroed out.
         </figcaption>
       </figure>
+      <p>
+        Interestingly, we can draw similar connections between bilinear
+        transformations on one side and gating or attention on the other side.
+        Doing so reveals a connection between FiLM, gating, and attention: they
+        can all be thought of as low-rank approximations of bilinear
+        transformations &mdash; albeit with added restrictions in some cases.
+      </p>
+      <p>
+        Feature-wise gating can be thought of as a bias-less version of FiLM
+        with sigmoidal scaling. Casting it as a bilinear transformation
+        requires us to stretch definitions a little. We need to append a
+        constant <dt-math>1</dt-math>-valued feature to
+        <dt-math>f(\mathbf{c})</dt-math>, zero out all but the
+        <dt-math>k^{th}</dt-math> row in <dt-math>W_k</dt-math>, and append a
+        column to <dt-math>W_k</dt-math> with a value of zero at the
+        <dt-math>k^{th}</dt-math> element and <dt-math>-\infty</dt-math> values
+        everywhere else. Finally, we need to add a sigmoidal non-linearity to
+        the result of the <dt-math>W_k f(\mathbf{c})</dt-math> product.
+      </p>
       <figure class="l-body-outset figure" id="gating-as-bilinear-diagram">
         <figcaption>
-          WRITEME.
-        </figcaption>
-      </figure>
-      <figure class="l-body-outset figure" id="attention-as-bilinear-diagram">
-        <figcaption>
-          WRITEME.
+          We can achieve gating with a modified version of a bilinear
+          transformation.  Greyed out elements in the weight matrices
+          <dt-math>W_k</dt-math> are zeroed out, and blacked out elements have
+          a value of <dt-math>-\infty</dt-math>. The <dt-math>\sigma</dt-math>
+          sign denotes a sigmoidal non-linearity.
         </figcaption>
       </figure>
       <p>
-        Interestingly, spatial and temporal attention can also be viewed as
-        low-rank approximations of a bilinear transformation. <span
-        class="todo"> TODO: elaborate.</span> Furthermore, FiLM itself can be
-        interpreted as a relaxed form of attention over features.
+        Attention does not operate feature-wise but rather computes a weighted
+        sum of the inputs as defined by the attention distribution. Casting it
+        as a bilinear transformation involves the same thought process than for
+        gating. We will illustrate it for attention over time, but the same
+        applies to attention over space. We unroll the sequence of vectors
+        <dt-math>\mathbf{x}^1, \mathbf{x}^2, \ldots</dt-math> into a single
+        vector <dt-math>\mathbf{x}</dt-math>, and then use the same combination
+        of augmenting <dt-math>f(\mathbf{c})</dt-math> with a constant
+        <dt-math>1</dt-math>-valued feature, setting the appropriate rows of
+        <dt-math>W_k</dt-math> to zero, and appending a column to
+        <dt-math>W_k</dt-math> filled with <dt-math>0</dt-math> or
+        <dt-math>-\infty</dt-math> in the appropriate places. This time,
+        however, we replace the sigmoidal non-linearity with a softmax
+        non-linearity, and we tie the non-zero and finite weights between the
+        different matrices <dt-math>W_k</dt-math>.
       </p>
+      <figure class="l-body-outset figure" id="attention-as-bilinear-diagram">
+        <figcaption>
+          We can achieve attention over time with a modified version of a
+          bilinear transformation. Greyed out elements in the weight matrices
+          <dt-math>W_k</dt-math> are zeroed out, and blacked out elements have
+          a value of <dt-math>-\infty</dt-math>. The two matrices
+          <dt-math>W_1</dt-math> and <dt-math>W_2</dt-math> share their finite,
+          non-zero weights.
+        </figcaption>
+      </figure>
       <p>
         FiLM also shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
         the architectural feature that a secondary neural network computes some
