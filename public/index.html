@@ -100,12 +100,17 @@
         <span class="todo">TODO: say a few words about what this allows us to do
         (e.g., shutting off feature maps)</span>
       </p>
+      <h3>Connecting FiLM, gating, and attention</h3>
       <p>
-        You may also think of FiLM as an efficient rank-1 approximation of a
-        bilinear transformation <dt-cite key="tenenbaum2000separating"></dt-cite>.
-        In general, a bilinear transformation defines the relationship between
-        two inputs <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
-        and the <dt-math>k^{th}</dt-math> output feature <dt-math>y_k</dt-math> as
+        Some readers may be confused about the difference between FiLM, gating,
+        and attention. It turns out that all three approaches can be formalized
+        using an extension of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>
+        which we propose to name <em>generalized bilinear transformations</em>.
+      </p>
+      <p>
+        A bilinear transformation defines the relationship between two inputs
+        <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> and the
+        <dt-math>k^{th}</dt-math> output feature <dt-math>y_k</dt-math> as
 
         <dt-math block>
           y_k = \mathbf{x}^T W_k \mathbf{z}.
@@ -125,12 +130,49 @@
         </figcaption>
       </figure>
       <p>
-        From now on, let's change the name of the second input vector from
-        <dt-math>\mathbf{z}</dt-math> to <dt-math>f(\mathbf{c})</dt-math> to
-        emphasize its role as a representation of the conditioning information
-        <dt-math>\mathbf{c}</dt-math>.
+        The generalized bilinear transformation we propose stretches the
+        definition of a bilinear transformation in two ways:
+        <ul>
+          <li>
+            It appends a <dt-math>1</dt-math>-valued feature to the inputs
+            <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> to
+            accommodate affine transformations &mdash; a common trick used to
+            simplify the algebra of neural networks:
+            <dt-math block>
+              \begin{aligned}
+                \tilde{\mathbf{x}} &= (x_0, \ldots, x_M, 1)^T, \\
+                \tilde{\mathbf{z}} &= (z_0, \ldots, z_N, 1)^T.
+              \end{aligned}
+            </dt-math>
+          </li>
+          <li>
+            It applies an activation function <dt-math>g(\cdot)</dt-math> to the
+            result of the matrix-vector product:
+            <dt-math block>
+              y_k = \tilde{\mathbf{x}}^T g(W_k \tilde{\mathbf{z}}).
+            </dt-math>
+          </li>
+        </ul>
+      </p>
+      <figure class="l-body-outset figure" id="generalized-bilinear-diagram">
+        <figcaption>
+          A generalized bilinear transformation mapping mapping the inputs
+          <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
+          &mdash; both 3-dimensional &mdash; to a 3-dimensional output.
+        </figcaption>
+      </figure>
+      <p>
+        The choice of activation function <dt-math>g(\cdot)</dt-math> and the
+        structure of the weight matrices <dt-math>W_k</dt-math> determines the
+        nature of the transformation: FiLM, gating, or attention.
       </p>
       <p>
+        From now on, we will consider <dt-math>\mathbf{z}</dt-math> to be a
+        function of the conditioning information, i.e., <dt-math>\mathbf{z} =
+        f(\mathbf{c})</dt-math>.
+      </p>
+      <p>
+        FiLM can be implemented with a generalized bilin
         We can cast FiLM as a bilinear transformation by appending a constant
         <dt-math>1</dt-math>-valued feature to the input <dt-math>\mathbf{x}</dt-math>
         and zeroing out the appropriate rows in <dt-math>W_k</dt-math>.
@@ -834,6 +876,7 @@
     <script src="assets/figure_film.js"></script>
     <script src="assets/figure_film_architecture.js"></script>
     <script src="assets/figure_bilinear.js"></script>
+    <script src="assets/figure_generalized_bilinear.js"></script>
     <script src="assets/figure_film_as_bilinear.js"></script>
     <script src="assets/figure_gating_as_bilinear.js"></script>
     <script src="assets/figure_attention_as_bilinear.js"></script>
