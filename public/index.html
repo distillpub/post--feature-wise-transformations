@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <link href="assets/style.css" type="text/css" rel="stylesheet">
     <script src="https://distill.pub/template.v1.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
+          integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
+          crossorigin="anonymous">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
 
@@ -37,13 +40,16 @@
       <dt-byline></dt-byline>
 
       <p>
-        Much like attentional interfaces, which have been the subject of a
-        previous <a href="https://distill.pub/2016/augmented-rnns/">Distill
-        article</a>, feature-wise affine transformations have emerged as a
-        powerful mechanism which allows to modulate the computation carried out
-        by a neural network.
+        Feature-wise affine transformations, gating, and attention have emerged
+        as poweful computational mechanisms for deep neural networks. In an
+        attempt to explain their differences, we will show that they are in fact
+        closely related from the point of view of bilinear transformations.
       </p>
+
+      <h2>Feature-wise affine transformations</h2>
       <p>
+        Feature-wise affine transformations have also emerged as a powerful
+        computational mechanism, having found use in various application areas.
         To center the discussion around a common language, we propose to use
         the nomenclature of <dt-cite key="perez2017film"></dt-cite>, which
         calls these transformations <em>FiLM</em>, for
@@ -100,11 +106,27 @@
         <span class="todo">TODO: say a few words about what this allows us to do
         (e.g., shutting off feature maps)</span>
       </p>
-      <h3>Connecting FiLM, gating, and attention</h3>
+
+      <h2>Gating</h2>
       <p>
-        Some readers may be confused about the difference between FiLM, gating,
-        and attention. It turns out that all three approaches can be formalized
-        using an extension of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>
+        <span class="todo">
+          TODO: add small introduction to gating.
+        </span>
+      </p>
+
+      <h2>Attention</h2>
+      <p>
+        <span class="todo">
+          TODO: add small introduction to attention, pointing back to the
+          <a href="https://distill.pub/2016/augmented-rnns/">Distill article</a>
+          on attention.
+        </span>
+      </p>
+
+      <h2>Connecting FiLM, gating, and attention</h2>
+      <p>
+        It turns out that all three approaches above can be formalized using an
+        extension of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>
         which we propose to name <em>generalized bilinear transformations</em>.
       </p>
       <p>
@@ -130,6 +152,13 @@
         </figcaption>
       </figure>
       <p>
+        In general, bilinear transformations are used to combine two inputs
+        without attaching a specific meaning to the nature of those inputs. For
+        the purpose of our discussion, we will consider
+        <dt-math>\mathbf{x}</dt-math> to be the representation being FiLM-ed,
+        gated, or attended to, and <dt-math>\mathbf{z}</dt-math> to be the
+        context used to FiLM, gate, or attend to.
+      <p>
         The generalized bilinear transformation we propose stretches the
         definition of a bilinear transformation in two ways:
         <ul>
@@ -146,10 +175,10 @@
             </dt-math>
           </li>
           <li>
-            It applies an activation function <dt-math>g(\cdot)</dt-math> to the
-            result of the matrix-vector product:
+            It applies an activation function <dt-math>g_k(\cdot)</dt-math> to
+            the result of the matrix-vector product:
             <dt-math block>
-              y_k = \tilde{\mathbf{x}}^T g(W_k \tilde{\mathbf{z}}).
+              y_k = \tilde{\mathbf{x}}^T g_k(W_k \tilde{\mathbf{z}}).
             </dt-math>
           </li>
         </ul>
@@ -162,37 +191,68 @@
         </figcaption>
       </figure>
       <p>
-        The choice of activation function <dt-math>g(\cdot)</dt-math> and the
+        The choice of activation function <dt-math>g_k(\cdot)</dt-math> and the
         structure of the weight matrices <dt-math>W_k</dt-math> determines the
-        nature of the transformation: FiLM, gating, or attention.
-      </p>
-      <p>
-        From now on, we will consider <dt-math>\mathbf{z}</dt-math> to be a
-        function of the conditioning information, i.e., <dt-math>\mathbf{z} =
-        f(\mathbf{c})</dt-math>.
-      </p>
-      <p>
-        FiLM can be implemented with a generalized bilin
-        We can cast FiLM as a bilinear transformation by appending a constant
-        <dt-math>1</dt-math>-valued feature to the input <dt-math>\mathbf{x}</dt-math>
-        and zeroing out the appropriate rows in <dt-math>W_k</dt-math>.
-        Assuming that <dt-math>\gamma_k</dt-math> and <dt-math>\beta_k</dt-math>
-        are the FiLM scaling and shifting coefficients for the
-        <dt-math>k^{th}</dt-math> feature, the is idea is to fill
-        <dt-math>W_k</dt-math> with zeros in such a way that
+        nature of the transformation: FiLM, gating, or attention. Going
+        backwards from the definition of each computation mechanism, we will now
+        explain how they can be expressed in terms of generalized bilinear
+        transformations. To simplify the discussion, we give the name
+        <em>context vector</em>  to the matrix-vector product:
 
         <dt-math block>
-          W_k f(\mathbf{c}) = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)^T,
+          \mathbf{v} = g_k(W_k \mathbf{z})
+        </dt-math>
+      </p>
+      <h3>FiLM as a generalized bilinear transformation</h3>
+      <p>
+        FiLM is represented by an equation of the form
+
+        <dt-math block>
+          y_k = \gamma_k x_k + \beta_k.
+        </dt-math>
+
+        This means that the nonlinearity should be the identity, and the context
+        vector should have the form
+
+        <dt-math block>
+          \mathbf{v} = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)^T,
         </dt-math>
 
         where <dt-math>\gamma_k</dt-math> is the <dt-math>k^{th}</dt-math>
-        element of the resulting vector.
+        element of the context vector. This means in turn that the weight matrix
+        <dt-math>W_k</dt-math> should be low-rank:
+
+        <dt-math block>
+          W_k = 
+          \begin{pmatrix}
+             0 & 0 \\
+             \vdots & \vdots \\
+             0 & 0 \\
+             1 & 0 \\
+             0 & 0 \\
+             \vdots & \vdots \\
+             0 & 0 \\
+             0 & 1
+          \end{pmatrix}
+          \begin{pmatrix}
+             w_{k, 1, 1} & \cdots & w_{k, 1, N} \\
+             w_{k, 2, 1} & \cdots & w_{k, 2, N}
+          \end{pmatrix}
+        </dt-math>
+      </p>
+      <p>
+      Here is an example for a 3-dimensional <dt-math>\mathbf{x}</dt-math>
+      and a 2-dimensional <dt-math>\mathbf{z}</dt-math> (reminder: this means
+      a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
+      <dt-math>\tilde{\mathbf{z}}</dt-math>):
       </p>
       <figure class="l-body-outset figure" id="film-as-bilinear-diagram">
         <figcaption>
-          We can achieve the feature-wise affine transformation carried out by
-          FiLM using a bilinear transformation. Greyed out elements in the
-          weight matrices <dt-math>W_k</dt-math> are zeroed out.
+          Generalized bilinear weight matrices for a FiLM layer applied on a
+          3-dimensional input <dt-math>\mathbf{x}</dt-math> within the context
+          of a 2-dimensional <dt-math>\mathbf{z}</dt-math>. Grey elements
+          have value <dt-math>0</dt-math>, white elements have value
+          <dt-math>1</dt-math>, and color elements have arbitrary values.
         </figcaption>
       </figure>
       <p>
