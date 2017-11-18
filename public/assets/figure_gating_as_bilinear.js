@@ -1,7 +1,7 @@
 function buildFigure () {
     function styleFigure () {
         // --- Retrieve svg element -------------------------------------------
-        var svg = d3.select("figure.figure#film-as-bilinear-diagram").select("svg");
+        var svg = d3.select("figure.figure#gating-as-bilinear-diagram").select("svg");
 
         // --- Clear element-specific styling ---------------------------------
         svg.selectAll(".figure-element, .figure-group, .figure-line, .figure-path")
@@ -13,7 +13,7 @@ function buildFigure () {
         var dataW1 = [];
         var dataW2 = [];
         var dataW3 = [];
-        for(var i = 0; i < 6; i++) {
+        for(var i = 0; i < 3; i++) {
             dataW1.push(Math.random() * 360);
             dataW2.push(Math.random() * 360);
             dataW3.push(Math.random() * 360);
@@ -56,9 +56,9 @@ function buildFigure () {
             .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
     }
 
-    d3.xml("assets/film_as_bilinear.svg").mimeType("image/svg+xml").get(function(error, xml) {
+    d3.xml("assets/gating_as_bilinear.svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
-        d3.select("figure.figure#film-as-bilinear-diagram").each(function () {
+        d3.select("figure.figure#gating-as-bilinear-diagram").each(function () {
             this.insertBefore(xml.documentElement, this.firstChild);
         });
         styleFigure();

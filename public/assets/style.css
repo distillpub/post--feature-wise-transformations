@@ -27,6 +27,11 @@
   fill-opacity: 0.8;
 }
 
+.figure-black {
+  fill: #000;
+  fill-opacity: 0.8;
+}
+
 .figure-box {
   rx: 6px;
   ry: 6px;
@@ -39,8 +44,11 @@
   font-family: "Open Sans";
 }
 
+.figure-large-text {
+  font-size: 22px;
+}
+
 .subscript {
-  vertical-align: sub;
   font-size: 8px;
 }
 
