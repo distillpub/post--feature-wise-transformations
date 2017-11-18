@@ -40,16 +40,13 @@
       <dt-byline></dt-byline>
 
       <p>
-        Feature-wise affine transformations, gating, and attention have emerged
-        as poweful computational mechanisms for deep neural networks. In an
-        attempt to explain their differences, we will show that they are in fact
-        closely related from the point of view of bilinear transformations.
+        Much like attentional interfaces, which have been the subject of a
+        previous <a href="https://distill.pub/2016/augmented-rnns/">Distill
+        article</a>, feature-wise affine transformations have emerged as a
+        powerful mechanism which allows to modulate the computation carried out
+        by a neural network.
       </p>
-
-      <h2>Feature-wise affine transformations</h2>
       <p>
-        Feature-wise affine transformations have also emerged as a powerful
-        computational mechanism, having found use in various application areas.
         To center the discussion around a common language, we propose to use
         the nomenclature of <dt-cite key="perez2017film"></dt-cite>, which
         calls these transformations <em>FiLM</em>, for
@@ -106,216 +103,19 @@
         <span class="todo">TODO: say a few words about what this allows us to do
         (e.g., shutting off feature maps)</span>
       </p>
-
-      <h2>Gating</h2>
       <p>
-        <span class="todo">
-          TODO: add small introduction to gating.
-        </span>
-      </p>
-
-      <h2>Attention</h2>
-      <p>
-        <span class="todo">
-          TODO: add small introduction to attention, pointing back to the
-          <a href="https://distill.pub/2016/augmented-rnns/">Distill article</a>
-          on attention.
-        </span>
-      </p>
-
-      <h2>Connecting FiLM, gating, and attention</h2>
-      <p>
-        It turns out that all three approaches above can be formalized using an
-        extension of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>
-        which we propose to name <em>generalized bilinear transformations</em>.
-      </p>
-      <p>
-        A bilinear transformation defines the relationship between two inputs
-        <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> and the
-        <dt-math>k^{th}</dt-math> output feature <dt-math>y_k</dt-math> as
-
-        <dt-math block>
-          y_k = \mathbf{x}^T W_k \mathbf{z}.
-        </dt-math>
-
-        Note that for each output feature <dt-math>y_k</dt-math> we have a
-        separate matrix <dt-math>W_k</dt-math>, so the full set of weights forms
-        a 3-tensor.
-      </p>
-      <figure class="l-body-outset figure" id="bilinear-diagram">
-        <figcaption>
-          A bilinear transformation mapping <dt-math>\mathbf{x}</dt-math> and
-          <dt-math>\mathbf{z}</dt-math> &mdash; both 3-dimensional &mdash; to a
-          3-dimensional output. Each output element <dt-math>y_k</dt-math> is
-          computed as a vector-matrix-vector product using a separate matrix
-          <dt-math>W_k</dt-math>.
-        </figcaption>
-      </figure>
-      <p>
-        In general, bilinear transformations are used to combine two inputs
-        without attaching a specific meaning to the nature of those inputs. For
-        the purpose of our discussion, we will consider
-        <dt-math>\mathbf{x}</dt-math> to be the representation being FiLM-ed,
-        gated, or attended to, and <dt-math>\mathbf{z}</dt-math> to be the
-        context used to FiLM, gate, or attend to.
-      <p>
-        The generalized bilinear transformation we propose stretches the
-        definition of a bilinear transformation in two ways:
-        <ul>
-          <li>
-            It appends a <dt-math>1</dt-math>-valued feature to the inputs
-            <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> to
-            accommodate affine transformations &mdash; a common trick used to
-            simplify the algebra of neural networks:
-            <dt-math block>
-              \begin{aligned}
-                \tilde{\mathbf{x}} &= (x_0, \ldots, x_M, 1)^T, \\
-                \tilde{\mathbf{z}} &= (z_0, \ldots, z_N, 1)^T.
-              \end{aligned}
-            </dt-math>
-          </li>
-          <li>
-            It applies an activation function <dt-math>g_k(\cdot)</dt-math> to
-            the result of the matrix-vector product:
-            <dt-math block>
-              y_k = \tilde{\mathbf{x}}^T g_k(W_k \tilde{\mathbf{z}}).
-            </dt-math>
-          </li>
-        </ul>
-      </p>
-      <figure class="l-body-outset figure" id="generalized-bilinear-diagram">
-        <figcaption>
-          A generalized bilinear transformation mapping mapping the inputs
-          <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
-          &mdash; both 3-dimensional &mdash; to a 3-dimensional output.
-        </figcaption>
-      </figure>
-      <p>
-        The choice of activation function <dt-math>g_k(\cdot)</dt-math> and the
-        structure of the weight matrices <dt-math>W_k</dt-math> determines the
-        nature of the transformation: FiLM, gating, or attention. Going
-        backwards from the definition of each computation mechanism, we will now
-        explain how they can be expressed in terms of generalized bilinear
-        transformations. To simplify the discussion, we give the name
-        <em>context vector</em>  to the matrix-vector product:
-
-        <dt-math block>
-          \mathbf{v} = g_k(W_k \mathbf{z})
-        </dt-math>
-      </p>
-      <h3>FiLM as a generalized bilinear transformation</h3>
-      <p>
-        FiLM is represented by an equation of the form
-
-        <dt-math block>
-          y_k = \gamma_k x_k + \beta_k.
-        </dt-math>
-
-        This means that the nonlinearity should be the identity, and the context
-        vector should have the form
-
-        <dt-math block>
-          \mathbf{v} = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)^T,
-        </dt-math>
-
-        where <dt-math>\gamma_k</dt-math> is the <dt-math>k^{th}</dt-math>
-        element of the context vector. This means in turn that the weight matrix
-        <dt-math>W_k</dt-math> should be low-rank:
-
-        <dt-math block>
-          W_k = 
-          \begin{pmatrix}
-             0 & 0 \\
-             \vdots & \vdots \\
-             0 & 0 \\
-             1 & 0 \\
-             0 & 0 \\
-             \vdots & \vdots \\
-             0 & 0 \\
-             0 & 1
-          \end{pmatrix}
-          \begin{pmatrix}
-             w_{k, 1, 1} & \cdots & w_{k, 1, N} \\
-             w_{k, 2, 1} & \cdots & w_{k, 2, N}
-          \end{pmatrix}
-        </dt-math>
-      </p>
-      <p>
-      Here is an example for a 3-dimensional <dt-math>\mathbf{x}</dt-math>
-      and a 2-dimensional <dt-math>\mathbf{z}</dt-math> (reminder: this means
-      a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
-      <dt-math>\tilde{\mathbf{z}}</dt-math>):
-      </p>
-      <figure class="l-body-outset figure" id="film-as-bilinear-diagram">
-        <figcaption>
-          Generalized bilinear weight matrices for a FiLM layer applied on a
-          3-dimensional input <dt-math>\mathbf{x}</dt-math> within the context
-          of a 2-dimensional <dt-math>\mathbf{z}</dt-math>. Grey elements
-          have value <dt-math>0</dt-math>, white elements have value
-          <dt-math>1</dt-math>, and color elements have arbitrary values.
-        </figcaption>
-      </figure>
-      <p>
-        Interestingly, we can draw similar connections between bilinear
-        transformations on one side and gating or attention on the other side.
-        Doing so reveals a connection between FiLM, gating, and attention: they
-        can all be thought of as low-rank approximations of bilinear
-        transformations &mdash; albeit with added restrictions in some cases.
-      </p>
-      <p>
-        Feature-wise gating can be thought of as a bias-less version of FiLM
-        with sigmoidal scaling. Casting it as a bilinear transformation
-        requires us to stretch definitions a little. We need to append a
-        constant <dt-math>1</dt-math>-valued feature to
-        <dt-math>f(\mathbf{c})</dt-math>, zero out all but the
-        <dt-math>k^{th}</dt-math> row in <dt-math>W_k</dt-math>, and append a
-        column to <dt-math>W_k</dt-math> with a value of zero at the
-        <dt-math>k^{th}</dt-math> element and <dt-math>-\infty</dt-math> values
-        everywhere else. Finally, we need to add a sigmoidal non-linearity to
-        the result of the <dt-math>W_k f(\mathbf{c})</dt-math> product.
-      </p>
-      <figure class="l-body-outset figure" id="gating-as-bilinear-diagram">
-        <figcaption>
-          We can achieve gating with a modified version of a bilinear
-          transformation.  Greyed out elements in the weight matrices
-          <dt-math>W_k</dt-math> are zeroed out, and blacked out elements have
-          a value of <dt-math>-\infty</dt-math>. The <dt-math>\sigma</dt-math>
-          sign denotes a sigmoidal non-linearity.
-        </figcaption>
-      </figure>
-      <p>
-        Attention does not operate feature-wise but rather computes a weighted
-        sum of the inputs as defined by the attention distribution. Casting it
-        as a bilinear transformation involves the same thought process than for
-        gating. We will illustrate it for attention over time, but the same
-        applies to attention over space. We unroll the sequence of vectors
-        <dt-math>\mathbf{x}^1, \mathbf{x}^2, \ldots</dt-math> into a single
-        vector <dt-math>\mathbf{x}</dt-math>, and then use the same combination
-        of augmenting <dt-math>f(\mathbf{c})</dt-math> with a constant
-        <dt-math>1</dt-math>-valued feature, setting the appropriate rows of
-        <dt-math>W_k</dt-math> to zero, and appending a column to
-        <dt-math>W_k</dt-math> filled with <dt-math>0</dt-math> or
-        <dt-math>-\infty</dt-math> in the appropriate places. This time,
-        however, we replace the sigmoidal non-linearity with a softmax
-        non-linearity, and we tie the non-zero and finite weights between the
-        different matrices <dt-math>W_k</dt-math>.
-      </p>
-      <figure class="l-body-outset figure" id="attention-as-bilinear-diagram">
-        <figcaption>
-          We can achieve attention over time with a modified version of a
-          bilinear transformation. Greyed out elements in the weight matrices
-          <dt-math>W_k</dt-math> are zeroed out, and blacked out elements have
-          a value of <dt-math>-\infty</dt-math>. The two matrices
-          <dt-math>W_1</dt-math> and <dt-math>W_2</dt-math> share their finite,
-          non-zero weights.
-        </figcaption>
-      </figure>
-      <p>
-        FiLM also shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
+        FiLM shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
         the architectural feature that a secondary neural network computes some
         of the parameter values in the primary network. From that perspective,
         the FiLM generator can be viewed as a specialized instance of a
         HyperNetwork which predicts the FiLM parameters of the FiLM-ed network.
+      </p>
+      <p>
+        FiLM is also closely connected to gating and attention through the
+        concept of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
+        Because this connection deserves more than a simple paragraph, we decided
+        to devote a <a href="#bilinear-connection">separate section</a> of the
+        article to it.
       </p>
       <p>
         Finally, although attempts to connect deep learning results to the way
@@ -354,13 +154,13 @@
           <img src="assets/preview_self.svg" />
           <figcaption>Self-conditioning</figcaption>
         </a>
-        <a href="#attention-over-features">
-          <img src="assets/preview_attention.svg" />
-          <figcaption>Attention over features</figcaption>
-        </a>
         <a href="#gating">
           <img src="assets/preview_gating.svg" />
           <figcaption>Gating</figcaption>
+        </a>
+        <a href="#attention-over-features">
+          <img src="assets/preview_attention.svg" />
+          <figcaption>Gating-attention hybrids</figcaption>
         </a>
       </figure>
 
@@ -373,6 +173,19 @@
         <a href="#film-as-task-embeddings">
           <img src="assets/preview_tsne.svg" />
           <figcaption>FiLM parameters as task embeddings</figcaption>
+        </a>
+      </figure>
+
+      <p>
+        Finally, as noted above, we reserved a section of this article for the
+        discussion of the connection between bilinear transformations, FiLM,
+        gating, and attention:
+      </p>
+
+      <figure class="l-body-outset previews">
+        <a href="#bilinear-connection">
+          <img src="assets/preview_tsne.svg" />
+          <figcaption>Connecting bilinear transformations, FiLM, gating, and attention</figcaption>
         </a>
       </figure>
 
@@ -687,6 +500,257 @@
 
       <h2 id="film-as-task-embeddings">FiLM parameters as task embeddings</h2>
       <div class="l-body-outset figure" id="clevr-tsne"></div>
+
+      <hr />
+
+      <h1 id="bilinear-connection">Connecting FiLM, gating, and attention</h1>
+
+      <h2>Gating</h2>
+      <p>
+        <span class="todo">
+          TODO: add small introduction to gating.
+        </span>
+      </p>
+
+      <h2>Attention</h2>
+      <p>
+        <span class="todo">
+          TODO: add small introduction to attention, pointing back to the
+          <a href="https://distill.pub/2016/augmented-rnns/">Distill article</a>
+          on attention.
+        </span>
+      </p>
+
+      <p>
+        It turns out that all three approaches above can be formalized using an
+        extension of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>
+        which we propose to name <em>generalized bilinear transformations</em>.
+      </p>
+      <p>
+        A bilinear transformation defines the relationship between two inputs
+        <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> and the
+        <dt-math>k^{th}</dt-math> output feature <dt-math>y_k</dt-math> as
+
+        <dt-math block>
+          y_k = \mathbf{x}^T W_k \mathbf{z}.
+        </dt-math>
+
+        Note that for each output feature <dt-math>y_k</dt-math> we have a
+        separate matrix <dt-math>W_k</dt-math>, so the full set of weights forms
+        a 3-tensor.
+      </p>
+      <figure class="l-body-outset figure" id="bilinear-diagram">
+        <figcaption>
+          A bilinear transformation mapping <dt-math>\mathbf{x}</dt-math> and
+          <dt-math>\mathbf{z}</dt-math> &mdash; both 3-dimensional &mdash; to a
+          3-dimensional output. Each output element <dt-math>y_k</dt-math> is
+          computed as a vector-matrix-vector product using a separate matrix
+          <dt-math>W_k</dt-math>.
+        </figcaption>
+      </figure>
+      <p>
+        In general, bilinear transformations are used to combine two inputs
+        without attaching a specific meaning to the nature of those inputs. For
+        the purpose of our discussion, we will consider
+        <dt-math>\mathbf{x}</dt-math> to be the representation being FiLM-ed,
+        gated, or attended to, and <dt-math>\mathbf{z}</dt-math> to be the
+        context used to FiLM, gate, or attend to.
+      <p>
+        The generalized bilinear transformation we propose stretches the
+        definition of a bilinear transformation in two ways:
+        <ul>
+          <li>
+            It appends a <dt-math>1</dt-math>-valued feature to the inputs
+            <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> to
+            accommodate affine transformations &mdash; a common trick used to
+            simplify the algebra of neural networks:
+            <dt-math block>
+              \begin{aligned}
+                \tilde{\mathbf{x}} &= (x_0, \ldots, x_M, 1)^T, \\
+                \tilde{\mathbf{z}} &= (z_0, \ldots, z_N, 1)^T.
+              \end{aligned}
+            </dt-math>
+          </li>
+          <li>
+            It applies an activation function <dt-math>g_k(\cdot)</dt-math> to
+            the result of the matrix-vector product:
+            <dt-math block>
+              y_k = \tilde{\mathbf{x}}^T g_k(W_k \tilde{\mathbf{z}}).
+            </dt-math>
+          </li>
+        </ul>
+      </p>
+      <figure class="l-body-outset figure" id="generalized-bilinear-diagram">
+        <figcaption>
+          A generalized bilinear transformation mapping mapping the inputs
+          <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
+          &mdash; both 3-dimensional &mdash; to a 3-dimensional output.
+        </figcaption>
+      </figure>
+      <p>
+        The choice of activation function <dt-math>g_k(\cdot)</dt-math> and the
+        structure of the weight matrices <dt-math>W_k</dt-math> determines the
+        nature of the transformation: FiLM, gating, or attention. Going
+        backwards from the definition of each computation mechanism, we will now
+        explain how they can be expressed in terms of generalized bilinear
+        transformations. To simplify the discussion, we give the name
+        <em>context vector</em> to the matrix-vector product:
+
+        <dt-math block>
+          \mathbf{v} = g_k(W_k \tilde{\mathbf{z}})
+        </dt-math>
+      </p>
+      <h3>FiLM as a generalized bilinear transformation</h3>
+      <p>
+        FiLM is represented by an equation of the form
+
+        <dt-math block>
+          y_k = \gamma_k x_k + \beta_k.
+        </dt-math>
+
+        This means that the nonlinearity should be the identity function
+        <dt-math>g_k(\mathbf{u}) = \mathbf{z}</dt-math>, and the context vector
+        should have the form
+
+        <dt-math block>
+          \mathbf{v} = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)^T,
+        </dt-math>
+
+        where <dt-math>\gamma_k</dt-math> is the <dt-math>k^{th}</dt-math>
+        element of the context vector. This means in turn that the weight matrix
+        <dt-math>W_k</dt-math> should be low-rank and have the form
+
+        <dt-math block>
+          W_k =
+          \begin{pmatrix}
+             0 & 0 \\
+             \vdots & \vdots \\
+             0 & 0 \\
+             1 & 0 \\
+             0 & 0 \\
+             \vdots & \vdots \\
+             0 & 0 \\
+             0 & 1
+          \end{pmatrix}
+          \begin{pmatrix}
+             w_{k, 1, 1} & \cdots & w_{k, 1, N} \\
+             w_{k, 2, 1} & \cdots & w_{k, 2, N}
+          \end{pmatrix}.
+        </dt-math>
+      </p>
+      <p>
+      Here is an example for a 3-dimensional <dt-math>\mathbf{x}</dt-math>
+      and a 2-dimensional <dt-math>\mathbf{z}</dt-math> (reminder: this means
+      a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
+      <dt-math>\tilde{\mathbf{z}}</dt-math>):
+      </p>
+      <figure class="l-body-outset figure" id="film-as-bilinear-diagram">
+        <figcaption>
+          Generalized bilinear weight matrices for a FiLM layer applied on a
+          3-dimensional input <dt-math>\mathbf{x}</dt-math> within the context
+          of a 2-dimensional <dt-math>\mathbf{z}</dt-math>. Grey elements
+          have value <dt-math>0</dt-math>, white elements have value
+          <dt-math>1</dt-math>, and color elements have arbitrary values.
+        </figcaption>
+      </figure>
+      <h3>Gating as a generalized bilinear transformation</h3>
+      <p>
+        Because feature-wise gating layers can be seen as a bias-less FiLM
+        layers with sigmoidal scaling, representing them as a generalized
+        bilinear transformation is a straightforward adaptation with respect to
+        FiLM. Feature-wise gating is represented by an equation of the form
+
+        <dt-math block>
+          y_k = \alpha_k x_k, \quad \alpha_k \in [0, 1].
+        </dt-math>
+
+        This means that the context vector should have the form
+
+        <dt-math block>
+          \mathbf{v} = (0, \ldots, 0, \sigma(a_k), 0, \ldots, 0, 0)^T,
+        </dt-math>
+
+        which is achieved through a combination of a "one-hot sigmoid"
+        nonlinearity
+
+        <dt-math block>
+          g(\mathbf{u}) = (u_0, \ldots, u_{k-1}, \sigma(u_k), u_{k+1}, \ldots, u_{N})^T,
+        </dt-math>
+
+        and a low-rank weight matrix <dt-math>W_k</dt-math> of the form
+
+        <dt-math block>
+          W_k =
+          \begin{pmatrix}
+             0 \\
+             \vdots \\
+             0 \\
+             1 \\
+             0 \\
+             \vdots \\
+             0
+          \end{pmatrix}
+          \begin{pmatrix}
+             w_{k, 1} & \cdots & w_{k, N}
+          \end{pmatrix}.
+        </dt-math>
+      </p>
+      <p>
+      Here is an example for a 3-dimensional <dt-math>\mathbf{x}</dt-math>
+      and a 2-dimensional <dt-math>\mathbf{z}</dt-math> (reminder: this means
+      a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
+      <dt-math>\tilde{\mathbf{z}}</dt-math>):
+      </p>
+      <figure class="l-body-outset figure" id="gating-as-bilinear-diagram">
+        <figcaption>
+          Generalized bilinear weight matrices for a gating layer applied on a
+          3-dimensional input <dt-math>\mathbf{x}</dt-math> within the context
+          of a 2-dimensional <dt-math>\mathbf{z}</dt-math>. Grey elements
+          have value <dt-math>0</dt-math>, white elements have value
+          <dt-math>1</dt-math>, and color elements have arbitrary values.
+        </figcaption>
+      </figure>
+      <h3>Attention as a generalized bilinear transformation</h3>
+      <p>
+        Attention is closely related to gating in the generalized bilinear
+        formulation, save from one crucial detail: because it implements a
+        weighted sum over spatial or temporal locations, elements of the
+        vector <dt-math>\mathbf{x}</dt-math> represent <em>the same feature
+        at different spatial or temporal locations</em> rather than different
+        features. It is represented by an equation of the form
+
+        <dt-math block>
+          y_k = \sum_{t=1}^T p^t x_k^t, \quad p^t > 0, \quad \sum_{t=1}^T p^t = 1.
+        </dt-math>
+
+        This means that the context vector should have the form
+
+        <dt-math block>
+          \mathbf{v} = (p^1, \ldots, p^T, 0)^T,
+        </dt-math>
+
+        which is achieved through a combination of an "all-but-last softmax"
+        nonlinearity
+
+        <dt-math block>
+          g(\mathbf{u}) = (\textrm{softmax}(\mathbf{u}_{1:T-1}), 0)^T,
+        </dt-math>
+
+        and a full-rank weight matrix <dt-math>W_k</dt-math>. Because the same
+        weighted sum is applied to all features over spatial or temporal
+        locations, matrices <dt-math>W_k</dt-math> are tied. Assuming a matrix
+        <dt-math>X</dt-math> in which rows represent features and columns
+        represent spatial or temporal locasions, we can represent the output
+        <dt-math>\mathbf{y}</dt-math> compactly as
+
+        <dt-math block>
+          \mathbf{y} = \tilde{X} g(W\tilde{\mathbf{z}})
+        </dt-math>
+
+        where <dt-math>g(\cdot)</dt-math> is the "all-but-one" softmax
+        introduced above.
+      </p>
+
     </dt-article>
 
     <dt-appendix>
