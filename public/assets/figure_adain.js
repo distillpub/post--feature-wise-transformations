@@ -1,7 +1,7 @@
 function buildFigure () {
     function styleFigure () {
         // --- Retrieve svg element -------------------------------------------
-        var svg = d3.select("div.figure#adain-diagram").select("svg");
+        var svg = d3.select("figure.figure#adain-diagram").select("svg");
 
         // --- Clear element-specific styling ---------------------------------
         svg.selectAll(".figure-element, .figure-group, .figure-line, .figure-path")
@@ -38,8 +38,8 @@ function buildFigure () {
 
     d3.xml("assets/adain.svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
-        d3.select("div.figure#adain-diagram").each(function () {
-            this.appendChild(xml.documentElement);
+        d3.select("figure.figure#adain-diagram").each(function () {
+            this.insertBefore(xml.documentElement, this.firstChild);
         });
         styleFigure();
     });

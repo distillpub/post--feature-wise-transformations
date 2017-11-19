@@ -1,5 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="724" height="480" style="stroke: rgb(255, 0, 0); stroke-width: 1.5; fill: none;"/>
-  <text x="319.596" y="255.041" class="figure-text" style="fill: rgb(255, 0, 0); font-size: 13px; white-space: pre;">TODO: WRITEME</text>
+<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
+      <title>Right arrow</title>
+      <path style="stroke: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-up" viewBox="0 0 8.56 7.69">
+      <title>Up arrow</title>
+      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-left" viewBox="0 0 7.69 8.56">
+      <title>Left arrow</title>
+      <path style="stroke: rgb(0, 0, 0);" d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" class="figure-path"/>
+    </symbol>
+    <symbol id="arrow-down" viewBox="0 0 8.56 7.69">
+      <title>Down arrow</title>
+      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
+    </symbol>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 129.861893, 39.941525)" class="style-transfer-network">
+    <title>PixelCNN layer</title>
+    <rect x="21.358" y="26.285" width="553.794" height="367.547" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <g transform="matrix(1, 0, 0, 1, -48.231125, 170.429901)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="158.435" y="260.736" style="font-size: 13px; white-space: pre;" class="figure-text">vertical stack</text>
+    </g>
+    <text x="29.371" y="46.7" style="font-size: 13px; white-space: pre;" class="figure-text">PixelCNN layer</text>
+    <g transform="matrix(1, 0, 0, 1, -48.231117, 107.367996)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">NxN convolution</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -101.444626, -16.694113)">
+      <rect x="130.804" y="237.233" width="103.01" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="139.985" y="260.806" style="font-size: 13px; white-space: pre;" class="figure-text">conditional bias</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -82.570061, -15.02411)">
+      <rect x="240.644" y="235.563" width="103.01" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="249.825" y="259.136" style="font-size: 13px; white-space: pre;" class="figure-text">conditional bias</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -58.566044, -10.592142)">
+      <rect x="343.479" y="231.131" width="103.01" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="352.66" y="254.704" style="font-size: 13px; white-space: pre;" class="figure-text">conditional bias</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -68.891609, -12.365005)">
+      <rect x="481.775" y="232.904" width="103.01" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="490.956" y="256.477" style="font-size: 13px; white-space: pre;" class="figure-text">conditional bias</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 299.275909, 170.429871)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="151.296" y="260.722" style="font-size: 13px; white-space: pre;" class="figure-text">horizontal stack</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 206.472916, 107.368004)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">1xN convolution</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 105.759056, 54.336937)">
+      <rect x="122.142" y="237.233" width="119.739" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="138.516" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">1x1 convolution</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 62.318848, -23.04941)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="83.459" y1="151.969" x2="83.459" y2="136.969" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="75.959" y1="144.469" x2="90.959" y2="144.469" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 5.001404, -30.14143)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="387.882" cy="151.561" rx="20" ry="20" class="figure-element"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="387.882" y1="159.061" x2="387.882" y2="144.061" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 220.777672, -229.882731)"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="380.382" y1="151.561" x2="395.382" y2="151.561" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 220.777672, -229.882731)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 50.888901, -30.14143)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="494.263" cy="83.299" rx="20" ry="20" class="figure-element"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="494.263" y1="90.799" x2="494.263" y2="75.799" class="figure-line"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="486.763" y1="83.299" x2="501.763" y2="83.299" class="figure-line"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 48.196926, -9.744976)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="353.308" cy="319.998" rx="20" ry="20" class="figure-element"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="353.308" y1="327.498" x2="353.308" y2="312.498" class="figure-line"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="345.808" y1="319.998" x2="360.808" y2="319.998" class="figure-line"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -2.594632, 27.936357)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
+      <text x="71.321" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">tanh</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 126.119942, 27.936356)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
+      <text x="79.616" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">σ</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 252.958954, 27.936357)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
+      <text x="71.321" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">tanh</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 365.889893, 27.936356)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
+      <text x="79.616" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">σ</text>
+    </g>
+    <line style="stroke: rgb(0, 0, 0);" x1="145.778" y1="407.663" x2="145.778" y2="381.967" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 141.49786376953125, 381.96697998046875)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="80.864" y1="220.539" x2="80.864" y2="192.405" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 76.58436584472656, 192.40533447265625)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="209.579" y1="220.539" x2="209.579" y2="192.405" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 205.29893493652344, 192.4053192138672)" xlink:href="#arrow-up"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 76.58436584472656, 257.9049072265625)" xlink:href="#arrow-up"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 205.29891967773438, 257.9049072265625)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="545.152" y1="408.607" x2="545.152" y2="73.158" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 540.8719482421875, 73.1575698852539)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="347.64" y1="310.253" x2="381.505" y2="310.253" class="figure-line"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="401.505" y1="344.601" x2="401.505" y2="330.253" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 397.22491455078125, 330.2530212402344)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="336.418" y1="220.539" x2="336.418" y2="192.405" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 332.137939453125, 192.40533447265625)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="449.349" y1="220.539" x2="449.349" y2="192.405" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 445.0688781738281, 192.40533447265625)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="144.628" y1="101.42" x2="144.628" y2="6.214" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 139.7779998779297, 6.214320182800293)" xlink:href="#arrow-up"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="545.152" y1="33.158" x2="545.152" y2="6.214" class="figure-line"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 540.5919189453125, 6.214324951171875)" xlink:href="#arrow-up"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 545.152 407.663 L 545.152 363.437 L 477.041 363.437" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 144.628 344.601 L 144.628 298.217 L 80.864 298.217 L 80.864 256.158" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 209.579 256.158 L 209.579 302.542 L 144.628 302.542 L 144.628 344.601" class="figure-line" transform="matrix(-1, 0, 0, -1, 354.207013, 600.759019)"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 227.901 310.637 L 227.901 344.601 L 144.628 344.601" class="figure-line" transform="matrix(-1, 0, 0, -1, 372.528996, 655.238044)"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 331.7606506347656, 259.1977844238281)" xlink:href="#arrow-up"/>
+    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 460.4751892089844, 259.1977844238281)" xlink:href="#arrow-up"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 399.804 290.253 L 399.804 273.05 L 336.04 273.05 L 336.04 257.451" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 464.755 257.451 L 464.755 274.654 L 399.804 274.654 L 399.804 290.253" class="figure-line" transform="matrix(-1, 0, 0, -1, 864.558979, 547.703962)"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 449.349 152.405 L 449.349 120.533 L 412.883 120.533" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 209.579 152.405 L 209.579 120.533 L 165.778 120.533" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 125.778 120.533 L 125.778 152.405 L 80.864 152.405" class="figure-line" transform="matrix(-1, 0, 0, -1, 206.641998, 272.937965)"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 372.883 120.533 L 372.883 152.405 L 336.418 152.405" class="figure-line" transform="matrix(-1, 0, 0, -1, 709.300988, 272.937965)"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 525.152 53.2 L 525.152 101.42 L 397.225 101.42" class="figure-line" transform="matrix(-1, 0, 0, -1, 922.376981, 154.620021)"/>
+    <g transform="matrix(1, 0, 0, 1, -305.582794, -24.958437)">
+      <rect x="204.588" y="166.378" width="40.898" height="181.735" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 95.602707, 486.291107)" class="figure-text">high-level image description</text>
+    </g>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M -58.383 222.482 C -56.894 216.525 31.102 231.556 30.268 234.893" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M -60.156 200.319 C 69.655 187.871 187.892 235.651 158.813 238.439" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M -58.383 181.702 C -30.628 159.284 316.517 206.873 282.924 234.006" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M -61.043 162.199 C -55.999 155.375 444.515 191.696 413.242 234.006" class="figure-line"/>
+  </g>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 602.2108154296875, 398.9455261230469)" xlink:href="#arrow-left"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 350.07293701171875, 345.9144592285156)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 503.6768493652344, 345.9145202636719)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 247.94973754882812, 157.0811004638672)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 495.0553283691406, 157.08108520507812)" xlink:href="#arrow-right"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 542.7453002929688, 157.0811004638672)" xlink:href="#arrow-left"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 295.6397399902344, 157.08111572265625)" xlink:href="#arrow-left"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 647.3237915039062, 88.819091796875)" xlink:href="#arrow-right"/>
 </svg>

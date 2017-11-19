@@ -1,5 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="724" height="480" style="stroke: rgb(255, 0, 0); stroke-width: 1.5; fill: none;"/>
-  <text x="319.596" y="255.041" class="figure-text" style="fill: rgb(255, 0, 0); font-size: 13px; white-space: pre;">TODO: WRITEME</text>
+  <g transform="matrix(1, 0, 0, 1, -94.4758, 40.914658)" class="style-transfer-network">
+    <title>linguistic pipeline</title>
+    <rect x="107.35" y="-19.873" width="221.01" height="445.599" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="121.895" y="7.027" style="font-size: 13px; white-space: pre;" class="figure-text">linguistic pipeline</text>
+    <g transform="matrix(1, 0, 0, 1, 43.845993, -212.03952)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">GRU</text>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -105.94620300453818, -2.4655753229913273)">Are</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.845993, -161.775177)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="196.339" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">GRU</text>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -105.94620300453818, -0.01365018358518455)">there</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.845993, -111.510811)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="196.339" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">GRU</text>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -108.39812246505562, -1.239627123138817)">more</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.845993, -61.246445)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="196.339" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">GRU</text>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -105.94620300453818, 3.6641945886011626)">cubes</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.846004, -10.982122)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="196.339" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">GRU</text>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -101.04237552759605, 1.2123054190919333)">than</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.845993, 39.282253)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">GRU</text>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -107.17216273479687, -1.23963888011491)">yellow</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.845993, 89.54657)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">GRU</text>
+      <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1, 0, 0, 1, -103.49428354402073, -6.143450958013432)">things</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.845993, 139.810959)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="194.675" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">linear</text>
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 143.697891, 21.671867)" class="style-transfer-network">
+    <title>visual pipeline</title>
+    <rect x="107.35" y="33.418" width="260.241" height="339.016" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <g transform="matrix(1, 0, 0, 1, 43.461548, 65.579681)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">feature extractor</text>
+    </g>
+    <text x="116.991" y="51.162" style="font-size: 13px; white-space: pre;" class="figure-text">visual pipeline</text>
+    <text x="189.056" y="-1.433" style="font-size: 13px; white-space: pre;" class="figure-text">Answer: yes</text>
+    <g transform="matrix(1, 0, 0, 1, 43.461517, 3.729388)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">residual block 1</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.461517, -55.11668)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">residual block 2</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.461517, -113.962746)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">residual block N</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.461517, -177.712646)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="170.177" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">classifier</text>
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 360.588715, 40.914715)" class="style-transfer-network">
+    <title>residual block detail</title>
+    <rect x="165.604" y="-8.265" width="201.987" height="422.381" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <g transform="matrix(1, 0, 0, 1, 72.588493, 97.835014)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">convolution</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 72.588539, 37.50499)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">ReLU</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 72.588539, -22.825003)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">convolution</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 72.588539, -83.154991)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">batch normalization</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 72.588539, -143.485001)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="170.177" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 72.588493, -203.815002)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="170.177" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">ReLU</text>
+    </g>
+  </g>
+  <rect x="309.168" y="400" width="144" height="96" style="fill: rgb(216, 216, 216);" id="image-placeholder">
+    <title>image placeholder</title>
+  </rect>
 </svg>
