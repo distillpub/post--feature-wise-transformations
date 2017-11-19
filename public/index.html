@@ -100,10 +100,6 @@
         </figcaption>
       </figure>
       <p>
-        <span class="todo">TODO: say a few words about what this allows us to do
-        (e.g., shutting off feature maps)</span>
-      </p>
-      <p>
         FiLM shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
         the architectural feature that a secondary neural network computes some
         of the parameter values in the primary network. From that perspective,
@@ -111,11 +107,20 @@
         HyperNetwork which predicts the FiLM parameters of the FiLM-ed network.
       </p>
       <p>
-        FiLM is also closely connected to gating and attention through the
-        concept of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
-        Because this connection deserves more than a simple paragraph, we decided
-        to devote a <a href="#bilinear-connection">separate section</a> of the
-        article to it.
+        Feature-wise affine transformations are closely related to gating: the
+        latter can be viewed as a bias-less version of the former with
+        sigmoidal scaling. Whereas gating is used to inhibit the expression of
+        targeted features, FiLM can in theory be used to inhibit or enhance the
+        expression of targeted features, flip their sign, or selectively
+        threshold them (when combined with a ReLU nonlinearity). The impact of
+        these additional capabilities is still an open area of investigation.
+      </p>
+      <p>
+        FiLM is also closely connected to attention <em>and</em> gating through
+        the concept of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
+        Because this connection deserves more than a simple paragraph, we
+        decided to devote a <a href="#bilinear-connection">separate section</a>
+        of the article to it.
       </p>
       <p>
         Finally, although attempts to connect deep learning results to the way
@@ -195,7 +200,9 @@
       <p>
         Throughout this section, we will present various models which take
         advantage of feature-wise affine transformations to show how widely
-        applied this computational mechanism is in practice.
+        applied this computational mechanism is in practice. We try
+        to provide a comprehensive overview, but we do not claim that it is
+        complete.
       </p>
       <p>
         In the interest of not being confusing to readers already familiar with
