@@ -166,7 +166,7 @@
           <img src="assets/preview_gating.svg" />
           <figcaption>Gating</figcaption>
         </a>
-        <a href="#attention-over-features">
+        <a href="#gating-attention-hybrid">
           <img src="assets/preview_attention.svg" />
           <figcaption>Gating-attention hybrids</figcaption>
         </a>
@@ -467,7 +467,14 @@
         disabled and a FiLM layer is placed immediately after the instance
         normalization layer.
       </p>
-      <div class="l-body-outset figure" id="dln-diagram"></div>
+      <figure class="l-body-outset figure" id="dln-diagram">
+        <figcaption>
+          The speech recognition model in <dt-cite key="kim2017dynamic"></dt-cite>
+          achieves speaker adaptation by predicting the layer normalization
+          scaling and shifting coefficients inside its LSTMs' forget, input,
+          and output gates from an utterance summarization vector.
+        </figcaption>
+      </figure>
       <p>
         The key difference here is that the conditioning signal does not come
         from an external source, but is rather computed from utterance
@@ -480,7 +487,12 @@
         scheme in the form of feature-wise sigmoidal gating as a way to
         condition a layer's activations on its previous layer.
       </p>
-      <div class="l-body-outset figure" id="squeeze-diagram"></div>
+      <figure class="l-body-outset figure" id="squeeze-diagram">
+        <figcaption>
+          The squeeze-and-excitation block implements a self-conditioned
+          feature-wise sigmoidal gating operation.
+        </figcaption>
+      </figure>
       <p>
         In the natural language domain, <dt-cite key="gehring2017convolutional"></dt-cite>
         introduces a fast and parallelizable model for machine translation in
@@ -489,11 +501,15 @@
         gating to condition a layer's activations on its previous
         layer.
       </p>
-      <div class="l-body-outset figure" id="convseq2seq-diagram"></div>
+      <figure class="l-body-outset figure" id="convseq2seq-diagram">
+        <figcaption>
+          WRITEME
+        </figcaption>
+      </figure>
       <p>
         From the FiLM point of view, feature-wise sigmoidal gating is
         equivalent to a FiLM layer with the scaling being passed through a
-        sigmoidal non-linearity and the shifting set to 0.
+        sigmoidal non-linearity and the shifting set to <dt-math>0</dt-math>.
       </p>
       <p>
         The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
@@ -502,9 +518,23 @@
         can be seen as FiLM layers with a sigmoid-constrained
         <dt-math>\gamma</dt-math> and with <dt-math>\beta = 0</dt-math>.
       </p>
-      <div class="l-body-outset figure" id="lstm-diagram"></div>
 
-      <h2 id="attention-over-features">Attention over features</h2>
+      <h2 id="gating">Gating</h2>
+      <p>
+        Work on mixture-of-experts models
+        <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep"></dt-cite>
+        also exhibit a strong relationship with conditional feature-wise affine
+        transformations.
+      </p>
+      <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
+      <p><span class="todo"> TODO: explain the relationship.</span></p>
+      <figure class="l-body-outset figure" id="moe-diagram">
+        <figcaption>
+          WRITEME
+        </figcaption>
+      </figure>
+
+      <h2 id="gating-attention-hybrid">Gating-attention hybrids</h2>
       <p>
         Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
         Gated-Attention Reader, which conditions a document reading network
@@ -515,7 +545,11 @@
         sigmoidal gating mechanism. Both papers show improvement over
         conditioning via concatenation.
       </p>
-      <div class="l-body-outset figure" id="gated-attention-diagram"></div>
+      <figure class="l-body-outset figure" id="gated-attention-diagram">
+        <figcaption>
+          WRITEME
+        </figcaption>
+      </figure>
       <p>
         Feature-wise sigmoidal gating can be seen as inserting a FiLM layer
         with scaling constrained to be between 0 and 1 via a sigmoidal layer
@@ -538,18 +572,11 @@
         <span class="todo"> TODO: this is verbatim, we need to change it.</span>
       </p>
       <p></p>
-      <div class="l-body-outset figure" id="disan-diagram"></div>
-
-      <h2 id="gating">Gating</h2>
-      <p>
-        Work on mixture-of-experts models
-        <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep"></dt-cite>
-        also exhibit a strong relationship with conditional feature-wise affine
-        transformations.
-      </p>
-      <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
-      <p><span class="todo"> TODO: explain the relationship.</span></p>
-      <div class="l-body-outset figure" id="moe-diagram"></div>
+      <figure class="l-body-outset figure" id="disan-diagram">
+        <figcaption>
+          WRITEME
+        </figcaption>
+      </figure>
 
       <hr />
 
@@ -1081,7 +1108,6 @@
     <script src="assets/figure_dln.js"></script>
     <script src="assets/figure_squeeze.js"></script>
     <script src="assets/figure_convseq2seq.js"></script>
-    <script src="assets/figure_lstm.js"></script>
     <script src="assets/figure_gated_attention.js"></script>
     <script src="assets/figure_disan.js"></script>
     <script src="assets/figure_moe.js"></script>
