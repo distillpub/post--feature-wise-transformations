@@ -1,5 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="724" height="480" style="stroke: rgb(255, 0, 0); stroke-width: 1.5; fill: none;"/>
-  <text x="319.596" y="255.041" class="figure-text" style="fill: rgb(255, 0, 0); font-size: 13px; white-space: pre;">TODO: WRITEME</text>
+  <g transform="matrix(1, 0, 0, 1, 389.446075, 197.233047)" class="style-transfer-network">
+    <title>linguistic pipeline</title>
+    <rect x="107.35" y="64.666" width="221.01" height="168.101" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="123.102" y="101.152" style="font-size: 13px; white-space: pre;" class="figure-text">linguistic pipeline</text>
+    <text x="147.505" y="263.538" style="font-size: 13px; white-space: pre;" class="figure-text">Is the umbrella upside down?</text>
+    <g transform="matrix(1, 0, 0, 1, 13.888788, -112.685486)">
+      <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="194.675" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">LSTM</text>
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 207.768524, 1.23666)">
+    <title>MLP</title>
+    <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="196.331" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">MLP</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -68.855614, 75.166878)" class="style-transfer-network">
+    <title>visual pipeline</title>
+    <rect x="107.35" y="87.721" width="260.241" height="259.506" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <g transform="matrix(1, 0, 0, 1, 43.46151, 58.017681)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">sub-network</text>
+    </g>
+    <text x="122.032" y="112.918" style="font-size: 13px; white-space: pre;" class="figure-text">visual pipeline</text>
+    <g transform="matrix(1, 0, 0, 1, 43.461555, -29.039272)">
+      <rect x="122.142" y="205.725" width="143.734" height="100.383" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="125.154" y="300.607" style="font-size: 13px; white-space: pre;" class="figure-text">batch normalization</text>
+      <g transform="matrix(1, 0, 0, 1, 825.995605, -81.92099)">
+        <rect x="-700.855" y="298.75" width="130.072" height="26.262" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+        <text x="-673.843" y="311.243" style="font-size: 13px; white-space: pre;" class="figure-text">affine transformation</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 825.995544, -36.90263)">
+        <rect x="-700.855" y="287.646" width="128.121" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+        <text x="-673.843" y="311.243" style="font-size: 13px; white-space: pre;" class="figure-text">normalization</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 43.461517, -106.790337)">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">sub-network</text>
+    </g>
+  </g>
+  <text x="344.774" y="31.769" style="font-size: 13px; white-space: pre;" class="figure-text">Answer: no</text>
+  <g transform="matrix(1, 0, 0, 1, -305.141602, 123.162666)">
+    <title>attention</title>
+    <rect x="343.636" y="-14.677" width="256.202" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="381.564" y="9.521" style="font-size: 13px; white-space: pre;" class="figure-text">attention</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -40.352318, 59.246372)">
+    <title>fusion block</title>
+    <rect x="155.846" y="-14.677" width="519.313" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="381.564" y="9.521" style="font-size: 13px; white-space: pre;" class="figure-text">fusion block</text>
+  </g>
+  <rect x="133.651" y="430" width="64" height="64" style="fill: rgb(216, 216, 216);" id="image-placeholder">
+    <title>image placeholder</title>
+  </rect>
 </svg>
