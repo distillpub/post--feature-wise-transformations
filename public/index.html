@@ -745,7 +745,17 @@
 
         and a full-rank weight matrix <dt-math>W_k</dt-math>. Because the same
         weighted sum is applied to all features over spatial or temporal
-        locations, matrices <dt-math>W_k</dt-math> are tied. Assuming a matrix
+        locations, matrices <dt-math>W_k</dt-math> are tied.
+      </p>
+      <figure class="l-body-outset figure" id="attention-as-bilinear-diagram">
+        <figcaption>
+          The generalized bilinear weight matrices for an attention layer are
+          tied. Grey elements have value <dt-math>0</dt-math>, and color
+          elements have arbitrary values.
+        </figcaption>
+      </figure>
+      <p>
+        Assuming a matrix
         <dt-math>X</dt-math> in which rows represent features and columns
         represent spatial or temporal locasions, we can represent the output
         <dt-math>\mathbf{y}</dt-math> compactly as

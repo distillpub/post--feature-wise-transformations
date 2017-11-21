@@ -8,6 +8,36 @@ function buildFigure () {
             .style("fill", null)
             .style("stroke", null);
         svg.selectAll(".figure-text").style("font-size", null);
+
+        // --- Data -----------------------------------------------------------
+        var data = [];
+        for(var i = 0; i < 12; i++) {
+            data.push(Math.random() * 360);
+        }
+
+        svg.select("#w-1-full")
+          .selectAll("path")
+            .filter(function() {
+               return !this.classList.contains('figure-faded')
+             })
+            .data(data)
+            .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
+
+        svg.select("#w-2-full")
+          .selectAll("path")
+            .filter(function() {
+               return !this.classList.contains('figure-faded')
+             })
+            .data(data)
+            .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
+
+        svg.select("#w-3-full")
+          .selectAll("path")
+            .filter(function() {
+               return !this.classList.contains('figure-faded')
+             })
+            .data(data)
+            .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
     }
 
     d3.xml("assets/attention_as_bilinear.svg").mimeType("image/svg+xml").get(function(error, xml) {
