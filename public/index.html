@@ -119,11 +119,11 @@
         these additional capabilities is still an open area of investigation.
       </p>
       <p>
-        FiLM is also closely connected to attention <em>and</em> gating through
-        the concept of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
-        Because this connection deserves more than a simple paragraph, we
-        decided to devote a <a href="#bilinear-connection">separate section</a>
-        of the article to it.
+        FiLM is also closely connected to gating, attention, and
+        mixture-of-experts models through bilinear transformations
+        <dt-cite key="tenenbaum2000separating"></dt-cite>. Because this
+        connection deserves more than a simple paragraph, we decided to devote a
+        <a href="#bilinear-connection">separate section</a> of the article to it.
       </p>
       <p>
         Finally, although attempts to connect deep learning results to the way
@@ -148,54 +148,21 @@
       </p>
       <p>
         In the spirit of the <a href="https://distill.pub/2016/augmented-rnns/">
-        Distill article</a> on attention, we outlined four directions through
+        Distill article</a> on attention, we outlined several directions through
         which feature-wise affine transformations express themselves in the
         literature:
       </p>
-
-      <figure class="l-body-outset previews">
-        <a href="#conditioning">
-          <img src="assets/preview_external.svg" />
-          <figcaption>Conditioning on external information</figcaption>
-        </a>
-        <a href="#self-conditioning">
-          <img src="assets/preview_self.svg" />
-          <figcaption>Self-conditioning</figcaption>
-        </a>
-        <a href="#gating">
-          <img src="assets/preview_gating.svg" />
-          <figcaption>Gating</figcaption>
-        </a>
-        <a href="#gating-attention-hybrid">
-          <img src="assets/preview_attention.svg" />
-          <figcaption>Gating-attention hybrids</figcaption>
-        </a>
-      </figure>
-
+      <figure class="l-body-outset figure" id="related-work-toc"></figure>
       <p>
         We also attempt to characterize and explain the behavior of FiLM-ed
-        networks through analyses on toy and real-world tasks:
+        networks through <a href="#understanding-film">analyses on toy and
+        real-world tasks</a>.
       </p>
-
-      <figure class="l-body-outset previews">
-        <a href="#film-as-task-embeddings">
-          <img src="assets/preview_tsne.svg" />
-          <figcaption>FiLM parameters as task embeddings</figcaption>
-        </a>
-      </figure>
-
       <p>
         Finally, as noted above, we reserved a section of this article for the
-        discussion of the connection between bilinear transformations, FiLM,
-        gating, and attention:
+        discussion of the <a href="#bilinear-connection">connection between
+        bilinear transformations, FiLM, gating, and attention</a>.
       </p>
-
-      <figure class="l-body-outset previews">
-        <a href="#bilinear-connection">
-          <img src="assets/preview_tsne.svg" />
-          <figcaption>Connecting bilinear transformations, FiLM, gating, and attention</figcaption>
-        </a>
-      </figure>
 
       <hr />
 
@@ -222,11 +189,16 @@
         Feature-wise affine transformations can be used as a conditioning
         mechanism to incorporate external information such as context
         representation, task description, class information, or user
-        information.
+        information. While FiLM represents the most general instantiation of a
+        feature-wise affine transformation, gating, conditional biasing, and
+        concatenation &mdash; all of which can be seen as a special case
+        of FiLM &mdash; are also widely used in practice.
       </p>
+
+      <h3 id="conditioning-film">FiLM</h3>
       <p>
-        For instance, we can use FiLM layers to condition a visual processing
-        pipeline to answer textual questions about an image.
+        We can use FiLM layers to condition a visual processing pipeline to
+        answer textual questions about an image.
       </p>
       <p>
         In <dt-cite key="perez2017learning"></dt-cite>, and in its expanded
@@ -350,44 +322,40 @@
         instance normalization statistics on the style image.
       </p>
       <p>
-        FiLM can also be used to modulate a neural network in a categorical
-        fashion, as evidenced by several class-conditional models in the recent
-        generative modeling literature.
+        Feature-wise affine transformations are also used in the reinforcement
+        learning setting. In <dt-cite key="kirkpatrick2017overcoming"></dt-cite>,
+        the authors briefly touch the idea of applying conditional feature-wise
+        affine transformations to a reinforcement learning problem. They train
+        an agent that learns to play 10 Atari games using a single Double DQN
+        network with task-specific gains and biases, which can be viewed as
+        inserting FiLM layers throughout its hierarchy.
       </p>
+
+      <h3 id="conditioning-gating">Gating</h3>
       <p>
-        DCGAN <dt-cite key="radford2016unsupervised"></dt-cite>, a
-        well-recognized class of network architectures for generative
-        adversarial networks (GANs), lends itself to class conditioning by
-        concatenating the class label broadcasted as a feature map to the input
-        of convolutional and transposed convolutional layers in the generator
-        and discriminator networks. An equivalent &mdash; and more efficient
-        &mdash; way to express this operation is in the form of a feature-wise,
-        class-conditional biasing of the output of the convolutional or
-        transposed convolutional layer.
-        <dt-fn>
-          Provided we ignore the border effects due to zero-padding or use an
-          alternative form of padding, like reflection-padding.
-        </dt-fn>
-        We can therefore view the class-conditional version of
-        DCGAN as inserting FiLM layers after each convolutional and transposed
-        convolutional layer. The FiLM-generating network comes in the form of
-        an embedding lookup on the class labels, with the scaling coefficients
-        set to a constant value of 1.
+        Work in <dt-cite key="chaplot2017gated"></dt-cite> uses feature-wise
+        sigmoidal gating to fuse linguisting and visual inputs in the context
+        of a reinforcement learning (RL) agent trained to follow simple natural
+        language instructions in a 3D environment (VizDoom).
       </p>
-      <figure class="l-body-outset figure" id="dcgan-diagram">
+      <figure class="l-body-outset figure" id="gated-attention-diagram">
         <figcaption>
-          Concatenation and conditional biasing are equivalent.
-          <dt-fn>
-            Provided we ignore the border effects due to zero-padding or use an
-            alternative form of padding, like reflection-padding.
-          </dt-fn>
-          In this
-          example, convolving any kernel over a conditioning feature
-          broadcasted into a feature map results in a constant-valued output
-          feature map, which is equivalent to adding a conditional bias
-          broadcasted to the size of the output feature map.
+          WRITEME
         </figcaption>
       </figure>
+      <p>
+        Feature-wise sigmoidal gating can be seen as inserting a FiLM layer
+        with scaling constrained to be between 0 and 1 via a sigmoidal layer
+        and shifting set to zero.
+      </p>
+      <p>
+        Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
+        Gated-Attention Reader, which conditions a document reading network
+        with an associated query via multiple steps of feature-wise sigmoidal
+        gating.
+      </p>
+
+      <h3 id="conditioning-biasing">Conditional biasing</h3>
       <p>
         PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and WaveNet
         <dt-cite key="oord2016wavenet"></dt-cite>, two recent advances in
@@ -432,31 +400,61 @@
         </li>
       </ol>
       <p>
-        Like DCGAN and PixelCNN, both approaches can be viewed as inserting
-        FiLM layers after each convolutional layer. The main difference lies in
-        the way in which the FiLM-generating network is defined: global
-        conditioning expresses the FiLM-generating network as an embedding
-        lookup which is broadcasted to the whole time series, whereas local
-        conditioning expresses it as a mapping from an input sequence of
-        conditioning information to an output sequence of FiLM parameters.
+        Like for PixelCNN, both approaches can be viewed as inserting FiLM
+        layers after each convolutional layer. The main difference lies in the
+        way in which the FiLM-generating network is defined: global conditioning
+        expresses the FiLM-generating network as an embedding lookup which is
+        broadcasted to the whole time series, whereas local conditioning
+        expresses it as a mapping from an input sequence of conditioning
+        information to an output sequence of FiLM parameters.
       </p>
+
+      <h3 id="conditioning-concatenation">Concatenation</h3>
       <p>
-        Categorical conditioning can also found in the reinforcement learning
-        setting. In <dt-cite key="kirkpatrick2017overcoming"></dt-cite>, the
-        authors briefly touch the idea of applying conditional feature-wise
-        affine transformations to a reinforcement learning problem. They train
-        an agent that learns to play 10 Atari games using a single Double DQN
-        network with task-specific gains and biases, which can be viewed as
-        inserting FiLM layers throughout its hierarchy.
+        DCGAN <dt-cite key="radford2016unsupervised"></dt-cite>, a
+        well-recognized class of network architectures for generative
+        adversarial networks (GANs), lends itself to class conditioning by
+        concatenating the class label broadcasted as a feature map to the input
+        of convolutional and transposed convolutional layers in the generator
+        and discriminator networks. An equivalent &mdash; and more efficient
+        &mdash; way to express this operation is in the form of a feature-wise,
+        class-conditional biasing of the output of the convolutional or
+        transposed convolutional layer.
+        <dt-fn>
+          Provided we ignore the border effects due to zero-padding or use an
+          alternative form of padding, like reflection-padding.
+        </dt-fn>
+        We can therefore view the class-conditional version of
+        DCGAN as inserting FiLM layers after each convolutional and transposed
+        convolutional layer. The FiLM-generating network comes in the form of
+        an embedding lookup on the class labels, with the scaling coefficients
+        set to a constant value of 1.
       </p>
+      <figure class="l-body-outset figure" id="dcgan-diagram">
+        <figcaption>
+          Concatenation and conditional biasing are equivalent.
+          <dt-fn>
+            Provided we ignore the border effects due to zero-padding or use an
+            alternative form of padding, like reflection-padding.
+          </dt-fn>
+          In this
+          example, convolving any kernel over a conditioning feature
+          broadcasted into a feature map results in a constant-valued output
+          feature map, which is equivalent to adding a conditional bias
+          broadcasted to the size of the output feature map.
+        </figcaption>
+      </figure>
 
       <h2 id="self-conditioning">Self-conditioning</h2>
       <p>
         So far the applications we have considered condition on <em>external</em>
         information, but it is also possible (and sometimes desireable) to
         condition on <em>internal</em> information &mdash; that is, to
-        <em>self-condition</em> a network.
+        <em>self-condition</em> a network. Once again, in addition to FiLM,
+        various special cases are used in practice.
       </p>
+
+      <h3 id="self-conditioning-film">FiLM</h3>
       <p>
         In the speech recognition domain, <dt-cite key="kim2017dynamic"></dt-cite>
         modulates a deep bidirectional LSTM using a form of conditional
@@ -481,6 +479,8 @@
         summarization feature vectors extracted in each layer of the network
         as a way of adapting the neural acoustic model.
       </p>
+
+      <h3 id="self-conditioning-gating">Gating</h3>
       <p>
         The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
         itself makes heavy use of feature-wise sigmoidal gating in its input,
@@ -520,76 +520,23 @@
         equivalent to a FiLM layer with the scaling being passed through a
         sigmoidal non-linearity and the shifting set to <dt-math>0</dt-math>.
       </p>
-
-      <h2 id="gating">Gating</h2>
       <p>
         In addition to conditional biasing, <dt-cite key="oord2016conditional"></dt-cite>
         and <dt-cite key="oord2016wavenet"></dt-cite> both employ a self-conditioned
-        tanh-sigmoid gated nonlinearity. As discussed above,
-        <dt-cite key="dauphin2017language"></dt-cite> and
-        <dt-cite key="gehring2017convolutional"></dt-cite> leverage a simplfied
-        gated linear nonlinearity. However, the idea of gating itself has been
-        around for much longer.
+        tanh-sigmoid gated nonlinearity.
       </p>
-      <p>
-        Work on mixture-of-experts models
-        <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep"></dt-cite>
-        examines a framework in which the feature vectors output by several
-        expert sub-networks are combined according to a mixture distribution
-        which is itself computed from the experts' inputs. This means that
-        in this line of work gating happens layer-wise rather than feature-wise.
-      </p>
-      <p><span class="todo"> TODO: explain the relationship.</span></p>
-      <figure class="l-body-outset figure" id="moe-diagram">
-        <figcaption>
-          WRITEME
-        </figcaption>
-      </figure>
 
-      <h2 id="gating-attention-hybrid">Gating-attention hybrids</h2>
+      <h3 id="self-conditioning-featurewise-attention">Feature-wise attention</h3>
       <p>
-        Some recent contributions leverage <em>both</em> feature-wise gating
-
+        Some work even combines attention and feature-wise affine
+        transformations. Work in <dt-cite key="shen2017disan"></dt-cite>
+        proposes a feature-wise self-attention mechanism for language
+        understanding, showing strong results on datasets such as SNLI
+        <dt-cite key="bowman2015large"></dt-cite>. The idea is to combine tokens
+        at a <em>feature</em> level rather than at a <em>feature vector</em>
+        level, using the input itself to generate the feature-wise attention
+        distributions over all tokens.
       </p>
-      <p>
-        Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
-        Gated-Attention Reader, which conditions a document reading network
-        with an associated query via multiple steps of feature-wise sigmoidal
-        gating.
-      </p>
-      <p>
-        Work in <dt-cite key="chaplot2017gated"></dt-cite> uses feature-wise
-        sigmoidal gating to fuse linguisting and visual inputs in the context
-        of a reinforcement learning (RL) agent trained to follow simple natural
-        language instructions in a 3D environment (VizDoom).
-      </p>
-      <figure class="l-body-outset figure" id="gated-attention-diagram">
-        <figcaption>
-          WRITEME
-        </figcaption>
-      </figure>
-      <p>
-        Feature-wise sigmoidal gating can be seen as inserting a FiLM layer
-        with scaling constrained to be between 0 and 1 via a sigmoidal layer
-        and shifting set to zero.
-      </p>
-      <p>
-        Work in <dt-cite key="shen2017disan"></dt-cite> proposes a feature-wise
-        attention mechanism for language understanding, showing strong results
-        on datasets such as SNLI <dt-cite key="bowman2015large"></dt-cite>:
-      </p>
-      <p>
-        <em>Word embedding usually suffers from the polysemy in natural language.
-        Since traditional attention computes a single importance score for
-        each word based on the word embedding, it cannot distinguish the
-        meanings of the same word in different contexts. Multi-dimensional
-        attention, however, computes a score for each feature of each word, so
-        it can select the features that can best describe the word’s specific
-        meaning in any given context, and include this information in the
-        sentence encoding outputs. </em>
-        <span class="todo"> TODO: this is verbatim, we need to change it.</span>
-      </p>
-      <p></p>
       <figure class="l-body-outset figure" id="disan-diagram">
         <figcaption>
           WRITEME
@@ -598,37 +545,23 @@
 
       <hr />
 
-      <h1>Understanding FiLM-ed networks</h1>
+      <h1 id="understanding-film">Understanding FiLM-ed networks</h1>
 
-
-      <h2 id="film-as-task-embeddings">FiLM parameters as task embeddings</h2>
+      <h2>FiLM parameters as task embeddings</h2>
       <div class="l-body-outset figure" id="clevr-tsne"></div>
 
       <hr />
 
-      <h1 id="bilinear-connection">Connecting FiLM, gating, and attention</h1>
-
-      <h2>Gating</h2>
+      <h1 id="bilinear-connection">Connecting FiLM, gating, attention, and mixture-of-experts models</h1>
       <p>
-        <span class="todo">
-          TODO: add small introduction to gating.
-        </span>
+        As previously hinted at, there exists a strong connection between FiLM,
+        gating, attention, and mixture-of-experts models through bilinear
+        transformations <dt-cite key="tenenbaum2000separating"></dt-cite>. In
+        fact, all four approaches can be formalized using an extension of
+        bilinear transformations which we propose to name <em>generalized
+        bilinear transformations</em>.
       </p>
-
-      <h2>Attention</h2>
-      <p>
-        <span class="todo">
-          TODO: add small introduction to attention, pointing back to the
-          <a href="https://distill.pub/2016/augmented-rnns/">Distill article</a>
-          on attention.
-        </span>
-      </p>
-
-      <p>
-        It turns out that all three approaches above can be formalized using an
-        extension of bilinear transformations <dt-cite key="tenenbaum2000separating"></dt-cite>
-        which we propose to name <em>generalized bilinear transformations</em>.
-      </p>
+      <h2>Bilinear and generalized bilinear transformations</h2>
       <p>
         A bilinear transformation defines the relationship between two inputs
         <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> and the
@@ -703,6 +636,9 @@
           \mathbf{v} = g_k(W_k \tilde{\mathbf{z}})
         </dt-math>
       </p>
+
+      <h2>Connecting the dots</h2>
+
       <h3>FiLM as a generalized bilinear transformation</h3>
       <p>
         FiLM is represented by an equation of the form
@@ -756,7 +692,13 @@
           <dt-math>1</dt-math>, and color elements have arbitrary values.
         </figcaption>
       </figure>
+
       <h3>Gating as a generalized bilinear transformation</h3>
+      <p>
+        <span class="todo">
+          TODO: add small introduction to gating.
+        </span>
+      </p>
       <p>
         Because feature-wise gating layers can be seen as a bias-less FiLM
         layers with sigmoidal scaling, representing them as a generalized
@@ -813,7 +755,15 @@
           <dt-math>1</dt-math>, and color elements have arbitrary values.
         </figcaption>
       </figure>
+
       <h3>Attention as a generalized bilinear transformation</h3>
+      <p>
+        <span class="todo">
+          TODO: add small introduction to attention, pointing back to the
+          <a href="https://distill.pub/2016/augmented-rnns/">Distill article</a>
+          on attention.
+        </span>
+      </p>
       <p>
         Attention is closely related to gating in the generalized bilinear
         formulation, save from one crucial detail: because it implements a
@@ -863,6 +813,34 @@
         where <dt-math>g(\cdot)</dt-math> is the "all-but-one" softmax
         introduced above.
       </p>
+
+      <h3>Mixture-of-experts as a generalized bilinear transformation</h3>
+      <p>
+        Work on mixture-of-experts models
+        <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep"></dt-cite>
+        examines a framework in which the feature vectors output by several
+        expert sub-networks are combined according to a mixture distribution
+        which is itself computed from the experts' inputs.
+      </p>
+      <figure class="l-body-outset figure" id="moe-diagram">
+        <figcaption>
+            WRITEME.
+        </figcaption>
+      </figure>
+      <p>
+        There is a strong connection between mixture-of-experts models and
+        attention: the former can be viewed as attention over the experts'
+        outputs rather than over time or space. As such, mixture-of-experts
+        models can be represented as generalized bilinear transformations in the
+        same way attention is, the only difference being that the columns of
+        <dt-math>X</dt-math> represent experts rather than spatial or temporal
+        locations.
+      </p>
+      <figure class="l-body-outset figure" id="moe-as-bilinear-diagram">
+        <figcaption>
+            WRITEME.
+        </figcaption>
+      </figure>
 
     </dt-article>
 
@@ -1117,6 +1095,7 @@
         url={},
       }
     </script>
+    <script src="assets/figure_related_work_toc.js"></script>
     <script src="assets/figure_film.js"></script>
     <script src="assets/figure_film_architecture.js"></script>
     <script src="assets/figure_bilinear.js"></script>
@@ -1124,6 +1103,7 @@
     <script src="assets/figure_film_as_bilinear.js"></script>
     <script src="assets/figure_gating_as_bilinear.js"></script>
     <script src="assets/figure_attention_as_bilinear.js"></script>
+    <script src="assets/figure_moe_as_bilinear.js"></script>
     <script src="assets/figure_clevr.js"></script>
     <script src="assets/figure_guesswhat.js"></script>
     <script src="assets/figure_alrfas.js"></script>
