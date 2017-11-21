@@ -482,6 +482,11 @@
         as a way of adapting the neural acoustic model.
       </p>
       <p>
+        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
+        itself makes heavy use of feature-wise sigmoidal gating in its input,
+        forget, and output gates.
+      </p>
+      <p>
         In the visual domain, the ImageNet 2017 winning model
         <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
         scheme in the form of feature-wise sigmoidal gating as a way to
@@ -494,16 +499,20 @@
         </figcaption>
       </figure>
       <p>
-        In the natural language domain, <dt-cite key="gehring2017convolutional"></dt-cite>
-        introduces a fast and parallelizable model for machine translation in
-        the form of a purely convolutional architecture. Despite not being the
-        main technical innovation, this model also uses feature-wise sigmoidal
-        gating to condition a layer's activations on its previous
-        layer.
+        In the natural language domain, <dt-cite key="dauphin2017language"></dt-cite>
+        proposes to build a finite context using stacked convolutions to tackle
+        language modeling and introduces gated linear units, which uses half of
+        the features to apply feature-wise sigmoidal gating to the second half.
+        This architectural feature is also adopted by
+        <dt-cite key="gehring2017convolutional"></dt-cite>, which introduces a
+        fast and parallelizable model for machine translation in the form of a
+        purely convolutional architecture.
       </p>
       <figure class="l-body-outset figure" id="convseq2seq-diagram">
         <figcaption>
-          WRITEME
+          Gated linear unit activation function <dt-cite key="dauphin2017language"></dt-cite>.
+          Half of the features are used to apply feature-wise sigmoidal gating
+          to the second half of the features.
         </figcaption>
       </figure>
       <p>
@@ -511,22 +520,25 @@
         equivalent to a FiLM layer with the scaling being passed through a
         sigmoidal non-linearity and the shifting set to <dt-math>0</dt-math>.
       </p>
-      <p>
-        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
-        itself can be viewed from the perspective of self-conditioned
-        feature-wise affine transformations: the input, forget, and output gates
-        can be seen as FiLM layers with a sigmoid-constrained
-        <dt-math>\gamma</dt-math> and with <dt-math>\beta = 0</dt-math>.
-      </p>
 
       <h2 id="gating">Gating</h2>
       <p>
+        In addition to conditional biasing, <dt-cite key="oord2016conditional"></dt-cite>
+        and <dt-cite key="oord2016wavenet"></dt-cite> both employ a self-conditioned
+        tanh-sigmoid gated nonlinearity. As discussed above,
+        <dt-cite key="dauphin2017language"></dt-cite> and
+        <dt-cite key="gehring2017convolutional"></dt-cite> leverage a simplfied
+        gated linear nonlinearity. However, the idea of gating itself has been
+        around for much longer.
+      </p>
+      <p>
         Work on mixture-of-experts models
         <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep"></dt-cite>
-        also exhibit a strong relationship with conditional feature-wise affine
-        transformations.
+        examines a framework in which the feature vectors output by several
+        expert sub-networks are combined according to a mixture distribution
+        which is itself computed from the experts' inputs. This means that
+        in this line of work gating happens layer-wise rather than feature-wise.
       </p>
-      <p><span class="todo"> TODO: make a note about the use of gated convolutional layers in PixelCNN and WaveNet.</span></p>
       <p><span class="todo"> TODO: explain the relationship.</span></p>
       <figure class="l-body-outset figure" id="moe-diagram">
         <figcaption>
@@ -536,14 +548,20 @@
 
       <h2 id="gating-attention-hybrid">Gating-attention hybrids</h2>
       <p>
+        Some recent contributions leverage <em>both</em> feature-wise gating
+
+      </p>
+      <p>
         Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
         Gated-Attention Reader, which conditions a document reading network
         with an associated query via multiple steps of feature-wise sigmoidal
-        gating, and work in <dt-cite key="chaplot2017gated"></dt-cite> trains a
-        reinforcement learning (RL) agent to follow simple natural language
-        instructions in a 3D environment (VizDoom) using the same feature-wise
-        sigmoidal gating mechanism. Both papers show improvement over
-        conditioning via concatenation.
+        gating.
+      </p>
+      <p>
+        Work in <dt-cite key="chaplot2017gated"></dt-cite> uses feature-wise
+        sigmoidal gating to fuse linguisting and visual inputs in the context
+        of a reinforcement learning (RL) agent trained to follow simple natural
+        language instructions in a 3D environment (VizDoom).
       </p>
       <figure class="l-body-outset figure" id="gated-attention-diagram">
         <figcaption>
@@ -962,6 +980,13 @@
         booktitle={CVPR's ILSVRC 2017 Workshop},
         year={2017},
         url={https://arxiv.org/pdf/1709.01507.pdf},
+      }
+      @inproceedings{dauphin2017language,
+        title={Language modeling with gated convolutional networks},
+        author={Dauphin, Yann N and Fan, Angela and Auli, Michael and Grangier, David},
+        booktitle={Proceedings of the International Conference on Machine Learning},
+        year={2017},
+        url={https://arxiv.org/pdf/1612.08083.pdf},
       }
       @inproceedings{gehring2017convolutional,
         author={Gehring, Jonas and Auli, Michael and Grangier, David and Yarats,
