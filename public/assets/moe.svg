@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="724" height="480" style="stroke: rgb(255, 0, 0); stroke-width: 1.5; fill: none;"/>
-  <text x="319.596" y="255.041" class="figure-text" style="fill: rgb(255, 0, 0); font-size: 13px; white-space: pre;">TODO: WRITEME</text>
+  <g transform="matrix(1, 0, 0, 1, -172.376999, 190.014893)">
+    <rect x="400.613" y="155.801" width="133.48" height="30.425" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box" transform="matrix(1, 0, 0, 1.000001, 77.023987, 88.300886)"/>
+    <text x="530.237" y="264.353" style="font-size: 13px; white-space: pre;" class="figure-text">input</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 141.560104, 34)">
+    <rect x="86.676" y="183.349" width="133.483" height="173.54" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -263.223511, -87.31852)">expert network 1</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 301.480927, 33.999985)">
+    <rect x="86.676" y="183.349" width="133.483" height="173.54" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -264.103088, -87.318512)">expert network 2</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 459.826691, 33.999989)">
+    <rect x="86.676" y="183.349" width="133.483" height="173.54" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -264.28418, -87.318512)">expert network 3</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 10.497303, -92.677002)">
+    <rect x="53.517" y="310.026" width="133.483" height="173.54" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -291.346863, 39.358082)">gating network</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 293.591644, 163.912033)">
+    <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+    <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 458.27124, 163.912033)">
+    <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+    <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 616.617004, 163.912033)">
+    <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+    <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 458.27124, 95.47509)">
+    <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="0" y1="5" x2="0" y2="-5" class="figure-line"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="-5" y1="0" x2="5" y2="0" class="figure-line"/>
+  </g>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 373.323 431.446 L 127.794 390.889" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 380.03 432.191 L 293.219 390.889" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 385.618 431.818 L 458.644 390.889" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 398.659 431.446 L 622.206 390.889" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 293.219 217.349 L 293.219 178.912" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 458.644 217.349 L 458.644 180.517" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 616.617 217.349 L 616.617 178.912" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 293.219 148.283 L 458.644 110.475" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 458.644 148.283 L 458.644 110.475" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 616.617 148.283 L 458.644 110.475" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 458.644 80.475 L 458.644 30.924" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 111.028 216.468 L 111.028 168.027 L 279.261 168.027" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 122.951 217.213 L 122.951 188.142 L 402.847 188.142 L 402.847 163.856 L 442.623 163.856" class="figure-line"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 138.972 216.841 L 138.972 198.569 L 579.027 198.569 L 579.027 162.817 L 601.741 162.817" class="figure-line"/>
 </svg>

@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="10" width="724" height="480" style="stroke: rgb(255, 0, 0); stroke-width: 1.5; fill: none;"/>
-  <text x="319.596" y="255.041" class="figure-text" style="fill: rgb(255, 0, 0); font-size: 13px; white-space: pre;">TODO: WRITEME</text>
+  <g transform="matrix(1, 0, 0, 1, -34.690994, -99.105804)">
+    <rect x="113.686" y="117.735" width="597.516" height="286.513" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="331.016" y="362.4" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(1.103799, 0, 0, 1, -246.688721, -226.921646)">multi-dimensional attention</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -10.079339, 24.280529)">
+    <rect x="229.6" y="296.635" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 91.403122, 251.371704)" class="figure-text">x</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -74.717293, 27.261543)">
+    <rect x="331.313" y="293.654" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 193.116592, 248.39122)" class="figure-text">x</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -114.394295, 16.456524)">
+    <rect x="408.065" y="304.459" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 268.063446, 259.195709)" class="figure-text">...</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -159.286285, 27.633543)">
+    <rect x="490.032" y="293.282" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 351.83493, 248.0186)" class="figure-text">x</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -152.031662, 6.769524)">
+    <rect x="639.436" y="314.146" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 500.691925, 268.882996)" class="figure-text">q</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -443.741028, -207.153214)">
+    <rect x="3376.865" y="119.728" width="195.793" height="64.703" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box" transform="matrix(0.999999, 0, 0, 1, -2737.426545, 299.485454)"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 538.917358, 321.416626)" class="figure-text">alignment score</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -10.079339, -264.903015)">
+    <rect x="229.6" y="296.635" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 91.403122, 251.371704)" class="figure-text">z</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -74.717293, -261.921997)">
+    <rect x="331.313" y="293.654" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 193.116592, 248.39122)" class="figure-text">z</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -114.394287, -272.72702)">
+    <rect x="408.065" y="304.459" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 268.063446, 259.195709)" class="figure-text">...</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -159.286285, -261.549988)">
+    <rect x="490.032" y="293.282" width="37.075" height="169.77" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 0.999999, 351.83493, 248.0186)" class="figure-text">z</text>
+  </g>
 </svg>

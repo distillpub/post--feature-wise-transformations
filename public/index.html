@@ -149,10 +149,14 @@
 
       <h2>Table of contents</h2>
       <p>
-        In the spirit of the <a href="https://distill.pub/2016/augmented-rnns/">
-        Distill article</a> on attention, we outlined several directions through
-        which feature-wise affine transformations express themselves in the
-        literature:
+        Because of their very general nature and wide applicability,
+        feature-wise affine transformations are sometimes treated as accessory
+        to the proposed models to which they are applied. We believe there is
+        value in connecting those methods, which is why part of this article is
+        devoted to a literature review. In the spirit of the
+        <a href="https://distill.pub/2016/augmented-rnns/"> Distill article</a>
+        on attention, we outlined several directions through which feature-wise
+        affine transformations express themselves in the literature:
       </p>
       <ul>
         <li><p><a href="#conditioning">Conditioning on external information</a></p>
@@ -179,7 +183,8 @@
       <p>
         Finally, as noted above, we reserved a section of this article for the
         discussion of the <a href="#bilinear-connection">connection between
-        bilinear transformations, FiLM, gating, and attention</a>.
+        bilinear transformations, FiLM, gating, attention, and
+        mixture-of-experts models</a>.
       </p>
 
       <hr />
@@ -358,7 +363,11 @@
       </p>
       <figure class="l-body-outset figure" id="gated-attention-diagram">
         <figcaption>
-          WRITEME
+          Gated-attention fusion unit. The instruction representation is mapped
+          to a feature vector with as many elements as the number of image
+          representation feature maps through a sigmoidal layer. This feature
+          vector is then multiplied element-wise &mdash; using broadcasting
+          &mdash; with the image representation.
         </figcaption>
       </figure>
       <p>
@@ -369,8 +378,11 @@
       <p>
         Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
         Gated-Attention Reader, which conditions a document reading network
-        with an associated query via multiple steps of feature-wise sigmoidal
-        gating.
+        with an associated query via multiple steps of feature-wise
+        multiplicative gating. Each token in the document sequence is used to
+        extract a token-specific query representation via soft attention over
+        the query sequence, and the query representation is multiplied
+        feature-wise with the token.
       </p>
 
       <h3 id="conditioning-biasing">Conditional biasing</h3>
@@ -500,11 +512,6 @@
 
       <h3 id="self-conditioning-gating">Gating</h3>
       <p>
-        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture
-        itself makes heavy use of feature-wise sigmoidal gating in its input,
-        forget, and output gates.
-      </p>
-      <p>
         In the visual domain, the ImageNet 2017 winning model
         <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
         scheme in the form of feature-wise sigmoidal gating as a way to
@@ -539,9 +546,16 @@
         sigmoidal non-linearity and the shifting set to <dt-math>0</dt-math>.
       </p>
       <p>
-        In addition to conditional biasing, <dt-cite key="oord2016conditional"></dt-cite>
-        and <dt-cite key="oord2016wavenet"></dt-cite> both employ a self-conditioned
-        tanh-sigmoid gated nonlinearity.
+        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture,
+        which is itself a building block in some of the models we referenced
+        thus far, makes heavy use of feature-wise sigmoidal gating in its input,
+        forget, and output gates.
+      </p>
+      <p>
+        Finally, in addition to conditional biasing,
+        PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and
+        WaveNet <dt-cite key="oord2016wavenet"></dt-cite> both employ a
+        self-conditioned tanh-sigmoid gated nonlinearity.
       </p>
 
       <h3 id="self-conditioning-featurewise-attention">Feature-wise attention</h3>
@@ -550,9 +564,11 @@
         transformations. Work in <dt-cite key="shen2017disan"></dt-cite>
         proposes a feature-wise self-attention mechanism for language
         understanding, showing strong results on datasets such as SNLI
-        <dt-cite key="bowman2015large"></dt-cite>. The idea is to combine tokens
-        at a <em>feature</em> level rather than at a <em>feature vector</em>
-        level, using the input itself to generate the feature-wise attention
+        <dt-cite key="bowman2015large"></dt-cite>. A core idea behind the
+        proposed model, named Directional Self-Attention Network (DiSAN), is
+        that of multi-dimensional attention, i.e., combining tokens at a
+        <em>feature</em> level rather than at a <em>feature vector</em> level,
+        using the input itself to generate the feature-wise attention
         distributions over all tokens.
       </p>
       <figure class="l-body-outset figure" id="disan-diagram">
@@ -713,15 +729,11 @@
 
       <h3>Gating as a generalized bilinear transformation</h3>
       <p>
-        <span class="todo">
-          TODO: add small introduction to gating.
-        </span>
-      </p>
-      <p>
-        Because feature-wise gating layers can be seen as a bias-less FiLM
-        layers with sigmoidal scaling, representing them as a generalized
-        bilinear transformation is a straightforward adaptation with respect to
-        FiLM. Feature-wise gating is represented by an equation of the form
+        As explained earlier in the article, feature-wise gating layers can be
+        seen as a bias-less FiLM layers with sigmoidal scaling. Representing
+        them as a generalized bilinear transformation is a straightforward
+        adaptation with respect to FiLM. Feature-wise gating is represented by
+        an equation of the form
 
         <dt-math block>
           y_k = \alpha_k x_k, \quad \alpha_k \in [0, 1].
@@ -776,12 +788,28 @@
 
       <h3>Attention as a generalized bilinear transformation</h3>
       <p>
-        <span class="todo">
-          TODO: add small introduction to attention, pointing back to the
-          <a href="https://distill.pub/2016/augmented-rnns/">Distill article</a>
-          on attention.
-        </span>
+        A previous <a href="https://distill.pub/2016/augmented-rnns/">Distill article</a>
+        already covers the subject of attention in great length, but here is a
+        refresher for the benefit of this discussion.
       </p>
+      <p>
+        Attention is applied to a set of feature vectors at different spatial or
+        temporal locations <dt-math>t \in [1, \cdots, T]</dt-math> by computing
+        from internal or external conditioning information an
+        <em>attention distribution</em>
+
+        <dt-math block>
+            \mathbf{p} = (p_1, \cdots, p_T)^T, \quad p^t > 0, \quad \sum_{t=1}^T p^t = 1.
+        </dt-math>
+
+        Assuming a feature matrix <dt-math>X</dt-math> in which columns
+        represent feature vectors at different spatial or temporal locations,
+        the output of the attentional interface is computed as the expected
+        feature vector over the attention distribution:
+
+        <dt-math block>
+            \mathbf{y} = X \mathbf{p}.
+        </dt-math>
       <p>
         Attention is closely related to gating in the generalized bilinear
         formulation, save from one crucial detail: because it implements a
@@ -791,13 +819,13 @@
         features. It is represented by an equation of the form
 
         <dt-math block>
-          y_k = \sum_{t=1}^T p^t x_k^t, \quad p^t > 0, \quad \sum_{t=1}^T p^t = 1.
+          y_k = \sum_{t=1}^T X_{k,t} p_t.
         </dt-math>
 
         This means that the context vector should have the form
 
         <dt-math block>
-          \mathbf{v} = (p^1, \ldots, p^T, 0)^T,
+          \mathbf{v} = (p_1, \ldots, p_T, 0)^T,
         </dt-math>
 
         which is achieved through a combination of an "all-but-last softmax"
@@ -842,7 +870,9 @@
       </p>
       <figure class="l-body-outset figure" id="moe-diagram">
         <figcaption>
-            WRITEME.
+            Mixture-of-experts model. The model's output is computed as a
+            weighted sum of each expert's feature vector output as predicted
+            by the gating network's mixture distribution output.
         </figcaption>
       </figure>
       <p>
@@ -856,7 +886,9 @@
       </p>
       <figure class="l-body-outset figure" id="moe-as-bilinear-diagram">
         <figcaption>
-            WRITEME.
+          Just like with attention, the generalized bilinear weight matrices for
+          a mixture-of-experts model are tied. Grey elements have value
+          <dt-math>0</dt-math>, and color elements have arbitrary values.
         </figcaption>
       </figure>
 
