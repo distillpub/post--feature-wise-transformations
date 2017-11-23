@@ -27,11 +27,6 @@
   fill-opacity: 0.8;
 }
 
-.figure-black {
-  fill: #000;
-  fill-opacity: 0.8;
-}
-
 .figure-box {
   rx: 6px;
   ry: 6px;
@@ -59,69 +54,25 @@
   font-size: 8px;
 }
 
+.figure-film-generator {
+  stroke: #f44336;
+  stroke-width: 1.5px;
+  stroke-miterlimit: 10px;
+}
+
+.figure-film-layer {
+  stroke: #ff9800;
+  stroke-width: 1.5px;
+  stroke-miterlimit: 10px;
+}
+
+.figure-filmed-network {
+  stroke: #2196f3;
+  stroke-width: 1.5px;
+  stroke-miterlimit: 10px;
+}
+
 .todo {
   color: red;
 }
 
-.previews a {
-  text-decoration: none;
-  overflow: hidden;
-  margin-bottom: 12px;
-  display: block;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-}
-.previews figcaption {
-  margin-left: 100px;
-}
-.previews svg, .previews img {
-  width: 80px;
-  float: left;
-}
-
-@media(min-width: 768px) {
-  .previews {
-    overflow: hidden;
-    margin-top: 48px;
-    margin-bottom: 48px;
-  }
-  .previews figcaption {
-    margin-left: 0;
-  }
-  .previews figcaption b {
-    display: block;
-  }
-  .previews figcaption b span {
-    display: block;
-  }
-  .previews a {
-    position: relative;
-    float: left;
-    width: 19%;
-    margin-right: 3.6%;
-    padding-right: 3.6%;
-    border-right: 1px solid rgba(0, 0, 0, 0.05);
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-  .previews a:last-child {
-    margin-right: 0;
-    padding-right: 0;
-    border-right: 0;
-  }
-  .previews svg, .previews img {
-    margin-bottom: 18px;
-    display: block;
-    width: 100%;
-    float: none;
-  }
-}
-
-@media(min-width: 1024px) {
-  .previews {
-    margin-top: 90px;
-    margin-bottom: 90px;
-  }
-}

@@ -1,23 +1,13 @@
 function buildFigure () {
     function styleFigure () {
         // --- Retrieve svg element -------------------------------------------
-        var svg = d3.select("figure.figure#clevr-diagram").select("svg");
+        var svg = d3.select("figure.figure#legend-diagram").select("svg");
 
         // --- Clear element-specific styling ---------------------------------
         svg.selectAll(".figure-element, .figure-group, .figure-line, .figure-path")
             .style("fill", null)
             .style("stroke", null);
         svg.selectAll(".figure-text").style("font-size", null);
-
-        // --- Create figure elements -----------------------------------------
-        // Input image
-        svg.append("image")
-            .attrs({
-                "width": 144, "height": 96,
-                "x": svg.select("#image-placeholder").attr("x"),
-                "y": svg.select("#image-placeholder").attr("y"),
-                "href": "assets/clevr_input.jpg",
-            });
 
         // --- Hoverable content ----------------------------------------------
         svg.select("g.film-generator")
@@ -29,7 +19,7 @@ function buildFigure () {
             })
             .on("mouseleave", function () {
                 d3.select(this).select("g.film-generator > text")
-                    .text("linguistic pipeline");
+                    .text("figure element");
                 d3.select(this).select("g.film-generator > rect")
                     .style("fill", null)
             });
@@ -43,7 +33,7 @@ function buildFigure () {
             })
             .on("mouseleave", function () {
                 d3.select(this).select("g.film-layer > text")
-                    .text("FiLM");
+                    .text("figure element");
                 d3.select(this).select("g.film-layer > rect")
                     .style("fill", null)
             });
@@ -57,15 +47,15 @@ function buildFigure () {
             })
             .on("mouseleave", function () {
                 d3.select(this).select("g.filmed-network > text")
-                    .text("visual pipeline");
+                    .text("figure element");
                 d3.select(this).select("g.filmed-network > rect")
                     .style("fill", null)
             });
     }
 
-    d3.xml("assets/clevr.svg").mimeType("image/svg+xml").get(function(error, xml) {
+    d3.xml("assets/legend.svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
-        d3.select("figure.figure#clevr-diagram").each(function () {
+        d3.select("figure.figure#legend-diagram").each(function () {
             this.insertBefore(xml.documentElement, this.firstChild);
         });
         styleFigure();

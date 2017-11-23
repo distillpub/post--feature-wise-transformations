@@ -15,9 +15,9 @@
       <path style="stroke: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
     </symbol>
   </defs>
-  <g transform="matrix(1, 0, 0, 1, -94.4758, 40.914658)" class="style-transfer-network">
+  <g transform="matrix(1, 0, 0, 1, -94.4758, 40.914658)" class="film-generator">
     <title>linguistic pipeline</title>
-    <rect x="107.35" y="-19.873" width="221.01" height="445.599" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="107.35" y="-19.873" width="221.01" height="445.599" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-film-generator"/>
     <text x="121.895" y="7.027" style="font-size: 13px; white-space: pre;" class="figure-text">linguistic pipeline</text>
     <g transform="matrix(1, 0, 0, 1, 43.845993, -212.03952)">
       <rect x="152.791" y="237.233" width="113.085" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
@@ -87,9 +87,9 @@
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 248.89950561523438, 319.0895690917969)" xlink:href="#arrow-down"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 248.89950561523438, 369.3539733886719)" xlink:href="#arrow-down"/>
   </g>
-  <g transform="matrix(1, 0, 0, 1, 143.697891, 21.671867)" class="style-transfer-network">
+  <g transform="matrix(1, 0, 0, 1, 143.697891, 21.671867)" class="filmed-network">
     <title>visual pipeline</title>
-    <rect x="107.35" y="33.418" width="260.241" height="326.177" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <rect x="107.35" y="33.418" width="260.241" height="326.177" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-filmed-network"/>
     <g transform="matrix(1, 0, 0, 1, 43.461548, 65.579681)">
       <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">feature extractor</text>
@@ -138,8 +138,8 @@
       <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(1, 0, 0, 1, -4.451978, 125.642685)" class="figure-text">batch normalization</text>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 86.588539, -143.485001)">
-      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <g transform="matrix(1, 0, 0, 1, 86.588539, -143.485001)" class="film-layer">
+      <rect x="122.142" y="237.233" width="143.734" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-layer"/>
       <text x="170.177" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
     </g>
     <g transform="matrix(1, 0, 0, 1, 86.588493, -203.815002)">
