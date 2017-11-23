@@ -40,7 +40,7 @@
     <g transform="matrix(1, 0, 0, 1, 378.391449, 166.016449)">
       <title>Subnetwork</title>
       <rect x="119.766" y="208.684" width="222" height="62.352" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
-      <text x="195.98" y="244.6" style="font-size: 13px; white-space: pre; opacity: 0.3;" class="figure-text">sub-network</text>
+      <text x="195.98" y="244.6" style="font-size: 13px; white-space: pre;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="374.7" x2="609.157" y2="350.692" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 350.6918640136719)" xlink:href="#arrow-up"/>
@@ -54,7 +54,7 @@
     <g transform="matrix(1, 0, 0, 1, 378.391479, 38.774292)">
       <title>Subnetwork</title>
       <rect x="119.766" y="180.51" width="222" height="62.352" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
-      <text x="195.979" y="216.426" style="font-size: 13px; white-space: pre; opacity: 0.3;" class="figure-text">sub-network</text>
+      <text x="195.979" y="216.426" style="font-size: 13px; white-space: pre;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="219.284" x2="609.157" y2="195.276" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 195.27598571777344)" xlink:href="#arrow-up"/>
@@ -68,7 +68,7 @@
     <g transform="matrix(1, 0, 0, 1, 378.391479, -85.694366)">
       <title>Subnetwork</title>
       <rect x="119.766" y="149.563" width="222" height="62.352" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
-      <text x="195.979" y="185.479" style="font-size: 13px; white-space: pre; opacity: 0.3;" class="figure-text">sub-network</text>
+      <text x="195.979" y="185.479" style="font-size: 13px; white-space: pre;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="63.869" x2="609.157" y2="32.531" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 604.8775024414062, 32.531253814697266)" xlink:href="#arrow-up"/>
