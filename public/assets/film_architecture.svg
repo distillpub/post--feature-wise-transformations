@@ -26,13 +26,8 @@
     <rect x="91.561" y="92.492" width="179.844" height="297.744" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 130.045502, -8.63625)" style="font-size: 13px; white-space: pre;">FiLM generator</text>
   </g>
-  <line style="stroke: rgb(0, 0, 0);" x1="313.99" y1="250" x2="380" y2="250" class="figure-line"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 372.3102722167969, 245.72000122070312)" xlink:href="#arrow-right"/>
-  <g transform="matrix(1, 0, 0, 1, -70.334694, -46.605865)">
-    <title>FiLM Parameters</title>
-    <rect x="450.335" y="186.802" width="33.305" height="227.974" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
-    <text x="450.706" y="274.215" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 197.729706, 797.351501)">FiLM parameters</text>
-  </g>
+  <line style="stroke: rgb(0, 0, 0);" x1="313.99" y1="250" x2="373.809" y2="250" class="figure-line"/>
+  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 366.118988, 245.719955)" xlink:href="#arrow-right"/>
   <g id="full-figure">
     <title>FiLM-ed Network</title>
     <rect x="479.315" y="47.559" width="259.685" height="405.803" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
@@ -82,9 +77,18 @@
       <text x="591.389" y="27.684" style="font-size: 13px; white-space: pre;" class="figure-text">output</text>
     </g>
   </g>
-  <line style="stroke: rgb(0, 0, 0);" x1="413.305" y1="250" x2="453.248" y2="250" class="figure-line"/>
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 490.4674377441406, 323.88836669921875)" xlink:href="#arrow-right"/>
   <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 490.46746826171875, 168.4726104736328)" xlink:href="#arrow-right"/>
-  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 453.248 250 L 453.248 172.75 L 498.157 172.75" class="figure-line"/>
-  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 453.248 250 L 453.248 328.17 L 498.157 328.17" class="figure-line"/>
+  <g transform="matrix(1, 0, 0, 1, -64.403244, -122.472984)">
+    <title>FiLM Parameters</title>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 446.056 238.473 C 446.056 235.159 448.742 232.473 452.056 232.473 L 470.056 232.473 C 473.37 232.473 476.056 235.159 476.056 238.473 L 476.056 372.473 L 446.056 372.473 Z" class="figure-element"/>
+    <text x="450.706" y="274.215" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 191.759125, 799.02771)">FiLM parameters</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -73.168266, 13.134021)">
+    <title>FiLM Parameters</title>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 454.821 236.866 L 484.821 236.866 L 484.821 370.866 C 484.821 374.18 482.135 376.866 478.821 376.866 L 460.821 376.866 C 457.508 376.866 454.821 374.18 454.821 370.866 Z" class="figure-element"/>
+    <text x="450.706" y="274.215" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 200.52417, 803.420715)">FiLM parameters</text>
+  </g>
+  <line style="stroke: rgb(0, 0, 0);" x1="420.868" y1="172.753" x2="498.157" y2="172.753" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="420.868" y1="328.168" x2="498.158" y2="328.168" class="figure-line"/>
 </svg>
