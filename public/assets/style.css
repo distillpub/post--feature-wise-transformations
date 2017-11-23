@@ -37,6 +37,13 @@
   ry: 6px;
 }
 
+.figure-dashed {
+  stroke: #666;
+  stroke-width: 1.5px;
+  stroke-miterlimit: 10px;
+  stroke-dasharray: 5, 5;
+}
+
 .figure-text {
   fill: #000;
   opacity: 0.6;

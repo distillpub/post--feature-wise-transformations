@@ -187,9 +187,9 @@
     </g>
     <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -49.453068, 77.552032)">FiLM layer (fully-connected)</text>
     <line style="stroke: rgb(0, 0, 0);" x1="-10" y1="137.5" x2="26.937" y2="137.5" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 19.247494, 133.220001)" xlink:href="#arrow-right"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 19.247493743896484, 133.22000122070312)" xlink:href="#arrow-right"/>
     <line style="stroke: rgb(0, 0, 0);" x1="-10" y1="352.5" x2="26.937" y2="352.5" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 19.247494, 348.219971)" xlink:href="#arrow-right"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 19.247493743896484, 348.219970703125)" xlink:href="#arrow-right"/>
   </g>
   <g transform="matrix(1, 0, 0, 1, 377, 60.000008)" id="cnn-figure">
     <title>CNN Figure</title>
@@ -876,9 +876,9 @@
     </g>
     <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -2.052034, 67.552025)">FiLM layer (convolutional)</text>
     <line style="stroke: rgb(0, 0, 0);" x1="34.251" y1="127.5" x2="74.25" y2="127.5" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 66.561119, 123.219978)" xlink:href="#arrow-right"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 66.56111907958984, 123.21997833251953)" xlink:href="#arrow-right"/>
     <line style="stroke: rgb(0, 0, 0);" x1="34.464" y1="342.5" x2="74.463" y2="342.5" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 66.772957, 338.21994)" xlink:href="#arrow-right"/>
+    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 66.77295684814453, 338.2199401855469)" xlink:href="#arrow-right"/>
     <line x1="-14.806" y1="480.364" x2="-14.806" y2="-0.364" style="stroke: rgb(211, 211, 211);"/>
   </g>
 </svg>
