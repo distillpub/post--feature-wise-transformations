@@ -30,11 +30,11 @@
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M -36.816 217.164 L 73.223 217.164" class="figure-line"/>
     <g transform="matrix(1, 0, 0, 1, -123.875519, -136.790558)">
       <rect x="204.588" y="215.876" width="40.898" height="132.237" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
-      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 95.602707, 486.291107)" class="figure-text">feature subset</text>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 95.602707, 486.291107)" class="figure-text">feature subset B</text>
     </g>
     <g transform="matrix(1, 0, 0, 1, -123.875519, 7.12889)">
       <rect x="204.588" y="215.876" width="40.898" height="132.237" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
-      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 95.602707, 486.291107)" class="figure-text">feature subset</text>
+      <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 95.602707, 486.291107)" class="figure-text">feature subset A</text>
     </g>
     <g transform="matrix(1, 0, 0, 1, 165.021469, 0.734953)">
       <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
