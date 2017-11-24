@@ -1,89 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
-      <path d="M 0 0 L 50 0 L 50 100 L 0 100 Z" style="fill: black;"/>
-    </pattern>
-    <linearGradient id="gradient-0" gradientUnits="userSpaceOnUse" x1="722.886" y1="0" x2="722.886" y2="500" gradientTransform="matrix(0, -0.083327, 0.210855, 0, 681.502075, 308.729199)">
-      <stop offset="0" style="stop-color: rgb(240, 240, 245);"/>
-      <stop offset="1" style="stop-color: rgba(240, 240, 245, 0);"/>
-    </linearGradient>
-    <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
-      <title>Right arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-up" viewBox="0 0 8.56 7.69">
-      <title>Up arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-left" viewBox="0 0 7.69 8.56">
-      <title>Left arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-down" viewBox="0 0 8.56 7.69">
-      <title>Down arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
-    </symbol>
-  </defs>
-  <g transform="matrix(1, 0, 0, 0.975379, 1.038848, 90.419724)">
-    <title>Encoder network</title>
-    <rect x="127.32" y="60.059" width="126.574" height="207.099" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
-    <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -225.117813, -29.481613)" class="figure-text">Encoder</text>
+<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1, 0, 0, 0.975379, -7.961152, 90.419724)" id="encoder">
+    <title>encoder</title>
+    <rect x="140.076" y="60.059" width="113.818" height="207.099" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+    <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -215.882248, -29.297388)" class="figure-text">encoder</text>
   </g>
-  <g transform="matrix(1, 0, 0, 0.975379, 294.457733, 90.419685)">
-    <title>Decoder network</title>
+  <g transform="matrix(1, 0, 0, 0.975379, 285.457733, 90.419685)" id="decoder">
+    <title>decoder</title>
     <rect x="127.32" y="60.059" width="126.574" height="207.099" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
-    <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -225.872208, -29.481606)" class="figure-text">Decoder</text>
+    <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -222.435532, -29.297392)" class="figure-text">decoder</text>
   </g>
-  <g transform="matrix(1, 0, 0, 0.975379, 147.748291, 90.419693)">
+  <g transform="matrix(1, 0, 0, 0.975379, 138.748291, 90.419693)" id="adain">
     <title>AdaIN</title>
     <rect x="127.32" y="60.059" width="126.574" height="207.099" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <g transform="matrix(1, 0, 0, 1.025243, -342.066162, -4.129364)">
       <title>Instance normalization</title>
       <rect x="480.149" y="86.381" width="37.075" height="154.454" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box" transform="matrix(0.999999, 0, 0, 1, 5.410094, 0)"/>
-      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 476.307007, 830.428284)" class="figure-text">Instance normalizaiton</text>
+      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1.000002, 0, 476.119472, 828.201721)" class="figure-text">instance normalization</text>
     </g>
-    <line style="stroke: rgb(0, 0, 0);" x1="200.646" y1="198.124" x2="180.567" y2="198.124" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1.025242, 192.956055, 193.740372)" xlink:href="#arrow-right"/>
-    <line style="stroke: rgb(0, 0, 0);" x1="200.646" y1="129.092" x2="180.567" y2="129.092" class="figure-line"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1.025242, 192.955994, 124.700562)" xlink:href="#arrow-right"/>
-    <g transform="matrix(1, 0, 0, 1.025243, -284.912201, -4.12937)">
+    <line style="stroke: rgb(0, 0, 0);" x1="200.646" y1="198.124" x2="180.567" y2="198.124" class="figure-line figure-film-generator-edge"/>
+    <line style="stroke: rgb(0, 0, 0);" x1="200.646" y1="129.092" x2="180.567" y2="129.092" class="figure-line figure-filmed-network-edge"/>
+    <g transform="matrix(1, 0, 0, 1.025243, -284.912201, -4.12937)" class="film-layer">
       <title>FiLM</title>
-      <rect x="480.149" y="86.381" width="37.075" height="154.454" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box" transform="matrix(0.999999, 0, 0, 1, 5.410094, 0)"/>
-      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1.000002, 0, 475.994471, 782.076721)" class="figure-text">FiLM</text>
+      <rect x="480.149" y="86.381" width="37.075" height="154.454" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-layer" transform="matrix(0.999999, 0, 0, 1, 5.410094, 0)"/>
+      <text x="603.791" y="32.789" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1.000002, 0, 476.119476, 823.748596)" class="figure-text">affine transformation</text>
     </g>
     <text x="400.91" y="193.092" style="font-size: 13px; white-space: pre;" transform="matrix(0.975379, 0, 0, 1.025243, -218.488281, 63.35326)" class="figure-text">AdaIN</text>
   </g>
-  <g>
-    <title>Style loss</title>
-    <rect x="680.075" width="106.859" height="500" style="fill: none; stroke: rgb(0, 0, 0);"/>
-    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
-  </g>
-  <rect x="10" y="351" width="96" height="96" style="fill: none; stroke: rgb(0, 0, 0);" id="style-image-placeholder">
+  <rect x="10" y="351" width="96" height="96" style="fill: rgb(188, 188, 188);" id="style-image-placeholder">
     <title>Style image placeholder</title>
   </rect>
-  <rect x="10" y="53" width="96" height="96" style="fill: none; stroke: rgb(0, 0, 0);" id="content-image-placeholder">
+  <rect x="10" y="53" width="96" height="96" style="fill: rgb(188, 188, 188);" id="content-image-placeholder">
     <title>Content image placeholder</title>
   </rect>
-  <rect x="567.893" y="202" width="96" height="96" style="fill: none; stroke: rgb(0, 0, 0);" id="stylized-image-placeholder">
+  <rect x="567.893" y="202" width="96" height="96" style="fill: rgb(188, 188, 188);" id="stylized-image-placeholder">
     <title>Stylized image placeholder</title>
   </rect>
-  <line style="stroke: rgb(0, 0, 0);" x1="692.668" y1="399" x2="106" y2="399" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="692.668" y1="101" x2="106" y2="101" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="692.668" y1="250" x2="663.893" y2="250" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="567.893" y1="250" x2="548.352" y2="250" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="421.778" y1="250" x2="385.133" y2="250" class="figure-line"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="291.243" y1="283.666" x2="254.933" y2="283.666" class="figure-line"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 684.978027, 96.720001)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 684.977966, 245.720016)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 684.978088, 394.720032)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 560.203003, 245.720016)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 414.087738, 245.720001)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 283.553009, 279.390015)" xlink:href="#arrow-right"/>
-  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 58 149 L 58 216.333 L 128.359 216.333" class="figure-line"/>
-  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 173.753 208.516 L 103.395 208.516 L 103.395 275.85" class="figure-line" transform="matrix(1, 0, 0, 1, -45.394582678329456, 75.14978334780287)"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 120.668427, 279.390015)" xlink:href="#arrow-right"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 120.668427, 212.050003)" xlink:href="#arrow-right"/>
-  <line style="stroke: rgb(0, 0, 0);" x1="291.243" y1="216.333" x2="254.933" y2="216.333" class="figure-line"/>
-  <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 283.553009, 212.050018)" xlink:href="#arrow-right"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="682.771" y1="399" x2="106" y2="399" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="682.771" y1="101" x2="106" y2="101" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="682.771" y1="250" x2="663.893" y2="250" class="figure-line"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="567.893" y1="250" x2="539.352" y2="250" class="figure-line figure-filmed-network-edge"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="412.778" y1="250" x2="376.133" y2="250" class="figure-line figure-filmed-network-edge"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="282.243" y1="283.666" x2="245.933" y2="283.666" class="figure-line figure-film-generator-edge"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 58 149 L 58 216.333 L 132.115 216.333" class="figure-line figure-filmed-network-edge"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 132.115 283.666 L 58 283.666 L 58 351" class="figure-line figure-film-generator-edge"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="282.243" y1="216.333" x2="245.933" y2="216.333" class="figure-line figure-filmed-network-edge"/>
+  <g transform="matrix(1, 0, 0, 1, 2.204233, 0.000035)">
+    <title>style loss</title>
+    <rect x="680.567" width="55.285" height="447.71" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box" y="26.145"/>
+    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 86.800087, -122.694954)" class="film-generator">
+    <rect x="91.561" y="148.84" width="179.844" height="28.528" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-film-generator"/>
+    <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 135.256424, -87.013428)" style="font-size: 13px; white-space: pre;">FiLM generator</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 339.005157, -122.694962)" class="filmed-network">
+    <rect x="91.561" y="148.84" width="179.844" height="28.528" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-filmed-network"/>
+    <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 129.904861, -87.013428)" style="font-size: 13px; white-space: pre;">FiLM-ed network</text>
+  </g>
+  <path style="stroke: rgb(0, 0, 0);" d="M 132.115 216.33 C 129.336 217.329 126.739 218.775 124.425 220.61 L 125.975 216.33 L 124.425 212.05 C 126.739 213.885 129.336 215.33 132.115 216.33 Z" class="figure-path figure-filmed-network-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 132.115 283.67 C 129.336 284.669 126.739 286.115 124.425 287.95 L 125.975 283.67 L 124.425 279.39 C 126.739 281.225 129.336 282.67 132.115 283.67 Z" class="figure-path figure-film-generator-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 282.243 216.33 C 279.464 217.329 276.867 218.775 274.553 220.61 L 276.103 216.33 L 274.553 212.05 C 276.867 213.885 279.464 215.33 282.243 216.33 Z" class="figure-path figure-filmed-network-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 282.243 283.67 C 279.464 284.669 276.867 286.115 274.553 287.95 L 276.103 283.67 L 274.553 279.39 C 276.867 281.225 279.464 282.67 282.243 283.67 Z" class="figure-path figure-film-generator-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 339.395 216.33 C 336.616 217.329 334.019 218.775 331.705 220.61 L 333.255 216.33 L 331.705 212.05 C 334.019 213.885 336.616 215.33 339.395 216.33 Z" class="figure-path figure-filmed-network-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 339.395 283.67 C 336.616 284.669 334.019 286.115 331.705 287.95 L 333.255 283.67 L 331.705 279.39 C 334.019 281.225 336.616 282.67 339.395 283.67 Z" class="figure-path figure-film-generator-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 412.778 250 C 409.999 250.999 407.402 252.445 405.088 254.28 L 406.638 250 L 405.088 245.72 C 407.402 247.555 409.999 249 412.778 250 Z" class="figure-path figure-filmed-network-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 567.893 250 C 565.114 250.999 562.517 252.445 560.203 254.28 L 561.753 250 L 560.203 245.72 C 562.517 247.555 565.114 249 567.893 250 Z" class="figure-path figure-filmed-network-arrow"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 682.771 101 C 679.992 101.999 677.395 103.445 675.081 105.28 L 676.631 101 L 675.081 96.72 C 677.395 98.555 679.992 100 682.771 101 Z" class="figure-path"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 682.771 250 C 679.992 250.999 677.395 252.445 675.081 254.28 L 676.631 250 L 675.081 245.72 C 677.395 247.555 679.992 249 682.771 250 Z" class="figure-path"/>
+  <path style="stroke: rgb(0, 0, 0);" d="M 682.771 399 C 679.992 399.999 677.395 401.445 675.081 403.28 L 676.631 399 L 675.081 394.72 C 677.395 396.555 679.992 398 682.771 399 Z" class="figure-path"/>
 </svg>
