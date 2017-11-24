@@ -2,13 +2,13 @@
 <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
   <text x="5.004" y="254.928" style="font-size: 13px; white-space: pre;" class="figure-text">conditioning</text>
   <line style="stroke: rgb(0, 0, 0);" x1="80.594" y1="250" x2="134.146" y2="250" class="figure-line"/>
-  <g transform="matrix(1, 0, 0, 1, 42.585468, 8.635989)">
+  <g transform="matrix(1, 0, 0, 1, 42.585468, 8.635989)" class="film-generator">
     <title>FiLM Generator</title>
     <rect x="91.561" y="92.492" width="179.844" height="297.744" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-film-generator"/>
     <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 130.045502, -8.63625)" style="font-size: 13px; white-space: pre;">FiLM generator</text>
   </g>
   <line style="stroke: rgb(0, 0, 0);" x1="313.99" y1="250" x2="372.433" y2="250" class="figure-line"/>
-  <g id="full-figure">
+  <g class="filmed-network">
     <title>FiLM-ed Network</title>
     <rect x="479.315" y="37.803" width="259.685" height="415.559" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-filmed-network"/>
     <g>
@@ -22,11 +22,6 @@
       <text x="195.98" y="244.6" style="font-size: 13px; white-space: pre;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="374.7" x2="609.157" y2="350.692" class="figure-line"/>
-    <g transform="matrix(1, 0, 0, 1, 144.902435, 27.552868)">
-      <title>FiLM</title>
-      <rect x="353.255" y="278.092" width="222" height="45.047" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-layer"/>
-      <text x="450.695" y="305.358" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
-    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.158" y1="305.645" x2="609.158" y2="281.636" class="figure-line"/>
     <g transform="matrix(1, 0, 0, 1, 378.391479, 38.774292)">
       <title>Subnetwork</title>
@@ -34,11 +29,6 @@
       <text x="195.979" y="216.426" style="font-size: 13px; white-space: pre;" class="figure-text">sub-network</text>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="219.284" x2="609.157" y2="195.276" class="figure-line"/>
-    <g transform="matrix(1, 0, 0, 1, 144.902481, -96.725906)">
-      <title>FiLM</title>
-      <rect x="353.255" y="246.955" width="222" height="45.047" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-layer"/>
-      <text x="450.706" y="274.215" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
-    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="609.157" y1="150.229" x2="609.157" y2="126.221" class="figure-line"/>
     <g transform="matrix(1, 0, 0, 1, 378.391479, -85.694366)">
       <title>Subnetwork</title>
@@ -60,6 +50,16 @@
       <title>Output</title>
       <text x="575.278" y="17.544" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM-ed network</text>
     </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 144.902435, 27.552868)" class="film-layer">
+    <title>FiLM</title>
+    <rect x="353.255" y="278.092" width="222" height="45.047" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-layer"/>
+    <text x="450.695" y="305.358" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 144.902481, -96.725906)" class="film-layer">
+    <title>FiLM</title>
+    <rect x="353.255" y="246.955" width="222" height="45.047" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-layer"/>
+    <text x="450.706" y="274.215" style="font-size: 13px; white-space: pre;" class="figure-text">FiLM</text>
   </g>
   <rect x="493.139" y="105.246" width="48.433" height="327.554" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box" transform="matrix(0.999999, 0, 0, 1, -120.705225, -21.089162)"/>
   <g transform="matrix(1, 0, 0, 1, -64.403244, -132.472992)">
