@@ -73,8 +73,6 @@ function buildFigure () {
                 .on("click", function () {
                     var layer = parseInt(d3.select(this).attr("id").charAt(11)) - 1;
                     svg.selectAll("circle")
-                        .transition()
-                        .duration(500)
                         .attrs({
                             "cx": function(d) { return xScales[layer](coordinates(d, layer).x); },
                             "cy": function(d) { return yScales[layer](coordinates(d, layer).y); }
