@@ -52,15 +52,15 @@ function buildFigure () {
 
         svg.selectAll("g.film-layer")
             .on("mouseenter", function () {
-                d3.selectAll("g.film-layer").select("g.film-layer > text")
+                svg.selectAll("g.film-layer").select("g.film-layer > text")
                     .text("FiLM layer");
-                d3.selectAll("g.film-layer").select("g.film-layer > rect")
+                svg.selectAll("g.film-layer").select("g.film-layer > rect")
                     .style("fill", "#ffcc80");
             })
             .on("mouseleave", function () {
-                d3.selectAll("g.film-layer").select("g.film-layer > text")
+                svg.selectAll("g.film-layer").select("g.film-layer > text")
                     .text("affine transformation");
-                d3.selectAll("g.film-layer").select("g.film-layer > rect")
+                svg.selectAll("g.film-layer").select("g.film-layer > rect")
                     .style("fill", null)
             });
 

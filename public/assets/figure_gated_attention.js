@@ -10,20 +10,20 @@ function buildFigure () {
         svg.selectAll(".figure-text").style("font-size", null);
 
         // --- Hoverable content ----------------------------------------------
-        d3.selectAll("path.figure-film-generator")
+        svg.selectAll("path.figure-film-generator")
             .style("fill", "#f44336")
             .style("stroke", "#f44336");
         svg.selectAll("g.film-generator")
             .on("mouseenter", function () {
                 d3.select(this).select("g.film-generator > text")
                     .text("FiLM generator");
-                d3.selectAll("g.film-generator > .figure-film-generator")
+                svg.selectAll("g.film-generator > .figure-film-generator")
                     .style("fill", "#ef9a9a");
             })
             .on("mouseleave", function () {
                 d3.select(this).select("g.film-generator > text")
                     .text("");
-                d3.selectAll("g.film-generator > .figure-film-generator")
+                svg.selectAll("g.film-generator > .figure-film-generator")
                     .style("fill", null);
             });
 
@@ -45,13 +45,13 @@ function buildFigure () {
             .on("mouseenter", function () {
                 d3.select(this).select("g.filmed-network > text")
                     .text("FiLM-ed layer");
-                d3.selectAll("g.filmed-network > .figure-filmed-network")
+                svg.selectAll("g.filmed-network > .figure-filmed-network")
                     .style("fill", "#90caf9");
             })
             .on("mouseleave", function () {
                 d3.select(this).select("g.filmed-network > text")
                     .text("gated-attention multimodal fusion unit");
-                d3.selectAll("g.filmed-network > .figure-filmed-network")
+                svg.selectAll("g.filmed-network > .figure-filmed-network")
                     .style("fill", null);
             });
     }

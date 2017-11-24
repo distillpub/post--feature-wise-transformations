@@ -42,12 +42,12 @@ function buildFigure () {
                     .style("stroke", "none");
                 d3.select(this).select("g.film-generator > text")
                     .text("FiLM generator");
-                d3.selectAll("g#encoder > rect, g#adain > rect")
+                svg.selectAll("g#encoder > rect, g#adain > rect")
                     .classed("figure-film-generator", true)
                     .style("fill", "#ef9a9a");
-                d3.selectAll(".figure-film-generator-edge")
+                svg.selectAll(".figure-film-generator-edge")
                     .style("stroke", "#c62828");
-                d3.selectAll(".figure-film-generator-arrow")
+                svg.selectAll(".figure-film-generator-arrow")
                     .style("fill", "#c62828")
                     .style("stroke", "#c62828");
             })
@@ -56,12 +56,12 @@ function buildFigure () {
                     .style("stroke", null);
                 d3.select(this).select("g.film-generator > text")
                     .text("");
-                d3.selectAll("g#encoder > rect, g#adain > rect")
+                svg.selectAll("g#encoder > rect, g#adain > rect")
                     .classed("figure-film-generator", false)
                     .style("fill", null);
-                d3.selectAll(".figure-film-generator-edge")
+                svg.selectAll(".figure-film-generator-edge")
                     .style("stroke", null);
-                d3.selectAll(".figure-film-generator-arrow")
+                svg.selectAll(".figure-film-generator-arrow")
                     .style("fill", null)
                     .style("stroke", null);
             });
@@ -86,12 +86,12 @@ function buildFigure () {
                     .style("stroke", "none");
                 d3.select(this).select("g.filmed-network > text")
                     .text("FiLM-ed network");
-                d3.selectAll("g#encoder > rect, g#adain > rect, g#decoder > rect")
+                svg.selectAll("g#encoder > rect, g#adain > rect, g#decoder > rect")
                     .classed("figure-filmed-network", true)
                     .style("fill", "#90caf9");
-                d3.selectAll(".figure-filmed-network-edge")
+                svg.selectAll(".figure-filmed-network-edge")
                     .style("stroke", "#1e88e5");
-                d3.selectAll(".figure-filmed-network-arrow")
+                svg.selectAll(".figure-filmed-network-arrow")
                     .style("fill", "#1e88e5")
                     .style("stroke", "#1e88e5");
             })
@@ -100,12 +100,12 @@ function buildFigure () {
                     .style("stroke", null);
                 d3.select(this).select("g.filmed-network > text")
                     .text("");
-                d3.selectAll("g#encoder > rect, g#adain > rect, g#decoder > rect")
+                svg.selectAll("g#encoder > rect, g#adain > rect, g#decoder > rect")
                     .classed("figure-filmed-network", false)
                     .style("fill", null);
-                d3.selectAll(".figure-filmed-network-edge")
+                svg.selectAll(".figure-filmed-network-edge")
                     .style("stroke", null);
-                d3.selectAll(".figure-filmed-network-arrow")
+                svg.selectAll(".figure-filmed-network-arrow")
                     .style("fill", null)
                     .style("stroke", null);
             });
