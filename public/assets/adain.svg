@@ -48,7 +48,7 @@
   <g transform="matrix(1, 0, 0, 1, 2.204233, 0.000035)">
     <title>style loss</title>
     <rect x="680.567" width="55.285" height="447.71" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box" y="26.145"/>
-    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
+    <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">style transfer loss</text>
   </g>
   <g transform="matrix(1, 0, 0, 1, 40.554016, 0.160026)" class="film-generator">
     <path d="M 91.561 249.84 l 0 -95 a 6 6 0 0 1 6 -6 l 101.82 0 a 6 6 0 0 1 6 6 l 0 95" style="fill: none; stroke: rgb(0, 0, 0); pointer-events: bounding-box;" class="figure-line figure-film-generator"/>

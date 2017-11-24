@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
-      <title>Right arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-down" viewBox="0 0 8.56 7.69">
-      <title>Down arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-up" viewBox="0 0 8.56 7.69">
-      <title>Up arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
-    </symbol>
-  </defs>
-  <g transform="matrix(1, 0, 0, 1, 59.14795644624276, 27.646404683046953)" class="style-transfer-network">
+<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1, 0, 0, 1, 59.14795644624276, 27.646404683046953)">
     <title>gated-attention</title>
-    <rect x="145.025" y="26.285" width="430.127" height="367.547" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
-    <text x="155.037" y="43.954" style="font-size: 13px; white-space: pre;" class="figure-text">gated-attention multimodal fusion unit</text>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 321.79400634765625, 140.92393493652344)" xlink:href="#arrow-right"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 586.6865234375, 140.92393493652344)" xlink:href="#arrow-right"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 206.67727661132812, 284.8434143066406)" xlink:href="#arrow-right"/>
-    <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 321.7940368652344, 284.8434143066406)" xlink:href="#arrow-right"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 345.2043762207031, 165.20399475097656)" xlink:href="#arrow-up"/>
+    <g class="filmed-network">
+      <rect x="145.025" y="26.285" width="430.127" height="367.547" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-filmed-network"/>
+      <text x="155.037" y="43.954" style="font-size: 13px; white-space: pre;" class="figure-text">gated-attention multimodal fusion unit</text>
+    </g>
+    <path style="stroke: rgb(0, 0, 0);" d="M 214.367 289.123 C 211.588 290.122 208.991 291.568 206.677 293.403 L 208.227 289.123 L 206.677 284.843 C 208.991 286.678 211.588 288.123 214.367 289.123 Z" class="figure-path"/>
+    <path style="stroke: rgb(0, 0, 0);" d="M 400.126 165.204 C 401.126 167.983 402.571 170.58 404.406 172.894 L 400.126 171.344 L 395.846 172.894 C 397.681 170.58 399.127 167.983 400.126 165.204 Z" class="figure-path"/>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 109.184 289.123 L 214.367 289.123" class="figure-line"/>
     <g transform="matrix(1, 0, 0, 1, -241.403976, -172.633484)">
       <rect x="204.588" y="197.247" width="140" height="140" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
@@ -35,21 +20,26 @@
       <rect x="204.588" y="183.089" width="40.898" height="165.024" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 94.888565, 490.890044)" class="figure-text">instruction representation</text>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 266.025024, 144.654419)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
+    <g transform="matrix(1, 0, 0, 1, 316.667328, 144.654007)" class="film-generator">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element figure-film-generator"/>
       <text x="79.616" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">σ</text>
     </g>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 133.184 145.204 L 329.484 145.204" class="figure-line"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 255.265 289.123 L 329.484 289.123" class="figure-line"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 369.484 145.204 L 594.377 145.204" class="figure-line"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 349.484 165.204 L 349.484 269.123" class="figure-line"/>
-    <g transform="matrix(1, 0, 0, 1, 9.779283, 6.3059)">
-      <rect x="204.588" y="226.945" width="40.898" height="111.745" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 133.184 145.204 L 380.126 145.204" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 255.265 289.123 L 380.126 289.123" class="figure-line figure-film-generator"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 420.126 145.204 L 594.377 145.204" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 400.126 165.204 L 400.126 269.123" class="figure-line"/>
+    <g transform="matrix(1, 0, 0, 1, 9.779283, 6.3059)" class="film-generator">
+      <rect x="204.588" y="226.945" width="40.898" height="111.745" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-generator"/>
+      <text x="269.727" y="273.992" style="font-size: 13px; white-space: pre;" class="figure-text"> </text>
       <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 94.888565, 451.544052)" class="figure-text">linear</text>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 349.484375, 145.203995)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+    <g transform="matrix(1, 0, 0, 1, 400.126312, 145.203995)" class="film-layer">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element figure-film-layer"/>
       <ellipse rx="4" ry="4" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+      <text x="-27.962" y="-25.391" style="font-size: 13px; white-space: pre;" class="figure-text"> </text>
     </g>
+    <path style="stroke: rgb(0, 0, 0);" d="M 380.126 289.123 C 377.347 290.122 374.75 291.568 372.436 293.403 L 373.986 289.123 L 372.436 284.843 C 374.75 286.678 377.347 288.123 380.126 289.123 Z" class="figure-path figure-film-generator"/>
+    <path style="stroke: rgb(0, 0, 0);" d="M 380.126 145.204 C 377.347 146.203 374.75 147.649 372.436 149.484 L 373.986 145.204 L 372.436 140.924 C 374.75 142.759 377.347 144.204 380.126 145.204 Z" class="figure-path"/>
+    <path style="stroke: rgb(0, 0, 0);" d="M 594.377 145.204 C 591.598 146.203 589.001 147.649 586.687 149.484 L 588.237 145.204 L 586.687 140.924 C 589.001 142.759 591.598 144.204 594.377 145.204 Z" class="figure-path"/>
   </g>
 </svg>

@@ -35,7 +35,7 @@
   </defs>
   <g transform="matrix(1, 0, 0, 1, 10, 50.000008)" id="mlp-figure">
     <title>MLP Figure</title>
-    <rect y="72.753" width="289.987" height="342.299" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box">
+    <rect y="72.753" width="289.987" height="342.299" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-film-layer">
       <title>FiLM Layer</title>
     </rect>
     <g transform="matrix(1, 0, 0, 1, 146.937485, 440)" id="input-layer">
@@ -193,7 +193,7 @@
   </g>
   <g transform="matrix(1, 0, 0, 1, 377, 60.000008)" id="cnn-figure">
     <title>CNN Figure</title>
-    <rect y="62.753" width="309.599" height="342.299" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box" x="47.401">
+    <rect y="62.753" width="309.599" height="342.299" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-film-layer" x="47.401">
       <title>FiLM Layer</title>
     </rect>
     <g transform="matrix(1, 0, 0, 1, 239.462997, 470.000092)" id="input-layer">

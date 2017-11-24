@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
-      <title>Right arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 7.69 4.28 C 4.911 5.279 2.314 6.725 0 8.56 L 1.55 4.28 L 0 0 C 2.314 1.835 4.911 3.28 7.69 4.28 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-up" viewBox="0 0 8.56 7.69">
-      <title>Up arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 0 a 27.2 27.2 0 0 0 4.28 7.69 L 4.28 6.14 l -4.28 1.55 A 27.17 27.17 0 0 0 4.28 0 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-left" viewBox="0 0 7.69 8.56">
-      <title>Left arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" class="figure-path"/>
-    </symbol>
-    <symbol id="arrow-down" viewBox="0 0 8.56 7.69">
-      <title>Down arrow</title>
-      <path style="stroke: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
-    </symbol>
-  </defs>
+<svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
   <g transform="matrix(1, 0, 0, 1, 12.167987, -27.098)" id="mlp-figure">
     <title>bilinear</title>
     <rect x="-2.168" y="37.098" width="724" height="320" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
@@ -71,7 +53,7 @@
         <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999996, 1, 0, -319.46756, 60.666893)"><tspan>g(W</tspan><tspan class="subscript">1</tspan><tspan style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
       </g>
       <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 28.317 339.121 C 28.317 323.121 80.817 339.121 80.817 323.121 C 80.817 339.121 133.317 323.121 133.317 339.121"/>
-      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M -14.183 235.121 C -14.183 219.121 38.318 235.121 38.318 219.121 C 38.318 235.121 90.817 219.121 90.817 235.121"/>
+      <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M -14.183 235.121 C -14.183 219.121 38.318 235.121 38.318 219.121 C 38.318 235.121 90.816 219.121 90.816 235.121"/>
     </g>
     <g transform="matrix(1, 0, 0, 1, 294.085724, -94.220444)">
       <title>y_2</title>
@@ -106,8 +88,8 @@
       </g>
       <g transform="matrix(0, 1, -1, 0, 133.316681, 342.120758)">
         <title>z</title>
-        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 0 6 C 0 2.686 2.686 0 6 0 L 20 0 L 20 20 L 6 20 C 2.686 20 0 17.314 0 14 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 20 0 L 40 0 L 40 20 L 20 20 Z" class="figure-element"/>
+        <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 0 6 C 0 2.686 2.686 0 6 0 L 20 0 L 20 20 L 6 20 C 2.686 20 0 17.314 0 14 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 40 0 L 54 0 C 57.314 0 60 2.686 60 6 L 60 14 C 60 17.314 57.314 20 54 20 L 40 20 Z" class="figure-element"/>
         <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 60 6 C 60 2.686 62.686 0 66 0 L 74 0 C 77.314 0 80 2.686 80 6 L 80 14 C 80 17.314 77.314 20 74 20 L 66 20 C 62.686 20 60 17.314 60 14 Z" class="figure-element" transform="matrix(0, -1, 1, 0, 60, 79.999991)"/>
         <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -0.999998, 1, 0, -249.71875, 72.328003)">1</text>
@@ -180,14 +162,12 @@
       <path style="fill: none; stroke: rgb(0, 0, 0);" d="M -27.429 6 C -27.429 2.686 -24.743 0 -21.429 0 L 12.571 0 L 12.571 40 L -21.429 40 C -24.743 40 -27.429 37.314 -27.429 34 Z" class="figure-element"/>
       <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 12.571 0 L 52.571 0 L 52.571 40 L 12.571 40 Z" class="figure-element"/>
       <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 52.571 0 L 86.571 0 C 89.884 0 92.571 2.686 92.571 6 L 92.571 34 C 92.571 37.314 89.884 40 86.571 40 L 52.571 40 Z" class="figure-element"/>
-      <text x="-39.482" y="25.033" style="font-size: 13px; white-space: pre;" class="figure-text">y</text>
+      <text x="-39.482" y="25.033" style="font-size: 13px; white-space: pre;" class="figure-text"><tspan style="font-weight: bold;">y</tspan></text>
     </g>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 288.1229248046875, 87.13043975830078)" xlink:href="#arrow-up"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 328.1229553222656, 87.13043975830078)" xlink:href="#arrow-up"/>
-    <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 368.1229248046875, 87.13043975830078)" xlink:href="#arrow-up"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 376.683 87.13 C 376.683 186.9 558.001 83.244 558.001 117.725"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 336.683 87.13 L 328.123 117.725"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 288.123 87.13 C 287.402 186.9 105.988 86.417 105.988 117.725"/>
+    <path style="stroke: rgb(0, 0, 0);" d="M 292.403 87.13 C 293.403 89.909 294.848 92.506 296.683 94.82 L 292.403 93.27 L 288.123 94.82 C 289.958 92.507 291.404 89.909 292.403 87.13 Z" class="figure-path"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 372.403 87.13 C 356.423 129.12 558.001 83.244 558.001 117.725"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 332.403 87.13 L 332.403 118.25"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" class="figure-line" d="M 292.403 87.13 C 306.383 131.779 105.988 86.417 105.988 117.725"/>
     <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text figure-large-text" transform="matrix(0.9999978542327881, 0, 0, 1, 0.18207774216063877, -30.6170728693221)">g</text>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 396.121 43.317 396.121" class="figure-line" transform="matrix(1, 0, 0, 1, 43.985062933505844, -67.04276638128499)"/>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 184.421 316.121 C 175.49 316.121 175.49 396.121 184.421 396.121" class="figure-line" transform="matrix(-1, 0, 0, -1, 406.1287892823828, 645.1992837896134)"/>
@@ -197,5 +177,7 @@
     <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text figure-large-text" transform="matrix(0.9999978542327881, 0, 0, 1, 450.49167878872134, -26.915897988836072)">g</text>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 43.317 316.121 C 34.386 316.121 34.386 396.121 43.317 396.121" class="figure-line" transform="matrix(1, 0, 0, 1, 494.29466398006656, -63.34159150079896)"/>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 184.421 316.121 C 175.49 316.121 175.49 396.121 184.421 396.121" class="figure-line" transform="matrix(-1, 0, 0, -1, 856.4383903289436, 648.9004586700994)"/>
+    <path style="stroke: rgb(0, 0, 0);" d="M 332.403 87.13 C 333.403 89.909 334.848 92.506 336.683 94.82 L 332.403 93.27 L 328.123 94.82 C 329.958 92.507 331.404 89.909 332.403 87.13 Z" class="figure-path"/>
+    <path style="stroke: rgb(0, 0, 0);" d="M 372.403 87.13 C 373.403 89.909 374.848 92.506 376.683 94.82 L 372.403 93.27 L 368.123 94.82 C 369.958 92.507 371.404 89.909 372.403 87.13 Z" class="figure-path"/>
   </g>
 </svg>
