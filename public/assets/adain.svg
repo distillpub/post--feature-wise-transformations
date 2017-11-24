@@ -50,13 +50,13 @@
     <rect x="680.567" width="55.285" height="447.71" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box" y="26.145"/>
     <text x="351.685" y="354.277" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0, -1, 1, 0, 355.919952, 657.15625)">Style transfer loss</text>
   </g>
-  <g transform="matrix(1, 0, 0, 1, 86.800087, -122.694954)" class="film-generator">
-    <rect x="91.561" y="148.84" width="179.844" height="28.528" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-film-generator"/>
-    <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 135.256424, -87.013428)" style="font-size: 13px; white-space: pre;">FiLM generator</text>
+  <g transform="matrix(1, 0, 0, 1, 40.554016, 0.160026)" class="film-generator">
+    <path d="M 91.561 249.84 l 0 -95 a 6 6 0 0 1 6 -6 l 101.82 0 a 6 6 0 0 1 6 6 l 0 95" style="fill: none; stroke: rgb(0, 0, 0); pointer-events: bounding-box;" class="figure-line figure-film-generator"/>
+    <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 102.244431, -87.013428)" style="font-size: 13px; white-space: pre;"/>
   </g>
-  <g transform="matrix(1, 0, 0, 1, 339.005157, -122.694962)" class="filmed-network">
-    <rect x="91.561" y="148.84" width="179.844" height="28.528" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-filmed-network"/>
-    <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 129.904861, -87.013428)" style="font-size: 13px; white-space: pre;">FiLM-ed network</text>
+  <g transform="matrix(1, 0, 0, 1, 40.554008, 173.631989)" class="filmed-network">
+    <path d="M 91.56 76.368 l 0 95 a 6 6 0 0 0 6 6 l 101.82 0 a 6 6 0 0 0 6 -6 l 0 -95" style="fill: none; stroke: rgb(0, 0, 0); pointer-events: bounding-box;" class="figure-line figure-filmed-network"/>
+    <text x="5.004" y="254.928" class="figure-text" transform="matrix(1, 0, 0, 1.000001, 96.891876, -87.749428)" style="font-size: 13px; white-space: pre;"/>
   </g>
   <path style="stroke: rgb(0, 0, 0);" d="M 132.115 216.33 C 129.336 217.329 126.739 218.775 124.425 220.61 L 125.975 216.33 L 124.425 212.05 C 126.739 213.885 129.336 215.33 132.115 216.33 Z" class="figure-path figure-filmed-network-arrow"/>
   <path style="stroke: rgb(0, 0, 0);" d="M 132.115 283.67 C 129.336 284.669 126.739 286.115 124.425 287.95 L 125.975 283.67 L 124.425 279.39 C 126.739 281.225 129.336 282.67 132.115 283.67 Z" class="figure-path figure-film-generator-arrow"/>

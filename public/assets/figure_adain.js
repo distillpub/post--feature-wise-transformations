@@ -38,8 +38,10 @@ function buildFigure () {
         // --- Hoverable content ----------------------------------------------
         svg.select("g.film-generator")
             .on("mouseenter", function () {
-                d3.select(this).select("g.film-generator > rect")
-                    .style("fill", "#ef9a9a");
+                d3.select("g.filmed-network > path.figure-filmed-network")
+                    .style("stroke", "none");
+                d3.select(this).select("g.film-generator > text")
+                    .text("FiLM generator");
                 d3.selectAll("g#encoder > rect, g#adain > rect")
                     .classed("figure-film-generator", true)
                     .style("fill", "#ef9a9a");
@@ -50,8 +52,10 @@ function buildFigure () {
                     .style("stroke", "#c62828");
             })
             .on("mouseleave", function () {
-                d3.select(this).select("g.film-generator > rect")
-                    .style("fill", null)
+                d3.select("g.filmed-network > path.figure-filmed-network")
+                    .style("stroke", null);
+                d3.select(this).select("g.film-generator > text")
+                    .text("");
                 d3.selectAll("g#encoder > rect, g#adain > rect")
                     .classed("figure-film-generator", false)
                     .style("fill", null);
@@ -78,8 +82,10 @@ function buildFigure () {
 
         svg.select("g.filmed-network")
             .on("mouseenter", function () {
-                d3.select(this).select("g.filmed-network > rect")
-                    .style("fill", "#90caf9");
+                d3.select("g.film-generator > path.figure-film-generator")
+                    .style("stroke", "none");
+                d3.select(this).select("g.filmed-network > text")
+                    .text("FiLM-ed network");
                 d3.selectAll("g#encoder > rect, g#adain > rect, g#decoder > rect")
                     .classed("figure-filmed-network", true)
                     .style("fill", "#90caf9");
@@ -90,8 +96,10 @@ function buildFigure () {
                     .style("stroke", "#1e88e5");
             })
             .on("mouseleave", function () {
-                d3.select(this).select("g.filmed-network > rect")
-                    .style("fill", null)
+                d3.select("g.film-generator > path.figure-film-generator")
+                    .style("stroke", null);
+                d3.select(this).select("g.filmed-network > text")
+                    .text("");
                 d3.selectAll("g#encoder > rect, g#adain > rect, g#decoder > rect")
                     .classed("figure-filmed-network", false)
                     .style("fill", null);
