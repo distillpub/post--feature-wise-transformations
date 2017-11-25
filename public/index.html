@@ -257,17 +257,19 @@
         the visual pipeline of a visual question-answering (VQA) model is
         modulated by the model's linguistic pipeline through conditional batch
         normalization (CBN). The model is trained on the "oracle" sub-task of
-        the GuessWhat?! task <dt-cite key="vries2017guesswhat"></dt-cite>,
-        which features natural language questions on images which are answered
-        by yes, no, or N/A.
+        the GuessWhat?! task <dt-cite key="vries2017guesswhat"></dt-cite>
+        &mdash; which features natural language questions on images answerable
+        by yes, no, or N/A &mdash; as well as the VQAv1 dataset
+        <dt-cite key="agrawal2015vqa"></dt-cite>.
       </p>
       <figure class="l-body-outset figure" id="guesswhat-diagram">
         <figcaption>
           <p style="margin-bottom: 8px;">
-            Visual question-answering (VQA) model trained on the oracle task of
-            the GuessWhat?! dataset. The feature-wise affine transformation
-            inside the batch normalization layers of the pre-trained ResNet
-            visual pipeline are modulated by the linguistic pipeline.
+            Visual question-answering (VQA) model in in
+            <dt-cite key="vries2017modulating"></dt-cite>. The feature-wise
+            affine transformation inside the batch normalization layers of the
+            pre-trained ResNet visual pipeline are modulated by the linguistic
+            pipeline.
           </p>
           <p><em>
             N.B.: the visual pipeline architecture is simplified for
@@ -1164,6 +1166,15 @@
         year={2015},
         publisher={Society for Neuroscience},
         url={},
+      }
+      @inproceedings{agrawal2015vqa,
+        title={VQA: Visual Question Answering},
+        author={Agrawal, Aishwarya and Lu, Jiasen and Antol, Stanislaw  and
+                Mitchell, Margaret and Zitnick, C. Lawrence and Batra, Dhruv and
+                Parikh, Devi},
+        booktitle={Proceedings of the International Conference on Computer Vision},
+        year={2015},
+        url={https://arxiv.org/pdf/1505.00468.pdf},
       }
     </script>
     <script src="assets/figure_film.js"></script>
