@@ -35,7 +35,7 @@
     </g>
     <g transform="matrix(1, 0, 0, 1, 400.126312, 145.203995)" class="film-layer">
       <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element figure-film-layer"/>
-      <ellipse rx="4" ry="4" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
       <text x="-27.962" y="-25.391" style="font-size: 13px; white-space: pre;" class="figure-text"> </text>
     </g>
     <path style="stroke: rgb(0, 0, 0);" d="M 380.126 289.123 C 377.347 290.122 374.75 291.568 372.436 293.403 L 373.986 289.123 L 372.436 284.843 C 374.75 286.678 377.347 288.123 380.126 289.123 Z" class="figure-path figure-film-generator"/>

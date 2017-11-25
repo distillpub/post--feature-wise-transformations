@@ -95,7 +95,7 @@
     <g transform="matrix(1, 0, 0, 1, 206.937469, 352.499969)">
       <title>Scaling Operator</title>
       <ellipse style="stroke: rgb(0, 0, 0);" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
-      <ellipse rx="4" ry="4" style="fill: rgb(102, 102, 102);"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="206.937" y1="332.5" x2="206.937" y2="265" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 202.65748596191406, 264.9999694824219)" xlink:href="#arrow-up"/>
@@ -430,7 +430,7 @@
     <g transform="matrix(1, 0, 0, 1, 261.962982, 342.499939)">
       <title>Scaling Operator</title>
       <ellipse style="stroke: rgb(0, 0, 0);" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
-      <ellipse rx="4" ry="4" style="fill: rgb(102, 102, 102);"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.963" y1="322.5" x2="261.963" y2="286.402" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6830139160156, 286.4024963378906)" xlink:href="#arrow-up"/>

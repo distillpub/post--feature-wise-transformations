@@ -42,15 +42,9 @@
       <rect x="122.142" y="237.233" width="119.739" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="138.516" y="260.83" style="font-size: 13px; white-space: pre;" class="figure-text">1x1 convolution</text>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 62.318848, -23.04941)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="83.459" y1="151.969" x2="83.459" y2="136.969" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="75.959" y1="144.469" x2="90.959" y2="144.469" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-    </g>
-    <g transform="matrix(1, 0, 0, 1, 5.001404, -30.14143)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="387.882" cy="151.561" rx="20" ry="20" class="figure-element"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="387.882" y1="159.061" x2="387.882" y2="144.061" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 220.777672, -229.882731)"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="380.382" y1="151.561" x2="395.382" y2="151.561" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 220.777672, -229.882731)"/>
+    <g transform="matrix(1, 0, 0, 1, 145.777985, 121.419571)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
     </g>
     <g transform="matrix(1, 0, 0, 1, 50.888901, -30.14143)">
       <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="494.263" cy="83.299" rx="20" ry="20" class="figure-element"/>
@@ -77,6 +71,10 @@
     <g transform="matrix(1, 0, 0, 1, 365.889893, 27.936356)">
       <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
       <text x="79.616" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">σ</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 392.883362, 121.419571)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="145.778" y1="407.663" x2="145.778" y2="381.967" class="figure-line"/>
     <line style="stroke: rgb(0, 0, 0);" x1="80.864" y1="220.539" x2="80.864" y2="192.405" class="figure-line"/>

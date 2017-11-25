@@ -26,11 +26,6 @@
       <rect x="130.804" y="237.233" width="57.933" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <text x="139.985" y="260.806" style="font-size: 13px; white-space: pre;" class="figure-text">LN</text>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 10.451871, -52.402893)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="83.459" y1="151.969" x2="83.459" y2="136.969" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="75.959" y1="144.469" x2="90.959" y2="144.469" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-    </g>
     <g transform="matrix(1, 0, 0, 1, 10.448907, -227.931885)">
       <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="353.308" cy="319.998" rx="20" ry="20" class="figure-element"/>
       <line style="stroke: rgb(0, 0, 0); fill: none;" x1="353.308" y1="327.498" x2="353.308" y2="312.498" class="figure-line"/>
@@ -64,16 +59,6 @@
     <g transform="matrix(1, 0, 0, 1, 10.451859, 49.112522)">
       <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
       <text x="79.616" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">σ</text>
-    </g>
-    <g transform="matrix(1, 0, 0, 1, 280.297882, -3.936008)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="83.459" y1="151.969" x2="83.459" y2="136.969" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="75.959" y1="144.469" x2="90.959" y2="144.469" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-    </g>
-    <g transform="matrix(1, 0, 0, 1, 445.23642, -3.936008)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="83.459" y1="151.969" x2="83.459" y2="136.969" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="75.959" y1="144.469" x2="90.959" y2="144.469" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
     </g>
     <g transform="matrix(1, 0, 0, 1, -32.534996, 1.673086)">
       <rect x="130.804" y="237.233" width="57.933" height="37.366" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
@@ -169,5 +154,17 @@
       <text x="126.452" y="260.736" style="font-size: 13px; white-space: pre;" class="figure-text">utterance summarization</text>
     </g>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 548.695 141.456 L 592.364 141.456" class="figure-line"/>
+    <g transform="matrix(1, 0, 0, 1, 93.31146702974979, 92.69844208453156)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 361.2209343117929, 140.355414629895)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 528.6643513630698, 141.64344091490483)">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+    </g>
   </g>
 </svg>
