@@ -26,7 +26,7 @@ function buildFigure () {
                     .style("fill", null);
             });
 
-        svg.select("g.film-layer")
+        svg.selectAll("g.film-layer")
             .on("mouseenter", function () {
                 svg.selectAll("g.film-layer > text")
                     .text("FiLM");
