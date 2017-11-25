@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="0 0 744 407.98858642578125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <symbol id="arrow-right" viewBox="0 0 7.69 8.56">
       <title>Right arrow</title>
@@ -10,39 +10,40 @@
       <path style="stroke: rgb(0, 0, 0);" d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" class="figure-path"/>
     </symbol>
   </defs>
-  <g transform="matrix(1, 0, 0, 1, 92.453987, 39.941521)" class="style-transfer-network">
-    <title>squeeze and excitation block</title>
-    <rect x="21.358" y="26.285" width="553.794" height="367.547" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
+  <g transform="matrix(1, 0, 0, 1, 195.573517, -6.064209)" class="style-transfer-network">
+    <title>gated linear unit</title>
+    <rect x="21.358" y="26.285" width="345.532" height="367.547" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box"/>
     <text x="29.371" y="46.7" style="font-size: 13px; white-space: pre;" class="figure-text">gated linear unit</text>
-    <g transform="matrix(1, 0, 0, 1, 165.021484, 144.654404)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="83.459" y1="151.969" x2="83.459" y2="136.969" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="75.959" y1="144.469" x2="90.959" y2="144.469" class="figure-line" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 126.599566, -16.700437)"/>
-    </g>
     <g transform="matrix(1, 0, 0, 1, -131.365021, -135.330338)">
       <rect x="204.588" y="205.89" width="55.877" height="293.208" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
       <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 352.1554870605469, 276.2542724609375)" xlink:href="#arrow-right"/>
       <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 375.56549072265625, 396.76373291015625)" xlink:href="#arrow-down"/>
-      <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 718.0515747070312, 420.1737365722656)" xlink:href="#arrow-right"/>
+      <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 513.343994, 420.173737)" xlink:href="#arrow-right"/>
       <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 196.8979949951172, 348.2139892578125)" xlink:href="#arrow-right"/>
       <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 352.155517578125, 420.1737365722656)" xlink:href="#arrow-right"/>
     </g>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M -36.816 217.164 L 73.223 217.164" class="figure-line"/>
-    <g transform="matrix(1, 0, 0, 1, -123.875519, -136.790558)">
-      <rect x="204.588" y="215.876" width="40.898" height="132.237" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <g transform="matrix(1, 0, 0, 1, -123.875519, -136.790558)" class="film-generator">
+      <rect x="204.588" y="215.876" width="40.898" height="132.237" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-film-generator"/>
       <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 95.602707, 486.291107)" class="figure-text">feature subset B</text>
     </g>
-    <g transform="matrix(1, 0, 0, 1, -123.875519, 7.12889)">
-      <rect x="204.588" y="215.876" width="40.898" height="132.237" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box"/>
+    <g transform="matrix(1, 0, 0, 1, -123.875519, 7.12889)" class="filmed-network">
+      <rect x="204.588" y="215.876" width="40.898" height="132.237" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-element figure-box figure-filmed-network"/>
       <text x="153.606" y="135.187" style="font-size: 13px; white-space: pre;" transform="matrix(0, -1, 1, 0, 95.602707, 486.291107)" class="figure-text">feature subset A</text>
     </g>
-    <g transform="matrix(1, 0, 0, 1, 165.021469, 0.734953)">
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element"/>
+    <g transform="matrix(1, 0, 0, 1, 165.021469, 0.734953)" class="film-generator">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="83.459" cy="144.469" rx="20" ry="20" class="figure-element figure-film-generator"/>
       <text x="79.616" y="149.348" style="font-size: 13px; white-space: pre;" class="figure-text">σ</text>
     </g>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 121.61 145.204 L 228.48 145.204" class="figure-line"/>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 121.61 289.123 L 228.48 289.123" class="figure-line"/>
-    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 268.48 289.123 L 594.377 289.123" class="figure-line"/>
+    <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 268.48 289.123 L 389.669 289.123" class="figure-line"/>
     <path style="fill: none; stroke: rgb(0, 0, 0);" d="M 248.48 165.204 L 248.48 269.123" class="figure-line"/>
+    <g transform="matrix(1, 0, 0, 1, 248.480011, 289.122986)" class="film-layer">
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element figure-film-layer"/>
+      <ellipse rx="2" ry="2" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-path"/>
+      <text x="-27.97" y="36.789" style="font-size: 13px; white-space: pre;" class="figure-text"/>
+    </g>
   </g>
+  <text x="334.601" y="127.645" style="font-size: 13px; white-space: pre;" class="figure-text" id="film-generator-text"> </text>
 </svg>
