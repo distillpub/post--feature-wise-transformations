@@ -31,6 +31,10 @@
       - MILA: https://mila.quebec/en/
       - MILA: https://mila.quebec/en/
     </script>
+    <script>
+      // Holds a reference to the current SVG DOM object
+      var svg;
+    </script>
   </head>
   <body>
     <dt-article>
@@ -145,19 +149,16 @@
         </figcaption>
       </figure>
       <script>
-        function buildFigure () {
-            var svg = d3.select("figure.figure#film-architecture-diagram").select("svg");
-            svg.selectAll("g.film-generator")
-                .on("mouseenter", function () { svg.select("rect.figure-film-generator").style("fill", "#ef9a9a"); })
-                .on("mouseleave", function () { svg.select("rect.figure-film-generator").style("fill", null); });
-            svg.selectAll("g.film-layer")
-                .on("mouseenter", function () { svg.selectAll("rect.figure-film-layer").style("fill", "#ffcc80"); })
-                .on("mouseleave", function () { svg.selectAll("rect.figure-film-layer").style("fill", null); });
-            svg.selectAll("g.filmed-network")
-                .on("mouseenter", function () { svg.select("rect.figure-filmed-network").style("fill", "#90caf9"); })
-                .on("mouseleave", function () { svg.select("rect.figure-filmed-network").style("fill", null); });
-        }
-        buildFigure();
+        svg = d3.select("figure.figure#film-architecture-diagram").select("svg");
+        svg.selectAll("g.film-generator")
+            .on("mouseenter", function () { svg.select("rect.figure-film-generator").style("fill", "#ef9a9a"); })
+            .on("mouseleave", function () { svg.select("rect.figure-film-generator").style("fill", null); });
+        svg.selectAll("g.film-layer")
+            .on("mouseenter", function () { svg.selectAll("rect.figure-film-layer").style("fill", "#ffcc80"); })
+            .on("mouseleave", function () { svg.selectAll("rect.figure-film-layer").style("fill", null); });
+        svg.selectAll("g.filmed-network")
+            .on("mouseenter", function () { svg.select("rect.figure-filmed-network").style("fill", "#90caf9"); })
+            .on("mouseleave", function () { svg.select("rect.figure-filmed-network").style("fill", null); });
       </script>
       <p>
         As the name implies, a FiLM layer applies a feature-wise affine
@@ -292,12 +293,56 @@
         can be hovered over to reveal more information:
       </p>
       <figure class="l-body-outset figure" id="legend-diagram">
+        <svg viewBox="0 0 744 80" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(50, 10)" class="film-generator">
+            <rect width="180" height="60" class="figure-group figure-box figure-film-generator"/>
+            <text x="90" y="30" dy="0.4em" style="text-anchor: middle;" class="figure-text">figure element</text>
+          </g>
+          <g transform="translate(283, 10)" class="film-layer">
+            <rect width="180" height="60" class="figure-group figure-box figure-film-layer"/>
+            <text x="90" y="30" dy="0.4em" style="text-anchor: middle;" class="figure-text">figure element</text>
+          </g>
+          <g transform="translate(515, 10)" class="filmed-network">
+            <rect width="180" height="60" class="figure-group figure-box figure-filmed-network"/>
+            <text x="90" y="30" dy="0.4em" style="text-anchor: middle;" class="figure-text">figure element</text>
+          </g>
+        </svg>
         <figcaption>
           In this section, figure elements that are color-coded in red
           (FiLM generator), orange (FiLM layer), and blue (FiLM-ed network) can
           be hovered over to reveal more information.
         </figcaption>
       </figure>
+      <script>
+        svg = d3.select("figure.figure#legend-diagram").select("svg");
+        svg.select("g.film-generator")
+            .on("mouseenter", function () {
+                svg.select("g.film-generator > text").text("FiLM generator");
+                svg.select("g.film-generator > rect").style("fill", "#ef9a9a");
+            })
+            .on("mouseleave", function () {
+                svg.select("g.film-generator > text").text("figure element");
+                svg.select("g.film-generator > rect").style("fill", null)
+            });
+        svg.select("g.film-layer")
+            .on("mouseenter", function () {
+                svg.select("g.film-layer > text").text("FiLM layer");
+                svg.select("g.film-layer > rect").style("fill", "#ffcc80");
+            })
+            .on("mouseleave", function () {
+                svg.select("g.film-layer > text").text("figure element");
+                svg.select("g.film-layer > rect").style("fill", null)
+            });
+        svg.select("g.filmed-network")
+            .on("mouseenter", function () {
+                svg.select("g.filmed-network > text").text("FiLM-ed network");
+                svg.select("g.filmed-network > rect").style("fill", "#90caf9");
+            })
+            .on("mouseleave", function () {
+                svg.select("g.filmed-network > text").text("figure element");
+                svg.select("g.filmed-network > rect").style("fill", null)
+            });
+      </script>
 
       <h2 id="conditioning">Conditioning on external information</h2>
       <p>
@@ -1269,7 +1314,6 @@
     <script src="assets/figure_gating_as_bilinear.js"></script>
     <script src="assets/figure_attention_as_bilinear.js"></script>
     <script src="assets/figure_moe_as_bilinear.js"></script>
-    <script src="assets/figure_legend.js"></script>
     <script src="assets/figure_clevr.js"></script>
     <script src="assets/figure_guesswhat.js"></script>
     <script src="assets/figure_alrfas.js"></script>
