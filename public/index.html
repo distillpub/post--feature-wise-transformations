@@ -80,48 +80,48 @@
             </g>
             <text x="130" y="442" style="text-anchor: middle;" class="figure-text">input</text>
             <path d="M130,399l0,30" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(130, 399)"/>
+            <use x="130" y="399" href="#arrow-up"/>
             <g transform="translate(20, 337)">
               <rect width="222" height="62" class="figure-element figure-box"/>
               <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
             </g>
             <path d="M130,313l0,24" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(130, 313)"/>
+            <use x="130" y="313" href="#arrow-up"/>
             <g transform="translate(20, 268)" class="film-layer">
               <rect width="222" height="45" class="figure-element figure-box figure-film-layer"/>
               <text x="111" y="22" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
             </g>
             <path d="M130,244l0,24" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(130, 244)"/>
+            <use x="130" y="244" href="#arrow-up"/>
             <g transform="translate(20, 182)">
               <rect width="222" height="62" class="figure-element figure-box"/>
               <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
             </g>
             <path d="M130,157l0,24" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(130, 157)"/>
+            <use x="130" y="157" href="#arrow-up"/>
             <g transform="translate(20, 112)" class="film-layer">
               <rect width="222" height="45" class="figure-element figure-box figure-film-layer"/>
               <text x="111" y="22" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
             </g>
             <path d="M130,88l0,24" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(130, 88)"/>
+            <use x="130" y="88" href="#arrow-up"/>
             <g transform="translate(20, 26)">
               <rect width="222" height="62" class="figure-element figure-box"/>
               <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
             </g>
             <path d="M130,-15l0,41" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(130, -15)"/>
+            <use x="130" y="-15" href="#arrow-up"/>
             <text x="130" y="-22" style="text-anchor: middle;" class="figure-text">output</text>
           </g>
           <text x="5" y="255" class="figure-text">conditioning</text>
           <path d="M81,250l53,0" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(134, 250)"/>
+          <use x="134" y="250" href="#arrow-right"/>
           <g transform="translate(135, 101)" class="film-generator">
             <rect width="180" height="300" class="figure-group figure-box figure-film-generator"/>
             <text x="90" y="150" style="text-anchor: middle;" class="figure-text">FiLM generator</text>
           </g>
           <path d="M314,250l58,0" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(372, 250)"/>
+          <use x="372" y="250" href="#arrow-right"/>
           <g>
             <rect x="493" y="105" width="48" height="328" class="figure-group figure-box" transform="translate(-121, -21)"/>
             <g transform="translate(382, 100)">
@@ -134,9 +134,9 @@
             </g>
           </g>
           <path d="M412,173l86,0" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(498, 173)"/>
+          <use x="498" y="173" href="#arrow-right"/>
           <path d="M412,328l86,0" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(498, 328)"/>
+          <use x="498" y="328" href="#arrow-right"/>
         </svg>
         <figcaption>
           In this example, a network is FiLM-ed by inserting two FiLM layers in
@@ -432,6 +432,87 @@
         desired style.
       </p>
       <figure class="l-body-outset figure" id="alrfas-diagram">
+        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" class="figure-path" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" class="figure-path" id="arrow-up"/>
+          </defs>
+          <g>
+            <g class="filmed-network">
+              <rect x="113" y="79" width="434" height="251" class="figure-group figure-box figure-filmed-network"/>
+              <text x="118" y="97" class="figure-text">style transfer network</text>
+            </g>
+            <g transform="translate(128, 125)">
+              <rect width="38" height="170" class="figure-element figure-box"/>
+              <text x="19" y="85" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 19, 85)" class="figure-text">convolution</text>
+            </g>
+            <g transform="translate(182, 114)">
+              <rect width="140" height="207" class="figure-element figure-box"/>
+              <g transform="translate(18, 11)">
+                <rect width="38" height="170" class="figure-element figure-box"/>
+                <text x="19" y="85" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 19, 85)" class="figure-text">normalization</text>
+              </g>
+              <path d="M 56 96 l 28 0" class="figure-line"/>
+              <use x="84" y="96" href="#arrow-right"/>
+              <g transform="translate(84, 11)" class="film-layer">
+                <rect width="38" height="170" class="figure-element figure-box figure-film-layer"/>
+                <text x="19" y="85" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 19, 85)" class="figure-text">affine transformation</text>
+              </g>
+              <text x="5" y="200" class="figure-text">instance norm.</text>
+            </g>
+            <g transform="translate(338, 125)">
+              <rect width="38" height="170" class="figure-element figure-box"/>
+              <text x="19" y="85" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 19, 85)" class="figure-text">convolution</text>
+            </g>
+            <g transform="translate(392, 114)">
+              <rect width="140" height="207" class="figure-element figure-box"/>
+              <g transform="translate(18, 11)">
+                <rect width="38" height="170" class="figure-element figure-box"/>
+                <text x="19" y="85" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 19, 85)" class="figure-text">normalization</text>
+              </g>
+              <path d="M 56 96 l 28 0" class="figure-line"/>
+              <use x="84" y="96" href="#arrow-right"/>
+              <g transform="translate(84, 11)" class="film-layer">
+                <rect width="38" height="170" class="figure-element figure-box figure-film-layer"/>
+                <text x="19" y="85" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 19, 85)" class="figure-text">affine transformation</text>
+              </g>
+              <text x="5" y="200" class="figure-text">instance norm.</text>
+            </g>
+            <path d="M 165 210 l 35 0" class="figure-line"/>
+            <use x="200" y="210" href="#arrow-right"/>
+            <path d="M 304 210 l 34 0" class="figure-line"/>
+            <use x="338" y="210" href="#arrow-right"/>
+            <path d="M 375 210 l 35 0" class="figure-line"/>
+            <use x="410" y="210" href="#arrow-right"/>
+            <path d="M 513 210 l 53 0" class="figure-line"/>
+            <use x="566" y="210" href="#arrow-right"/>
+          </g>
+          <image x="10" y="394" width="96" height="96" href="assets/cassis_cap_lombard_opus_196.jpg"/>
+          <line x1="681" y1="58" x2="106" y2="58" class="figure-line"/>
+          <use x="681" y="58" href="#arrow-right"/>
+          <path d="M 58 106 l 0 98 a 6 6 0 0 0 6 6 l 64 0" class="figure-line"/>
+          <use x="128" y="210" href="#arrow-right"/>
+          <image x="10" y="10" width="96" height="96" href="assets/tuebingen_neckarfront.jpg"/>
+          <line x1="681" y1="442" x2="106" y2="442" class="figure-line"/>
+          <use x="681" y="442" href="#arrow-right"/>
+          <path d="M 58 394 l 0 -5 a 6 6 0 0 1 6 -6 l 166 0" class="figure-line"/>
+          <use x="230" y="383" href="#arrow-right"/>
+          <image x="566" y="162" width="96" height="96" href="assets/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
+          <line x1="681" y1="210" x2="662" y2="210" class="figure-line"/>
+          <use x="681" y="210" href="#arrow-right"/>
+          <g transform="translate(231, 339)" class="film-generator">
+            <rect width="318" height="86" class="figure-group figure-box figure-film-generator"/>
+            <text x="159" y="43" dy="0.4em" style="text-anchor: middle;" class="figure-text">style prediction network</text>
+          </g>
+          <path d="M 284 339 l 0 -44" class="figure-line"/>
+          <use x="284" y="295" href="#arrow-up"/>
+          <path d="M 495 339 l 0 -44" class="figure-line"/>
+          <use x="495" y="295" href="#arrow-up"/>
+          <g transform="translate(681, 26)">
+            <rect width="56" height="448" class="figure-group figure-box"/>
+            <text x="28" y="224" dy="0.4em" style="text-anchor: middle;" class="figure-text" transform="rotate(-90, 28, 224)">style transfer loss</text>
+          </g>
+        </svg>
         <figcaption>
           <p style="margin-bottom: 8px;">
             Fast, arbitrary artistic style transfer model. The style prediction
@@ -445,6 +526,38 @@
           </em></p>
         </figcaption>
       </figure>
+      <script>
+        (function() {
+            var svg = d3.select("figure.figure#alrfas-diagram").select("svg");
+            svg.select("g.film-generator")
+                .on("mouseenter", function () {
+                    svg.select("g.film-generator > text").text("FiLM generator");
+                    svg.select("g.film-generator > rect").style("fill", "#ef9a9a");
+                })
+                .on("mouseleave", function () {
+                    svg.select("g.film-generator > text").text("style prediction network");
+                    svg.select("g.film-generator > rect").style("fill", null);
+                });
+            svg.selectAll("g.film-layer")
+                .on("mouseenter", function () {
+                    svg.selectAll("g.film-layer").select("g.film-layer > text").text("FiLM layer");
+                    svg.selectAll("g.film-layer").select("g.film-layer > rect").style("fill", "#ffcc80");
+                })
+                .on("mouseleave", function () {
+                    svg.selectAll("g.film-layer").select("g.film-layer > text").text("affine transformation");
+                    svg.selectAll("g.film-layer").select("g.film-layer > rect").style("fill", null);
+                });
+            svg.select("g.filmed-network")
+                .on("mouseenter", function () {
+                    svg.select("g.filmed-network > text").text("FiLM-ed network");
+                    svg.select("g.filmed-network > rect").style("fill", "#90caf9");
+                })
+                .on("mouseleave", function () {
+                    svg.select("g.filmed-network > text").text("style transfer network");
+                    svg.select("g.filmed-network > rect").style("fill", null);
+                });
+        })();
+      </script>
       <p>
         This intuition is pushed further by <dt-cite key="ghiasi2017exploring"></dt-cite>
         with the introduction of a <em>style prediction network</em> which is
@@ -1316,7 +1429,6 @@
     <script src="assets/figure_moe_as_bilinear.js"></script>
     <script src="assets/figure_clevr.js"></script>
     <script src="assets/figure_guesswhat.js"></script>
-    <script src="assets/figure_alrfas.js"></script>
     <script src="assets/figure_adain.js"></script>
     <script src="assets/figure_dcgan.js"></script>
     <script src="assets/figure_pixelcnn.js"></script>
