@@ -32,59 +32,140 @@
         <path d="M11.33,6.45V5.85h1.21v0.6H11.33Z" fill="#fff"/>
       </g>
     </symbol>
+    <symbol id="symbol-0" viewBox="0 0 100 100"/>
+    <symbol id="array-3" data-name="array-7" viewBox="-0.25 -0.25 109.399 38">
+      <rect x="0.75" y="0.75" width="107.399" height="36" rx="6" ry="6" fill="#fff" stroke="#8c8c8c" stroke-miterlimit="10" stroke-width="1.5"/>
+      <line x1="36.25" y1="36.75" x2="36.25" y2="0.75" fill="none" stroke="#8c8c8c" stroke-miterlimit="10"/>
+      <line x1="72.25" y1="36.75" x2="72.25" y2="0.75" fill="none" stroke="#8c8c8c" stroke-miterlimit="10"/>
+    </symbol>
+    <symbol id="array-positive-value" data-name="array-positive-value" viewBox="0 0 36 36">
+      <rect width="36" height="36" fill="#0080f7" opacity="0"/>
+      <rect x="4.42" y="4.42" width="27.17" height="27.17" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);"/>
+    </symbol>
+    <symbol id="array-negative-value" viewBox="-3.495 -3.81 35.17 35.17">
+      <rect x="0.505" y="0.19" width="27.17" height="27.17" rx="6" ry="6" fill="#3a5edd" opacity="0.8"/>
+    </symbol>
   </defs>
   <g transform="matrix(1, 0, 0, 1, 10, 50.000008)" id="mlp-figure">
     <title>MLP Figure</title>
     <rect y="72.753" width="289.987" height="342.299" style="fill: none; stroke: rgb(0, 0, 0);" class="figure-group figure-box figure-film-layer">
       <title>FiLM Layer</title>
     </rect>
-    <g transform="matrix(1, 0, 0, 1, 146.937485, 440)" id="input-layer">
-      <title>Input Layer</title>
-      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="206.937" y1="440" x2="206.937" y2="372.5" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 202.65748596191406, 372.4999694824219)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 26.937494, 332.499969)" id="gamma">
+    <g transform="matrix(1, 0, 0, 1, 26.689844, 331.910126)" id="gamma">
       <title>Gamma</title>
       <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
         <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
+        <g transform="matrix(1, 0, 0, 1, 0, -1)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542410969734192)" xlink:href="#array-negative-value"/>
         </g>
       </g>
       <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
         <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
+        <g transform="matrix(1, 0, 0, 1, 0.923669, -0.65959)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.954241156578064)" xlink:href="#array-negative-value"/>
         </g>
       </g>
       <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
         <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
+        <g transform="matrix(1, 0, 0, 1, -0.654762, -0.549366)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 26.937487, 113.573677)" id="beta">
+      <title>Beta</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0, -1)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542410373687744)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0.923669, -0.65959)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542410969734192)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, -0.654762, -0.549366)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.954241156578064)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 147.228149, 225.113953)" id="scaled-layer">
+      <title>Scaled Layer</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0, -1)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.954241156578064)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0.923669, -0.65959)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, -0.654762, -0.549366)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 146.442902, 9.558468)" id="shifted-layer">
+      <title>Shifted Layer</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0, -1)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.954241156578064)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0.923669, -0.65959)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, -0.654762, -0.549366)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 206.937469, 352.499969)">
+      <title>Scaling Operator</title>
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+      <ellipse rx="2" ry="2" style="stroke: rgb(0, 0, 0); fill: none;" class="figure-path"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 206.937469, 137.499985)">
+      <title>Shifting Operator</title>
+      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="7.5" x2="0" y2="-7.5" class="figure-line"/>
+      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 145.686569, 439.824371)" id="input-layer">
+      <title>Input Layer</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0, -1)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0.923669, -0.65959)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, -0.654762, -0.549366)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
         </g>
       </g>
     </g>
@@ -92,99 +173,16 @@
     <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 74.00749206542969, 301.63995361328125)" xlink:href="#interactive"/>
     <line style="stroke: rgb(0, 0, 0);" x1="146.938" y1="352.5" x2="186.937" y2="352.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 179.24746704101562, 348.219970703125)" xlink:href="#arrow-right"/>
-    <g transform="matrix(1, 0, 0, 1, 206.937469, 352.499969)">
-      <title>Scaling Operator</title>
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
-      <ellipse rx="2" ry="2" style="stroke: rgb(0, 0, 0); fill: none;" class="figure-path"/>
-    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="206.937" y1="332.5" x2="206.937" y2="265" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 202.65748596191406, 264.9999694824219)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 146.9375, 224.999969)" id="scaled-layer">
-      <title>Scaled Layer</title>
-      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="206.937" y1="225" x2="206.937" y2="157.5" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 202.65748596191406, 157.5)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 26.937487, 117.500008)" id="beta">
-      <title>Beta</title>
-      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-    </g>
     <text x="9.797" y="127.628" class="figure-text" style="font-size: 13px; white-space: pre;">β</text>
     <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 74.00748443603516, 86.6399917602539)" xlink:href="#interactive"/>
     <line style="stroke: rgb(0, 0, 0);" x1="146.938" y1="137.5" x2="186.937" y2="137.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 179.24746704101562, 133.21998596191406)" xlink:href="#arrow-right"/>
-    <g transform="matrix(1, 0, 0, 1, 206.937469, 137.499985)">
-      <title>Shifting Operator</title>
-      <ellipse style="stroke: rgb(0, 0, 0); fill: none;" cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="7.5" x2="0" y2="-7.5" class="figure-line"/>
-      <line style="stroke: rgb(0, 0, 0); fill: none;" x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
-    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="206.937" y1="117.5" x2="206.937" y2="50" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 202.65748596191406, 50.0000114440918)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 146.9375, 10.000008)" id="shifted-layer">
-      <title>Shifted Layer</title>
-      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-    </g>
     <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -49.453068, 77.552032)">FiLM layer (fully-connected)</text>
     <line style="stroke: rgb(0, 0, 0);" x1="-10" y1="137.5" x2="26.937" y2="137.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 19.247493743896484, 133.22000122070312)" xlink:href="#arrow-right"/>
@@ -202,65 +200,56 @@
         <title>Feature Map</title>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
       </g>
@@ -268,163 +257,318 @@
         <title>Feature Map</title>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
       </g>
       <g transform="matrix(1, 0, 0, 1, 0, -40)">
         <title>Feature Map</title>
+        <title>Feature Map</title>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
       </g>
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.962" y1="419.825" x2="261.962" y2="362.5" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6830139160156, 362.5)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 74.462982, 322.499939)" id="gamma">
+    <g transform="matrix(1, 0, 0, 1, 74.506424, 322.783386)" id="gamma">
       <title>Gamma</title>
       <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
         <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
+        <g transform="matrix(1, 0, 0, 1, 0, -1)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
         </g>
       </g>
       <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
         <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
+        <g transform="matrix(1, 0, 0, 1, 0.923669, -0.65959)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
         </g>
       </g>
       <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
         <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
+        <g transform="matrix(1, 0, 0, 1, -0.654762, -0.549366)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
         </g>
       </g>
     </g>
     <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -2.052547, 7.953083)">γ</text>
     <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 121.53298950195312, 291.63995361328125)" xlink:href="#interactive"/>
+    <g transform="matrix(1, 0, 0, 1, 238.985794, 228.351715)" id="scaled-layer">
+      <title>Scaled Layer</title>
+      <g>
+        <title>Feature Map</title>
+        <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, -20)">
+        <title>Feature Map</title>
+        <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, -40)">
+        <title>Feature Map</title>
+        <title>Feature Map</title>
+        <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+        <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
+          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
+          </g>
+        </g>
+      </g>
+    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="194.251" y1="342.5" x2="241.963" y2="342.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 234.27297973632812, 338.2199401855469)" xlink:href="#arrow-right"/>
     <g transform="matrix(1, 0, 0, 1, 261.962982, 342.499939)">
@@ -434,233 +578,8 @@
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.963" y1="322.5" x2="261.963" y2="286.402" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6830139160156, 286.4024963378906)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 239.462997, 231.402496)" id="scaled-layer">
-      <title>Scaled Layer</title>
-      <g>
-        <title>Feature Map</title>
-        <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 0, -20)">
-        <title>Feature Map</title>
-        <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 0, -40)">
-        <title>Feature Map</title>
-        <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-        <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
-          </g>
-        </g>
-      </g>
-    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.963" y1="181.212" x2="261.963" y2="147.5" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6830139160156, 147.5)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 74.251129, 107.499985)" id="beta">
-      <title>Beta</title>
-      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
-        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
-        <g transform="matrix(1, 0, 0, 1, 20, 20)">
-          <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-16" class="figure-line"/>
-          <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -4 -12 L 0 -16 L 4 -12" class="figure-line"/>
-        </g>
-      </g>
-    </g>
     <text x="57.398" y="117.597" class="figure-text" style="font-size: 13px; white-space: pre;">β</text>
     <use width="25.860000610351562" height="25.860000610351562" transform="matrix(1, 0, 0, 1, 121.53298950195312, 76.63998413085938)" xlink:href="#interactive"/>
     <line style="stroke: rgb(0, 0, 0);" x1="194.251" y1="127.5" x2="241.963" y2="127.5" class="figure-line"/>
@@ -673,71 +592,62 @@
     </g>
     <line style="stroke: rgb(0, 0, 0);" x1="261.963" y1="107.5" x2="261.963" y2="50" class="figure-line"/>
     <use width="8.5600004196167" height="7.690000057220459" transform="matrix(1, 0, 0, 1, 257.6829833984375, 50.000003814697266)" xlink:href="#arrow-up"/>
-    <g transform="matrix(1, 0, 0, 1, 239.462967, -4.999995)" id="shifted-layer">
+    <g transform="matrix(1, 0, 0, 1, 245.668808, 1.854953)" id="shifted-layer">
       <title>Shifted Layer</title>
       <g>
         <title>Feature Map</title>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
       </g>
@@ -745,131 +655,114 @@
         <title>Feature Map</title>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
       </g>
       <g transform="matrix(1, 0, 0, 1, 0, -40)">
         <title>Feature Map</title>
+        <title>Feature Map</title>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
         <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
           <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 30 0 l 0 30 l -30 0 Z" class="figure-element"/>
-          <g transform="matrix(1, 0, 0, 1, 15, 15)">
-            <line style="stroke: rgb(0, 0, 0); fill: none;" x1="0" y1="0" x2="0" y2="-12" class="figure-line"/>
-            <path style="stroke: rgb(0, 0, 0); fill: none;" d="M -3 -9 L 0 -12 L 3 -9" class="figure-line"/>
+          <g transform="matrix(1, 0, 0, 1, 0, 0)">
+            <use width="30" height="30" transform="matrix(1, 0, 0, 1, 0, 0)" xlink:href="#array-negative-value"/>
           </g>
         </g>
       </g>
@@ -877,6 +770,27 @@
     <text x="59.454" y="324.652" style="font-size: 13px; white-space: pre;" class="figure-text" transform="matrix(0.999999, 0, 0, 1, -2.052034, 67.552025)">FiLM layer (convolutional)</text>
     <line style="stroke: rgb(0, 0, 0);" x1="34.251" y1="127.5" x2="74.25" y2="127.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 66.56111907958984, 123.21997833251953)" xlink:href="#arrow-right"/>
+    <g transform="matrix(1, 0, 0, 1, 73.692947, 107.738403)" id="beta">
+      <title>Beta</title>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0, -1)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 40, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 40 0 l 0 40 l -40 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, 0.923669, -0.65959)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 80, 0)" class="feature">
+        <path style="stroke: rgb(0, 0, 0); fill: none;" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" class="figure-element"/>
+        <g transform="matrix(1, 0, 0, 1, -0.654762, -0.549366)">
+          <use width="35.16999816894531" height="35.16999816894531" transform="matrix(1.097329020500183, 0, 0, 1.097329020500183, 0.8101490139961243, 0.9542412161827087)" xlink:href="#array-negative-value"/>
+        </g>
+      </g>
+    </g>
     <line style="stroke: rgb(0, 0, 0);" x1="34.464" y1="342.5" x2="74.463" y2="342.5" class="figure-line"/>
     <use width="7.690000057220459" height="8.5600004196167" transform="matrix(1, 0, 0, 1, 66.77295684814453, 338.2199401855469)" xlink:href="#arrow-right"/>
     <line x1="-14.806" y1="480.364" x2="-14.806" y2="-0.364" style="stroke: rgb(211, 211, 211);"/>
