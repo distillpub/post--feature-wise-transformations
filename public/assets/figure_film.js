@@ -14,6 +14,19 @@ function buildFigure () {
         styleCNNFigure();
     }
 
+    function updateSingleColor(selection, accessor, amplitudeScale) {
+        selection.selectAll("g.feature").each(function (d, i) {
+            var r = accessor(d);
+            var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+            d3.select(this)
+              .select("g")
+              .attr("opacity", Math.abs(s))
+              .select("use")
+              .attr("xlink:href", r < 0 ? "#array-negative-value" : "#array-positive-value")
+        });
+    }
+
+
     function styleMLPFigure () {
         // --- Retrieve svg element -------------------------------------------
         var svg = d3.select("figure.figure#film-diagram").select("svg");
@@ -51,22 +64,12 @@ function buildFigure () {
         svg.select("g#mlp-figure g#scaled-layer").selectAll("g.feature").data(data);
         svg.select("g#mlp-figure g#shifted-layer").selectAll("g.feature").data(data);
 
-        function updateSingle(selection, accessor) {
-            selection.selectAll("g.feature").each(function (d, i) {
-                var r = accessor(d);
-                var s = Math.sign(r) * amplitudeScale(Math.abs(r));
-                d3.select(this)
-                  .select("g")
-                    .attr("transform", "matrix(" + [s, 0, 0, s, 20, 20] + ")");
-            });
-        }
-
         function update() {
-            updateSingle(svg.select("g#mlp-figure g#input-layer"), function(d) { return d.feature; });
-            updateSingle(svg.select("g#mlp-figure g#gamma"), function(d) { return d.gamma; });
-            updateSingle(svg.select("g#mlp-figure g#beta"), function(d) { return d.beta; });
-            updateSingle(svg.select("g#mlp-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
-            updateSingle(svg.select("g#mlp-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
+            updateSingleColor(svg.select("g#mlp-figure g#input-layer"), function(d) { return d.feature; }, amplitudeScale);
+            updateSingleColor(svg.select("g#mlp-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; }, amplitudeScale);
+            updateSingleColor(svg.select("g#mlp-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; }, amplitudeScale);
+            updateSingleColor(svg.select("g#mlp-figure g#beta"), function(d) { return d.beta; }, amplitudeScale);
+            updateSingleColor(svg.select("g#mlp-figure g#gamma"), function(d) { return d.gamma; }, amplitudeScale);
         }
 
         update();
@@ -133,22 +136,12 @@ function buildFigure () {
         svg.select("g#cnn-figure g#scaled-layer").selectAll("g.feature").data(data);
         svg.select("g#cnn-figure g#shifted-layer").selectAll("g.feature").data(data);
 
-        function updateSingle(selection, accessor, offset) {
-            selection.selectAll("g.feature").each(function (d, i) {
-                var r = accessor(d);
-                var s = Math.sign(r) * amplitudeScale(Math.abs(r));
-                d3.select(this)
-                  .select("g")
-                    .attr("transform", "matrix(" + [s, 0, 0, s, offset, offset] + ")");
-            });
-        }
-
         function update() {
-            updateSingle(svg.select("g#cnn-figure g#input-layer"), function(d) { return d.feature; }, 15);
-            updateSingle(svg.select("g#cnn-figure g#gamma"), function(d) { return d[0].gamma; }, 20);
-            updateSingle(svg.select("g#cnn-figure g#beta"), function(d) { return d[0].beta; }, 20);
-            updateSingle(svg.select("g#cnn-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; }, 15);
-            updateSingle(svg.select("g#cnn-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; }, 15);
+            updateSingleColor(svg.select("g#cnn-figure g#input-layer"), function(d) { return d.feature; }, amplitudeScale);
+            updateSingleColor(svg.select("g#cnn-figure g#gamma"), function(d) { return d[0].gamma; }, amplitudeScale);
+            updateSingleColor(svg.select("g#cnn-figure g#beta"), function(d) { return d[0].beta; }, amplitudeScale);
+            updateSingleColor(svg.select("g#cnn-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; }, amplitudeScale);
+            updateSingleColor(svg.select("g#cnn-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; }, amplitudeScale);
         }
 
         update();
