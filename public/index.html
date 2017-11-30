@@ -1217,7 +1217,7 @@
       </p>
       <p>
         We can also leverage feature-wise affine transformations to condition a
-        pre-trained network. In in <dt-cite key="vries2017modulating"></dt-cite>,
+        pre-trained network. In <dt-cite key="vries2017modulating"></dt-cite>,
         the visual pipeline of a visual question-answering (VQA) model is
         modulated by the model's linguistic pipeline through conditional batch
         normalization (CBN). The model is trained on the "oracle" sub-task of
@@ -1410,7 +1410,7 @@
       <p>
         So far, the distinction between the FiLM generator and the FiLM-ed
         network has been rather clear, but it is not strictly necessary. As an
-        example, in <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
+        example, <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
         alternative for fast and arbitrary style transfer in the form of an
         adaptive instance normalization (AdaIN) layer.
       </p>
@@ -1548,9 +1548,9 @@
         trained on many content/style image pairs to minimize this loss.
       </p>
       <p>
-        Interestingly, the encoder can be seen as both <em>both</em> a part of
-        the FiLM-ed network, <em>and</em> the FiLM generator <em>itself</em>.
-        Therefore, AdaIN can be recognized as a FiLM layer replacing the
+        Interestingly, the encoder can be seen as <em>both</em> a part of the
+        FiLM-ed network, <em>and</em> the FiLM generator <em>itself</em>.
+        Therefore, AdaIN can be interpreted as a FiLM layer replacing the
         instance normalization parameters, with the FiLM-generating network
         taking the form of the same trained classifier being used to extract
         instance normalization statistics on the style image.
