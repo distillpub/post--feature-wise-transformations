@@ -234,12 +234,12 @@
         networks, feature map-wise. In other words,
 
         <dt-math block>
-            \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{c}) \odot \mathbf{x}
-                                                           + \beta(\mathbf{c}),
+            \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{z}) \odot \mathbf{x}
+                                                           + \beta(\mathbf{z}),
         </dt-math>
 
         where <dt-math>\mathbf{x}</dt-math> is the FiLM layer's input and
-        <dt-math>\mathbf{c}</dt-math> is the conditioning information. You can
+        <dt-math>\mathbf{z}</dt-math> is the conditioning information. You can
         interact with the following fully-connected and convolutional FiLM
         layers to get an intuition of the sort of modulation they allow:
       </p>
@@ -1094,30 +1094,11 @@
         feature-wise affine transformations are sometimes treated as accessory
         to the proposed models to which they are applied. We believe there is
         value in connecting those methods, which is why part of this article is
-        devoted to a literature review. We outlined several directions through
-        which feature-wise affine transformations express themselves in the
-        literature:
+        devoted to a literature review.
       </p>
-      <ul>
-        <li><p><a href="#conditioning">Conditioning on external information</a></p>
-          <ul>
-            <li><a href="#conditioning-film">FiLM</a></li>
-            <li><a href="#conditioning-gating">Gating</a></li>
-            <li><a href="#conditioning-biasing">Conditional biasing</a></li>
-            <li><a href="#conditioning-concatenation">Concatenation</a></li>
-          </ul>
-        </li>
-        <li><p><a href="#self-conditioning">Self-conditioning</a></p>
-          <ul>
-            <li><a href="#self-conditioning-film">FiLM</a></li>
-            <li><a href="#self-conditioning-gating">Gating</a></li>
-            <li><a href="#self-conditioning-featurewise-attention">Feature-wise attention</a></li>
-          </ul>
-        </li>
-      </ul>
       <p>
         In the interest of not being confusing to readers already familiar with
-        these models, we chose to stick to the nomenclature used in the
+        these methods, we chose to stick to the nomenclature used in the
         original papers, but we do draw connections to the FiLM nomenclature
         where appropriate. Readers interested in those connections are
         encouraged to take a closer look at the model diagrams, in which
@@ -1177,25 +1158,301 @@
                 });
         })();
       </script>
-
-      <h2 id="conditioning">Conditioning on external information</h2>
       <p>
-        Feature-wise affine transformations can be used as a conditioning
-        mechanism to incorporate external information such as context
-        representation, task description, class information, or user
-        information. While FiLM represents the most general instantiation of a
-        feature-wise affine transformation, gating, conditional biasing, and
-        concatenation &mdash; all of which can be seen as a special case
-        of FiLM &mdash; are also widely used in practice.
+        Let's pretend that we have an input <dt-math>\mathbf{x}</dt-math> and
+        some contextual information <dt-math>\mathbf{z}</dt-math> which we
+        process using a neural network to compute some output. Perhaps the
+        simplest way of combining the two is to concatenate them and pass the
+        augmented input through the neural network, crossing our fingers in hope
+        that the network will implicitly learn to combine the two in a sensible
+        manner. This approach suffers from the fact that the conditioning
+        information has a direct influence only in the first few layers of the
+        neural network; the deeper we get, the more diffuse and indirect its
+        influence becomes.
       </p>
-
-      <h3 id="conditioning-film">FiLM</h3>
+      <p>
+        An improvement over this idea would be to concatenate
+        <dt-math>\mathbf{z}</dt-math> to the input of <em>all</em> layers in the
+        neural network. This is in fact the approach adopted by the conditional
+        variant of DCGAN <dt-cite key="radford2016unsupervised"></dt-cite>, a
+        well-recognized class of network architectures for generative
+        adversarial networks (GANs). The class label is broadcasted as a feature
+        map and is concatenating to the input of convolutional and transposed
+        convolutional layers in the generator and discriminator networks.
+      </p>
+      <figure class="l-body-outset figure" id="dcgan-diagram">
+        <figcaption>
+            <span class="todo">TODO: make a figure for DCGAN.</span>
+        </figcaption>
+      </figure>
+      <p>
+        An equivalent &mdash; and more efficient &mdash; way to express this
+        operation is in the form of a feature-wise, class-conditional biasing of
+        the output of the layer. To understand why, consider a simple
+        fully-connected linear layer applied to the concatenation of
+        <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>.
+        <dt-fn>
+          The same argument applies to convolutional networks, provided we
+          ignore the border effects due to zero-padding or use an alternative
+          form of padding, like reflection-padding.
+        </dt-fn>
+      </p>
+      <figure class="l-body-outset figure" id="concatenation-as-biasing">
+        <svg viewBox="0 0 744 370" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
+            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="column-middle"/>
+            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="column-bottom"/>
+            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
+            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" id="matrix-top-right"/>
+            <path d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="matrix-bottom-left"/>
+            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" id="matrix-bottom-right"/>
+            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
+            <path d="M 0 0 C 12 0 0 30 12 30 C 0 30 12 60 0 60" id="vertical-curly-brace"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" class="figure-path" id="arrow-up"/>
+            <path d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" id="arrow-down"/>
+          </defs>
+          <rect x="10" y="10" height="350" width="724" class="figure-group figure-rounded"/>
+          <g transform="translate(60, 20)">
+            <g transform="translate(10, 100)">
+              <g>
+                <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(60, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(80, 0)" class="figure-element"/>
+                <use href="#matrix-top-right" transform="translate(100, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(80, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(100, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(80, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(100, 40)" class="figure-element"/>
+                <use href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(60, 60)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(80, 60)" class="figure-element"/>
+                <use href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-element"/>
+                <text x="60" y="90" dy="0.4em" style="text-anchor: middle;" class="figure-text">W</text>
+              </g>
+              <g transform="translate(125, 0)">
+                <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
+                <use href="#vertical-curly-brace" transform="translate(25, 60)" class="figure-line"/>
+                <text x="45" y="30" dy="0.2em" style="font-weight: bold;" class="figure-text">x</text>
+                <text x="45" y="90" dy="0.2em" style="font-weight: bold;" class="figure-text">z</text>
+              </g>
+            </g>
+            <g transform="translate(240, 10)">
+              <g>
+                <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
+              </g>
+              <g transform="translate(65, 0)">
+                <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
+                <text x="45" y="30" dy="0.2em" style="font-weight: bold;" class="figure-text">x</text>
+              </g>
+            </g>
+            <g transform="translate(240, 240)">
+              <g>
+                <use href="#matrix-center" transform="translate(0, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(0, 60)" class="figure-element"/>
+                <use href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
+                <use href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element"/>
+              </g>
+              <g transform="translate(65, 0)">
+                <use href="#column-middle" transform="translate(0, 0)" class="figure-element"/>
+                <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
+                <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
+                <text x="45" y="30" dy="0.2em" style="font-weight: bold;" class="figure-text">z</text>
+              </g>
+            </g>
+            <g transform="translate(405, 10)">
+              <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+              <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+              <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+              <use href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+            </g>
+            <g transform="translate(405, 240)">
+              <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+              <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+              <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+              <use href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+            </g>
+            <g transform="translate(505, 150)">
+              <circle cx="10" cy="10" r="10" class="figure-element"/>
+              <path d="M 10 5 l 0 10" class="figure-line"/>
+              <path d="M 5 10 l 10 0" class="figure-line"/>
+            </g>
+            <g transform="translate(605, 120)">
+              <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+              <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+              <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+              <use href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+            </g>
+            <path d="M 175 110 C 205 110 195 40 235 50" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(235, 50)" class="figure-path"/>
+            <path d="M 175 210 C 205 210 195 290 235 280" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(235, 280)" class="figure-path"/>
+            <path d="M 365 50 l 30 0" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(395, 50)" class="figure-path"/>
+            <path d="M 365 280 l 30 0" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(395, 280)" class="figure-path"/>
+            <path d="M 435 50 L 509 50 a 6 6 0 0 1 6 6 L 515 150" class="figure-line"/>
+            <use href="#arrow-down" transform="translate(515, 150)" class="figure-path"/>
+            <path d="M 435 280 L 509 280 a 6 6 0 0 0 6 -6 L 515 170" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(515, 170)" class="figure-path"/>
+            <path d="M 525 160 l 70 0" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(595, 160)" class="figure-path"/>
+          </g>
+        </svg>
+        <figcaption>
+          Concatenation can be viewed as conditional biasing by expressing the
+          matrix-vector product as a two-stage process.
+        </figcaption>
+      </figure>
+      <p>
+        Each vector product between <dt-math>\mathbf{z}</dt-math> and its
+        corresponding subset of a row of the weight matrix can be thought of
+        as a bias that gets added to the corresponding output feature.
+      </p>
+      <p>
+        Conditional biasing of layers in the neural network is itself employed
+        in PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and WaveNet
+        <dt-cite key="oord2016wavenet"></dt-cite>, two recent advances in
+        autoregressive modeling of image and audio data, respectively.
+      </p>
+      <p>
+        In its simplest form, conditioning in PixelCNN models is achieved by
+        adding feature-wise, class-conditional biases to the output of all
+        convolutional layers. In FiLM parlance, this means inserting FiLM layers
+        after each convolutional layer and expressing the FiLM-generating
+        network as an embedding lookup on the class labels, with the scaling
+        coefficients set to a constant value of 1.
+        <dt-fn>
+          The authors also describe a location-dependent biasing scheme which
+          cannot be expressed in terms of FiLM layers due to the absence of the
+          feature-wise property.
+        </dt-fn>
+      </p>
+      <figure class="l-body-outset figure" id="pixelcnn-diagram">
+        <figcaption>
+          A PixelCNN layer is conditioned by biasing its sigmoidal and
+          hyperbolic tangent layers as a function of a high-level image
+          description.
+        </figcaption>
+      </figure>
+      <p>
+        WaveNet describes two ways in which conditional biasing allows external
+        information to modulate the behavior of the model:
+      </p>
+      <ol>
+        <li>
+          <strong>Global conditioning</strong> applies the same conditional
+          bias to the whole generated sequence and is used e.g. to condition on
+          speaker identity.
+        </li>
+        <li>
+          <strong>Local conditioning</strong> applies a conditional bias which
+          varies across time steps of the generated sequence and is used e.g.
+          to let linguistic features in a text-to-speech (TTS) model influence
+          which sounds are produced.
+        </li>
+      </ol>
+      <p>
+        Like for PixelCNN, both approaches can be viewed as inserting FiLM
+        layers after each convolutional layer. The main difference lies in the
+        way in which the FiLM-generating network is defined: global conditioning
+        expresses the FiLM-generating network as an embedding lookup which is
+        broadcasted to the whole time series, whereas local conditioning
+        expresses it as a mapping from an input sequence of conditioning
+        information to an output sequence of FiLM parameters.
+      </p>
+      <p>
+        We can also condition via <em>multiplicative</em> interactions instead
+        of additive interactions, like is the case for feature-wise sigmoidal
+        gating. The idea is to scale each feature or feature map by a scalar
+        between <dt-math>0</dt-math> and <dt-math>1</dt-math> that is a function
+        of the conditioning information. This constraint is oftentimes enforced
+        via a sigmoid layer, hence the name. Intuitively, sigmoidal gating
+        allows the conditioning information to select which features are passed
+        forward and which are zeroed out.
+      </p>
+      <p>
+        In the FiLM nomenclature, sigmoidal gating would correspond to a
+        bias-less FiLM layer with sigmoidal scaling.
+      </p>
+      <p>
+        Examples of application include the Gated-Attention architecture
+        <dt-cite key="chaplot2017gated"></dt-cite>, which uses feature-wise
+        sigmoidal gating to fuse linguisting and visual inputs in the context of
+        a reinforcement learning agent trained to follow simple natural language
+        instructions in the VizDoom <dt-cite key="kempa2016vizdoom"></dt-cite>
+        3D environment.
+      </p>
+      <figure class="l-body-outset figure" id="gated-attention-diagram">
+        <figcaption>
+          Gated-attention fusion unit. The instruction representation is mapped
+          to a feature vector with as many elements as the number of image
+          representation feature maps through a sigmoidal layer. This feature
+          vector is then multiplied element-wise &mdash; using broadcasting
+          &mdash; with the image representation.
+        </figcaption>
+      </figure>
+      <p>
+        Sometimes the sigmoidal restriction can be lifted, as is the case for
+        the Gated-Attention Reader <dt-cite key="dhingra2017gated"></dt-cite>.
+        The model extracts information from a text by conditioning the document
+        reading network on an query.  Its architecture is formed of multiple
+        Gated-Attention modules, which involve elementwise multiplications
+        between document representation tokens and token-specific query
+        representations extracted via soft attention on the query representation
+        tokens.
+      </p>
+      <p>
+        By combining conditional biasing and conditional scaling, we obtain the
+        FiLM layer, which implements a conditional feature-wise affine
+        transformation. Several variants of FiLM can be found in the literature.
+      </p>
       <p>
         We can use FiLM layers to condition a visual processing pipeline to
-        answer textual questions about an image.
-      </p>
-      <p>
-        In <dt-cite key="perez2017learning"></dt-cite>, and in its expanded
+        answer textual questions about an image. In
+        <dt-cite key="perez2017learning"></dt-cite>, and in its expanded
         version <dt-cite key="perez2017film"></dt-cite>, a visual reasoning
         model is trained on the CLEVR dataset <dt-cite key="johnson2017clevr"></dt-cite>
         to answer synthetic questions about a synthetic input image.
@@ -1564,139 +1821,15 @@
         network with task-specific gains and biases, which can be viewed as
         inserting FiLM layers throughout its hierarchy.
       </p>
-
-      <h3 id="conditioning-gating">Gating</h3>
       <p>
-        Work in <dt-cite key="chaplot2017gated"></dt-cite> uses feature-wise
-        sigmoidal gating to fuse linguisting and visual inputs in the context
-        of a reinforcement learning agent trained to follow simple natural
-        language instructions in the VizDoom
-        <dt-cite key="kempa2016vizdoom"></dt-cite> 3D environment.
+        As we have seen so far, feature-wise affine transformations can be used
+        as a conditioning mechanism to incorporate external information such as
+        context representation, task description, class information, or user
+        information. However, there is nothing preventing us from considering a
+        neural network's hidden activations <em>themselves</em> as conditioning
+        information. This idea gives rise to various forms of
+        <em>self-conditioned</em> models.
       </p>
-      <figure class="l-body-outset figure" id="gated-attention-diagram">
-        <figcaption>
-          Gated-attention fusion unit. The instruction representation is mapped
-          to a feature vector with as many elements as the number of image
-          representation feature maps through a sigmoidal layer. This feature
-          vector is then multiplied element-wise &mdash; using broadcasting
-          &mdash; with the image representation.
-        </figcaption>
-      </figure>
-      <p>
-        Feature-wise sigmoidal gating can be seen as inserting a FiLM layer
-        with scaling constrained to be between 0 and 1 via a sigmoidal layer
-        and shifting set to zero.
-      </p>
-      <p>
-        Work in <dt-cite key="dhingra2017gated"></dt-cite> introduces the
-        Gated-Attention Reader, which conditions a document reading network
-        with an associated query via multiple steps of feature-wise
-        multiplicative gating. Each token in the document sequence is used to
-        extract a token-specific query representation via soft attention over
-        the query sequence, and the query representation is multiplied
-        feature-wise with the token.
-      </p>
-
-      <h3 id="conditioning-biasing">Conditional biasing</h3>
-      <p>
-        PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and WaveNet
-        <dt-cite key="oord2016wavenet"></dt-cite>, two recent advances in
-        autoregressive modeling of image and audio data, respectively, employ a
-        similar conditional biasing scheme. The inner workings of their
-        autoregressive formulation is beyond the scope of this article, but
-        their conditioning scheme can be explained from the FiLM perspective. 
-      </p>
-      <p>
-        In its simplest form, conditioning in PixelCNN models is achieved by
-        adding feature-wise, class-conditional biases to the output of all
-        convolutional layers. Like for DCGAN, this can be viewed as inserting
-        FiLM layers after convolutional layers and expressing the
-        FiLM-generating network as an embedding lookup on the class labels,
-        with the scaling coefficients set to a constant value of 1. The authors
-        also describe a location-dependent biasing scheme which cannot be
-        expressed in terms of FiLM layers due to the absence of the
-        feature-wise property.
-      </p>
-      <figure class="l-body-outset figure" id="pixelcnn-diagram">
-        <figcaption>
-          A PixelCNN layer is conditioned by biasing its sigmoidal and
-          hyperbolic tangent layers as a function of a high-level image
-          description.
-        </figcaption>
-      </figure>
-      <p>
-        WaveNet describes two ways in which conditional biasing allows external
-        information to modulate the behavior of the model:
-      </p>
-      <ol>
-        <li>
-          <strong>Global conditioning</strong> applies the same conditional
-          bias to the whole generated sequence and is used e.g. to condition on
-          speaker identity.
-        </li>
-        <li>
-          <strong>Local conditioning</strong> applies a conditional bias which
-          varies across time steps of the generated sequence and is used e.g.
-          to let linguistic features in a text-to-speech (TTS) model influence
-          which sounds are produced.
-        </li>
-      </ol>
-      <p>
-        Like for PixelCNN, both approaches can be viewed as inserting FiLM
-        layers after each convolutional layer. The main difference lies in the
-        way in which the FiLM-generating network is defined: global conditioning
-        expresses the FiLM-generating network as an embedding lookup which is
-        broadcasted to the whole time series, whereas local conditioning
-        expresses it as a mapping from an input sequence of conditioning
-        information to an output sequence of FiLM parameters.
-      </p>
-
-      <h3 id="conditioning-concatenation">Concatenation</h3>
-      <p>
-        DCGAN <dt-cite key="radford2016unsupervised"></dt-cite>, a
-        well-recognized class of network architectures for generative
-        adversarial networks (GANs), lends itself to class conditioning by
-        concatenating the class label broadcasted as a feature map to the input
-        of convolutional and transposed convolutional layers in the generator
-        and discriminator networks. An equivalent &mdash; and more efficient
-        &mdash; way to express this operation is in the form of a feature-wise,
-        class-conditional biasing of the output of the convolutional or
-        transposed convolutional layer.
-        <dt-fn>
-          Provided we ignore the border effects due to zero-padding or use an
-          alternative form of padding, like reflection-padding.
-        </dt-fn>
-        We can therefore view the class-conditional version of
-        DCGAN as inserting FiLM layers after each convolutional and transposed
-        convolutional layer. The FiLM-generating network comes in the form of
-        an embedding lookup on the class labels, with the scaling coefficients
-        set to a constant value of 1.
-      </p>
-      <figure class="l-body-outset figure" id="dcgan-diagram">
-        <figcaption>
-          Concatenation and conditional biasing are equivalent.
-          <dt-fn>
-            Provided we ignore the border effects due to zero-padding or use an
-            alternative form of padding, like reflection-padding.
-          </dt-fn>
-          In this
-          example, convolving any kernel over a conditioning feature
-          broadcasted into a feature map results in a constant-valued output
-          feature map, which is equivalent to adding a conditional bias
-          broadcasted to the size of the output feature map.
-        </figcaption>
-      </figure>
-
-      <h2 id="self-conditioning">Self-conditioning</h2>
-      <p>
-        So far the applications we have considered condition on <em>external</em>
-        information, but it is also possible (and sometimes desireable) to
-        condition on <em>internal</em> information &mdash; that is, to
-        <em>self-condition</em> a network. Once again, in addition to FiLM,
-        various special cases are used in practice.
-      </p>
-
-      <h3 id="self-conditioning-film">FiLM</h3>
       <p>
         In the speech recognition domain, <dt-cite key="kim2017dynamic"></dt-cite>
         modulates a deep bidirectional LSTM using a form of conditional
@@ -1721,8 +1854,6 @@
         summarization feature vectors extracted in each layer of the network
         as a way of adapting the neural acoustic model.
       </p>
-
-      <h3 id="self-conditioning-gating">Gating</h3>
       <p>
         In the visual domain, the ImageNet 2017 winning model
         <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
@@ -1764,8 +1895,6 @@
         WaveNet <dt-cite key="oord2016wavenet"></dt-cite> both employ a
         self-conditioned tanh-sigmoid gated nonlinearity.
       </p>
-
-      <h3 id="self-conditioning-featurewise-attention">Feature-wise attention</h3>
       <p>
         Some work even combines attention and feature-wise affine
         transformations. Work in <dt-cite key="shen2017disan"></dt-cite>
