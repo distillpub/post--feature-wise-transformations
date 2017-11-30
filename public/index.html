@@ -1536,7 +1536,7 @@
       </script>
       <p>
         The model architecture consists of an encoder-decoder pair. The encoder
-        is the same classifier that is used to compute the content and style
+        is the same neural network that is used to compute the content and style
         losses, and is kept fixed throughout training. A content/style image
         pair is first encoded, and the encoded stack of <em>content</em> feature
         maps is instance-normalized. Instance normalization statistics are then
@@ -1552,7 +1552,7 @@
         FiLM-ed network, <em>and</em> the FiLM generator <em>itself</em>.
         Therefore, AdaIN can be interpreted as a FiLM layer replacing the
         instance normalization parameters, with the FiLM-generating network
-        taking the form of the same trained classifier being used to extract
+        taking the form of the same neural network that is used to extract
         instance normalization statistics on the style image.
       </p>
       <p>
