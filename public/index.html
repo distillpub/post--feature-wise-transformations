@@ -34,18 +34,84 @@
   </head>
   <body>
     <dt-article>
-      <h1>Understanding feature-wise linear modulation (FiLM) layers</h1>
-      <h2><span class="todo"> TODO: Write a description of the article.</span></h2>
+      <h1>Feature-wise affine transformations</h1>
+      <h2>A family of methods for fusing multiple sources of information</h2>
 
       <dt-byline></dt-byline>
 
       <p>
-        Much like attentional interfaces, which have been the subject of a
-        previous <a href="https://distill.pub/2016/augmented-rnns/">Distill
-        article</a>, feature-wise affine transformations have emerged as a
-        powerful mechanism which allows to modulate the computation carried out
-        by a neural network.
+        We often think of neural networks as a mapping from a raw source of
+        information to a more abstract and useful representation &mdash; pixel
+        values to object classes, audio waveform to text, etc. In practice,
+        however, it is frequent that a task requires handling multiple sources
+        of information. It could be that a model is given access to both the
+        video sequence and the audio waveform of a movie scene and is asked to
+        predict what is going on. It could also be that an image needs to be
+        processed in the context of a question being asked.
       </p>
+      <p>
+        This gives rise to the need for principled ways of handling multiple
+        information sources, to <em>fuse</em> them, to influence (or
+        <em>condition</em>) the way in which one source is processed in the
+        context of another.
+      </p>
+      <p>
+        <a href="https://distill.pub/2016/augmented-rnns/">Attention</a> is a
+        good example of one such principled approach: side information is used
+        to compute the weights which are used to summarize elements of a primary
+        information channel (like a sequence of word embeddings, for instance)
+        into a weighted sum. In this example, the side information is allowed to
+        influence how much of each element is carried forward.
+      </p>
+      <p>
+        Sometimes, however, we would prefer to treat the primary information
+        channel as a whole rather than summarizing it. For instance, in
+        conditional decoder-based generative models, we would like to map a
+        source of noise to model samples in a way that is class-aware. This
+        involves injecting class information into the decoder network.
+      </p>
+      <p>
+        A naive approach could be to concatenate a class embedding to the noise
+        vector and pass the result to the decoder. As we will see later, this
+        is equivalent to add a class-dependent bias to the first layer of the
+        decoder. Other approaches involve adding class-dependent biases to
+        <em>all</em> layers of the decoder, applying class-conditional sigmoidal
+        gating to them, or more generally applying a class-conditional affine
+        transformation to all decoder layers. These approaches all have in
+        common that they act at the feature level, and we can regroup them under
+        the umbrella of <em>feature-wise affine transformations</em>.
+      </p>
+      <p>
+        In this article, we will take a deep dive into feature-wise affine
+        transformations, which find their way in a surprising amount of recent
+        neural network architectures and in various problem settings. We will
+        examine them from two very different vantage points.
+      </p>
+      <p>
+        On one hand, we will discuss feature-wise affine transformations as a
+        family of related approaches and show how they can be conceptualized
+        using the FiLM nomenclature. We will point out their numerous uses in
+        the recent literature, and take a stab at understanding the
+        computational mechanisms that allow them to work.
+      </p>
+      <p>
+        On the other hand, we will inscribe feature-wise affine transformations
+        themselves within the family of bilinear transformations. We will show
+        that a small extension to the bilinear transformation formulation allows
+        us to relate attention, gating, FiLM, and mixture-of-experts models as
+        different instantiations of a so-called <em>generalized bilinear
+        transformation</em>.
+      </p>
+      <p>
+        We hope that the insights brought forward by this article help highlight
+        the strong connections between the aforementioned methods and inspire
+        new approaches to integrating multiple information channels in neural
+        networks.
+      </p>
+
+      <hr/>
+
+      <h1>FiLM</h1>
       <p>
         To center the discussion around a common language, we propose to use
         the nomenclature of <dt-cite key="perez2017film"></dt-cite>, which
@@ -980,53 +1046,51 @@
         HyperNetwork which predicts the FiLM parameters of the FiLM-ed network.
       </p>
       <p>
-        Feature-wise affine transformations are closely related to gating: the
-        latter can be viewed as a bias-less version of the former with
-        sigmoidal scaling. Whereas gating is used to inhibit the expression of
-        targeted features, FiLM can in theory be used to inhibit or enhance the
-        expression of targeted features, flip their sign, or selectively
-        threshold them (when combined with a ReLU nonlinearity). The impact of
-        these additional capabilities is still an open area of investigation.
+        FiLM is closely related to gating: the latter can be viewed as a
+        bias-less version of the former with sigmoidal scaling. Whereas gating
+        is used to inhibit the expression of targeted features, FiLM can in
+        theory be used to inhibit or enhance the expression of targeted
+        features, flip their sign, or selectively threshold them (when combined
+        with a ReLU nonlinearity). The impact of these additional capabilities
+        is still an open area of investigation.
       </p>
       <p>
-        FiLM is also closely connected to gating, attention, and
-        mixture-of-experts models through bilinear transformations
+        As hinted at above, FiLM is also closely connected to gating, attention,
+        and mixture-of-experts models through bilinear transformations
         <dt-cite key="tenenbaum2000separating"></dt-cite>. Because this
         connection deserves more than a simple paragraph, we decided to devote a
-        <a href="#bilinear-connection">separate section</a> of the article to it.
+        <a href="#bilinear-connection">separate section</a> of the article to
+        it.
       </p>
-      <p>
-        Finally, although attempts to connect deep learning results to the way
-        the brain works should always be treated carefully, it is interesting to
-        note that the idea of feature-wise modulation finds a modest amount of
-        support in the neuroscience literature.
-      </p>
-      <p>
-        In an attempt to explore biologically plausible neuron models while
-        drawing a parallel with multi-layer perceptrons,
-        <dt-cite key="mel1992clusteron"></dt-cite> introduces the
-        <em>Clusteron</em>, a neuron whose activations can be amplified by
-        surrounding neurons. This behavior enables to extract non-linearity and
-        high-order statistics from data.
-      </p>
-      <p>
-        Work in <dt-cite key="boutonnet2015words"></dt-cite> provides new
-        evidence that external language cues alter how visual information is
-        processed in the brain. More precisely, it is observed that P1 signals,
-        which are related to low-level visual features, are modulated while
-        hearing specific words.
-      </p>
-
-      <h2>Table of contents</h2>
+      <!-- <p> -->
+      <!--   Finally, although attempts to connect deep learning results to the way -->
+      <!--   the brain works should always be treated carefully, it is interesting to -->
+      <!--   note that the idea of feature-wise modulation finds a modest amount of -->
+      <!--   support in the neuroscience literature. -->
+      <!-- </p> -->
+      <!-- <p> -->
+      <!--   In an attempt to explore biologically plausible neuron models while -->
+      <!--   drawing a parallel with multi-layer perceptrons, -->
+      <!--   <dt-cite key="mel1992clusteron"></dt-cite> introduces the -->
+      <!--   <em>Clusteron</em>, a neuron whose activations can be amplified by -->
+      <!--   surrounding neurons. This behavior enables to extract non-linearity and -->
+      <!--   high-order statistics from data. -->
+      <!-- </p> -->
+      <!-- <p> -->
+      <!--   Work in <dt-cite key="boutonnet2015words"></dt-cite> provides new -->
+      <!--   evidence that external language cues alter how visual information is -->
+      <!--   processed in the brain. More precisely, it is observed that P1 signals, -->
+      <!--   which are related to low-level visual features, are modulated while -->
+      <!--   hearing specific words. -->
+      <!-- </p> -->
       <p>
         Because of their very general nature and wide applicability,
         feature-wise affine transformations are sometimes treated as accessory
         to the proposed models to which they are applied. We believe there is
         value in connecting those methods, which is why part of this article is
-        devoted to a literature review. In the spirit of the
-        <a href="https://distill.pub/2016/augmented-rnns/"> Distill article</a>
-        on attention, we outlined several directions through which feature-wise
-        affine transformations express themselves in the literature:
+        devoted to a literature review. We outlined several directions through
+        which feature-wise affine transformations express themselves in the
+        literature:
       </p>
       <ul>
         <li><p><a href="#conditioning">Conditioning on external information</a></p>
