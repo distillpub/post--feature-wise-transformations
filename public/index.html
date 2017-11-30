@@ -90,17 +90,19 @@
       <p>
         On one hand, we will discuss feature-wise affine transformations as a
         family of related approaches and show how they can be conceptualized
-        using the FiLM nomenclature. We will point out their numerous uses in
-        the recent literature, and take a stab at understanding the
-        computational mechanisms that allow them to work.
+        using the <a href="#film-nomenclature">FiLM nomenclature</a>. We will
+        point out their <a href="#film-in-literature">numerous uses in the recent
+        literature</a>, and take a stab at
+        <a href="#understanding-film">understanding the computational mechanisms</a>
+        that allow them to work.
       </p>
       <p>
         On the other hand, we will inscribe feature-wise affine transformations
-        themselves within the family of bilinear transformations. We will show
-        that a small extension to the bilinear transformation formulation allows
-        us to relate attention, gating, FiLM, and mixture-of-experts models as
-        different instantiations of a so-called <em>generalized bilinear
-        transformation</em>.
+        themselves within the <a href="#bilinear-connection">family of bilinear
+        transformations</a>. We will show that a small extension to the bilinear
+        transformation formulation allows us to relate attention, gating, FiLM,
+        and mixture-of-experts models as different instantiations of a so-called
+        <em>generalized bilinear transformation</em>.
       </p>
       <p>
         We hope that the insights brought forward by this article help highlight
@@ -111,7 +113,7 @@
 
       <hr/>
 
-      <h1>FiLM</h1>
+      <h1 id="film-nomenclature">FiLM</h1>
       <p>
         To center the discussion around a common language, we propose to use
         the nomenclature of <dt-cite key="perez2017film"></dt-cite>, which
@@ -1083,6 +1085,10 @@
       <!--   which are related to low-level visual features, are modulated while -->
       <!--   hearing specific words. -->
       <!-- </p> -->
+
+      <hr />
+
+      <h1 id="film-in-literature">Feature-wise affine transformations in the literature</h1>
       <p>
         Because of their very general nature and wide applicability,
         feature-wise affine transformations are sometimes treated as accessory
@@ -1109,28 +1115,6 @@
           </ul>
         </li>
       </ul>
-      <p>
-        We also attempt to characterize and explain the behavior of FiLM-ed
-        networks through <a href="#understanding-film">analyses on toy and
-        real-world tasks</a>.
-      </p>
-      <p>
-        Finally, as noted above, we reserved a section of this article for the
-        discussion of the <a href="#bilinear-connection">connection between
-        bilinear transformations, FiLM, gating, attention, and
-        mixture-of-experts models</a>.
-      </p>
-
-      <hr />
-
-      <h1>Feature-wise affine transformations in the literature</h1>
-      <p>
-        Throughout this section, we will present various models which take
-        advantage of feature-wise affine transformations to show how widely
-        applied this computational mechanism is in practice. We try
-        to provide a comprehensive overview, but we do not claim that it is
-        complete.
-      </p>
       <p>
         In the interest of not being confusing to readers already familiar with
         these models, we chose to stick to the nomenclature used in the
