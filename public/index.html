@@ -2892,19 +2892,6 @@
                 .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
         })();
       </script>
-      <p>
-        Assuming a matrix
-        <dt-math>X</dt-math> in which rows represent features and columns
-        represent spatial or temporal locasions, we can represent the output
-        <dt-math>\mathbf{y}</dt-math> compactly as
-
-        <dt-math block>
-          \mathbf{y} = \tilde{X} g(W\tilde{\mathbf{z}})
-        </dt-math>
-
-        where <dt-math>g(\cdot)</dt-math> is the "all-but-one" softmax
-        introduced above.
-      </p>
 
       <h3>Mixture-of-experts as a generalized bilinear transformation</h3>
       <p>
