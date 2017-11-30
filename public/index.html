@@ -2104,7 +2104,7 @@
           <li>
             It appends a <dt-math>1</dt-math>-valued feature to the inputs
             <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> to
-            accommodate affine transformations &mdash; a common trick used to
+            accommodate an eventual bias term &mdash; a common trick used to
             simplify the algebra of neural networks:
             <dt-math block>
               \begin{aligned}
@@ -2760,9 +2760,10 @@
         </dt-math>
 
         Assuming a feature matrix <dt-math>X</dt-math> in which columns
-        represent feature vectors at different spatial or temporal locations,
-        the output of the attentional interface is computed as the expected
-        feature vector over the attention distribution:
+        represent feature vectors at different spatial or temporal locations
+        (<em>N.B.: this is a somewhat unusual way of organizing a sequence of
+        feature vectors</em>), the output of the attentional interface is
+        computed as the expected feature vector over the attention distribution:
 
         <dt-math block>
             \mathbf{y} = X \mathbf{p}.
