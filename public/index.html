@@ -1181,8 +1181,63 @@
         convolutional layers in the generator and discriminator networks.
       </p>
       <figure class="l-body-outset figure" id="dcgan-diagram">
+        <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
+          </defs>
+          <g transform="translate(10, 10)">
+            <g class="filmed-network">
+              <rect x="180" y="0" width="364" height="300" class="figure-group figure-box"/>
+              <text x="190" y="15" dy="0.4em" class="figure-text">concatenation-based conditioning</text>
+            </g>
+            <g transform="translate(0, 70)">
+              <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            </g>
+            <g transform="translate(200, 102)">
+              <rect width="40" height="116" class="figure-element figure-box"/>
+              <text x="20" y="58" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 58)" class="figure-text">concatenate</text>
+            </g>
+            <g transform="translate(270, 70)">
+              <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+              <rect x="40" y="40" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="50" y="50" dy="0.4em" class="figure-text">class</text>
+            </g>
+            <g transform="translate(480, 102)">
+              <rect width="40" height="116" class="figure-element figure-box"/>
+              <text x="20" y="58" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 58)" class="figure-text">convolution</text>
+            </g>
+            <g transform="translate(564, 70)">
+              <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <path d="M 160 160 L 200 160" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(200, 160)" class="figure-path"/>
+            <path d="M 240 160 L 270 160" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(270, 160)" class="figure-path"/>
+            <path d="M 450 160 L 480 160" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(480, 160)" class="figure-path"/>
+            <path d="M 520 160 L 564 160" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(564, 160)" class="figure-path"/>
+            <path d="M 220 218 L 220 310" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(220, 218)" class="figure-path"/>
+            <text x="220" y="320" dy="0.4em" style="text-anchor: middle;" class="figure-text">class</text>
+          </g>
+        </svg>
         <figcaption>
-            <span class="todo">TODO: make a figure for DCGAN.</span>
+          Concatenation-based conditioning in a convolutional layer. The class
+          is broadcasted to the feature map size and concatenated with the input
+          along the channel axis before applying the convolution.
         </figcaption>
       </figure>
       <p>
@@ -3392,12 +3447,10 @@
     </script>
     <script src="assets/figure_clevr.js"></script>
     <script src="assets/figure_guesswhat.js"></script>
-    <script src="assets/figure_dcgan.js"></script>
     <script src="assets/figure_pixelcnn.js"></script>
     <script src="assets/figure_dln.js"></script>
     <script src="assets/figure_squeeze.js"></script>
     <script src="assets/figure_convseq2seq.js"></script>
-    <!-- <script src="assets/figure_gated_attention.js"></script> -->
     <script src="assets/figure_disan.js"></script>
     <script src="assets/figure_moe.js"></script>
     <script src="assets/figure_clevr_tsne.js"></script>
