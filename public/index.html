@@ -248,8 +248,8 @@
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
             <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 4.28 a 27.2 27.2 0 0 0 7.69 -4.28 L 6.14 4.28 l 1.55 4.28 A 27.18 27.18 0 0 0 0 4.28 Z" id="arrow-left"/>
-            <path d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" id="arrow-down"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" id="vector-feature-left"/>
             <path d="M 0 0 l 40 0 l 0 40 l -40 0 Z" id="vector-feature-middle"/>
             <path d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" id="vector-feature-right"/>
@@ -284,7 +284,7 @@
           </defs>
           <g transform="translate(10, 50)" id="mlp-figure">
             <rect y="73" width="290" height="342" class="figure-group figure-box figure-film-layer"/>
-            <text x="20" y="402" class="figure-text">FiLM layer (fully-connected)</text>
+            <text x="10" y="402" class="figure-text">FiLM layer (fully-connected)</text>
             <g transform="translate(147, 440)" id="input-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use href="#vector-feature-left" class="figure-element"/>
@@ -321,7 +321,7 @@
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="59" y="325" class="figure-text" transform="translate(-49, 18)">γ</text>
+            <text x="59" y="325" class="figure-text" style="font-family: serif;" transform="translate(-49, 18)">γ</text>
             <use width="26" height="26" transform="translate(74, 302)" xlink:href="#interactive"/>
             <line x1="147" y1="353" x2="187" y2="353" class="figure-line"/>
             <use href="#arrow-right" transform="translate(187, 353)" class="figure-path"/>
@@ -367,7 +367,7 @@
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="10" y="128" class="figure-text">β</text>
+            <text x="10" y="128" style="font-family: serif;" class="figure-text">β</text>
             <use width="26" height="26" transform="translate(74, 87)" xlink:href="#interactive"/>
             <line x1="147" y1="138" x2="187" y2="138" class="figure-line"/>
             <use href="#arrow-right" transform="translate(187, 138)" class="figure-path"/>
@@ -565,7 +565,7 @@
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="59" y="325" class="figure-text" transform="translate(-2, 8)">γ</text>
+            <text x="59" y="325" class="figure-text" style="font-family: serif;" transform="translate(-2, 8)">γ</text>
             <use width="26" height="26" transform="translate(122, 292)" xlink:href="#interactive"/>
             <line x1="194" y1="343" x2="242" y2="343" class="figure-line"/>
             <use href="#arrow-right" transform="translate(242, 343)" class="figure-path"/>
@@ -737,7 +737,7 @@
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="57" y="118" class="figure-text">β</text>
+            <text x="57" y="118" style="font-family: serif;" class="figure-text">β</text>
             <use width="26" height="26" transform="translate(122, 77)" xlink:href="#interactive"/>
             <line x1="194" y1="128" x2="242" y2="128" class="figure-line"/>
             <use href="#arrow-right" transform="translate(242, 128)" class="figure-path"/>
@@ -1210,10 +1210,11 @@
             <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
             <path d="M 0 0 C 12 0 0 30 12 30 C 0 30 12 60 0 60" id="vertical-curly-brace"/>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" class="figure-path" id="arrow-up"/>
-            <path d="M 4.28 7.69 a 27.2 27.2 0 0 0 -4.28 -7.69 l 4.28 1.55 4.28 -1.55 A 27.18 27.18 0 0 0 4.28 7.69 Z" id="arrow-down"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
           </defs>
-          <rect x="10" y="10" height="350" width="724" class="figure-group figure-rounded"/>
+          <rect x="10" y="10" height="350" width="724" class="figure-group figure-box"/>
           <g transform="translate(60, 20)">
             <g transform="translate(10, 100)">
               <g>
@@ -1252,8 +1253,8 @@
                 <use href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
                 <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
                 <use href="#vertical-curly-brace" transform="translate(25, 60)" class="figure-line"/>
-                <text x="45" y="30" dy="0.2em" style="font-weight: bold;" class="figure-text">x</text>
-                <text x="45" y="90" dy="0.2em" style="font-weight: bold;" class="figure-text">z</text>
+                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
+                <text x="45" y="90" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
               </g>
             </g>
             <g transform="translate(240, 10)">
@@ -1276,7 +1277,7 @@
                 <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
                 <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
                 <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
-                <text x="45" y="30" dy="0.2em" style="font-weight: bold;" class="figure-text">x</text>
+                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
               </g>
             </g>
             <g transform="translate(240, 240)">
@@ -1299,7 +1300,7 @@
                 <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
                 <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
                 <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
-                <text x="45" y="30" dy="0.2em" style="font-weight: bold;" class="figure-text">z</text>
+                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
               </g>
             </g>
             <g transform="translate(405, 10)">
@@ -1337,6 +1338,7 @@
             <use href="#arrow-down" transform="translate(515, 150)" class="figure-path"/>
             <path d="M 435 280 L 509 280 a 6 6 0 0 0 6 -6 L 515 170" class="figure-line"/>
             <use href="#arrow-up" transform="translate(515, 170)" class="figure-path"/>
+            <text x="435" y="295" class="figure-text">conditional bias</text>
             <path d="M 525 160 l 70 0" class="figure-line"/>
             <use href="#arrow-right" transform="translate(595, 160)" class="figure-path"/>
           </g>
@@ -1526,7 +1528,9 @@
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" class="figure-path" id="arrow-up"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
           </defs>
           <g>
             <g class="filmed-network">
@@ -1675,6 +1679,9 @@
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
             <linearGradient id="linearStroke" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
               <stop offset="0%"   stop-color="#2196f3"/>
               <stop offset="100%" stop-color="#f44336"/>
@@ -1948,7 +1955,10 @@
       <figure class="l-body-outset figure" id="bilinear-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" class="figure-path" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" id="big-row-left"/>
             <path d="M 0 0 l 40 0 l 0 40 l -40 0 Z" id="big-row-middle"/>
             <path d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" id="big-row-right"/>
@@ -1972,7 +1982,7 @@
               <use href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
               <use href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
               <use href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <text x="30" y="30" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
             </g>
             <g transform="translate(48, 362)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
@@ -1984,7 +1994,7 @@
               <use href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
               <use href="#matrix-bottom-right" transform="translate(40, 40)" class="figure-element"/>
-              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">1</tspan></text>
+              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan></text>
             </g>
             <g transform="translate(113, 362)">
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
@@ -1996,7 +2006,7 @@
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan class="subscript">1</tspan><tspan style="font-weight: bold;"> z</tspan></text>
+              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
             </g>
           </g>
           <g transform="translate(312, 27)">
@@ -2004,7 +2014,7 @@
               <use href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
               <use href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
               <use href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <text x="30" y="30" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
             </g>
             <g transform="translate(50, 214)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
@@ -2016,7 +2026,7 @@
               <use href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
               <use href="#matrix-bottom-right" transform="translate(40, 40)" class="figure-element"/>
-              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">2</tspan></text>
+              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan></text>
             </g>
             <g transform="translate(115, 214)">
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
@@ -2028,7 +2038,7 @@
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan class="subscript">2</tspan><tspan style="font-weight: bold;"> z</tspan></text>
+              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
             </g>
           </g>
           <g transform="translate(372, 70)">
@@ -2036,9 +2046,9 @@
               <use href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
               <use href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
               <use href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <text x="30" y="30" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
             </g>
-            <g transform="translate(212, 170)">
+            <g transform="translate(209.5, 170)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
               <use href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
@@ -2048,9 +2058,9 @@
               <use href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
               <use href="#matrix-bottom-right" transform="translate(40, 40)" class="figure-element"/>
-              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">3</tspan></text>
+              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan></text>
             </g>
-            <g transform="translate(277, 170)">
+            <g transform="translate(274.5, 170)">
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
@@ -2060,21 +2070,21 @@
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan class="subscript">3</tspan><tspan style="font-weight: bold;"> z</tspan></text>
+              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
             </g>
           </g>
           <g transform="translate(312, 20)">
             <use href="#big-row-left" transform="translate(0, 0)"  class="figure-element"/>
             <use href="#big-row-middle" transform="translate(40, 0)" class="figure-element"/>
             <use href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
-            <text x="-15" y="20" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
+            <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
           </g>
           <use href="#curly-brace" transform="translate(107, 147)" class="figure-line"/>
           <use href="#curly-brace" transform="translate(329, 147)" class="figure-line"/>
           <use href="#curly-brace" transform="translate(549, 147)" class="figure-line"/>
           <use href="#curly-brace" transform="translate(140, 236)" class="figure-line"/>
           <use href="#curly-brace" transform="translate(362, 236)" class="figure-line"/>
-          <use href="#curly-brace" transform="translate(584, 236)" class="figure-line"/>
+          <use href="#curly-brace" transform="translate(581.5, 236)" class="figure-line"/>
           <path class="figure-line" d="M 149.5 126 C 149.5 60 342 126 332 60"/>
           <use href="#arrow-up" transform="translate(332, 60)" class="figure-line"/>
           <path class="figure-line" d="M 372 126 L 372 60"/>
@@ -2125,7 +2135,10 @@
       <figure class="l-body-outset figure" id="generalized-bilinear-diagram">
         <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" class="figure-path" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" id="big-row-left"/>
             <path d="M 0 0 l 40 0 l 0 40 l -40 0 Z" id="big-row-middle"/>
             <path d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" id="big-row-right"/>
@@ -2154,7 +2167,7 @@
               <use href="#row-right" transform="translate(40, 0)" class="figure-element"/>
               <use href="#singleton" transform="translate(60, 0)" class="figure-element"/>
               <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="30" y="30" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
             </g>
             <g transform="translate(38, 382)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
@@ -2191,7 +2204,7 @@
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-              <text x="25" y="40" class="figure-text"><tspan>g</tspan><tspan dy="0.4em" class="subscript">1</tspan><tspan dy="-0.4em">(W</tspan><tspan dy="0.4em" class="subscript">1</tspan><tspan dy="-0.4em" style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
+              <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>g</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px">(W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan><tspan style="font-weight: normal;">)</tspan></text>
             </g>
           </g>
           <g transform="translate(312, 27)">
@@ -2201,7 +2214,7 @@
               <use href="#row-right" transform="translate(40, 0)" class="figure-element"/>
               <use href="#singleton" transform="translate(60, 0)" class="figure-element"/>
               <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="30" y="30" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
             </g>
             <g transform="translate(40, 234)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
@@ -2238,7 +2251,7 @@
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-              <text x="25" y="40" class="figure-text"><tspan>g</tspan><tspan dy="0.4em" class="subscript">2</tspan><tspan dy="-0.4em">(W</tspan><tspan dy="0.4em" class="subscript">2</tspan><tspan dy="-0.4em" style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
+              <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>g</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px">(W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
             </g>
           </g>
           <g transform="translate(372, 70)">
@@ -2248,9 +2261,9 @@
               <use href="#row-right" transform="translate(40, 0)" class="figure-element"/>
               <use href="#singleton" transform="translate(60, 0)" class="figure-element"/>
               <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="30" y="30" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
             </g>
-            <g transform="translate(202, 190)">
+            <g transform="translate(199.5, 190)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
@@ -2272,7 +2285,7 @@
               <use href="#parenthesis-right" transform="translate(120, 0)" class="figure-line"/>
               <text x="40" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">3</tspan></text>
             </g>
-            <g transform="translate(287, 190)">
+            <g transform="translate(284.5, 190)">
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
@@ -2285,7 +2298,7 @@
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
               <use href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-              <text x="25" y="40" class="figure-text"><tspan>g</tspan><tspan dy="0.4em" class="subscript">3</tspan><tspan dy="-0.4em">(W</tspan><tspan dy="0.4em" class="subscript">3</tspan><tspan dy="-0.4em" style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
+              <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>g</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px">(W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
             </g>
           </g>
           <g transform="translate(312, 20)">
@@ -2299,7 +2312,7 @@
           <use href="#large-curly-brace" transform="translate(529, 147)" class="figure-line"/>
           <use href="#large-curly-brace" transform="translate(130, 256)" class="figure-line"/>
           <use href="#large-curly-brace" transform="translate(352, 256)" class="figure-line"/>
-          <use href="#large-curly-brace" transform="translate(574, 256)" class="figure-line"/>
+          <use href="#large-curly-brace" transform="translate(571.5, 256)" class="figure-line"/>
           <path class="figure-line" d="M 139.5 126 C 159.5 60 342 126 332 60"/>
           <use href="#arrow-up" transform="translate(332, 60)" class="figure-line"/>
           <path class="figure-line" d="M 361.5 126 C 361.5 80 372 106 372 60"/>
@@ -2383,7 +2396,7 @@
             <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
           </defs>
           <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">1</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-top-right" transform="translate(20, 0)" class="figure-element figure-faded"/>
@@ -2419,7 +2432,7 @@
             </g>
           </g>
           <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">2</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-faded"/>
               <use href="#matrix-top-right" transform="translate(20, 0)" class="figure-element figure-faded"/>
@@ -2455,7 +2468,7 @@
             </g>
           </g>
           <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">3</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-faded"/>
               <use href="#matrix-top-right" transform="translate(20, 0)" class="figure-element figure-faded"/>
@@ -2606,7 +2619,7 @@
             <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="column-bottom"/>
           </defs>
           <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">1</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element figure-faded"/>
@@ -2635,7 +2648,7 @@
             </g>
           </g>
           <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">2</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
               <use href="#column-top" transform="translate(0, 0)" class="figure-element figure-faded"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
@@ -2664,7 +2677,7 @@
             </g>
           </g>
           <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">3</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
               <use href="#column-top" transform="translate(0, 0)" class="figure-element figure-faded"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element figure-faded"/>
@@ -2807,7 +2820,7 @@
             <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
           </defs>
           <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">1</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-1-full">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
@@ -2824,7 +2837,7 @@
             </g>
           </g>
           <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">2</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-2-full">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
@@ -2841,7 +2854,7 @@
             </g>
           </g>
           <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">3</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-3-full">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
@@ -2927,7 +2940,7 @@
             <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
           </defs>
           <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">1</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-1-full">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
@@ -2944,7 +2957,7 @@
             </g>
           </g>
           <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">2</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-2-full">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
@@ -2961,7 +2974,7 @@
             </g>
           </g>
           <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">3</tspan><tspan dy="-0.4em"> =</tspan></text>
+            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-3-full">
               <use href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
               <use href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
