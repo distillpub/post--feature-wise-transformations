@@ -1826,6 +1826,111 @@
         <dt-cite key="agrawal2015vqa"></dt-cite>.
       </p>
       <figure class="l-body-outset figure" id="guesswhat-diagram">
+        <svg viewBox="0 0 744 700" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
+          </defs>
+          <text x="372" y="10" style="text-anchor: middle;" class="figure-text">Answer: no</text>
+          <g transform="translate(112, 30)">
+            <rect width="520" height="40" class="figure-group figure-box"/>
+            <text x="260" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">fusion block</text>
+            <path d="M 260 0 L 260 -15" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(260, -15)"  class="figure-path"/>
+          </g>
+          <g transform="translate(50, 100)">
+            <rect width="190" height="40" class="figure-element figure-box"/>
+            <text x="95" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">attention</text>
+            <path d="M 95 0 L 95 -30" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(95, -30)"  class="figure-path"/>
+          </g>
+          <g transform="translate(20, 180)">
+            <g class="filmed-network">
+              <rect width="280" height="440" class="figure-group figure-box figure-filmed-network"/>
+              <text x="10" y="15" dy="0.4em" class="figure-text">visual pipeline</text>
+            </g>
+            <image x="93" y="450" width="64" height="64" href="assets/guesswhat_input.jpg"/>
+            <path d="M 125 450 L 125 426" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(125, 426)"  class="figure-path"/>
+            <g transform="translate(30, 386)">
+              <rect width="190" height="40" class="figure-element figure-box"/>
+              <text x="95" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
+            </g>
+            <g transform="translate(30, 238)">
+              <rect width="190" height="128" class="figure-element figure-box"/>
+              <text x="10" y="64" class="figure-text" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 10, 64)">batch normalization</text>
+              <g transform="translate(30, 15)" class="film-layer">
+                <rect width="140" height="40" class="figure-element figure-box figure-film-layer"/>
+                <text x="70" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">affine transformation</text>
+                <text x="170" y="10" style="font-family: serif;" class="figure-text"><tspan>β</tspan><tspan dy="5px" class="subscript">1</tspan><tspan dy="-5px">, γ</tspan><tspan dy="5px" class="subscript">1</tspan></text>
+                <path d="M 65 40 L 65 60" class="figure-line"/>
+                <use href="#arrow-up" transform="translate(65, 40)"  class="figure-path"/>
+              </g>
+              <g transform="translate(30, 75)">
+                <rect width="140" height="40" class="figure-element figure-box"/>
+                <text x="70" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">normalization</text>
+                <path d="M 65 40 L 65 73" class="figure-line"/>
+                <use href="#arrow-up" transform="translate(65, 40)"  class="figure-path"/>
+              </g>
+            </g>
+            <g transform="translate(30, 178)">
+              <rect width="190" height="40" class="figure-element figure-box"/>
+              <text x="95" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
+              <path d="M 95 40 L 95 75" class="figure-line"/>
+              <use href="#arrow-up" transform="translate(95, 40)"  class="figure-path"/>
+            </g>
+            <g transform="translate(30, 30)">
+              <rect width="190" height="128" class="figure-element figure-box"/>
+              <text x="10" y="64" class="figure-text" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 10, 64)">batch normalization</text>
+              <g transform="translate(30, 15)" class="film-layer">
+                <rect width="140" height="40" class="figure-element figure-box figure-film-layer"/>
+                <text x="70" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">affine transformation</text>
+                <text x="170" y="10" style="font-family: serif;" class="figure-text"><tspan>β</tspan><tspan dy="5px" class="subscript">2</tspan><tspan dy="-5px">, γ</tspan><tspan dy="5px" class="subscript">2</tspan></text>
+                <path d="M 65 40 L 65 60" class="figure-line"/>
+                <use href="#arrow-up" transform="translate(65, 40)"  class="figure-path"/>
+                <path d="M 65 0 L 65 -85" class="figure-line"/>
+                <use href="#arrow-up" transform="translate(65, -85)"  class="figure-path"/>
+              </g>
+              <g transform="translate(30, 75)">
+                <rect width="140" height="40" class="figure-element figure-box"/>
+                <text x="70" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">normalization</text>
+                <path d="M 65 40 L 65 73" class="figure-line"/>
+                <use href="#arrow-up" transform="translate(65, 40)"  class="figure-path"/>
+              </g>
+            </g>
+          </g>
+          <g transform="translate(342, 180)" class="film-generator">
+            <rect width="280" height="440" class="figure-group figure-box figure-film-generator"/>
+            <text x="10" y="15" dy="0.4em" class="figure-text">linguistic pipeline</text>
+            <text x="150" y="460" dy="0.4em" style="text-anchor: middle;" class="figure-text">Is the umbrella upside down?</text>
+            <path d="M 150 386 L 150 -110" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(150, -110)"  class="figure-path"/>
+            <path d="M 150 386 L 150 279 A 6 6 0 0 0 144 273 L 130 273" class="figure-line"/>
+            <use href="#arrow-left" transform="translate(130, 273)"  class="figure-path"/>
+            <path d="M 150 386 L 150 71 A 6 6 0 0 0 144 65 L 130 65" class="figure-line"/>
+            <use href="#arrow-left" transform="translate(130, 65)"  class="figure-path"/>
+            <g transform="translate(65, 386)">
+              <rect width="170" height="40" class="figure-element figure-box"/>
+              <text x="85" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">LSTM</text>
+              <path d="M 85 40 L 85 65" class="figure-line"/>
+              <use href="#arrow-up" transform="translate(85, 40)"  class="figure-path"/>
+            </g>
+            <g transform="translate(20, 253)">
+              <rect width="110" height="40" class="figure-element figure-box"/>
+              <text x="55" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">MLP</text>
+              <path d="M 0 20 L -142 20" class="figure-line"/>
+              <use href="#arrow-left" transform="translate(-142, 20)"  class="figure-path"/>
+            </g>
+            <g transform="translate(20, 45)">
+              <rect width="110" height="40" class="figure-element figure-box"/>
+              <text x="55" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">MLP</text>
+              <path d="M 0 20 L -142 20" class="figure-line"/>
+              <use href="#arrow-left" transform="translate(-142, 20)"  class="figure-path"/>
+            </g>
+          </g>
+        </svg>
         <figcaption>
           <p style="margin-bottom: 8px;">
             Visual question-answering (VQA) model in in
@@ -1841,6 +1946,38 @@
           </em></p>
         </figcaption>
       </figure>
+      <script>
+        (function() {
+            var svg = d3.select("figure.figure#guesswhat-diagram").select("svg");
+            svg.select("g.film-generator")
+                .on("mouseenter", function () {
+                    svg.select("g.film-generator > text").text("FiLM generator");
+                    svg.select("g.film-generator > rect").style("fill", "#ef9a9a");
+                })
+                .on("mouseleave", function () {
+                    svg.select("g.film-generator > text").text("linguistic pipeline");
+                    svg.select("g.film-generator > rect").style("fill", null)
+                });
+            svg.selectAll("g.film-layer")
+                .on("mouseenter", function () {
+                    svg.selectAll("g.film-layer").select("g.film-layer > text").text("FiLM layer");
+                    svg.selectAll("g.film-layer").select("g.film-layer > rect").style("fill", "#ffcc80");
+                })
+                .on("mouseleave", function () {
+                    svg.selectAll("g.film-layer").select("g.film-layer > text").text("affine transformation");
+                    svg.selectAll("g.film-layer").select("g.film-layer > rect").style("fill", null)
+                });
+            svg.select("g.filmed-network")
+                .on("mouseenter", function () {
+                    svg.select("g.filmed-network > text").text("FiLM-ed network");
+                    svg.select("g.filmed-network > rect").style("fill", "#90caf9");
+                })
+                .on("mouseleave", function () {
+                    svg.select("g.filmed-network > text").text("visual pipeline");
+                    svg.select("g.filmed-network > rect").style("fill", null)
+                });
+        })();
+      </script>
       <p>
         The visual pipeline consists of a pre-trained residual network and is
         kept fixed throughout training. The linguistic pipeline interacts with
@@ -3649,7 +3786,6 @@
         url={https://arxiv.org/pdf/1701.06538.pdf},
       }
     </script>
-    <script src="assets/figure_guesswhat.js"></script>
     <script src="assets/figure_pixelcnn.js"></script>
     <script src="assets/figure_dln.js"></script>
     <script src="assets/figure_squeeze.js"></script>
