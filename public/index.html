@@ -3557,6 +3557,79 @@
         which is itself computed from the experts' inputs.
       </p>
       <figure class="l-body-outset figure" id="moe-diagram">
+        <svg viewBox="0 0 744 470" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(306, 430)">
+            <rect width="132" height="30" class="figure-element figure-box"/>
+            <text x="66" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">input</text>
+            <path d="M 66 0 L 66 -14 A 6 6 0 0 0 60 -20 L -169 -20 A 6 6 0 0 1 -175 -26 L -175 -40" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(-175, -40)" class="figure-path"/>
+            <path d="M 66 0 L 66 -14 A 6 6 0 0 0 60 -20 L -5 -20 A 6 6 0 0 1 -11 -26 L -11 -40" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(-11, -40)" class="figure-path"/>
+            <path d="M 66 0 L 66 -14 A 6 6 0 0 1 72 -20 L 147 -20 A 6 6 0 0 0 153 -26 L 153 -40" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(153, -40)" class="figure-path"/>
+            <path d="M 66 0 L 66 -14 A 6 6 0 0 1 72 -20 L 311 -20 A 6 6 0 0 0 317 -26 L 317 -40" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(317, -40)" class="figure-path"/>
+          </g>
+          <g transform="translate(65, 270)">
+            <rect width="132" height="120" class="figure-group figure-box"/>
+            <text x="66" y="60" dy="0.4em" style="text-anchor: middle;" class="figure-text">gating network</text>
+            <path d="M 66 0 L 66 -30" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(66, -30)" class="figure-path"/>
+          </g>
+          <g transform="translate(65, 210)">
+            <rect width="132" height="30" class="figure-element figure-box"/>
+            <text x="66" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">softmax</text>
+            <path d="M 36 0 L 36 -89 A 6 6 0 0 1 42 -94 L 543 -94" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(543, -94)" class="figure-path"/>
+            <path d="M 66 0 L 66 -59 A 6 6 0 0 1 72 -65 L 379 -65" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(379, -65)" class="figure-path"/>
+            <path d="M 96 0 L 96 -29 A 6 6 0 0 1 102 -35 L 215 -35" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(215, -35)" class="figure-path"/>
+          </g>
+          <g transform="translate(229, 220)">
+            <rect width="132" height="170" class="figure-group figure-box"/>
+            <text x="66" y="85" dy="0.4em" style="text-anchor: middle;" class="figure-text">expert network 1</text>
+            <path d="M 66 0 L 66 -30" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(66, -30)" class="figure-path"/>
+          </g>
+          <g transform="translate(393, 220)">
+            <rect width="132" height="170" class="figure-group figure-box"/>
+            <text x="66" y="85" dy="0.4em" style="text-anchor: middle;" class="figure-text">expert network 2</text>
+            <path d="M 66 0 L 66 -60" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(66, -60)" class="figure-path"/>
+          </g>
+          <g transform="translate(557, 220)">
+            <rect width="132" height="170" class="figure-group figure-box"/>
+            <text x="66" y="85" dy="0.4em" style="text-anchor: middle;" class="figure-text">expert network 3</text>
+            <path d="M 66 0 L 66 -90" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(66, -90)" class="figure-path"/>
+          </g>
+          <g transform="translate(295, 175)">
+            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+            <ellipse rx="2" ry="2" class="figure-path"/>
+            <path d="M 0 -15 L 0 -124 A 6 6 0 0 1 6 -130 L 149 -130" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(149, -130)" class="figure-path"/>
+          </g>
+          <g transform="translate(459, 145)">
+            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+            <ellipse rx="2" ry="2" class="figure-path"/>
+            <path d="M 0 -15 L 0 -85" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(0, -85)" class="figure-path"/>
+          </g>
+          <g transform="translate(623, 115)">
+            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+            <ellipse rx="2" ry="2" class="figure-path"/>
+            <path d="M 0 -15 L 0 -64 A 6 6 0 0 0 -6 -70 L -149 -70" class="figure-line"/>
+            <use href="#arrow-left" transform="translate(-149, -70)" class="figure-path"/>
+          </g>
+          <g transform="translate(459, 45)">
+            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
+            <line x1="0" y1="5" x2="0" y2="-5" class="figure-line"/>
+            <line x1="-5" y1="0" x2="5" y2="0" class="figure-line"/>
+            <path d="M 0 -15 L 0 -45" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(0, -45)" class="figure-path"/>
+          </g>
+        </svg>
         <figcaption>
             Mixture-of-experts model. The model's output is computed as a
             weighted sum of each expert's feature vector output as predicted
@@ -3954,7 +4027,6 @@
     <script src="assets/figure_pixelcnn.js"></script>
     <script src="assets/figure_dln.js"></script>
     <script src="assets/figure_disan.js"></script>
-    <script src="assets/figure_moe.js"></script>
     <script src="assets/figure_clevr_tsne.js"></script>
   </body>
 </html>
