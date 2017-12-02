@@ -2451,12 +2451,87 @@
         purely convolutional architecture.
       </p>
       <figure class="l-body-outset figure" id="convseq2seq-diagram">
+        <svg viewBox="0 0 744 370" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
+          </defs>
+          <g transform="translate(200, 10)" class="style-transfer-network">
+            <rect width="340" height="350" class="figure-group figure-box"/>
+            <text x="10" y="20" dy="0.4em" class="figure-text">gated linear unit</text>
+            <g transform="translate(20, 40)">
+              <rect width="60" height="294" class="figure-element figure-box"/>
+              <path d="M -60 147 L 0 147" class="figure-line"/>
+              <use href="#arrow-right" transform="translate(0, 147)" class="figure-path"/>
+              <g transform="translate(10, 10)" class="film-generator">
+                <rect width="40" height="132" class="figure-element figure-box figure-film-generator"/>
+                <text x="20" y="66" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 66)" class="figure-text">feature subset B</text>
+              </g>
+              <g transform="translate(10, 152)" class="filmed-network">
+                <rect width="40" height="132" class="figure-element figure-box figure-filmed-network"/>
+                <text x="20" y="66" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 66)" class="figure-text">feature subset A</text>
+              </g>
+            </g>
+            <path d="M 70 116 L 228 116" style="stroke: #f44336;" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(228, 116)" style="stroke: #f44336; fill: #f44336;"class="figure-path"/>
+            <text x="149" y="110" style="text-anchor: middle;" class="figure-text film-generator-text"> </text>
+            <g transform="translate(248, 116)" class="film-generator">
+              <ellipse rx="20" ry="20" class="figure-element figure-film-generator"/>
+              <text x="0" y="0" dy="0.4em" style="text-anchor: middle;" class="figure-text">σ</text>
+            </g>
+            <path d="M 70 258 L 228 258" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(228, 258)" class="figure-path"/>
+            <path d="M 248 136 L 248 238" class="figure-line"/>
+            <use href="#arrow-down" transform="translate(248, 238)" class="figure-path"/>
+            <g transform="translate(248, 258)" class="film-layer">
+              <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element figure-film-layer"/>
+              <ellipse rx="2" ry="2" class="figure-path"/>
+            </g>
+            <path d="M 268 258 L 360 258" class="figure-line"/>
+            <use href="#arrow-right" transform="translate(360, 258)" class="figure-path"/>
+          </g>
+        </svg>
         <figcaption>
           Gated linear unit activation function <dt-cite key="dauphin2017language"></dt-cite>.
           Half of the features are used to apply feature-wise sigmoidal gating
           to the second half of the features.
         </figcaption>
       </figure>
+      <script>
+        (function() {
+            var svg = d3.select("figure.figure#convseq2seq-diagram").select("svg");
+            svg.selectAll("g.film-generator")
+                .on("mouseenter", function () {
+                    svg.select("text.film-generator-text").text("FiLM generator");
+                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", "#ef9a9a");
+                })
+                .on("mouseleave", function () {
+                    svg.select("text.film-generator-text").text("");
+                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", null);
+                });
+            svg.select("g.film-layer")
+                .on("mouseenter", function () {
+                    d3.select(this).select("g.film-layer > text").text("FiLM layer");
+                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", "#ffcc80");
+                })
+                .on("mouseleave", function () {
+                    d3.select(this).select("g.film-layer > text").text("");
+                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", null);
+                });
+
+            svg.select("g.filmed-network")
+                .on("mouseenter", function () {
+                    d3.select(this).select("g.filmed-network > text").text("FiLM-ed layer");
+                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", "#90caf9");
+                })
+                .on("mouseleave", function () {
+                    d3.select(this).select("g.filmed-network > text").text("feature subset A");
+                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", null);
+                });
+        })();
+      </script>
       <p>
         The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture,
         which is itself a building block in some of the models we referenced
@@ -3878,7 +3953,6 @@
     </script>
     <script src="assets/figure_pixelcnn.js"></script>
     <script src="assets/figure_dln.js"></script>
-    <script src="assets/figure_convseq2seq.js"></script>
     <script src="assets/figure_disan.js"></script>
     <script src="assets/figure_moe.js"></script>
     <script src="assets/figure_clevr_tsne.js"></script>
