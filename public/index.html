@@ -1209,7 +1209,7 @@
               <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
               <rect x="40" y="40" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <text x="50" y="50" dy="0.4em" class="figure-text">class</text>
+              <text x="50" y="50" dy="0.4em" class="figure-text">cond. feature map</text>
             </g>
             <g transform="translate(480, 102)">
               <rect width="40" height="116" class="figure-element figure-box"/>
@@ -1229,15 +1229,22 @@
             <use href="#arrow-right" transform="translate(480, 160)" class="figure-path"/>
             <path d="M 520 160 L 564 160" class="figure-line"/>
             <use href="#arrow-right" transform="translate(564, 160)" class="figure-path"/>
-            <path d="M 220 218 L 220 310" class="figure-line"/>
+            <g transform="translate(186, 240)">
+              <rect width="68" height="40" class="figure-element figure-box"/>
+              <text x="34" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
+            </g>
+            <path d="M 220 218 L 220 240" class="figure-line"/>
             <use href="#arrow-up" transform="translate(220, 218)" class="figure-path"/>
-            <text x="220" y="320" dy="0.4em" style="text-anchor: middle;" class="figure-text">class</text>
+            <path d="M 220 280 L 220 310" class="figure-line"/>
+            <use href="#arrow-up" transform="translate(220, 280)" class="figure-path"/>
+            <text x="220" y="320" dy="0.4em" style="text-anchor: middle;" class="figure-text">conditioning representation</text>
           </g>
         </svg>
         <figcaption>
-          Concatenation-based conditioning in a convolutional layer. The class
-          is broadcasted to the feature map size and concatenated with the input
-          along the channel axis before applying the convolution.
+          Concatenation-based conditioning in a convolutional layer. The
+          conditioning representation is mapped linearly to a conditioning
+          feature map which is concatenated with the input stack of feature
+          maps.
         </figcaption>
       </figure>
       <p>
@@ -1428,10 +1435,72 @@
         </dt-fn>
       </p>
       <figure class="l-body-outset figure" id="pixelcnn-diagram">
+        <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="row-left"/>
+            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="row-middle"/>
+            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" id="row-right"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
+            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
+            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
+          </defs>
+          <g transform="translate(10, 10)">
+            <g class="filmed-network">
+              <rect x="180" y="0" width="364" height="260" class="figure-group figure-box"/>
+              <text x="190" y="15" dy="0.4em" class="figure-text">conditional biasing</text>
+            </g>
+            <g transform="translate(0, -40)">
+              <g transform="translate(0, 70)">
+                <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+                <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+                <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+                <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+              </g>
+              <path d="M 160 160 L 200 160" class="figure-line"/>
+              <use href="#arrow-right" transform="translate(200, 160)" class="figure-path"/>
+              <g transform="translate(200, 102)">
+                <rect width="40" height="116" class="figure-element figure-box"/>
+                <text x="20" y="58" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 58)" class="figure-text">convolution</text>
+              </g>
+              <path d="M 240 160 L 352 160" class="figure-line"/>
+              <use href="#arrow-right" transform="translate(352, 160)" class="figure-path"/>
+              <text x="362" y="320" dy="0.4em" style="text-anchor: middle;" class="figure-text">conditioning representation</text>
+              <path d="M 362 280 L 362 310" class="figure-line"/>
+              <use href="#arrow-up" transform="translate(362, 280)" class="figure-path"/>
+              <g transform="translate(304, 240)">
+                <rect width="116" height="40" class="figure-element figure-box"/>
+                <text x="58" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
+              </g>
+              <path d="M 362 240 L 362 220" class="figure-line"/>
+              <use href="#arrow-up" transform="translate(362, 220)" class="figure-path"/>
+              <g transform="translate(332, 200)">
+                <use href="#row-left" transform="translate(0, 0)" class="figure-element"/>
+                <use href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
+                <use href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+              </g>
+              <path d="M 362 200 L 362 170" class="figure-line"/>
+              <use href="#arrow-up" transform="translate(362, 170)" class="figure-path"/>
+              <g transform="translate(362, 160)">
+                <circle r="10" class="figure-element"/>
+                <path d="M -5 0 L 5 0" class="figure-line"/>
+                <path d="M 0 -5 L 0 5" class="figure-line"/>
+              </g>
+              <g transform="translate(564, 70)">
+                <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+                <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+                <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+                <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+              </g>
+              <path d="M 372 160 L 564 160" class="figure-line"/>
+              <use href="#arrow-right" transform="translate(564, 160)" class="figure-path"/>
+            </g>
+          </g>
+        </svg>
         <figcaption>
-          A PixelCNN layer is conditioned by biasing its sigmoidal and
-          hyperbolic tangent layers as a function of a high-level image
-          description.
+          Conditional biasing in a convolutional layer. The conditioning
+          representation is mapped linearly to a bias vector which is added
+          to the convolution's output stack of feature maps.
         </figcaption>
       </figure>
       <p>
@@ -4249,7 +4318,6 @@
         url={https://arxiv.org/pdf/1701.06538.pdf},
       }
     </script>
-    <script src="assets/figure_pixelcnn.js"></script>
     <script src="assets/figure_disan.js"></script>
     <script src="assets/figure_clevr_tsne.js"></script>
   </body>
