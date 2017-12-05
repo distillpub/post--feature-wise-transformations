@@ -83,7 +83,7 @@
       </p>
       <p>
         In this article, we will take a deep dive into feature-wise affine
-        transformations, which find their way in a surprising amount of recent
+        transformations, which find their way into a surprising number of recent
         neural network architectures and in various problem settings. We will
         examine them from two very different vantage points.
       </p>
@@ -97,7 +97,7 @@
         that allow them to work.
       </p>
       <p>
-        On the other hand, we will inscribe feature-wise affine transformations
+        On the other hand, we will place feature-wise affine transformations
         themselves within the <a href="#bilinear-connection">family of bilinear
         transformations</a>. We will show that a small extension to the bilinear
         transformation formulation allows us to relate attention, gating, FiLM,
@@ -105,7 +105,7 @@
         propose to call <em>generalized bilinear transformation</em>.
       </p>
       <p>
-        We hope that the insights brought forward by this article help highlight
+        We hope that the insights contributed by this article help highlight
         the strong connections between the aforementioned methods and inspire
         new approaches to integrating multiple information channels in neural
         networks.
@@ -230,7 +230,7 @@
         As the name implies, a FiLM layer applies a feature-wise affine
         transformation to its input. The parameters of that transformation are
         also provided as input. By <em>feature-wise</em>, we mean that scaling
-        and shifting are applied elementwise, or in the case of convolutional
+        and shifting are applied element-wise, or in the case of convolutional
         networks, feature map-wise. In other words,
 
         <dt-math block>
@@ -1060,7 +1060,7 @@
         Finally, as hinted at above, there exists a connection between
         attention, gating, FiLM, and mixture-of-experts models through bilinear
         transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
-        Because this connection deserves more than a simple paragraph, we
+        Because this connection deserves more than a single paragraph, we
         decided to devote a <a href="#bilinear-connection">separate section</a>
         of the article to it.
       </p>
@@ -1534,7 +1534,7 @@
         of additive interactions, like is the case for feature-wise sigmoidal
         gating. The idea is to scale each feature or feature map by a scalar
         between <dt-math>0</dt-math> and <dt-math>1</dt-math> that is a function
-        of the conditioning information. This constraint is oftentimes enforced
+        of the conditioning information. This constraint is often enforced
         via a sigmoid layer, hence the name. Intuitively, sigmoidal gating
         allows the conditioning information to select which features are passed
         forward and which are zeroed out.
@@ -1546,7 +1546,7 @@
       <p>
         Examples of application include the Gated-Attention architecture
         <dt-cite key="chaplot2017gated"></dt-cite>, which uses feature-wise
-        sigmoidal gating to fuse linguisting and visual inputs in the context of
+        sigmoidal gating to fuse linguistic and visual inputs in the context of
         a reinforcement learning agent trained to follow simple natural language
         instructions in the VizDoom <dt-cite key="kempa2016vizdoom"></dt-cite>
         3D environment.
@@ -1646,7 +1646,7 @@
         the Gated-Attention Reader <dt-cite key="dhingra2017gated"></dt-cite>.
         The model extracts information from a text by conditioning the document
         reading network on an query.  Its architecture is formed of multiple
-        Gated-Attention modules, which involve elementwise multiplications
+        Gated-Attention modules, which involve element-wise multiplications
         between document representation tokens and token-specific query
         representations extracted via soft attention on the query representation
         tokens.
@@ -2050,7 +2050,7 @@
       <p>
         The visual pipeline consists of a pre-trained residual network and is
         kept fixed throughout training. The linguistic pipeline interacts with
-        the visual pipeline by predicting perturbations to the residual
+        the visual pipeline by outputting perturbations to the residual
         network's batch normalization parameters.
       </p>
       <p>
@@ -2064,11 +2064,11 @@
       <p>
         In <dt-cite key="dumoulin2017learned"></dt-cite>, fast feedforward style
         transfer networks are extended to accommodate multiple styles by
-        introducing conditional instance normalization (CIN) layers. Each style
-        modeled by the network is associated with its own set of instance
-        normalization parameters, and conditioning is achieved by assigning
-        instance normalization parameters their corresponding value for the
-        desired style.
+        introducing <strong>c</strong>onditional <strong>i</strong>nstance
+        <strong>n</strong>ormalization (CIN) layers. Each style modeled by the
+        network is associated with its own set of instance normalization
+        parameters, and conditioning is achieved by applying the normalization
+        with style-specific parameters.
       </p>
       <figure class="l-body-outset figure" id="alrfas-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
@@ -2350,7 +2350,7 @@
         losses, and is kept fixed throughout training. A content/style image
         pair is first encoded, and the encoded stack of <em>content</em> feature
         maps is instance-normalized. Instance normalization statistics are then
-        computed for the encoded stask of <em>style</em> feature maps and used
+        computed for the encoded stack of <em>style</em> feature maps and used
         to perform a feature-wise affine transformation on the normalized stack
         of content feature maps. The result is then passed through the decoder
         to obtain the stylized image, and the triplet of content/style/stylized
@@ -2984,7 +2984,7 @@
         gating, attention, and mixture-of-experts models through bilinear
         transformations <dt-cite key="tenenbaum2000separating"></dt-cite>. In
         fact, all four approaches can be formalized using an extension of
-        bilinear transformations which we propose to name <em>generalized
+        bilinear transformations which we propose to call <em>generalized
         bilinear transformations</em>.
       </p>
       <h2>Bilinear and generalized bilinear transformations</h2>
@@ -3611,7 +3611,7 @@
       <h3>Gating as a generalized bilinear transformation</h3>
       <p>
         As explained earlier in the article, feature-wise gating layers can be
-        seen as a bias-less FiLM layers with sigmoidal scaling. Representing
+        seen as bias-less FiLM layers with sigmoidal scaling. Representing
         them as a generalized bilinear transformation is a straightforward
         adaptation with respect to FiLM. Feature-wise gating is represented by
         an equation of the form
@@ -4154,12 +4154,12 @@
       <p>
         This article had quite a lot of ground to cover. We set out to better
         understand feature-wise affine transformations in the context of fusing
-        multiple sources of information in a neural network, both in terms of
-        connecting all approaches it encompasses and the literature employing
-        them, and in terms of shedding some light onto their computational
-        properties. We also set out to connect feature-wise affine
-        transformations with related families of approaches such as attention
-        and mixture-of-experts models via bilinear transformations.
+        multiple sources of information in a neural network. We examined
+        several approaches which are encompassed by the FiLM formulation, and
+        reviewed their use in the literature. We then set out to connect
+        feature-wise affine transformations with related families of approaches
+        such as attention and mixture-of-experts models via bilinear
+        transformations.
       </p>
       <p>
         We hope that the recognition of the wide range of applications
