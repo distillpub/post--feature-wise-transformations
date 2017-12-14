@@ -3518,7 +3518,39 @@
 
       <hr />
 
-      <h1 id="understanding-film">Understanding FiLM-ed networks</h1>
+      <h1 id="understanding-film">A take on understanding FiLM-ed networks</h1>
+      <p>
+        If you are like us, you probably find the success of feature-wise
+        transformations intriguing given how simple they are. In this section,
+        we would like to examine empirical observations we have made while
+        carrying out some of the work presented above which we think may paint a
+        picture explaining <em>how</em> feature-wise transformations are able to
+        succeed in drastically modulating neural networks.
+      </p>
+      <p>
+        Before we begin, a word of caution: these observations are far from
+        complete. We consider only <em>one</em> family of feature-wise
+        transformations &mdash; FiLM-related methods &mdash; and <em>two</em>
+        problem settings &mdash; visual reasoning and style transfer. The extent
+        to which these observations extrapolate to other feature-wise
+        transformation families (e.g., sigmoidal gating) has yet to be verified.
+        Furthermore, although we think the hypothesis we are about to propose
+        explains our observations fairly well, we still feel like further
+        experiments and analysis would be necessary before we feel comfortable
+        strongly defending it.
+      </p>
+      <p>
+        With the warning out of the way, let us consider two FiLM-ed networks
+        trained in fairly different problem settings: the visual reasoning model
+        presented in <dt-cite key="perez2017film"></dt-cite> and the style
+        transfer model presented in <dt-cite key="ghiasi2017exploring"></dt-cite>.
+        Both models feature a well-defined FiLM generator: a linguistic pipeline
+        mapping from textual query to FiLM parameters for the former, and a CNN
+        mapping from style image to FiLM parameters for the latter. Both models
+        also implement fairly standard FiLM-ed networks: a CNN mapping from
+        image to query answer for the former, and a CNN mapping from content
+        image to stylized image for the latter.
+      </p>
 
       <h2>FiLM parameters as task embeddings</h2>
       <figure class="l-body-outset" id="clevr-tsne">
