@@ -921,9 +921,15 @@
         transformation to its input. The parameters of that transformation are
         also provided as input. By <em>feature-wise</em>, we mean that scaling
         and shifting are applied element-wise, or in the case of convolutional
-        networks, feature map-wise. In other words, assuming
-        <dt-math>\mathbf{z}</dt-math>-dependent scaling and shifting vectors
-        <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math>,
+        networks, feature map-wise.
+        <dt-fn>
+          To expand a little more on the convolutional case, feature maps can be
+          thought of as the same feature detector being evaluated at different
+          spatial locations, in which case it makes sense to apply the same
+          affine transformation to all spatial locations.
+        </dt-fn>
+        In other words, assuming <dt-math>\mathbf{z}</dt-math>-dependent scaling
+        and shifting vectors <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math>,
 
         <dt-math block>
             \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{z}) \odot \mathbf{x}
