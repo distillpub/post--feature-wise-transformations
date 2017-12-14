@@ -41,15 +41,6 @@
 
       <svg viewBox="0 0 0 0" style="display: none;" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="linearStroke" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
-            <stop offset="0%"   stop-color="#2196f3"/>
-            <stop offset="100%" stop-color="#f44336"/>
-          </linearGradient>
-          <linearGradient id="linearFill" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
-            <stop offset="0%"   stop-color="#90caf9"/>
-            <stop offset="100%" stop-color="#ef9a9a"/>
-          </linearGradient>
-
           <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);"/>
           <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #3a5edd;"/>
           <rect id="convolutional-patch-positive" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);"/>
@@ -2795,14 +2786,26 @@
         network.
       </p>
       <p>
-        So far, the distinction between the FiLM generator and the FiLM-ed
-        network has been rather clear, but it is not strictly necessary. As an
-        example, <dt-cite key="huang2017arbitrary"></dt-cite> proposes an
-        alternative for fast and arbitrary style transfer in the form of an
-        adaptive instance normalization (AdaIN) layer.
+        So far, the models we covered have two sub-networks: a primary network
+        in which feature-wise transformations are applied, and a secondary
+        network which outputs parameters for these transformations. However,
+        this distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
+        is not strictly necessary. As an example, <dt-cite key="huang2017arbitrary"></dt-cite>
+        proposes an alternative for fast and arbitrary style transfer in the
+        form of an adaptive instance normalization (AdaIN) layer.
       </p>
       <figure class="l-body-outset" id="adain-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="linearStroke" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+              <stop offset="0%"   stop-color="#2196f3"/>
+              <stop offset="100%" stop-color="#f44336"/>
+            </linearGradient>
+            <linearGradient id="linearFill" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+              <stop offset="0%"   stop-color="#90caf9"/>
+              <stop offset="100%" stop-color="#ef9a9a"/>
+            </linearGradient>
+          </defs>
           <image x="10" y="351" width="96" height="96" href="assets/cassis_cap_lombard_opus_196.jpg"/>
           <path d="M 106 399 l 573 0" class="figure-line"/>
           <use href="#arrow-right" transform="translate(681, 399)" class="figure-path"/>
