@@ -2259,15 +2259,12 @@
       <p>
         By combining conditional biasing and conditional scaling, we obtain the
         FiLM layer, which implements a conditional feature-wise affine
-        transformation. Several variants of FiLM can be found in the literature.
-      </p>
-      <p>
-        We can use FiLM layers to condition a visual processing pipeline to
-        answer textual questions about an image. In
-        <dt-cite key="perez2017learning"></dt-cite>, and in its expanded
-        version <dt-cite key="perez2017film"></dt-cite>, a visual reasoning
-        model is trained on the CLEVR dataset <dt-cite key="johnson2017clevr"></dt-cite>
-        to answer synthetic questions about a synthetic input image.
+        transformation. We can use FiLM layers to condition a visual processing
+        pipeline to answer textual questions about an image. In <dt-cite
+        key="perez2017learning"></dt-cite>, and in its expanded version <dt-cite
+        key="perez2017film"></dt-cite>, a visual reasoning model is trained on the
+        CLEVR dataset <dt-cite key="johnson2017clevr"></dt-cite> to answer
+        synthetic questions about a synthetic input image.
       </p>
       <figure class="l-body-outset" id="clevr-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
@@ -2486,8 +2483,9 @@
         We can also leverage FiLM to condition a pre-trained network. In
         <dt-cite key="vries2017modulating"></dt-cite>, the visual pipeline of a
         visual question-answering (VQA) model is modulated by the model's
-        linguistic pipeline through conditional batch normalization (CBN). The
-        model is trained on the "oracle" sub-task of the GuessWhat?! task
+        linguistic pipeline through conditional batch normalization (CBN),
+        which can be viewed as a special case of FiLM. The model is trained on
+        the "oracle" sub-task of the GuessWhat?! task
         <dt-cite key="vries2017guesswhat"></dt-cite> &mdash; which features
         natural language questions on images answerable by yes, no, or N/A
         &mdash; as well as the VQAv1 <dt-cite key="agrawal2015vqa"></dt-cite>
@@ -2644,18 +2642,13 @@
         The visual pipeline consists of a pre-trained residual network and is
         kept fixed throughout training. The linguistic pipeline interacts with
         the visual pipeline by outputting perturbations to the residual
-        network's batch normalization parameters.
-      </p>
-      <p>
-        CBN can be viewed as an instance of FiLM where the post-normalization
+        network's batch normalization parameters. Like hinted at earlier, CBN
+        can be viewed as an instance of FiLM where the post-normalization
         feature-wise affine transformation is replaced with a FiLM layer.
       </p>
       <p>
         We can also use FiLM layers to condition a style transfer network on a
-        chosen style image.
-      </p>
-      <p>
-        In <dt-cite key="dumoulin2017learned"></dt-cite>, fast feedforward style
+        chosen style image. In <dt-cite key="dumoulin2017learned"></dt-cite>, fast feedforward style
         transfer networks are extended to accommodate multiple styles by
         introducing <strong>c</strong>onditional <strong>i</strong>nstance
         <strong>n</strong>ormalization (CIN) layers. Each style modeled by the
