@@ -39,6 +39,62 @@
 
       <dt-byline></dt-byline>
 
+      <svg viewBox="0 0 0 0" style="display: none;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="linearStroke" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+            <stop offset="0%"   stop-color="#2196f3"/>
+            <stop offset="100%" stop-color="#f44336"/>
+          </linearGradient>
+          <linearGradient id="linearFill" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
+            <stop offset="0%"   stop-color="#90caf9"/>
+            <stop offset="100%" stop-color="#ef9a9a"/>
+          </linearGradient>
+
+          <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);"/>
+          <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #3a5edd;"/>
+          <rect id="convolutional-patch-positive" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);"/>
+          <rect id="convolutional-patch-negative" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #3a5edd;"/>
+
+          <path id="arrow-left" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)"/>
+          <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+          <path id="arrow-up" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z"/>
+          <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+
+          <path id="convolutional-feature" d="M 0 0 l 30 0 l 0 30 l -30 0 Z"/>
+          <g id="vector-arrow">
+            <path d="M 0 0 l 0 -16"/>
+            <path d="M 0 -16 l -4 4 l 4 -4 l 4 4"/>
+          </g>
+          <g id="convolutional-arrow">
+            <path d="M 0 0 L 0 -12"/>
+            <path d="M -3 -9 L 0 -12 L 3 -9"/>
+          </g>
+
+          <path id="row-left" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z"/>
+          <path id="row-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+          <path id="row-right" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z"/>
+          <path id="big-row-left" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z"/>
+          <path id="big-row-middle" d="M 0 0 l 40 0 l 0 40 l -40 0 Z"/>
+          <path id="big-row-right" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z"/>
+          <path id="column-top" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z"/>
+          <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+          <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
+          <path id="matrix-top-left" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z"/>
+          <path id="matrix-top-right" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z"/>
+          <path id="matrix-bottom-left" d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z"/>
+          <path id="matrix-bottom-right" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z"/>
+          <path id="matrix-center" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+          <path id="singleton" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
+
+          <path id="curly-brace-horizontal" d="M 0 0 C 0 -16 42.5 0 42.5 -16 C 42.5 0 85 -16 85 0"/>
+          <path id="big-curly-brace-horizontal" d="M 0 0 C 0 -16 52.5 0 52.5 -16 C 52.5 0 105 -16 105 0"/>
+          <path id="bigger-curly-brace-horizontal" d="M 0 0 C 0 -20 90 0 90 -20 C 90 0 180 -20 180 0"/>
+          <path id="curly-brace-vertical" d="M 0 0 C 12 0 0 30 12 30 C 0 30 12 60 0 60"/>
+          <path id="parenthesis-left" d="M 10 0 C -2 0 -2 80 10 80"/>
+          <path id="parenthesis-right" d="M 0 0 C 8 0 8 80 0 80"/>
+        </defs>
+      </svg>
+
       <p>
         We often think of neural networks as a mapping from a raw source of
         information to a more abstract and useful representation &mdash; pixel
@@ -51,7 +107,7 @@
       <figure class="l-body-outset">
         <svg viewBox="0 0 744 308" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <filter x="0" y="0" width="1" height="1" id="solid">
+            <filter x="0" y="0" width="1" height="1" id="zoolander-text-background">
               <feFlood flood-color="#fdf6f2"/>
               <feComposite in="SourceGraphic"/>
             </filter>
@@ -163,7 +219,7 @@
           </defs>
           <use href="#zoolander" width="744" height="308" transform="translate(0, 0)"/>
           <path d="M 0 0 C 15 -50 27.5 -50 42.5 0 S 70 50 85 0 S 110.5 -50 127.5 0 S 155 50 170 0 S 197.5 -50 212.5 0 S 240 50 255 0 S 282.5 -50 297.5 0 S 325 50 340 0 S 367.5 -50 382.5 0 S 410 50 425 0" style="fill: none; stroke: #fdf6f2; stroke-width: 3px;" transform="translate(10, 53)"/>
-          <text filter="url(#solid)" x="222.5" y="53" dy="0.4em" style="opacity: 1; font-size: 18; text-anchor: middle;" class="figure-text">"What is this? A center for ants?"</text>
+          <text filter="url(#zoolander-text-background)" x="222.5" y="53" dy="0.4em" style="opacity: 1; font-size: 18; text-anchor: middle;" class="figure-text">"What is this? A center for ants?"</text>
         </svg>
         <figcaption>
             <p style="margin-bottom: 8px;">
@@ -543,10 +599,6 @@
       <figure class="l-body-outset">
         <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
             <symbol id="dog-image" viewBox="0 0 199 300">
               <rect x="0" y="0" width="199" height="300" fill="#bebe9d" />
               <g transform="scale(1.171875) translate(0.5 0.5)">
@@ -789,10 +841,6 @@
       </p>
       <figure class="l-body-outset" id="film-architecture-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" class="figure-path" id="arrow-up"/>
-          </defs>
           <g transform="translate(479, 38)">
             <g class="filmed-network">
               <rect width="260" height="416" class="figure-group figure-box figure-filmed-network"/>
@@ -897,59 +945,22 @@
       </p>
       <figure class="l-body-outset" id="film-diagram">
         <svg viewBox="0 0 744 600" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" id="vector-feature-left"/>
-            <path d="M 0 0 l 40 0 l 0 40 l -40 0 Z" id="vector-feature-middle"/>
-            <path d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" id="vector-feature-right"/>
-            <g id="vector-arrow">
-              <path d="M 0 0 l 0 -16"/>
-              <path d="M 0 -16 l -4 4 l 4 -4 l 4 4"/>
-            </g>
-            <rect width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);" id="vector-patch-positive"/>
-            <rect width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #3a5edd;" id="vector-patch-negative"/>
-            <path d="M 0 0 l 30 0 l 0 30 l -30 0 Z" id="convolutional-feature"/>
-            <g id="convolutional-arrow">
-              <path d="M 0 0 L 0 -12"/>
-              <path d="M -3 -9 L 0 -12 L 3 -9"/>
-            </g>
-            <rect width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);" id="convolutional-patch-positive"/>
-            <rect width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #3a5edd;" id="convolutional-patch-negative"/>
-            <symbol id="interactive" viewBox="0 0 25.86 25.86">
-              <circle cx="13.43" cy="13.43" r="12.93" fill="none" stroke="#ffdc8c" stroke-miterlimit="10" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
-              <circle cx="13.43" cy="13.43" r="10.38" fill="#ffb200" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
-              <polygon points="11.32 19.26 11.32 17.43 10.72 17.43 10.71 16.14 10.1 16.21 10.1 15 9.54 14.99 9.46 13.78 8.88 13.78 8.89 13.16 8.28 13.16 8.28 11.34 10.11 11.34 10.11 11.94 10.71 11.94 10.71 6.46 11.33 6.45 11.33 5.86 12.54 5.86 12.54 6.45 13.16 6.47 13.16 8.89 14.37 8.89 14.39 9.49 16.21 9.51 16.21 10.12 17.43 10.12 17.43 10.79 18.04 10.73 18.05 11.39 18.65 11.33 18.65 15.61 18.04 15.52 17.98 17.43 17.43 17.43 17.43 19.26 11.32 19.26" fill="#fff" opacity="0.2" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)"/>
-              <g transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, -0.5000002384185862, -0.5000002384186075)">
-                <path d="M10.11,11.94c0-.09,0-0.19,0-0.28s0-.21,0-0.32H8.28v1.82H8.89V11.95h1.23v0.63h0.6v0.6h0.61V13.09q0-2.4,0-4.8,0-.92,0-1.85h1.21V5.85H11.33v0.6H10.71v5.47h-0.6Zm4.28-2.44a0.45,0.45,0,0,1,0-.07c0-.15,0-0.3,0-0.45s0,0,0-.08H13.16V6.47H12.55v5.47h0.61V9.51h1.24s0,0.06,0,.09q0,1.12,0,2.25s0,0.07,0,.1H15V10.12h1.23v2.43h0.6V10.71l0.57,0s0,0,0,.05,0,0.29,0,.44,0,0.07,0,.11H18a0,0,0,0,1,.06.06c0,0.24,0,.48,0,0.72q0,1.71,0,3.41s0,0,0,.08h-0.6s0,0,0,0q0,0.86,0,1.72s0,0,0,.06H16.81v1.21H11.94V17.42H11.33V16.21h-0.6a11.4,11.4,0,0,0,0,1.22h0.6v1.83c2,0,4.07,0,6.11,0,0-.1,0-0.19,0-0.28,0-.46,0-0.93,0-1.39a1.53,1.53,0,0,0,0-.16H18c0.05,0,.07,0,0.07-0.07,0-.45,0-0.89,0-1.34,0-.13,0-0.26,0-0.4l0.3,0h0.3V11.33H18v-0.6H17.43V10.11H16.21V9.51H14.39ZM10.1,15v1.21h0.52a0.07,0.07,0,0,0,.08-0.08c0-.32,0-0.65,0-1,0-.06,0-0.11,0-0.17H10.11V13.77H9.49V13.16H8.91a2.7,2.7,0,0,0,0,.62H9.47s0,0,0,.07,0,0.27,0,.41,0,0.45,0,.68a0,0,0,0,0,.05.06H10.1Z" fill="#fff"/>
-                <path d="M17.43,17.43s0,0,0-.06q0-.86,0-1.72s0,0,0,0H18s0-.06,0-0.08q0-1.71,0-3.41c0-.24,0-0.48,0-0.72A0,0,0,0,0,18,11.33H17.44s0-.07,0-0.11,0-.29,0-0.44,0-.05,0-0.05l-0.57,0v1.84h-0.6V10.12H15v1.82H14.38s0-.07,0-0.1q0-1.12,0-2.25s0-.06,0-0.09h1.81v0.6h1.22v0.62H18v0.6h0.61v4.28h-0.3l-0.3,0c0,0.14,0,.27,0,0.4,0,0.45,0,.89,0,1.34,0,0.05,0,.07-0.07.07H17.43Z" fill="#fff"/>
-                <path d="M17.43,17.43a1.53,1.53,0,0,1,0,.16c0,0.46,0,.93,0,1.39,0,0.09,0,.17,0,0.28-2,0-4.06,0-6.11,0V17.43h-0.6a11.4,11.4,0,0,1,0-1.22h0.6v1.21h0.61v1.22h4.88V17.43h0.62Z" fill="#fff"/>
-                <path d="M11.33,6.45q0,0.92,0,1.85,0,2.4,0,4.8v0.07H10.72v-0.6h-0.6V11.93h0.6V6.46h0.61Z" fill="#fff"/>
-                <path d="M14.39,9.49H13.16v2.43H12.55V6.47h0.61V8.89h1.21s0,0.06,0,.08,0,0.3,0,.45a0.44,0.44,0,0,0,0,.07h0Z" fill="#fff"/>
-                <path d="M10.1,15H9.54a0,0,0,0,1-.05-0.06c0-.23,0-0.45,0-0.68s0-.27,0-0.41,0,0,0-.07H8.88a2.7,2.7,0,0,1,0-.62H9.49v0.61h0.62V15h0.61c0,0.06,0,.12,0,0.17,0,0.32,0,.65,0,1a0.07,0.07,0,0,1-.08.08H10.1V15Z" fill="#fff"/>
-                <path d="M10.11,11.93H8.89v1.21H8.28V11.34h1.83c0,0.11,0,.21,0,0.32s0,0.19,0,.28h0Z" fill="#fff"/>
-                <path d="M11.33,6.45V5.85h1.21v0.6H11.33Z" fill="#fff"/>
-              </g>
-            </symbol>
-          </defs>
           <g transform="translate(10, 50)" id="mlp-figure">
             <rect y="73" width="290" height="342" class="figure-group figure-box figure-film-layer"/>
             <text x="10" y="402" class="figure-text">FiLM layer (fully-connected)</text>
             <g transform="translate(147, 440)" id="input-layer">
               <g transform="translate(0, 0)" class="feature">
-                <use href="#vector-feature-left" class="figure-element"/>
+                <use href="#big-row-left" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(40, 0)" class="feature">
-                <use href="#vector-feature-middle" class="figure-element"/>
+                <use href="#big-row-middle" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(80, 0)" class="feature">
-                <use href="#vector-feature-right" class="figure-element"/>
+                <use href="#big-row-right" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
@@ -958,23 +969,22 @@
             <use href="#arrow-up" transform="translate(207, 373)" class="figure-path"/>
             <g transform="translate(27, 332)" id="gamma">
               <g transform="translate(0, 0)" class="feature">
-                <use href="#vector-feature-left" class="figure-element"/>
+                <use href="#big-row-left" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(40, 0)" class="feature">
-                <use href="#vector-feature-middle" class="figure-element"/>
+                <use href="#big-row-middle" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(80, 0)" class="feature">
-                <use href="#vector-feature-right" class="figure-element"/>
+                <use href="#big-row-right" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
             <text x="59" y="325" class="figure-text" style="font-family: serif;" transform="translate(-49, 18)">γ</text>
-            <use width="26" height="26" transform="translate(74, 302)" xlink:href="#interactive"/>
             <line x1="147" y1="353" x2="187" y2="353" class="figure-line"/>
             <use href="#arrow-right" transform="translate(187, 353)" class="figure-path"/>
             <g transform="translate(207, 352)">
@@ -985,17 +995,17 @@
             <use href="#arrow-up" transform="translate(207, 265)" class="figure-path"/>
             <g transform="translate(147, 225)" id="scaled-layer">
               <g transform="translate(0, 0)" class="feature">
-                <use href="#vector-feature-left" class="figure-element"/>
+                <use href="#big-row-left" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(40, 0)" class="feature">
-                <use href="#vector-feature-middle" class="figure-element"/>
+                <use href="#big-row-middle" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(80, 0)" class="feature">
-                <use href="#vector-feature-right" class="figure-element"/>
+                <use href="#big-row-right" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
@@ -1004,23 +1014,22 @@
             <use href="#arrow-up" transform="translate(207, 158)" class="figure-path"/>
             <g transform="translate(27, 118)" id="beta">
               <g transform="translate(0, 0)" class="feature">
-                <use href="#vector-feature-left" class="figure-element"/>
+                <use href="#big-row-left" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(40, 0)" class="feature">
-                <use href="#vector-feature-middle" class="figure-element"/>
+                <use href="#big-row-middle" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(80, 0)" class="feature">
-                <use href="#vector-feature-right" class="figure-element"/>
+                <use href="#big-row-right" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
             <text x="10" y="128" style="font-family: serif;" class="figure-text">β</text>
-            <use width="26" height="26" transform="translate(74, 87)" xlink:href="#interactive"/>
             <line x1="147" y1="138" x2="187" y2="138" class="figure-line"/>
             <use href="#arrow-right" transform="translate(187, 138)" class="figure-path"/>
             <g transform="translate(207, 137)">
@@ -1032,17 +1041,17 @@
             <use href="#arrow-up" transform="translate(207, 50)" class="figure-path"/>
             <g transform="translate(147, 10)" id="shifted-layer">
               <g transform="translate(0, 0)" class="feature">
-                <use href="#vector-feature-left" class="figure-element"/>
+                <use href="#big-row-left" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(40, 0)" class="feature">
-                <use href="#vector-feature-middle" class="figure-element"/>
+                <use href="#big-row-middle" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(80, 0)" class="feature">
-                <use href="#vector-feature-right" class="figure-element"/>
+                <use href="#big-row-right" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
@@ -1202,23 +1211,22 @@
             <use href="#arrow-up" transform="translate(262, 363)" class="figure-path"/>
             <g transform="translate(74, 322)" id="gamma">
               <g transform="translate(0, 0)" class="feature">
-                <use href="#vector-feature-left" class="figure-element"/>
+                <use href="#big-row-left" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(40, 0)" class="feature">
-                <use href="#vector-feature-middle" class="figure-element"/>
+                <use href="#big-row-middle" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(80, 0)" class="feature">
-                <use href="#vector-feature-right" class="figure-element"/>
+                <use href="#big-row-right" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
             <text x="59" y="325" class="figure-text" style="font-family: serif;" transform="translate(-2, 8)">γ</text>
-            <use width="26" height="26" transform="translate(122, 292)" xlink:href="#interactive"/>
             <line x1="194" y1="343" x2="242" y2="343" class="figure-line"/>
             <use href="#arrow-right" transform="translate(242, 343)" class="figure-path"/>
             <g transform="translate(262, 342)">
@@ -1374,23 +1382,22 @@
             <use href="#arrow-up" transform="translate(262, 148)" class="figure-path"/>
             <g transform="translate(74, 107)" id="beta">
               <g transform="translate(0, 0)" class="feature">
-                <use href="#vector-feature-left" class="figure-element"/>
+                <use href="#big-row-left" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(40, 0)" class="feature">
-                <use href="#vector-feature-middle" class="figure-element"/>
+                <use href="#big-row-middle" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
               <g transform="translate(80, 0)" class="feature">
-                <use href="#vector-feature-right" class="figure-element"/>
+                <use href="#big-row-right" class="figure-element"/>
                 <use href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
                 <use href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
             <text x="57" y="118" style="font-family: serif;" class="figure-text">β</text>
-            <use width="26" height="26" transform="translate(122, 77)" xlink:href="#interactive"/>
             <line x1="194" y1="128" x2="242" y2="128" class="figure-line"/>
             <use href="#arrow-right" transform="translate(242, 128)" class="figure-path"/>
             <g transform="translate(262, 127)">
@@ -1834,12 +1841,6 @@
       </p>
       <figure class="l-body-outset" id="dcgan-diagram">
         <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g transform="translate(10, 10)">
             <g class="filmed-network">
               <rect x="180" y="0" width="364" height="300" class="figure-group figure-box"/>
@@ -1913,21 +1914,6 @@
       </p>
       <figure class="l-body-outset" id="concatenation-as-biasing">
         <svg viewBox="0 0 744 370" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="column-middle"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="column-bottom"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" id="matrix-top-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="matrix-bottom-left"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" id="matrix-bottom-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
-            <path d="M 0 0 C 12 0 0 30 12 30 C 0 30 12 60 0 60" id="vertical-curly-brace"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <rect x="10" y="10" height="350" width="724" class="figure-group figure-box"/>
           <g transform="translate(60, 20)">
             <g transform="translate(10, 100)">
@@ -1965,8 +1951,8 @@
                 <use href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
                 <use href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
                 <use href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
-                <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
-                <use href="#vertical-curly-brace" transform="translate(25, 60)" class="figure-line"/>
+                <use href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
+                <use href="#curly-brace-vertical" transform="translate(25, 60)" class="figure-line"/>
                 <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
                 <text x="45" y="90" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
               </g>
@@ -1990,7 +1976,7 @@
                 <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
                 <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
                 <use href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-                <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
+                <use href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
                 <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
               </g>
             </g>
@@ -2013,7 +1999,7 @@
                 <use href="#column-middle" transform="translate(0, 0)" class="figure-element"/>
                 <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
                 <use href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-                <use href="#vertical-curly-brace" transform="translate(25, 0)" class="figure-line"/>
+                <use href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
                 <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
               </g>
             </g>
@@ -2088,15 +2074,6 @@
       </p>
       <figure class="l-body-outset" id="pixelcnn-diagram">
         <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="row-left"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="row-middle"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" id="row-right"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g transform="translate(10, 10)">
             <g class="filmed-network">
               <rect x="180" y="0" width="364" height="260" class="figure-group figure-box"/>
@@ -2205,12 +2182,6 @@
       </p>
       <figure class="l-body-outset" id="gated-attention-diagram">
         <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g transform="translate(59, 10)">
             <g class="filmed-network">
               <rect x="145" y="26" width="430" height="338" class="figure-group figure-box figure-filmed-network"/>
@@ -2318,12 +2289,6 @@
       </p>
       <figure class="l-body-outset" id="clevr-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g transform="translate(10, 20)" class="film-generator">
             <rect x="0" y="0" width="221" height="446" class="figure-group figure-box figure-film-generator"/>
             <text x="10" y="15" dy="0.4em" class="figure-text">linguistic pipeline</text>
@@ -2548,12 +2513,6 @@
       </p>
       <figure class="l-body-outset" id="guesswhat-diagram">
         <svg viewBox="0 0 744 700" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <text x="372" y="10" style="text-anchor: middle;" class="figure-text">Answer: no</text>
           <g transform="translate(112, 30)">
             <rect width="520" height="40" class="figure-group figure-box"/>
@@ -2724,12 +2683,6 @@
       </p>
       <figure class="l-body-outset" id="alrfas-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g>
             <g class="filmed-network">
               <rect x="113" y="79" width="434" height="251" class="figure-group figure-box figure-filmed-network"/>
@@ -2875,20 +2828,6 @@
       </p>
       <figure class="l-body-outset" id="adain-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-            <linearGradient id="linearStroke" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
-              <stop offset="0%"   stop-color="#2196f3"/>
-              <stop offset="100%" stop-color="#f44336"/>
-            </linearGradient>
-            <linearGradient id="linearFill" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
-              <stop offset="0%"   stop-color="#90caf9"/>
-              <stop offset="100%" stop-color="#ef9a9a"/>
-            </linearGradient>
-          </defs>
           <image x="10" y="351" width="96" height="96" href="assets/cassis_cap_lombard_opus_196.jpg"/>
           <path d="M 106 399 l 573 0" class="figure-line"/>
           <use href="#arrow-right" transform="translate(681, 399)" class="figure-path"/>
@@ -3047,12 +2986,6 @@
       </p>
       <figure class="l-body-outset" id="dln-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g transform="translate(50, 10)">
             <g class="filmed-network">
               <rect width="440" height="420" class="figure-group figure-box figure-filmed-network"/>
@@ -3292,12 +3225,6 @@
       </p>
       <figure class="l-body-outset" id="squeeze-diagram">
         <svg viewBox="0 0 744 360" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g transform="translate(90, 10)">
             <g class="filmed-network">
               <rect width="550" height="320" class="figure-group figure-box figure-filmed-network"/>
@@ -3398,12 +3325,6 @@
       </p>
       <figure class="l-body-outset" id="convseq2seq-diagram">
         <svg viewBox="0 0 744 370" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-          </defs>
           <g transform="translate(200, 10)" class="style-transfer-network">
             <rect width="340" height="350" class="figure-group figure-box"/>
             <text x="10" y="20" dy="0.4em" class="figure-text">gated linear unit</text>
@@ -3504,16 +3425,6 @@
       </p>
       <figure class="l-body-outset" id="disan-diagram">
         <svg viewBox="0 0 744 440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <defs>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="column-middle"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="column-bottom"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-            <path d="M 0 0 C 0 -20 90 0 90 -20 C 90 0 180 -20 180 0" id="disan-curly-brace"/>
-          </defs>
           <g transform="translate(10, 10)">
             <g transform="translate(60, 170)">
               <rect width="460" height="240" class="figure-group figure-box"/>
@@ -3522,7 +3433,7 @@
             <g transform="translate(220, 40)">
               <text x="90" y="-15" dy="0.4em" style="text-anchor: middle;" class="figure-text">query representation</text>
               <g transform="translate(0, 90)">
-                <use href="#disan-curly-brace" transform="rotate(180, 90, 0)" class="figure-line"/>
+                <use href="#bigger-curly-brace-horizontal" transform="rotate(180, 90, 0)" class="figure-line"/>
               </g>
               <use href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
@@ -3760,27 +3671,6 @@
       </p>
       <figure class="l-body-outset" id="bilinear-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" id="big-row-left"/>
-            <path d="M 0 0 l 40 0 l 0 40 l -40 0 Z" id="big-row-middle"/>
-            <path d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" id="big-row-right"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="row-left"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="row-middle"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" id="row-right"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="column-middle"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="column-bottom"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" id="matrix-top-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="matrix-bottom-left"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" id="matrix-bottom-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
-            <path d="M 0 0 C 0 -16 42.5 0 42.5 -16 C 42.5 0 85 -16 85 0" id="curly-brace"/>
-          </defs>
           <rect x="10" y="10" width="724" height="320" class="figure-group figure-box"/>
           <text x="20" y="30" class="figure-text">Bilinear transformation</text>
           <g transform="translate(92, -121)">
@@ -3885,12 +3775,12 @@
             <use href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
             <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
           </g>
-          <use href="#curly-brace" transform="translate(107, 147)" class="figure-line"/>
-          <use href="#curly-brace" transform="translate(329, 147)" class="figure-line"/>
-          <use href="#curly-brace" transform="translate(549, 147)" class="figure-line"/>
-          <use href="#curly-brace" transform="translate(140, 236)" class="figure-line"/>
-          <use href="#curly-brace" transform="translate(362, 236)" class="figure-line"/>
-          <use href="#curly-brace" transform="translate(581.5, 236)" class="figure-line"/>
+          <use href="#curly-brace-horizontal" transform="translate(107, 147)" class="figure-line"/>
+          <use href="#curly-brace-horizontal" transform="translate(329, 147)" class="figure-line"/>
+          <use href="#curly-brace-horizontal" transform="translate(549, 147)" class="figure-line"/>
+          <use href="#curly-brace-horizontal" transform="translate(140, 236)" class="figure-line"/>
+          <use href="#curly-brace-horizontal" transform="translate(362, 236)" class="figure-line"/>
+          <use href="#curly-brace-horizontal" transform="translate(581.5, 236)" class="figure-line"/>
           <path class="figure-line" d="M 149.5 126 C 149.5 60 342 126 332 60"/>
           <use href="#arrow-up" transform="translate(332, 60)" class="figure-line"/>
           <path class="figure-line" d="M 372 126 L 372 60"/>
@@ -3940,30 +3830,6 @@
       </p>
       <figure class="l-body-outset" id="generalized-bilinear-diagram">
         <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" id="arrow-up"/>
-            <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-left"/>
-            <path d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)" id="arrow-down"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z" id="big-row-left"/>
-            <path d="M 0 0 l 40 0 l 0 40 l -40 0 Z" id="big-row-middle"/>
-            <path d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z" id="big-row-right"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="row-left"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="row-middle"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="singleton"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" id="row-right"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="column-middle"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="column-bottom"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" id="matrix-top-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="matrix-bottom-left"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" id="matrix-bottom-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
-            <path d="M 0 0 C 0 -16 52.5 0 52.5 -16 C 52.5 0 105 -16 105 0" id="large-curly-brace"/>
-            <path d="M 10 0 C -2 0 -2 80 10 80" id="parenthesis-left"/>
-            <path d="M 0 0 C 8 0 8 80 0 80" id="parenthesis-right"/>
-          </defs>
           <rect x="10" y="10" width="724" height="360" class="figure-group figure-box"/>
           <text x="20" y="30" class="figure-text">Generalized bilinear transformation</text>
           <g transform="translate(92, -121)">
@@ -4113,12 +3979,12 @@
             <use href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
             <text x="-15" y="20" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
           </g>
-          <use href="#large-curly-brace" transform="translate(87, 147)" class="figure-line"/>
-          <use href="#large-curly-brace" transform="translate(309, 147)" class="figure-line"/>
-          <use href="#large-curly-brace" transform="translate(529, 147)" class="figure-line"/>
-          <use href="#large-curly-brace" transform="translate(130, 256)" class="figure-line"/>
-          <use href="#large-curly-brace" transform="translate(352, 256)" class="figure-line"/>
-          <use href="#large-curly-brace" transform="translate(571.5, 256)" class="figure-line"/>
+          <use href="#big-curly-brace-horizontal" transform="translate(87, 147)" class="figure-line"/>
+          <use href="#big-curly-brace-horizontal" transform="translate(309, 147)" class="figure-line"/>
+          <use href="#big-curly-brace-horizontal" transform="translate(529, 147)" class="figure-line"/>
+          <use href="#big-curly-brace-horizontal" transform="translate(130, 256)" class="figure-line"/>
+          <use href="#big-curly-brace-horizontal" transform="translate(352, 256)" class="figure-line"/>
+          <use href="#big-curly-brace-horizontal" transform="translate(571.5, 256)" class="figure-line"/>
           <path class="figure-line" d="M 139.5 126 C 159.5 60 342 126 332 60"/>
           <use href="#arrow-up" transform="translate(332, 60)" class="figure-line"/>
           <path class="figure-line" d="M 361.5 126 C 361.5 80 372 106 372 60"/>
@@ -4194,13 +4060,6 @@
       </p>
       <figure class="l-body-outset" id="film-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" id="matrix-top-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="matrix-bottom-left"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" id="matrix-bottom-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
-          </defs>
           <g transform="translate(-52, -39)">
             <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
@@ -4416,14 +4275,6 @@
       </p>
       <figure class="l-body-outset" id="gating-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="row-left"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="row-middle"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -14 0 Z" id="row-right"/>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="column-middle"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z" id="column-bottom"/>
-          </defs>
           <g transform="translate(-52, -39)">
             <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)">
@@ -4618,13 +4469,6 @@
       </p>
       <figure class="l-body-outset" id="attention-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" id="matrix-top-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="matrix-bottom-left"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" id="matrix-bottom-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
-          </defs>
           <g transform="translate(-52, -39)">
             <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-1-full">
@@ -4811,13 +4655,6 @@
       </p>
       <figure class="l-body-outset" id="moe-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
-            <path d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z" id="matrix-top-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="matrix-bottom-left"/>
-            <path d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z" id="matrix-bottom-right"/>
-            <path d="M 0 0 l 20 0 l 0 20 l -20 0 Z" id="matrix-center"/>
-          </defs>
           <g transform="translate(-52, -39)">
             <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
             <g transform="translate(95, 49)" id="w-1-full">
