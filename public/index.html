@@ -34,7 +34,7 @@
   </head>
   <body>
     <dt-article>
-      <h1>Feature-wise affine transformations</h1>
+      <h1>Feature-wise transformations</h1>
       <h2>A family of methods for fusing multiple sources of information</h2>
 
       <dt-byline></dt-byline>
@@ -775,33 +775,32 @@
         </dt-fn>
         All of the above approaches have in common that they act at the feature
         level, and we can regroup them under the umbrella of <em>feature-wise
-        affine transformations</em>. Feature-wise affine transformations enjoy
-        very good scaling properties &mdash; their number of parameters scales
-        linearly with the total number of features in the network &mdash; and
-        as we will see, they also work remarkably well as a conditioning
-        mechanism despite their simplicity.
+        transformations</em>. Feature-wise transformations enjoy very good
+        scaling properties &mdash; their number of parameters scales linearly
+        with the total number of features in the network &mdash; and as we will
+        see, they also work remarkably well as a conditioning mechanism despite
+        their simplicity.
       </p>
       <p>
         Let us now depart from our introductory example and adopt a more
         general view, where we consider fusing multiple sources of information
         (not just conditioning one on another), and where these sources of
         information are arbitrary (not just images and classes). In this
-        article, we will take a deep dive into feature-wise affine
-        transformations, showing that they find their way into a surprising
-        number of recent neural network architectures used for various problem
-        settings. We will examine them from two very different vantage points.
+        article, we will take a deep dive into feature-wise transformations,
+        showing that they find their way into a surprising number of recent
+        neural network architectures used for various problem settings. We will
+        examine them from two very different vantage points.
       </p>
       <p>
-        On one hand, we will discuss feature-wise affine transformations as a
-        family of related approaches and show how they can be conceptualized
-        using the <a href="#film-nomenclature">FiLM nomenclature</a>. We will
-        point out their <a href="#film-in-literature">numerous uses in the recent
-        literature</a>, and take a stab at
-        <a href="#understanding-film">understanding the computational mechanisms</a>
+        On one hand, we will discuss feature-wise transformations as a family of
+        related approaches and show how they can be conceptualized using the <a
+        href="#film-nomenclature">FiLM nomenclature</a>. We will point out their
+        <a href="#film-in-literature">numerous uses in the recent literature</a>,
+        and take a stab at <a href="#understanding-film">understanding the computational mechanisms</a>
         that allow them to work.
       </p>
       <p>
-        On the other hand, we will place feature-wise affine transformations
+        On the other hand, we will place feature-wise transformations
         themselves within the <a href="#bilinear-connection">family of bilinear
         transformations</a>. We will show that a small extension to the bilinear
         transformation formulation allows us to relate attention, gating, FiLM,
@@ -821,9 +820,9 @@
       <p>
         To center the discussion around a common language, we propose to use
         the nomenclature of <dt-cite key="perez2017film"></dt-cite>, which
-        calls feature-wise affine transformations <em>FiLM</em>, for
-        <strong>F</strong>eature-w<strong>i</strong>se <strong>L</strong>inear
-        <strong>M</strong>odulation.
+        formalizes feature-wise <em>affine</em> transformations under the
+        acronym <em>FiLM</em>, for <strong>F</strong>eature-w<strong>i</strong>se
+        <strong>L</strong>inear <strong>M</strong>odulation.
         <dt-fn>
           Strictly speaking, <em>linear</em> is a misnomer, as we allow biasing,
           but we hope the more rigorous-minded reader will forgive us for the
@@ -1723,34 +1722,13 @@
         decided to devote a <a href="#bilinear-connection">separate section</a>
         of the article to it.
       </p>
-      <!-- <p> -->
-      <!--   Finally, although attempts to connect deep learning results to the way -->
-      <!--   the brain works should always be treated carefully, it is interesting to -->
-      <!--   note that the idea of feature-wise modulation finds a modest amount of -->
-      <!--   support in the neuroscience literature. -->
-      <!-- </p> -->
-      <!-- <p> -->
-      <!--   In an attempt to explore biologically plausible neuron models while -->
-      <!--   drawing a parallel with multi-layer perceptrons, -->
-      <!--   <dt-cite key="mel1992clusteron"></dt-cite> introduces the -->
-      <!--   <em>Clusteron</em>, a neuron whose activations can be amplified by -->
-      <!--   surrounding neurons. This behavior enables to extract non-linearity and -->
-      <!--   high-order statistics from data. -->
-      <!-- </p> -->
-      <!-- <p> -->
-      <!--   Work in <dt-cite key="boutonnet2015words"></dt-cite> provides new -->
-      <!--   evidence that external language cues alter how visual information is -->
-      <!--   processed in the brain. More precisely, it is observed that P1 signals, -->
-      <!--   which are related to low-level visual features, are modulated while -->
-      <!--   hearing specific words. -->
-      <!-- </p> -->
 
       <hr />
 
-      <h1 id="film-in-literature">Feature-wise affine transformations in the literature</h1>
+      <h1 id="film-in-literature">Feature-wise transformations in the literature</h1>
       <p>
         Because of their very general nature and wide applicability,
-        feature-wise affine transformations are sometimes treated as accessory
+        feature-wise transformations are sometimes treated as accessory
         to the proposed models to which they are applied. We believe there is
         value in connecting those methods, which is why part of this article is
         devoted to a literature review.
@@ -2501,15 +2479,14 @@
         image-question-answer tuples.
       </p>
       <p>
-        We can also leverage feature-wise affine transformations to condition a
-        pre-trained network. In <dt-cite key="vries2017modulating"></dt-cite>,
-        the visual pipeline of a visual question-answering (VQA) model is
-        modulated by the model's linguistic pipeline through conditional batch
-        normalization (CBN). The model is trained on the "oracle" sub-task of
-        the GuessWhat?! task <dt-cite key="vries2017guesswhat"></dt-cite>
-        &mdash; which features natural language questions on images answerable
-        by yes, no, or N/A &mdash; as well as the VQAv1 dataset
-        <dt-cite key="agrawal2015vqa"></dt-cite>.
+        We can also leverage FiLM to condition a pre-trained network. In
+        <dt-cite key="vries2017modulating"></dt-cite>, the visual pipeline of a
+        visual question-answering (VQA) model is modulated by the model's
+        linguistic pipeline through conditional batch normalization (CBN). The
+        model is trained on the "oracle" sub-task of the GuessWhat?! task
+        <dt-cite key="vries2017guesswhat"></dt-cite> &mdash; which features
+        natural language questions on images answerable by yes, no, or N/A
+        &mdash; as well as the VQAv1 dataset <dt-cite key="agrawal2015vqa"></dt-cite>.
       </p>
       <figure class="l-body-outset" id="guesswhat-diagram">
         <svg viewBox="0 0 744 700" xmlns="http://www.w3.org/2000/svg">
@@ -2615,7 +2592,7 @@
           <p style="margin-bottom: 8px;">
             Visual question-answering (VQA) model in in
             <dt-cite key="vries2017modulating"></dt-cite>. The feature-wise
-            affine transformation inside the batch normalization layers of the
+            affine transformations inside the batch normalization layers of the
             pre-trained ResNet visual pipeline are modulated by the linguistic
             pipeline.
           </p>
@@ -2966,8 +2943,8 @@
         inserting FiLM layers throughout its hierarchy.
       </p>
       <p>
-        As we have seen so far, feature-wise affine transformations can be used
-        as a conditioning mechanism to incorporate external information such as
+        As we have seen so far, feature-wise transformations can be used as a
+        conditioning mechanism to incorporate external information such as
         context representation, task description, class information, or user
         information. However, there is nothing preventing us from considering a
         neural network's hidden activations <em>themselves</em> as conditioning
@@ -3412,15 +3389,14 @@
         self-conditioned tanh-sigmoid gated nonlinearity.
       </p>
       <p>
-        Some work even combines attention and feature-wise affine
-        transformations. Work in <dt-cite key="shen2017disan"></dt-cite>
-        proposes a feature-wise self-attention mechanism for language
-        understanding, showing strong results on datasets such as SNLI
-        <dt-cite key="bowman2015large"></dt-cite>. A core idea behind the
-        proposed model, named Directional Self-Attention Network (DiSAN), is
-        that of multi-dimensional attention, i.e., combining tokens at a
-        <em>feature</em> level rather than at a <em>feature vector</em> level,
-        using the input itself to generate the feature-wise attention
+        Some work even combines attention and feature-wise transformations. Work
+        in <dt-cite key="shen2017disan"></dt-cite> proposes a feature-wise
+        self-attention mechanism for language understanding, showing strong
+        results on datasets such as SNLI <dt-cite key="bowman2015large"></dt-cite>.
+        A core idea behind the proposed model, named Directional Self-Attention
+        Network (DiSAN), is that of multi-dimensional attention, i.e., combining
+        tokens at a <em>feature</em> level rather than at a <em>feature vector</em>
+        level, using the input itself to generate the feature-wise attention
         distributions over all tokens.
       </p>
       <figure class="l-body-outset" id="disan-diagram">
@@ -4747,18 +4723,18 @@
       <h1>Conclusion</h1>
       <p>
         This article had quite a lot of ground to cover. We set out to better
-        understand feature-wise affine transformations in the context of fusing
+        understand feature-wise transformations in the context of fusing
         multiple sources of information in a neural network. We examined
         several approaches which are encompassed by the FiLM formulation, and
         reviewed their use in the literature. We then set out to connect
-        feature-wise affine transformations with related families of approaches
+        feature-wise transformations with related families of approaches
         such as attention and mixture-of-experts models via bilinear
         transformations.
       </p>
       <p>
         We hope that the recognition of the wide range of applications
-        feature-wise affine transformations find in the literature will
-        stimulate research into applying them to even more problem settings.
+        feature-wise transformations find in the literature will stimulate
+        research into applying them to even more problem settings.
       </p>
       <p>
         We also hope that the connections drawn with bilinear transformations
