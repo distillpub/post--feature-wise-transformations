@@ -48,7 +48,7 @@
         video sequence and the audio waveform of a movie scene and is asked to
         predict what is going on:
       </p>
-      <figure>
+      <figure class="l-body-outset">
         <svg viewBox="0 0 744 308" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter x="0" y="0" width="1" height="1" id="solid">
@@ -183,7 +183,7 @@
         It could also be that an image needs to be processed in the context of a
         question being asked:
       </p>
-      <figure>
+      <figure class="l-body-outset">
         <svg viewBox="0 0 744 396" xmlns="http://www.w3.org/2000/svg">
           <defs>
           <symbol id="clevr-example" viewBox="0 0 744 494">
@@ -317,19 +317,221 @@
         neural network has the ability to focus on specific subsets of its
         inputs at different points in time along the computation of its outputs:
       </p>
-      <figure>
-        <img src="assets/seq2seq.png"/>
+      <figure id="attentional-ex2" class="l-body-outset">
+        <pre id="attentional-ex2-data" style="display: none;">
+          0.50, 0.02, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.01, 0.00, 0.00, 0.00, 0.05, 0.05
+          0.14, 0.89, 0.07, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.06, 0.00, 0.00, 0.00, 0.02, 0.00
+          0.02, 0.00, 0.56, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.00
+          0.00, 0.00, 0.01, 0.61, 0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00
+          0.00, 0.00, 0.02, 0.03, 0.01, 0.21, 0.97, 0.05, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00
+          0.00, 0.00, 0.02, 0.07, 0.25, 0.76, 0.02, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.00
+          0.02, 0.04, 0.03, 0.27, 0.71, 0.02, 0.00, 0.02, 0.00, 0.00, 0.02, 0.00, 0.00, 0.05, 0.01
+          0.02, 0.00, 0.07, 0.00, 0.00, 0.00, 0.00, 0.60, 0.40, 0.01, 0.04, 0.00, 0.00, 0.13, 0.01
+          0.13, 0.02, 0.02, 0.00, 0.01, 0.00, 0.00, 0.23, 0.52, 0.91, 0.07, 0.00, 0.00, 0.10, 0.00
+          0.04, 0.00, 0.01, 0.00, 0.00, 0.00, 0.00, 0.01, 0.03, 0.00, 0.67, 0.00, 0.00, 0.16, 0.02
+          0.02, 0.00, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.14, 0.96, 0.00, 0.02, 0.07
+          0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.02, 1.00, 0.02, 0.03
+          0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.01, 0.00, 0.00, 0.32, 0.11
+          0.04, 0.00, 0.08, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0.04, 0.67
+        </pre>
+        <svg>
+          <defs>
+            <marker id="edgeArrowhead" viewBox="0 -5 10 10" markerWidth="6" markerHeight="10" orient="auto" refX="5" refY="0">
+              <path d="M0,-5L5,0L0,5" fill="none" stroke="#666"></path>
+            </marker>
+            <marker id="edgeArrowheadLeft" viewBox="0 -5 10 10" markerWidth="6" markerHeight="10" orient="auto" refX="0" refY="0">
+              <path d="M5,-5L0,0L5,5" fill="none" stroke="#666"></path>
+            </marker>
+          </defs>
+          <g class="labels" style="display: none;">
+            <text transform="translate(0, 20)">output text</text>
+            <text transform="translate(0, 65)">network B</text>
+            <text transform="translate(0, 185)">network A</text>
+            <text transform="translate(0, 233)">input text</text>
+          </g>
+        </svg>
         <figcaption>
             <p style="margin-bottom: 8px;">
               In this sequence-to-sequence translation model, output tokens are
               computed by attending to different subsets of input tokens.
             </p>
             <p><em>
-              Credit: diagram derived from Fig. 3 of <dt-cite key="bahdanau2014neural"></dt-cite>,
-              featured in the <a href="https://distill.pub/2016/augmented-rnns/">Distill article on attention</a>.
+              Credit: diagram derived from Fig. 3 of
+              <a href="https://arxiv.org/pdf/1409.0473.pdf">Bahdanau, <i>et al.</i> 2014</a>,
+              originally featured in the
+              <a href="https://distill.pub/2016/augmented-rnns/">Distill article on attention</a>.
             </em></p>
         </figcaption>
       </figure>
+      <script>
+        (function() {
+            var labelsA = ["the", "agreement", "on", "the", "European",
+                           "Economic", "Area", "was", "signed", "in", "August",
+                           "1992", ".", "<end>"];
+            var labelsB = ["l’", "accord", "sur", "la", "zone", "économique",
+                           "européenne", "a", "été", "signé", "en", "août",
+                           "1992", ".", "<end>"];
+            var data = d3.csvParseRows(d3.select("#attentional-ex2-data").text());
+            var linkData = [];
+            data.forEach(function(a, ai) {
+              a.forEach(function(b, bi) {
+                linkData.push({ai: +ai, bi: +bi, v: +data[ai][bi]});
+              });
+            });
+
+            var nodeMargin = 10;
+            var networkMargin = 120;
+            var html = d3.select("#attentional-ex2");
+            var outerWidth = 984;
+            var outerHeight = 240;
+            var margin = {top: 36, right: nodeMargin, bottom: 24, left: nodeMargin};
+            var width = outerWidth - margin.left - margin.right;
+            var height = outerHeight - margin.top - margin.bottom;
+            var xa = d3.scaleBand()
+                .domain(d3.range(labelsA.length))
+                .paddingInner(0.5)
+                .range([nodeMargin, width - nodeMargin]);
+            var xb = d3.scaleBand()
+                .domain(d3.range(labelsB.length))
+                .paddingInner(0.5)
+                .range([nodeMargin, width - nodeMargin]);
+            var nodeSizeA = xa.bandwidth();
+            var nodeSizeB = xb.bandwidth();
+            var networkHeightA = nodeSizeA + nodeMargin * 2;
+            var networkHeightB = nodeSizeB + nodeMargin * 2;
+            var link = function(d) {
+              var p = "M" + (xb(d.bi) + nodeSizeB / 2) + "," + (nodeSizeB + nodeMargin)
+                  + "C" + (xb(d.bi) + nodeSizeB / 2) + "," + (nodeSizeB + networkMargin / 3 + nodeMargin)
+                  + " " + (xa(d.ai) + nodeSizeA / 2) + "," + (networkMargin - networkMargin / 3 + nodeMargin)
+                  + " " + (xa(d.ai) + nodeSizeA / 2) + "," + (networkMargin + nodeMargin);
+              return p;
+            };
+
+            html.select("svg .labels")
+                .attr("transform", "translate(" + (width + nodeMargin * 3) + ", 0)");
+            var svg = html.select("svg")
+                .attr("viewBox", "0 0 " + outerWidth + " " + outerHeight)
+              .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            var networkA = svg.append("g")
+                .attr("transform", "translate(0, " + networkMargin + ")");
+            networkA.append("rect")
+                .attr("class", "background")
+                .attr("width", width)
+                .attr("height", nodeSizeA + 2 * nodeMargin)
+                .attr("rx", nodeMargin * 0.7)
+                .attr("ry", nodeMargin * 0.7);
+            var cellA = networkA.selectAll(".cell")
+                .data(labelsA)
+              .enter().append("g")
+                .attr("class", "cell")
+                .attr("transform", function(d, i) { return "translate(" + xa(i) + ", " + nodeMargin + ")"; })
+            cellA.append("rect")
+                .attr("class", "shadow")
+                .attr("transform", "translate(1, 3)")
+                .attr("width", nodeSizeA)
+                .attr("height", nodeSizeA)
+                .attr("rx", 4)
+                .attr("ry", 4);
+            cellA.append("rect")
+                .attr("class", "node")
+                .attr("width", nodeSizeA)
+                .attr("height", nodeSizeA)
+                .attr("rx", 4)
+                .attr("ry", 4);
+            cellA.append("line")
+                .attr("class", "arrow")
+                .attr("marker-start", "url(#edgeArrowheadLeft)")
+                .attr("marker-end", "url(#edgeArrowhead)")
+                .attr("x1", nodeSizeA + 8)
+                .attr("x2", nodeSizeA + nodeMargin + 20)
+                .attr("y1", nodeSizeA / 2)
+                .attr("y2", nodeSizeA / 2);
+            cellA.append("line")
+                .attr("class", "arrow")
+                .attr("marker-end", "url(#edgeArrowhead)")
+                .attr("transform", "translate(" + nodeSizeA / 2 + ", 0)")
+                .attr("y1", nodeSizeA + nodeMargin * 2 - 2)
+                .attr("y2", nodeSizeA + 4);
+            cellA.append("text")
+                .style("opacity", 0.8)
+                .text("A")
+                .attr("dx", nodeSizeA / 2)
+                .attr("dy", nodeSizeA / 2 + 1);
+            cellA.append("text")
+                .attr("class", "label")
+                .attr("dx", nodeSizeA / 2)
+                .attr("dy", nodeSizeA + 24 + 8)
+                .text(function(d) { return d; });
+            cellA.append("rect")
+                .style("opacity", 0)
+                .attr("transform", "translate(-" + ((xa.step() - nodeSizeA) / 2) + ",-" + (nodeMargin + (networkMargin - networkHeightB) / 2) + ")")
+                .attr("width", xa.step())
+                .attr("height", networkHeightA + (networkMargin - networkHeightA) / 2);
+
+            var networkB = svg.append("g");
+            networkB.append("rect")
+                .attr("class", "background")
+                .attr("width", width)
+                .attr("height", nodeSizeB + 2 * nodeMargin)
+                .attr("rx", nodeMargin * 0.7)
+                .attr("ry", nodeMargin * 0.7);
+            var cellB = networkB.selectAll(".cell")
+                .data(labelsB)
+              .enter().append("g")
+                .attr("class", "cell")
+                .attr("transform", function(d, i) { return "translate(" + xb(i) + "," + nodeMargin + ")"; })
+            cellB.append("rect")
+                .attr("class", "shadow")
+                .attr("transform", "translate(1, 3)")
+                .attr("width", nodeSizeB)
+                .attr("height", nodeSizeB)
+                .attr("rx", 4)
+                .attr("ry", 4);
+            cellB.append("rect")
+                .attr("class", "node")
+                .attr("width", nodeSizeB)
+                .attr("height", nodeSizeB)
+                .attr("rx", 4)
+                .attr("ry", 4);
+            cellB.append("line")
+                .attr("class", "arrow")
+                .attr("marker-end", "url(#edgeArrowhead)")
+                .attr("x1", nodeSizeB)
+                .attr("x2", nodeSizeB + nodeMargin + 14)
+                .attr("y1", nodeSizeB / 2)
+                .attr("y2", nodeSizeB / 2);
+            cellB.append("line")
+                .attr("class", "arrow")
+                .attr("marker-end", "url(#edgeArrowhead)")
+                .attr("transform", "translate(" + nodeSizeB / 2 + ", 0)")
+                .attr("y1", 0)
+                .attr("y2", -nodeMargin * 2 + 5);
+            cellB.append("text")
+                .style("opacity", 0.8)
+                .text("B")
+                .attr("dx", nodeSizeB / 2)
+                .attr("dy", nodeSizeB / 2 + 1);
+            cellB.append("text")
+                .attr("class", "label")
+                .attr("dx", function(d) { return d === "européenne" ? nodeSizeB / 2 + 15 : nodeSizeB / 2; })
+                .attr("dy", - 24 - 5)
+                .text(function(d) { return d; });
+            cellB.append("rect")
+                .style("opacity", 0)
+                .attr("transform", "translate(-" + ((xb.step() - nodeSizeB) / 2) + ",-" + nodeMargin + ")")
+                .attr("width", xb.step())
+                .attr("height", networkHeightB + (networkMargin - networkHeightB) / 2);
+
+            var linkGroup = svg.append("g").attr("class", ".link-group")
+            var link = linkGroup.selectAll(".link")
+                .data(linkData)
+              .enter().append("path")
+                .attr("class", "link")
+                .attr("d", link)
+                .style("opacity", function(d) { return d.v; });
+        })();
+      </script>
       <p>
         Attention has a very sequential nature which is sometimes not suited for
         certain types of problems. Consider for instance conditional image
@@ -338,7 +540,7 @@
         class-aware. This involves injecting class information into the decoder
         network:
       </p>
-      <figure>
+      <figure class="l-body-outset">
         <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -503,7 +705,7 @@
           conditional scaling, or conditional affine transformation of the
           network's hidden features.
         </dt-fn> 
-        Furthermore, The increase in the number of parameters in the decoder's
+        Furthermore, the increase in the number of parameters in the decoder's
         first layer is very modest: just enough to accomodate the class or
         class embedding in the layer's input.
       </p>
@@ -585,7 +787,7 @@
         can assume that the FiLM generator outputs the concatenation of all
         FiLM parameters for the network architecture.
       </p>
-      <figure class="l-body-outset figure" id="film-architecture-diagram">
+      <figure class="l-body-outset" id="film-architecture-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -664,7 +866,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#film-architecture-diagram").select("svg");
+            var svg = d3.select("#film-architecture-diagram > svg");
             svg.selectAll("g.film-generator")
                 .on("mouseenter", function () { svg.select("rect.figure-film-generator").style("fill", "#ef9a9a"); })
                 .on("mouseleave", function () { svg.select("rect.figure-film-generator").style("fill", null); });
@@ -693,7 +895,7 @@
         interact with the following fully-connected and convolutional FiLM
         layers to get an intuition of the sort of modulation they allow:
       </p>
-      <figure class="l-body-outset figure" id="film-diagram">
+      <figure class="l-body-outset" id="film-diagram">
         <svg viewBox="0 0 744 600" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -1360,7 +1562,7 @@
       <script>
         (function() {
             (function() {
-                var svg = d3.select("figure.figure#film-diagram").select("svg");
+                var svg = d3.select("#film-diagram > svg");
                 var features = [0.9, -0.5, -0.8];
                 var gammas = [-1.6, 0.8, 1.8];
                 var betas = [1.0, 0.5, -0.5];
@@ -1414,7 +1616,7 @@
                     });
             })();
             (function () {
-                var svg = d3.select("figure.figure#film-diagram").select("svg");
+                var svg = d3.select("#film-diagram > svg");
                 var features = [
                     [[-0.6, -0.6,  0.8], [ 0.6,  0.7,  0.4], [-0.8,  0.8,  0.9]],
                     [[ 0.9, -0.1,  0.5], [-0.8, -0.7,  0.5], [-0.3, -0.9, -0.2]],
@@ -1555,7 +1757,7 @@
         elements relevant to the FiLM nomenclature have been color-coded and
         can be hovered over to reveal more information:
       </p>
-      <figure class="l-body-outset figure" id="legend-diagram">
+      <figure class="l-body-outset" id="legend-diagram">
         <svg viewBox="0 0 744 80" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(50, 10)" class="film-generator">
             <rect width="180" height="60" class="figure-group figure-box figure-film-generator"/>
@@ -1578,7 +1780,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#legend-diagram").select("svg");
+            var svg = d3.select("#legend-diagram > svg");
             svg.select("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("g.film-generator > text").text("FiLM generator");
@@ -1630,7 +1832,7 @@
         map and is concatenating to the input of convolutional and transposed
         convolutional layers in the generator and discriminator networks.
       </p>
-      <figure class="l-body-outset figure" id="dcgan-diagram">
+      <figure class="l-body-outset" id="dcgan-diagram">
         <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -1709,7 +1911,7 @@
           form of padding, like reflection-padding.
         </dt-fn>
       </p>
-      <figure class="l-body-outset figure" id="concatenation-as-biasing">
+      <figure class="l-body-outset" id="concatenation-as-biasing">
         <svg viewBox="0 0 744 370" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
@@ -1884,7 +2086,7 @@
           feature-wise property.
         </dt-fn>
       </p>
-      <figure class="l-body-outset figure" id="pixelcnn-diagram">
+      <figure class="l-body-outset" id="pixelcnn-diagram">
         <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="row-left"/>
@@ -2001,7 +2203,7 @@
         instructions in the VizDoom <dt-cite key="kempa2016vizdoom"></dt-cite>
         3D environment.
       </p>
-      <figure class="l-body-outset figure" id="gated-attention-diagram">
+      <figure class="l-body-outset" id="gated-attention-diagram">
         <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -2061,7 +2263,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#gated-attention-diagram").select("svg");
+            var svg = d3.select("#gated-attention-diagram > svg");
             svg.selectAll("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("g.film-generator > text.figure-film-generator-text").text("FiLM generator");
@@ -2114,7 +2316,7 @@
         model is trained on the CLEVR dataset <dt-cite key="johnson2017clevr"></dt-cite>
         to answer synthetic questions about a synthetic input image.
       </p>
-      <figure class="l-body-outset figure" id="clevr-diagram">
+      <figure class="l-body-outset" id="clevr-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -2295,7 +2497,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#clevr-diagram").select("svg");
+            var svg = d3.select("#clevr-diagram > svg");
             svg.select("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("g.film-generator > text").text("FiLM generator");
@@ -2344,7 +2546,7 @@
         by yes, no, or N/A &mdash; as well as the VQAv1 dataset
         <dt-cite key="agrawal2015vqa"></dt-cite>.
       </p>
-      <figure class="l-body-outset figure" id="guesswhat-diagram">
+      <figure class="l-body-outset" id="guesswhat-diagram">
         <svg viewBox="0 0 744 700" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -2467,7 +2669,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#guesswhat-diagram").select("svg");
+            var svg = d3.select("#guesswhat-diagram > svg");
             svg.select("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("g.film-generator > text").text("FiLM generator");
@@ -2520,7 +2722,7 @@
         parameters, and conditioning is achieved by applying the normalization
         with style-specific parameters.
       </p>
-      <figure class="l-body-outset figure" id="alrfas-diagram">
+      <figure class="l-body-outset" id="alrfas-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -2619,7 +2821,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#alrfas-diagram").select("svg");
+            var svg = d3.select("#alrfas-diagram > svg");
             svg.select("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("g.film-generator > text").text("FiLM generator");
@@ -2671,7 +2873,7 @@
         alternative for fast and arbitrary style transfer in the form of an
         adaptive instance normalization (AdaIN) layer.
       </p>
-      <figure class="l-body-outset figure" id="adain-diagram">
+      <figure class="l-body-outset" id="adain-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -2754,7 +2956,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#adain-diagram").select("svg");
+            var svg = d3.select("#adain-diagram > svg");
             svg.selectAll("g#encoder, g#adain, g#decoder")
                 .on("mouseenter", function () {
                     svg.selectAll("g#encoder > rect, g#adain > rect").style("fill", "url(#linearFill)");
@@ -2843,7 +3045,7 @@
         disabled and a FiLM layer is placed immediately after the instance
         normalization layer.
       </p>
-      <figure class="l-body-outset figure" id="dln-diagram">
+      <figure class="l-body-outset" id="dln-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -3043,7 +3245,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#dln-diagram").select("svg");
+            var svg = d3.select("#dln-diagram > svg");
             svg.selectAll("g.film-generator")
                 .on("mouseenter", function () {
                     svg.selectAll("g.film-generator > text").text("FiLM gen.");
@@ -3088,7 +3290,7 @@
         scheme in the form of feature-wise sigmoidal gating as a way to
         condition a layer's activations on its previous layer.
       </p>
-      <figure class="l-body-outset figure" id="squeeze-diagram">
+      <figure class="l-body-outset" id="squeeze-diagram">
         <svg viewBox="0 0 744 360" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -3152,7 +3354,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#squeeze-diagram").select("svg");
+            var svg = d3.select("#squeeze-diagram > svg");
             svg.selectAll("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("text.film-generator-text").text("FiLM generator");
@@ -3194,7 +3396,7 @@
         fast and parallelizable model for machine translation in the form of a
         purely convolutional architecture.
       </p>
-      <figure class="l-body-outset figure" id="convseq2seq-diagram">
+      <figure class="l-body-outset" id="convseq2seq-diagram">
         <svg viewBox="0 0 744 370" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -3245,7 +3447,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#convseq2seq-diagram").select("svg");
+            var svg = d3.select("#convseq2seq-diagram > svg");
             svg.selectAll("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("text.film-generator-text").text("FiLM generator");
@@ -3300,7 +3502,7 @@
         using the input itself to generate the feature-wise attention
         distributions over all tokens.
       </p>
-      <figure class="l-body-outset figure" id="disan-diagram">
+      <figure class="l-body-outset" id="disan-diagram">
         <svg viewBox="0 0 744 440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z" id="column-top"/>
@@ -3386,7 +3588,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#disan-diagram").select("svg");
+            var svg = d3.select("#disan-diagram > svg");
             svg.selectAll("g.film-generator")
                 .on("mouseenter", function () {
                     svg.select("text.film-generator-text").text("FiLM generator");
@@ -3424,7 +3626,7 @@
       <h1 id="understanding-film">Understanding FiLM-ed networks</h1>
 
       <h2>FiLM parameters as task embeddings</h2>
-      <div class="l-body-outset figure" id="clevr-tsne"></div>
+      <div class="l-body-outset" id="clevr-tsne"></div>
 
       <hr />
 
@@ -3451,7 +3653,7 @@
         separate matrix <dt-math>W_k</dt-math>, so the full set of weights forms
         a 3-tensor.
       </p>
-      <figure class="l-body-outset figure" id="bilinear-diagram">
+      <figure class="l-body-outset" id="bilinear-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -3631,7 +3833,7 @@
           </li>
         </ul>
       </p>
-      <figure class="l-body-outset figure" id="generalized-bilinear-diagram">
+      <figure class="l-body-outset" id="generalized-bilinear-diagram">
         <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" id="arrow-right"/>
@@ -3885,7 +4087,7 @@
       a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
       <dt-math>\tilde{\mathbf{z}}</dt-math>):
       </p>
-      <figure class="l-body-outset figure" id="film-as-bilinear-diagram">
+      <figure class="l-body-outset" id="film-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
@@ -4013,7 +4215,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#film-as-bilinear-diagram").select("svg");
+            var svg = d3.select("#film-as-bilinear-diagram > svg");
             var dataW1 = [];
             var dataW2 = [];
             var dataW3 = [];
@@ -4107,7 +4309,7 @@
       a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
       <dt-math>\tilde{\mathbf{z}}</dt-math>):
       </p>
-      <figure class="l-body-outset figure" id="gating-as-bilinear-diagram">
+      <figure class="l-body-outset" id="gating-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z" id="row-left"/>
@@ -4215,7 +4417,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#gating-as-bilinear-diagram").select("svg");
+            var svg = d3.select("#gating-as-bilinear-diagram > svg");
             var dataW1 = [];
             var dataW2 = [];
             var dataW3 = [];
@@ -4309,7 +4511,7 @@
         weighted sum is applied to all features over spatial or temporal
         locations, matrices <dt-math>W_k</dt-math> are tied.
       </p>
-      <figure class="l-body-outset figure" id="attention-as-bilinear-diagram">
+      <figure class="l-body-outset" id="attention-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
@@ -4378,7 +4580,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#attention-as-bilinear-diagram").select("svg");
+            var svg = d3.select("#attention-as-bilinear-diagram > svg");
             var data = [];
             for(var i = 0; i < 9; i++) { data.push(Math.random() * 360); }
             svg.select("#w-1-full")
@@ -4413,7 +4615,7 @@
         expert sub-networks are combined according to a mixture distribution
         which is itself computed from the experts' inputs.
       </p>
-      <figure class="l-body-outset figure" id="moe-diagram">
+      <figure class="l-body-outset" id="moe-diagram">
         <svg viewBox="0 0 744 470" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(306, 430)">
             <rect width="132" height="30" class="figure-element figure-box"/>
@@ -4502,7 +4704,7 @@
         <dt-math>X</dt-math> represent experts rather than spatial or temporal
         locations.
       </p>
-      <figure class="l-body-outset figure" id="moe-as-bilinear-diagram">
+      <figure class="l-body-outset" id="moe-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <path d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z" id="matrix-top-left"/>
@@ -4571,7 +4773,7 @@
       </figure>
       <script>
         (function() {
-            var svg = d3.select("figure.figure#moe-as-bilinear-diagram").select("svg");
+            var svg = d3.select("#moe-as-bilinear-diagram > svg");
             var data = [];
             for(var i = 0; i < 9; i++) { data.push(Math.random() * 360); }
             svg.select("#w-1-full")
