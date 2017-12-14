@@ -1797,6 +1797,7 @@
                 });
         })();
       </script>
+      <h2>Concatenation</h2>
       <p>
         Let's pretend that we have an input <dt-math>\mathbf{x}</dt-math> and
         some contextual information <dt-math>\mathbf{z}</dt-math> which we
@@ -1880,6 +1881,7 @@
           maps.
         </figcaption>
       </figure>
+      <h2>Biasing</h2>
       <p>
         An equivalent &mdash; and more efficient &mdash; way to express this
         operation is in the form of a feature-wise, class-conditional biasing of
@@ -2138,19 +2140,18 @@
         expresses it as a mapping from an input sequence of conditioning
         information to an output sequence of FiLM parameters.
       </p>
+      <h2>Scaling</h2>
       <p>
-        We can also condition via <em>multiplicative</em> interactions instead
-        of additive interactions, like is the case for feature-wise sigmoidal
-        gating. The idea is to scale each feature or feature map by a scalar
-        between <dt-math>0</dt-math> and <dt-math>1</dt-math> that is a function
-        of the conditioning information. This constraint is often enforced
-        via a sigmoid layer, hence the name. Intuitively, sigmoidal gating
-        allows the conditioning information to select which features are passed
-        forward and which are zeroed out.
-      </p>
-      <p>
-        In the FiLM nomenclature, sigmoidal gating would correspond to a
-        bias-less FiLM layer with sigmoidal scaling.
+        Whereas conditional biasing leverages additive interations,
+        <em>conditional scaling</em> leverages multiplicative interactions. For
+        instance, feature-wise sigmoidal gating scales each feature or feature
+        map by a scalar between <dt-math>0</dt-math> and <dt-math>1</dt-math> as
+        a function of the conditioning information. This constraint is often
+        enforced via a sigmoidal layer, hence the name. Intuitively,
+        feature-wise sigmoidal gating allows the conditioning information to
+        select which features are passed forward and which are zeroed out.  In
+        the FiLM nomenclature, sigmoidal gating would correspond to a bias-less
+        FiLM layer with sigmoidal scaling.
       </p>
       <p>
         Examples of application include the Gated-Attention architecture
@@ -2254,6 +2255,7 @@
         representations extracted via soft attention on the query representation
         tokens.
       </p>
+      <h2>FiLM: scaling <em>and</em> biasing</h2>
       <p>
         By combining conditional biasing and conditional scaling, we obtain the
         FiLM layer, which implements a conditional feature-wise affine
@@ -2488,7 +2490,8 @@
         model is trained on the "oracle" sub-task of the GuessWhat?! task
         <dt-cite key="vries2017guesswhat"></dt-cite> &mdash; which features
         natural language questions on images answerable by yes, no, or N/A
-        &mdash; as well as the VQAv1 dataset <dt-cite key="agrawal2015vqa"></dt-cite>.
+        &mdash; as well as the VQAv1 <dt-cite key="agrawal2015vqa"></dt-cite>
+        dataset.
       </p>
       <figure class="l-body-outset" id="guesswhat-diagram">
         <svg viewBox="0 0 744 700" xmlns="http://www.w3.org/2000/svg">
@@ -2944,6 +2947,7 @@
         network with task-specific gains and biases, which can be viewed as
         inserting FiLM layers throughout its hierarchy.
       </p>
+      <h2>Self-conditioning</h2>
       <p>
         As we have seen so far, feature-wise transformations can be used as a
         conditioning mechanism to incorporate external information such as
