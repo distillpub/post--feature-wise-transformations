@@ -741,14 +741,14 @@
         to concatenate the class (or an embedding of the class) to the noise
         vector and treat the result as the decoder's input. Using this approach,
         <em>all</em> parameters in the decoder are shared between classes, save
-        for the first layer parameters.
+        for the first layer's parameters.
         <dt-fn>
           As we will explain later, this is not a particularly sophisticated
           approach and you should avoid it in favor of conditional biasing,
           conditional scaling, or conditional affine transformation of the
           network's hidden features.
         </dt-fn> 
-        Furthermore, the increase in the number of parameters in the decoder's
+        Furthermore, the increase in number of parameters in the decoder's
         first layer is very modest: just enough to accomodate the class or
         class embedding in the layer's input.
       </p>
@@ -764,12 +764,12 @@
           An affine transformation is a transformation of the form
           <dt-math>y = m . x + b<dt-math>.
         </dt-fn>
-        All of the above approaches have in common that they act at the feature
+        Those approaches have all in common that they act at the feature
         level, and we can regroup them under the umbrella of <em>feature-wise
         transformations</em>. Feature-wise transformations enjoy very good
         scaling properties &mdash; their number of parameters scales linearly
         with the total number of features in the network &mdash; and as we will
-        see, they also work remarkably well as a conditioning mechanism despite
+        see, they work remarkably well as a conditioning mechanism despite
         their simplicity.
       </p>
       <p>
@@ -779,7 +779,7 @@
         information are arbitrary (not just images and classes). In this
         article, we will take a deep dive into feature-wise transformations,
         showing that they find their way into a surprising number of recent
-        neural network architectures used for various problem settings. We will
+        neural network architectures used in various problem settings. We will
         examine them from two very different vantage points.
       </p>
       <p>
@@ -799,7 +799,7 @@
         propose to call <em>generalized bilinear transformation</em>.
       </p>
       <p>
-        We hope that the insights contributed by this article help highlight
+        We hope the insights contributed by this article will help highlight
         the strong connections between the aforementioned methods and inspire
         new approaches to integrating multiple information channels in neural
         networks.
