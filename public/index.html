@@ -1713,8 +1713,28 @@
         with a ReLU nonlinearity). The impact of these additional capabilities
         is still an open area of investigation.
       </p>
+      
+       <p>
+        One can easily be confused between FiLM and classic attention mechanism. 
+        At first sight, they are very similar, and it is even tempting to call FiLM a feature-wise attention mechanism.
+        However, these methods work along different dimensions of the features, and they are conceptually slightly different.  
+        </p>
+       <p> 
+        Attention mechanism uses the spatial/temporal dimension of the input features, it computes a scaling parameter <dt-math>\alpha</dt-math> that differs from one pixel/timestamp to another, but will remain identic from one feature to another.  
+        By doing so, it is assumed that information is correctly distributed according to some spatial and temporal distribution, which is a strong but rightly assumption. 
+        On the other side, FiLM works along the feature dimension, having the scaling and bias parameters identic over the pixel/timestamp of a feature map, but differs from one feature map to another.
+        The underlying FiLM assumption suggest that specific parts of a neural network will be specialized and their relative importance should be conditioned on some context.
+        </p>
+        <p>
+        Differently, attention is mainly used as a pooling method, reducing the dimension of the feature map to a single vector.
+        This enables to easily plug a MLP, classifier or any kind decoder on top of it, yet, it makes attention mainly a one-shot operation that cannot be natively stacked (even if some stack-attention mechanisms were explored <dt-cite key="yang2016stacked"></dt-cite>).
+        FiLM is shape-invariant, it only modulates the signal without changing the dimension of the input. This naturally enables to stack FiLM layer on top of each other, and still requires a pooling mechanism.
+        Finally, attention often rely on softmax attention while FiLM does not, but this is more some implementation design. 
+         
+      </p>
+      
       <p>
-        Finally, as hinted at above, there exists a connection between
+        Given said that, there actually exists a connection between
         attention, gating, FiLM, and mixture-of-experts models through bilinear
         transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
         Because this connection deserves more than a single paragraph, we
@@ -5070,6 +5090,12 @@
         year={2015},
         url={https://arxiv.org/pdf/1409.0473.pdf},
       }
+      @inproceedings{yang2016stacked,
+		title={Stacked attention networks for image question answering},
+		author={Yang, Zichao and He, Xiaodong and Gao, Jianfeng and Deng, Li and Smola, Alex},
+		booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+		year={2016}
+	  }
     </script>
     <script src="assets/figure_clevr_tsne.js"></script>
   </body>
