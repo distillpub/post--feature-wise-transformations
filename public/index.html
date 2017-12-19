@@ -4774,12 +4774,41 @@
       <p>
         We hope that the recognition of the wide range of applications
         feature-wise transformations find in the literature will stimulate
-        research into applying them to even more problem settings.
+        research into applying them to even more problem settings. For
+        instance, most of the work we referenced operates from a "conditioning"
+        perspective in which the processing of a primary source of information
+        is conditioned on a secondary source of information (e.g., in
+        <dt-cite key="perez2017film"></dt-cite> the image processing pipeline
+        is conditioned on the linguistic pipeline). This distinction gets
+        blurrier as we move towards problems like the movie scene recognition
+        problem introduced at the very beginning of this article: there is no
+        preferred conditioning relationship between video and audio. To the
+        best of our knowledge, most approaches to solving a problem like this
+        involve the use of modality-specific pipelines (e.g., separate video
+        and audio pipelines) followed by some simple form of interaction (like
+        concatenation) between the extracted representations. What the work we
+        presented in this article tells us is that we may benefit from having
+        those modalities interact in simple ways in more than one place along
+        the computation of the model's output.
       </p>
       <p>
-        We also hope that the connections drawn with bilinear transformations
-        will help fuel new ideas for fusing multiple sources of information in
-        neural networks.
+        Finally, we also hope that the connections drawn with bilinear
+        transformations will help fuel new ideas for fusing multiple sources of
+        information in neural networks. Feature-wise transformations are just a
+        fraction of all possible transformations that can be represented by
+        (generalized) bilinear transformations, and it is still unclear to us
+        where the best compromise lies between flexibility and low
+        computational cost on the spectrum spanning full-rank bilinear
+        transformations and low-rank bilinear transformation (like FiLM).
+        Furthermore, in the spirit of making as few architectural assumptions
+        as possible and letting the model learn as much as it can, we are
+        curious to see what happens when the model is allowed to learn the
+        low-rank structure of the weight matrices and the activation function
+        of the generalized bilinear transformations. It could be that the model
+        would learn something very close to FiLM, gating, attention, or
+        mixture-of-experts &mdash; which would be an interesting observation in
+        its own right &mdash; or it could also be that the model learns a new
+        form of interaction between modalities altogether.
       </p>
     </dt-article>
 
