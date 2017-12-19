@@ -3552,6 +3552,84 @@
         image to stylized image for the latter.
       </p>
 
+      <h2>FiLM parameter distribution</h2>
+      <p>
+        As a first step, let's examine what values the scaling and shifting
+        coefficients <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math>
+        take. In the figure below we plotted the <dt-math>\gamma</dt-math> and
+        <dt-math>\beta</dt-math> histograms across all validation set
+        image-question pairs &mdash; that is, for each image-question pair in
+        the validation set, we extracted the predicted <dt-math>\gamma</dt-math>
+        and <dt-math>\beta</dt-math> coefficients for all FiLM layers by running
+        the linguistic pipeline on the input, and we built two histograms, one
+        for the <dt-math>\gamma</dt-math> values and one for the
+        <dt-math>\beta</dt-math> values.
+      </p>
+
+      <figure class="l-body-outset" id="marginal-histograms">
+        <svg viewBox="0 0 744 280" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="350" height="260" style="fill: none;" class="gamma-plot"/>
+          <rect x="384" y="10" width="350" height="260" style="fill: none;" class="beta-plot"/>
+        </svg>
+        <figcaption>
+            The predicted FiLM parameters for the visual reasoning model trained
+            on the CLEVR task exhibit an interesting value distribution: the
+            scaling parameters are sharply peaked at <dt-math>\gamma = 0</dt-math>
+            and the shifting parameters have a lot of mass in the
+            <dt-math>\beta < 0</dt-math> area.
+        </figcaption>
+      </figure>
+      <script>
+        (function() {
+            var svg = d3.select("#marginal-histograms > svg");
+            var dataset;
+            d3.json("assets/film_clevr.json", function(data) {
+                dataset = data;
+                var classes = [".gamma-plot", ".beta-plot"];
+
+                [dataset.marginal_gammas_histogram,
+                 dataset.marginal_betas_histogram].forEach(function(datum, i) {
+                    var plot = svg.select(classes[i]);
+                    var xMin = 20 + parseInt(plot.attr("x"));
+                    var xMax = xMin + parseInt(plot.attr("width")) - 20;
+                    var yMin = parseInt(plot.attr("y"));
+                    var yMax = yMin + parseInt(plot.attr("height")) - 20;
+
+                    var xScale = d3.scaleLinear()
+                        .domain([d3.min(datum, function (d) { return d.x; }),
+                                 d3.max(datum, function (d) { return d.x; })])
+                        .rangeRound([xMin, xMax]);
+                    var yScale = d3.scaleLinear()
+                        .domain([d3.min(datum, function (d) { return d.y; }),
+                                 d3.max(datum, function (d) { return d.y; })])
+                        .rangeRound([yMax, yMin]);
+
+                    svg.append("path")
+                        .datum(datum)
+                        .attr("fill", "steelblue")
+                        .attr("stroke", "steelblue")
+                        .attr("d", d3.area()
+                            .curve(d3.curveNatural)
+                            .x(function(d) { return xScale(d.x); })
+                            .y0(function() { return yScale(0); })
+                            .y1(function(d) { return yScale(d.y); }));
+
+                    svg.append("g")
+                        .attr("transform", "translate(0," + yMax + ")")
+                        .call(d3.axisBottom(xScale));
+
+                    svg.append("g")
+                        .attr("transform", "translate(" + xMin + ",0)")
+                        .call(d3.axisLeft(yScale));
+                });
+            });
+        })();
+      </script>
+      <p>
+        There are a couple interesting observations to unpack here. First,
+        <span class="todo">TODO: WRITEME</span>.
+      </p>
+
       <h2>FiLM parameters as task embeddings</h2>
       <figure class="l-body-outset" id="clevr-tsne">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
@@ -5100,6 +5178,5 @@
         url={https://arxiv.org/pdf/1409.0473.pdf},
       }
     </script>
-    <script src="assets/figure_clevr_tsne.js"></script>
   </body>
 </html>
