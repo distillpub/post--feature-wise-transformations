@@ -6,7 +6,16 @@ The submission document is located at [`public/index.html`](public/index.html).
 
 ## Previewing the submission
 
-Load [`public/index.html`](public/index.html) in your web browser.
+1. Change directory into `public`.
+2. Launch a local http server (you can replace port `8888` with whichever port you want):
+   ``` bash
+   python -m SimpleHTTPServer 8888 # Python 2.7
+   ```
+   or
+   ``` bash
+   python -m http.server 8888 # Python 3
+   ```
+3. Load [localhost:8888](http://localhost:8888) in your web browser.
 
 ## Working with the Distill web framework
 
