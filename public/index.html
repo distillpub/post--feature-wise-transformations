@@ -3565,7 +3565,6 @@
         for the <dt-math>\gamma</dt-math> values and one for the
         <dt-math>\beta</dt-math> values.
       </p>
-
       <figure class="l-body-outset" id="marginal-histograms">
         <svg viewBox="0 0 744 280" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="10" width="350" height="260" style="fill: none;" class="gamma-plot"/>
@@ -3626,9 +3625,134 @@
         })();
       </script>
       <p>
-        There are a couple interesting observations to unpack here. First,
-        <span class="todo">TODO: WRITEME</span>.
+        Note the sharp peak around <dt-math>\gamma = 0</dt-math> and the
+        significant amount of mass in the negative range of the
+        <dt-math>\beta</dt-math> histogram. Combined with the model's ReLU
+        nonlinearities, this observation suggests that the model is &mdash; at
+        least in part &mdash; using its FiLM layers as a switching mechanism:
+        by scaling feature maps down to a near-zero value and shifting them
+        into the negative range, the model can zero out entire unwanted feature
+        maps. This observation also holds for the FiLM parameter distributions
+        of <em>individual</em> examples. In the following figure, we show
+        <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math> distributions
+        for five image-question pairs chosen at random:
       </p>
+      <figure class="l-body-outset" id="examplewise-histograms">
+        <svg viewBox="0 0 744 280" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="350" height="260" style="fill: none;" class="gamma-plot"/>
+          <rect x="384" y="10" width="350" height="260" style="fill: none;" class="beta-plot"/>
+        </svg>
+        <figcaption>
+          WRITEME.    
+        </figcaption>
+      </figure>
+      <script>
+        (function() {
+            var svg = d3.select("#examplewise-histograms > svg");
+            var dataset;
+            d3.json("assets/film_clevr.json", function(data) {
+                dataset = data;
+                var classes = [".gamma-plot", ".beta-plot"];
+                var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692"];
+
+                [[dataset.example_0_gammas_histogram, dataset.example_1_gammas_histogram,
+                  dataset.example_2_gammas_histogram, dataset.example_3_gammas_histogram,
+                  dataset.example_4_gammas_histogram],
+                 [dataset.example_0_betas_histogram, dataset.example_1_betas_histogram,
+                  dataset.example_2_betas_histogram, dataset.example_3_betas_histogram,
+                  dataset.example_4_betas_histogram]].forEach(function(datumList, i) {
+                    var plot = svg.select(classes[i]);
+                    var xMin = 20 + parseInt(plot.attr("x"));
+                    var xMax = xMin + parseInt(plot.attr("width")) - 20;
+                    var yMin = parseInt(plot.attr("y"));
+                    var yMax = yMin + parseInt(plot.attr("height")) - 20;
+
+                    var xScale = d3.scaleLinear()
+                        .domain([d3.min(datumList, function(datum) { return d3.min(datum, function (d) { return d.x; }) }),
+                                 d3.max(datumList, function(datum) { return d3.max(datum, function (d) { return d.x; }) })])
+                        .rangeRound([xMin, xMax]);
+                    var yScale = d3.scaleLinear()
+                        .domain([d3.min(datumList, function(datum) { return d3.min(datum, function (d) { return d.y; }) }),
+                                 d3.max(datumList, function(datum) { return d3.max(datum, function (d) { return d.y; }) })])
+                        .rangeRound([yMax, yMin]);
+
+                    datumList.forEach(function(datum, j) {
+                        svg.append("path")
+                            .datum(datum)
+                            .attr("fill", "none")
+                            .attr("stroke", colors[j])
+                            .attr("stroke-width", "1.5px")
+                            .attr("d", d3.line()
+                                .curve(d3.curveNatural)
+                                .x(function(d) { return xScale(d.x); })
+                                .y(function(d) { return yScale(d.y); }));
+                    });
+
+                    svg.append("g")
+                        .attr("transform", "translate(0," + yMax + ")")
+                        .call(d3.axisBottom(xScale));
+
+                    svg.append("g")
+                        .attr("transform", "translate(" + xMin + ",0)")
+                        .call(d3.axisLeft(yScale));
+                });
+            });
+        })();
+      </script>
+
+      <figure class="l-body-outset" id="gamma-beta-histogram">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="10" width="300" height="300" style="fill: none;" class="histogram"/>
+        </svg>
+        <figcaption>
+          WRITEME.    
+        </figcaption>
+      </figure>
+      <script>
+        (function() {
+            var svg = d3.select("#gamma-beta-histogram > svg");
+            var dataset;
+            d3.json("assets/film_clevr.json", function(data) {
+                dataset = data;
+                var plot = svg.select(".histogram");
+                var xMin = parseInt(plot.attr("x"));
+                var xMax = xMin + parseInt(plot.attr("width"));
+                var yMin = parseInt(plot.attr("y"));
+                var yMax = yMin + parseInt(plot.attr("height"));
+
+                var xScale = d3.scaleLinear()
+                    .domain([d3.min(dataset.marginal_2d_histogram, function (d) { return d.x; }),
+                             d3.max(dataset.marginal_2d_histogram, function (d) { return d.x; })])
+                    .range([xMin, xMax]);
+                var yScale = d3.scaleLinear()
+                    .domain([d3.min(dataset.marginal_2d_histogram, function (d) { return d.y; }),
+                             d3.max(dataset.marginal_2d_histogram, function (d) { return d.y; })])
+                    .range([yMax, yMin]);
+                var cScale = d3.scaleLinear()
+                    .domain([d3.min(dataset.marginal_2d_histogram, function (d) { return d.z; }),
+                             d3.max(dataset.marginal_2d_histogram, function (d) { return d.z; })])
+                    .range(["#8ed08b", "#afaed4"]);
+
+                svg.append("g")
+                  .selectAll("circle")
+                    .data(dataset.marginal_2d_histogram)
+                  .enter().append("circle")
+                    .attr("fill", function(d) { return cScale(d.z); })
+                    .attr("opacity", "0.5")
+                    .attr("r", "4px")
+                    .attr("cx", function(d) { return xScale(d.x); })
+                    .attr("cy", function(d) { return yScale(d.y); })
+
+                svg.append("g")
+                    .attr("transform", "translate(0," + yMax + ")")
+                    .call(d3.axisBottom(xScale));
+
+                svg.append("g")
+                    .attr("transform", "translate(" + xMin + ",0)")
+                    .call(d3.axisLeft(yScale));
+            });
+        })();
+      </script>
 
       <h2>FiLM parameters as task embeddings</h2>
       <figure class="l-body-outset" id="clevr-tsne">
