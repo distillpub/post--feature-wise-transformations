@@ -25,7 +25,7 @@
       affiliations:
       - MILA: https://mila.quebec/en/
       - Rice University: http://www.rice.edu/
-      - Inria SequeL: https://team.inria.fr/sequel/
+      - Univ. of Lille, Inria: https://team.inria.fr/sequel/
       - MILA: https://mila.quebec/en/
       - Element AI: https://element.ai/
       - MILA: https://mila.quebec/en/
@@ -91,7 +91,8 @@
         information to a more abstract and useful representation &mdash; pixel
         values to object classes, audio waveform to text, etc. In practice,
         however, it is frequent that a task requires handling multiple sources
-        of information. It could be that a model is given access to both the
+        of information; this is sometimes referred as multimodal learning. 
+        It could be that a model is given access to both the
         video sequence and the audio waveform of a movie scene and is asked to
         predict what is going on:
       </p>
@@ -825,8 +826,9 @@
         <em>FiLM-ed</em>, through the insertion of <em>FiLM layers</em> in its
         architecture. These are parametrized by some form of conditioning
         information, and the mapping from conditioning information to FiLM
-        parameters is called the <em>FiLM generator</em>. For simplicity, you
-        can assume that the FiLM generator outputs the concatenation of all
+        parameters is called the <em>FiLM generator</em>. 
+        In other words, the FiLM generator is going to predict the parameters of the FiLM layers based on some arbitrary input. 
+        For simplicity, you can assume that the FiLM generator outputs the concatenation of all
         FiLM parameters for the network architecture.
       </p>
       <figure class="l-body-outset" id="film-architecture-diagram">
@@ -918,8 +920,9 @@
       </script>
       <p>
         As the name implies, a FiLM layer applies a feature-wise affine
-        transformation to its input. The parameters of that transformation are
-        also provided as input. By <em>feature-wise</em>, we mean that scaling
+        transformation to its input. 
+        <!-- The parameters of that transformation are also provided as input. ### This sentence is very confusing-->
+        By <em>feature-wise</em>, we mean that scaling
         and shifting are applied element-wise, or in the case of convolutional
         networks, feature map-wise.
         <dt-fn>
@@ -1715,23 +1718,33 @@
       </p>
       
        <p>
-        One can easily be confused between FiLM and classic attention mechanism. 
-        At first sight, they are very similar, and it is even tempting to call FiLM a feature-wise attention mechanism.
-        However, these methods work along different dimensions of the features, and they are conceptually slightly different.  
+        FiLM can easily be mis-classified as an attention mechanism. 
+        These methods work along different dimensions of the features, and they are conceptually slightly different.  
         </p>
        <p> 
-        Attention mechanism uses the spatial/temporal dimension of the input features, it computes a scaling parameter <dt-math>\alpha</dt-math> that differs from one pixel/timestamp to another, but will remain identic from one feature to another.  
-        By doing so, it is assumed that information is correctly distributed according to some spatial and temporal distribution, which is a strong but rightly assumption. 
-        On the other side, FiLM works along the feature dimension, having the scaling and bias parameters identic over the pixel/timestamp of a feature map, but differs from one feature map to another.
-        The underlying FiLM assumption suggest that specific parts of a neural network will be specialized and their relative importance should be conditioned on some context.
+        Given a feature map <dt-math>F_{c,i,j}</dt-math> where <dt-math>c</dt-math> refers to the channel index and <dt-math>i,j</dt-math> are the pixel locations. <!-- (Note the same idea can be applied to recurrent networks or any other input matrices of dimension 3+ ) -->
+        An attention mechanism computes a scaling parameter <dt-math>\alpha</dt-math> that differs from one pixel locations <dt-math>i,j</dt-math> to another, but that remains identic from one feature <dt-math>c</dt-math> to another.  
+        By doing so, it is assumed that information is correctly distributed according to some spatial distribution, which is a strong but rightly assumption.
+        On the other side, FiLM will compute the scaling and bias parameters that are identic over the pixel location <dt-math>i,j</dt-math>, but differs from one feature map <dt-math>c</dt-math> to another.
+        The underlying FiLM assumption suggest that each feature map are specialized on specific tasks, and their relative importance should be conditioned on some context.
         </p>
+        
         <p>
-        Differently, attention is mainly used as a pooling method, reducing the dimension of the feature map to a single vector.
-        This enables to easily plug a MLP, classifier or any kind decoder on top of it, yet, it makes attention mainly a one-shot operation that cannot be natively stacked (even if some stack-attention mechanisms were explored <dt-cite key="yang2016stacked"></dt-cite>).
-        FiLM is shape-invariant, it only modulates the signal without changing the dimension of the input. This naturally enables to stack FiLM layer on top of each other, and still requires a pooling mechanism.
-        Finally, attention often rely on softmax attention while FiLM does not, but this is more some implementation design. 
-         
+			     [TODO] -> add figure. Attention/FiLM over feature map in convnet/rnn        
+		</p>
+        
+        <p>
+        Furthermore, attention is mainly used as a pooling method, reducing the dimension of the feature map to a single vector. For instance, <dt-math>F_{c,i,j}</dt-math> will be pooled as a vector of dimension <dt-math>c</dt-math> after an attention layer.
+        This enables to easily plug a classifier or any kind decoder on top of the attention a layer. This also make attention a one-shot operation that cannot be natively stacked (even if some stack-attention mechanisms were explored <dt-cite key="yang2016stacked"></dt-cite>).
+        FiLM is shape-invariant, it only modulates the signal without changing the dimension of the input. This naturally enables to stack FiLM layer on top of each other, but it still requires a pooling mechanism.
+        Finally, attention often rely on softmax attention while FiLM does not, but this is more some implementation design than anything else.  
+        In the end, FiLM and attention can be seen as two complementary tools in the neural toolbox. 
       </p>
+      
+      <p>
+			     [TODO] -> add figure. Attention/FiLM with output where we can *see* the dimension         
+		</p>
+        
       
       <p>
         Given said that, there actually exists a connection between
@@ -2969,6 +2982,27 @@
         network with task-specific gains and biases, which can be viewed as
         inserting FiLM layers throughout its hierarchy.
       </p>
+      
+      <h2>Convolution prediction</h2>
+      <p>
+        Up to now, the FiLM layer was used on top of the pre-computed features.
+        For instance, an image input is first processed by a convnet and then transformed with a FiLM Layer conditioned on another input.   
+        However, one may directly try to predict the full convnet from the external information; making a step further towards Hypernetworks<dt-cite key="ha2016hypernetworks"></dt-cite>.
+     </p>
+     <p>   
+        For instance, Adaptive CNN (ACNN) <dt-cite key="kang2017incorporating"></dt-cite> predict the convolution layer based on the camera perspective, level of noise etc.
+        The resulting convolution filters turn out to be very effective in difficult vision task such as crowd counting or image deblurring.
+        
+        Differently, predicting a convnet was studied in zero-shot/one-shot learning.
+        For instance, Lei Ba et Al. <dt-cite key="lei2015predicting"></dt-cite> predicts convolutional filters and a classifiers based on textual description for zero-shot image classification. 
+        Junhyuk Oh et Al.  <dt-cite key="oh2017zero"></dt-cite> computes a policy-convolutional network conditioned on the task description.  
+      </p>
+       <p> 
+        Obviously, FiLM layers requires to predict far fewer parameters that predicting a convolutional filters while being more constrained.  
+        However, rigourously benchmarking both approaches is still ongoing work. And both methods may draw inspiration from each others  
+        
+      </p>
+      
       <h2>Self-conditioning</h2>
       <p>
         As we have seen so far, feature-wise transformations can be used as a
@@ -4810,7 +4844,7 @@
         and constructive feedback we received from various people across
         several organizations. We would like to thank Archy de Berker, Pedro
         Oliveira Pinheiro, Alexei Nordell-Markovits, Masha Krol, and Minh Dao
-        from Element AI. We would also like to thank Dzmitry Bahdanau from MILA.
+        from Element AI. We would also like to thank Dzmitry Bahdanau from MILA, Oliver Pietquin from DeepMind and Jérémie Mary from Criteo.
       </p>
     </dt-appendix>
 
@@ -5096,6 +5130,27 @@
 		booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
 		year={2016}
 	  }
+	  
+	  @inproceedings{kang2017incorporating,
+		  title={Incorporating Side Information by Adaptive Convolution},
+		  author={Kang, Di and Dhar, Debarun and Chan, Antoni},
+		  booktitle={Advances in Neural Information Processing Systems},
+		  year={2017}
+		}
+	@inproceedings{lei2015predicting,
+		  title={Predicting deep zero-shot convolutional neural networks using textual descriptions},
+		  author={Lei Ba, Jimmy and Swersky, Kevin and Fidler, Sanja and others},
+		  booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+		  year={2015}
+		}
+
+	@article{oh2017zero,
+	  title={Zero-shot task generalization with multi-task deep reinforcement learning},
+	  author={Oh, Junhyuk and Singh, Satinder and Lee, Honglak and Kohli, Pushmeet},
+	  journal={arXiv preprint arXiv:1706.05064},
+	  year={2017}
+	}
+
     </script>
     <script src="assets/figure_clevr_tsne.js"></script>
   </body>
