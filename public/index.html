@@ -727,14 +727,14 @@
         decoders for every possible class. This is both expensive &mdash; it
         requires as many model replicas as there are classes &mdash; and
         wasteful: in our above example, classes corresponding to different
-        types of dogs (puppy, terrier, dalmatian, etc.) are likely to share a
-        good amount of computation when mapping from the abstract noise vector
-        to the output image. Even worse: imagine that the conditioning
-        information is not a category, but some real-valued quantity (e.g., the
-        dog's height). In that case, we can't reasonably expect to train a
-        separate network for <em>all</em> possible conditioning values! We are
-        therefore looking for more efficient alternatives, preferably involving
-        as much parameter sharing as possible.
+        types of dogs (puppy, terrier, dalmatian, etc.) are likely to share
+        computation when mapping from the abstract noise vector to the output
+        image. Even worse: imagine that the conditioning information is not a
+        category, but some real-valued quantity (e.g., the dog's height). In
+        that case, we can't reasonably expect to train a separate network for
+        <em>all</em> possible conditioning values! We are therefore looking for
+        more efficient alternatives, preferably involving as much parameter
+        sharing as possible.
       </p>
       <p>
         A naive but much more efficient solution to the above problem would be
@@ -1733,13 +1733,13 @@
         devoted to a literature review.
       </p>
       <p>
-        In the interest of not being confusing to readers already familiar with
-        these methods, we chose to stick to the nomenclature used in the
-        original papers, but we do draw connections to the FiLM nomenclature
-        where appropriate. Readers interested in those connections are
-        encouraged to take a closer look at the model diagrams, in which
-        elements relevant to the FiLM nomenclature have been color-coded and
-        can be hovered over to reveal more information:
+        In the interest of not confusing readers already familiar with these
+        methods, we chose to stick to the nomenclature used in the original
+        papers, but we do draw connections to the FiLM nomenclature where
+        appropriate. Readers interested in those connections are encouraged to
+        take a closer look at the model diagrams, in which elements relevant to
+        the FiLM nomenclature have been color-coded and can be hovered over to
+        reveal more information:
       </p>
       <figure class="l-body-outset" id="legend-diagram">
         <svg viewBox="0 0 744 80" xmlns="http://www.w3.org/2000/svg">
@@ -4219,11 +4219,11 @@
       <p>
         The choice of activation function <dt-math>g_k(\cdot)</dt-math> and the
         structure of the weight matrices <dt-math>W_k</dt-math> determines the
-        nature of the transformation: FiLM, gating, or attention. Going
-        backwards from the definition of each computation mechanism, we will now
-        explain how they can be expressed in terms of generalized bilinear
-        transformations. To simplify the discussion, we give the name
-        <em>context vector</em> to the matrix-vector product:
+        nature of the transformation: FiLM, gating, or attention. Starting with
+        the mathematical definition of each computation, we will now explain how
+        they can be expressed in terms of generalized bilinear transformations.
+        To simplify the discussion, we give the name <em>context vector</em> to
+        the matrix-vector product:
 
         <dt-math block>
           \mathbf{v} = g_k(W_k \tilde{\mathbf{z}})
