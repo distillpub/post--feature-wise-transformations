@@ -920,18 +920,18 @@
           spatial locations, in which case it makes sense to apply the same
           affine transformation to all spatial locations.
         </dt-fn>
-        In other words, assuming <dt-math>\mathbf{z}</dt-math>-dependent scaling
-        and shifting vectors <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math>,
+        In other words, assuming <dt-math>\mathbf{x}</dt-math> is a FiLM layer's
+        input and <dt-math>\mathbf{z}</dt-math> is the conditioning information,
+        and assuming <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math> are
+        <dt-math>\mathbf{z}</dt-math>-dependent scaling and shifting vectors,
 
         <dt-math block>
             \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{z}) \odot \mathbf{x}
                                                            + \beta(\mathbf{z}),
         </dt-math>
 
-        where <dt-math>\mathbf{x}</dt-math> is the FiLM layer's input and
-        <dt-math>\mathbf{z}</dt-math> is the conditioning information. You can
-        interact with the following fully-connected and convolutional FiLM
-        layers to get an intuition of the sort of modulation they allow:
+        You can interact with the following fully-connected and convolutional
+        FiLM layers to get an intuition of the sort of modulation they allow:
       </p>
       <figure class="l-body-outset" id="film-diagram">
         <svg viewBox="0 0 744 600" xmlns="http://www.w3.org/2000/svg">
