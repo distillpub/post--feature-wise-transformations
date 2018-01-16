@@ -1875,13 +1875,12 @@
       <p>
         An equivalent &mdash; and more efficient &mdash; way to express this
         operation is in the form of a feature-wise, class-conditional biasing of
-        the output of the layer. To understand why, consider a simple
-        fully-connected linear layer applied to the concatenation of
+        the output of the layer. To understand the equivalence, consider a
+        simple fully-connected linear layer applied to the concatenation of
         <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>.
         <dt-fn>
           The same argument applies to convolutional networks, provided we
-          ignore the border effects due to zero-padding or use an alternative
-          form of padding, like reflection-padding.
+          ignore the border effects due to zero-padding.
         </dt-fn>
       </p>
       <figure class="l-body-outset" id="concatenation-as-biasing">
