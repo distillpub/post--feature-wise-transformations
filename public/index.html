@@ -91,7 +91,7 @@
         information to a more abstract and useful representation &mdash; pixel
         values to object classes, audio waveform to text, etc. In practice,
         however, it is frequent that a task requires handling multiple sources
-        of information; this is sometimes referred as multimodal learning. 
+        of information; this is sometimes referred to multimodal learning. 
         It could be that a model is given access to both the
         video sequence and the audio waveform of a movie scene and is asked to
         predict what is going on:
@@ -1718,36 +1718,31 @@
       </p>
       
        <p>
-        FiLM can easily be mis-classified as an attention mechanism. 
-        These methods work along different dimensions of the features, and they are conceptually slightly different.  
-        </p>
+		FiLM is in some ways related to attention-mechanism, but they operate under two very different mechanisms.
+       </p>
        <p> 
-        Given a feature map <dt-math>F_{c,i,j}</dt-math> where <dt-math>c</dt-math> refers to the channel index and <dt-math>i,j</dt-math> are the pixel locations. <!-- (Note the same idea can be applied to recurrent networks or any other input matrices of dimension 3+ ) -->
-        An attention mechanism computes a scaling parameter <dt-math>\alpha</dt-math> that differs from one pixel locations <dt-math>i,j</dt-math> to another, but that remains identic from one feature <dt-math>c</dt-math> to another.  
-        By doing so, it is assumed that information is correctly distributed according to some spatial distribution, which is a strong but rightly assumption.
-        On the other side, FiLM will compute the scaling and bias parameters that are identic over the pixel location <dt-math>i,j</dt-math>, but differs from one feature map <dt-math>c</dt-math> to another.
-        The underlying FiLM assumption suggest that each feature map are specialized on specific tasks, and their relative importance should be conditioned on some context.
+		First of all, attention works on either the spatial dimension (convnet) or temporal dimension (rnn). 
+		To do so, attention-mehanism computes a scaling parameters <dt-math>\alpha</dt-math> that differs from one pixel to another, or from one timestep to another.
+		Yet, this scaling parameter is constant over the feature-dimension.
+		On the other side, FiLM computes the scaling <dt-math>\gamma</dt-math> and bias <dt-math>\beta</dt-math> independently from the pixel/temporal location.
+		However, those parameters do differ from one feature-map to another.
+		Actually, the underlying intuition beyond spatial/temporal attention, is that some specific locations/timestep contain more useful information than others. 
+		In the case of FiLM, the intuition is that some specific feature maps contain more useful information than others.
         </p>
         
         <p>
-			     [TODO] -> add figure. Attention/FiLM over feature map in convnet/rnn        
-		</p>
-        
-        <p>
-        Furthermore, attention is mainly used as a pooling method, reducing the dimension of the feature map to a single vector. For instance, <dt-math>F_{c,i,j}</dt-math> will be pooled as a vector of dimension <dt-math>c</dt-math> after an attention layer.
-        This enables to easily plug a classifier or any kind decoder on top of the attention a layer. This also make attention a one-shot operation that cannot be natively stacked (even if some stack-attention mechanisms were explored <dt-cite key="yang2016stacked"></dt-cite>).
-        FiLM is shape-invariant, it only modulates the signal without changing the dimension of the input. This naturally enables to stack FiLM layer on top of each other, but it still requires a pooling mechanism.
+        Furthermore, attention is mainly used as a pooling method, reducing the dimension of the feature map to a single vector. 
+        FiLM is shape-invariant, it only modulates the signal without changing the dimension of the input. 
         Finally, attention often rely on softmax attention while FiLM does not, but this is more some implementation design than anything else.  
         In the end, FiLM and attention can be seen as two complementary tools in the neural toolbox. 
       </p>
       
-      <p>
-			     [TODO] -> add figure. Attention/FiLM with output where we can *see* the dimension         
+        <p>
+			     [TODO] -> add figure. 
 		</p>
-        
-      
+
       <p>
-        Given said that, there actually exists a connection between
+        Having said that, there exists a connection between
         attention, gating, FiLM, and mixture-of-experts models through bilinear
         transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
         Because this connection deserves more than a single paragraph, we
@@ -3000,8 +2995,7 @@
        <p> 
         Obviously, FiLM layers requires to predict far fewer parameters that predicting a convolutional filters while being more constrained.  
         However, rigourously benchmarking both approaches is still ongoing work. And both methods may draw inspiration from each others  
-        
-      </p>
+		</p>
       
       <h2>Self-conditioning</h2>
       <p>
@@ -5144,10 +5138,10 @@
 		  year={2015}
 		}
 
-	@article{oh2017zero,
+	@inproceedings{oh2017zero,
 	  title={Zero-shot task generalization with multi-task deep reinforcement learning},
 	  author={Oh, Junhyuk and Singh, Satinder and Lee, Honglak and Kohli, Pushmeet},
-	  journal={arXiv preprint arXiv:1706.05064},
+	  booktitle={Proceedings of the International Conference on Machine Learning},
 	  year={2017}
 	}
 
