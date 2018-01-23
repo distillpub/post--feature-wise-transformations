@@ -1698,6 +1698,27 @@
         of the parameter values in the primary network. From that perspective,
         the FiLM generator can be viewed as a specialized instance of a
         HyperNetwork which predicts the FiLM parameters of the FiLM-ed network.
+        In fact, there exists a spectrum of methods ranging from FiLM &mdash;
+        which predicts a tiny subset of a network's parameters &mdash; to
+        HyperNetworks &mdash; which predicts all network parameters. For
+        instance, Adaptive CNN (ACNN) <dt-cite key="kang2017incorporating"></dt-cite>
+        predicts the value of several of the model's convolution filters as a
+        function of auxiliary inputs like camera perspective, level of noise,
+        etc. The resulting convolution filters turn out to be very effective in
+        difficult vision tasks such as crowd counting or image deblurring.
+        In the zero-shot/one-shot learning setting, the model proposed by
+        Ba et al.  <dt-cite key="lei2015predicting"></dt-cite> predicts
+        convolutional filters and classifiers weights based on textual
+        descriptions of object classes. In a reinforcement learning setting,
+        the model proposed by Oh et al. <dt-cite key="oh2017zero"></dt-cite>
+        computes the parameters of a policy-convolutional network conditioned
+        on the task description.
+      </p>
+      <p>
+        FiLM layers require predicting far fewer parameters than the above
+        approaches, but is less flexible in its ability to modulate the model's
+        computation. The ideal trade-off between flexibility and computational
+        complexity is still an ongoing area of investigation.
       </p>
       <p>
         FiLM is closely related to gating: the latter can be viewed as a
@@ -2965,25 +2986,6 @@
         network with task-specific gains and biases, which can be viewed as
         inserting FiLM layers throughout its hierarchy.
       </p>
-      
-      <h2>Convolution prediction</h2>
-      <p>
-        Up to now, the FiLM layer was used on top of the pre-computed features.
-        For instance, an image input is first processed by a convnet and then transformed with a FiLM Layer conditioned on another input.   
-        However, one may directly try to predict the full convnet from the external information; making a step further towards Hypernetworks<dt-cite key="ha2016hypernetworks"></dt-cite>.
-     </p>
-     <p>   
-        For instance, Adaptive CNN (ACNN) <dt-cite key="kang2017incorporating"></dt-cite> predict the convolution layer based on the camera perspective, level of noise etc.
-        The resulting convolution filters turn out to be very effective in difficult vision task such as crowd counting or image deblurring.
-        
-        Differently, predicting a convnet was studied in zero-shot/one-shot learning.
-        For instance, Lei Ba et Al. <dt-cite key="lei2015predicting"></dt-cite> predicts convolutional filters and a classifiers based on textual description for zero-shot image classification. 
-        Junhyuk Oh et Al.  <dt-cite key="oh2017zero"></dt-cite> computes a policy-convolutional network conditioned on the task description.  
-      </p>
-       <p> 
-        Obviously, FiLM layers requires to predict far fewer parameters that predicting a convolutional filters while being more constrained.  
-        However, rigourously benchmarking both approaches is still ongoing work. And both methods may draw inspiration from each others  
-		</p>
       
       <h2>Self-conditioning</h2>
       <p>
@@ -5343,24 +5345,28 @@
 		    booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
 		    year={2016}
 	    } 
-	    @inproceedings{kang2017incorporating,
-		    title={Incorporating Side Information by Adaptive Convolution},
-		    author={Kang, Di and Dhar, Debarun and Chan, Antoni},
-		    booktitle={Advances in Neural Information Processing Systems},
-		    year={2017}
-		  }
-	    @inproceedings{lei2015predicting,
-		    title={Predicting deep zero-shot convolutional neural networks using textual descriptions},
-		    author={Lei Ba, Jimmy and Swersky, Kevin and Fidler, Sanja and others},
-		    booktitle={Proceedings of the IEEE International Conference on Computer Vision},
-		    year={2015}
-		  }
-	    @inproceedings{oh2017zero,
-	      title={Zero-shot task generalization with multi-task deep reinforcement learning},
-	      author={Oh, Junhyuk and Singh, Satinder and Lee, Honglak and Kohli, Pushmeet},
-	      booktitle={Proceedings of the International Conference on Machine Learning},
-	      year={2017}
-	    }
+      @inproceedings{kang2017incorporating,
+        title={Incorporating Side Information by Adaptive Convolution},
+        author={Kang, Di and Dhar, Debarun and Chan, Antoni},
+        booktitle={Advances in Neural Information Processing Systems},
+        year={2017},
+        url={https://papers.nips.cc/paper/6976-incorporating-side-information-by-adaptive-convolution.pdf}
+      }
+      @inproceedings{lei2015predicting,
+        title={Predicting deep zero-shot convolutional neural networks using textual descriptions},
+        author={Ba, Jimmy and Swersky, Kevin and Fidler, Sanja and Salakhutdinov, Ruslan},
+        booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+        pages={4247--4255},
+        year={2015},
+        url={https://arxiv.org/pdf/1506.00511.pdf}
+      }
+      @inproceedings{oh2017zero,
+        title={Zero-shot task generalization with multi-task deep reinforcement learning},
+        author={Oh, Junhyuk and Singh, Satinder and Lee, Honglak and Kohli, Pushmeet},
+        booktitle={Proceedings of the International Conference on Machine Learning},
+        year={2017},
+        url={https://arxiv.org/pdf/1706.05064.pdf}
+      }
       @inproceedings{goodfellow2014generative,
         author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
         title={Generative Adversarial Nets},
