@@ -1706,8 +1706,11 @@
         function of auxiliary inputs like camera perspective, level of noise,
         etc. The resulting convolution filters turn out to be very effective in
         difficult vision tasks such as crowd counting or image deblurring.
-        In the zero-shot/one-shot learning setting, the model proposed by
-        Ba et al.  <dt-cite key="lei2015predicting"></dt-cite> predicts
+        Residual Adapters <dt-cite key="rebuffi2017residualadapters"></dt-cite>
+        also propose to predict entire convolutional filters conditioned on
+        the visual recognition domain they are operating in. In the
+        zero-shot/one-shot learning setting, the model proposed by Ba et al.
+        <dt-cite key="lei2015predicting"></dt-cite> predicts
         convolutional filters and classifiers weights based on textual
         descriptions of object classes. In a reinforcement learning setting,
         the model proposed by Oh et al. <dt-cite key="oh2017zero"></dt-cite>
@@ -3906,7 +3909,7 @@
       <p>
         As previously hinted at, there exists a strong connection between FiLM,
         gating, attention, and mixture-of-experts models through bilinear
-        transformations <dt-cite key="tenenbaum2000separating"></dt-cite>. In
+        transformations <dt-cite key="tenenbaum2000separating,fukui2016compactbilinear"></dt-cite>. In
         fact, all four approaches can be formalized using an extension of
         bilinear transformations which we propose to call <em>generalized
         bilinear transformations</em>.
@@ -5089,7 +5092,7 @@
         url={https://arxiv.org/pdf/1707.03017.pdf},
       }
       @inproceedings{perez2017film,
-        author={Perez, Ethan and and Strub, Florian de Vries, Harm and Dumoulin,
+        author={Perez, Ethan and and Strub, Florian and de Vries, Harm and Dumoulin,
                 Vincent and Courville, Aaron},
         title={FiLM: Visual Reasoning with a General Conditioning Layer},
         booktitle={arXiv},
@@ -5373,6 +5376,24 @@
         booktitle={Advances in Neural Information Processing Systems},
         year={2014},
         url={https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf},
+      }
+      @incollection{rebuffi2017residualadapters,
+        title = {Learning multiple visual domains with residual adapters},
+        author = {Rebuffi, Sylvestre-Alvise and Bilen, Hakan and Vedaldi, Andrea},
+        booktitle = {Advances in Neural Information Processing Systems 30},
+        editor = {I. Guyon and U. V. Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+        pages = {506--516},
+        year = {2017},
+        publisher = {Curran Associates, Inc.},
+        url = {http://papers.nips.cc/paper/6654-learning-multiple-visual-domains-with-residual-adapters.pdf}
+      }
+      @inproceedings{fukui2016compactbilinear,
+        title = {Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding},
+        booktitle = {Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+        year = {2016},
+        address = {Austin, Texas, USA},
+        attachments = {https://www.d2.mpi-inf.mpg.de/sites/default/files/multimodal-compact-bilinear.pdf},
+        author = {Akira Fukui and Dong Huk Park and Daylen Yang and Anna Rohrbach and Trevor Darrell and Rohrbach, Marcus}
       }
     </script>
   </body>
