@@ -824,92 +824,99 @@
         FiLM parameters for the network architecture.
       </p>
       <figure class="l-body-outset" id="film-architecture-diagram">
-        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(479, 38)">
-            <g class="filmed-network">
-              <rect width="260" height="416" class="figure-group figure-box figure-filmed-network"/>
-              <text x="8" y="18" class="figure-text">FiLM-ed network</text>
+        <svg viewBox="0 0 744 510" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="20" class="figure-text">
+            <tspan>
+              The <tspan style="font-weight: bold;">FiLM generator</tspan>
+              processes the conditioning information
+            </tspan>
+            <tspan x="0" dy="1.5em">
+              and produces parameters that describe how the target network
+            </tspan>
+            <tspan x="0" dy="1.5em">
+              should alter its computation.
+            </tspan>
+          </text>
+          <path d="M460,10l0,480" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
+          <text x="490" y="20" class="figure-text">
+            <tspan>
+              The <tspan style="font-weight: bold;">FiLM-ed network</tspan>'s
+              computation is
+            </tspan>
+            <tspan x="490" dy="1.5em">
+              conditioned by two FiLM layers.
+            </tspan>
+          </text>
+          <g transform="translate(0, 40)">
+            <g transform="translate(480, 40)">
+              <g class="figure-transparent">
+                <text x="150" y="425" class="figure-text">input</text>
+                <path d="M130,399l0,30" class="figure-line"/>
+                <use x="130" y="399" xlink:href="#arrow-up" class="figure-path"/>
+              </g>
+              <g transform="translate(20, 337)" class="figure-transparent">
+                <rect width="222" height="62" class="figure-group figure-box"/>
+                <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
+              </g>
+              <g class="figure-transparent">
+                <path d="M130,313l0,24" class="figure-line"/>
+                <use x="130" y="313" xlink:href="#arrow-up" class="figure-path"/>
+              </g>
+              <g transform="translate(20, 268)" class="film-layer">
+                <rect width="222" height="45" class="figure-group figure-box"/>
+                <text x="111" y="22" dy="0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">FiLM</text>
+              </g>
+              <g>
+                <path d="M130,244l0,24" class="figure-line"/>
+                <use x="130" y="244" xlink:href="#arrow-up" class="figure-path"/>
+              </g>
+              <g transform="translate(20, 182)" class="figure-transparent">
+                <rect width="222" height="62" class="figure-group figure-box"/>
+                <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
+              </g>
+              <g class="figure-transparent">
+                <path d="M130,157l0,24" class="figure-line"/>
+                <use x="130" y="157" xlink:href="#arrow-up" class="figure-path"/>
+              </g>
+              <g transform="translate(20, 112)" class="film-layer">
+                <rect width="222" height="45" class="figure-group figure-box"/>
+                <text x="111" y="22" dy="0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">FiLM</text>
+              </g>
+              <g>
+                <path d="M130,88l0,24" class="figure-line"/>
+                <use x="130" y="88" xlink:href="#arrow-up" class="figure-path"/>
+              </g>
+              <g transform="translate(20, 26)" class="figure-transparent">
+                <rect width="222" height="62" class="figure-group figure-box"/>
+                <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
+              </g>
+              <g class="figure-transparent">
+                <path d="M130,-15l0,41" class="figure-line"/>
+                <use x="130" y="-15" xlink:href="#arrow-up" class="figure-path"/>
+                <text x="150" y="0" class="figure-text">output</text>
+              </g>
             </g>
-            <text x="130" y="442" style="text-anchor: middle;" class="figure-text">input</text>
-            <path d="M130,399l0,30" class="figure-line"/>
-            <use x="130" y="399" xlink:href="#arrow-up"/>
-            <g transform="translate(20, 337)">
-              <rect width="222" height="62" class="figure-element figure-box"/>
-              <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
+            <g transform="translate(0, 190)">
+              <path d="M0,0l135,0" class="figure-line"/>
+              <use x="135" y="0" xlink:href="#arrow-right" class="figure-path"/>
+              <text x="0" y="0" dy="-0.8em" class="figure-text">conditioning</text>
             </g>
-            <path d="M130,313l0,24" class="figure-line"/>
-            <use x="130" y="313" xlink:href="#arrow-up"/>
-            <g transform="translate(20, 268)" class="film-layer">
-              <rect width="222" height="45" class="figure-element figure-box figure-film-layer"/>
-              <text x="111" y="22" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
+            <g transform="translate(135, 140)" class="film-generator">
+              <rect width="180" height="100" class="figure-group figure-box"/>
+              <text x="90" y="50" dy="0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">FiLM generator</text>
             </g>
-            <path d="M130,244l0,24" class="figure-line"/>
-            <use x="130" y="244" xlink:href="#arrow-up"/>
-            <g transform="translate(20, 182)">
-              <rect width="222" height="62" class="figure-element figure-box"/>
-              <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
+            <g>
+              <path d="M315,175l185,0" class="figure-line"/>
+              <use x="500" y="175" xlink:href="#arrow-right" class="figure-path"/>
+              <text x="335" y="175" dy="-0.8em" class="figure-text">FiLM parameters</text>
             </g>
-            <path d="M130,157l0,24" class="figure-line"/>
-            <use x="130" y="157" xlink:href="#arrow-up"/>
-            <g transform="translate(20, 112)" class="film-layer">
-              <rect width="222" height="45" class="figure-element figure-box figure-film-layer"/>
-              <text x="111" y="22" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
+            <g>
+              <path d="M315,200l79,0a6,6,0,0,1,6,6l0,118a6,6,0,0,0,6,6l94,0" class="figure-line"/>
+              <use x="500" y="330" xlink:href="#arrow-right" class="figure-path"/>
             </g>
-            <path d="M130,88l0,24" class="figure-line"/>
-            <use x="130" y="88" xlink:href="#arrow-up"/>
-            <g transform="translate(20, 26)">
-              <rect width="222" height="62" class="figure-element figure-box"/>
-              <text x="111" y="31" dy="0.4em" style="text-anchor: middle;" class="figure-text">sub-network</text>
-            </g>
-            <path d="M130,-15l0,41" class="figure-line"/>
-            <use x="130" y="-15" xlink:href="#arrow-up"/>
-            <text x="130" y="-22" style="text-anchor: middle;" class="figure-text">output</text>
           </g>
-          <text x="5" y="255" class="figure-text">conditioning</text>
-          <path d="M81,250l53,0" class="figure-line"/>
-          <use x="134" y="250" xlink:href="#arrow-right" class="figure-path"/>
-          <g transform="translate(135, 101)" class="film-generator">
-            <rect width="180" height="300" class="figure-group figure-box figure-film-generator"/>
-            <text x="90" y="150" style="text-anchor: middle;" class="figure-text">FiLM generator</text>
-          </g>
-          <path d="M314,250l58,0" class="figure-line"/>
-          <use x="372" y="250" xlink:href="#arrow-right" class="figure-path"/>
-          <g>
-            <rect x="493" y="105" width="48" height="328" class="figure-group figure-box" transform="translate(-121, -21)"/>
-            <g transform="translate(382, 100)">
-              <rect width="30" height="140" class="figure-element figure-box"/>
-              <text x="15" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text" transform="rotate(-90, 15, 70)">FiLM parameters</text>
-            </g>
-            <g transform="translate(382, 260)">
-              <rect width="30" height="140" class="figure-element figure-box"/>
-              <text x="15" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text" transform="rotate(-90, 15, 70)">FiLM parameters</text>
-            </g>
-          </g>
-          <path d="M412,173l86,0" class="figure-line"/>
-          <use x="498" y="173" xlink:href="#arrow-right" class="figure-path"/>
-          <path d="M412,328l86,0" class="figure-line"/>
-          <use x="498" y="328" xlink:href="#arrow-right" class="figure-path"/>
         </svg>
-        <figcaption>
-          In this example, a network is FiLM-ed by inserting two FiLM layers in
-          its architecture. The FiLM parameters are computed using the FiLM
-          generator, which processes the conditioning information.
-        </figcaption>
       </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#film-architecture-diagram > svg");
-            svg.selectAll("g.film-generator")
-                .on("mouseenter", function () { svg.select("rect.figure-film-generator").style("fill", "#ef9a9a"); })
-                .on("mouseleave", function () { svg.select("rect.figure-film-generator").style("fill", null); });
-            svg.selectAll("g.film-layer")
-                .on("mouseenter", function () { svg.selectAll("rect.figure-film-layer").style("fill", "#ffcc80"); })
-                .on("mouseleave", function () { svg.selectAll("rect.figure-film-layer").style("fill", null); });
-            svg.selectAll("g.filmed-network")
-                .on("mouseenter", function () { svg.select("rect.figure-filmed-network").style("fill", "#90caf9"); })
-                .on("mouseleave", function () { svg.select("rect.figure-filmed-network").style("fill", null); });
-        })();
-      </script>
       <p>
         As the name implies, a FiLM layer applies a feature-wise affine
         transformation to its input. 

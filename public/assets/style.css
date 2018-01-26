@@ -1,15 +1,3 @@
-dt-article {
-  counter-reset: figures;
-}
-
-dt-article figure {
-  counter-increment: figures;
-}
-
-dt-article figure figcaption::before {
-  content: 'Figure ' counter(figures) ': ';
-}
-
 .figure-element, .figure-line, .figure-path {
   stroke: #666;
   stroke-miterlimit: 10px;
@@ -32,6 +20,14 @@ dt-article figure figcaption::before {
 
 .figure-group {
   fill: #eeeeee;
+  stroke: #666;
+  stroke-width: 1.5px;
+  stroke-opacity: 0.6;
+  stroke-miterlimit: 10px;
+}
+
+.figure-transparent {
+  opacity: 0.6;
 }
 
 .figure-faded {
