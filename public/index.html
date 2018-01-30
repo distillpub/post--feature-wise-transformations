@@ -1864,9 +1864,39 @@
         </dt-fn>
       </p>
       <figure class="l-body-outset" id="concatenation-as-biasing">
-        <svg viewBox="0 0 744 370" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" height="350" width="724" class="figure-group figure-box"/>
-          <g transform="translate(60, 20)">
+        <svg viewBox="0 0 744 410" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="20" class="figure-text">
+            <tspan>
+              Concatenation-based conditioning
+            </tspan>
+            <tspan x="0" dy="1.5em">
+              is equivalent to <tspan style="font-weight: bold;">conditional biasing</tspan>.
+            </tspan>
+          </text>
+          <text x="260" y="20" class="figure-text">
+            <tspan>
+              We can decompose the matrix-vector
+            </tspan>
+            <tspan x="260" dy="1.5em">
+              into two matrix-vector subproducts.
+            </tspan>
+          </text>
+          <text x="520" y="20" class="figure-text">
+            <tspan>
+              The resulting two vectors are added
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              together to produce the output. The
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              <tspan style="font-weight: bold;">z</tspan>-dependent vector can
+              be thought of
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              as a conditional bias.
+            </tspan>
+          </text>
+          <g transform="translate(60, 60)">
             <g transform="translate(10, 100)">
               <g>
                 <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
@@ -1994,10 +2024,6 @@
             <use xlink:href="#arrow-right" transform="translate(595, 160)" class="figure-path"/>
           </g>
         </svg>
-        <figcaption>
-          Concatenation can be viewed as conditional biasing by expressing the
-          matrix-vector product as a two-stage process.
-        </figcaption>
       </figure>
       <p>
         Each vector product between <dt-math>\mathbf{z}</dt-math> and its
