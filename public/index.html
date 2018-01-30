@@ -1732,38 +1732,44 @@
         with a ReLU nonlinearity). The impact of these additional capabilities
         is still an open area of investigation.
       </p>
-      
-       <p>
-		FiLM is in some ways related to attention-mechanism, but they operate under two very different mechanisms.
-       </p>
-       <p> 
-		First of all, attention works on either the spatial dimension (convnet) or temporal dimension (rnn). 
-		To do so, attention-mehanism computes a scaling parameters <dt-math>\alpha</dt-math> that differs from one pixel to another, or from one timestep to another.
-		Yet, this scaling parameter is constant over the feature-dimension.
-		On the other side, FiLM computes the scaling <dt-math>\gamma</dt-math> and bias <dt-math>\beta</dt-math> independently from the pixel/temporal location.
-		However, those parameters do differ from one feature-map to another.
-		Actually, the underlying intuition beyond spatial/temporal attention, is that some specific locations/timestep contain more useful information than others. 
-		In the case of FiLM, the intuition is that some specific feature maps contain more useful information than others.
-        </p>
-        
-        <p>
-        Furthermore, attention is mainly used as a pooling method, reducing the dimension of the feature map to a single vector. 
-        FiLM is shape-invariant, it only modulates the signal without changing the dimension of the input. 
-        Finally, attention often rely on softmax attention while FiLM does not, but this is more some implementation design than anything else.  
-        In the end, FiLM and attention can be seen as two complementary tools in the neural toolbox. 
-      </p>
-      
-        <p>
-			     [TODO] -> add figure. 
-		</p>
-
       <p>
-        Having said that, there exists a connection between
-        attention, gating, FiLM, and mixture-of-experts models through bilinear
-        transformations <dt-cite key="tenenbaum2000separating"></dt-cite>.
-        Because this connection deserves more than a single paragraph, we
-        decided to devote a <a href="#bilinear-connection">separate section</a>
-        of the article to it.
+        Some parallels can be drawn between FiLM and attention, but the two
+        operate in different ways which we think are important to disambiguate.
+        Attention is applied to either the spatial axes (in the case of
+        convolutional neural networks) or the temporal axis (in the case of
+        recurrent neural networks) of the data. In other words, the
+        <em>attention distribution</em> (be it location-based or content-based)
+        is the same across the different feature maps of a convolutional input
+        or across the different features of a sequence of feature vectors. In
+        contrast, FiLM is applied to the feature axis; this means that the same
+        affine transformation is applied to all spatial locations in a given
+        feature map or to the value of a given feature at all time steps. This
+        difference stems from two different intuitions underlying attention and
+        FiLM: for attention, it is assumed that the useful information is
+        contained in specific spatial locations or time steps, whereas for
+        FiLM, it is assumed that the useful information is contained in
+        specific features or feature maps.
+      </p>
+      <p>
+        Furthermore, attention is mainly used as a pooling method to summarize
+        a stack of feature maps or a sequence of feature vectors into a single
+        vector. FiLM, on the other hand, modulates its input without changing
+        its underlying shape. We also note that the weighted sum computed by an
+        attention mechanism is often normalized using a softmax on the weights
+        such that they sum up to one, whereas FiLM does not usually implement
+        this sort of constraint, but this is more of an implementation detail
+        than anything else. In the end, FiLM and attention can be seen as two
+        complementary tools in the neural toolbox.
+      </p>
+      <p>
+        <span class="todo">TODO: add figure.</span>
+      </p>
+      <p>
+        Finally, there exists a connection between attention, gating, FiLM, and
+        mixture-of-experts models through bilinear transformations <dt-cite
+        key="tenenbaum2000separating"></dt-cite>.  Because this connection
+        deserves more than a single paragraph, we decided to devote a
+        <a href="#bilinear-connection">separate section</a> of the article to it.
       </p>
 
       <hr />
