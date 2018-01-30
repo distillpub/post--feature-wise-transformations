@@ -944,11 +944,43 @@
         FiLM layers to get an intuition of the sort of modulation they allow:
       </p>
       <figure class="l-body-outset" id="film-diagram">
-        <svg viewBox="0 0 744 600" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(10, 50)" id="mlp-figure">
-            <rect y="73" width="290" height="342" class="figure-group figure-box figure-film-layer"/>
-            <text x="10" y="402" class="figure-text">FiLM layer (fully-connected)</text>
-            <g transform="translate(147, 440)" id="input-layer">
+        <svg viewBox="0 0 744 655" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(20, 120)" id="mlp-figure">
+            <text x="130" y="-110" class="figure-text">
+              <tspan>
+                In a <tspan style="font-weight: bold;">fully-connected</tspan>
+                FiLM layer, a different
+              </tspan>
+              <tspan x="130" dy="1.5em">
+                affine transformation is applied to each feature.
+              </tspan>
+            </text>
+            <text x="-10" y="60" class="figure-text">
+              <tspan>
+                First, each feature (or channel)
+              </tspan>
+              <tspan x="-10" dy="1.5em">
+                is scaled by the corresponding
+              </tspan>
+              <tspan x="-10" dy="1.5em">
+                <tspan style="font-family: serif; font-weight: bold;">γ</tspan>
+                parameter.
+              </tspan>
+            </text>
+            <text x="-10" y="275" class="figure-text">
+              <tspan>
+                Next, each feature (or channel)
+              </tspan>
+              <tspan x="-10" dy="1.5em">
+                is shifted by the corresponding
+              </tspan>
+              <tspan x="-10" dy="1.5em">
+                <tspan style="font-family: serif; font-weight: bold;">β</tspan>
+                parameter.
+              </tspan>
+            </text>
+            <rect x="170" y="70" width="160" height="340" class="figure-group figure-box"/>
+            <g transform="translate(190, 10)" id="input-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -965,9 +997,9 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <line x1="207" y1="440" x2="207" y2="373" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(207, 373)" class="figure-path"/>
-            <g transform="translate(27, 332)" id="gamma">
+            <line x1="250" y1="50" x2="250" y2="117.5" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(250, 117.5)" class="figure-path"/>
+            <g transform="translate(0, 117.5)" id="gamma">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -984,16 +1016,16 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="59" y="325" class="figure-text" style="font-family: serif;" transform="translate(-49, 18)">γ</text>
-            <line x1="147" y1="353" x2="187" y2="353" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(187, 353)" class="figure-path"/>
-            <g transform="translate(207, 352)">
+            <text x="140" y="137.5" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">γ</text>
+            <line x1="120" y1="137.5" x2="230" y2="137.5" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(230, 137.5)" class="figure-path"/>
+            <g transform="translate(250, 137.5)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <line x1="207" y1="333" x2="207" y2="265" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(207, 265)" class="figure-path"/>
-            <g transform="translate(147, 225)" id="scaled-layer">
+            <line x1="250" y1="157.5" x2="250" y2="225" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(250, 225)" class="figure-path"/>
+            <g transform="translate(190, 225)" id="scaled-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1010,9 +1042,9 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <line x1="207" y1="225" x2="207" y2="158" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(207, 158)" class="figure-path"/>
-            <g transform="translate(27, 118)" id="beta">
+            <line x1="250" y1="265" x2="250" y2="332.5" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(250, 332.5)" class="figure-path"/>
+            <g transform="translate(0, 332.5)" id="beta">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1029,17 +1061,17 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="10" y="128" style="font-family: serif;" class="figure-text">β</text>
-            <line x1="147" y1="138" x2="187" y2="138" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(187, 138)" class="figure-path"/>
-            <g transform="translate(207, 137)">
+            <text x="140" y="352.5" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">β</text>
+            <line x1="120" y1="352.5" x2="230" y2="352.5" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(230, 352.5)" class="figure-path"/>
+            <g transform="translate(250, 352.5)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <line x1="0" y1="7.5" x2="0" y2="-7.5" class="figure-line"/>
               <line x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
             </g>
-            <line x1="207" y1="118" x2="207" y2="50" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(207, 50)" class="figure-path"/>
-            <g transform="translate(147, 10)" id="shifted-layer">
+            <line x1="250" y1="372.5" x2="250" y2="440" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(250, 440)" class="figure-path"/>
+            <g transform="translate(190, 440)" id="shifted-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1056,15 +1088,22 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <line x1="-10" y1="138" x2="27" y2="138" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(27, 138)" class="figure-path"/>
-            <line x1="-10" y1="353" x2="27" y2="353" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(27, 353)" class="figure-path"/>
           </g>
-          <g transform="translate(377, 60)" id="cnn-figure">
-            <rect x="47" y="63" width="310" height="342" class="figure-group figure-box figure-film-layer"/>
-            <text x="57" y="392" class="figure-text">FiLM layer (convolutional)</text>
-            <g transform="translate(239, 470)" id="input-layer">
+          <g transform="translate(377, 120)" id="cnn-figure">
+            <text x="120" y="-110" class="figure-text">
+              <tspan>
+                In a <tspan style="font-weight: bold;">convolutional</tspan>
+                FiLM layer, a consistent
+              </tspan>
+              <tspan x="120" dy="1.5em">
+                affine transformation is applied to each
+              </tspan>
+              <tspan x="120" dy="1.5em">
+                channel.
+              </tspan>
+            </text>
+            <rect x="170" y="70" width="180" height="340" class="figure-group figure-box"/>
+            <g transform="translate(239, -5)" id="input-layer">
               <g>
                 <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
                   <use xlink:href="#convolutional-feature" class="figure-element"/>
@@ -1207,34 +1246,17 @@
                 </g>
               </g>
             </g>
-            <line x1="262" y1="420" x2="262" y2="363" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(262, 363)" class="figure-path"/>
-            <g transform="translate(74, 322)" id="gamma">
-              <g transform="translate(0, 0)" class="feature">
-                <use xlink:href="#big-row-left" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-              <g transform="translate(40, 0)" class="feature">
-                <use xlink:href="#big-row-middle" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-              <g transform="translate(80, 0)" class="feature">
-                <use xlink:href="#big-row-right" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-            </g>
-            <text x="59" y="325" class="figure-text" style="font-family: serif;" transform="translate(-2, 8)">γ</text>
-            <line x1="194" y1="343" x2="242" y2="343" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(242, 343)" class="figure-path"/>
-            <g transform="translate(262, 342)">
+            <line x1="262" y1="50" x2="262" y2="107" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(262, 107)" class="figure-path"/>
+            <text x="140" y="127" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">γ</text>
+            <path d="M60,107Q70,127,242,127" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(242, 127)" class="figure-path"/>
+            <g transform="translate(262, 127)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <line x1="262" y1="323" x2="262" y2="286" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(262, 286)" class="figure-path"/>
+            <line x1="262" y1="148" x2="262" y2="181" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(262, 181)" class="figure-path"/>
             <g transform="translate(239, 231)" id="scaled-layer">
               <g>
                 <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
@@ -1378,36 +1400,19 @@
                 </g>
               </g>
             </g>
-            <line x1="262" y1="181" x2="262" y2="148" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(262, 148)" class="figure-path"/>
-            <g transform="translate(74, 107)" id="beta">
-              <g transform="translate(0, 0)" class="feature">
-                <use xlink:href="#big-row-left" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-              <g transform="translate(40, 0)" class="feature">
-                <use xlink:href="#big-row-middle" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-              <g transform="translate(80, 0)" class="feature">
-                <use xlink:href="#big-row-right" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-            </g>
-            <text x="57" y="118" style="font-family: serif;" class="figure-text">β</text>
-            <line x1="194" y1="128" x2="242" y2="128" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(242, 128)" class="figure-path"/>
-            <g transform="translate(262, 127)">
+            <text x="140" y="342" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">β</text>
+            <path d="M60,322Q70,342,242,342" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(242, 342)" class="figure-path"/>
+            <line x1="262" y1="286" x2="262" y2="322" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(262, 322)" class="figure-path"/>
+            <g transform="translate(262, 342)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <line x1="0" y1="7.5" x2="0" y2="-7.5" class="figure-line"/>
               <line x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
             </g>
-            <line x1="262" y1="108" x2="262" y2="50" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(262, 50)" class="figure-path"/>
-            <g transform="translate(239, -5)" id="shifted-layer">
+            <line x1="262" y1="362" x2="262" y2="425" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(262, 425)" class="figure-path"/>
+            <g transform="translate(239, 480)" id="shifted-layer">
               <g>
                 <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
                   <use xlink:href="#convolutional-feature" class="figure-element"/>
@@ -1550,153 +1555,110 @@
                 </g>
               </g>
             </g>
-            <line x1="34" y1="128" x2="74" y2="128" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(74, 128)" class="figure-path"/>
-            <line x1="34" y1="343" x2="74" y2="343" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(74, 343)" class="figure-path"/>
           </g>
         </svg>
-        <figcaption>
-          FiLM layers applied on a fully-connected input (left) and on a
-          convolutional input (right). In both cases, the scaling and shifting
-          vectors <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math> are
-          passed as input and are computed by the FiLM generator. Try
-          interacting with the <dt-math>\gamma</dt-math> and
-          <dt-math>\beta</dt-math> values by hovering over their corresponding
-          diagram elements and observe the resulting change in the output.
-        </figcaption>
       </figure>
       <script>
         (function() {
-            (function() {
-                var svg = d3.select("#film-diagram > svg");
-                var features = [0.9, -0.5, -0.8];
-                var gammas = [-1.6, 0.8, 1.8];
-                var betas = [1.0, 0.5, -0.5];
-                var data = [];
+            var svg = d3.select("#film-diagram > svg");
+            var features = [0.9, -0.5, -0.8];
+            var featureMaps = [
+                [[-0.6, -0.6,  0.8], [ 0.6,  0.7,  0.4], [-0.8,  0.8,  0.9]],
+                [[ 0.9, -0.1,  0.5], [-0.8, -0.7,  0.5], [-0.3, -0.9, -0.2]],
+                [[-0.5, -0.9,  0.6], [-0.2, -0.4,  0.2], [-0.6,  0.1, -0.3]]
+            ];
+            var gammas = [-1.6, 0.8, 1.8];
+            var betas = [1.0, 0.5, -0.5];
+            var data = [];
+            for (var i = 0; i < 3; i++) {
+                data.push({feature: features[i], featureMap: [], gamma: gammas[i], beta: betas[i]});
+            }
+            var convData = [];
+            for (var k = 0; k < 3; k++) {
                 for (var i = 0; i < 3; i++) {
-                    data.push({feature: features[i], gamma: gammas[i], beta: betas[i]});
-                }
-                var amplitudeScale = d3.scaleSqrt().domain([0.0, 2.0]).range([0.0, 0.8]).clamp(true);
-                var mouseScale = d3.scaleLinear().domain([0.0, 40.0]).range([2.0, -2.0]).clamp(true);
-                svg.select("g#mlp-figure g#input-layer").selectAll("g.feature").data(data);
-                svg.select("g#mlp-figure g#gamma").selectAll("g.feature").data(data);
-                svg.select("g#mlp-figure g#beta").selectAll("g.feature").data(data);
-                svg.select("g#mlp-figure g#scaled-layer").selectAll("g.feature").data(data);
-                svg.select("g#mlp-figure g#shifted-layer").selectAll("g.feature").data(data);
-
-                function updateSingle(selection, accessor) {
-                    selection.selectAll("g.feature").each(function (d, i) {
-                        var r = accessor(d);
-                        var s = Math.sign(r) * amplitudeScale(Math.abs(r));
-                        d3.select(this)
-                          .select(".vector-patch")
-                            .attr("opacity", Math.abs(s))
-                            .attr("href", r < 0 ? "#vector-patch-negative" : "#vector-patch-positive");
-                        d3.select(this)
-                          .select(".figure-line")
-                            .attr("transform", "matrix(" + [s, 0, 0, s, 20, 20] + ")");
-                    });
-                }
-
-                function update() {
-                    updateSingle(svg.select("g#mlp-figure g#input-layer"), function(d) { return d.feature; });
-                    updateSingle(svg.select("g#mlp-figure g#gamma"), function(d) { return d.gamma; });
-                    updateSingle(svg.select("g#mlp-figure g#beta"), function(d) { return d.beta; });
-                    updateSingle(svg.select("g#mlp-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
-                    updateSingle(svg.select("g#mlp-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
-                }
-
-                update();
-
-                svg.select("g#mlp-figure g#gamma")
-                  .selectAll("g.feature")
-                    .on("mousemove", function (d) {
-                        d.gamma = mouseScale(d3.mouse(this)[1]);
-                        update();
-                    });
-                svg.select("g#mlp-figure g#beta")
-                  .selectAll("g.feature")
-                    .on("mousemove", function (d, i) {
-                        d.beta = mouseScale(d3.mouse(this)[1]);
-                        update();
-                    });
-            })();
-            (function () {
-                var svg = d3.select("#film-diagram > svg");
-                var features = [
-                    [[-0.6, -0.6,  0.8], [ 0.6,  0.7,  0.4], [-0.8,  0.8,  0.9]],
-                    [[ 0.9, -0.1,  0.5], [-0.8, -0.7,  0.5], [-0.3, -0.9, -0.2]],
-                    [[-0.5, -0.9,  0.6], [-0.2, -0.4,  0.2], [-0.6,  0.1, -0.3]]
-                ];
-                var gammas = [-1.6, 0.8, 1.8];
-                var betas = [1.0, 0.5, -0.5];
-                var data = [];
-                var featureMapData = [[], [], []];
-                for (var k = 0; k < 3; k++) {
-                    for (var i = 0; i < 3; i++) {
-                        for (var j = 0; j < 3; j++) {
-                            var d = {feature: features[i][j][k], gamma: gammas[k], beta: betas[k]};
-                            data.push(d);
-                            featureMapData[2 - k].push(d);
-                        }
+                    for (var j = 0; j < 3; j++) {
+                        var d = {feature: featureMaps[i][j][k], gamma: gammas[k], beta: betas[k]};
+                        convData.push(d);
+                        data[2 - k].featureMap.push(d);
                     }
                 }
-                var amplitudeScale = d3.scaleSqrt().domain([0.0, 2.0]).range([0.0, 0.8]).clamp(true);
-                var mouseScale = d3.scaleLinear().domain([0.0, 40.0]).range([2.0, -2.0]).clamp(true);
-                svg.select("g#cnn-figure g#input-layer").selectAll("g.feature").data(data);
-                svg.select("g#cnn-figure g#gamma").selectAll("g.feature").data(featureMapData);
-                svg.select("g#cnn-figure g#beta").selectAll("g.feature").data(featureMapData);
-                svg.select("g#cnn-figure g#scaled-layer").selectAll("g.feature").data(data);
-                svg.select("g#cnn-figure g#shifted-layer").selectAll("g.feature").data(data);
+            }
+            var amplitudeScale = d3.scaleSqrt().domain([0.0, 2.0]).range([0.0, 0.8]).clamp(true);
+            var mouseScale = d3.scaleLinear().domain([0.0, 40.0]).range([2.0, -2.0]).clamp(true);
+            svg.select("g#mlp-figure g#input-layer").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#gamma").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#beta").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#scaled-layer").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#shifted-layer").selectAll("g.feature").data(data);
+            svg.select("g#cnn-figure g#input-layer").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure g#scaled-layer").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure g#shifted-layer").selectAll("g.feature").data(convData);
 
-                function updateSingle(selection, accessor, offset) {
-                    selection.selectAll("g.feature").each(function (d, i) {
-                        var r = accessor(d);
-                        var s = Math.sign(r) * amplitudeScale(Math.abs(r));
-                        d3.select(this)
-                          .select(".convolutional-patch")
-                            .attr("opacity", Math.abs(s))
-                            .attr("href", r < 0 ?  "#convolutional-patch-negative" : "#convolutional-patch-positive");
-                        d3.select(this)
-                          .select(".vector-patch")
-                            .attr("opacity", Math.abs(s))
-                            .attr("href", r < 0 ?  "#vector-patch-negative" : "#vector-patch-positive");
-                        d3.select(this)
-                          .select(".figure-line")
-                            .attr("transform", "matrix(" + [s, 0, 0, s, offset, offset] + ")");
-                    });
-                }
+            function updateSingle(selection, accessor) {
+                selection.selectAll("g.feature").each(function (d, i) {
+                    var r = accessor(d);
+                    var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+                    d3.select(this)
+                      .select(".vector-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ? "#vector-patch-negative" : "#vector-patch-positive");
+                    d3.select(this)
+                      .select(".figure-line")
+                        .attr("transform", "matrix(" + [s, 0, 0, s, 20, 20] + ")");
+                });
+            }
 
-                function update() {
-                    updateSingle(svg.select("g#cnn-figure g#input-layer"), function(d) { return d.feature; }, 15);
-                    updateSingle(svg.select("g#cnn-figure g#gamma"), function(d) { return d[0].gamma; }, 20);
-                    updateSingle(svg.select("g#cnn-figure g#beta"), function(d) { return d[0].beta; }, 20);
-                    updateSingle(svg.select("g#cnn-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; }, 15);
-                    updateSingle(svg.select("g#cnn-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; }, 15);
-                }
+            function updateSingleConv(selection, accessor) {
+                selection.selectAll("g.feature").each(function (d, i) {
+                    var r = accessor(d);
+                    var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+                    d3.select(this)
+                      .select(".convolutional-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ?  "#convolutional-patch-negative" : "#convolutional-patch-positive");
+                    d3.select(this)
+                      .select(".vector-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ?  "#vector-patch-negative" : "#vector-patch-positive");
+                    d3.select(this)
+                      .select(".figure-line")
+                        .attr("transform", "matrix(" + [s, 0, 0, s, 15, 15] + ")");
+                });
+            }
 
-                update();
+            function update() {
+                updateSingle(svg.select("g#mlp-figure g#input-layer"), function(d) { return d.feature; });
+                updateSingle(svg.select("g#mlp-figure g#gamma"), function(d) { return d.gamma; });
+                updateSingle(svg.select("g#mlp-figure g#beta"), function(d) { return d.beta; });
+                updateSingle(svg.select("g#mlp-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
+                updateSingle(svg.select("g#mlp-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
+                updateSingleConv(svg.select("g#cnn-figure g#input-layer"), function(d) { return d.feature; });
+                updateSingleConv(svg.select("g#cnn-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
+                updateSingleConv(svg.select("g#cnn-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
+            }
 
-                svg.select("g#cnn-figure g#gamma")
-                  .selectAll("g.feature")
-                    .on("mousemove", function (d) {
-                        var newValue = mouseScale(d3.mouse(this)[1]);
-                        for (var i = 0; i < 9; i++) {
-                            d[i].gamma = newValue;
-                        }
-                        update();
-                    });
-                svg.select("g#cnn-figure g#beta")
-                  .selectAll("g.feature")
-                    .on("mousemove", function (d, i) {
-                        var newValue = mouseScale(d3.mouse(this)[1]);
-                        for (var i = 0; i < 9; i++) {
-                            d[i].beta = newValue;
-                        }
-                        update();
-                    });
-            })();
+            update();
+
+            svg.select("g#mlp-figure g#gamma")
+              .selectAll("g.feature")
+                .on("mousemove", function (d) {
+                    var newValue = mouseScale(d3.mouse(this)[1]);
+                    d.gamma = newValue;
+                    for (var i = 0; i < 9; i++) {
+                        d.featureMap[i].gamma = newValue;
+                    }
+                    update();
+                });
+            svg.select("g#mlp-figure g#beta")
+              .selectAll("g.feature")
+                .on("mousemove", function (d, i) {
+                    var newValue = mouseScale(d3.mouse(this)[1]);
+                    d.beta = newValue;
+                    for (var i = 0; i < 9; i++) {
+                        d.featureMap[i].beta = newValue;
+                    }
+                    update();
+                });
         })();
       </script>
       <p>
