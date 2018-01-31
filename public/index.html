@@ -1782,75 +1782,75 @@
         generator and discriminator networks.
       </p>
       <figure class="l-body-outset" id="dcgan-diagram">
-        <svg viewBox="0 0 744 440" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="20" class="figure-text">
+        <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
+          <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
+          <text x="10" y="10" class="figure-text">
             <tspan>
               To implement <tspan style="font-weight: bold;">concatenation-based conditioning</tspan>,
+              Radford et al. first
             </tspan>
-            <tspan x="0" dy="1.5em">
-              Radford et al. first <tspan style="font-weight: bold;">broadcast</tspan>
-              the class label into a feature
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">broadcast</tspan>
+              the class label into a feature map and
+              <tspan style="font-weight: bold;">concatenate</tspan> it to the
             </tspan>
-            <tspan x="0" dy="1.5em">
-              map and <tspan style="font-weight: bold;">concatenate</tspan> it to
-              the input along the channel axis.
+            <tspan x="10" dy="1.5em">
+              input along the channel axis.
             </tspan>
           </text>
-          <text x="420" y="20" class="figure-text">
+          <text x="495" y="10" class="figure-text">
             <tspan>
-              The resulting stack of feature maps is then <tspan style="font-weight: bold;">convolved</tspan>
+              The resulting stack of feature maps is then
             </tspan>
-            <tspan x="420" dy="1.5em">
-              to produce the class-dependent output.
+            <tspan x="495" dy="1.5em">
+              <tspan style="font-weight: bold;">convolved</tspan>
+              to produce the class-dependent
+            </tspan>
+            <tspan x="495" dy="1.5em">
+              output.
             </tspan>
           </text>
-          <g transform="translate(10, 100)">
-            <rect x="180" y="0" width="364" height="280" class="figure-group figure-box"/>
+          <g transform="translate(10, 160)">
             <g transform="translate(0, 30)">
-              <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
             </g>
-            <g transform="translate(200, 62)">
-              <rect width="40" height="116" class="figure-element figure-box"/>
-              <text x="20" y="58" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 58)" class="figure-text">concatenate</text>
+            <g transform="translate(191, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
             </g>
-            <g transform="translate(270, 30)">
-              <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+            <g transform="translate(302, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-              <rect x="40" y="40" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <text x="50" y="50" dy="0.4em" class="figure-text">broadcasted label</text>
+              <rect x="40" y="40" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="50" y="50" dy="0.4em" class="figure-text">label</text>
             </g>
-            <g transform="translate(480, 62)">
-              <rect width="40" height="116" class="figure-element figure-box"/>
-              <text x="20" y="58" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 58)" class="figure-text">convolution</text>
+            <g transform="translate(493, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">convolution</text>
             </g>
-            <g transform="translate(564, 30)">
-              <rect x="0" y="0" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="10" y="10" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="20" y="20" width="140" height="140" style="fill-opacity: 1;" class="figure-element figure-box"/>
+            <g transform="translate(604, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
             </g>
-            <path d="M 160 120 L 200 120" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(200, 120)" class="figure-path"/>
-            <path d="M 240 120 L 270 120" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(270, 120)" class="figure-path"/>
-            <path d="M 450 120 L 480 120" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(480, 120)" class="figure-path"/>
-            <path d="M 520 120 L 564 120" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(564, 120)" class="figure-path"/>
-            <g transform="translate(186, 220)">
-              <rect width="68" height="40" class="figure-element figure-box"/>
-              <text x="34" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">broadcast</text>
-            </g>
-            <path d="M 220 220 L 220 178" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(220, 178)" class="figure-path"/>
-            <path d="M 220 260 L 220 310" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(220, 260)" class="figure-path"/>
-            <text x="220" y="320" dy="0.4em" style="text-anchor: middle;" class="figure-text">class label</text>
+            <path d="M 125 90 L 186 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
+            <path d="M 236 90 L 297 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
+            <path d="M 447 90 L 488 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
+            <path d="M 538 90 L 599 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
+            <path d="M 211 -50 L 211 25" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
+            <text x="211" y="10" dy="-0.4em" transform="rotate(-90, 211, 10)" class="figure-text">broadcast</text>
+            <text x="211" y="-60" dy="-0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">class label</text>
           </g>
         </svg>
       </figure>
