@@ -945,42 +945,45 @@
       </p>
       <figure class="l-body-outset" id="film-diagram">
         <svg viewBox="0 0 744 655" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(20, 120)" id="mlp-figure">
-            <text x="130" y="-110" class="figure-text">
+          <g transform="translate(10, 10)" id="mlp-figure">
+            <text x="240" y="10" class="figure-text">
               <tspan>
                 In a <tspan style="font-weight: bold;">fully-connected</tspan>
-                FiLM layer, a different
+                FiLM layer,
               </tspan>
-              <tspan x="130" dy="1.5em">
-                affine transformation is applied to each feature.
+              <tspan x="240" dy="1.5em">
+                a different affine transformation is
+              </tspan>
+              <tspan x="240" dy="1.5em">
+                applied to each feature.
               </tspan>
             </text>
-            <text x="-10" y="60" class="figure-text">
+            <text x="0" y="175" class="figure-text">
               <tspan>
                 First, each feature (or channel)
               </tspan>
-              <tspan x="-10" dy="1.5em">
+              <tspan x="0" dy="1.5em">
                 is scaled by the corresponding
               </tspan>
-              <tspan x="-10" dy="1.5em">
+              <tspan x="0" dy="1.5em">
                 <tspan style="font-family: serif; font-weight: bold;">γ</tspan>
                 parameter.
               </tspan>
             </text>
-            <text x="-10" y="275" class="figure-text">
+            <text x="0" y="365" class="figure-text">
               <tspan>
                 Next, each feature (or channel)
               </tspan>
-              <tspan x="-10" dy="1.5em">
+              <tspan x="0" dy="1.5em">
                 is shifted by the corresponding
               </tspan>
-              <tspan x="-10" dy="1.5em">
+              <tspan x="0" dy="1.5em">
                 <tspan style="font-family: serif; font-weight: bold;">β</tspan>
                 parameter.
               </tspan>
             </text>
-            <rect x="170" y="70" width="160" height="340" class="figure-group figure-box"/>
-            <g transform="translate(190, 10)" id="input-layer">
+            <rect x="240" y="205" width="180" height="300" class="figure-group figure-box"/>
+            <g transform="translate(270, 125)" id="input-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -997,9 +1000,9 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <line x1="250" y1="50" x2="250" y2="117.5" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(250, 117.5)" class="figure-path"/>
-            <g transform="translate(0, 117.5)" id="gamma">
+            <line x1="330" y1="165" x2="330" y2="240" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(330, 240)" class="figure-path"/>
+            <g transform="translate(0, 240)" id="gamma">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1016,16 +1019,16 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="140" y="137.5" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">γ</text>
-            <line x1="120" y1="137.5" x2="230" y2="137.5" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(230, 137.5)" class="figure-path"/>
-            <g transform="translate(250, 137.5)">
+            <text x="180" y="260" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">γ</text>
+            <line x1="120" y1="260" x2="310" y2="260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(310, 260)" class="figure-path"/>
+            <g transform="translate(330, 260)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <line x1="250" y1="157.5" x2="250" y2="225" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(250, 225)" class="figure-path"/>
-            <g transform="translate(190, 225)" id="scaled-layer">
+            <line x1="330" y1="280" x2="330" y2="335" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(330, 335)" class="figure-path"/>
+            <g transform="translate(270, 335)" id="scaled-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1042,9 +1045,9 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <line x1="250" y1="265" x2="250" y2="332.5" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(250, 332.5)" class="figure-path"/>
-            <g transform="translate(0, 332.5)" id="beta">
+            <line x1="330" y1="375" x2="330" y2="430" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(330, 430)" class="figure-path"/>
+            <g transform="translate(0, 430)" id="beta">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1061,17 +1064,17 @@
                 <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
               </g>
             </g>
-            <text x="140" y="352.5" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">β</text>
-            <line x1="120" y1="352.5" x2="230" y2="352.5" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(230, 352.5)" class="figure-path"/>
-            <g transform="translate(250, 352.5)">
+            <text x="180" y="450" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">β</text>
+            <line x1="120" y1="450" x2="310" y2="450" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(310, 450)" class="figure-path"/>
+            <g transform="translate(330, 450)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <line x1="0" y1="7.5" x2="0" y2="-7.5" class="figure-line"/>
               <line x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
             </g>
-            <line x1="250" y1="372.5" x2="250" y2="440" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(250, 440)" class="figure-path"/>
-            <g transform="translate(190, 440)" id="shifted-layer">
+            <line x1="330" y1="470" x2="330" y2="550" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(330, 550)" class="figure-path"/>
+            <g transform="translate(270, 550)" id="shifted-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1089,21 +1092,21 @@
               </g>
             </g>
           </g>
-          <g transform="translate(377, 120)" id="cnn-figure">
-            <text x="120" y="-110" class="figure-text">
+          <g transform="translate(372, 10)" id="cnn-figure">
+            <text x="182" y="10" class="figure-text">
               <tspan>
                 In a <tspan style="font-weight: bold;">convolutional</tspan>
-                FiLM layer, a consistent
+                FiLM layer, a
               </tspan>
-              <tspan x="120" dy="1.5em">
-                affine transformation is applied to each
+              <tspan x="182" dy="1.5em">
+                consistent affine transformation is
               </tspan>
-              <tspan x="120" dy="1.5em">
-                channel.
+              <tspan x="182" dy="1.5em">
+                applied to each channel.
               </tspan>
             </text>
-            <rect x="170" y="70" width="180" height="340" class="figure-group figure-box"/>
-            <g transform="translate(239, -5)" id="input-layer">
+            <rect x="182" y="205" width="180" height="300" class="figure-group figure-box"/>
+            <g transform="translate(249.5, 120)" id="input-layer">
               <g>
                 <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
                   <use xlink:href="#convolutional-feature" class="figure-element"/>
@@ -1246,18 +1249,18 @@
                 </g>
               </g>
             </g>
-            <line x1="262" y1="50" x2="262" y2="107" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(262, 107)" class="figure-path"/>
-            <text x="140" y="127" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">γ</text>
-            <path d="M60,107Q70,127,242,127" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(242, 127)" class="figure-path"/>
-            <g transform="translate(262, 127)">
+            <line x1="272" y1="170" x2="272" y2="240" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(272, 240)" class="figure-path"/>
+            <text x="120" y="260" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">γ</text>
+            <path d="M90,240Q100,260,252,260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(252, 260)" class="figure-path"/>
+            <g transform="translate(272, 260)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <line x1="262" y1="148" x2="262" y2="181" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(262, 181)" class="figure-path"/>
-            <g transform="translate(239, 231)" id="scaled-layer">
+            <line x1="272" y1="280" x2="272" y2="312.5" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(272, 312.5)" class="figure-path"/>
+            <g transform="translate(249.5, 357.5)" id="scaled-layer">
               <g>
                 <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
                   <use xlink:href="#convolutional-feature" class="figure-element"/>
@@ -1400,19 +1403,19 @@
                 </g>
               </g>
             </g>
-            <text x="140" y="342" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">β</text>
-            <path d="M60,322Q70,342,242,342" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(242, 342)" class="figure-path"/>
-            <line x1="262" y1="286" x2="262" y2="322" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(262, 322)" class="figure-path"/>
-            <g transform="translate(262, 342)">
+            <text x="120" y="450" dy="1.5em" class="figure-text" style="font-family: serif; font-size: 20px;">β</text>
+            <path d="M90,430Q100,450,252,450" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(252, 450)" class="figure-path"/>
+            <line x1="272" y1="407.5" x2="272" y2="430" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(272, 430)" class="figure-path"/>
+            <g transform="translate(272, 450)">
               <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
               <line x1="0" y1="7.5" x2="0" y2="-7.5" class="figure-line"/>
               <line x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
             </g>
-            <line x1="262" y1="362" x2="262" y2="425" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(262, 425)" class="figure-path"/>
-            <g transform="translate(239, 480)" id="shifted-layer">
+            <line x1="272" y1="470" x2="272" y2="545" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(272, 545)" class="figure-path"/>
+            <g transform="translate(249.5, 590)" id="shifted-layer">
               <g>
                 <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
                   <use xlink:href="#convolutional-feature" class="figure-element"/>
