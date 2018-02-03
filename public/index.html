@@ -2041,67 +2041,72 @@
         </dt-fn>
       </p>
       <figure class="l-body-outset" id="pixelcnn-diagram">
-        <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
-          <path d="M450,10l0,370" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
-          <text x="10" y="10" class="figure-text">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Conditional biasing</tspan> in
-              convolutional neural networks is implemented by
+              convolutional
             </tspan>
             <tspan x="10" dy="1.5em">
-              first mapping the <tspan style="font-weight: bold;">conditioning representation</tspan>
+              neural networks is implemented
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">representation</tspan>
               to a bias vector.
             </tspan>
           </text>
-          <text x="482" y="10" class="figure-text">
+          <text x="10" y="210" dy="1em" class="figure-text">
             <tspan>
-              The bias vector is then added to the input stack
+              The bias vector is then added to
             </tspan>
-            <tspan x="482" dy="1.5em">
-              of feature maps.
+            <tspan x="10" dy="1.5em">
+              the input stack of feature maps.
             </tspan>
           </text>
-          <g transform="translate(10, 200)">
-            <g transform="translate(282, 0)">
+          <g transform="translate(-20, 10)">
+            <g transform="translate(284, 200)">
               <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
             </g>
-            <path d="M 407 60 L 498 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(498, 60)" class="figure-path"/>
-            <g transform="translate(513, 60)">
+            <path d="M 407 260 L 488 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
+            <g transform="translate(504, 260)">
               <circle r="10" class="figure-element"/>
               <path d="M -5 0 L 5 0" class="figure-line"/>
               <path d="M 0 -5 L 0 5" class="figure-line"/>
             </g>
-            <path d="M 528 60 L 599 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(599, 60)" class="figure-path"/>
-            <g transform="translate(604, 0)">
+            <path d="M 519 260 L 599 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
+            <g transform="translate(604, 200)">
               <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
             </g>
-            <text x="0" y="-90" dy="0.4em" style="font-weight: bold;" class="figure-text">
+            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
               <tspan>conditioning</tspan>
-              <tspan x="0" dy="1.5em">representation</tspan>
+              <tspan x="284" dy="1.5em">representation</tspan>
             </text>
-            <g transform="translate(202, -140)">
+            <g transform="translate(414, 0)">
               <rect width="40" height="120" class="figure-element figure-box"/>
               <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
             </g>
-            <g transform="translate(382, -110)">
+            <g transform="translate(494, 30)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
             </g>
-            <path d="M 100 -80  L 197 -80" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(197, -80)" class="figure-path"/>
-            <path d="M 247 -80  L 377 -80" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(377, -80)" class="figure-path"/>
-            <path d="M 407 -80 L 507 -80 a 6 6 0 0 1 6 6 L 513 45" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(513, 45)" class="figure-path"/>
+            <path d="M 380 60  L 409 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
+            <path d="M 460 60  L 489 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
+            <path d="M 504 95 L 504 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
           </g>
         </svg>
       </figure>
@@ -2153,69 +2158,75 @@
         3D environment.
       </p>
       <figure class="l-body-outset" id="gated-attention-diagram">
-        <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
-          <path d="M450,10l0,370" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
-          <text x="10" y="10" class="figure-text">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
-              <tspan style="font-style: italic;">Gated-attention fusion units</tspan> make use of
-              <tspan style="font-weight: bold;">sigmoidal conditional scaling</tspan>.
+              <tspan style="font-style: italic;">Gated-attention fusion units</tspan>
+              make use
             </tspan>
             <tspan x="10" dy="1.5em">
-              The instruction representation is first mapped through a sigmoidal
-              layer to
+              of <tspan style="font-weight: bold;">sigmoidal conditional scaling</tspan>.
+              The
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">instruction representation</tspan>
+              is first
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              mapped through a sigmoidal layer to
             </tspan>
             <tspan x="10" dy="1.5em">
               produce a scaling vector.
             </tspan>
           </text>
-          <text x="482" y="10" class="figure-text">
+          <text x="10" y="210" dy="1em" class="figure-text">
             <tspan>
-              The scaling vector is then multiplied with the
+              The scaling vector is then multiplied
             </tspan>
-            <tspan x="482" dy="1.5em">
-              input stack of feature maps.
+            <tspan x="10" dy="1.5em">
+              with the input stack of feature maps.
             </tspan>
           </text>
-          <g transform="translate(10, 200)">
-            <g transform="translate(282, 0)">
+          <g transform="translate(-20, 10)">
+            <g transform="translate(284, 200)">
               <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
             </g>
-            <path d="M 407 60 L 498 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(498, 60)" class="figure-path"/>
-            <g transform="translate(513, 60)">
+            <path d="M 407 260 L 488 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
+            <g transform="translate(504, 260)">
               <circle r="10" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <path d="M 528 60 L 599 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(599, 60)" class="figure-path"/>
-            <g transform="translate(604, 0)">
+            <path d="M 519 260 L 599 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
+            <g transform="translate(604, 200)">
               <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
               <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
             </g>
-            <text x="0" y="-90" dy="0.4em" style="font-weight: bold;" class="figure-text">
+            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
               <tspan>instruction</tspan>
-              <tspan x="0" dy="1.5em">representation</tspan>
+              <tspan x="284" dy="1.5em">representation</tspan>
             </text>
-            <g transform="translate(202, -140)">
+            <g transform="translate(414, 0)">
               <rect width="40" height="120" class="figure-element figure-box"/>
               <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoidal layer</text>
             </g>
-            <g transform="translate(382, -110)">
+            <g transform="translate(494, 30)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
             </g>
-            <path d="M 100 -80  L 197 -80" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(197, -80)" class="figure-path"/>
-            <path d="M 247 -80  L 377 -80" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(377, -80)" class="figure-path"/>
-            <path d="M 407 -80 L 507 -80 a 6 6 0 0 1 6 6 L 513 45" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(513, 45)" class="figure-path"/>
+            <path d="M 380 60  L 409 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
+            <path d="M 460 60  L 489 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
+            <path d="M 504 95 L 504 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
           </g>
         </svg>
       </figure>
