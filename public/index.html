@@ -2251,211 +2251,180 @@
         CLEVR dataset <dt-cite key="johnson2017clevr"></dt-cite> to answer
         synthetic questions about a synthetic input image.
       </p>
-      <figure class="l-body-outset" id="clevr-diagram">
-        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(10, 20)" class="film-generator">
-            <rect x="0" y="0" width="221" height="446" class="figure-group figure-box figure-film-generator"/>
-            <text x="10" y="15" dy="0.4em" class="figure-text">linguistic pipeline</text>
-            <g transform="translate(27, 45)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">GRU</text>
-              <text x="0" y="19" dy="0.4em" class="figure-text">Are</text>
-              <path d="M 43 19 L 63 19" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(63, 19)" class="figure-path"/>
-              <path d="M 119 38 L 119 50" class="figure-line"/>
-              <use xlink:href="#arrow-down" transform="translate(119, 50)" class="figure-path"/>
-            </g>
-            <g transform="translate(27, 95)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">GRU</text>
-              <text x="0" y="19" dy="0.4em" class="figure-text">there</text>
-              <path d="M 43 19 L 63 19" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(63, 19)" class="figure-path"/>
-              <path d="M 119 38 L 119 50" class="figure-line"/>
-              <use xlink:href="#arrow-down" transform="translate(119, 50)" class="figure-path"/>
-            </g>
-            <g transform="translate(27, 145)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">GRU</text>
-              <text x="0" y="19" dy="0.4em" class="figure-text">more</text>
-              <path d="M 43 19 L 63 19" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(63, 19)" class="figure-path"/>
-              <path d="M 119 38 L 119 50" class="figure-line"/>
-              <use xlink:href="#arrow-down" transform="translate(119, 50)" class="figure-path"/>
-            </g>
-            <g transform="translate(27, 195)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">GRU</text>
-              <text x="0" y="19" dy="0.4em" class="figure-text">cubes</text>
-              <path d="M 43 19 L 63 19" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(63, 19)" class="figure-path"/>
-              <path d="M 119 38 L 119 50" class="figure-line"/>
-              <use xlink:href="#arrow-down" transform="translate(119, 50)" class="figure-path"/>
-            </g>
-            <g transform="translate(27, 245)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">GRU</text>
-              <text x="0" y="19" dy="0.4em" class="figure-text">than</text>
-              <path d="M 43 19 L 63 19" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(63, 19)" class="figure-path"/>
-              <path d="M 119 38 L 119 50" class="figure-line"/>
-              <use xlink:href="#arrow-down" transform="translate(119, 50)" class="figure-path"/>
-            </g>
-            <g transform="translate(27, 295)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">GRU</text>
-              <text x="0" y="19" dy="0.4em" class="figure-text">yellow</text>
-              <path d="M 43 19 L 63 19" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(63, 19)" class="figure-path"/>
-              <path d="M 119 38 L 119 50" class="figure-line"/>
-              <use xlink:href="#arrow-down" transform="translate(119, 50)" class="figure-path"/>
-            </g>
-            <g transform="translate(27, 345)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">GRU</text>
-              <text x="0" y="19" dy="0.4em" class="figure-text">things</text>
-              <path d="M 43 19 L 63 19" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(63, 19)" class="figure-path"/>
-              <path d="M 119 38 L 119 50" class="figure-line"/>
-              <use xlink:href="#arrow-down" transform="translate(119, 50)" class="figure-path"/>
-            </g>
-            <g transform="translate(27, 395)">
-              <rect x="63" y="0" width="112" height="38" class="figure-element figure-box"/>
-              <text x="119" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
+      <figure class="l-page-outset" id="clevr-diagram">
+        <svg viewBox="0 0 1080 500" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(10, 10)" class="film-generator">
+            <text x="0" y="30" dy="1em" class="figure-text">
+              <tspan>
+                The <tspan style="font-weight: bold;">linguistic pipeline</tspan>
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                acts as the FiLM generator.
+              </tspan>
+            </text>
+            <text x="0" y="300" dy="1em" class="figure-text">
+              <tspan>
+                The <tspan style="font-weight: bold;">visual pipeline</tspan> is
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                FiLMed by adding a FiLM
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                layer to each residual block.
+              </tspan>
+            </text>
+            <g transform="translate(200, 0)">
+              <image x="0" y="300" width="144" height="96" xlink:href="assets/clevr_input.jpg"/>
+              <path d="M 144 348 L 175 348" class="figure-line"/>
+              <use xlink:href="#arrow-right" transform="translate(175, 348)" class="figure-path"/>
+              <g transform="translate(180, 288)" class="figure-transparent">
+                <rect width="50" height="120" class="figure-element figure-box"/>
+                <text x="25" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 25, 60)" class="figure-text">feature extractor</text>
+              </g>
+              <path d="M 230 348 L 420 348" class="figure-line"/>
+              <path d="M 230 348 C 260 348 242.5 278 272.5 278" class="figure-line"/>
+              <path d="M 362.5 278 C 392.5 278 380 348 420 348" class="figure-line"/>
+              <use xlink:href="#arrow-right" transform="translate(420, 348)" class="figure-path"/>
+              <g transform="translate(272.5, 218)">
+                <g transform="translate(0, 0)" class="figure-transparent">
+                  <rect width="50" height="120" class="figure-element figure-box"/>
+                  <text x="25" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 25, 60)" class="figure-text">sub-network</text>
+                </g>
+                <path d="M 50 60 L 60 60" class="figure-line"/>
+                <g transform="translate(60, 0)">
+                  <rect width="30" height="120" class="figure-element figure-box"/>
+                  <text x="15" y="60" dy="0.4em" style="font-weight: bold; text-anchor: middle;" transform="rotate(-90, 15, 60)" class="figure-text">FiLM layer</text>
+                </g>
+              </g>
+              <g transform="translate(425, 288)" class="figure-transparent">
+                <rect width="30" height="120" class="figure-element figure-box"/>
+                <text x="15" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 60)" class="figure-text">ReLU</text>
+              </g>
+              <path d="M 242.5 410 L 242.5 420 L 465 420 L 465 410" style="stroke-width: 1px;" class="figure-line"/>
+              <text x="242.5" y="420" dy="1.5em" class="figure-text">
+                <tspan>
+                  Each <tspan style="font-weight: bold;">residual block</tspan>
+                  has a
+                </tspan>
+                <tspan x="242.5" dy="1.5em">
+                  FiLM layer added to it.
+                </tspan>
+              </text>
+              <path d="M 455 348 L 645 348" class="figure-line"/>
+              <path d="M 455 348 C 485 348 467.5 278 497.5 278" class="figure-line"/>
+              <path d="M 587.5 278 C 617.5 278 605 348 645 348" class="figure-line"/>
+              <use xlink:href="#arrow-right" transform="translate(645, 348)" class="figure-path"/>
+              <g transform="translate(497.5, 218)">
+                <g transform="translate(0, 0)" class="figure-transparent">
+                  <rect width="50" height="120" class="figure-element figure-box"/>
+                  <text x="25" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 25, 60)" class="figure-text">sub-network</text>
+                </g>
+                <path d="M 50 60 L 60 60" class="figure-line"/>
+                <g transform="translate(60, 0)">
+                  <rect width="30" height="120" class="figure-element figure-box"/>
+                  <text x="15" y="60" dy="0.4em" style="font-weight: bold; text-anchor: middle;" transform="rotate(-90, 15, 60)" class="figure-text">FiLM layer</text>
+                </g>
+              </g>
+              <g transform="translate(650, 288)" class="figure-transparent">
+                <rect width="50" height="120" class="figure-element figure-box"/>
+                <text x="25" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 25, 60)" class="figure-text">...</text>
+              </g>
+              <path d="M 700 348 L 784 348" class="figure-line"/>
+              <use xlink:href="#arrow-right" transform="translate(784, 348)" class="figure-path"/>
+              <g transform="translate(180, 100)">
+                <rect width="520" height="40" class="figure-element figure-box"/>
+                <text x="260" y="20" dy="0.4em" style="font-weight: bold; text-anchor: middle;" class="figure-text">linear</text>
+              </g>
+              <text x="180" y="150" dy="1em" class="figure-text">FiLM parameters</text>
+              <path d="M 700 50 L 724 50 a 6 6 0 0 1 6 6 L 730 114 a 6 6 0 0 1 -6 6 L 705 120" class="figure-line"/>
+              <use xlink:href="#arrow-left" transform="translate(705, 120)" class="figure-path"/>
+              <path d="M 347.5 140 L 347.5 213" class="figure-line"/>
+              <use xlink:href="#arrow-down" transform="translate(347.5, 213)" class="figure-path"/>
+              <path d="M 572.5 140 L 572.5 213" class="figure-line"/>
+              <use xlink:href="#arrow-down" transform="translate(572.5, 213)" class="figure-path"/>
+              <path d="M 675 140 L 675 283" class="figure-line"/>
+              <use xlink:href="#arrow-down" transform="translate(675, 283)" class="figure-path"/>
+              <g transform="translate(180, 30)">
+                <g transform="translate(0, 0)">
+                  <text x="15" y="-30" style="text-anchor: middle;" class="figure-text">Are</text>
+                  <path d="M 15 -25 L 15 -5" class="figure-line"/>
+                  <use xlink:href="#arrow-down" transform="translate(15, -5)" class="figure-path"/>
+                  <g class="figure-transparent">
+                    <rect width="30" height="60" class="figure-element figure-box"/>
+                    <text x="15" y="30" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 30)" class="figure-text">GRU</text>
+                  </g>
+                </g>
+                <path d="M 30 30 L 76.66 30" class="figure-line"/>
+                <use xlink:href="#arrow-right" transform="translate(76.66, 30)" class="figure-path"/>
+                <g transform="translate(81.66, 0)">
+                  <text x="15" y="-30" style="text-anchor: middle;" class="figure-text">there</text>
+                  <path d="M 15 -25 L 15 -5" class="figure-line"/>
+                  <use xlink:href="#arrow-down" transform="translate(15, -5)" class="figure-path"/>
+                  <g class="figure-transparent">
+                    <rect width="30" height="60" class="figure-element figure-box"/>
+                    <text x="15" y="30" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 30)" class="figure-text">GRU</text>
+                  </g>
+                </g>
+                <path d="M 111.66 30 L 158.34 30" class="figure-line"/>
+                <use xlink:href="#arrow-right" transform="translate(158.34, 30)" class="figure-path"/>
+                <g transform="translate(163.34, 0)">
+                  <text x="15" y="-30" style="text-anchor: middle;" class="figure-text">more</text>
+                  <path d="M 15 -25 L 15 -5" class="figure-line"/>
+                  <use xlink:href="#arrow-down" transform="translate(15, -5)" class="figure-path"/>
+                  <g class="figure-transparent">
+                    <rect width="30" height="60" class="figure-element figure-box"/>
+                    <text x="15" y="30" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 30)" class="figure-text">GRU</text>
+                  </g>
+                </g>
+                <path d="M 193.34 30 L 240 30" class="figure-line"/>
+                <use xlink:href="#arrow-right" transform="translate(240, 30)" class="figure-path"/>
+                <g transform="translate(245, 0)">
+                  <text x="15" y="-30" style="text-anchor: middle;" class="figure-text">cubes</text>
+                  <path d="M 15 -25 L 15 -5" class="figure-line"/>
+                  <use xlink:href="#arrow-down" transform="translate(15, -5)" class="figure-path"/>
+                  <g class="figure-transparent">
+                    <rect width="30" height="60" class="figure-element figure-box"/>
+                    <text x="15" y="30" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 30)" class="figure-text">GRU</text>
+                  </g>
+                </g>
+                <path d="M 275 30 L 321.66 30" class="figure-line"/>
+                <use xlink:href="#arrow-right" transform="translate(321.66, 30)" class="figure-path"/>
+                <g transform="translate(326.66, 0)">
+                  <text x="15" y="-30" style="text-anchor: middle;" class="figure-text">than</text>
+                  <path d="M 15 -25 L 15 -5" class="figure-line"/>
+                  <use xlink:href="#arrow-down" transform="translate(15, -5)" class="figure-path"/>
+                  <g class="figure-transparent">
+                    <rect width="30" height="60" class="figure-element figure-box"/>
+                    <text x="15" y="30" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 30)" class="figure-text">GRU</text>
+                  </g>
+                </g>
+                <path d="M 356.66 30 L 403.34 30" class="figure-line"/>
+                <use xlink:href="#arrow-right" transform="translate(403.34, 30)" class="figure-path"/>
+                <g transform="translate(408.34, 0)">
+                  <text x="15" y="-30" style="text-anchor: middle;" class="figure-text">yellow</text>
+                  <path d="M 15 -25 L 15 -5" class="figure-line"/>
+                  <use xlink:href="#arrow-down" transform="translate(15, -5)" class="figure-path"/>
+                  <g class="figure-transparent">
+                    <rect width="30" height="60" class="figure-element figure-box"/>
+                    <text x="15" y="30" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 30)" class="figure-text">GRU</text>
+                  </g>
+                </g>
+                <path d="M 438.34 30 L 485 30" class="figure-line"/>
+                <use xlink:href="#arrow-right" transform="translate(485, 30)" class="figure-path"/>
+                <g transform="translate(490, 0)">
+                  <text x="15" y="-30" style="text-anchor: middle;" class="figure-text">things</text>
+                  <path d="M 15 -25 L 15 -5" class="figure-line"/>
+                  <use xlink:href="#arrow-down" transform="translate(15, -5)" class="figure-path"/>
+                  <g class="figure-transparent">
+                    <rect width="30" height="60" class="figure-element figure-box"/>
+                    <text x="15" y="30" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 15, 30)" class="figure-text">GRU</text>
+                  </g>
+                </g>
+              </g>
             </g>
           </g>
-          <g transform="translate(250, 20)" class="filmed-network">
-            <rect x="0" y="30" width="260" height="326" class="figure-group figure-box figure-filmed-network"/>
-            <image x="58" y="380" width="144" height="96" xlink:href="assets/clevr_input.jpg"/>
-            <text x="130" y="0" style="text-anchor: middle;" class="figure-text">Answer: yes</text>
-            <path d="M 130 5 L 130 59" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(130, 5)" class="figure-path"/>
-            <text x="10" y="45" dy="0.4em" class="figure-text">visual pipeline</text>
-            <g transform="translate(58, 300)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">feature extractor</text>
-              <path d="M 72 38 L 72 80" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-            <g transform="translate(58, 240)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">residual block 1</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-            <g transform="translate(58, 180)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">residual block 2</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-            <g transform="translate(58, 120)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">residual block N</text>
-              <text x="72" y="52" style="text-anchor: middle;" class="figure-text">...</text>
-            </g>
-            <g transform="translate(58, 60)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">classifier</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-          </g>
-          <g transform="translate(360, 40)" class="style-transfer-network">
-            <rect x="166" y="13" width="212" height="379" class="figure-group figure-box figure-dashed"/>
-            <path d="M 282 268 l 80 0 a 6 6 0 0 0 6 -6 l 0 -230 a 6 6 0 0 0 -6 -6 l -80 0" class="figure-line"/>
-            <g transform="translate(210, 335)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">convolution</text>
-              <path d="M 72 38 L 72 80" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-            <g transform="translate(210, 275)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">ReLU</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-            <g transform="translate(210, 215)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">convolution</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-            <g transform="translate(210, 155)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">batch normalization</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-            </g>
-            <g transform="translate(210, 95)" class="film-layer">
-              <rect width="144" height="38" class="figure-element figure-box figure-film-layer"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-              <path d="M 0 19 l -50 0" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(0, 19)" class="figure-path"/>
-              <text x="-38" y="8" style="font-family: serif;" class="figure-text"><tspan>β</tspan><tspan dy="5px" class="subscript">1</tspan><tspan dy="-5px">, γ</tspan><tspan dy="5px" class="subscript">1</tspan></text>
-            </g>
-            <g transform="translate(210, 35)">
-              <rect width="144" height="38" class="figure-element figure-box"/>
-              <text x="72" y="19" dy="0.4em" style="text-anchor: middle;" class="figure-text">ReLU</text>
-              <path d="M 72 38 L 72 60" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, 38)" class="figure-path"/>
-              <path d="M 72 0 L 72 -40" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(72, -40)" class="figure-path"/>
-            </g>
-          </g>
-          <path d="M 212 434 L 254 434 A 6 6 0 0 0 260 428 L 260 285 A 6 6 0 0 1 266 279 L 308 279" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(308, 279)" class="figure-path"/>
-          <text x="265" y="145" style="font-family: serif;" class="figure-text"><tspan>β</tspan><tspan dy="5px" class="subscript">N</tspan><tspan dy="-5px">, γ</tspan><tspan dy="5px" class="subscript">N</tspan></text>
-          <path d="M 212 434 L 254 434 A 6 6 0 0 0 260 428 L 260 225 A 6 6 0 0 1 266 219 L 308 219" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(308, 219)" class="figure-path"/>
-          <text x="265" y="205" style="font-family: serif;" class="figure-text"><tspan>β</tspan><tspan dy="5px" class="subscript">2</tspan><tspan dy="-5px">, γ</tspan><tspan dy="5px" class="subscript">2</tspan></text>
-          <path d="M 212 434 L 254 434 A 6 6 0 0 0 260 428 L 260 165 A 6 6 0 0 1 266 159 L 308 159" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(308, 159)" class="figure-path"/>
-          <text x="265" y="265" style="font-family: serif;" class="figure-text"><tspan>β</tspan><tspan dy="5px" class="subscript">1</tspan><tspan dy="-5px">, γ</tspan><tspan dy="5px" class="subscript">1</tspan></text>
-          <path d="M 452 260 L 526 53" class="figure-line figure-dashed"/>
-          <path d="M 452 298 L 526 432" class="figure-line figure-dashed"/>
         </svg>
-        <figcaption>
-          Visual reasoning model trained on CLEVR. The residual blocks of the
-          visual pipeline are FiLM-ed, and the linguistic pipeline acts as the
-          FiLM generator.
-        </figcaption>
       </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#clevr-diagram > svg");
-            svg.select("g.film-generator")
-                .on("mouseenter", function () {
-                    svg.select("g.film-generator > text").text("FiLM generator");
-                    svg.select("g.film-generator > rect").style("fill", "#ef9a9a");
-                })
-                .on("mouseleave", function () {
-                    svg.select("g.film-generator > text").text("linguistic pipeline");
-                    svg.select("g.film-generator > rect").style("fill", null)
-                });
-            svg.select("g.film-layer")
-                .on("mouseenter", function () {
-                    svg.select("g.film-layer > text").text("FiLM layer");
-                    svg.select("g.film-layer > rect").style("fill", "#ffcc80");
-                })
-                .on("mouseleave", function () {
-                    svg.select("g.film-layer > text").text("FiLM");
-                    svg.select("g.film-layer > rect").style("fill", null)
-                });
-            svg.select("g.filmed-network")
-                .on("mouseenter", function () {
-                    svg.select("g.filmed-network > text").text("FiLM-ed network");
-                    svg.select("g.filmed-network > rect").style("fill", "#90caf9");
-                })
-                .on("mouseleave", function () {
-                    svg.select("g.filmed-network > text").text("visual pipeline");
-                    svg.select("g.filmed-network > rect").style("fill", null)
-                });
-            })();
-      </script>
       <p>
         The model features a FiLM generator in the form of a linguistic pipeline
         extracting a question representation which is then linearly mapped to
