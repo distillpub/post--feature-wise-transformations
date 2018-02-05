@@ -62,21 +62,13 @@
 }
 
 .figure-film-generator {
-  stroke: #f44336;
-  stroke-width: 1.5px;
-  stroke-miterlimit: 10px;
-}
-
-.figure-film-layer {
-  stroke: #ff9800;
-  stroke-width: 1.5px;
-  stroke-miterlimit: 10px;
+  stroke: #998b80;
+  fill: #f2dcc9;
 }
 
 .figure-filmed-network {
-  stroke: #2196f3;
-  stroke-width: 1.5px;
-  stroke-miterlimit: 10px;
+  stroke: #aa95bc;
+  fill: #eedbea;
 }
 
 .todo {
