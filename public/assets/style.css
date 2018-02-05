@@ -26,11 +26,11 @@
   stroke-miterlimit: 10px;
 }
 
-.figure-transparent {
-  opacity: 0.6;
+.figure-faded {
+  opacity: 0.35;
 }
 
-.figure-faded {
+.figure-shaded {
   fill: #aaa;
   fill-opacity: 0.8;
 }
