@@ -3185,96 +3185,80 @@
         scheme in the form of feature-wise sigmoidal gating as a way to
         condition a layer's activations on its previous layer.
       </p>
-      <figure class="l-body-outset" id="squeeze-diagram">
-        <svg viewBox="0 0 744 360" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g transform="translate(90, 10)">
-            <g class="filmed-network">
-              <rect width="550" height="320" class="figure-group figure-box figure-filmed-network"/>
-              <text x="10" y="20" dy="0.4em" class="figure-text">squeeze-and-excitation block</text>
+      <figure class="l-page-outset" id="squeeze-diagram">
+        <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              The <tspan style="font-style: italic;">squeeze-and-excitation</tspan>
+              block uses
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">sigmoidal gating</tspan>
+              to map the input stack
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              of feature maps to a gating vector.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The gating vector is then multiplied
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              with the input stack of feature maps.
+            </tspan>
+          </text>
+          <g transform="translate(-20, 10)">
+            <g transform="translate(284, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
             </g>
-            <path d="M -20 270 L 20 270 A 6 6 0 0 0 26 264 L 26 132 A 6 6 0 0 1 32 126 L 50 126" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(50, 126)" class="figure-path"/>
-            <g transform="translate(50, 60)" class="film-generator">
-              <rect width="40" height="132" class="figure-element figure-box figure-film-generator"/>
-              <text x="20" y="66" transform="rotate(-90, 20, 66)" dy="0.4em" style="text-anchor: middle;" class="figure-text">global pooling</text>
-              <path d="M 40 66 L 100 66" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(100, 66)" class="figure-path"/>
-            </g>
-            <g transform="translate(150, 60)" class="film-generator">
-              <rect width="40" height="132" class="figure-element figure-box figure-film-generator"/>
-              <text x="20" y="66" transform="rotate(-90, 20, 66)" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
-              <path d="M 40 66 L 100 66" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(100, 66)" class="figure-path"/>
-            </g>
-            <g transform="translate(250, 60)" class="film-generator">
-              <rect width="40" height="132" class="figure-element figure-box figure-film-generator"/>
-              <text x="20" y="66" transform="rotate(-90, 20, 66)" dy="0.4em" style="text-anchor: middle;" class="figure-text">ReLU</text>
-              <path d="M 40 66 L 100 66" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(100, 66)" class="figure-path"/>
-            </g>
-            <g transform="translate(350, 60)" class="film-generator">
-              <rect width="40" height="132" class="figure-element figure-box figure-film-generator"/>
-              <text x="20" y="66" transform="rotate(-90, 20, 66)" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
-              <path d="M 40 66 L 100 66" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(100, 66)" class="figure-path"/>
-            </g>
-            <g transform="translate(470, 126)" class="film-generator">
-              <ellipse rx="20" ry="20" class="figure-element figure-film-generator"/>
-              <text x="0" y="0" dy="0.4em" style="text-anchor: middle;" class="figure-text">σ</text>
-            </g>
-            <path d="M -20 270 L 450 270" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(450, 270)" class="figure-path"/>
-            <path d="M 470 146 L 470 250" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(470, 250)" class="figure-path"/>
-            <g transform="translate(470, 270)" class="film-layer">
-              <ellipse rx="20" ry="20" class="figure-element figure-film-layer"/>
+            <path d="M 404 260 L 660 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(660, 260)" class="figure-path"/>
+            <g transform="translate(675, 260)">
+              <circle r="10" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
-              <text x="0" y="30" dy="0.4em" style="text-anchor: middle;" class="figure-text film-layer-text"> </text>
             </g>
-            <path d="M 490 270 L 570 270" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(570, 270)" class="figure-path"/>
-            <text x="200" y="50" class="figure-text film-generator-text"> </text>
+            <path d="M 685 260 L 765 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(765, 260)" class="figure-path"/>
+            <g transform="translate(770, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <path d="M 404 260 L 428 260 a 6 6 0 0 0 6 -6 L 434 66 a 6 6 0 0 1 6 -6 L 450 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(450, 60)" class="figure-path"/>
+            <g transform="translate(455, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">global pooling</text>
+            </g>
+            <path d="M 495 60 L 520 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(520, 60)" class="figure-path"/>
+            <g transform="translate(525, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">ReLU layer</text>
+            </g>
+            <path d="M 565 60 L 590 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(590, 60)" class="figure-path"/>
+            <g transform="translate(595, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoidal layer</text>
+            </g>
+            <path d="M 635 60 L 660 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(660, 60)" class="figure-path"/>
+            <g transform="translate(665, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 675 90 L 675 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(675, 245)" class="figure-path"/>
           </g>
         </svg>
-        <figcaption>
-          The squeeze-and-excitation block implements a self-conditioned
-          feature-wise sigmoidal gating operation.
-        </figcaption>
       </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#squeeze-diagram > svg");
-            svg.selectAll("g.film-generator")
-                .on("mouseenter", function () {
-                    svg.select("text.film-generator-text").text("FiLM generator");
-                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", "#ef9a9a");
-                })
-                .on("mouseleave", function () {
-                    svg.select("text.film-generator-text").text("");
-                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", null);
-                });
-
-            svg.select("g.film-layer")
-                .on("mouseenter", function () {
-                    svg.select("text.film-layer-text").text("FiLM layer");
-                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", "#ffcc80");
-                })
-                .on("mouseleave", function () {
-                    svg.select("text.film-layer-text").text("");
-                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", null);
-                });
-
-            svg.select("g.filmed-network")
-                .on("mouseenter", function () {
-                    svg.select("g.filmed-network > text").text("FiLM-ed layer");
-                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", "#90caf9");
-                })
-                .on("mouseleave", function () {
-                    svg.select("g.filmed-network > text").text("squeeze-and-excitation-block");
-                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", null);
-                });
-        })();
-      </script>
       <p>
         In the natural language domain, <dt-cite key="dauphin2017language"></dt-cite>
         proposes to build a finite context using stacked convolutions to tackle
