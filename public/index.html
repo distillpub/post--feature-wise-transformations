@@ -2774,7 +2774,8 @@
         this distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
         is not strictly necessary. As an example, <dt-cite key="huang2017arbitrary"></dt-cite>
         proposes an alternative for fast and arbitrary style transfer in the
-        form of an adaptive instance normalization (AdaIN) layer.
+        form of an adaptive instance normalization (AdaIN) layer, which computes
+        the normalization parameters using a simple heuristic.
       </p>
       <figure class="l-body-outset" id="adain-diagram">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
@@ -2853,68 +2854,19 @@
           style image's instance normalization statistics in the same layer.
         </figcaption>
       </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#adain-diagram > svg");
-            svg.selectAll("g#encoder, g#adain, g#decoder")
-                .on("mouseenter", function () {
-                    svg.selectAll("g#encoder > rect, g#adain > rect").style("fill", "url(#linearFill)");
-                    svg.select("g#decoder > rect").style("fill", "#90caf9");
-                    svg.selectAll(".figure-film-generator-edge").style("stroke", "#c62828");
-                    svg.selectAll(".figure-film-generator-arrow")
-                        .style("fill", "#c62828")
-                        .style("stroke", "#c62828");
-                    svg.selectAll(".figure-filmed-network-edge").style("stroke", "#1e88e5");
-                    svg.selectAll(".figure-filmed-network-arrow")
-                        .style("fill", "#1e88e5")
-                        .style("stroke", "#1e88e5");
-                    svg.selectAll(".figure-filmed-network-text").text("FiLM-ed network");
-                    svg.selectAll(".figure-film-generator-text").text("FiLM generator");
-                })
-                .on("mouseleave", function () {
-                    svg.selectAll("g#encoder > rect, g#adain > rect").style("fill", null);
-                    svg.select("g#decoder > rect").style("fill", null);
-                    svg.selectAll(".figure-film-generator-edge").style("stroke", null);
-                    svg.selectAll(".figure-film-generator-arrow")
-                        .style("fill", null)
-                        .style("stroke", null);
-                    svg.selectAll(".figure-filmed-network-edge").style("stroke", null);
-                    svg.selectAll(".figure-filmed-network-arrow")
-                        .style("fill", null)
-                        .style("stroke", null);
-                    svg.selectAll(".figure-filmed-network-text, .figure-film-generator-text").text("");
-                });
-            svg.select("g.film-layer")
-                .on("mouseenter", function () {
-                    d3.select(this).select("g.film-layer > text").text("FiLM layer");
-                    d3.select(this).select("g.film-layer > rect").style("fill", "#ffcc80");
-                })
-                .on("mouseleave", function () {
-                    d3.select(this).select("g.film-layer > text").text("affine transformation");
-                    d3.select(this).select("g.film-layer > rect").style("fill", null)
-                });
-        })();
-      </script>
       <p>
-        The model architecture consists of an encoder-decoder pair. The encoder
-        is the same neural network that is used to compute the content and style
-        losses, and is kept fixed throughout training. A content/style image
-        pair is first encoded, and the encoded stack of <em>content</em> feature
-        maps is instance-normalized. Instance normalization statistics are then
-        computed for the encoded stack of <em>style</em> feature maps and used
-        to perform a feature-wise affine transformation on the normalized stack
-        of content feature maps. The result is then passed through the decoder
-        to obtain the stylized image, and the triplet of content/style/stylized
-        images is used to compute the style transfer loss. The decoder is
-        trained on many content/style image pairs to minimize this loss.
-      </p>
-      <p>
-        Interestingly, the encoder can be seen as <em>both</em> a part of the
-        FiLM-ed network, <em>and</em> the FiLM generator <em>itself</em>.
-        Therefore, AdaIN can be interpreted as a FiLM layer replacing the
-        instance normalization parameters, with the FiLM-generating network
-        taking the form of the same neural network that is used to extract
-        instance normalization statistics on the style image.
+        The content and style images are first fed through the model up to the
+        AdaIN layer. The stack of content feature maps is then
+        instance-normalized, and the mean and standard deviation statistics of
+        the stack of style feature maps are used to parametrize the
+        post-normalization affine transformation.
+
+        AdaIN can be interpreted as inserting a FiLM layer midway through the
+        model architecture. However, rather than relying on a secondary network
+        to predict the FiLM parameters from the style image, the main network
+        itself is used to extract style features which are used to compute the
+        FiLM parameters. Therefore, the model can be seen as <em>both</em> the
+        FiLM-ed network the FiLM generator.
       </p>
       <p>
         Feature-wise affine transformations are also used in the reinforcement
