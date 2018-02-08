@@ -2886,7 +2886,11 @@
         information. However, there is nothing preventing us from considering a
         neural network's hidden activations <em>themselves</em> as conditioning
         information. This idea gives rise to various forms of
-        <em>self-conditioned</em> models.
+        <em>self-conditioned</em> models. For instance, the LSTM
+        <dt-cite key="hochreiter1997long"></dt-cite> architecture, which is
+        itself a building block in some of the models we referenced thus far,
+        makes heavy use of feature-wise sigmoidal gating in its input, forget,
+        and output gates.
       </p>
       <p>
         In the visual domain, the ImageNet 2017 winning model
@@ -3052,12 +3056,6 @@
           </g>
         </svg>
       </figure>
-      <p>
-        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture,
-        which is itself a building block in some of the models we referenced
-        thus far, makes heavy use of feature-wise sigmoidal gating in its input,
-        forget, and output gates.
-      </p>
       <p>
         In the speech recognition domain, <dt-cite key="kim2017dynamic"></dt-cite>
         modulates a deep bidirectional LSTM using a form of conditional
