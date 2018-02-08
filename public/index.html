@@ -2889,6 +2889,176 @@
         <em>self-conditioned</em> models.
       </p>
       <p>
+        In the visual domain, the ImageNet 2017 winning model
+        <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
+        scheme in the form of feature-wise sigmoidal gating as a way to
+        condition a layer's activations on its previous layer.
+      </p>
+      <figure class="l-page-outset" id="squeeze-diagram">
+        <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              The <tspan style="font-style: italic;">squeeze-and-excitation</tspan>
+              block uses
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
+              First, the input stack
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              of feature maps is mapped to a gating
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              vector.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The gating vector is then multiplied
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              with the input stack of feature maps.
+            </tspan>
+          </text>
+          <g transform="translate(-20, 10)">
+            <g transform="translate(284, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            </g>
+            <path d="M 404 260 L 660 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(660, 260)" class="figure-path"/>
+            <g transform="translate(675, 260)">
+              <circle r="10" class="figure-element"/>
+              <ellipse rx="2" ry="2" class="figure-path"/>
+            </g>
+            <path d="M 685 260 L 765 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(765, 260)" class="figure-path"/>
+            <g transform="translate(770, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <path d="M 404 260 L 428 260 a 6 6 0 0 0 6 -6 L 434 66 a 6 6 0 0 1 6 -6 L 450 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(450, 60)" class="figure-path"/>
+            <g transform="translate(455, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">global pooling</text>
+            </g>
+            <path d="M 495 60 L 520 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(520, 60)" class="figure-path"/>
+            <g transform="translate(525, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">ReLU layer</text>
+            </g>
+            <path d="M 565 60 L 590 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(590, 60)" class="figure-path"/>
+            <g transform="translate(595, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoidal layer</text>
+            </g>
+            <path d="M 635 60 L 660 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(660, 60)" class="figure-path"/>
+            <g transform="translate(665, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 675 90 L 675 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(675, 245)" class="figure-path"/>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        In the natural language domain, <dt-cite key="dauphin2017language"></dt-cite>
+        proposes to build a finite context using stacked convolutions to tackle
+        language modeling and introduces gated linear units, which uses half of
+        the features to apply feature-wise sigmoidal gating to the second half.
+        This architectural feature is also adopted by
+        <dt-cite key="gehring2017convolutional"></dt-cite>, which introduces a
+        fast and parallelizable model for machine translation in the form of a
+        purely convolutional architecture.
+      </p>
+      <figure class="l-body-outset" id="convseq2seq-diagram">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              The <tspan style="font-style: italic;">gated linear unit</tspan>
+              activation function
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              uses <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
+              The first half of
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              the input features is passed through a
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              sigmoid function and treated as a gating
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              vector.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The gating vector is then multiplied
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              with the second half of the features.
+            </tspan>
+          </text>
+          <g transform="translate(10, 10)">
+            <text x="249" y="260" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 249, 260)" class="figure-text">input</text>
+            <g transform="translate(264, 200)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
+            </g>
+            <path d="M 284 290 L 474 290" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(474, 290)" class="figure-path"/>
+            <g transform="translate(489, 290)">
+              <circle r="10" class="figure-element"/>
+              <ellipse rx="2" ry="2" class="figure-path"/>
+            </g>
+            <path d="M 499 290 L 689 290" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(689, 290)" class="figure-path"/>
+            <path d="M 284 230 L 316.5 230 a 6 6 0 0 0 6 -6 L 322.5 66 a 6 6 0 0 1 6 -6 L 355.5 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(355.5, 60)" class="figure-path"/>
+            <g transform="translate(361.5, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoid</text>
+            </g>
+            <path d="M 401.5 60 L 474 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(474, 60)" class="figure-path"/>
+            <g transform="translate(479, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 489 90 L 489 275" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(489, 275)" class="figure-path"/>
+            <g transform="translate(694, 260)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+            </g>
+            <text x="724" y="290" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 724, 290)" class="figure-text">output</text>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture,
+        which is itself a building block in some of the models we referenced
+        thus far, makes heavy use of feature-wise sigmoidal gating in its input,
+        forget, and output gates.
+      </p>
+      <p>
         In the speech recognition domain, <dt-cite key="kim2017dynamic"></dt-cite>
         modulates a deep bidirectional LSTM using a form of conditional
         normalization which the authors call <em>dynamic layer normalization</em>.
@@ -3132,300 +3302,11 @@
         as a way of adapting the neural acoustic model.
       </p>
       <p>
-        In the visual domain, the ImageNet 2017 winning model
-        <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
-        scheme in the form of feature-wise sigmoidal gating as a way to
-        condition a layer's activations on its previous layer.
-      </p>
-      <figure class="l-page-outset" id="squeeze-diagram">
-        <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
-            <tspan>
-              The <tspan style="font-style: italic;">squeeze-and-excitation</tspan>
-              block uses
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
-              First, the input stack
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              of feature maps is mapped to a gating
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              vector.
-            </tspan>
-          </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
-            <tspan>
-              The gating vector is then multiplied
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              with the input stack of feature maps.
-            </tspan>
-          </text>
-          <g transform="translate(-20, 10)">
-            <g transform="translate(284, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-            </g>
-            <path d="M 404 260 L 660 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(660, 260)" class="figure-path"/>
-            <g transform="translate(675, 260)">
-              <circle r="10" class="figure-element"/>
-              <ellipse rx="2" ry="2" class="figure-path"/>
-            </g>
-            <path d="M 685 260 L 765 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(765, 260)" class="figure-path"/>
-            <g transform="translate(770, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
-            </g>
-            <path d="M 404 260 L 428 260 a 6 6 0 0 0 6 -6 L 434 66 a 6 6 0 0 1 6 -6 L 450 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(450, 60)" class="figure-path"/>
-            <g transform="translate(455, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">global pooling</text>
-            </g>
-            <path d="M 495 60 L 520 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(520, 60)" class="figure-path"/>
-            <g transform="translate(525, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">ReLU layer</text>
-            </g>
-            <path d="M 565 60 L 590 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(590, 60)" class="figure-path"/>
-            <g transform="translate(595, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoidal layer</text>
-            </g>
-            <path d="M 635 60 L 660 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(660, 60)" class="figure-path"/>
-            <g transform="translate(665, 30)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-            </g>
-            <path d="M 675 90 L 675 245" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(675, 245)" class="figure-path"/>
-          </g>
-        </svg>
-      </figure>
-      <p>
-        In the natural language domain, <dt-cite key="dauphin2017language"></dt-cite>
-        proposes to build a finite context using stacked convolutions to tackle
-        language modeling and introduces gated linear units, which uses half of
-        the features to apply feature-wise sigmoidal gating to the second half.
-        This architectural feature is also adopted by
-        <dt-cite key="gehring2017convolutional"></dt-cite>, which introduces a
-        fast and parallelizable model for machine translation in the form of a
-        purely convolutional architecture.
-      </p>
-      <figure class="l-body-outset" id="convseq2seq-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
-            <tspan>
-              The <tspan style="font-style: italic;">gated linear unit</tspan>
-              activation function
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              uses <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
-              The first half of
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              the input features is passed through a
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              sigmoid function and treated as a gating
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              vector.
-            </tspan>
-          </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
-            <tspan>
-              The gating vector is then multiplied
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              with the second half of the features.
-            </tspan>
-          </text>
-          <g transform="translate(10, 10)">
-            <text x="249" y="260" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 249, 260)" class="figure-text">input</text>
-            <g transform="translate(264, 200)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
-            </g>
-            <path d="M 284 290 L 474 290" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(474, 290)" class="figure-path"/>
-            <g transform="translate(489, 290)">
-              <circle r="10" class="figure-element"/>
-              <ellipse rx="2" ry="2" class="figure-path"/>
-            </g>
-            <path d="M 499 290 L 689 290" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(689, 290)" class="figure-path"/>
-            <path d="M 284 230 L 316.5 230 a 6 6 0 0 0 6 -6 L 322.5 66 a 6 6 0 0 1 6 -6 L 355.5 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(355.5, 60)" class="figure-path"/>
-            <g transform="translate(361.5, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoid</text>
-            </g>
-            <path d="M 401.5 60 L 474 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(474, 60)" class="figure-path"/>
-            <g transform="translate(479, 30)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-            </g>
-            <path d="M 489 90 L 489 275" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(489, 275)" class="figure-path"/>
-            <g transform="translate(694, 260)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-            </g>
-            <text x="724" y="290" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 724, 290)" class="figure-text">output</text>
-          </g>
-        </svg>
-      </figure>
-      <p>
-        The LSTM <dt-cite key="hochreiter1997long"></dt-cite> architecture,
-        which is itself a building block in some of the models we referenced
-        thus far, makes heavy use of feature-wise sigmoidal gating in its input,
-        forget, and output gates.
-      </p>
-      <p>
         Finally, in addition to conditional biasing,
         PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and
         WaveNet <dt-cite key="oord2016wavenet"></dt-cite> both employ a
         self-conditioned tanh-sigmoid gated nonlinearity.
       </p>
-      <p>
-        Some work even combines attention and feature-wise transformations. Work
-        in <dt-cite key="shen2017disan"></dt-cite> proposes a feature-wise
-        self-attention mechanism for language understanding, showing strong
-        results on datasets such as SNLI <dt-cite key="bowman2015large"></dt-cite>.
-        A core idea behind the proposed model, named Directional Self-Attention
-        Network (DiSAN), is that of multi-dimensional attention, i.e., combining
-        tokens at a <em>feature</em> level rather than at a <em>feature vector</em>
-        level, using the input itself to generate the feature-wise attention
-        distributions over all tokens.
-      </p>
-      <figure class="l-body-outset" id="disan-diagram">
-        <svg viewBox="0 0 744 440" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g transform="translate(10, 10)">
-            <g transform="translate(60, 170)">
-              <rect width="460" height="240" class="figure-group figure-box"/>
-              <text x="10" y="20" dy="0.4em" class="figure-text">multi-dimensional attention</text>
-            </g>
-            <g transform="translate(220, 40)">
-              <text x="90" y="-15" dy="0.4em" style="text-anchor: middle;" class="figure-text">query representation</text>
-              <g transform="translate(0, 90)">
-                <use xlink:href="#bigger-curly-brace-horizontal" transform="rotate(180, 90, 0)" class="figure-line"/>
-              </g>
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-              <use xlink:href="#column-top" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(40, 60)" class="figure-element"/>
-              <use xlink:href="#column-top" transform="translate(80, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(80, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(80, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(80, 60)" class="figure-element"/>
-              <use xlink:href="#column-top" transform="translate(120, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(120, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(120, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(120, 60)" class="figure-element"/>
-              <use xlink:href="#column-top" transform="translate(160, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(160, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(160, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(160, 60)" class="figure-element"/>
-            </g>
-            <g transform="translate(10, 280)">
-              <text x="-12" y="40" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, -12, 40)" class="figure-text">doc. repr. token</text>
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-            </g>
-            <path d="M 35 320 L 430 320" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(430, 320)" class="figure-path"/>
-            <path d="M 35 320 L 304 320 A 6 6 0 0 0 310 314 L 310 260" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(310, 260)" class="figure-path"/>
-            <g transform="translate(230, 200)">
-              <rect width="160" height="60" class="figure-element figure-box"/>
-              <text x="80" y="30" dy="0.4em" style="text-anchor: middle;" class="figure-text">soft attention</text>
-            </g>
-            <path d="M 310 200 L 310 155" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(310, 200)" class="figure-path"/>
-            <path d="M 390 230 L 425 230" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(425, 230)" class="figure-path"/>
-            <g transform="translate(430, 190)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-            </g>
-            <path d="M 440 270 L 440 310" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(440, 310)" class="figure-path"/>
-            <g transform="translate(440, 320)">
-              <circle r="10" class="figure-element"/>
-              <circle r="2" class="figure-path"/>
-            </g>
-            <path d="M 450 320 L 550 320" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(550, 320)" class="figure-path"/>
-          </g>
-        </svg>
-        <figcaption>
-          Multi-dimensional attention. The document representation token is
-          used to extract a token-specific query representation using soft
-          attention, and the two are multiplied element-wise.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#disan-diagram > svg");
-            svg.selectAll("g.film-generator")
-                .on("mouseenter", function () {
-                    svg.select("text.film-generator-text").text("FiLM generator");
-                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", "#ef9a9a");
-                })
-                .on("mouseleave", function () {
-                    svg.select("text.film-generator-text").text("");
-                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", null);
-                });
-
-            svg.select("g.film-layer")
-                .on("mouseenter", function () {
-                    svg.select("text.film-layer-text").text("FiLM layer");
-                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", "#ffcc80");
-                })
-                .on("mouseleave", function () {
-                    svg.select("text.film-layer-text").text("");
-                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", null);
-                });
-
-            svg.select("g.filmed-network")
-                .on("mouseenter", function () {
-                    svg.select("g.filmed-network > text").text("FiLM-ed layer");
-                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", "#90caf9");
-                })
-                .on("mouseleave", function () {
-                    svg.select("g.filmed-network > text").text("squeeze-and-excitation-block");
-                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", null);
-                });
-        })();
-      </script>
 
       <hr />
 
