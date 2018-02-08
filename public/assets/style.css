@@ -1,15 +1,3 @@
-dt-article {
-  counter-reset: figures;
-}
-
-dt-article figure {
-  counter-increment: figures;
-}
-
-dt-article figure figcaption::before {
-  content: 'Figure ' counter(figures) ': ';
-}
-
 .figure-element, .figure-line, .figure-path {
   stroke: #666;
   stroke-miterlimit: 10px;
@@ -31,10 +19,18 @@ dt-article figure figcaption::before {
 }
 
 .figure-group {
-  fill: #eeeeee;
+  fill: #f9f9f9;
+  stroke: #666;
+  stroke-width: 1.5px;
+  stroke-opacity: 0.6;
+  stroke-miterlimit: 10px;
 }
 
 .figure-faded {
+  opacity: 0.35;
+}
+
+.figure-shaded {
   fill: #aaa;
   fill-opacity: 0.8;
 }
@@ -66,21 +62,13 @@ dt-article figure figcaption::before {
 }
 
 .figure-film-generator {
-  stroke: #f44336;
-  stroke-width: 1.5px;
-  stroke-miterlimit: 10px;
-}
-
-.figure-film-layer {
-  stroke: #ff9800;
-  stroke-width: 1.5px;
-  stroke-miterlimit: 10px;
+  stroke: #998b80;
+  fill: #f2dcc9;
 }
 
 .figure-filmed-network {
-  stroke: #2196f3;
-  stroke-width: 1.5px;
-  stroke-miterlimit: 10px;
+  stroke: #aa95bc;
+  fill: #eedbea;
 }
 
 .todo {
