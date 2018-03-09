@@ -53,6 +53,10 @@
   font-size: 13px;
 }
 
+.figure-text-faded {
+  opacity: 0.35;
+}
+
 .figure-large-text {
   font-size: 18px;
 }
@@ -62,13 +66,13 @@
 }
 
 .figure-film-generator {
-  stroke: #998b80;
-  fill: #f2dcc9;
+  stroke: hsla(28, 28%, 45%, 1.0);
+  fill: hsla(28, 89%, 86%, 1.0);
 }
 
 .figure-filmed-network {
-  stroke: #aa95bc;
-  fill: #eedbea;
+  stroke: hsla(310, 12%, 42%, 1.0);
+  fill: hsla(310, 48%, 80%, 1.0);
 }
 
 .todo {
