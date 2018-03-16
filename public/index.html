@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="assets/style.css" type="text/css" rel="stylesheet">
-    <script src="https://distill.pub/template.v1.js"></script>
+    <script src="https://distill.pub/template.v2.js"></script>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css"
           integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0"
@@ -11,33 +11,65 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
 
-    <script type="text/front-matter">
-      title: "Understanding FiLM"
-      description: "Description of the post"
-      authors:
-      - Vincent Dumoulin: https://vdumoulin.github.io
-      - Ethan Perez: http://ethanperez.net/
-      - Florian Strub: https://fstrub95.github.io/
-      - Harm de Vries: http://www-etud.iro.umontreal.ca/~devries/
-      - Nathan Schucher: https://nathanschucher.com/
-      - Aaron Courville: https://aaroncourville.wordpress.com/
-      - Yoshua Bengio: http://www.iro.umontreal.ca/~bengioy/yoshua_en/
-      affiliations:
-      - MILA: https://mila.quebec/en/
-      - Rice University: http://www.rice.edu/
-      - Univ. of Lille, Inria: https://team.inria.fr/sequel/
-      - MILA: https://mila.quebec/en/
-      - Element AI: https://element.ai/
-      - MILA: https://mila.quebec/en/
-      - MILA: https://mila.quebec/en/
-    </script>
+    <d-front-matter>
+      <script type="text/json">{
+        "title": "Understanding FiLM",
+        "description": "Description of the post",
+        "authors": [
+          {
+            "author": "Vincent Dumoulin",
+            "authorURL": "https://vdumoulin.github.io",
+            "affiliation": "Google Brain",
+            "affiliationURL": "g.co/brain"
+          },
+          {
+            "author": "Ethan Perez",
+            "authorURL": "http://ethanperez.net/",
+            "affiliation": "Rice University",
+            "affiliationURL": "http://www.rice.edu/"
+          },
+          {
+            "author": "Florian Strub",
+            "authorURL": "https://fstrub95.github.io/",
+            "affiliation": "Univ. of Lille, Inria",
+            "affiliationURL": "https://team.inria.fr/sequel/"
+          },
+          {
+            "author": "Harm de Vries",
+            "authorURL": "http://www-etud.iro.umontreal.ca/~devries/",
+            "affiliation": "MILA",
+            "affiliationURL": "https://mila.quebec/en/"
+          },
+          {
+            "author": "Nathan Schucher",
+            "authorURL": "https://nathanschucher.com/",
+            "affiliation": "Element AI",
+            "affiliationURL": "https://element.ai/"
+          },
+          {
+            "author": "Aaron Courville",
+            "authorURL": "https://aaroncourville.wordpress.com/",
+            "affiliation": "MILA",
+            "affiliationURL": "https://mila.quebec/en/"
+          },
+          {
+            "author": "Yoshua Bengio",
+            "authorURL": "http://www.iro.umontreal.ca/~bengioy/yoshua_en/",
+            "affiliation": "MILA",
+            "affiliationURL": "https://mila.quebec/en/"
+          }
+        ]
+      }</script>
+    </d-front-matter>
   </head>
   <body>
-    <dt-article>
+    <d-title>
       <h1>Feature-wise transformations</h1>
-      <h2>A family of methods for fusing multiple sources of information</h2>
+      <p>A family of methods for fusing multiple sources of information</p>
+    </d-title>
+    <d-byline></d-byline>
+    <d-article>
 
-      <dt-byline></dt-byline>
 
       <svg viewBox="0 0 0 0" style="display: none;" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -735,12 +767,12 @@
         vector and treat the result as the decoder's input. Using this approach,
         <em>all</em> parameters in the decoder are shared between classes, save
         for the first layer's parameters.
-        <dt-fn>
+        <d-footnote>
           As we will explain later, this is not a particularly sophisticated
           approach and you should avoid it in favor of conditional biasing,
           conditional scaling, or conditional affine transformation of the
           network's hidden features.
-        </dt-fn> 
+        </d-footnote> 
         Furthermore, the increase in number of parameters in the decoder's
         first layer is very modest: just enough to accomodate the class or
         class embedding in the layer's input.
@@ -753,10 +785,10 @@
         class-specific bias vectors, we can scale them, or we could even
         combine these ideas into a feature-wise, class-conditional affine
         transformation of the decoder layers' outputs.
-        <dt-fn>
+        <d-footnote>
           An affine transformation is a transformation of the form
-          <dt-math>y = m . x + b<dt-math>.
-        </dt-fn>
+          <d-math>y = m . x + b</d-math>.
+        </d-footnote>
         Those approaches have all in common that they act at the feature
         level, and we can regroup them under the umbrella of <em>feature-wise
         transformations</em>. Feature-wise transformations enjoy very good
@@ -803,15 +835,15 @@
       <h1 id="film-nomenclature">FiLM</h1>
       <p>
         To center the discussion around a common language, we propose to use
-        the nomenclature of <dt-cite key="perez2017film"></dt-cite>, which
+        the nomenclature of <d-cite key="perez2017film"></d-cite>, which
         formalizes feature-wise <em>affine</em> transformations under the
         acronym <em>FiLM</em>, for <strong>F</strong>eature-w<strong>i</strong>se
         <strong>L</strong>inear <strong>M</strong>odulation.
-        <dt-fn>
+        <d-footnote>
           Strictly speaking, <em>linear</em> is a misnomer, as we allow biasing,
           but we hope the more rigorous-minded reader will forgive us for the
           sake of a better-sounding acronym.
-        </dt-fn>
+        </d-footnote>
       </p>
       <p>
         We say that a neural network is modulated using FiLM, or
@@ -912,21 +944,21 @@
         By <em>feature-wise</em>, we mean that scaling
         and shifting are applied element-wise, or in the case of convolutional
         networks, feature map-wise.
-        <dt-fn>
+        <d-footnote>
           To expand a little more on the convolutional case, feature maps can be
           thought of as the same feature detector being evaluated at different
           spatial locations, in which case it makes sense to apply the same
           affine transformation to all spatial locations.
-        </dt-fn>
-        In other words, assuming <dt-math>\mathbf{x}</dt-math> is a FiLM layer's
-        input and <dt-math>\mathbf{z}</dt-math> is the conditioning information,
-        and assuming <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math> are
-        <dt-math>\mathbf{z}</dt-math>-dependent scaling and shifting vectors,
+        </d-footnote>
+        In other words, assuming <d-math>\mathbf{x}</d-math> is a FiLM layer's
+        input and <d-math>\mathbf{z}</d-math> is the conditioning information,
+        and assuming <d-math>\gamma</d-math> and <d-math>\beta</d-math> are
+        <d-math>\mathbf{z}</d-math>-dependent scaling and shifting vectors,
 
-        <dt-math block>
+        <d-math block>
             \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{z}) \odot \mathbf{x}
                                                            + \beta(\mathbf{z}),
-        </dt-math>
+        </d-math>
 
         You can interact with the following fully-connected and convolutional
         FiLM layers to get an intuition of the sort of modulation they allow:
@@ -1653,7 +1685,7 @@
         })();
       </script>
       <p>
-        FiLM shares with HyperNetworks <dt-cite key="ha2016hypernetworks"></dt-cite>
+        FiLM shares with HyperNetworks <d-cite key="ha2016hypernetworks"></d-cite>
         the architectural feature that a secondary neural network computes some
         of the parameter values in the primary network. From that perspective,
         the FiLM generator can be viewed as a specialized instance of a
@@ -1661,19 +1693,19 @@
         In fact, there exists a spectrum of methods ranging from FiLM &mdash;
         which predicts a tiny subset of a network's parameters &mdash; to
         HyperNetworks &mdash; which predicts all network parameters. For
-        instance, Adaptive CNN (ACNN) <dt-cite key="kang2017incorporating"></dt-cite>
+        instance, Adaptive CNN (ACNN) <d-cite key="kang2017incorporating"></d-cite>
         predicts the value of several of the model's convolution filters as a
         function of auxiliary inputs like camera perspective, level of noise,
         etc. The resulting convolution filters turn out to be very effective in
         difficult vision tasks such as crowd counting or image deblurring.
-        Residual Adapters <dt-cite key="rebuffi2017residualadapters"></dt-cite>
+        Residual Adapters <d-cite key="rebuffi2017residualadapters"></d-cite>
         also propose to predict entire convolutional filters conditioned on
         the visual recognition domain they are operating in. In the
         zero-shot/one-shot learning setting, the model proposed by Ba et al.
-        <dt-cite key="lei2015predicting"></dt-cite> predicts
+        <d-cite key="lei2015predicting"></d-cite> predicts
         convolutional filters and classifiers weights based on textual
         descriptions of object classes. In a reinforcement learning setting,
-        the model proposed by Oh et al. <dt-cite key="oh2017zero"></dt-cite>
+        the model proposed by Oh et al. <d-cite key="oh2017zero"></d-cite>
         computes the parameters of a policy-convolutional network conditioned
         on the task description.
       </p>
@@ -1726,8 +1758,8 @@
       </p>
       <p>
         Finally, there exists a connection between attention, gating, FiLM, and
-        mixture-of-experts models through bilinear transformations <dt-cite
-        key="tenenbaum2000separating"></dt-cite>.  Because this connection
+        mixture-of-experts models through bilinear transformations <d-cite
+        key="tenenbaum2000separating"></d-cite>.  Because this connection
         deserves more than a single paragraph, we decided to devote a
         <a href="#bilinear-connection">separate section</a> of the article to it.
       </p>
@@ -1747,8 +1779,8 @@
       </p>
       <h2>Concatenation</h2>
       <p>
-        Let's pretend that we have an input <dt-math>\mathbf{x}</dt-math> and
-        some contextual information <dt-math>\mathbf{z}</dt-math> which we
+        Let's pretend that we have an input <d-math>\mathbf{x}</d-math> and
+        some contextual information <d-math>\mathbf{z}</d-math> which we
         process using a neural network to compute some output. Perhaps the
         simplest way of combining the two is to concatenate them and pass the
         augmented input through the neural network, crossing our fingers in hope
@@ -1760,11 +1792,11 @@
       </p>
       <p>
         An improvement over this idea would be to concatenate
-        <dt-math>\mathbf{z}</dt-math> to the input of <em>all</em> layers in the
+        <d-math>\mathbf{z}</d-math> to the input of <em>all</em> layers in the
         neural network. This is in fact the approach adopted by the conditional
-        variant of DCGAN <dt-cite key="radford2016unsupervised"></dt-cite>, a
+        variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
         well-recognized class of network architectures for generative
-        adversarial networks (GANs) <dt-cite key="goodfellow2014generative"></dt-cite>.
+        adversarial networks (GANs) <d-cite key="goodfellow2014generative"></d-cite>.
         The class label is broadcasted as a feature map and is concatenated to
         the input of convolutional and transposed convolutional layers in the
         generator and discriminator networks.
@@ -1848,11 +1880,11 @@
         operation is in the form of a feature-wise, class-conditional biasing of
         the output of the layer. To understand the equivalence, consider a
         simple fully-connected linear layer applied to the concatenation of
-        <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>.
-        <dt-fn>
+        <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math>.
+        <d-footnote>
           The same argument applies to convolutional networks, provided we
           ignore the border effects due to zero-padding.
-        </dt-fn>
+        </d-footnote>
       </p>
       <figure class="l-body-outset" id="concatenation-as-biasing">
         <svg viewBox="0 0 744 420" xmlns="http://www.w3.org/2000/svg">
@@ -2017,14 +2049,14 @@
         </svg>
       </figure>
       <p>
-        Each vector product between <dt-math>\mathbf{z}</dt-math> and its
+        Each vector product between <d-math>\mathbf{z}</d-math> and its
         corresponding subset of a row of the weight matrix can be thought of
         as a bias that gets added to the corresponding output feature.
       </p>
       <p>
         Conditional biasing of layers in the neural network is itself employed
-        in PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and WaveNet
-        <dt-cite key="oord2016wavenet"></dt-cite>, two recent advances in
+        in PixelCNN <d-cite key="oord2016conditional"></d-cite> and WaveNet
+        <d-cite key="oord2016wavenet"></d-cite>, two recent advances in
         autoregressive modeling of image and audio data, respectively.
       </p>
       <p>
@@ -2034,11 +2066,11 @@
         after each convolutional layer and expressing the FiLM-generating
         network as an embedding lookup on the class labels, with the scaling
         coefficients set to a constant value of 1.
-        <dt-fn>
+        <d-footnote>
           The authors also describe a location-dependent biasing scheme which
           cannot be expressed in terms of FiLM layers due to the absence of the
           feature-wise property.
-        </dt-fn>
+        </d-footnote>
       </p>
       <figure class="l-body-outset" id="pixelcnn-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -2141,7 +2173,7 @@
         Whereas conditional biasing leverages additive interations,
         <em>conditional scaling</em> leverages multiplicative interactions. For
         instance, feature-wise sigmoidal gating scales each feature or feature
-        map by a scalar between <dt-math>0</dt-math> and <dt-math>1</dt-math> as
+        map by a scalar between <d-math>0</d-math> and <d-math>1</d-math> as
         a function of the conditioning information. This constraint is often
         enforced via a sigmoidal layer, hence the name. Intuitively,
         feature-wise sigmoidal gating allows the conditioning information to
@@ -2151,10 +2183,10 @@
       </p>
       <p>
         Examples of application include the Gated-Attention architecture
-        <dt-cite key="chaplot2017gated"></dt-cite>, which uses feature-wise
+        <d-cite key="chaplot2017gated"></d-cite>, which uses feature-wise
         sigmoidal gating to fuse linguistic and visual inputs in the context of
         a reinforcement learning agent trained to follow simple natural language
-        instructions in the VizDoom <dt-cite key="kempa2016vizdoom"></dt-cite>
+        instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite>
         3D environment.
       </p>
       <figure class="l-body-outset" id="gated-attention-diagram">
@@ -2232,7 +2264,7 @@
       </figure>
       <p>
         Sometimes the sigmoidal restriction can be lifted, as is the case for
-        the Gated-Attention Reader <dt-cite key="dhingra2017gated"></dt-cite>.
+        the Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>.
         The model extracts information from a text by conditioning the document
         reading network on an query.  Its architecture is formed of multiple
         Gated-Attention modules, which involve element-wise multiplications
@@ -2245,10 +2277,10 @@
         By combining conditional biasing and conditional scaling, we obtain the
         FiLM layer, which implements a conditional feature-wise affine
         transformation. We can use FiLM layers to condition a visual processing
-        pipeline to answer textual questions about an image. In <dt-cite
-        key="perez2017learning"></dt-cite>, and in its expanded version <dt-cite
-        key="perez2017film"></dt-cite>, a visual reasoning model is trained on the
-        CLEVR dataset <dt-cite key="johnson2017clevr"></dt-cite> to answer
+        pipeline to answer textual questions about an image. In <d-cite
+        key="perez2017learning"></d-cite>, and in its expanded version <d-cite
+        key="perez2017film"></d-cite>, a visual reasoning model is trained on the
+        CLEVR dataset <d-cite key="johnson2017clevr"></d-cite> to answer
         synthetic questions about a synthetic input image.
       </p>
       <figure class="l-page-outset" id="clevr-diagram">
@@ -2475,14 +2507,14 @@
       </p>
       <p>
         We can also leverage FiLM to condition a pre-trained network. In
-        <dt-cite key="vries2017modulating"></dt-cite>, the visual pipeline of a
+        <d-cite key="vries2017modulating"></d-cite>, the visual pipeline of a
         visual question-answering (VQA) model is modulated by the model's
         linguistic pipeline through conditional batch normalization (CBN),
         which can be viewed as a special case of FiLM. The model is trained on
         the "oracle" sub-task of the GuessWhat?! task
-        <dt-cite key="vries2017guesswhat"></dt-cite> &mdash; which features
+        <d-cite key="vries2017guesswhat"></d-cite> &mdash; which features
         natural language questions on images answerable by yes, no, or N/A
-        &mdash; as well as the VQAv1 <dt-cite key="agrawal2015vqa"></dt-cite>
+        &mdash; as well as the VQAv1 <d-cite key="agrawal2015vqa"></d-cite>
         dataset.
       </p>
       <figure class="l-page-outset" id="guesswhat-diagram">
@@ -2670,7 +2702,7 @@
       </p>
       <p>
         We can also use FiLM layers to condition a style transfer network on a
-        chosen style image. In <dt-cite key="dumoulin2017learned"></dt-cite>, fast feedforward style
+        chosen style image. In <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
         transfer networks are extended to accommodate multiple styles by
         introducing <strong>c</strong>onditional <strong>i</strong>nstance
         <strong>n</strong>ormalization (CIN) layers. Each style modeled by the
@@ -2807,7 +2839,7 @@
         </svg>
       </figure>
       <p>
-        This intuition is pushed further by <dt-cite key="ghiasi2017exploring"></dt-cite>
+        This intuition is pushed further by <d-cite key="ghiasi2017exploring"></d-cite>
         with the introduction of a <em>style prediction network</em> which is
         trained jointly with the style transfer network to predict the instance
         normalization parameters directly from a given style image.
@@ -2815,8 +2847,8 @@
       <p>
         Like CBN, CIN can be seen as an instance of FiLM where the
         post-normalization feature-wise affine transformation is replaced with a
-        FiLM layer. The main differentiator between <dt-cite key="dumoulin2017learned"></dt-cite>
-        and <dt-cite key="ghiasi2017exploring"></dt-cite> is the FiLM generator
+        FiLM layer. The main differentiator between <d-cite key="dumoulin2017learned"></d-cite>
+        and <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
         implementation: in the former the generator is a simple embedding
         lookup, whereas in the latter the generator is a convolutional neural
         network.
@@ -2826,7 +2858,7 @@
         in which feature-wise transformations are applied, and a secondary
         network which outputs parameters for these transformations. However,
         this distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
-        is not strictly necessary. As an example, <dt-cite key="huang2017arbitrary"></dt-cite>
+        is not strictly necessary. As an example, <d-cite key="huang2017arbitrary"></d-cite>
         proposes an alternative for fast and arbitrary style transfer in the
         form of an adaptive instance normalization (AdaIN) layer, which computes
         the normalization parameters using a simple heuristic.
@@ -2984,7 +3016,7 @@
       </p>
       <p>
         Feature-wise affine transformations are also used in the reinforcement
-        learning (RL) setting. In <dt-cite key="kirkpatrick2017overcoming"></dt-cite>,
+        learning (RL) setting. In <d-cite key="kirkpatrick2017overcoming"></d-cite>,
         the authors briefly touch the idea of applying conditional feature-wise
         affine transformations to a reinforcement learning problem. They train
         an agent that learns to play 10 Atari games using a single Double DQN
@@ -3001,14 +3033,14 @@
         neural network's hidden activations <em>themselves</em> as conditioning
         information. This idea gives rise to various forms of
         <em>self-conditioned</em> models. For instance, the LSTM
-        <dt-cite key="hochreiter1997long"></dt-cite> architecture, which is
+        <d-cite key="hochreiter1997long"></d-cite> architecture, which is
         itself a building block in some of the models we referenced thus far,
         makes heavy use of feature-wise sigmoidal gating in its input, forget,
         and output gates.
       </p>
       <p>
         In the visual domain, the ImageNet 2017 winning model
-        <dt-cite key="hu2017squeeze"></dt-cite> employs a self-conditioning
+        <d-cite key="hu2017squeeze"></d-cite> employs a self-conditioning
         scheme in the form of feature-wise sigmoidal gating as a way to
         "recalibrate" a layer's activations conditioned on <em>themselves</em>.
       </p>
@@ -3090,12 +3122,12 @@
         </svg>
       </figure>
       <p>
-        In the natural language domain, <dt-cite key="dauphin2017language"></dt-cite>
+        In the natural language domain, <d-cite key="dauphin2017language"></d-cite>
         proposes to build a finite context using stacked convolutions to tackle
         language modeling and introduces gated linear units, which uses half of
         the features to apply feature-wise sigmoidal gating to the second half.
         This architectural feature is also adopted by
-        <dt-cite key="gehring2017convolutional"></dt-cite>, which introduces a
+        <d-cite key="gehring2017convolutional"></d-cite>, which introduces a
         fast and parallelizable model for machine translation in the form of a
         purely convolutional architecture.
       </p>
@@ -3171,7 +3203,7 @@
         </svg>
       </figure>
       <p>
-        In the speech recognition domain, <dt-cite key="kim2017dynamic"></dt-cite>
+        In the speech recognition domain, <d-cite key="kim2017dynamic"></d-cite>
         modulates a deep bidirectional LSTM using a form of conditional
         normalization which the authors call <em>dynamic layer normalization</em>.
         In analogy to conditional instance normalization and conditional batch
@@ -3366,7 +3398,7 @@
           </g>
         </svg>
         <figcaption>
-          The speech recognition model in <dt-cite key="kim2017dynamic"></dt-cite>
+          The speech recognition model in <d-cite key="kim2017dynamic"></d-cite>
           achieves speaker adaptation by predicting the layer normalization
           scaling and shifting coefficients inside its LSTMs' forget, input,
           and output gates from an utterance summarization vector.
@@ -3415,8 +3447,8 @@
       </p>
       <p>
         Finally, in addition to conditional biasing,
-        PixelCNN <dt-cite key="oord2016conditional"></dt-cite> and
-        WaveNet <dt-cite key="oord2016wavenet"></dt-cite> both employ a
+        PixelCNN <d-cite key="oord2016conditional"></d-cite> and
+        WaveNet <d-cite key="oord2016wavenet"></d-cite> both employ a
         self-conditioned tanh-sigmoid gated nonlinearity.
       </p>
 
@@ -3446,8 +3478,8 @@
       <p>
         With the warning out of the way, let us consider two FiLM-ed networks
         trained in fairly different problem settings: the visual reasoning model
-        presented in <dt-cite key="perez2017film"></dt-cite> and the style
-        transfer model presented in <dt-cite key="ghiasi2017exploring"></dt-cite>.
+        presented in <d-cite key="perez2017film"></d-cite> and the style
+        transfer model presented in <d-cite key="ghiasi2017exploring"></d-cite>.
         Both models feature a well-defined FiLM generator: a linguistic pipeline
         mapping from textual query to FiLM parameters for the former, and a CNN
         mapping from style image to FiLM parameters for the latter. Both models
@@ -3459,15 +3491,15 @@
       <h2>FiLM parameter distribution</h2>
       <p>
         As a first step, let's examine what values the scaling and shifting
-        coefficients <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math>
-        take. In the figure below we plotted the <dt-math>\gamma</dt-math> and
-        <dt-math>\beta</dt-math> histograms across all validation set
+        coefficients <d-math>\gamma</d-math> and <d-math>\beta</d-math>
+        take. In the figure below we plotted the <d-math>\gamma</d-math> and
+        <d-math>\beta</d-math> histograms across all validation set
         image-question pairs &mdash; that is, for each image-question pair in
-        the validation set, we extracted the predicted <dt-math>\gamma</dt-math>
-        and <dt-math>\beta</dt-math> coefficients for all FiLM layers by running
+        the validation set, we extracted the predicted <d-math>\gamma</d-math>
+        and <d-math>\beta</d-math> coefficients for all FiLM layers by running
         the linguistic pipeline on the input, and we built two histograms, one
-        for the <dt-math>\gamma</dt-math> values and one for the
-        <dt-math>\beta</dt-math> values.
+        for the <d-math>\gamma</d-math> values and one for the
+        <d-math>\beta</d-math> values.
       </p>
       <figure class="l-body-outset" id="marginal-histograms">
         <svg viewBox="0 0 744 280" xmlns="http://www.w3.org/2000/svg">
@@ -3477,9 +3509,9 @@
         <figcaption>
             The predicted FiLM parameters for the visual reasoning model trained
             on the CLEVR task exhibit an interesting value distribution: the
-            scaling parameters are sharply peaked at <dt-math>\gamma = 0</dt-math>
+            scaling parameters are sharply peaked at <d-math>\gamma = 0</d-math>
             and the shifting parameters have a lot of mass in the
-            <dt-math>\beta < 0</dt-math> area.
+            <d-math>\beta < 0</d-math> area.
         </figcaption>
       </figure>
       <script>
@@ -3529,16 +3561,16 @@
         })();
       </script>
       <p>
-        Note the sharp peak around <dt-math>\gamma = 0</dt-math> and the
+        Note the sharp peak around <d-math>\gamma = 0</d-math> and the
         significant amount of mass in the negative range of the
-        <dt-math>\beta</dt-math> histogram. Combined with the model's ReLU
+        <d-math>\beta</d-math> histogram. Combined with the model's ReLU
         nonlinearities, this observation suggests that the model is &mdash; at
         least in part &mdash; using its FiLM layers as a switching mechanism:
         by scaling feature maps down to a near-zero value and shifting them
         into the negative range, the model can zero out entire unwanted feature
         maps. This observation also holds for the FiLM parameter distributions
         of <em>individual</em> examples. In the following figure, we show
-        <dt-math>\gamma</dt-math> and <dt-math>\beta</dt-math> distributions
+        <d-math>\gamma</d-math> and <d-math>\beta</d-math> distributions
         for five image-question pairs chosen at random:
       </p>
       <figure class="l-body-outset" id="examplewise-histograms">
@@ -3772,7 +3804,7 @@
       <p>
         As previously hinted at, there exists a strong connection between FiLM,
         gating, attention, and mixture-of-experts models through bilinear
-        transformations <dt-cite key="tenenbaum2000separating,fukui2016compactbilinear"></dt-cite>. In
+        transformations <d-cite key="tenenbaum2000separating,fukui2016compactbilinear"></d-cite>. In
         fact, all four approaches can be formalized using an extension of
         bilinear transformations which we propose to call <em>generalized
         bilinear transformations</em>.
@@ -3780,15 +3812,15 @@
       <h2>Bilinear and generalized bilinear transformations</h2>
       <p>
         A bilinear transformation defines the relationship between two inputs
-        <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> and the
-        <dt-math>k^{th}</dt-math> output feature <dt-math>y_k</dt-math> as
+        <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> and the
+        <d-math>k^{th}</d-math> output feature <d-math>y_k</d-math> as
 
-        <dt-math block>
+        <d-math block>
           y_k = \mathbf{x}^T W_k \mathbf{z}.
-        </dt-math>
+        </d-math>
 
-        Note that for each output feature <dt-math>y_k</dt-math> we have a
-        separate matrix <dt-math>W_k</dt-math>, so the full set of weights forms
+        Note that for each output feature <d-math>y_k</d-math> we have a
+        separate matrix <d-math>W_k</d-math>, so the full set of weights forms
         a 3-tensor.
       </p>
       <figure class="l-body-outset" id="bilinear-diagram">
@@ -3911,42 +3943,42 @@
           <use xlink:href="#arrow-up" transform="translate(412, 60)" class="figure-path"/>
         </svg>
         <figcaption>
-          A bilinear transformation mapping <dt-math>\mathbf{x}</dt-math> and
-          <dt-math>\mathbf{z}</dt-math> &mdash; both 3-dimensional &mdash; to a
-          3-dimensional output. Each output element <dt-math>y_k</dt-math> is
+          A bilinear transformation mapping <d-math>\mathbf{x}</d-math> and
+          <d-math>\mathbf{z}</d-math> &mdash; both 3-dimensional &mdash; to a
+          3-dimensional output. Each output element <d-math>y_k</d-math> is
           computed as a vector-matrix-vector product using a separate matrix
-          <dt-math>W_k</dt-math>.
+          <d-math>W_k</d-math>.
         </figcaption>
       </figure>
       <p>
         In general, bilinear transformations are used to combine two inputs
         without attaching a specific meaning to the nature of those inputs. For
         the purpose of our discussion, we will consider
-        <dt-math>\mathbf{x}</dt-math> to be the representation being FiLM-ed,
-        gated, or attended to, and <dt-math>\mathbf{z}</dt-math> to be the
+        <d-math>\mathbf{x}</d-math> to be the representation being FiLM-ed,
+        gated, or attended to, and <d-math>\mathbf{z}</d-math> to be the
         context used to FiLM, gate, or attend to.
       <p>
         The generalized bilinear transformation we propose stretches the
         definition of a bilinear transformation in two ways:
         <ul>
           <li>
-            It appends a <dt-math>1</dt-math>-valued feature to the inputs
-            <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math> to
+            It appends a <d-math>1</d-math>-valued feature to the inputs
+            <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> to
             accommodate an eventual bias term &mdash; a common trick used to
             simplify the algebra of neural networks:
-            <dt-math block>
+            <d-math block>
               \begin{aligned}
                 \tilde{\mathbf{x}} &= (x_0, \ldots, x_M, 1)^T, \\
                 \tilde{\mathbf{z}} &= (z_0, \ldots, z_N, 1)^T.
               \end{aligned}
-            </dt-math>
+            </d-math>
           </li>
           <li>
-            It applies an activation function <dt-math>g_k(\cdot)</dt-math> to
+            It applies an activation function <d-math>g_k(\cdot)</d-math> to
             the result of the matrix-vector product:
-            <dt-math block>
+            <d-math block>
               y_k = \tilde{\mathbf{x}}^T g_k(W_k \tilde{\mathbf{z}}).
-            </dt-math>
+            </d-math>
           </li>
         </ul>
       </p>
@@ -4116,22 +4148,22 @@
         </svg>
         <figcaption>
           A generalized bilinear transformation mapping mapping the inputs
-          <dt-math>\mathbf{x}</dt-math> and <dt-math>\mathbf{z}</dt-math>
+          <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math>
           &mdash; both 3-dimensional &mdash; to a 3-dimensional output.
         </figcaption>
       </figure>
       <p>
-        The choice of activation function <dt-math>g_k(\cdot)</dt-math> and the
-        structure of the weight matrices <dt-math>W_k</dt-math> determines the
+        The choice of activation function <d-math>g_k(\cdot)</d-math> and the
+        structure of the weight matrices <d-math>W_k</d-math> determines the
         nature of the transformation: FiLM, gating, or attention. Starting with
         the mathematical definition of each computation, we will now explain how
         they can be expressed in terms of generalized bilinear transformations.
         To simplify the discussion, we give the name <em>context vector</em> to
         the matrix-vector product:
 
-        <dt-math block>
+        <d-math block>
           \mathbf{v} = g_k(W_k \tilde{\mathbf{z}})
-        </dt-math>
+        </d-math>
       </p>
 
       <h2>Connecting the dots</h2>
@@ -4140,23 +4172,23 @@
       <p>
         FiLM is represented by an equation of the form
 
-        <dt-math block>
+        <d-math block>
           y_k = \gamma_k x_k + \beta_k.
-        </dt-math>
+        </d-math>
 
         This means that the nonlinearity should be the identity function
-        <dt-math>g_k(\mathbf{u}) = \mathbf{z}</dt-math>, and the context vector
+        <d-math>g_k(\mathbf{u}) = \mathbf{z}</d-math>, and the context vector
         should have the form
 
-        <dt-math block>
+        <d-math block>
           \mathbf{v} = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)^T,
-        </dt-math>
+        </d-math>
 
-        where <dt-math>\gamma_k</dt-math> is the <dt-math>k^{th}</dt-math>
+        where <d-math>\gamma_k</d-math> is the <d-math>k^{th}</d-math>
         element of the context vector. This means in turn that the weight matrix
-        <dt-math>W_k</dt-math> should be low-rank and have the form
+        <d-math>W_k</d-math> should be low-rank and have the form
 
-        <dt-math block>
+        <d-math block>
           W_k =
           \begin{pmatrix}
              0 & 0 \\
@@ -4172,13 +4204,13 @@
              w_{k, 1, 1} & \cdots & w_{k, 1, N} \\
              w_{k, 2, 1} & \cdots & w_{k, 2, N}
           \end{pmatrix}.
-        </dt-math>
+        </d-math>
       </p>
       <p>
-      Here is an example for a 3-dimensional <dt-math>\mathbf{x}</dt-math>
-      and a 2-dimensional <dt-math>\mathbf{z}</dt-math> (reminder: this means
-      a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
-      <dt-math>\tilde{\mathbf{z}}</dt-math>):
+      Here is an example for a 3-dimensional <d-math>\mathbf{x}</d-math>
+      and a 2-dimensional <d-math>\mathbf{z}</d-math> (reminder: this means
+      a 4-dimensional <d-math>\tilde{\mathbf{x}}</d-math> and a 3-dimensional
+      <d-math>\tilde{\mathbf{z}}</d-math>):
       </p>
       <figure class="l-body-outset" id="film-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
@@ -4293,10 +4325,10 @@
         </svg>
         <figcaption>
           Generalized bilinear weight matrices for a FiLM layer applied on a
-          3-dimensional input <dt-math>\mathbf{x}</dt-math> within the context
-          of a 2-dimensional <dt-math>\mathbf{z}</dt-math>. Grey elements
-          have value <dt-math>0</dt-math>, white elements have value
-          <dt-math>1</dt-math>, and color elements have arbitrary values.
+          3-dimensional input <d-math>\mathbf{x}</d-math> within the context
+          of a 2-dimensional <d-math>\mathbf{z}</d-math>. Grey elements
+          have value <d-math>0</d-math>, white elements have value
+          <d-math>1</d-math>, and color elements have arbitrary values.
         </figcaption>
       </figure>
       <script>
@@ -4354,26 +4386,26 @@
         adaptation with respect to FiLM. Feature-wise gating is represented by
         an equation of the form
 
-        <dt-math block>
+        <d-math block>
           y_k = \alpha_k x_k, \quad \alpha_k \in [0, 1].
-        </dt-math>
+        </d-math>
 
         This means that the context vector should have the form
 
-        <dt-math block>
+        <d-math block>
           \mathbf{v} = (0, \ldots, 0, \alpha_k, 0, \ldots, 0, 0)^T,
-        </dt-math>
+        </d-math>
 
         which is achieved through a combination of a "one-hot sigmoid"
         nonlinearity
 
-        <dt-math block>
+        <d-math block>
           g(\mathbf{u}) = (u_0, \ldots, u_{k-1}, \sigma(u_k), u_{k+1}, \ldots, u_{N})^T,
-        </dt-math>
+        </d-math>
 
-        and a low-rank weight matrix <dt-math>W_k</dt-math> of the form
+        and a low-rank weight matrix <d-math>W_k</d-math> of the form
 
-        <dt-math block>
+        <d-math block>
           W_k =
           \begin{pmatrix}
              0 \\
@@ -4387,13 +4419,13 @@
           \begin{pmatrix}
              w_{k, 1} & \cdots & w_{k, N}
           \end{pmatrix}.
-        </dt-math>
+        </d-math>
       </p>
       <p>
-      Here is an example for a 3-dimensional <dt-math>\mathbf{x}</dt-math>
-      and a 2-dimensional <dt-math>\mathbf{z}</dt-math> (reminder: this means
-      a 4-dimensional <dt-math>\tilde{\mathbf{x}}</dt-math> and a 3-dimensional
-      <dt-math>\tilde{\mathbf{z}}</dt-math>):
+      Here is an example for a 3-dimensional <d-math>\mathbf{x}</d-math>
+      and a 2-dimensional <d-math>\mathbf{z}</d-math> (reminder: this means
+      a 4-dimensional <d-math>\tilde{\mathbf{x}}</d-math> and a 3-dimensional
+      <d-math>\tilde{\mathbf{z}}</d-math>):
       </p>
       <figure class="l-body-outset" id="gating-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
@@ -4487,10 +4519,10 @@
         </svg>
         <figcaption>
           Generalized bilinear weight matrices for a gating layer applied on a
-          3-dimensional input <dt-math>\mathbf{x}</dt-math> within the context
-          of a 2-dimensional <dt-math>\mathbf{z}</dt-math>. Grey elements
-          have value <dt-math>0</dt-math>, white elements have value
-          <dt-math>1</dt-math>, and color elements have arbitrary values.
+          3-dimensional input <d-math>\mathbf{x}</d-math> within the context
+          of a 2-dimensional <d-math>\mathbf{z}</d-math>. Grey elements
+          have value <d-math>0</d-math>, white elements have value
+          <d-math>1</d-math>, and color elements have arbitrary values.
         </figcaption>
       </figure>
       <script>
@@ -4544,50 +4576,50 @@
       <p>
         <a href="https://distill.pub/2016/augmented-rnns/">Attention</a> is
         applied to a set of feature vectors at different spatial or temporal
-        locations <dt-math>t \in [1, \cdots, T]</dt-math> by computing from
+        locations <d-math>t \in [1, \cdots, T]</d-math> by computing from
         internal or external conditioning information an <em>attention distribution</em>
 
-        <dt-math block>
+        <d-math block>
             \mathbf{p} = (p_1, \cdots, p_T)^T, \quad p^t > 0, \quad \sum_{t=1}^T p^t = 1.
-        </dt-math>
+        </d-math>
 
-        Assuming a feature matrix <dt-math>X</dt-math> in which columns
+        Assuming a feature matrix <d-math>X</d-math> in which columns
         represent feature vectors at different spatial or temporal locations
         (<em>N.B.: this is a somewhat unusual way of organizing a sequence of
         feature vectors</em>), the output of the attentional interface is
         computed as the expected feature vector over the attention distribution:
 
-        <dt-math block>
+        <d-math block>
             \mathbf{y} = X \mathbf{p}.
-        </dt-math>
+        </d-math>
       <p>
         Attention is closely related to gating in the generalized bilinear
         formulation, save from one crucial detail: because it implements a
         weighted sum over spatial or temporal locations, elements of the
-        vector <dt-math>\mathbf{x}</dt-math> represent <em>the same feature
+        vector <d-math>\mathbf{x}</d-math> represent <em>the same feature
         at different spatial or temporal locations</em> rather than different
         features. It is represented by an equation of the form
 
-        <dt-math block>
+        <d-math block>
           y_k = \sum_{t=1}^T X_{k,t} p_t.
-        </dt-math>
+        </d-math>
 
         This means that the context vector should have the form
 
-        <dt-math block>
+        <d-math block>
           \mathbf{v} = (p_1, \ldots, p_T, 0)^T,
-        </dt-math>
+        </d-math>
 
         which is achieved through a combination of an "all-but-last softmax"
         nonlinearity
 
-        <dt-math block>
+        <d-math block>
           g(\mathbf{u}) = (\textrm{softmax}(\mathbf{u}_{1:T-1}), 0)^T,
-        </dt-math>
+        </d-math>
 
-        and a full-rank weight matrix <dt-math>W_k</dt-math>. Because the same
+        and a full-rank weight matrix <d-math>W_k</d-math>. Because the same
         weighted sum is applied to all features over spatial or temporal
-        locations, matrices <dt-math>W_k</dt-math> are tied.
+        locations, matrices <d-math>W_k</d-math> are tied.
       </p>
       <figure class="l-body-outset" id="attention-as-bilinear-diagram">
         <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
@@ -4645,7 +4677,7 @@
         </svg>
         <figcaption>
           The generalized bilinear weight matrices for an attention layer are
-          tied. Grey elements have value <dt-math>0</dt-math>, and color
+          tied. Grey elements have value <d-math>0</d-math>, and color
           elements have arbitrary values.
         </figcaption>
       </figure>
@@ -4681,7 +4713,7 @@
       <h3>Mixture-of-experts as a generalized bilinear transformation</h3>
       <p>
         Work on mixture-of-experts models
-        <dt-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep,shazeer2017outrageously"></dt-cite>
+        <d-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep,shazeer2017outrageously"></d-cite>
         examines a framework in which the feature vectors output by several
         expert sub-networks are combined according to a mixture distribution
         which is itself computed from the experts' inputs.
@@ -4772,7 +4804,7 @@
         outputs rather than over time or space. As such, mixture-of-experts
         models can be represented as generalized bilinear transformations in the
         same way attention is, the only difference being that the columns of
-        <dt-math>X</dt-math> represent experts rather than spatial or temporal
+        <d-math>X</d-math> represent experts rather than spatial or temporal
         locations.
       </p>
       <figure class="l-body-outset" id="moe-as-bilinear-diagram">
@@ -4832,7 +4864,7 @@
         <figcaption>
           Just like with attention, the generalized bilinear weight matrices for
           a mixture-of-experts model are tied. Grey elements have value
-          <dt-math>0</dt-math>, and color elements have arbitrary values.
+          <d-math>0</d-math>, and color elements have arbitrary values.
         </figcaption>
       </figure>
       <script>
@@ -4884,7 +4916,7 @@
         instance, most of the work we referenced operates from a "conditioning"
         perspective in which the processing of a primary source of information
         is conditioned on a secondary source of information (e.g., in
-        <dt-cite key="perez2017film"></dt-cite> the image processing pipeline
+        <d-cite key="perez2017film"></d-cite> the image processing pipeline
         is conditioned on the linguistic pipeline). This distinction gets
         blurrier as we move towards problems like the movie scene recognition
         problem introduced at the very beginning of this article: there is no
@@ -4916,9 +4948,9 @@
         its own right &mdash; or it could also be that the model learns a new
         form of interaction between modalities altogether.
       </p>
-    </dt-article>
+    </d-article>
 
-    <dt-appendix>
+    <d-appendix>
       <h3>Acknowledgements</h3>
       <p>
         This article would be nowhere near where it is today without the honest
@@ -4929,337 +4961,10 @@
         Memisevic from TwentyBN, Dzmitry Bahdanau from MILA, Olivier Pietquin
         from DeepMind and Jérémie Mary from Criteo.
       </p>
-    </dt-appendix>
+      <d-footnote-list></d-footnote-list>
+      <d-citation-list></d-citation-list>
+    </d-appendix>
 
-    <script type="text/bibliography">
-      @inproceedings{vries2017modulating,
-        author={de Vries, Harm and Strub, Florian and Mary, J\'{e}r\'{e}mie and
-                Larochelle, Hugo and Pietquin, Olivier and Courville, Aaron},
-        title={Modulating early visual processing by language},
-        booktitle={Advances in Neural Information Processing Systems},
-        year={2017},
-        url={https://arxiv.org/pdf/1707.00683.pdf},
-      }
-      @inproceedings{vries2017guesswhat,
-        title={GuessWhat?! Visual object discovery through multi-modal dialogue},
-        author={de Vries, Harm and Strub, Florian and Chandar, Sarath and
-                Pietquin, Olivier and Larochelle, Hugo and Courville, Aaron},
-        booktitle={Proceedings of the Conference on Computer Vision and Pattern
-                   Recognition},
-        year={2017}
-      }
-      @inproceedings{perez2017learning,
-        author={Perez, Ethan and de Vries, Harm and Strub, Florian and Dumoulin,
-                Vincent and Courville, Aaron},
-        title={Learning visual reasoning without strong priors},
-        booktitle={ICML Workshop on Machine Learning in Speech and Language Processing},
-        year={2017},
-        url={https://arxiv.org/pdf/1707.03017.pdf},
-      }
-      @inproceedings{perez2017film,
-        author={Perez, Ethan and and Strub, Florian and de Vries, Harm and Dumoulin,
-                Vincent and Courville, Aaron},
-        title={FiLM: Visual Reasoning with a General Conditioning Layer},
-        booktitle={arXiv},
-        year={2017},
-        url={https://arxiv.org/pdf/1709.07871.pdf},
-      }
-      @inproceedings{johnson2017clevr,
-        author={Johnson, Justin and Li, Fei-Fei and Hariharan, Bharath and Zitnick,
-                Lawrence C. and van der Maaten, Laurens and Girshick, Ross},
-        title={CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning},
-        booktitle={Proceedings of the Conference on Computer Vision and Pattern Recognition},
-        year={2017},
-        url={https://arxiv.org/pdf/1612.06890.pdf},
-      }
-      @inproceedings{dumoulin2017learned,
-        author={Dumoulin, Vincent and Shlens, Jonathon and Kudlur, Manjunath},
-        title={A Learned Representation for Artistic Style},
-        booktitle={Proceedings of the International Conference on Learning Representations},
-        year={2017},
-        url={https://arxiv.org/pdf/1610.07629.pdf},
-      }
-      @inproceedings{ghiasi2017exploring,
-        author={Ghiasi, Golnaz and Lee, Honglak and Kudlur, Manjunath and
-                Dumoulin, Vincent and Shlens, Jonathon},
-        title={Exploring the structure of a real-time, arbitrary neural artistic
-               stylization network},
-        booktitle={Proceedings of the British Machine Vision Conference},
-        year={2017},
-        url={https://arxiv.org/pdf/1705.06830.pdf},
-      }
-      @inproceedings{huang2017arbitrary,
-        title={Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization},
-        author={Huang, Xun and Belongie, Serge},
-        booktitle={Proceedings of the International Conference on Computer Vision},
-        year={2017},
-        url={https://arxiv.org/pdf/1703.06868.pdf},
-      }
-      @inproceedings{radford2016unsupervised,
-        author={Radford, Alec and Metz, Luke and Chintala, Soumith},
-        title={Unsupervised Representation Learning with Deep Convolutional
-               Generative Adversarial Networks},
-        booktitle={Proceedings of the International Conference on Learning Representations},
-        year={2016},
-        url={https://arxiv.org/pdf/1511.06434.pdf},
-      }
-      @inproceedings{oord2016conditional,
-        title={Conditional Image Generation with PixelCNN Decoders},
-        author={van den Oord, Aaron and Kalchbrenner, Nal and Espeholt, Lasse
-                and Vinyals, Oriol and Graves, Alex and Kavukcuoglu, Koray},
-        booktitle={Advances in Neural Information Processing Systems},
-        year={2016},
-        url={https://arxiv.org/pdf/1606.05328.pdf}
-      }
-      @article{oord2016wavenet,
-        title={WaveNet: A Generative Model for Raw Audio},
-        author={van den Oord, Aaron and Dieleman, Sander and Zen, Heiga and
-                Simonyan, Karen and Vinyals, Oriol and Graves, Alex and
-                Kalchbrenner, Nal and Senior, Andrew and Kavukcuoglu, Koray},
-        journal={arXiv},
-        year={2016},
-        url={https://arxiv.org/pdf/1609.03499.pdf},
-      }
-      @inproceedings{ha2016hypernetworks,
-        author={Ha, David and Dai, Andrew and Le, Quoc},
-        title={HyperNetworks},
-        booktitle={Proceedings of the International Conference on Learning Representations},
-        year={2016},
-        url={https://arxiv.org/pdf/1609.09106.pdf},
-      }
-      @inproceedings{kim2017dynamic,
-        author={Kim, Taesup and Song, Inchul and Bengio, Yoshua},
-        title={Dynamic Layer Normalization for Adaptive Neural Acoustic Modeling
-               in Speech Recognition},
-        booktitle={Interspeech},
-        year={2017},
-        url={https://arxiv.org/pdf/1707.06065.pdf},
-      }
-      @inproceedings{hu2017squeeze,
-        author={Hu, Jie and Shen, Li and Sun, Gang},
-        title={Squeeze-and-Excitation Networks},
-        booktitle={CVPR's ILSVRC 2017 Workshop},
-        year={2017},
-        url={https://arxiv.org/pdf/1709.01507.pdf},
-      }
-      @inproceedings{dauphin2017language,
-        title={Language modeling with gated convolutional networks},
-        author={Dauphin, Yann N and Fan, Angela and Auli, Michael and Grangier, David},
-        booktitle={Proceedings of the International Conference on Machine Learning},
-        year={2017},
-        url={https://arxiv.org/pdf/1612.08083.pdf},
-      }
-      @inproceedings{gehring2017convolutional,
-        author={Gehring, Jonas and Auli, Michael and Grangier, David and Yarats,
-                Denis and Dauphin, Yann N.},
-        title={Convolution Sequence-to-Sequence Learning},
-        booktitle={Proceedings of the International Conference on Machine Learning},
-        year={2017},
-        url={https://arxiv.org/pdf/1705.03122.pdf},
-      }
-      @article{hochreiter1997long,
-        title={Long Short-Term Memory},
-        author={Hochreiter, Sepp and Schmidhuber, J{\"u}rgen},
-        journal={Neural Computation},
-        volume={9},
-        number={8},
-        pages={1735--1780},
-        year={1997},
-        publisher={MIT Press},
-        url={http://dx.doi.org/10.1162/neco.1997.9.8.1735},
-      }
-      @article{tenenbaum2000separating,
-        title={Separating Style and Content with Bilinear Models},
-        author={Tenenbaum, Joshua B. and Freeman, William T.},
-        journal={Neural Computation},
-        volume={12},
-        number={6},
-        pages={1247--1283},
-        year={2000},
-        publisher={MIT Press},
-        url={http://dx.doi.org/10.1162/089976600300015349},
-      }
-      @article{dhingra2017gated,
-        title={Gated-Attention Readers for Text Comprehension},
-        author={Dhingra, Bhuwan and Liu, Hanxiao and Yang, Zhilin, and
-                Cohen, William W and Salakhutdinov, Ruslan},
-        booktitle={Proceedings of the Annual Meeting of the Association for
-                   Computational Linguistics},
-        year={2017},
-        url={https://arxiv.org/pdf/1606.01549.pdf},
-      }
-      @inproceedings{chaplot2017gated,
-        title={Gated-Attention Architectures for Task-Oriented Language Grounding},
-        author={Chaplot, Devendra Singh and Sathyendra, Kanthashree Mysore and
-                Pasumarthi, Rama Kumar and Rajagopal, Dheeraj and Salakhutdinov,
-                Ruslan},
-        booktitle={ACL Workshop on Language Grounding for Robotics},
-        year={2017},
-        url={https://arxiv.org/pdf/1706.07230.pdf},
-      }
-      @inproceedings{shen2017disan,
-        title={DiSAN: Directional Self-Attention Network for RNN/CNN-free
-               Language Understanding},
-        author={Shen, Tao and Zhou, Tianyi and Long, Guodong and Jiang, Jing and
-                Pan, Shirui and Zhang, Chengqi},
-        booktitle={arXiv},
-        year={2017},
-        url={https://arxiv.org/pdf/1709.04696.pdf},
-      }
-      @inproceedings{bowman2015large,
-        title={A large annotated corpus for learning natural language inference},
-        author={Bowman, Samuel R. and Angeli, Gabor and Potts, Christopher, and
-                Manning, Christopher D.},
-        booktitle={Proceedings of the Conference on Empirical Methods in Natural
-                   Language Processing},
-        year={2015},
-        url={https://nlp.stanford.edu/pubs/snli_paper.pdf},
-      }
-      @article{jacobs1991adaptive,
-        title={Adaptive Mixtures of Local Experts},
-        author={Jacobs, Robert A. and Jordan, Michael I. and Nowlan, Steven J.
-                and Hinton, Geoffrey E.},
-        journal={Neural Computation},
-        volume={3},
-        number={1},
-        pages={79--87},
-        year={1991},
-        publisher={MIT Press},
-        url={http://dx.doi.org/10.1162/neco.1991.3.1.79},
-      }
-      @article{jordan1994hierarchical,
-        title={Hierarchical Mixtures of Experts and the EM Algorithm},
-        author={Jordan, Michael I. and Jacobs, Robert A.},
-        journal={Neural Computation},
-        volume={6},
-        number={2},
-        pages={181--214},
-        year={1994},
-        publisher={MIT Press},
-        url={http://dx.doi.org/10.1162/neco.1994.6.2.181},
-      }
-      @inproceedings{eigen2014deep,
-        author={Eigen, David and Ranzato, Marc'Aurelio and Sutskever, Ilya},
-        title={Learning Factored Representations in a Deep Mixture of Experts},
-        booktitle={Proceedings of the ICLR Workshops},
-        year={2014},
-        url={https://arxiv.org/pdf/1312.4314.pdf},
-      }
-      @article{kirkpatrick2017overcoming,
-        title={Overcoming catastrophic forgetting in neural networks},
-        author={Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and
-                Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A. and
-                Milan, Kieran and Quan, John and Ramalho, Tiago and
-                Grabska-Barwinska, Agnieszka and Hassabis, Demis and Clopath,
-                Claudia and Kumaran, Dharshan and Hadsell, Raia},
-        journal={Proceedings of the National Academy of Sciences},
-        volume={114},
-        number={13},
-        pages={3521--3526},
-        year={2017},
-        url={http://www.pnas.org/content/114/13/3521.abstract},
-      }
-      @inproceedings{mel1992clusteron,
-        title={The Clusteron: Toward a Simple Abstraction for a Complex Neuron},
-        author={Mel, Bartlett W},
-        booktitle={Advances in Neural Information Processing Systems},
-        year={1992},
-        url={http://papers.nips.cc/paper/450-the-clusteron-toward-a-simple-abstraction-for-a-complex-neuron.pdf},
-      }
-      @article{boutonnet2015words,
-        title={Words jump-start vision: A label advantage in object recognition},
-        author={B. Boutonnet and G. Lupyan},
-        journal={Journal of Neuroscience},
-        volume={35},
-        number={25},
-        pages={9329--9335},
-        year={2015},
-        publisher={Society for Neuroscience},
-        url={},
-      }
-      @inproceedings{agrawal2015vqa,
-        title={VQA: Visual Question Answering},
-        author={Agrawal, Aishwarya and Lu, Jiasen and Antol, Stanislaw  and
-                Mitchell, Margaret and Zitnick, C. Lawrence and Batra, Dhruv and
-                Parikh, Devi},
-        booktitle={Proceedings of the International Conference on Computer Vision},
-        year={2015},
-        url={https://arxiv.org/pdf/1505.00468.pdf},
-      }
-      @inproceedings{kempa2016vizdoom,
-        title={Vizdoom: A doom-based AI research platform for visual reinforcement learning},
-        author={Kempka, Michał and Wydmuch, Marek and Runc, Grzegorz and Toczek, Jakub and Jaśkowski, Wojciech},
-        booktitle={IEEE Conference on Computational Intelligence and Games},
-        year={2016},
-        url={https://arxiv.org/pdf/1605.02097.pdf},
-      }
-      @inproceedings{shazeer2017outrageously,
-        title={Outrageously large neural networks: The sparsely-gated mixture-of-experts layer},
-        author={Shazeer, Noam and Mirhoseini, Azalia and Maziarz, Krzysztof and Davis, Andy and Le, Quoc and Hinton, Geoffrey and Dean, Jeff},
-        booktitle={Proceedings of the International Conference on Learning Representations},
-        year={2017},
-        url={https://arxiv.org/pdf/1701.06538.pdf},
-      }
-      @inproceedings{bahdanau2014neural,
-        title={Neural machine translation by jointly learning to align and translate},
-        author={Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua},
-        booktitle={Proceedings of the International Conference on Learning Representations},
-        year={2015},
-        url={https://arxiv.org/pdf/1409.0473.pdf},
-      }
-      @inproceedings{yang2016stacked,
-		    title={Stacked attention networks for image question answering},
-		    author={Yang, Zichao and He, Xiaodong and Gao, Jianfeng and Deng, Li and Smola, Alex},
-		    booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-		    year={2016}
-	    } 
-      @inproceedings{kang2017incorporating,
-        title={Incorporating Side Information by Adaptive Convolution},
-        author={Kang, Di and Dhar, Debarun and Chan, Antoni},
-        booktitle={Advances in Neural Information Processing Systems},
-        year={2017},
-        url={https://papers.nips.cc/paper/6976-incorporating-side-information-by-adaptive-convolution.pdf}
-      }
-      @inproceedings{lei2015predicting,
-        title={Predicting deep zero-shot convolutional neural networks using textual descriptions},
-        author={Ba, Jimmy and Swersky, Kevin and Fidler, Sanja and Salakhutdinov, Ruslan},
-        booktitle={Proceedings of the IEEE International Conference on Computer Vision},
-        pages={4247--4255},
-        year={2015},
-        url={https://arxiv.org/pdf/1506.00511.pdf}
-      }
-      @inproceedings{oh2017zero,
-        title={Zero-shot task generalization with multi-task deep reinforcement learning},
-        author={Oh, Junhyuk and Singh, Satinder and Lee, Honglak and Kohli, Pushmeet},
-        booktitle={Proceedings of the International Conference on Machine Learning},
-        year={2017},
-        url={https://arxiv.org/pdf/1706.05064.pdf}
-      }
-      @inproceedings{goodfellow2014generative,
-        author={Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
-        title={Generative Adversarial Nets},
-        booktitle={Advances in Neural Information Processing Systems},
-        year={2014},
-        url={https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf},
-      }
-      @incollection{rebuffi2017residualadapters,
-        title = {Learning multiple visual domains with residual adapters},
-        author = {Rebuffi, Sylvestre-Alvise and Bilen, Hakan and Vedaldi, Andrea},
-        booktitle = {Advances in Neural Information Processing Systems 30},
-        editor = {I. Guyon and U. V. Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
-        pages = {506--516},
-        year = {2017},
-        publisher = {Curran Associates, Inc.},
-        url = {http://papers.nips.cc/paper/6654-learning-multiple-visual-domains-with-residual-adapters.pdf}
-      }
-      @inproceedings{fukui2016compactbilinear,
-        title = {Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding},
-        booktitle = {Conference on Empirical Methods in Natural Language Processing (EMNLP)},
-        year = {2016},
-        address = {Austin, Texas, USA},
-        attachments = {https://www.d2.mpi-inf.mpg.de/sites/default/files/multimodal-compact-bilinear.pdf},
-        author = {Akira Fukui and Dong Huk Park and Daylen Yang and Anna Rohrbach and Trevor Darrell and Rohrbach, Marcus}
-      }
-    </script>
+    <d-bibliography src="bibliography.bib"></d-bibliography>
   </body>
 </html>
