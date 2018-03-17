@@ -1772,19 +1772,41 @@
         separate matrix <d-math>W_k</d-math>, so the full set of weights forms
         a 3-tensor.
       </p>
-      <figure class="l-body-outset" id="bilinear-diagram">
-        <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(175, 10)">
+      <figure class="l-page-outset" id="bilinear-diagram">
+        <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              In a bilinear transformation, each element
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              y<tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              of the output vector <tspan style="font-weight: bold;">y</tspan> is the result of a
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              distinct vector-matrix-vector product.
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              This allows multiplicative interactions
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              between any pair of elements of 
+              <tspan style="font-weight: bold;">x</tspan> and
+              <tspan style="font-weight: bold;">z</tspan>.
+            </tspan>
+          </text>
+          <g transform="translate(300, 10)">
             <g transform="translate(222, 0)">
               <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-element"/>
               <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-element"/>
               <use xlink:href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
               <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
-              <path class="figure-line" d="M -179.5 74 L 20 45"/>
+              <path class="figure-line" d="M -179.5 74 C -179.5 54 30 95 20 45"/>
               <use xlink:href="#arrow-up" transform="translate(20, 45)" class="figure-path"/>
-              <path class="figure-line" d="M 25.5 74 L 60 45"/>
+              <path class="figure-line" d="M 25.5 74 C 25.5 64 60 75 60 45"/>
               <use xlink:href="#arrow-up" transform="translate(60, 45)" class="figure-path"/>
-              <path class="figure-line" d="M 230.5 74 L 100 45"/>
+              <path class="figure-line" d="M 230.5 74 C 230.5 64 90 85 100 45"/>
               <use xlink:href="#arrow-up" transform="translate(100, 45)" class="figure-path"/>
             </g>
             <g transform="translate(0, 100)">
@@ -1939,19 +1961,73 @@
         transformation by zeroing out the appropriate entries of the weight
         matrices:
       </p>
-      <figure class="l-body-outset" id="generalized-bilinear-diagram">
-        <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(135, 10)">
+      <figure class="l-page-outset" id="generalized-bilinear-diagram">
+        <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              FiLM computes elements of the output
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              vector as
+              y<tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              = <tspan style="font-family: serif;">γ</tspan><tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              x<tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              + <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>.
+            </tspan>
+          </text>
+          <text x="10" y="100" dy="1em" class="figure-text">
+            <tspan>
+              This can be expressed as a dot product
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              between a 1-augmented <tspan style="font-weight: bold;">x</tspan> 
+              and a sparse
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              vector containing <tspan style="font-family: serif;">γ</tspan><tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              and <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              (shaded
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              cells have a zero value).
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The sparse vector itself is obtained by
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              multiplying a low-rank weight matrix with
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              the concatenation of <tspan style="font-family: serif;">γ</tspan>
+              and <tspan style="font-family: serif;">β</tspan> (once again,
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              shaded cells have a zero value).
+            </tspan>
+          </text>
+          <g transform="translate(280, 10)">
             <g transform="translate(222, 0)">
               <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-element"/>
               <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-element"/>
               <use xlink:href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
               <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
-              <path class="figure-line" d="M -169.5 74 L 20 45"/>
+              <path class="figure-line" d="M -169.5 74 C -169.5 64 30 95 20 45"/>
               <use xlink:href="#arrow-up" transform="translate(20, 45)" class="figure-path"/>
-              <path class="figure-line" d="M 35.5 74 L 60 45"/>
+              <path class="figure-line" d="M 35.5 74 C 35.5 64 60 75 60 45"/>
               <use xlink:href="#arrow-up" transform="translate(60, 45)" class="figure-path"/>
-              <path class="figure-line" d="M 240.5 74 L 100 45"/>
+              <path class="figure-line" d="M 240.5 74 C 240.5 64 90 85 100 45"/>
               <use xlink:href="#arrow-up" transform="translate(100, 45)" class="figure-path"/>
             </g>
             <g transform="translate(0, 100)">
