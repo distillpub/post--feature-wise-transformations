@@ -124,12 +124,9 @@
         values to object classes, audio waveform to text, etc. In practice,
         however, it is frequent that a task requires handling multiple sources
         of information; this is sometimes referred to multimodal learning. 
-        It could be that a model is given access to both the
-        video sequence and the audio waveform of a movie scene and is asked to
-        predict what is going on:
       </p>
-      <figure class="l-body-outset">
-        <svg viewBox="0 0 744 308" xmlns="http://www.w3.org/2000/svg">
+      <figure class="l-page-outset">
+        <svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter x="0" y="0" width="1" height="1" id="zoolander-text-background">
               <feFlood flood-color="#fdf6f2"/>
@@ -240,30 +237,6 @@
                 <polygon fill="#cdcfe6" fill-opacity="0.501961" points="217,60 247,106 220,121" />
               </g>
             </symbol>
-          </defs>
-          <use xlink:href="#zoolander" width="744" height="308" transform="translate(0, 0)"/>
-          <path d="M 0 0 C 15 -50 27.5 -50 42.5 0 S 70 50 85 0 S 110.5 -50 127.5 0 S 155 50 170 0 S 197.5 -50 212.5 0 S 240 50 255 0 S 282.5 -50 297.5 0 S 325 50 340 0 S 367.5 -50 382.5 0 S 410 50 425 0" style="fill: none; stroke: #fdf6f2; stroke-width: 3px;" transform="translate(10, 53)"/>
-          <text filter="url(#zoolander-text-background)" x="222.5" y="53" dy="0.4em" style="opacity: 1; font-size: 18; text-anchor: middle;" class="figure-text">"What is this? A center for ants?"</text>
-        </svg>
-        <figcaption>
-          We would like a neural network to process a movie's video feed and
-          audio waveform and predict that a man is angered because he thinks the
-          <em>Derek Zoolander Center For Children Who Can't Read Good And Wanna
-          Learn To Do Other Stuff Good Too</em> has a size suitable for ants but
-          not humans.<br><br>
-          <em>
-            Credit: still frame taken from the </em>Zoolander<em> movie and
-            vectorized.
-          </em>
-        </figcaption>
-      </figure>
-      <p>
-        It could also be that an image needs to be processed in the context of a
-        question being asked:
-      </p>
-      <figure class="l-body-outset">
-        <svg viewBox="0 0 744 396" xmlns="http://www.w3.org/2000/svg">
-          <defs>
           <symbol id="clevr-example" viewBox="0 0 744 494">
             <rect x="0" y="0" width="744" height="494" fill="#787573" />
             <g transform="scale(2.906250) translate(0.5 0.5)">
@@ -370,16 +343,42 @@
             </g>
             </symbol>
           </defs>
-          <use xlink:href="#clevr-example" width="744" height="494" transform="scale(0.8) translate(74.4, 0)"/>
-          <text x="372" y="368" dy="0.4em" style="fill: white; opacity: 0.8; font-size: 14; text-anchor: middle;" class="figure-text">Are there more cubes than yellow things?</text>
+          <g transform="translate(60, 0)">
+            <text x="0" y="210" class="figure-text">
+              <tspan>
+                A model is given access to both the video sequence and the audio
+                waveform of
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                a movie scene and is asked to predict what is going on.
+              </tspan>
+              <tspan x="0" dy="2em" style="font-style: italic;">
+                Credit: still frame taken from the Zoolander movie and vectorized.
+              </tspan>
+            </text>
+            <use xlink:href="#zoolander" width="440" height="182" transform="translate(0, 0)"/>
+            <path d="M 0 0 C 15 -50 27.5 -50 42.5 0 S 70 50 85 0 S 110.5 -50 127.5 0 S 155 50 170 0 S 197.5 -50 212.5 0 S 240 50 255 0 S 282.5 -50 297.5 0 S 325 50 340 0 S 367.5 -50 382.5 0 S 410 50 425 0" style="fill: none; stroke: #fdf6f2; stroke-width: 3px;" transform="scale(0.59) translate(10, 53)"/>
+            <text filter="url(#zoolander-text-background)" x="130" y="30" dy="0.4em" style="opacity: 1; text-anchor: middle;" class="figure-text">"What is this? A center for ants?"</text>
+          </g>
+          <g transform="translate(560, 0)">
+            <text x="0" y="210" class="figure-text">
+              <tspan>
+                An image needs to be processed in the context of
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                a question being asked.
+              </tspan>
+              <tspan x="0" dy="2em" style="font-style: italic;">
+                Credit: image-question pair taken from the CLEVR
+              </tspan>
+              <tspan x="0" dy="1.5em" style="font-style: italic;">
+                dataset.
+              </tspan>
+            </text>
+            <use xlink:href="#clevr-example" width="274" height="182" transform="translate(0, 0)"/>
+            <text x="137" y="165" dy="0.4em" style="fill: white; opacity: 0.8; text-anchor: middle;" class="figure-text">Are there more cubes than yellow things?</text>
+          </g>
         </svg>
-        <figcaption>
-          We would like a neural network to answer a textual question on an
-          input image.<br><br>
-          <em>
-            Credit: image-question pair taken from the CLEVR dataset.
-          </em>
-        </figcaption>
       </figure>
       <p>
         This gives rise to the need for principled &mdash; and efficient &mdash;
