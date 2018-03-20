@@ -111,7 +111,7 @@
 
           <path id="curly-brace-horizontal" d="M 0 0 C 0 -16 42.5 0 42.5 -16 C 42.5 0 85 -16 85 0"/>
           <path id="big-curly-brace-horizontal" d="M 0 0 C 0 -16 52.5 0 52.5 -16 C 52.5 0 105 -16 105 0"/>
-          <path id="bigger-curly-brace-horizontal" d="M 0 0 C 0 -20 90 0 90 -20 C 90 0 180 -20 180 0"/>
+          <path id="bigger-curly-brace-horizontal" d="M 0 0 C 0 -16 72.5 0 72.5 -16 C 72.5 0 145 -16 145 0"/>
           <path id="curly-brace-vertical" d="M 0 0 C 12 0 0 30 12 30 C 0 30 12 60 0 60"/>
           <path id="parenthesis-left" d="M 10 0 C -2 0 -2 80 10 80"/>
           <path id="parenthesis-right" d="M 0 0 C 8 0 8 80 0 80"/>
@@ -1757,12 +1757,456 @@
         <span class="todo">TODO: add figure.</span>
       </p>
       <p>
-        Finally, there exists a connection between attention, gating, FiLM, and
-        mixture-of-experts models through bilinear transformations <d-cite
-        key="tenenbaum2000separating"></d-cite>.  Because this connection
-        deserves more than a single paragraph, we decided to devote a
-        <a href="#bilinear-connection">separate section</a> of the article to it.
+        Finally, FiLM layers can be seen as a special case of a bilinear
+        transformation <d-cite key="tenenbaum2000separating"></d-cite> with
+        low-rank weight matrices. A bilinear transformation defines the
+        relationship between two inputs <d-math>\mathbf{x}</d-math> and
+        <d-math>\mathbf{z}</d-math> and the <d-math>k^{th}</d-math> output
+        feature <d-math>y_k</d-math> as
+
+        <d-math block>
+          y_k = \mathbf{x}^T W_k \mathbf{z}.
+        </d-math>
+
+        Note that for each output feature <d-math>y_k</d-math> we have a
+        separate matrix <d-math>W_k</d-math>, so the full set of weights forms
+        a 3-tensor.
       </p>
+      <figure class="l-page-outset" id="bilinear-diagram">
+        <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              In a bilinear transformation, each element
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              y<tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              of the output vector <tspan style="font-weight: bold;">y</tspan> is the result of a
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              distinct vector-matrix-vector product.
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              This allows multiplicative interactions
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              between any pair of elements of 
+              <tspan style="font-weight: bold;">x</tspan> and
+              <tspan style="font-weight: bold;">z</tspan>.
+            </tspan>
+          </text>
+          <g transform="translate(300, 10)">
+            <g transform="translate(222, 0)">
+              <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-element"/>
+              <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-element"/>
+              <use xlink:href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
+              <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
+              <path class="figure-line" d="M -179.5 74 C -179.5 54 30 95 20 45"/>
+              <use xlink:href="#arrow-up" transform="translate(20, 45)" class="figure-path"/>
+              <path class="figure-line" d="M 25.5 74 C 25.5 64 60 75 60 45"/>
+              <use xlink:href="#arrow-up" transform="translate(60, 45)" class="figure-path"/>
+              <path class="figure-line" d="M 230.5 74 C 230.5 64 90 85 100 45"/>
+              <use xlink:href="#arrow-up" transform="translate(100, 45)" class="figure-path"/>
+            </g>
+            <g transform="translate(0, 100)">
+              <g transform="translate(0, 0)">
+                <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
+                <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+                <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              </g>
+              <g transform="translate(65, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
+                <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+              </g>
+              <use xlink:href="#curly-brace-horizontal" transform="translate(0, -5)" class="figure-line"/>
+              <g transform="translate(205, 0)">
+                <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
+                <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+                <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              </g>
+              <g transform="translate(270, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
+                <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+              </g>
+              <use xlink:href="#curly-brace-horizontal" transform="translate(205, -5)" class="figure-line"/>
+              <g transform="translate(410, 0)">
+                <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
+                <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+                <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              </g>
+              <use xlink:href="#curly-brace-horizontal" transform="translate(410, -5)" class="figure-line"/>
+              <g transform="translate(475, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
+                <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+              </g>
+            </g>
+            <g transform="translate(2.5, 190)">
+              <g transform="translate(0, 0)">
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(100, 40)" class="figure-element"/>
+                <text x="60" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan></text>
+              </g>
+              <g transform="translate(125, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+              </g>
+              <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(0, -5)" class="figure-line"/>
+              <g transform="translate(205, 0)">
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(100, 40)" class="figure-element"/>
+                <text x="60" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan></text>
+              </g>
+              <g transform="translate(330, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+              </g>
+              <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(205, -5)" class="figure-line"/>
+              <g transform="translate(410, 0)">
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(100, 40)" class="figure-element"/>
+                <text x="60" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan></text>
+              </g>
+              <g transform="translate(535, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+              </g>
+              <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(410, -5)" class="figure-line"/>
+            </g>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        If we view <d-math>\mathbf{z}</d-math> as the concatenation of the
+        scaling and shifting vectors <d-math>\gamma</d-math> and
+        <d-math>\beta</d-math>, and if we augment the input
+        <d-math>\mathbf{x}</d-math> with a 1-valued feature,
+        <d-footnote>
+          As is commonly done to turn a linear transformation into an affine
+          transformation.
+        </d-footnote>
+        we can represent a feature-wise affine transformation using a bilinear
+        transformation by zeroing out the appropriate entries of the weight
+        matrices:
+      </p>
+      <figure class="l-page-outset" id="generalized-bilinear-diagram">
+        <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              FiLM computes elements of the output
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              vector as
+              y<tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              = <tspan style="font-family: serif;">γ</tspan><tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              x<tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              + <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>.
+            </tspan>
+          </text>
+          <text x="10" y="100" dy="1em" class="figure-text">
+            <tspan>
+              This can be expressed as a dot product
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              between a 1-augmented <tspan style="font-weight: bold;">x</tspan> 
+              and a sparse
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              vector containing <tspan style="font-family: serif;">γ</tspan><tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              and <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>
+            </tspan>
+            <tspan dy="-4px">
+              (shaded
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              cells have a zero value).
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The sparse vector itself is obtained by
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              multiplying a low-rank weight matrix with
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              the concatenation of <tspan style="font-family: serif;">γ</tspan>
+              and <tspan style="font-family: serif;">β</tspan> (once again,
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              shaded cells have a zero value).
+            </tspan>
+          </text>
+          <g transform="translate(280, 10)">
+            <g transform="translate(222, 0)">
+              <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-element"/>
+              <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-element"/>
+              <use xlink:href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
+              <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
+              <path class="figure-line" d="M -169.5 74 C -169.5 64 30 95 20 45"/>
+              <use xlink:href="#arrow-up" transform="translate(20, 45)" class="figure-path"/>
+              <path class="figure-line" d="M 35.5 74 C 35.5 64 60 75 60 45"/>
+              <use xlink:href="#arrow-up" transform="translate(60, 45)" class="figure-path"/>
+              <path class="figure-line" d="M 240.5 74 C 240.5 64 90 85 100 45"/>
+              <use xlink:href="#arrow-up" transform="translate(100, 45)" class="figure-path"/>
+            </g>
+            <g transform="translate(0, 100)">
+              <g transform="translate(0, 0)">
+                <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
+                <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-element"/>
+                <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+                <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              </g>
+              <g transform="translate(85, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+                <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+              </g>
+              <use xlink:href="#big-curly-brace-horizontal" transform="translate(0, -5)" class="figure-line"/>
+              <g transform="translate(205, 0)">
+                <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
+                <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-element"/>
+                <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+                <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              </g>
+              <g transform="translate(290, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+                <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+              </g>
+              <use xlink:href="#big-curly-brace-horizontal" transform="translate(205, -5)" class="figure-line"/>
+              <g transform="translate(410, 0)">
+                <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
+                <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-element"/>
+                <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+                <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+              </g>
+              <use xlink:href="#big-curly-brace-horizontal" transform="translate(410, -5)" class="figure-line"/>
+              <g transform="translate(495, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+                <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+              </g>
+            </g>
+            <g transform="translate(22.5, 210)">
+              <g transform="translate(0, 0)">
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-element figure-shaded"/>
+                <text x="60" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan></text>
+              </g>
+              <g transform="translate(125, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+              </g>
+              <use xlink:href="#curly-brace-vertical" transform="translate(150, 0)" class="figure-line"/>
+              <text x="170" y="30" dy="0.3em" style="font-family: serif;" class="figure-text">γ</text>
+              <text x="170" y="90" dy="0.3em" style="font-family: serif;" class="figure-text">β</text>
+              <use xlink:href="#curly-brace-vertical" transform="translate(150, 60)" class="figure-line"/>
+              <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(0, -5)" class="figure-line"/>
+              <g transform="translate(205, 0)">
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-element figure-shaded"/>
+                <text x="60" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan></text>
+              </g>
+              <g transform="translate(330, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+              </g>
+              <use xlink:href="#curly-brace-vertical" transform="translate(355, 0)" class="figure-line"/>
+              <text x="375" y="30" dy="0.3em" style="font-family: serif;" class="figure-text">γ</text>
+              <text x="375" y="90" dy="0.3em" style="font-family: serif;" class="figure-text">β</text>
+              <use xlink:href="#curly-brace-vertical" transform="translate(355, 60)" class="figure-line"/>
+              <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(205, -5)" class="figure-line"/>
+              <g transform="translate(410, 0)">
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-element figure-shaded"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-element"/>
+                <text x="60" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan></text>
+              </g>
+              <g transform="translate(535, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+              </g>
+              <use xlink:href="#curly-brace-vertical" transform="translate(560, 0)" class="figure-line"/>
+              <text x="580" y="30" dy="0.3em" style="font-family: serif;" class="figure-text">γ</text>
+              <text x="580" y="90" dy="0.3em" style="font-family: serif;" class="figure-text">β</text>
+              <use xlink:href="#curly-brace-vertical" transform="translate(560, 60)" class="figure-line"/>
+              <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(410, -5)" class="figure-line"/>
+            </g>
+        </svg>
+      </figure>
 
       <hr />
 
@@ -3795,1104 +4239,6 @@
                             });
                     });
             }
-        })();
-      </script>
-
-      <hr />
-
-      <h1 id="bilinear-connection">Connecting FiLM, gating, attention, and mixture-of-experts models</h1>
-      <p>
-        As previously hinted at, there exists a strong connection between FiLM,
-        gating, attention, and mixture-of-experts models through bilinear
-        transformations <d-cite key="tenenbaum2000separating,fukui2016compactbilinear"></d-cite>. In
-        fact, all four approaches can be formalized using an extension of
-        bilinear transformations which we propose to call <em>generalized
-        bilinear transformations</em>.
-      </p>
-      <h2>Bilinear and generalized bilinear transformations</h2>
-      <p>
-        A bilinear transformation defines the relationship between two inputs
-        <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> and the
-        <d-math>k^{th}</d-math> output feature <d-math>y_k</d-math> as
-
-        <d-math block>
-          y_k = \mathbf{x}^T W_k \mathbf{z}.
-        </d-math>
-
-        Note that for each output feature <d-math>y_k</d-math> we have a
-        separate matrix <d-math>W_k</d-math>, so the full set of weights forms
-        a 3-tensor.
-      </p>
-      <figure class="l-body-outset" id="bilinear-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="724" height="320" class="figure-group figure-box"/>
-          <text x="20" y="30" class="figure-text">Bilinear transformation</text>
-          <g transform="translate(92, -121)">
-            <g transform="translate(15, 273)">
-              <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
-            </g>
-            <g transform="translate(48, 362)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 40)" class="figure-element"/>
-              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan></text>
-            </g>
-            <g transform="translate(113, 362)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="10" y="75" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
-            </g>
-            <g transform="translate(80, 273)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
-            </g>
-          </g>
-          <g transform="translate(312, 27)">
-            <g transform="translate(17, 125)">
-              <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
-            </g>
-            <g transform="translate(50, 214)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 40)" class="figure-element"/>
-              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan></text>
-            </g>
-            <g transform="translate(115, 214)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="10" y="75" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
-            </g>
-            <g transform="translate(82, 125)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
-            </g>
-          </g>
-          <g transform="translate(372, 70)">
-            <g transform="translate(177, 82)">
-              <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
-            </g>
-            <g transform="translate(209.5, 170)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 40)" class="figure-element"/>
-              <text x="30" y="75" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan></text>
-            </g>
-            <g transform="translate(274.5, 170)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="10" y="75" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
-            </g>
-            <g transform="translate(242, 82)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <text x="25" y="30" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
-            </g>
-          </g>
-          <g transform="translate(312, 20)">
-            <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-element"/>
-            <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-element"/>
-            <use xlink:href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
-            <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
-          </g>
-          <use xlink:href="#curly-brace-horizontal" transform="translate(107, 147)" class="figure-line"/>
-          <use xlink:href="#curly-brace-horizontal" transform="translate(329, 147)" class="figure-line"/>
-          <use xlink:href="#curly-brace-horizontal" transform="translate(549, 147)" class="figure-line"/>
-          <use xlink:href="#curly-brace-horizontal" transform="translate(140, 236)" class="figure-line"/>
-          <use xlink:href="#curly-brace-horizontal" transform="translate(362, 236)" class="figure-line"/>
-          <use xlink:href="#curly-brace-horizontal" transform="translate(581.5, 236)" class="figure-line"/>
-          <path class="figure-line" d="M 149.5 126 C 149.5 60 342 126 332 60"/>
-          <use xlink:href="#arrow-up" transform="translate(332, 60)" class="figure-path"/>
-          <path class="figure-line" d="M 372 126 L 372 60"/>
-          <use xlink:href="#arrow-up" transform="translate(372, 60)" class="figure-path"/>
-          <path class="figure-line" d="M 591.5 126 C 591.5 60 402 126 412 60"/>
-          <use xlink:href="#arrow-up" transform="translate(412, 60)" class="figure-path"/>
-        </svg>
-        <figcaption>
-          A bilinear transformation mapping <d-math>\mathbf{x}</d-math> and
-          <d-math>\mathbf{z}</d-math> &mdash; both 3-dimensional &mdash; to a
-          3-dimensional output. Each output element <d-math>y_k</d-math> is
-          computed as a vector-matrix-vector product using a separate matrix
-          <d-math>W_k</d-math>.
-        </figcaption>
-      </figure>
-      <p>
-        In general, bilinear transformations are used to combine two inputs
-        without attaching a specific meaning to the nature of those inputs. For
-        the purpose of our discussion, we will consider
-        <d-math>\mathbf{x}</d-math> to be the representation being FiLM-ed,
-        gated, or attended to, and <d-math>\mathbf{z}</d-math> to be the
-        context used to FiLM, gate, or attend to.
-      <p>
-        The generalized bilinear transformation we propose stretches the
-        definition of a bilinear transformation in two ways:
-        <ul>
-          <li>
-            It appends a <d-math>1</d-math>-valued feature to the inputs
-            <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> to
-            accommodate an eventual bias term &mdash; a common trick used to
-            simplify the algebra of neural networks:
-            <d-math block>
-              \begin{aligned}
-                \tilde{\mathbf{x}} &= (x_0, \ldots, x_M, 1)^T, \\
-                \tilde{\mathbf{z}} &= (z_0, \ldots, z_N, 1)^T.
-              \end{aligned}
-            </d-math>
-          </li>
-          <li>
-            It applies an activation function <d-math>g_k(\cdot)</d-math> to
-            the result of the matrix-vector product:
-            <d-math block>
-              y_k = \tilde{\mathbf{x}}^T g_k(W_k \tilde{\mathbf{z}}).
-            </d-math>
-          </li>
-        </ul>
-      </p>
-      <figure class="l-body-outset" id="generalized-bilinear-diagram">
-        <svg viewBox="0 0 744 380" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="724" height="360" class="figure-group figure-box"/>
-          <text x="20" y="30" class="figure-text">Generalized bilinear transformation</text>
-          <g transform="translate(92, -121)">
-            <g transform="translate(-5, 273)">
-              <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-element"/>
-              <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
-            </g>
-            <g transform="translate(38, 382)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(60, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(00, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(60, 60)" class="figure-element"/>
-              <text x="-40" y="40" class="figure-text"><tspan>g</tspan><tspan dy="0.4em" class="subscript">1</tspan></text>
-              <use xlink:href="#parenthesis-left" transform="translate(-20, 0)" class="figure-line"/>
-              <use xlink:href="#parenthesis-right" transform="translate(120, 0)" class="figure-line"/>
-              <text x="40" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">1</tspan></text>
-            </g>
-            <g transform="translate(123, 382)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#singleton" transform="translate(0, 60)" class="figure-element"/>
-              <text x="10" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="10" y="95" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
-            </g>
-            <g transform="translate(80, 273)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-              <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>g</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px">(W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan><tspan style="font-weight: normal;">)</tspan></text>
-            </g>
-          </g>
-          <g transform="translate(312, 27)">
-            <g transform="translate(-3, 125)">
-              <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-element"/>
-              <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
-            </g>
-            <g transform="translate(40, 234)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(60, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(00, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(60, 60)" class="figure-element"/>
-              <text x="-40" y="40" class="figure-text"><tspan>g</tspan><tspan dy="0.4em" class="subscript">2</tspan></text>
-              <use xlink:href="#parenthesis-left" transform="translate(-20, 0)" class="figure-line"/>
-              <use xlink:href="#parenthesis-right" transform="translate(120, 0)" class="figure-line"/>
-              <text x="40" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">2</tspan></text>
-            </g>
-            <g transform="translate(125, 234)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#singleton" transform="translate(0, 60)" class="figure-element"/>
-              <text x="10" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="10" y="95" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
-            </g>
-            <g transform="translate(82, 125)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-              <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>g</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px">(W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
-            </g>
-          </g>
-          <g transform="translate(372, 70)">
-            <g transform="translate(157, 82)">
-              <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-element"/>
-              <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
-            </g>
-            <g transform="translate(199.5, 190)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(60, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(00, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(60, 60)" class="figure-element"/>
-              <text x="-40" y="40" class="figure-text"><tspan>g</tspan><tspan dy="0.4em" class="subscript">3</tspan></text>
-              <use xlink:href="#parenthesis-left" transform="translate(-20, 0)" class="figure-line"/>
-              <use xlink:href="#parenthesis-right" transform="translate(120, 0)" class="figure-line"/>
-              <text x="40" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="0.4em" class="subscript">3</tspan></text>
-            </g>
-            <g transform="translate(284.5, 190)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#singleton" transform="translate(0, 60)" class="figure-element"/>
-              <text x="10" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
-              <text x="10" y="95" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
-            </g>
-            <g transform="translate(242, 82)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-              <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>g</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px">(W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan><tspan>)</tspan></text>
-            </g>
-          </g>
-          <g transform="translate(312, 20)">
-            <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-element"/>
-            <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-element"/>
-            <use xlink:href="#big-row-right" transform="translate(80, 0)" class="figure-element"/>
-            <text x="-15" y="20" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
-          </g>
-          <use xlink:href="#big-curly-brace-horizontal" transform="translate(87, 147)" class="figure-line"/>
-          <use xlink:href="#big-curly-brace-horizontal" transform="translate(309, 147)" class="figure-line"/>
-          <use xlink:href="#big-curly-brace-horizontal" transform="translate(529, 147)" class="figure-line"/>
-          <use xlink:href="#big-curly-brace-horizontal" transform="translate(130, 256)" class="figure-line"/>
-          <use xlink:href="#big-curly-brace-horizontal" transform="translate(352, 256)" class="figure-line"/>
-          <use xlink:href="#big-curly-brace-horizontal" transform="translate(571.5, 256)" class="figure-line"/>
-          <path class="figure-line" d="M 139.5 126 C 159.5 60 342 126 332 60"/>
-          <use xlink:href="#arrow-up" transform="translate(332, 60)" class="figure-path"/>
-          <path class="figure-line" d="M 361.5 126 C 361.5 80 372 106 372 60"/>
-          <use xlink:href="#arrow-up" transform="translate(372, 60)" class="figure-path"/>
-          <path class="figure-line" d="M 581.5 126 C 581.5 60 402 126 412 60"/>
-          <use xlink:href="#arrow-up" transform="translate(412, 60)" class="figure-path"/>
-        </svg>
-        <figcaption>
-          A generalized bilinear transformation mapping mapping the inputs
-          <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math>
-          &mdash; both 3-dimensional &mdash; to a 3-dimensional output.
-        </figcaption>
-      </figure>
-      <p>
-        The choice of activation function <d-math>g_k(\cdot)</d-math> and the
-        structure of the weight matrices <d-math>W_k</d-math> determines the
-        nature of the transformation: FiLM, gating, or attention. Starting with
-        the mathematical definition of each computation, we will now explain how
-        they can be expressed in terms of generalized bilinear transformations.
-        To simplify the discussion, we give the name <em>context vector</em> to
-        the matrix-vector product:
-
-        <d-math block>
-          \mathbf{v} = g_k(W_k \tilde{\mathbf{z}})
-        </d-math>
-      </p>
-
-      <h2>Connecting the dots</h2>
-
-      <h3>FiLM as a generalized bilinear transformation</h3>
-      <p>
-        FiLM is represented by an equation of the form
-
-        <d-math block>
-          y_k = \gamma_k x_k + \beta_k.
-        </d-math>
-
-        This means that the nonlinearity should be the identity function
-        <d-math>g_k(\mathbf{u}) = \mathbf{z}</d-math>, and the context vector
-        should have the form
-
-        <d-math block>
-          \mathbf{v} = (0, \ldots, 0, \gamma_k, 0, \ldots, 0, \beta_k)^T,
-        </d-math>
-
-        where <d-math>\gamma_k</d-math> is the <d-math>k^{th}</d-math>
-        element of the context vector. This means in turn that the weight matrix
-        <d-math>W_k</d-math> should be low-rank and have the form
-
-        <d-math block>
-          W_k =
-          \begin{pmatrix}
-             0 & 0 \\
-             \vdots & \vdots \\
-             0 & 0 \\
-             1 & 0 \\
-             0 & 0 \\
-             \vdots & \vdots \\
-             0 & 0 \\
-             0 & 1
-          \end{pmatrix}
-          \begin{pmatrix}
-             w_{k, 1, 1} & \cdots & w_{k, 1, N} \\
-             w_{k, 2, 1} & \cdots & w_{k, 2, N}
-          \end{pmatrix}.
-        </d-math>
-      </p>
-      <p>
-      Here is an example for a 3-dimensional <d-math>\mathbf{x}</d-math>
-      and a 2-dimensional <d-math>\mathbf{z}</d-math> (reminder: this means
-      a 4-dimensional <d-math>\tilde{\mathbf{x}}</d-math> and a 3-dimensional
-      <d-math>\tilde{\mathbf{z}}</d-math>):
-      </p>
-      <figure class="l-body-outset" id="film-as-bilinear-diagram">
-        <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(20, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(20, 60)" class="figure-element"/>
-            </g>
-            <g transform="translate(140, 69)" id="w-1">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 20)" class="figure-element"/>
-            </g>
-            <text x="205" y="93" class="figure-text">=</text>
-            <g transform="translate(218, 49)" id="w-1-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element"/>
-            </g>
-          </g>
-          <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-top-right" transform="translate(20, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(20, 60)" class="figure-element"/>
-            </g>
-            <g transform="translate(140, 69)" id="w-2">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 20)" class="figure-element"/>
-            </g>
-            <text x="205" y="93" class="figure-text">=</text>
-            <g transform="translate(218, 49)" id="w-2-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element"/>
-            </g>
-          </g>
-          <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-top-right" transform="translate(20, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(20, 60)" class="figure-element"/>
-            </g>
-            <g transform="translate(140, 69)" id="w-3">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 20)" class="figure-element"/>
-            </g>
-            <text x="205" y="93" class="figure-text">=</text>
-            <g transform="translate(218, 49)" id="w-3-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element"/>
-            </g>
-          </g>
-        </svg>
-        <figcaption>
-          Generalized bilinear weight matrices for a FiLM layer applied on a
-          3-dimensional input <d-math>\mathbf{x}</d-math> within the context
-          of a 2-dimensional <d-math>\mathbf{z}</d-math>. Grey elements
-          have value <d-math>0</d-math>, white elements have value
-          <d-math>1</d-math>, and color elements have arbitrary values.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#film-as-bilinear-diagram > svg");
-            var dataW1 = [];
-            var dataW2 = [];
-            var dataW3 = [];
-            for(var i = 0; i < 6; i++) {
-                dataW1.push(Math.random() * 360);
-                dataW2.push(Math.random() * 360);
-                dataW3.push(Math.random() * 360);
-            }
-            svg.select("#w-1")
-              .selectAll("use")
-                .data(dataW1)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-1-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(dataW1)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-2")
-              .selectAll("use")
-                .data(dataW2)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-2-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(dataW2)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-3")
-              .selectAll("use")
-                .data(dataW3)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-3-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(dataW3)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-        })();
-      </script>
-
-      <h3>Gating as a generalized bilinear transformation</h3>
-      <p>
-        As explained earlier in the article, feature-wise gating layers can be
-        seen as bias-less FiLM layers with sigmoidal scaling. Representing
-        them as a generalized bilinear transformation is a straightforward
-        adaptation with respect to FiLM. Feature-wise gating is represented by
-        an equation of the form
-
-        <d-math block>
-          y_k = \alpha_k x_k, \quad \alpha_k \in [0, 1].
-        </d-math>
-
-        This means that the context vector should have the form
-
-        <d-math block>
-          \mathbf{v} = (0, \ldots, 0, \alpha_k, 0, \ldots, 0, 0)^T,
-        </d-math>
-
-        which is achieved through a combination of a "one-hot sigmoid"
-        nonlinearity
-
-        <d-math block>
-          g(\mathbf{u}) = (u_0, \ldots, u_{k-1}, \sigma(u_k), u_{k+1}, \ldots, u_{N})^T,
-        </d-math>
-
-        and a low-rank weight matrix <d-math>W_k</d-math> of the form
-
-        <d-math block>
-          W_k =
-          \begin{pmatrix}
-             0 \\
-             \vdots \\
-             0 \\
-             1 \\
-             0 \\
-             \vdots \\
-             0
-          \end{pmatrix}
-          \begin{pmatrix}
-             w_{k, 1} & \cdots & w_{k, N}
-          \end{pmatrix}.
-        </d-math>
-      </p>
-      <p>
-      Here is an example for a 3-dimensional <d-math>\mathbf{x}</d-math>
-      and a 2-dimensional <d-math>\mathbf{z}</d-math> (reminder: this means
-      a 4-dimensional <d-math>\tilde{\mathbf{x}}</d-math> and a 3-dimensional
-      <d-math>\tilde{\mathbf{z}}</d-math>):
-      </p>
-      <figure class="l-body-outset" id="gating-as-bilinear-diagram">
-        <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-            </g>
-            <g transform="translate(120, 79)" id="w-1">
-              <use xlink:href="#row-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-            </g>
-            <text x="185" y="93" class="figure-text">=</text>
-            <g transform="translate(198, 49)" id="w-1-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-          <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-            </g>
-            <g transform="translate(120, 79)" id="w-2">
-              <use xlink:href="#row-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-            </g>
-            <text x="185" y="93" class="figure-text">=</text>
-            <g transform="translate(198, 49)" id="w-2-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-          <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-            </g>
-            <g transform="translate(120, 79)" id="w-3">
-              <use xlink:href="#row-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
-            </g>
-            <text x="185" y="93" class="figure-text">=</text>
-            <g transform="translate(198, 49)" id="w-3-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-        </svg>
-        <figcaption>
-          Generalized bilinear weight matrices for a gating layer applied on a
-          3-dimensional input <d-math>\mathbf{x}</d-math> within the context
-          of a 2-dimensional <d-math>\mathbf{z}</d-math>. Grey elements
-          have value <d-math>0</d-math>, white elements have value
-          <d-math>1</d-math>, and color elements have arbitrary values.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#gating-as-bilinear-diagram > svg");
-            var dataW1 = [];
-            var dataW2 = [];
-            var dataW3 = [];
-            for(var i = 0; i < 3; i++) {
-                dataW1.push(Math.random() * 360);
-                dataW2.push(Math.random() * 360);
-                dataW3.push(Math.random() * 360);
-            }
-            svg.select("#w-1")
-              .selectAll("use")
-                .data(dataW1)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-1-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(dataW1)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-2")
-              .selectAll("use")
-                .data(dataW2)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-2-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(dataW2)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-3")
-              .selectAll("use")
-                .data(dataW3)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-3-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(dataW3)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-        })();
-      </script>
-
-      <h3>Attention as a generalized bilinear transformation</h3>
-      <p>
-        <a href="https://distill.pub/2016/augmented-rnns/">Attention</a> is
-        applied to a set of feature vectors at different spatial or temporal
-        locations <d-math>t \in [1, \cdots, T]</d-math> by computing from
-        internal or external conditioning information an <em>attention distribution</em>
-
-        <d-math block>
-            \mathbf{p} = (p_1, \cdots, p_T)^T, \quad p^t > 0, \quad \sum_{t=1}^T p^t = 1.
-        </d-math>
-
-        Assuming a feature matrix <d-math>X</d-math> in which columns
-        represent feature vectors at different spatial or temporal locations
-        (<em>N.B.: this is a somewhat unusual way of organizing a sequence of
-        feature vectors</em>), the output of the attentional interface is
-        computed as the expected feature vector over the attention distribution:
-
-        <d-math block>
-            \mathbf{y} = X \mathbf{p}.
-        </d-math>
-      <p>
-        Attention is closely related to gating in the generalized bilinear
-        formulation, save from one crucial detail: because it implements a
-        weighted sum over spatial or temporal locations, elements of the
-        vector <d-math>\mathbf{x}</d-math> represent <em>the same feature
-        at different spatial or temporal locations</em> rather than different
-        features. It is represented by an equation of the form
-
-        <d-math block>
-          y_k = \sum_{t=1}^T X_{k,t} p_t.
-        </d-math>
-
-        This means that the context vector should have the form
-
-        <d-math block>
-          \mathbf{v} = (p_1, \ldots, p_T, 0)^T,
-        </d-math>
-
-        which is achieved through a combination of an "all-but-last softmax"
-        nonlinearity
-
-        <d-math block>
-          g(\mathbf{u}) = (\textrm{softmax}(\mathbf{u}_{1:T-1}), 0)^T,
-        </d-math>
-
-        and a full-rank weight matrix <d-math>W_k</d-math>. Because the same
-        weighted sum is applied to all features over spatial or temporal
-        locations, matrices <d-math>W_k</d-math> are tied.
-      </p>
-      <figure class="l-body-outset" id="attention-as-bilinear-diagram">
-        <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)" id="w-1-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-          <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)" id="w-2-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-          <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)" id="w-3-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-        </svg>
-        <figcaption>
-          The generalized bilinear weight matrices for an attention layer are
-          tied. Grey elements have value <d-math>0</d-math>, and color
-          elements have arbitrary values.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#attention-as-bilinear-diagram > svg");
-            var data = [];
-            for(var i = 0; i < 9; i++) { data.push(Math.random() * 360); }
-            svg.select("#w-1-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(data)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-2-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(data)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-3-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(data)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-        })();
-      </script>
-
-      <h3>Mixture-of-experts as a generalized bilinear transformation</h3>
-      <p>
-        Work on mixture-of-experts models
-        <d-cite key="jacobs1991adaptive,jordan1994hierarchical,eigen2014deep,shazeer2017outrageously"></d-cite>
-        examines a framework in which the feature vectors output by several
-        expert sub-networks are combined according to a mixture distribution
-        which is itself computed from the experts' inputs.
-      </p>
-      <figure class="l-body-outset" id="moe-diagram">
-        <svg viewBox="0 0 744 470" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(306, 430)">
-            <rect width="132" height="30" class="figure-element figure-box"/>
-            <text x="66" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">input</text>
-            <path d="M 66 0 L 66 -14 A 6 6 0 0 0 60 -20 L -169 -20 A 6 6 0 0 1 -175 -26 L -175 -40" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(-175, -40)" class="figure-path"/>
-            <path d="M 66 0 L 66 -14 A 6 6 0 0 0 60 -20 L -5 -20 A 6 6 0 0 1 -11 -26 L -11 -40" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(-11, -40)" class="figure-path"/>
-            <path d="M 66 0 L 66 -14 A 6 6 0 0 1 72 -20 L 147 -20 A 6 6 0 0 0 153 -26 L 153 -40" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(153, -40)" class="figure-path"/>
-            <path d="M 66 0 L 66 -14 A 6 6 0 0 1 72 -20 L 311 -20 A 6 6 0 0 0 317 -26 L 317 -40" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(317, -40)" class="figure-path"/>
-          </g>
-          <g transform="translate(65, 270)">
-            <rect width="132" height="120" class="figure-group figure-box"/>
-            <text x="66" y="60" dy="0.4em" style="text-anchor: middle;" class="figure-text">gating network</text>
-            <path d="M 66 0 L 66 -30" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(66, -30)" class="figure-path"/>
-          </g>
-          <g transform="translate(65, 210)">
-            <rect width="132" height="30" class="figure-element figure-box"/>
-            <text x="66" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">softmax</text>
-            <path d="M 36 0 L 36 -89 A 6 6 0 0 1 42 -94 L 543 -94" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(543, -94)" class="figure-path"/>
-            <path d="M 66 0 L 66 -59 A 6 6 0 0 1 72 -65 L 379 -65" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(379, -65)" class="figure-path"/>
-            <path d="M 96 0 L 96 -29 A 6 6 0 0 1 102 -35 L 215 -35" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(215, -35)" class="figure-path"/>
-          </g>
-          <g transform="translate(229, 220)">
-            <rect width="132" height="170" class="figure-group figure-box"/>
-            <text x="66" y="85" dy="0.4em" style="text-anchor: middle;" class="figure-text">expert network 1</text>
-            <path d="M 66 0 L 66 -30" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(66, -30)" class="figure-path"/>
-          </g>
-          <g transform="translate(393, 220)">
-            <rect width="132" height="170" class="figure-group figure-box"/>
-            <text x="66" y="85" dy="0.4em" style="text-anchor: middle;" class="figure-text">expert network 2</text>
-            <path d="M 66 0 L 66 -60" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(66, -60)" class="figure-path"/>
-          </g>
-          <g transform="translate(557, 220)">
-            <rect width="132" height="170" class="figure-group figure-box"/>
-            <text x="66" y="85" dy="0.4em" style="text-anchor: middle;" class="figure-text">expert network 3</text>
-            <path d="M 66 0 L 66 -90" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(66, -90)" class="figure-path"/>
-          </g>
-          <g transform="translate(295, 175)">
-            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
-            <ellipse rx="2" ry="2" class="figure-path"/>
-            <path d="M 0 -15 L 0 -124 A 6 6 0 0 1 6 -130 L 149 -130" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(149, -130)" class="figure-path"/>
-          </g>
-          <g transform="translate(459, 145)">
-            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
-            <ellipse rx="2" ry="2" class="figure-path"/>
-            <path d="M 0 -15 L 0 -85" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(0, -85)" class="figure-path"/>
-          </g>
-          <g transform="translate(623, 115)">
-            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
-            <ellipse rx="2" ry="2" class="figure-path"/>
-            <path d="M 0 -15 L 0 -64 A 6 6 0 0 0 -6 -70 L -149 -70" class="figure-line"/>
-            <use xlink:href="#arrow-left" transform="translate(-149, -70)" class="figure-path"/>
-          </g>
-          <g transform="translate(459, 45)">
-            <ellipse cx="0" cy="0" rx="15" ry="15" class="figure-element"/>
-            <line x1="0" y1="5" x2="0" y2="-5" class="figure-line"/>
-            <line x1="-5" y1="0" x2="5" y2="0" class="figure-line"/>
-            <path d="M 0 -15 L 0 -45" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(0, -45)" class="figure-path"/>
-          </g>
-        </svg>
-        <figcaption>
-            Mixture-of-experts model. The model's output is computed as a
-            weighted sum of each expert's feature vector output as predicted
-            by the gating network's mixture distribution output.
-        </figcaption>
-      </figure>
-      <p>
-        There is a strong connection between mixture-of-experts models and
-        attention: the former can be viewed as attention over the experts'
-        outputs rather than over time or space. As such, mixture-of-experts
-        models can be represented as generalized bilinear transformations in the
-        same way attention is, the only difference being that the columns of
-        <d-math>X</d-math> represent experts rather than spatial or temporal
-        locations.
-      </p>
-      <figure class="l-body-outset" id="moe-as-bilinear-diagram">
-        <svg viewBox="0 0 744 110" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(-52, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)" id="w-1-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-          <g transform="translate(202, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)" id="w-2-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-          <g transform="translate(456, -39)">
-            <text x="62" y="93" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px"> =</tspan></text>
-            <g transform="translate(95, 49)" id="w-3-full">
-              <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-              <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element figure-shaded"/>
-              <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element figure-shaded"/>
-            </g>
-          </g>
-        </svg>
-        <figcaption>
-          Just like with attention, the generalized bilinear weight matrices for
-          a mixture-of-experts model are tied. Grey elements have value
-          <d-math>0</d-math>, and color elements have arbitrary values.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#moe-as-bilinear-diagram > svg");
-            var data = [];
-            for(var i = 0; i < 9; i++) { data.push(Math.random() * 360); }
-            svg.select("#w-1-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(data)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-2-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(data)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
-            svg.select("#w-3-full")
-              .selectAll("use")
-                .filter(function() {
-                   return !this.classList.contains('figure-shaded')
-                 })
-                .data(data)
-                .style("fill", function(d) { return "hsl(" + d + ",50%,50%)"; });
         })();
       </script>
 
