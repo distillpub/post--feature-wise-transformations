@@ -614,12 +614,12 @@
         class-aware. This involves injecting class information into the decoder
         network:
       </p>
-      <figure class="l-body-outset">
-        <svg viewBox="0 0 744 350" xmlns="http://www.w3.org/2000/svg">
+      <figure class="l-body">
+        <svg viewBox="0 0 648 450" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <symbol id="dog-image" viewBox="0 0 199 300">
-              <rect x="0" y="0" width="199" height="300" fill="#bebe9d" />
-              <g transform="scale(1.171875) translate(0.5 0.5)">
+            <symbol id="dog-image" viewBox="0 0 199 200">
+              <rect x="0" y="0" width="199" height="250" fill="#bebe9d" />
+              <g transform="scale(1.171875) translate(0.5 -50)">
                 <polygon fill="#000000" fill-opacity="0.501961" points="23,85 128,212 116,73" />
                 <polygon fill="#ffffff" fill-opacity="0.501961" points="0,-16 185,4 -2,110" />
                 <polygon fill="#000000" fill-opacity="0.501961" points="73,58 138,158 44,159" />
@@ -723,29 +723,52 @@
               </g>
             </symbol>
           </defs>
-          <text x="20" y="175" dy="0.4em" style="font-size: 18px; text-anchor: middle;" transform="rotate(-90, 20, 175)" class="figure-text">noise</text>
-          <text x="275" y="35" dy="0.4em" style="font-size: 18px; text-anchor: middle;" class="figure-text">"puppy"</text>
-          <path d="M 40 175 L 145 175" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(145, 175)" class="figure-path"/>
-          <path d="M 275 50 L 275 120" class="figure-line"/>
-          <use xlink:href="#arrow-down" transform="translate(275, 120)" class="figure-path"/>
-          <path d="M 400 175 L 495 175" class="figure-line"/>
-          <use xlink:href="#arrow-right" transform="translate(495, 175)" class="figure-path"/>
-          <g transform="translate(150, 125)">
-            <rect width="250" height="100" class="figure-group figure-box"/>
-            <text x="125" y="50" dy="0.4em" style="font-size: 18px; text-anchor: middle;" class="figure-text">decoder</text>
+          <text x="10" y="10" class="figure-text">
+            <tspan>
+              The <tspan style="font-weight: bold;">decoder-based generative model</tspan>
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              maps a source of noise to a sample.
+            </tspan>
+          </text>
+          <text x="10" y="120" dy="0.4em" class="figure-text">
+            <tspan>
+              It is also passed the requested class,
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              and is required to "interpret" the noise
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              in the context of that class.
+            </tspan>
+          </text>
+          <text x="388" y="390" dy="1.5em" style="font-style: italic;" class="figure-text">
+            <tspan>
+              Credit: image taken from
+            </tspan>
+            <tspan x="388" dy="1.5em">
+              the ImageNet dataset and
+            </tspan>
+            <tspan x="388" dy="1.5em">
+              vectorized.
+            </tspan>
+          </text>
+          <g transform="translate(-100, 0)">
+            <text x="563" y="10" style="text-anchor: middle;" class="figure-text">noise</text>
+            <path d="M 563 15 L 563 55" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(563, 55)" class="figure-path"/>
+            <text x="428" y="120" dy="0.4em" style="text-anchor: end;" class="figure-text">"puppy"</text>
+            <path d="M 433 120 L 483 120" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(483, 120)" class="figure-path"/>
+            <g transform="translate(488, 60)">
+              <rect width="150" height="120" class="figure-group figure-box"/>
+              <text x="75" y="60" dy="0.4em" style="text-anchor: middle;" class="figure-text">decoder</text>
+            </g>
+            <path d="M 563 180 L 563 235" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(563, 235)" class="figure-path"/>
+            <use xlink:href="#dog-image" x="488" y="240" width="150" height="150"/>
           </g>
-          <use xlink:href="#dog-image" x="500" y="25" width="199" height="300"/>
         </svg>
-        <figcaption>
-          This decoder-based generative model's decoder is given both a source
-          of noise and the requested class as input and must map the noise to an
-          image of the corresponding class. In other words, it must "interpret"
-          the noise in the context of the provided class.<br><br>
-          <em>
-            Credit: image taken from the ImageNet dataset and vectorized.
-          </em>
-        </figcaption>
       </figure>
       <p>
         The brute-force approach to this problem involves learning separate
