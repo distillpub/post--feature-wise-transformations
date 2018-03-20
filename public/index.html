@@ -1689,30 +1689,16 @@
         of the parameter values in the primary network. From that perspective,
         the FiLM generator can be viewed as a specialized instance of a
         HyperNetwork which predicts the FiLM parameters of the FiLM-ed network.
-        In fact, there exists a spectrum of methods ranging from FiLM &mdash;
-        which predicts a tiny subset of a network's parameters &mdash; to
-        HyperNetworks &mdash; which predicts all network parameters. For
-        instance, Adaptive CNN (ACNN) <d-cite key="kang2017incorporating"></d-cite>
-        predicts the value of several of the model's convolution filters as a
-        function of auxiliary inputs like camera perspective, level of noise,
-        etc. The resulting convolution filters turn out to be very effective in
-        difficult vision tasks such as crowd counting or image deblurring.
-        Residual Adapters <d-cite key="rebuffi2017residualadapters"></d-cite>
-        also propose to predict entire convolutional filters conditioned on
-        the visual recognition domain they are operating in. In the
-        zero-shot/one-shot learning setting, the model proposed by Ba et al.
-        <d-cite key="lei2015predicting"></d-cite> predicts
-        convolutional filters and classifiers weights based on textual
-        descriptions of object classes. In a reinforcement learning setting,
-        the model proposed by Oh et al. <d-cite key="oh2017zero"></d-cite>
-        computes the parameters of a policy-convolutional network conditioned
-        on the task description.
-      </p>
-      <p>
-        FiLM layers require predicting far fewer parameters than the above
-        approaches, but is less flexible in its ability to modulate the model's
-        computation. The ideal trade-off between flexibility and computational
-        complexity is still an ongoing area of investigation.
+        <d-footnote>
+          In fact, there exists a spectrum of methods ranging from FiLM
+          (which predicts a tiny subset of a network's parameters) to
+          HyperNetworks (which predicts all network parameters) &mdash; see
+          <a href="#bibliographic-notes">Bibliographic Notes</a>.
+        </d-footnote>
+        FiLM layers require predicting far fewer parameters than Hypernetworks,
+        but is less flexible in its ability to modulate the model's computation.
+        The ideal trade-off between flexibility and computational complexity is
+        still an ongoing area of investigation.
       </p>
       <p>
         FiLM is closely related to gating: the latter can be viewed as a
@@ -1758,7 +1744,13 @@
       <p>
         Finally, FiLM layers can be seen as a special case of a bilinear
         transformation <d-cite key="tenenbaum2000separating"></d-cite> with
-        low-rank weight matrices. A bilinear transformation defines the
+        low-rank weight matrices.
+        <d-footnote>
+          Bilinear transformations themselves have a long history in the machine
+          learning literature &mdash; see
+          <a href="#bibliographic-notes">Bibliographic Notes</a>.
+        </d-footnote>
+        A bilinear transformation defines the
         relationship between two inputs <d-math>\mathbf{x}</d-math> and
         <d-math>\mathbf{z}</d-math> and the <d-math>k^{th}</d-math> output
         feature <d-math>y_k</d-math> as
@@ -4296,6 +4288,48 @@
     </d-article>
 
     <d-appendix>
+      <h3 id="bibliographic-notes">Bibliographic Notes</h3>
+      <p>
+        Many models lie on the spectrum between FiLM and Hypernetworks:
+        <ul>
+          <li>
+            Adaptive CNN (ACNN) <d-cite key="kang2017incorporating"></d-cite>
+            predicts the value of several of the model's convolution filters as
+            a function of auxiliary inputs like camera perspective, level of
+            noise, etc. The resulting convolution filters turn out to be very
+            effective in difficult vision tasks such as crowd counting or image
+            deblurring.
+          </li>
+          <li>
+            Residual Adapters <d-cite key="rebuffi2017residualadapters"></d-cite>
+            also propose to predict entire convolutional filters conditioned on
+            the visual recognition domain they are operating in.
+          </li>
+          <li>
+            In the zero-shot/one-shot learning setting, the model proposed by Ba
+            et al. <d-cite key="lei2015predicting"></d-cite> predicts
+            convolutional filters and classifiers weights based on textual
+            descriptions of object classes.
+          </li>
+          <li>
+            In the reinforcement learning setting, the model proposed by Oh et
+            al. <d-cite key="oh2017zero"></d-cite> computes the parameters of a
+            policy-convolutional network conditioned on the task description.
+          </li>
+        </ul>
+      </p>
+      <p>
+        <span class="todo">
+            TODO(fstrub95): insert bibliographic note on bilinear
+            transformations here.
+        </span>
+      </p>
+      <p>
+        <span class="todo">
+            TODO(ethanjperez): insert bibliographic note three-way interactions
+            here.
+        </span>
+      </p>
       <h3>Acknowledgements</h3>
       <p>
         This article would be nowhere near where it is today without the honest
