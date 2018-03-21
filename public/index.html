@@ -3684,233 +3684,161 @@
         disabled and a FiLM layer is placed immediately after the instance
         normalization layer.
       </p>
-      <figure class="l-body-outset" id="dln-diagram">
-        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(50, 10)">
-            <g class="filmed-network">
-              <rect width="440" height="420" class="figure-group figure-box figure-filmed-network"/>
-              <text x="10" y="20" dy="0.4em" class="figure-text">LSTM layer</text>
-            </g>
-            <path d="M -60 80 L -35 80" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(-35, 80)" class="figure-path"/>
+      <figure class="l-page-outset" id="dln-diagram">
+        <svg viewBox="0 0 900 390" xmlns="http://www.w3.org/2000/svg">
+          <text x="104" y="330" dy="1em" class="figure-text">
+            <tspan>
+              Kim et al. achieve speaker adaptation by adapting the usual
+            </tspan>
+            <tspan x="104" dy="1.5em">
+              LSTM architecture to condition its various gates
+              on an
+            </tspan>
+            <tspan x="104" dy="1.5em" style="font-weight: bold;">
+              utterance summarization.
+            </tspan>
+          </text>
+          <g transform="translate(50, -60)">
             <text x="-30" y="80" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">c</tspan><tspan dy="5px" class="subscript">t-1</tspan></text>
-            <path d="M -10 80 L 73 80" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(73, 80)" class="figure-path"/>
+            <path d="M -10 80 L 78 80" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(78, 80)" class="figure-path"/>
             <g transform="translate(93, 80)">
-              <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+              <ellipse cx="0" cy="0" rx="10" ry="10" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <path d="M 113 80 L 263 80" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(263, 80)" class="figure-path"/>
+            <path d="M 103 80 L 268 80" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(268, 80)" class="figure-path"/>
             <g transform="translate(283, 80)">
-              <ellipse rx="20" ry="20" class="figure-element"/>
-              <line x1="0" y1="-7.5" x2="0" y2="7.5" class="figure-line"/>
-              <line x1="-7.5" y1="0" x2="7.5" y2="0" class="figure-line"/>
+              <ellipse rx="10" ry="10" class="figure-element"/>
+              <line x1="0" y1="-5" x2="0" y2="5" class="figure-line"/>
+              <line x1="-5" y1="0" x2="5" y2="0" class="figure-line"/>
             </g>
-            <path d="M 303 80 L 372 80 A 6 6 0 0 1 378 86 L 378 98" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(378, 98)" class="figure-path"/>
+            <path d="M 293 80 L 372 80 A 6 6 0 0 1 378 86 L 378 103" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(378, 103)" class="figure-path"/>
             <g transform="translate(378, 118)">
-              <ellipse rx="20" ry="20" class="figure-element"/>
+              <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
               <text dy="0.4em" style="text-anchor: middle;" class="figure-text">tanh</text>
             </g>
-            <path d="M 303 80 L 460 80" class="figure-line"/>
+            <path d="M 293 80 L 460 80" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(460, 80)" class="figure-path"/>
             <text x="465" y="80" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">c</tspan><tspan dy="5px" class="subscript">t</tspan></text>
-            <path d="M 283 100 L 283 155" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(283, 100)" class="figure-path"/>
+            <path d="M 388 175 L 460 175" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(460, 175)" class="figure-path"/>
+            <text x="465" y="175" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t</tspan></text>
+            <path d="M 283 95 L 283 165" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(283, 95)" class="figure-path"/>
             <g transform="translate(283, 175)">
-              <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+              <ellipse cx="0" cy="0" rx="10" ry="10" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <path d="M 378 138 L 378 155" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(378, 155)" class="figure-path"/>
+            <path d="M 378 128 L 378 160" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(378, 160)" class="figure-path"/>
             <g transform="translate(378, 175)">
-              <ellipse cx="0" cy="0" rx="20" ry="20" class="figure-element"/>
+              <ellipse cx="0" cy="0" rx="10" ry="10" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <path d="M 93 235 L 93 100" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(93, 100)" class="figure-path"/>
-            <g transform="translate(93, 255)">
-              <ellipse rx="20" ry="20" class="figure-element"/>
-              <text dy="0.4em" style="text-anchor: middle;" class="figure-text">σ</text>
+            <path d="M 93 215 L 93 95" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(93, 95)" class="figure-path"/>
+            <g transform="translate(93, 225)">
+              <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+              <text dy="0.4em" style="text-anchor: middle;" class="figure-text">sigmoid</text>
             </g>
-            <path d="M 188 235 L 188 181 A 6 6 0 0 1 194 175 L 263 175" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(263, 175)" class="figure-path"/>
-            <g transform="translate(188, 255)">
-              <ellipse rx="20" ry="20" class="figure-element"/>
-              <text dy="0.4em" style="text-anchor: middle;" class="figure-text">σ</text>
+            <path d="M 188 215 L 188 181 A 6 6 0 0 1 194 175 L 268 175" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(268, 175)" class="figure-path"/>
+            <g transform="translate(188, 225)">
+              <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+              <text dy="0.4em" style="text-anchor: middle;" class="figure-text">sigmoid</text>
             </g>
-            <path d="M 283 235 L 283 195" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(283, 195)" class="figure-path"/>
-            <g transform="translate(283, 255)">
-              <ellipse rx="20" ry="20" class="figure-element"/>
+            <path d="M 283 215 L 283 190" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(283, 190)" class="figure-path"/>
+            <g transform="translate(283, 225)">
+              <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
               <text dy="0.4em" style="text-anchor: middle;" class="figure-text">tanh</text>
             </g>
-            <path d="M 378 235 L 378 195" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(378, 195)" class="figure-path"/>
-            <g transform="translate(378, 255)">
-              <ellipse rx="20" ry="20" class="figure-element"/>
-              <text dy="0.4em" style="text-anchor: middle;" class="figure-text">σ</text>
+            <path d="M 378 215 L 378 190" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(378, 190)" class="figure-path"/>
+            <g transform="translate(378, 225)">
+              <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+              <text dy="0.4em" style="text-anchor: middle;" class="figure-text">sigmoid</text>
             </g>
-            <path d="M 93 297 L 93 275" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(93, 275)" class="figure-path"/>
-            <rect x="59" y="297" width="70" height="60" class="figure-element figure-box figure-dashed"/>
-            <path d="M 188 297 L 188 275" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(188, 275)" class="figure-path"/>
-            <rect x="154" y="297" width="70" height="60" class="figure-element figure-box figure-dashed"/>
-            <path d="M 283 297 L 283 275" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(283, 275)" class="figure-path"/>
-            <rect x="249" y="297" width="70" height="60" class="figure-element figure-box figure-dashed"/>
-            <path d="M 378 297 L 378 275" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(378, 275)" class="figure-path"/>
-            <rect x="344" y="297" width="70" height="60" class="figure-element figure-box figure-dashed"/>
-            <path d="M -60 380 L -35 380" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(-35, 380)" class="figure-path"/>
-            <text x="-30" y="380" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t-1</tspan></text>
-            <path d="M -10 380 L 71 380 A 6 6 0 0 0 77 374 L 77 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(77, 357)" class="figure-path"/>
-            <path d="M -10 380 L 166 380 A 6 6 0 0 0 172 374 L 172 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(172, 357)" class="figure-path"/>
-            <path d="M -10 380 L 261 380 A 6 6 0 0 0 267 374 L 267 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(267, 357)" class="figure-path"/>
-            <path d="M -10 380 L 356 380 A 6 6 0 0 0 362 374 L 362 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(362, 357)" class="figure-path"/>
-            <g transform="translate(-30, 452)" class="film-generator" id="film-gen-utt-sum">
-              <rect width="74" height="26" class="figure-element figure-box figure-film-generator"/>
-              <text x="37" y="13" dy="0.4em" style="text-anchor: middle;" class="figure-text">utt. sum.</text>
+            <path d="M 93 257 L 93 240" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(93, 240)" class="figure-path"/>
+            <g transform="translate(59, 257)">
+              <rect width="70" height="40" class="figure-element figure-box"/>
+              <text x="35" y="20" dy="-0.25em" style="text-anchor: middle;" class="figure-text">
+                <tspan>
+                  dynamic
+                </tspan>
+                <tspan x="35" dy="1.25em">
+                  gate
+                </tspan>
+              </text>
             </g>
-            <path d="M 7 452 L 7 402 A 6 6 0 0 1 13 396 L 87 396 A 6 6 0 0 0 93 390 L 93 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(93, 357)" class="figure-path"/>
-            <path d="M 7 452 L 7 402 A 6 6 0 0 1 13 396 L 182 396 A 6 6 0 0 0 188 390 L 188 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(188, 357)" class="figure-path"/>
-            <path d="M 7 452 L 7 402 A 6 6 0 0 1 13 396 L 277 396 A 6 6 0 0 0 283 390 L 283 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(283, 357)" class="figure-path"/>
-            <path d="M 7 452 L 7 402 A 6 6 0 0 1 13 396 L 372 396 A 6 6 0 0 0 378 390 L 378 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(378, 357)" class="figure-path"/>
-            <text x="62" y="465" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">x</tspan><tspan dy="5px" class="subscript">t</tspan></text>
-            <path d="M 65 458 L 65 418 A 6 6 0 0 1 71 412 L 103 412 A 6 6 0 0 0 109 406 L 109 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(109, 357)" class="figure-path"/>
-            <path d="M 65 458 L 65 418 A 6 6 0 0 1 71 412 L 198 412 A 6 6 0 0 0 204 406 L 204 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(204, 357)" class="figure-path"/>
-            <path d="M 65 458 L 65 418 A 6 6 0 0 1 71 412 L 293 412 A 6 6 0 0 0 299 406 L 299 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(299, 357)" class="figure-path"/>
-            <path d="M 65 458 L 65 418 A 6 6 0 0 1 71 412 L 388 412 A 6 6 0 0 0 394 406 L 394 357" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(394, 357)" class="figure-path"/>
-            <path d="M 44 465 L 57 465" class="figure-line"/>
-            <use xlink:href="#arrow-left" transform="translate(44, 465)" class="figure-path"/>
-            <path d="M 398 175 L 419 175 A 6 6 0 0 1 425 181 L 425 374 A 6 6 0 0 0 431 380 L 460 380" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(460, 380)" class="figure-path"/>
-            <text x="465" y="380" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t</tspan></text>
-
-            <path d="M 485 122 L 414 297" class="figure-line figure-dashed"/>
-            <path d="M 485 358 L 414 357" class="figure-line figure-dashed"/>
-            <g transform="translate(0, 24)">
-              <rect x="485" y="98" width="200" height="236" class="figure-group figure-box figure-dashed"/>
-              <text x="586" y="358" style="text-anchor: middle;" class="figure-text">utt. sum.</text>
-              <path d="M 586 345 L 586 318" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(586, 318)" class="figure-path"/>
-              <text x="534" y="358" style="text-anchor: middle;" class="figure-text"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t-1</tspan></text>
-              <path d="M 534 345 L 534 282" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(534, 282)" class="figure-path"/>
-              <text x="638" y="358" style="text-anchor: middle;" class="figure-text"><tspan style="font-weight: bold;">x</tspan><tspan dy="5px" class="subscript">t</tspan></text>
-              <path d="M 638 345 L 638 282" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(638, 282)" class="figure-path"/>
-              <g transform="translate(494, 254)">
-                <rect width="80" height="28" class="figure-element figure-box"/>
-                <text x="40" y="14" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
-              </g>
-              <g transform="translate(598, 254)">
-                <rect width="80" height="28" class="figure-element figure-box"/>
-                <text x="40" y="14" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
-              </g>
-              <path d="M 534 254 L 534 230" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(534, 230)" class="figure-path"/>
-              <path d="M 638 254 L 638 230" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(638, 230)" class="figure-path"/>
-              <g transform="translate(546, 290)" class="film-generator" id="film-gen-linear">
-                <rect width="80" height="28" class="figure-element figure-box figure-film-generator"/>
-                <text x="40" y="14" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
-              </g>
-              <path d="M 584 290 L 584 166 L 574 166" class="figure-line"/>
-              <use xlink:href="#arrow-left" transform="translate(574, 166)" class="figure-path"/>
-              <path d="M 588 290 L 588 166 L 598 166" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(598, 166)" class="figure-path"/>
-              <g transform="translate(494, 202)">
-                <rect width="80" height="28" class="figure-element figure-box"/>
-                <text x="40" y="14" dy="0.4em" style="text-anchor: middle;" class="figure-text">layer norm.</text>
-              </g>
-              <g transform="translate(598, 202)">
-                <rect width="80" height="28" class="figure-element figure-box"/>
-                <text x="40" y="14" dy="0.4em" style="text-anchor: middle;" class="figure-text">layer norm.</text>
-              </g>
-              <path d="M 534 202 L 534 180" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(534, 180)" class="figure-path"/>
-              <path d="M 638 202 L 638 180" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(638, 180)" class="figure-path"/>
-              <g transform="translate(494, 152)" class="film-layer">
-                <rect width="80" height="28" class="figure-element figure-box figure-film-layer"/>
-                <text x="40" y="14" dy="0.4em" style="text-anchor: middle;" class="figure-text">affine</text>
-              </g>
-              <g transform="translate(598, 152)" class="film-layer">
-                <rect width="80" height="28" class="figure-element figure-box figure-film-layer"/>
-                <text x="40" y="14" dy="0.4em" style="text-anchor: middle;" class="figure-text">affine</text>
-              </g>
-              <path d="M 534 152 L 534 131 A 6 6 0 0 1 540 125 L 565 125" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(565, 125)" class="figure-path"/>
-              <path d="M 638 152 L 638 131 A 6 6 0 0 0 634 125 L 605 125" class="figure-line"/>
-              <use xlink:href="#arrow-left" transform="translate(605, 125)" class="figure-path"/>
-              <g transform="translate(585, 125)">
-                <ellipse rx="20" ry="20" class="figure-element"/>
-                <line x1="0" y1="8" x2="0" y2="-8" class="figure-line"/>
-                <line x1="8" y1="0" x2="-8" y2="0" class="figure-line"/>
-              </g>
-              <path d="M 585 105 L 585 85" class="figure-line"/>
-              <use xlink:href="#arrow-up" transform="translate(585, 85)" class="figure-path"/>
+            <path d="M 188 257 L 188 240" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(188, 240)" class="figure-path"/>
+            <g transform="translate(154, 257)">
+              <rect width="70" height="40" class="figure-element figure-box"/>
+              <text x="35" y="20" dy="-0.25em" style="text-anchor: middle;" class="figure-text">
+                <tspan>
+                  dynamic
+                </tspan>
+                <tspan x="35" dy="1.25em">
+                  gate
+                </tspan>
+              </text>
             </g>
+            <path d="M 283 257 L 283 240" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(283, 240)" class="figure-path"/>
+            <g transform="translate(249, 257)">
+              <rect width="70" height="40" class="figure-element figure-box"/>
+              <text x="35" y="20" dy="-0.25em" style="text-anchor: middle;" class="figure-text">
+                <tspan>
+                  dynamic
+                </tspan>
+                <tspan x="35" dy="1.25em">
+                  gate
+                </tspan>
+              </text>
+            </g>
+            <path d="M 378 257 L 378 240" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(378, 240)" class="figure-path"/>
+            <g transform="translate(344, 257)">
+              <rect width="70" height="40" class="figure-element figure-box"/>
+              <text x="35" y="20" dy="-0.25em" style="text-anchor: middle;" class="figure-text">
+                <tspan>
+                  dynamic
+                </tspan>
+                <tspan x="35" dy="1.25em">
+                  gate
+                </tspan>
+              </text>
+            </g>
+            <text x="-30" y="376" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t-1</tspan></text>
+            <g transform="translate(-30, 337)">
+              <text x="0" y="0" dy="-0.25em" style="font-weight: bold;" class="figure-text">
+                <tspan>
+                  utterance
+                </tspan>
+                <tspan x="0" dy="1.25em">
+                  summarization
+                </tspan>
+              </text>
+            </g>
+            <path d="M -10 376 L 30 376" class="figure-line"/>
+            <path d="M 0 357 C 0 365 0 376 20 376" class="figure-line"/>
+            <path d="M 30 376 L 87 376 A 6 6 0 0 0 93 370 L 93 302" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(93, 302)" class="figure-path"/>
+            <path d="M 30 376 L 182 376 A 6 6 0 0 0 188 370 L 188 302" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(188, 302)" class="figure-path"/>
+            <path d="M 30 376 L 277 376 A 6 6 0 0 0 283 370 L 283 302" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(283, 302)" class="figure-path"/>
+            <path d="M 30 376 L 372 376 A 6 6 0 0 0 378 370 L 378 302" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(378, 302)" class="figure-path"/>
+            <path d="M 0 395 C 0 387 0 376 20 376" class="figure-line"/>
+            <text x="0" y="405" dy="0.4em" style="text-anchor: middle;" class="figure-text"><tspan style="font-weight: bold;">x</tspan><tspan dy="5px" class="subscript">t</tspan></text>
           </g>
         </svg>
-        <figcaption>
-          The speech recognition model in <d-cite key="kim2017dynamic"></d-cite>
-          achieves speaker adaptation by predicting the layer normalization
-          scaling and shifting coefficients inside its LSTMs' forget, input,
-          and output gates from an utterance summarization vector.
-        </figcaption>
       </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#dln-diagram > svg");
-            svg.selectAll("g.film-generator")
-                .on("mouseenter", function () {
-                    svg.selectAll("g.film-generator > text").text("FiLM gen.");
-                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", "#ef9a9a");
-                })
-                .on("mouseleave", function () {
-                    svg.select("#film-gen-linear > text").text("linear");
-                    svg.select("#film-gen-utt-sum > text").text("utt. sum.");
-                    svg.selectAll("g.film-generator > .figure-film-generator").style("fill", null);
-                });
-
-            svg.selectAll("g.film-layer")
-                .on("mouseenter", function () {
-                    svg.selectAll("g.film-layer > text").text("FiLM");
-                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", "#ffcc80");
-                })
-                .on("mouseleave", function () {
-                    svg.selectAll("g.film-layer > text").text("affine");
-                    svg.selectAll("g.film-layer > .figure-film-layer").style("fill", null);
-                });
-
-            svg.select("g.filmed-network")
-                .on("mouseenter", function () {
-                    d3.select(this).select("g.filmed-network > text").text("FiLM-ed layer");
-                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", "#90caf9");
-                })
-                .on("mouseleave", function () {
-                    d3.select(this).select("g.filmed-network > text").text("LSTM layer");
-                    svg.selectAll("g.filmed-network > .figure-filmed-network").style("fill", null);
-                });
-        })();
-      </script>
       <p>
         The key difference here is that the conditioning signal does not come
         from an external source, but is rather computed from utterance
