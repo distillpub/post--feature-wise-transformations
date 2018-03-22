@@ -123,7 +123,7 @@
         information to a more abstract and useful representation &mdash; pixel
         values to object classes, audio waveform to text, etc. In practice,
         however, it is frequent that a task requires handling multiple sources
-        of information; this is sometimes referred to multimodal learning. 
+        of information; this is sometimes referred to multimodal learning.
       </p>
       <figure class="l-page-outset">
         <svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
@@ -771,7 +771,7 @@
           approach and you should avoid it in favor of conditional biasing,
           conditional scaling, or conditional affine transformation of the
           network's hidden features.
-        </d-footnote> 
+        </d-footnote>
         Furthermore, the increase in number of parameters in the decoder's
         first layer is very modest: just enough to accomodate the class or
         class embedding in the layer's input.
@@ -807,7 +807,7 @@
         examine them from two very different vantage points.
       </p>
       <p>
-        On one hand, we will discuss feature-wise transformations as a family of
+        First, we will discuss feature-wise transformations as a family of
         related approaches and show how they can be conceptualized using the <a
         href="#film-nomenclature">FiLM nomenclature</a>. We will point out their
         <a href="#film-in-literature">numerous uses in the recent literature</a>,
@@ -815,7 +815,7 @@
         that allow them to work.
       </p>
       <p>
-        On the other hand, we will place feature-wise transformations
+        Second, we will place feature-wise transformations
         themselves within the <a href="#bilinear-connection">family of bilinear
         transformations</a>. We will show that a small extension to the bilinear
         transformation formulation allows us to relate attention, gating, FiLM,
@@ -834,7 +834,7 @@
       <h1 id="film-nomenclature">FiLM</h1>
       <p>
         To center the discussion around a common language, we propose to use
-        the nomenclature of <d-cite key="perez2017film"></d-cite>, which
+        the nomenclature of Perez et al. <d-cite key="perez2017film"></d-cite>, which
         formalizes feature-wise <em>affine</em> transformations under the
         acronym <em>FiLM</em>, for <strong>F</strong>eature-w<strong>i</strong>se
         <strong>L</strong>inear <strong>M</strong>odulation.
@@ -849,8 +849,8 @@
         <em>FiLM-ed</em>, through the insertion of <em>FiLM layers</em> in its
         architecture. These are parametrized by some form of conditioning
         information, and the mapping from conditioning information to FiLM
-        parameters is called the <em>FiLM generator</em>. 
-        In other words, the FiLM generator is going to predict the parameters of the FiLM layers based on some arbitrary input. 
+        parameters is called the <em>FiLM generator</em>.
+        In other words, the FiLM generator is going to predict the parameters of the FiLM layers based on some arbitrary input.
         For simplicity, you can assume that the FiLM generator outputs the concatenation of all
         FiLM parameters for the network architecture.
       </p>
@@ -938,7 +938,7 @@
       </figure>
       <p>
         As the name implies, a FiLM layer applies a feature-wise affine
-        transformation to its input. 
+        transformation to its input.
         <!-- The parameters of that transformation are also provided as input. ### This sentence is very confusing-->
         By <em>feature-wise</em>, we mean that scaling
         and shifting are applied element-wise, or in the case of convolutional
@@ -1782,7 +1782,7 @@
               This allows multiplicative interactions
             </tspan>
             <tspan x="10" dy="1.5em">
-              between any pair of elements of 
+              between any pair of elements of
               <tspan style="font-weight: bold;">x</tspan> and
               <tspan style="font-weight: bold;">z</tspan>.
             </tspan>
@@ -1977,7 +1977,7 @@
               This can be expressed as a dot product
             </tspan>
             <tspan x="10" dy="1.5em">
-              between a 1-augmented <tspan style="font-weight: bold;">x</tspan> 
+              between a 1-augmented <tspan style="font-weight: bold;">x</tspan>
               and a sparse
             </tspan>
             <tspan x="10" dy="1.5em">
@@ -2311,10 +2311,94 @@
       </figure>
       <h2>Biasing</h2>
       <p>
-        An equivalent &mdash; and more efficient &mdash; way to express this
-        operation is in the form of a feature-wise, class-conditional biasing of
-        the output of the layer. To understand the equivalence, consider a
-        simple fully-connected linear layer applied to the concatenation of
+        Conditional biasing is an instance of FiLM which only predicts
+        a bias vector from the external
+        input. More precisely, it applies a feature-wise additive bias to the input:
+      </p>
+        <d-math block>
+            \textrm{conditional biasing}(\mathbf{x}) =
+                  \mathbf{x} + \beta(\mathbf{z}),
+        </d-math>
+      <p>
+        and can be thought of as a FilM layer
+        whose scaling factor <d-math>\gamma</d-math> is forced to one.
+      </p>
+
+      <figure class="l-body-outset" id="pixelcnn-diagram">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              <tspan style="font-weight: bold;">Conditional biasing</tspan> in
+              convolutional
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              neural networks is implemented
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">representation</tspan>
+              to a bias vector.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The bias vector is then added to
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              the input stack of feature maps.
+            </tspan>
+          </text>
+          <g transform="translate(-20, 10)">
+            <g transform="translate(284, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            </g>
+            <path d="M 404 260 L 488 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
+            <g transform="translate(504, 260)">
+              <circle r="10" class="figure-element"/>
+              <path d="M -5 0 L 5 0" class="figure-line"/>
+              <path d="M 0 -5 L 0 5" class="figure-line"/>
+            </g>
+            <path d="M 514 260 L 599 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
+            <g transform="translate(604, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
+              <tspan>conditioning</tspan>
+              <tspan x="284" dy="1.5em">representation</tspan>
+            </text>
+            <g transform="translate(414, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
+            </g>
+            <g transform="translate(494, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 380 60  L 409 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
+            <path d="M 455 60  L 489 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
+            <path d="M 504 90 L 504 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        As it turns out, conditional biasing is an equivalent &mdash; and computationally
+        more efficient &mdash; way of implementing concatenation-based conditioning. To understand 
+        the equivalence, consider a simple fully-connected linear layer applied
+        to the concatenation of
         <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math>.
         <d-footnote>
           The same argument applies to convolutional networks, provided we
@@ -2507,76 +2591,6 @@
           feature-wise property.
         </d-footnote>
       </p>
-      <figure class="l-body-outset" id="pixelcnn-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
-            <tspan>
-              <tspan style="font-weight: bold;">Conditional biasing</tspan> in
-              convolutional
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              neural networks is implemented
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              <tspan style="font-weight: bold;">representation</tspan>
-              to a bias vector.
-            </tspan>
-          </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
-            <tspan>
-              The bias vector is then added to
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              the input stack of feature maps.
-            </tspan>
-          </text>
-          <g transform="translate(-20, 10)">
-            <g transform="translate(284, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-            </g>
-            <path d="M 404 260 L 488 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
-            <g transform="translate(504, 260)">
-              <circle r="10" class="figure-element"/>
-              <path d="M -5 0 L 5 0" class="figure-line"/>
-              <path d="M 0 -5 L 0 5" class="figure-line"/>
-            </g>
-            <path d="M 514 260 L 599 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
-            <g transform="translate(604, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
-            </g>
-            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
-              <tspan>conditioning</tspan>
-              <tspan x="284" dy="1.5em">representation</tspan>
-            </text>
-            <g transform="translate(414, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
-            </g>
-            <g transform="translate(494, 30)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-            </g>
-            <path d="M 380 60  L 409 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
-            <path d="M 455 60  L 489 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
-            <path d="M 504 90 L 504 245" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
-          </g>
-        </svg>
-      </figure>
       <p>
         WaveNet describes two ways in which conditional biasing allows external
         information to modulate the behavior of the model:
@@ -2942,7 +2956,7 @@
       </p>
       <p>
         We can also leverage FiLM to condition a pre-trained network. In
-        <d-cite key="vries2017modulating"></d-cite>, the visual pipeline of a
+        de Vries et al. <d-cite key="vries2017modulating"></d-cite>, the visual pipeline of a
         visual question-answering (VQA) model is modulated by the model's
         linguistic pipeline through conditional batch normalization (CBN),
         which can be viewed as a special case of FiLM. The model is trained on
@@ -3137,7 +3151,7 @@
       </p>
       <p>
         We can also use FiLM layers to condition a style transfer network on a
-        chosen style image. In <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
+        chosen style image. In Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
         transfer networks are extended to accommodate multiple styles by
         introducing <strong>c</strong>onditional <strong>i</strong>nstance
         <strong>n</strong>ormalization (CIN) layers. Each style modeled by the
@@ -3274,7 +3288,7 @@
         </svg>
       </figure>
       <p>
-        This intuition is pushed further by <d-cite key="ghiasi2017exploring"></d-cite>
+        This intuition is pushed further by Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
         with the introduction of a <em>style prediction network</em> which is
         trained jointly with the style transfer network to predict the instance
         normalization parameters directly from a given style image.
@@ -3282,8 +3296,8 @@
       <p>
         Like CBN, CIN can be seen as an instance of FiLM where the
         post-normalization feature-wise affine transformation is replaced with a
-        FiLM layer. The main differentiator between <d-cite key="dumoulin2017learned"></d-cite>
-        and <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
+        FiLM layer. The main differentiator between Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>
+        and Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
         implementation: in the former the generator is a simple embedding
         lookup, whereas in the latter the generator is a convolutional neural
         network.
@@ -3293,7 +3307,7 @@
         in which feature-wise transformations are applied, and a secondary
         network which outputs parameters for these transformations. However,
         this distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
-        is not strictly necessary. As an example, <d-cite key="huang2017arbitrary"></d-cite>
+        is not strictly necessary. As an example, Huang et al. <d-cite key="huang2017arbitrary"></d-cite>
         proposes an alternative for fast and arbitrary style transfer in the
         form of an adaptive instance normalization (AdaIN) layer, which computes
         the normalization parameters using a simple heuristic.
@@ -3451,14 +3465,14 @@
       </p>
       <p>
         Feature-wise affine transformations are also used in the reinforcement
-        learning (RL) setting. In <d-cite key="kirkpatrick2017overcoming"></d-cite>,
+        learning (RL) setting. In Kirkpatrick et al. <d-cite key="kirkpatrick2017overcoming"></d-cite>,
         the authors briefly touch the idea of applying conditional feature-wise
         affine transformations to a reinforcement learning problem. They train
         an agent that learns to play 10 Atari games using a single Double DQN
         network with task-specific gains and biases, which can be viewed as
         inserting FiLM layers throughout its hierarchy.
       </p>
-      
+
       <h2>Self-conditioning</h2>
       <p>
         As we have seen so far, feature-wise transformations can be used as a
@@ -3557,12 +3571,12 @@
         </svg>
       </figure>
       <p>
-        In the natural language domain, <d-cite key="dauphin2017language"></d-cite>
+        In the natural language domain, Dauphin et al. <d-cite key="dauphin2017language"></d-cite>
         proposes to build a finite context using stacked convolutions to tackle
         language modeling and introduces gated linear units, which uses half of
         the features to apply feature-wise sigmoidal gating to the second half.
         This architectural feature is also adopted by
-        <d-cite key="gehring2017convolutional"></d-cite>, which introduces a
+        Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, which introduces a
         fast and parallelizable model for machine translation in the form of a
         purely convolutional architecture.
       </p>
@@ -3638,7 +3652,7 @@
         </svg>
       </figure>
       <p>
-        In the speech recognition domain, <d-cite key="kim2017dynamic"></d-cite>
+        In the speech recognition domain, Kim et al. <d-cite key="kim2017dynamic"></d-cite>
         modulates a deep bidirectional LSTM using a form of conditional
         normalization which the authors call <em>dynamic layer normalization</em>.
         In analogy to conditional instance normalization and conditional batch
@@ -4014,7 +4028,7 @@
           <rect x="384" y="10" width="350" height="260" style="fill: none;" class="beta-plot"/>
         </svg>
         <figcaption>
-          WRITEME.    
+          WRITEME.
         </figcaption>
       </figure>
       <script>
@@ -4076,7 +4090,7 @@
           <rect x="30" y="10" width="300" height="300" style="fill: none;" class="histogram"/>
         </svg>
         <figcaption>
-          WRITEME.    
+          WRITEME.
         </figcaption>
       </figure>
       <script>
