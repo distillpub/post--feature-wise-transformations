@@ -387,231 +387,32 @@
         processed in the context of another.
       </p>
       <p>
-        <a href="https://distill.pub/2016/augmented-rnns/">Attention</a> is a
-        good example of one such principled approach: an attention-equipped
-        neural network has the ability to focus on specific subsets of its
-        inputs at different points in time along the computation of its outputs:
+        In this article, we will take a deep dive into feature-wise
+        transformations, showing that they find their way into a surprising
+        number of recent neural network architectures used in various problem
+        settings. We will first discuss feature-wise transformations as a family
+        of related approaches and show how they can be conceptualized using the
+        <a href="#film-nomenclature">FiLM nomenclature</a>. We will then point
+        out their <a href="#film-in-literature">numerous uses in the recent literature</a>.
+        Finally, we will take a stab at
+        <a href="#understanding-film">understanding the computational mechanisms</a>
+        that allow them to work.
       </p>
-      <figure id="attentional-ex2" class="l-body-outset">
-        <pre id="attentional-ex2-data" style="display: none;">
-          0.50, 0.02, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.01, 0.00, 0.00, 0.00, 0.05, 0.05
-          0.14, 0.89, 0.07, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.06, 0.00, 0.00, 0.00, 0.02, 0.00
-          0.02, 0.00, 0.56, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.00
-          0.00, 0.00, 0.01, 0.61, 0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00
-          0.00, 0.00, 0.02, 0.03, 0.01, 0.21, 0.97, 0.05, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00
-          0.00, 0.00, 0.02, 0.07, 0.25, 0.76, 0.02, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.00
-          0.02, 0.04, 0.03, 0.27, 0.71, 0.02, 0.00, 0.02, 0.00, 0.00, 0.02, 0.00, 0.00, 0.05, 0.01
-          0.02, 0.00, 0.07, 0.00, 0.00, 0.00, 0.00, 0.60, 0.40, 0.01, 0.04, 0.00, 0.00, 0.13, 0.01
-          0.13, 0.02, 0.02, 0.00, 0.01, 0.00, 0.00, 0.23, 0.52, 0.91, 0.07, 0.00, 0.00, 0.10, 0.00
-          0.04, 0.00, 0.01, 0.00, 0.00, 0.00, 0.00, 0.01, 0.03, 0.00, 0.67, 0.00, 0.00, 0.16, 0.02
-          0.02, 0.00, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.14, 0.96, 0.00, 0.02, 0.07
-          0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.02, 1.00, 0.02, 0.03
-          0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.01, 0.00, 0.00, 0.32, 0.11
-          0.04, 0.00, 0.08, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0.04, 0.67
-        </pre>
-        <svg>
-          <defs>
-            <marker id="edgeArrowhead" viewBox="0 -5 10 10" markerWidth="6" markerHeight="10" orient="auto" refX="5" refY="0">
-              <path d="M0,-5L5,0L0,5" fill="none" stroke="#666"></path>
-            </marker>
-            <marker id="edgeArrowheadLeft" viewBox="0 -5 10 10" markerWidth="6" markerHeight="10" orient="auto" refX="0" refY="0">
-              <path d="M5,-5L0,0L5,5" fill="none" stroke="#666"></path>
-            </marker>
-          </defs>
-          <g class="labels" style="display: none;">
-            <text transform="translate(0, 20)">output text</text>
-            <text transform="translate(0, 65)">network B</text>
-            <text transform="translate(0, 185)">network A</text>
-            <text transform="translate(0, 233)">input text</text>
-          </g>
-        </svg>
-        <figcaption>
-          In this sequence-to-sequence translation model, output tokens are
-          computed by attending to different subsets of input tokens.<br><br>
-          <em>
-            Credit: diagram derived from Fig. 3 of
-            <a href="https://arxiv.org/pdf/1409.0473.pdf">Bahdanau, <i>et al.</i> 2014</a>,
-            originally featured in the
-            <a href="https://distill.pub/2016/augmented-rnns/">Distill article on attention</a>.
-          </em>
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var labelsA = ["the", "agreement", "on", "the", "European",
-                           "Economic", "Area", "was", "signed", "in", "August",
-                           "1992", ".", "<end>"];
-            var labelsB = ["l’", "accord", "sur", "la", "zone", "économique",
-                           "européenne", "a", "été", "signé", "en", "août",
-                           "1992", ".", "<end>"];
-            var data = d3.csvParseRows(d3.select("#attentional-ex2-data").text());
-            var linkData = [];
-            data.forEach(function(a, ai) {
-              a.forEach(function(b, bi) {
-                linkData.push({ai: +ai, bi: +bi, v: +data[ai][bi]});
-              });
-            });
-
-            var nodeMargin = 10;
-            var networkMargin = 120;
-            var html = d3.select("#attentional-ex2");
-            var outerWidth = 984;
-            var outerHeight = 240;
-            var margin = {top: 36, right: nodeMargin, bottom: 24, left: nodeMargin};
-            var width = outerWidth - margin.left - margin.right;
-            var height = outerHeight - margin.top - margin.bottom;
-            var xa = d3.scaleBand()
-                .domain(d3.range(labelsA.length))
-                .paddingInner(0.5)
-                .range([nodeMargin, width - nodeMargin]);
-            var xb = d3.scaleBand()
-                .domain(d3.range(labelsB.length))
-                .paddingInner(0.5)
-                .range([nodeMargin, width - nodeMargin]);
-            var nodeSizeA = xa.bandwidth();
-            var nodeSizeB = xb.bandwidth();
-            var networkHeightA = nodeSizeA + nodeMargin * 2;
-            var networkHeightB = nodeSizeB + nodeMargin * 2;
-            var link = function(d) {
-              var p = "M" + (xb(d.bi) + nodeSizeB / 2) + "," + (nodeSizeB + nodeMargin)
-                  + "C" + (xb(d.bi) + nodeSizeB / 2) + "," + (nodeSizeB + networkMargin / 3 + nodeMargin)
-                  + " " + (xa(d.ai) + nodeSizeA / 2) + "," + (networkMargin - networkMargin / 3 + nodeMargin)
-                  + " " + (xa(d.ai) + nodeSizeA / 2) + "," + (networkMargin + nodeMargin);
-              return p;
-            };
-
-            html.select("svg .labels")
-                .attr("transform", "translate(" + (width + nodeMargin * 3) + ", 0)");
-            var svg = html.select("svg")
-                .attr("viewBox", "0 0 " + outerWidth + " " + outerHeight)
-              .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-            var networkA = svg.append("g")
-                .attr("transform", "translate(0, " + networkMargin + ")");
-            networkA.append("rect")
-                .attr("class", "background")
-                .attr("width", width)
-                .attr("height", nodeSizeA + 2 * nodeMargin)
-                .attr("rx", nodeMargin * 0.7)
-                .attr("ry", nodeMargin * 0.7);
-            var cellA = networkA.selectAll(".cell")
-                .data(labelsA)
-              .enter().append("g")
-                .attr("class", "cell")
-                .attr("transform", function(d, i) { return "translate(" + xa(i) + ", " + nodeMargin + ")"; })
-            cellA.append("rect")
-                .attr("class", "shadow")
-                .attr("transform", "translate(1, 3)")
-                .attr("width", nodeSizeA)
-                .attr("height", nodeSizeA)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellA.append("rect")
-                .attr("class", "node")
-                .attr("width", nodeSizeA)
-                .attr("height", nodeSizeA)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellA.append("line")
-                .attr("class", "arrow")
-                .attr("marker-start", "url(#edgeArrowheadLeft)")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("x1", nodeSizeA + 8)
-                .attr("x2", nodeSizeA + nodeMargin + 20)
-                .attr("y1", nodeSizeA / 2)
-                .attr("y2", nodeSizeA / 2);
-            cellA.append("line")
-                .attr("class", "arrow")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("transform", "translate(" + nodeSizeA / 2 + ", 0)")
-                .attr("y1", nodeSizeA + nodeMargin * 2 - 2)
-                .attr("y2", nodeSizeA + 4);
-            cellA.append("text")
-                .style("opacity", 0.8)
-                .text("A")
-                .attr("dx", nodeSizeA / 2)
-                .attr("dy", nodeSizeA / 2 + 1);
-            cellA.append("text")
-                .attr("class", "label")
-                .attr("dx", nodeSizeA / 2)
-                .attr("dy", nodeSizeA + 24 + 8)
-                .text(function(d) { return d; });
-            cellA.append("rect")
-                .style("opacity", 0)
-                .attr("transform", "translate(-" + ((xa.step() - nodeSizeA) / 2) + ",-" + (nodeMargin + (networkMargin - networkHeightB) / 2) + ")")
-                .attr("width", xa.step())
-                .attr("height", networkHeightA + (networkMargin - networkHeightA) / 2);
-
-            var networkB = svg.append("g");
-            networkB.append("rect")
-                .attr("class", "background")
-                .attr("width", width)
-                .attr("height", nodeSizeB + 2 * nodeMargin)
-                .attr("rx", nodeMargin * 0.7)
-                .attr("ry", nodeMargin * 0.7);
-            var cellB = networkB.selectAll(".cell")
-                .data(labelsB)
-              .enter().append("g")
-                .attr("class", "cell")
-                .attr("transform", function(d, i) { return "translate(" + xb(i) + "," + nodeMargin + ")"; })
-            cellB.append("rect")
-                .attr("class", "shadow")
-                .attr("transform", "translate(1, 3)")
-                .attr("width", nodeSizeB)
-                .attr("height", nodeSizeB)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellB.append("rect")
-                .attr("class", "node")
-                .attr("width", nodeSizeB)
-                .attr("height", nodeSizeB)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellB.append("line")
-                .attr("class", "arrow")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("x1", nodeSizeB)
-                .attr("x2", nodeSizeB + nodeMargin + 14)
-                .attr("y1", nodeSizeB / 2)
-                .attr("y2", nodeSizeB / 2);
-            cellB.append("line")
-                .attr("class", "arrow")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("transform", "translate(" + nodeSizeB / 2 + ", 0)")
-                .attr("y1", 0)
-                .attr("y2", -nodeMargin * 2 + 5);
-            cellB.append("text")
-                .style("opacity", 0.8)
-                .text("B")
-                .attr("dx", nodeSizeB / 2)
-                .attr("dy", nodeSizeB / 2 + 1);
-            cellB.append("text")
-                .attr("class", "label")
-                .attr("dx", function(d) { return d === "européenne" ? nodeSizeB / 2 + 15 : nodeSizeB / 2; })
-                .attr("dy", - 24 - 5)
-                .text(function(d) { return d; });
-            cellB.append("rect")
-                .style("opacity", 0)
-                .attr("transform", "translate(-" + ((xb.step() - nodeSizeB) / 2) + ",-" + nodeMargin + ")")
-                .attr("width", xb.step())
-                .attr("height", networkHeightB + (networkMargin - networkHeightB) / 2);
-
-            var linkGroup = svg.append("g").attr("class", ".link-group")
-            var link = linkGroup.selectAll(".link")
-                .data(linkData)
-              .enter().append("path")
-                .attr("class", "link")
-                .attr("d", link)
-                .style("opacity", function(d) { return d.v; });
-        })();
-      </script>
       <p>
-        Attention has a very sequential nature which is sometimes not suited for
-        certain types of problems. Consider for instance conditional image
-        generation. In conditional decoder-based generative models, we would
-        like to map a source of noise to model samples in a way that is
-        class-aware. This involves injecting class information into the decoder
-        network:
+        We hope the insights contributed by this article will help highlight
+        the strong connections between the aforementioned methods and inspire
+        new approaches to integrating multiple information channels in neural
+        networks.
+      </p>
+
+      <hr/>
+
+      <h1 id="film-nomenclature">FiLM as a framework for information fusion</h1>
+      <p>
+        Consider for instance conditional image generation. In conditional
+        decoder-based generative models, we would like to map a source of noise
+        to model samples in a way that is class-aware. This involves injecting
+        class information into the decoder network:
       </p>
       <figure class="l-body">
         <svg viewBox="0 0 648 450" xmlns="http://www.w3.org/2000/svg">
@@ -783,78 +584,455 @@
         more efficient alternatives, preferably involving as much parameter
         sharing as possible.
       </p>
+      <h2>Building towards FiLM</h2>
       <p>
-        A naive but much more efficient solution to the above problem would be
-        to concatenate the class (or an embedding of the class) to the noise
-        vector and treat the result as the decoder's input. Using this approach,
-        <em>all</em> parameters in the decoder are shared between classes, save
-        for the first layer's parameters.
-        <d-footnote>
-          As we will explain later, this is not a particularly sophisticated
-          approach and you should avoid it in favor of conditional biasing,
-          conditional scaling, or conditional affine transformation of the
-          network's hidden features.
-        </d-footnote>
-        Furthermore, the increase in number of parameters in the decoder's
-        first layer is very modest: just enough to accomodate the class or
-        class embedding in the layer's input.
+        Perhaps the simplest way to depart from this brute-force approach is to
+        concatenate the class (or an embedding of the class) to the noise vector
+        and treat the result as the decoder's input, crossing our fingers in
+        hope that the decoder will implicitly learn to combine the two in a
+        sensible manner. Using this approach, <em>all</em> parameters in the
+        decoder are shared between classes, save for the first layer's
+        parameters. Furthermore, the increase in number of parameters in the
+        decoder's first layer is very modest: just enough to accomodate the
+        class or class embedding in the layer's input.
       </p>
       <p>
-        This is only a first step, though: while we're at it, why not
-        concatenate the class or class embedding to the input of <em>all</em>
-        layers in the decoder? We can also think of other repeated conditioning
-        mechanisms: we can bias the output of all decoder layers using
-        class-specific bias vectors, we can scale them, or we could even
-        combine these ideas into a feature-wise, class-conditional affine
-        transformation of the decoder layers' outputs.
+        However, this approach suffers from the fact that the conditioning
+        information has a direct influence only in the first few layers of the
+        neural network; the deeper we get, the more diffuse and indirect its
+        influence becomes. A solution to that is simply to concatenate the class
+        or class embedding to the input of <em>all</em> layers in the decoder.
+        We refer to this mechanism as concatenation-based conditioning (shown
+        here for a convolutional network):
+      </p>
+      <figure class="l-body-outset" id="dcgan-diagram">
+        <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
+          <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
+          <text x="10" y="10" class="figure-text">
+            <tspan>
+              <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
+              in convolutional neural networks
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              is implemented by <tspan style="font-weight: bold;">broadcasting</tspan>
+              the conditioning representation into
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              a feature map (or stack of feature
+              maps) and <tspan style="font-weight: bold;">concatenating</tspan>
+              it to
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              the input along the channel axis.
+            </tspan>
+          </text>
+          <text x="495" y="10" class="figure-text">
+            <tspan>
+              The resulting stack of feature maps is then
+            </tspan>
+            <tspan x="495" dy="1.5em">
+              <tspan style="font-weight: bold;">convolved</tspan>
+              to produce the conditioned
+            </tspan>
+            <tspan x="495" dy="1.5em">
+              output.
+            </tspan>
+          </text>
+          <g transform="translate(10, 180)">
+            <g transform="translate(0, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            </g>
+            <g transform="translate(191, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
+            </g>
+            <g transform="translate(302, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+              <rect x="40" y="40" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="50" y="50" dy="0.4em" class="figure-text">conditioning<tspan x="50" dy="1.5em">representation</tspan></text>
+            </g>
+            <g transform="translate(493, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">convolution</text>
+            </g>
+            <g transform="translate(604, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <path d="M 120 90 L 186 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
+            <path d="M 231 90 L 297 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
+            <path d="M 442 90 L 488 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
+            <path d="M 533 90 L 599 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
+            <path d="M 211 -50 L 211 25" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
+            <text x="211" y="10" dy="-0.4em" transform="rotate(-90, 211, 10)" class="figure-text">broadcast</text>
+            <text x="211" y="-60" dy="-0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">conditioning representation</text>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        As an alternative to concatenation-based conditioning, we can consider
+        applying a feature-wise additive bias to the input. We call this
+        conditional biasing:
+      <figure class="l-body-outset" id="pixelcnn-diagram">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              <tspan style="font-weight: bold;">Conditional biasing</tspan> in
+              convolutional
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              neural networks is implemented
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">representation</tspan>
+              to a bias vector.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The bias vector is then added to
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              the input stack of feature maps.
+            </tspan>
+          </text>
+          <g transform="translate(-20, 10)">
+            <g transform="translate(284, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            </g>
+            <path d="M 404 260 L 488 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
+            <g transform="translate(504, 260)">
+              <circle r="10" class="figure-element"/>
+              <path d="M -5 0 L 5 0" class="figure-line"/>
+              <path d="M 0 -5 L 0 5" class="figure-line"/>
+            </g>
+            <path d="M 514 260 L 599 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
+            <g transform="translate(604, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
+              <tspan>conditioning</tspan>
+              <tspan x="284" dy="1.5em">representation</tspan>
+            </text>
+            <g transform="translate(414, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
+            </g>
+            <g transform="translate(494, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 380 60  L 409 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
+            <path d="M 455 60  L 489 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
+            <path d="M 504 90 L 504 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        As it turns out, conditional biasing is an equivalent &mdash; and computationally
+        more efficient &mdash; way of implementing concatenation-based conditioning. To understand 
+        the equivalence, consider a simple fully-connected linear layer applied
+        to the concatenation of an input <d-math>\mathbf{x}</d-math> and a
+        conditioning representation <d-math>\mathbf{z}</d-math>.
+        <d-footnote>
+          The same argument applies to convolutional networks, provided we
+          ignore the border effects due to zero-padding.
+        </d-footnote>
+      </p>
+      <figure class="l-body-outset" id="concatenation-as-biasing">
+        <svg viewBox="0 0 744 420" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="20" class="figure-text">
+            <tspan>
+              Concatenation-based conditioning
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              is equivalent to <tspan style="font-weight: bold;">conditional biasing</tspan>.
+            </tspan>
+          </text>
+          <text x="260" y="20" class="figure-text">
+            <tspan>
+              We can decompose the matrix-vector
+            </tspan>
+            <tspan x="260" dy="1.5em">
+              into two matrix-vector subproducts.
+            </tspan>
+          </text>
+          <text x="520" y="20" class="figure-text">
+            <tspan>
+              The resulting two vectors are added
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              together to produce the output. The
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              <tspan style="font-weight: bold;">z</tspan>-dependent vector can
+              be thought of
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              as a conditional bias.
+            </tspan>
+          </text>
+          <g transform="translate(60, 90)">
+            <g transform="translate(10, 100)">
+              <g>
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-element"/>
+                <text x="60" y="90" dy="0.4em" style="text-anchor: middle;" class="figure-text">W</text>
+              </g>
+              <g transform="translate(125, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
+                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
+                <use xlink:href="#curly-brace-vertical" transform="translate(25, 60)" class="figure-line"/>
+                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
+                <text x="45" y="90" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
+              </g>
+            </g>
+            <g transform="translate(240, 10)">
+              <g>
+                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
+              </g>
+              <g transform="translate(65, 0)">
+                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
+                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
+              </g>
+            </g>
+            <g transform="translate(240, 240)">
+              <g>
+                <use xlink:href="#matrix-center" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(0, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
+                <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element"/>
+              </g>
+              <g transform="translate(65, 0)">
+                <use xlink:href="#column-middle" transform="translate(0, 0)" class="figure-element"/>
+                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+                <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
+                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
+                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
+              </g>
+            </g>
+            <g transform="translate(405, 10)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+            </g>
+            <g transform="translate(405, 240)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+            </g>
+            <g transform="translate(505, 150)">
+              <circle cx="10" cy="10" r="10" class="figure-element"/>
+              <path d="M 10 5 l 0 10" class="figure-line"/>
+              <path d="M 5 10 l 10 0" class="figure-line"/>
+            </g>
+            <g transform="translate(605, 120)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
+              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
+              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
+            </g>
+            <path d="M 195 130 C 225 110 195 40 235 50" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(235, 50)" class="figure-path"/>
+            <path d="M 195 190 C 225 210 195 290 235 280" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(235, 280)" class="figure-path"/>
+            <path d="M 365 50 l 35 0" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(400, 50)" class="figure-path"/>
+            <path d="M 365 280 l 35 0" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(400, 280)" class="figure-path"/>
+            <path d="M 430 50 L 509 50 a 6 6 0 0 1 6 6 L 515 145" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(515, 145)" class="figure-path"/>
+            <path d="M 430 280 L 509 280 a 6 6 0 0 0 6 -6 L 515 175" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(515, 175)" class="figure-path"/>
+            <text x="435" y="295" class="figure-text">conditional bias</text>
+            <path d="M 525 160 l 70 0" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(600, 160)" class="figure-path"/>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        Each vector product between <d-math>\mathbf{z}</d-math> and its
+        corresponding subset of a row of the weight matrix can be thought of
+        as a bias that gets added to the corresponding output feature.
+      </p>
+      <p>
+        We can also leverage multiplicative interactions as opposed to additive
+        interactions and multiply the input with a feature-wise scaling vector.
+        We call this conditional scaling:
+      </p>
+      <figure class="l-body-outset" id="gated-attention-diagram">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              <tspan style="font-weight: bold;">Conditional scaling</tspan> in
+              convolutional
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              neural networks is implemented
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">representation</tspan>
+              to a scaling vector.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The scaling vector is then multiplied
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              with the input stack of feature maps.
+            </tspan>
+          </text>
+          <g transform="translate(-20, 10)">
+            <g transform="translate(284, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            </g>
+            <path d="M 404 260 L 488 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
+            <g transform="translate(504, 260)">
+              <circle r="10" class="figure-element"/>
+              <ellipse rx="2" ry="2" class="figure-path"/>
+            </g>
+            <path d="M 514 260 L 599 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
+            <g transform="translate(604, 200)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
+              <tspan>conditioning</tspan>
+              <tspan x="284" dy="1.5em">representation</tspan>
+            </text>
+            <g transform="translate(414, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
+            </g>
+            <g transform="translate(494, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 380 60  L 409 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
+            <path d="M 455 60  L 489 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
+            <path d="M 504 90 L 504 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
+          </g>
+        </svg>
+      </figure>
+      <p>
+        A special instance of this is feature-wise sigmoidal gating: each
+        feature or feature map is scaled by a scalar between <d-math>0</d-math>
+        and <d-math>1</d-math> as a function of the conditioning representation.
+        This constraint is often enforced via a sigmoidal layer, hence the name.
+        Intuitively, feature-wise sigmoidal gating allows the conditioning
+        information to select which features are passed forward and which are
+        zeroed out.
+      </p>
+      <p>
+        This brings us to the combination of conditional feature-wise scaling
+        and conditional feature-wise shifting into a conditional feature-wise
+        affine transformation,
         <d-footnote>
           An affine transformation is a transformation of the form
           <d-math>y = m . x + b</d-math>.
         </d-footnote>
-        Those approaches have all in common that they act at the feature
-        level, and we can regroup them under the umbrella of <em>feature-wise
-        transformations</em>. Feature-wise transformations enjoy very good
-        scaling properties &mdash; their number of parameters scales linearly
-        with the total number of features in the network &mdash; and as we will
-        see, they work remarkably well as a conditioning mechanism despite
-        their simplicity.
+        which acts as an umbrella for all approaches discussed so far.
+        In general, feature-wise transformations enjoy very good scaling
+        properties &mdash; their number of parameters scales linearly with the
+        total number of features in the network &mdash; and as we will see, they
+        work remarkably well as a conditioning mechanism despite their
+        simplicity.
       </p>
-      <p>
-        Let us now depart from our introductory example and adopt a more
-        general view, where we consider fusing multiple sources of information
-        (not just conditioning one on another), and where these sources of
-        information are arbitrary (not just images and classes). In this
-        article, we will take a deep dive into feature-wise transformations,
-        showing that they find their way into a surprising number of recent
-        neural network architectures used in various problem settings. We will
-        examine them from two very different vantage points.
-      </p>
-      <p>
-        First, we will discuss feature-wise transformations as a family of
-        related approaches and show how they can be conceptualized using the <a
-        href="#film-nomenclature">FiLM nomenclature</a>. We will point out their
-        <a href="#film-in-literature">numerous uses in the recent literature</a>,
-        and take a stab at <a href="#understanding-film">understanding the computational mechanisms</a>
-        that allow them to work.
-      </p>
-      <p>
-        Second, we will place feature-wise transformations
-        themselves within the <a href="#bilinear-connection">family of bilinear
-        transformations</a>. We will show that a small extension to the bilinear
-        transformation formulation allows us to relate attention, gating, FiLM,
-        and mixture-of-experts models as different instantiations of what we
-        propose to call <em>generalized bilinear transformation</em>.
-      </p>
-      <p>
-        We hope the insights contributed by this article will help highlight
-        the strong connections between the aforementioned methods and inspire
-        new approaches to integrating multiple information channels in neural
-        networks.
-      </p>
-
-      <hr/>
-
-      <h1 id="film-nomenclature">FiLM</h1>
+      <h2>FiLM</h2>
       <p>
         To center the discussion around a common language, we propose to use
         the nomenclature of Perez et al. <d-cite key="perez2017film"></d-cite>, which
@@ -961,11 +1139,9 @@
       </figure>
       <p>
         As the name implies, a FiLM layer applies a feature-wise affine
-        transformation to its input.
-        <!-- The parameters of that transformation are also provided as input. ### This sentence is very confusing-->
-        By <em>feature-wise</em>, we mean that scaling
-        and shifting are applied element-wise, or in the case of convolutional
-        networks, feature map-wise.
+        transformation to its input. By <em>feature-wise</em>, we mean that
+        scaling and shifting are applied element-wise, or in the case of
+        convolutional networks, feature map-wise.
         <d-footnote>
           To expand a little more on the convolutional case, feature maps can be
           thought of as the same feature detector being evaluated at different
@@ -1706,6 +1882,7 @@
                 });
         })();
       </script>
+      <h2>Connecting FiLM to other approaches</h2>
       <p>
         FiLM shares with HyperNetworks <d-cite key="ha2016hypernetworks"></d-cite>
         the architectural feature that a secondary neural network computes some
@@ -1722,15 +1899,6 @@
         but is less flexible in its ability to modulate the model's computation.
         The ideal trade-off between flexibility and computational complexity is
         still an ongoing area of investigation.
-      </p>
-      <p>
-        FiLM is closely related to gating: the latter can be viewed as a
-        bias-less version of the former with sigmoidal scaling. Whereas gating
-        is used to inhibit the expression of targeted features, FiLM can in
-        theory be used to inhibit or enhance the expression of targeted
-        features, flip their sign, or selectively threshold them (when combined
-        with a ReLU nonlinearity). The impact of these additional capabilities
-        is still an open area of investigation.
       </p>
       <p>
         Some parallels can be drawn between FiLM and attention, but the two
@@ -2230,24 +2398,9 @@
         feature-wise transformations are sometimes treated as accessory
         to the proposed models to which they are applied. We believe there is
         value in connecting those methods, which is why part of this article is
-        devoted to a literature review. In the interest of not confusing
-        readers already familiar with these methods, we chose to stick to the
-        nomenclature used in the original papers, but we do draw connections to
-        the FiLM nomenclature where appropriate.
+        devoted to a literature review.
       </p>
-      <h2>Concatenation</h2>
-      <p>
-        Let's pretend that we have an input <d-math>\mathbf{x}</d-math> and
-        some contextual information <d-math>\mathbf{z}</d-math> which we
-        process using a neural network to compute some output. Perhaps the
-        simplest way of combining the two is to concatenate them and pass the
-        augmented input through the neural network, crossing our fingers in hope
-        that the network will implicitly learn to combine the two in a sensible
-        manner. This approach suffers from the fact that the conditioning
-        information has a direct influence only in the first few layers of the
-        neural network; the deeper we get, the more diffuse and indirect its
-        influence becomes.
-      </p>
+      <h2>Generative modeling</h2>
       <p>
         As described above, an improvement over this idea would be to concatenate
         <d-math>\mathbf{z}</d-math> to the input of <em>all</em> layers in the
@@ -2258,342 +2411,6 @@
         The class label is broadcasted as a feature map and is concatenated to
         the input of convolutional and transposed convolutional layers in the
         generator and discriminator networks.
-      </p>
-      <figure class="l-body-outset" id="dcgan-diagram">
-        <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
-          <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
-          <text x="10" y="10" class="figure-text">
-            <tspan>
-              To implement <tspan style="font-weight: bold;">concatenation-based conditioning</tspan>,
-              Radford et al. first
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              <tspan style="font-weight: bold;">broadcast</tspan>
-              the class label into a feature map and
-              <tspan style="font-weight: bold;">concatenate</tspan> it to the
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              input along the channel axis.
-            </tspan>
-          </text>
-          <text x="495" y="10" class="figure-text">
-            <tspan>
-              The resulting stack of feature maps is then
-            </tspan>
-            <tspan x="495" dy="1.5em">
-              <tspan style="font-weight: bold;">convolved</tspan>
-              to produce the class-dependent
-            </tspan>
-            <tspan x="495" dy="1.5em">
-              output.
-            </tspan>
-          </text>
-          <g transform="translate(10, 160)">
-            <g transform="translate(0, 30)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-            </g>
-            <g transform="translate(191, 30)">
-              <rect width="40" height="120" class="figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
-            </g>
-            <g transform="translate(302, 30)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-              <rect x="40" y="40" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <text x="50" y="50" dy="0.4em" class="figure-text">label</text>
-            </g>
-            <g transform="translate(493, 30)">
-              <rect width="40" height="120" class="figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">convolution</text>
-            </g>
-            <g transform="translate(604, 30)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
-            </g>
-            <path d="M 120 90 L 186 90" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
-            <path d="M 231 90 L 297 90" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
-            <path d="M 442 90 L 488 90" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
-            <path d="M 533 90 L 599 90" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
-            <path d="M 211 -50 L 211 25" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
-            <text x="211" y="10" dy="-0.4em" transform="rotate(-90, 211, 10)" class="figure-text">broadcast</text>
-            <text x="211" y="-60" dy="-0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">class label</text>
-          </g>
-        </svg>
-      </figure>
-      <h2>Biasing</h2>
-      <p>
-        Conditional biasing is an instance of FiLM which only predicts
-        a bias vector from the external
-        input. More precisely, it applies a feature-wise additive bias to the input:
-      </p>
-        <d-math block>
-            \textrm{conditional biasing}(\mathbf{x}) =
-                  \mathbf{x} + \beta(\mathbf{z}),
-        </d-math>
-      <p>
-        and can be thought of as a FilM layer
-        whose scaling factor <d-math>\gamma</d-math> is forced to one.
-      </p>
-
-      <figure class="l-body-outset" id="pixelcnn-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
-            <tspan>
-              <tspan style="font-weight: bold;">Conditional biasing</tspan> in
-              convolutional
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              neural networks is implemented
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              <tspan style="font-weight: bold;">representation</tspan>
-              to a bias vector.
-            </tspan>
-          </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
-            <tspan>
-              The bias vector is then added to
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              the input stack of feature maps.
-            </tspan>
-          </text>
-          <g transform="translate(-20, 10)">
-            <g transform="translate(284, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-            </g>
-            <path d="M 404 260 L 488 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
-            <g transform="translate(504, 260)">
-              <circle r="10" class="figure-element"/>
-              <path d="M -5 0 L 5 0" class="figure-line"/>
-              <path d="M 0 -5 L 0 5" class="figure-line"/>
-            </g>
-            <path d="M 514 260 L 599 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
-            <g transform="translate(604, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
-            </g>
-            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
-              <tspan>conditioning</tspan>
-              <tspan x="284" dy="1.5em">representation</tspan>
-            </text>
-            <g transform="translate(414, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
-            </g>
-            <g transform="translate(494, 30)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-            </g>
-            <path d="M 380 60  L 409 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
-            <path d="M 455 60  L 489 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
-            <path d="M 504 90 L 504 245" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
-          </g>
-        </svg>
-      </figure>
-      <p>
-        As it turns out, conditional biasing is an equivalent &mdash; and computationally
-        more efficient &mdash; way of implementing concatenation-based conditioning. To understand 
-        the equivalence, consider a simple fully-connected linear layer applied
-        to the concatenation of
-        <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math>.
-        <d-footnote>
-          The same argument applies to convolutional networks, provided we
-          ignore the border effects due to zero-padding.
-        </d-footnote>
-      </p>
-      <figure class="l-body-outset" id="concatenation-as-biasing">
-        <svg viewBox="0 0 744 420" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="20" class="figure-text">
-            <tspan>
-              Concatenation-based conditioning
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              is equivalent to <tspan style="font-weight: bold;">conditional biasing</tspan>.
-            </tspan>
-          </text>
-          <text x="260" y="20" class="figure-text">
-            <tspan>
-              We can decompose the matrix-vector
-            </tspan>
-            <tspan x="260" dy="1.5em">
-              into two matrix-vector subproducts.
-            </tspan>
-          </text>
-          <text x="520" y="20" class="figure-text">
-            <tspan>
-              The resulting two vectors are added
-            </tspan>
-            <tspan x="520" dy="1.5em">
-              together to produce the output. The
-            </tspan>
-            <tspan x="520" dy="1.5em">
-              <tspan style="font-weight: bold;">z</tspan>-dependent vector can
-              be thought of
-            </tspan>
-            <tspan x="520" dy="1.5em">
-              as a conditional bias.
-            </tspan>
-          </text>
-          <g transform="translate(60, 90)">
-            <g transform="translate(10, 100)">
-              <g>
-                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-element"/>
-                <text x="60" y="90" dy="0.4em" style="text-anchor: middle;" class="figure-text">W</text>
-              </g>
-              <g transform="translate(125, 0)">
-                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-element"/>
-                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-element"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 60)" class="figure-line"/>
-                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
-                <text x="45" y="90" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
-              </g>
-            </g>
-            <g transform="translate(240, 10)">
-              <g>
-                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-element"/>
-              </g>
-              <g transform="translate(65, 0)">
-                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
-                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
-              </g>
-            </g>
-            <g transform="translate(240, 240)">
-              <g>
-                <use xlink:href="#matrix-center" transform="translate(0, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-element"/>
-                <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-element"/>
-              </g>
-              <g transform="translate(65, 0)">
-                <use xlink:href="#column-middle" transform="translate(0, 0)" class="figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-                <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-element"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
-                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
-              </g>
-            </g>
-            <g transform="translate(405, 10)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-            </g>
-            <g transform="translate(405, 240)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-            </g>
-            <g transform="translate(505, 150)">
-              <circle cx="10" cy="10" r="10" class="figure-element"/>
-              <path d="M 10 5 l 0 10" class="figure-line"/>
-              <path d="M 5 10 l 10 0" class="figure-line"/>
-            </g>
-            <g transform="translate(605, 120)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-element"/>
-            </g>
-            <path d="M 195 130 C 225 110 195 40 235 50" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(235, 50)" class="figure-path"/>
-            <path d="M 195 190 C 225 210 195 290 235 280" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(235, 280)" class="figure-path"/>
-            <path d="M 365 50 l 35 0" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(400, 50)" class="figure-path"/>
-            <path d="M 365 280 l 35 0" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(400, 280)" class="figure-path"/>
-            <path d="M 430 50 L 509 50 a 6 6 0 0 1 6 6 L 515 145" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(515, 145)" class="figure-path"/>
-            <path d="M 430 280 L 509 280 a 6 6 0 0 0 6 -6 L 515 175" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(515, 175)" class="figure-path"/>
-            <text x="435" y="295" class="figure-text">conditional bias</text>
-            <path d="M 525 160 l 70 0" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(600, 160)" class="figure-path"/>
-          </g>
-        </svg>
-      </figure>
-      <p>
-        Each vector product between <d-math>\mathbf{z}</d-math> and its
-        corresponding subset of a row of the weight matrix can be thought of
-        as a bias that gets added to the corresponding output feature.
       </p>
       <p>
         Conditional biasing of layers in the neural network is itself employed
@@ -2640,19 +2457,13 @@
         expresses it as a mapping from an input sequence of conditioning
         information to an output sequence of FiLM parameters.
       </p>
-      <h2>Scaling</h2>
       <p>
-        Whereas conditional biasing leverages additive interations,
-        <em>conditional scaling</em> leverages multiplicative interactions. For
-        instance, feature-wise sigmoidal gating scales each feature or feature
-        map by a scalar between <d-math>0</d-math> and <d-math>1</d-math> as
-        a function of the conditioning information. This constraint is often
-        enforced via a sigmoidal layer, hence the name. Intuitively,
-        feature-wise sigmoidal gating allows the conditioning information to
-        select which features are passed forward and which are zeroed out.  In
-        the FiLM nomenclature, sigmoidal gating would correspond to a bias-less
-        FiLM layer with sigmoidal scaling.
+        Finally, in addition to conditional biasing,
+        PixelCNN <d-cite key="oord2016conditional"></d-cite> and
+        WaveNet <d-cite key="oord2016wavenet"></d-cite> both employ a
+        self-conditioned tanh-sigmoid gated nonlinearity.
       </p>
+      <h2>Reinforcement learning</h2>
       <p>
         Examples of application include the Gated-Attention architecture
         <d-cite key="chaplot2017gated"></d-cite>, which uses feature-wise
@@ -2661,79 +2472,16 @@
         instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite>
         3D environment.
       </p>
-      <figure class="l-body-outset" id="gated-attention-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
-            <tspan>
-              <tspan style="font-style: italic;">Gated-attention fusion units</tspan>
-              make use
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              of <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
-              The <tspan style="font-weight: bold;">instruction</tspan>
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              <tspan style="font-weight: bold;">representation</tspan> is first
-              mapped through
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              a sigmoidal layer to produce a gating
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              vector.
-            </tspan>
-          </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
-            <tspan>
-              The gating vector is then multiplied
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              with the input stack of feature maps.
-            </tspan>
-          </text>
-          <g transform="translate(-20, 10)">
-            <g transform="translate(284, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-            </g>
-            <path d="M 404 260 L 488 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
-            <g transform="translate(504, 260)">
-              <circle r="10" class="figure-element"/>
-              <ellipse rx="2" ry="2" class="figure-path"/>
-            </g>
-            <path d="M 514 260 L 599 260" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
-            <g transform="translate(604, 200)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
-            </g>
-            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
-              <tspan>instruction</tspan>
-              <tspan x="284" dy="1.5em">representation</tspan>
-            </text>
-            <g transform="translate(414, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoidal layer</text>
-            </g>
-            <g transform="translate(494, 30)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-            </g>
-            <path d="M 380 60  L 409 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
-            <path d="M 455 60  L 489 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
-            <path d="M 504 90 L 504 245" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
-          </g>
-        </svg>
-      </figure>
+      <p>
+        Feature-wise affine transformations are also used in the reinforcement
+        learning (RL) setting. In Kirkpatrick et al. <d-cite key="kirkpatrick2017overcoming"></d-cite>,
+        the authors briefly touch the idea of applying conditional feature-wise
+        affine transformations to a reinforcement learning problem. They train
+        an agent that learns to play 10 Atari games using a single Double DQN
+        network with task-specific gains and biases, which can be viewed as
+        inserting FiLM layers throughout its hierarchy.
+      </p>
+      <h2>Natural language processing</h2>
       <p>
         Sometimes the sigmoidal restriction can be lifted, as is the case for
         the Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>.
@@ -2744,7 +2492,88 @@
         representations extracted via soft attention on the query representation
         tokens.
       </p>
-      <h2>FiLM: scaling <em>and</em> biasing</h2>
+      <p>
+        In the natural language domain, Dauphin et al. <d-cite key="dauphin2017language"></d-cite>
+        proposes to build a finite context using stacked convolutions to tackle
+        language modeling and introduces gated linear units, which uses half of
+        the features to apply feature-wise sigmoidal gating to the second half.
+        This architectural feature is also adopted by
+        Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, which introduces a
+        fast and parallelizable model for machine translation in the form of a
+        purely convolutional architecture.
+      </p>
+      <figure class="l-body-outset" id="convseq2seq-diagram">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              The <tspan style="font-style: italic;">gated linear unit</tspan>
+              activation function
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              uses <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
+              The first half of
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              the input features is passed through a
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              sigmoid function and treated as a gating
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              vector.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The gating vector is then multiplied
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              with the second half of the features.
+            </tspan>
+          </text>
+          <g transform="translate(10, 10)">
+            <text x="249" y="260" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 249, 260)" class="figure-text">input</text>
+            <g transform="translate(264, 200)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
+            </g>
+            <path d="M 284 290 L 474 290" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(474, 290)" class="figure-path"/>
+            <g transform="translate(489, 290)">
+              <circle r="10" class="figure-element"/>
+              <ellipse rx="2" ry="2" class="figure-path"/>
+            </g>
+            <path d="M 499 290 L 689 290" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(689, 290)" class="figure-path"/>
+            <path d="M 284 230 L 316.5 230 a 6 6 0 0 0 6 -6 L 322.5 66 a 6 6 0 0 1 6 -6 L 355.5 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(355.5, 60)" class="figure-path"/>
+            <g transform="translate(361.5, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoid</text>
+            </g>
+            <path d="M 401.5 60 L 474 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(474, 60)" class="figure-path"/>
+            <g transform="translate(479, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 489 90 L 489 275" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(489, 275)" class="figure-path"/>
+            <g transform="translate(694, 260)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+            </g>
+            <text x="724" y="290" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 724, 290)" class="figure-text">output</text>
+          </g>
+        </svg>
+      </figure>
+      <h2>Visual question-answering</h2>
       <p>
         By combining conditional biasing and conditional scaling, we obtain the
         FiLM layer, which implements a conditional feature-wise affine
@@ -3172,6 +3001,7 @@
         can be viewed as an instance of FiLM where the post-normalization
         feature-wise affine transformation is replaced with a FiLM layer.
       </p>
+      <h2>Style transfer</h2>
       <p>
         We can also use FiLM layers to condition a style transfer network on a
         chosen style image. In Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
@@ -3486,17 +3316,7 @@
         FiLM parameters. Therefore, the model can be seen as <em>both</em> the
         FiLM-ed network the FiLM generator.
       </p>
-      <p>
-        Feature-wise affine transformations are also used in the reinforcement
-        learning (RL) setting. In Kirkpatrick et al. <d-cite key="kirkpatrick2017overcoming"></d-cite>,
-        the authors briefly touch the idea of applying conditional feature-wise
-        affine transformations to a reinforcement learning problem. They train
-        an agent that learns to play 10 Atari games using a single Double DQN
-        network with task-specific gains and biases, which can be viewed as
-        inserting FiLM layers throughout its hierarchy.
-      </p>
-
-      <h2>Self-conditioning</h2>
+      <h2>Computer vision</h2>
       <p>
         As we have seen so far, feature-wise transformations can be used as a
         conditioning mechanism to incorporate external information such as
@@ -3593,87 +3413,7 @@
           </g>
         </svg>
       </figure>
-      <p>
-        In the natural language domain, Dauphin et al. <d-cite key="dauphin2017language"></d-cite>
-        proposes to build a finite context using stacked convolutions to tackle
-        language modeling and introduces gated linear units, which uses half of
-        the features to apply feature-wise sigmoidal gating to the second half.
-        This architectural feature is also adopted by
-        Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, which introduces a
-        fast and parallelizable model for machine translation in the form of a
-        purely convolutional architecture.
-      </p>
-      <figure class="l-body-outset" id="convseq2seq-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
-            <tspan>
-              The <tspan style="font-style: italic;">gated linear unit</tspan>
-              activation function
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              uses <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
-              The first half of
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              the input features is passed through a
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              sigmoid function and treated as a gating
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              vector.
-            </tspan>
-          </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
-            <tspan>
-              The gating vector is then multiplied
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              with the second half of the features.
-            </tspan>
-          </text>
-          <g transform="translate(10, 10)">
-            <text x="249" y="260" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 249, 260)" class="figure-text">input</text>
-            <g transform="translate(264, 200)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
-            </g>
-            <path d="M 284 290 L 474 290" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(474, 290)" class="figure-path"/>
-            <g transform="translate(489, 290)">
-              <circle r="10" class="figure-element"/>
-              <ellipse rx="2" ry="2" class="figure-path"/>
-            </g>
-            <path d="M 499 290 L 689 290" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(689, 290)" class="figure-path"/>
-            <path d="M 284 230 L 316.5 230 a 6 6 0 0 0 6 -6 L 322.5 66 a 6 6 0 0 1 6 -6 L 355.5 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(355.5, 60)" class="figure-path"/>
-            <g transform="translate(361.5, 0)">
-              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoid</text>
-            </g>
-            <path d="M 401.5 60 L 474 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(474, 60)" class="figure-path"/>
-            <g transform="translate(479, 30)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-            </g>
-            <path d="M 489 90 L 489 275" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(489, 275)" class="figure-path"/>
-            <g transform="translate(694, 260)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-            </g>
-            <text x="724" y="290" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 724, 290)" class="figure-text">output</text>
-          </g>
-        </svg>
-      </figure>
+      <h2>Speech recognition</h2>
       <p>
         In the speech recognition domain, Kim et al. <d-cite key="kim2017dynamic"></d-cite>
         modulates a deep bidirectional LSTM using a form of conditional
@@ -3987,12 +3727,6 @@
         summarization feature vectors extracted in each layer of the network
         as a way of adapting the neural acoustic model.
       </p>
-      <p>
-        Finally, in addition to conditional biasing,
-        PixelCNN <d-cite key="oord2016conditional"></d-cite> and
-        WaveNet <d-cite key="oord2016wavenet"></d-cite> both employ a
-        self-conditioned tanh-sigmoid gated nonlinearity.
-      </p>
 
       <hr />
 
@@ -4005,7 +3739,7 @@
         picture explaining <em>how</em> feature-wise transformations are able to
         succeed in drastically modulating neural networks.
       </p>
-      <p>
+      <d-footnote>
         Before we begin, a word of caution: these observations are far from
         complete. We consider only <em>one</em> family of feature-wise
         transformations &mdash; FiLM-related methods &mdash; and <em>two</em>
@@ -4016,12 +3750,12 @@
         explains our observations fairly well, we still feel like further
         experiments and analysis would be necessary before we feel comfortable
         strongly defending it.
-      </p>
+      </d-footnote>
       <p>
-        With the warning out of the way, let us consider two FiLM-ed networks
-        trained in fairly different problem settings: the visual reasoning model
-        presented in <d-cite key="perez2017film"></d-cite> and the style
-        transfer model presented in <d-cite key="ghiasi2017exploring"></d-cite>.
+        Let us consider two FiLM-ed networks trained in fairly different problem
+        settings: the visual reasoning model presented in Perez et al.
+        <d-cite key="perez2017film"></d-cite> and the style transfer model
+        presented in Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>.
         Both models feature a well-defined FiLM generator: a linguistic pipeline
         mapping from textual query to FiLM parameters for the former, and a CNN
         mapping from style image to FiLM parameters for the latter. Both models
@@ -4029,208 +3763,6 @@
         image to query answer for the former, and a CNN mapping from content
         image to stylized image for the latter.
       </p>
-
-      <h2>FiLM parameter distribution</h2>
-      <p>
-        As a first step, let's examine what values the scaling and shifting
-        coefficients <d-math>\gamma</d-math> and <d-math>\beta</d-math>
-        take. In the figure below we plotted the <d-math>\gamma</d-math> and
-        <d-math>\beta</d-math> histograms across all validation set
-        image-question pairs &mdash; that is, for each image-question pair in
-        the validation set, we extracted the predicted <d-math>\gamma</d-math>
-        and <d-math>\beta</d-math> coefficients for all FiLM layers by running
-        the linguistic pipeline on the input, and we built two histograms, one
-        for the <d-math>\gamma</d-math> values and one for the
-        <d-math>\beta</d-math> values.
-      </p>
-      <figure class="l-body-outset" id="marginal-histograms">
-        <svg viewBox="0 0 744 280" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="350" height="260" style="fill: none;" class="gamma-plot"/>
-          <rect x="384" y="10" width="350" height="260" style="fill: none;" class="beta-plot"/>
-        </svg>
-        <figcaption>
-            The predicted FiLM parameters for the visual reasoning model trained
-            on the CLEVR task exhibit an interesting value distribution: the
-            scaling parameters are sharply peaked at <d-math>\gamma = 0</d-math>
-            and the shifting parameters have a lot of mass in the
-            <d-math>\beta < 0</d-math> area.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#marginal-histograms > svg");
-            var dataset;
-            d3.json("assets/film_clevr.json", function(data) {
-                dataset = data;
-                var classes = [".gamma-plot", ".beta-plot"];
-
-                [dataset.marginal_gammas_histogram,
-                 dataset.marginal_betas_histogram].forEach(function(datum, i) {
-                    var plot = svg.select(classes[i]);
-                    var xMin = 20 + parseInt(plot.attr("x"));
-                    var xMax = xMin + parseInt(plot.attr("width")) - 20;
-                    var yMin = parseInt(plot.attr("y"));
-                    var yMax = yMin + parseInt(plot.attr("height")) - 20;
-
-                    var xScale = d3.scaleLinear()
-                        .domain([d3.min(datum, function (d) { return d.x; }),
-                                 d3.max(datum, function (d) { return d.x; })])
-                        .rangeRound([xMin, xMax]);
-                    var yScale = d3.scaleLinear()
-                        .domain([d3.min(datum, function (d) { return d.y; }),
-                                 d3.max(datum, function (d) { return d.y; })])
-                        .rangeRound([yMax, yMin]);
-
-                    svg.append("path")
-                        .datum(datum)
-                        .attr("fill", "steelblue")
-                        .attr("stroke", "steelblue")
-                        .attr("d", d3.area()
-                            .curve(d3.curveNatural)
-                            .x(function(d) { return xScale(d.x); })
-                            .y0(function() { return yScale(0); })
-                            .y1(function(d) { return yScale(d.y); }));
-
-                    svg.append("g")
-                        .attr("transform", "translate(0," + yMax + ")")
-                        .call(d3.axisBottom(xScale));
-
-                    svg.append("g")
-                        .attr("transform", "translate(" + xMin + ",0)")
-                        .call(d3.axisLeft(yScale));
-                });
-            });
-        })();
-      </script>
-      <p>
-        Note the sharp peak around <d-math>\gamma = 0</d-math> and the
-        significant amount of mass in the negative range of the
-        <d-math>\beta</d-math> histogram. Combined with the model's ReLU
-        nonlinearities, this observation suggests that the model is &mdash; at
-        least in part &mdash; using its FiLM layers as a switching mechanism:
-        by scaling feature maps down to a near-zero value and shifting them
-        into the negative range, the model can zero out entire unwanted feature
-        maps. This observation also holds for the FiLM parameter distributions
-        of <em>individual</em> examples. In the following figure, we show
-        <d-math>\gamma</d-math> and <d-math>\beta</d-math> distributions
-        for five image-question pairs chosen at random:
-      </p>
-      <figure class="l-body-outset" id="examplewise-histograms">
-        <svg viewBox="0 0 744 280" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="350" height="260" style="fill: none;" class="gamma-plot"/>
-          <rect x="384" y="10" width="350" height="260" style="fill: none;" class="beta-plot"/>
-        </svg>
-        <figcaption>
-          WRITEME.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#examplewise-histograms > svg");
-            var dataset;
-            d3.json("assets/film_clevr.json", function(data) {
-                dataset = data;
-                var classes = [".gamma-plot", ".beta-plot"];
-                var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692"];
-
-                [[dataset.example_0_gammas_histogram, dataset.example_1_gammas_histogram,
-                  dataset.example_2_gammas_histogram, dataset.example_3_gammas_histogram,
-                  dataset.example_4_gammas_histogram],
-                 [dataset.example_0_betas_histogram, dataset.example_1_betas_histogram,
-                  dataset.example_2_betas_histogram, dataset.example_3_betas_histogram,
-                  dataset.example_4_betas_histogram]].forEach(function(datumList, i) {
-                    var plot = svg.select(classes[i]);
-                    var xMin = 20 + parseInt(plot.attr("x"));
-                    var xMax = xMin + parseInt(plot.attr("width")) - 20;
-                    var yMin = parseInt(plot.attr("y"));
-                    var yMax = yMin + parseInt(plot.attr("height")) - 20;
-
-                    var xScale = d3.scaleLinear()
-                        .domain([d3.min(datumList, function(datum) { return d3.min(datum, function (d) { return d.x; }) }),
-                                 d3.max(datumList, function(datum) { return d3.max(datum, function (d) { return d.x; }) })])
-                        .rangeRound([xMin, xMax]);
-                    var yScale = d3.scaleLinear()
-                        .domain([d3.min(datumList, function(datum) { return d3.min(datum, function (d) { return d.y; }) }),
-                                 d3.max(datumList, function(datum) { return d3.max(datum, function (d) { return d.y; }) })])
-                        .rangeRound([yMax, yMin]);
-
-                    datumList.forEach(function(datum, j) {
-                        svg.append("path")
-                            .datum(datum)
-                            .attr("fill", "none")
-                            .attr("stroke", colors[j])
-                            .attr("stroke-width", "1.5px")
-                            .attr("d", d3.line()
-                                .curve(d3.curveNatural)
-                                .x(function(d) { return xScale(d.x); })
-                                .y(function(d) { return yScale(d.y); }));
-                    });
-
-                    svg.append("g")
-                        .attr("transform", "translate(0," + yMax + ")")
-                        .call(d3.axisBottom(xScale));
-
-                    svg.append("g")
-                        .attr("transform", "translate(" + xMin + ",0)")
-                        .call(d3.axisLeft(yScale));
-                });
-            });
-        })();
-      </script>
-
-      <figure class="l-body-outset" id="gamma-beta-histogram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="10" width="300" height="300" style="fill: none;" class="histogram"/>
-        </svg>
-        <figcaption>
-          WRITEME.
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var svg = d3.select("#gamma-beta-histogram > svg");
-            var dataset;
-            d3.json("assets/film_clevr.json", function(data) {
-                dataset = data;
-                var plot = svg.select(".histogram");
-                var xMin = parseInt(plot.attr("x"));
-                var xMax = xMin + parseInt(plot.attr("width"));
-                var yMin = parseInt(plot.attr("y"));
-                var yMax = yMin + parseInt(plot.attr("height"));
-
-                var xScale = d3.scaleLinear()
-                    .domain([d3.min(dataset.marginal_2d_histogram, function (d) { return d.x; }),
-                             d3.max(dataset.marginal_2d_histogram, function (d) { return d.x; })])
-                    .range([xMin, xMax]);
-                var yScale = d3.scaleLinear()
-                    .domain([d3.min(dataset.marginal_2d_histogram, function (d) { return d.y; }),
-                             d3.max(dataset.marginal_2d_histogram, function (d) { return d.y; })])
-                    .range([yMax, yMin]);
-                var cScale = d3.scaleLinear()
-                    .domain([d3.min(dataset.marginal_2d_histogram, function (d) { return d.z; }),
-                             d3.max(dataset.marginal_2d_histogram, function (d) { return d.z; })])
-                    .range(["#8ed08b", "#afaed4"]);
-
-                svg.append("g")
-                  .selectAll("circle")
-                    .data(dataset.marginal_2d_histogram)
-                  .enter().append("circle")
-                    .attr("fill", function(d) { return cScale(d.z); })
-                    .attr("opacity", "0.5")
-                    .attr("r", "4px")
-                    .attr("cx", function(d) { return xScale(d.x); })
-                    .attr("cy", function(d) { return yScale(d.y); })
-
-                svg.append("g")
-                    .attr("transform", "translate(0," + yMax + ")")
-                    .call(d3.axisBottom(xScale));
-
-                svg.append("g")
-                    .attr("transform", "translate(" + xMin + ",0)")
-                    .call(d3.axisLeft(yScale));
-            });
-        })();
-      </script>
 
       <h2>FiLM parameters as task embeddings</h2>
       <figure class="l-body-outset" id="clevr-tsne">
@@ -4348,49 +3880,9 @@
         understand feature-wise transformations in the context of fusing
         multiple sources of information in a neural network. We examined
         several approaches which are encompassed by the FiLM formulation, and
-        reviewed their use in the literature. We then set out to connect
-        feature-wise transformations with related families of approaches
-        such as attention and mixture-of-experts models via bilinear
-        transformations.
-      </p>
-      <p>
-        We hope that the recognition of the wide range of applications
+        reviewed their use in the literature. We hope that the recognition of the wide range of applications
         feature-wise transformations find in the literature will stimulate
-        research into applying them to even more problem settings. For
-        instance, most of the work we referenced operates from a "conditioning"
-        perspective in which the processing of a primary source of information
-        is conditioned on a secondary source of information (e.g., in
-        <d-cite key="perez2017film"></d-cite> the image processing pipeline
-        is conditioned on the linguistic pipeline). This distinction gets
-        blurrier as we move towards problems like the movie scene recognition
-        problem introduced at the very beginning of this article: there is no
-        preferred conditioning relationship between video and audio. To the
-        best of our knowledge, most approaches to solving a problem like this
-        involve the use of modality-specific pipelines (e.g., separate video
-        and audio pipelines) followed by some simple form of interaction (like
-        concatenation) between the extracted representations. What the work we
-        presented in this article tells us is that we may benefit from having
-        those modalities interact in simple ways in more than one place along
-        the computation of the model's output.
-      </p>
-      <p>
-        Finally, we also hope that the connections drawn with bilinear
-        transformations will help fuel new ideas for fusing multiple sources of
-        information in neural networks. Feature-wise transformations are just a
-        fraction of all possible transformations that can be represented by
-        (generalized) bilinear transformations, and it is still unclear to us
-        where the best compromise lies between flexibility and low
-        computational cost on the spectrum spanning full-rank bilinear
-        transformations and low-rank bilinear transformation (like FiLM).
-        Furthermore, in the spirit of making as few architectural assumptions
-        as possible and letting the model learn as much as it can, we are
-        curious to see what happens when the model is allowed to learn the
-        low-rank structure of the weight matrices and the activation function
-        of the generalized bilinear transformations. It could be that the model
-        would learn something very close to FiLM, gating, attention, or
-        mixture-of-experts &mdash; which would be an interesting observation in
-        its own right &mdash; or it could also be that the model learns a new
-        form of interaction between modalities altogether.
+        research into applying them to even more problem settings.
       </p>
     </d-article>
 
