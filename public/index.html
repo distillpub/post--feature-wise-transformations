@@ -387,231 +387,33 @@
         processed in the context of another.
       </p>
       <p>
-        <a href="https://distill.pub/2016/augmented-rnns/">Attention</a> is a
-        good example of one such principled approach: an attention-equipped
-        neural network has the ability to focus on specific subsets of its
-        inputs at different points in time along the computation of its outputs:
+        In this article, we will take a deep dive into feature-wise
+        transformations, showing that they find their way into a surprising
+        number of recent neural network architectures used in various problem
+        settings. We will first discuss feature-wise transformations as a family
+        of related approaches and show how they can be conceptualized using the
+        <a href="#film-nomenclature">FiLM nomenclature</a>. We will then point
+        out their <a href="#film-in-literature">numerous uses in the recent literature</a>.
+        Finally, we will take a stab at
+        <a href="#understanding-film">understanding the computational mechanisms</a>
+        that allow them to work.
       </p>
-      <figure id="attentional-ex2" class="l-body-outset">
-        <pre id="attentional-ex2-data" style="display: none;">
-          0.50, 0.02, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.01, 0.00, 0.00, 0.00, 0.05, 0.05
-          0.14, 0.89, 0.07, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.06, 0.00, 0.00, 0.00, 0.02, 0.00
-          0.02, 0.00, 0.56, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.00
-          0.00, 0.00, 0.01, 0.61, 0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00
-          0.00, 0.00, 0.02, 0.03, 0.01, 0.21, 0.97, 0.05, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00
-          0.00, 0.00, 0.02, 0.07, 0.25, 0.76, 0.02, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.00
-          0.02, 0.04, 0.03, 0.27, 0.71, 0.02, 0.00, 0.02, 0.00, 0.00, 0.02, 0.00, 0.00, 0.05, 0.01
-          0.02, 0.00, 0.07, 0.00, 0.00, 0.00, 0.00, 0.60, 0.40, 0.01, 0.04, 0.00, 0.00, 0.13, 0.01
-          0.13, 0.02, 0.02, 0.00, 0.01, 0.00, 0.00, 0.23, 0.52, 0.91, 0.07, 0.00, 0.00, 0.10, 0.00
-          0.04, 0.00, 0.01, 0.00, 0.00, 0.00, 0.00, 0.01, 0.03, 0.00, 0.67, 0.00, 0.00, 0.16, 0.02
-          0.02, 0.00, 0.04, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.14, 0.96, 0.00, 0.02, 0.07
-          0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.02, 0.02, 1.00, 0.02, 0.03
-          0.02, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.01, 0.00, 0.00, 0.32, 0.11
-          0.04, 0.00, 0.08, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.01, 0.00, 0.00, 0.04, 0.67
-        </pre>
-        <svg>
-          <defs>
-            <marker id="edgeArrowhead" viewBox="0 -5 10 10" markerWidth="6" markerHeight="10" orient="auto" refX="5" refY="0">
-              <path d="M0,-5L5,0L0,5" fill="none" stroke="#666"></path>
-            </marker>
-            <marker id="edgeArrowheadLeft" viewBox="0 -5 10 10" markerWidth="6" markerHeight="10" orient="auto" refX="0" refY="0">
-              <path d="M5,-5L0,0L5,5" fill="none" stroke="#666"></path>
-            </marker>
-          </defs>
-          <g class="labels" style="display: none;">
-            <text transform="translate(0, 20)">output text</text>
-            <text transform="translate(0, 65)">network B</text>
-            <text transform="translate(0, 185)">network A</text>
-            <text transform="translate(0, 233)">input text</text>
-          </g>
-        </svg>
-        <figcaption>
-          In this sequence-to-sequence translation model, output tokens are
-          computed by attending to different subsets of input tokens.<br><br>
-          <em>
-            Credit: diagram derived from Fig. 3 of
-            <a href="https://arxiv.org/pdf/1409.0473.pdf">Bahdanau, <i>et al.</i> 2014</a>,
-            originally featured in the
-            <a href="https://distill.pub/2016/augmented-rnns/">Distill article on attention</a>.
-          </em>
-        </figcaption>
-      </figure>
-      <script>
-        (function() {
-            var labelsA = ["the", "agreement", "on", "the", "European",
-                           "Economic", "Area", "was", "signed", "in", "August",
-                           "1992", ".", "<end>"];
-            var labelsB = ["l’", "accord", "sur", "la", "zone", "économique",
-                           "européenne", "a", "été", "signé", "en", "août",
-                           "1992", ".", "<end>"];
-            var data = d3.csvParseRows(d3.select("#attentional-ex2-data").text());
-            var linkData = [];
-            data.forEach(function(a, ai) {
-              a.forEach(function(b, bi) {
-                linkData.push({ai: +ai, bi: +bi, v: +data[ai][bi]});
-              });
-            });
-
-            var nodeMargin = 10;
-            var networkMargin = 120;
-            var html = d3.select("#attentional-ex2");
-            var outerWidth = 984;
-            var outerHeight = 240;
-            var margin = {top: 36, right: nodeMargin, bottom: 24, left: nodeMargin};
-            var width = outerWidth - margin.left - margin.right;
-            var height = outerHeight - margin.top - margin.bottom;
-            var xa = d3.scaleBand()
-                .domain(d3.range(labelsA.length))
-                .paddingInner(0.5)
-                .range([nodeMargin, width - nodeMargin]);
-            var xb = d3.scaleBand()
-                .domain(d3.range(labelsB.length))
-                .paddingInner(0.5)
-                .range([nodeMargin, width - nodeMargin]);
-            var nodeSizeA = xa.bandwidth();
-            var nodeSizeB = xb.bandwidth();
-            var networkHeightA = nodeSizeA + nodeMargin * 2;
-            var networkHeightB = nodeSizeB + nodeMargin * 2;
-            var link = function(d) {
-              var p = "M" + (xb(d.bi) + nodeSizeB / 2) + "," + (nodeSizeB + nodeMargin)
-                  + "C" + (xb(d.bi) + nodeSizeB / 2) + "," + (nodeSizeB + networkMargin / 3 + nodeMargin)
-                  + " " + (xa(d.ai) + nodeSizeA / 2) + "," + (networkMargin - networkMargin / 3 + nodeMargin)
-                  + " " + (xa(d.ai) + nodeSizeA / 2) + "," + (networkMargin + nodeMargin);
-              return p;
-            };
-
-            html.select("svg .labels")
-                .attr("transform", "translate(" + (width + nodeMargin * 3) + ", 0)");
-            var svg = html.select("svg")
-                .attr("viewBox", "0 0 " + outerWidth + " " + outerHeight)
-              .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-            var networkA = svg.append("g")
-                .attr("transform", "translate(0, " + networkMargin + ")");
-            networkA.append("rect")
-                .attr("class", "background")
-                .attr("width", width)
-                .attr("height", nodeSizeA + 2 * nodeMargin)
-                .attr("rx", nodeMargin * 0.7)
-                .attr("ry", nodeMargin * 0.7);
-            var cellA = networkA.selectAll(".cell")
-                .data(labelsA)
-              .enter().append("g")
-                .attr("class", "cell")
-                .attr("transform", function(d, i) { return "translate(" + xa(i) + ", " + nodeMargin + ")"; })
-            cellA.append("rect")
-                .attr("class", "shadow")
-                .attr("transform", "translate(1, 3)")
-                .attr("width", nodeSizeA)
-                .attr("height", nodeSizeA)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellA.append("rect")
-                .attr("class", "node")
-                .attr("width", nodeSizeA)
-                .attr("height", nodeSizeA)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellA.append("line")
-                .attr("class", "arrow")
-                .attr("marker-start", "url(#edgeArrowheadLeft)")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("x1", nodeSizeA + 8)
-                .attr("x2", nodeSizeA + nodeMargin + 20)
-                .attr("y1", nodeSizeA / 2)
-                .attr("y2", nodeSizeA / 2);
-            cellA.append("line")
-                .attr("class", "arrow")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("transform", "translate(" + nodeSizeA / 2 + ", 0)")
-                .attr("y1", nodeSizeA + nodeMargin * 2 - 2)
-                .attr("y2", nodeSizeA + 4);
-            cellA.append("text")
-                .style("opacity", 0.8)
-                .text("A")
-                .attr("dx", nodeSizeA / 2)
-                .attr("dy", nodeSizeA / 2 + 1);
-            cellA.append("text")
-                .attr("class", "label")
-                .attr("dx", nodeSizeA / 2)
-                .attr("dy", nodeSizeA + 24 + 8)
-                .text(function(d) { return d; });
-            cellA.append("rect")
-                .style("opacity", 0)
-                .attr("transform", "translate(-" + ((xa.step() - nodeSizeA) / 2) + ",-" + (nodeMargin + (networkMargin - networkHeightB) / 2) + ")")
-                .attr("width", xa.step())
-                .attr("height", networkHeightA + (networkMargin - networkHeightA) / 2);
-
-            var networkB = svg.append("g");
-            networkB.append("rect")
-                .attr("class", "background")
-                .attr("width", width)
-                .attr("height", nodeSizeB + 2 * nodeMargin)
-                .attr("rx", nodeMargin * 0.7)
-                .attr("ry", nodeMargin * 0.7);
-            var cellB = networkB.selectAll(".cell")
-                .data(labelsB)
-              .enter().append("g")
-                .attr("class", "cell")
-                .attr("transform", function(d, i) { return "translate(" + xb(i) + "," + nodeMargin + ")"; })
-            cellB.append("rect")
-                .attr("class", "shadow")
-                .attr("transform", "translate(1, 3)")
-                .attr("width", nodeSizeB)
-                .attr("height", nodeSizeB)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellB.append("rect")
-                .attr("class", "node")
-                .attr("width", nodeSizeB)
-                .attr("height", nodeSizeB)
-                .attr("rx", 4)
-                .attr("ry", 4);
-            cellB.append("line")
-                .attr("class", "arrow")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("x1", nodeSizeB)
-                .attr("x2", nodeSizeB + nodeMargin + 14)
-                .attr("y1", nodeSizeB / 2)
-                .attr("y2", nodeSizeB / 2);
-            cellB.append("line")
-                .attr("class", "arrow")
-                .attr("marker-end", "url(#edgeArrowhead)")
-                .attr("transform", "translate(" + nodeSizeB / 2 + ", 0)")
-                .attr("y1", 0)
-                .attr("y2", -nodeMargin * 2 + 5);
-            cellB.append("text")
-                .style("opacity", 0.8)
-                .text("B")
-                .attr("dx", nodeSizeB / 2)
-                .attr("dy", nodeSizeB / 2 + 1);
-            cellB.append("text")
-                .attr("class", "label")
-                .attr("dx", function(d) { return d === "européenne" ? nodeSizeB / 2 + 15 : nodeSizeB / 2; })
-                .attr("dy", - 24 - 5)
-                .text(function(d) { return d; });
-            cellB.append("rect")
-                .style("opacity", 0)
-                .attr("transform", "translate(-" + ((xb.step() - nodeSizeB) / 2) + ",-" + nodeMargin + ")")
-                .attr("width", xb.step())
-                .attr("height", networkHeightB + (networkMargin - networkHeightB) / 2);
-
-            var linkGroup = svg.append("g").attr("class", ".link-group")
-            var link = linkGroup.selectAll(".link")
-                .data(linkData)
-              .enter().append("path")
-                .attr("class", "link")
-                .attr("d", link)
-                .style("opacity", function(d) { return d.v; });
-        })();
-      </script>
       <p>
-        Attention has a very sequential nature which is sometimes not suited for
-        certain types of problems. Consider for instance conditional image
-        generation. In conditional decoder-based generative models, we would
-        like to map a source of noise to model samples in a way that is
-        class-aware. This involves injecting class information into the decoder
-        network:
+        We hope the insights contributed by this article will help highlight
+        the strong connections between the aforementioned methods and inspire
+        new approaches to integrating multiple information channels in neural
+        networks.
+      </p>
+
+      <hr/>
+
+      <h1 id="film-nomenclature">FiLM as a framework for information fusion</h1>
+      <h3>Building towards FiLM</h3>
+      <p>
+        Consider for instance conditional image generation. In conditional
+        decoder-based generative models, we would like to map a source of noise
+        to model samples in a way that is class-aware. This involves injecting
+        class information into the decoder network:
       </p>
       <figure class="l-body">
         <svg viewBox="0 0 648 450" xmlns="http://www.w3.org/2000/svg">
@@ -819,42 +621,7 @@
         see, they work remarkably well as a conditioning mechanism despite
         their simplicity.
       </p>
-      <p>
-        Let us now depart from our introductory example and adopt a more
-        general view, where we consider fusing multiple sources of information
-        (not just conditioning one on another), and where these sources of
-        information are arbitrary (not just images and classes). In this
-        article, we will take a deep dive into feature-wise transformations,
-        showing that they find their way into a surprising number of recent
-        neural network architectures used in various problem settings. We will
-        examine them from two very different vantage points.
-      </p>
-      <p>
-        First, we will discuss feature-wise transformations as a family of
-        related approaches and show how they can be conceptualized using the <a
-        href="#film-nomenclature">FiLM nomenclature</a>. We will point out their
-        <a href="#film-in-literature">numerous uses in the recent literature</a>,
-        and take a stab at <a href="#understanding-film">understanding the computational mechanisms</a>
-        that allow them to work.
-      </p>
-      <p>
-        Second, we will place feature-wise transformations
-        themselves within the <a href="#bilinear-connection">family of bilinear
-        transformations</a>. We will show that a small extension to the bilinear
-        transformation formulation allows us to relate attention, gating, FiLM,
-        and mixture-of-experts models as different instantiations of what we
-        propose to call <em>generalized bilinear transformation</em>.
-      </p>
-      <p>
-        We hope the insights contributed by this article will help highlight
-        the strong connections between the aforementioned methods and inspire
-        new approaches to integrating multiple information channels in neural
-        networks.
-      </p>
-
-      <hr/>
-
-      <h1 id="film-nomenclature">FiLM</h1>
+      <h3>FiLM</h3>
       <p>
         To center the discussion around a common language, we propose to use
         the nomenclature of Perez et al. <d-cite key="perez2017film"></d-cite>, which
@@ -1706,6 +1473,7 @@
                 });
         })();
       </script>
+      <h3>Connecting FiLM to other approaches</h3>
       <p>
         FiLM shares with HyperNetworks <d-cite key="ha2016hypernetworks"></d-cite>
         the architectural feature that a secondary neural network computes some
