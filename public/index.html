@@ -2497,16 +2497,16 @@
               used in
             </tspan>
             <tspan x="10" dy="1.5em">
-              PixelCNN. For the convolutional
+              PixelCNN. Selected convolutional
             </tspan>
             <tspan x="10" dy="1.5em">
-              layers being conditioned, a
+              layers are conditioned by first
             </tspan>
             <tspan x="10" dy="1.5em">
-              high-level image description is
+              mapping a high-level image
             </tspan>
             <tspan x="10" dy="1.5em">
-              mapped linearly to a bias vector.
+              description to a bias vector.
             </tspan>
           </text>
           <text x="10" y="210" dy="1em" class="figure-text">
@@ -2552,7 +2552,7 @@
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
             </g>
-            <path d="M 380 60  L 409 60" class="figure-line"/>
+            <path d="M 370 60  L 409 60" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
             <path d="M 455 60  L 489 60" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
@@ -2712,6 +2712,97 @@
         representations extracted via soft attention on the query representation
         tokens.
       </p>
+      <figure class="l-body-outset" id="gated-attention-reader-diagram">
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              <tspan style="font-weight: bold;">Conditional scaling</tspan> is
+              used by Dhingra
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              et al. as a way to integrate information
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              about the query to a document
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              processing network. The scaling vector
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              is the direct result of applying soft
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              attention to the
+              <tspan style="font-weight: bold;">query representation</tspan>
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">tokens</tspan>.
+            </tspan>
+          </text>
+          <text x="10" y="210" dy="1em" class="figure-text">
+            <tspan>
+              The scaling vector is then multiplied
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              with the input <tspan style="font-weight: bold;">document</tspan>
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">representation token</tspan>.
+            </tspan>
+          </text>
+          <g transform="translate(-20, 10)">
+            <text x="284" y="200" dy="-1.5em" style="font-weight: bold;" class="figure-text">
+              <tspan>document</tspan>
+              <tspan x="284" dy="1.5em">representation</tspan>
+              <tspan x="284" dy="1.5em">token</tspan>
+            </text>
+            <g transform="translate(284, 230)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+            </g>
+            <path d="M 304 260 L 488 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 260)" class="figure-path"/>
+            <path d="M 304 260 L 428 260 A 6 6 0 0 0 434 254 L 434 125" class="figure-line"/>
+            <use xlink:href="#arrow-up" transform="translate(434, 125)" class="figure-path"/>
+            <g transform="translate(504, 260)">
+              <circle r="10" class="figure-element"/>
+              <ellipse rx="2" ry="2" class="figure-path"/>
+            </g>
+            <path d="M 514 260 L 599 260" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 260)" class="figure-path"/>
+            <text x="604" y="200" style="font-weight: bold;" class="figure-text">
+              <tspan>output</tspan>
+              <tspan x="604" dy="1.5em">token</tspan>
+            </text>
+            <g transform="translate(604, 230)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+            </g>
+            <text x="284" y="60" dy="-1.5em" style="font-weight: bold;" class="figure-text">
+              <tspan>query</tspan>
+              <tspan x="284" dy="1.5em">representation</tspan>
+              <tspan x="284" dy="1.5em">tokens</tspan>
+            </text>
+            <g transform="translate(414, 0)">
+              <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">soft attention</text>
+            </g>
+            <g transform="translate(494, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <path d="M 380 60  L 409 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
+            <path d="M 455 60  L 489 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
+            <path d="M 504 90 L 504 245" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(504, 245)" class="figure-path"/>
+          </g>
+        </svg>
+      </figure>
       <p>
         In the natural language domain, Dauphin et al. <d-cite key="dauphin2017language"></d-cite>
         proposes to build a finite context using stacked convolutions to tackle
