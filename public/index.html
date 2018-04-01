@@ -2402,7 +2402,8 @@
       </p>
       <h2>Generative modeling</h2>
       <p>
-        As described above, an improvement over this idea would be to concatenate
+        As described above, an improvement over the simple idea of concatenating
+conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         <d-math>\mathbf{z}</d-math> to the input of <em>all</em> layers in the
         neural network. This is in fact the approach adopted by the conditional
         variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
@@ -2706,7 +2707,7 @@
         Sometimes the sigmoidal restriction can be lifted, as is the case for
         the Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>.
         The model extracts information from a text by conditioning the document
-        reading network on an query.  Its architecture is formed of multiple
+        reading network on a query.  Its architecture is formed of multiple
         Gated-Attention modules, which involve element-wise multiplications
         between document representation tokens and token-specific query
         representations extracted via soft attention on the query representation
