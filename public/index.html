@@ -2403,7 +2403,8 @@
       </p>
       <h2>Generative modeling</h2>
       <p>
-        As described above, an improvement over this idea would be to concatenate
+        As described above, an improvement over the simple idea of concatenating
+conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         <d-math>\mathbf{z}</d-math> to the input of <em>all</em> layers in the
         neural network. This is in fact the approach adopted by the conditional
         variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
@@ -2707,7 +2708,7 @@
         Sometimes the sigmoidal restriction can be lifted, as is the case for
         the Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>.
         The model extracts information from a text by conditioning the document
-        reading network on an query.  Its architecture is formed of multiple
+        reading network on a query.  Its architecture is formed of multiple
         Gated-Attention modules, which involve element-wise multiplications
         between document representation tokens and token-specific query
         representations extracted via soft attention on the query representation
@@ -2806,11 +2807,11 @@
       </figure>
       <p>
         In the natural language domain, Dauphin et al. <d-cite key="dauphin2017language"></d-cite>
-        proposes to build a finite context using stacked convolutions to tackle
-        language modeling and introduces gated linear units, which uses half of
+        propose to build a finite context using stacked convolutions to tackle
+        language modeling and introduce gated linear units, which use half of
         the features to apply feature-wise sigmoidal gating to the second half.
         This architectural feature is also adopted by
-        Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, which introduces a
+        Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, who introduce a
         fast and parallelizable model for machine translation in the form of a
         purely convolutional architecture.
       </p>
@@ -4167,7 +4168,7 @@
         multiple sources of information in a neural network. We examined
         several approaches which are encompassed by the FiLM formulation, and
         reviewed their use in the literature. We hope that the recognition of the wide range of applications
-        feature-wise transformations find in the literature will stimulate
+        feature-wise transformations found in the literature will stimulate
         research into applying them to even more problem settings.
       </p>
     </d-article>
