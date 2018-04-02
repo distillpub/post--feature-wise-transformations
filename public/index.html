@@ -285,73 +285,67 @@
           <text x="10" y="10" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
-              in convolutional neural networks
+              is implemented by
             </tspan>
             <tspan x="10" dy="1.5em">
-              is implemented by <tspan style="font-weight: bold;">broadcasting</tspan>
-              the conditioning representation into
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              a feature map (or stack of feature
-              maps) and <tspan style="font-weight: bold;">concatenating</tspan>
-              it to
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              the input along the channel axis.
+              <tspan style="font-weight: bold;">concatenating</tspan>
+              the conditioning representation to the input.
             </tspan>
           </text>
           <text x="495" y="10" class="figure-text">
             <tspan>
-              The resulting stack of feature maps is then
+              The resulting vector is then passed through
             </tspan>
             <tspan x="495" dy="1.5em">
-              <tspan style="font-weight: bold;">convolved</tspan>
-              to produce the conditioned
+              a linear layer to produce the conditioned
             </tspan>
             <tspan x="495" dy="1.5em">
               output.
             </tspan>
           </text>
           <g transform="translate(10, 180)">
-            <g transform="translate(0, 30)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            <g transform="translate(0, 60)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+            </g>
+            <g transform="translate(201, -60)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
             </g>
             <g transform="translate(191, 30)">
               <rect width="40" height="120" class="figure-element figure-box"/>
               <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
             </g>
             <g transform="translate(302, 30)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
-              <rect x="40" y="40" width="100" height="100" style="fill-opacity: 1;" class="figure-film-generator figure-element figure-box"/>
-              <text x="50" y="50" dy="0.4em" class="figure-text">conditioning<tspan x="50" dy="1.5em">representation</tspan></text>
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
             </g>
             <g transform="translate(493, 30)">
               <rect width="40" height="120" class="figure-element figure-box"/>
-              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">convolution</text>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
             </g>
-            <g transform="translate(604, 30)">
-              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
-              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            <g transform="translate(604, 50)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
             </g>
-            <path d="M 120 90 L 186 90" class="figure-line"/>
+            <path d="M 20 90 L 186 90" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
             <path d="M 231 90 L 297 90" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
-            <path d="M 442 90 L 488 90" class="figure-line"/>
+            <path d="M 327 90 L 488 90" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
             <path d="M 533 90 L 599 90" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
-            <path d="M 211 -50 L 211 25" class="figure-line"/>
+            <path d="M 211 0 L 211 25" class="figure-line"/>
             <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
-            <text x="211" y="10" dy="-0.4em" transform="rotate(-90, 211, 10)" class="figure-text">broadcast</text>
             <text x="211" y="-60" dy="-0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">conditioning representation</text>
           </g>
         </svg>
