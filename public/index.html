@@ -199,7 +199,7 @@
 
       <hr/>
 
-      <h1 id="film-nomenclature">FiLM as a framework for information fusion</h1>
+      <h1 id="film-nomenclature">Building towards FiLM</h1>
       <p>
         Consider for instance conditional image generation. In conditional
         decoder-based generative models, we would like to map a source of noise
@@ -258,7 +258,7 @@
         more efficient alternatives, preferably involving as much parameter
         sharing as possible.
       </p>
-      <h2>Building towards FiLM</h2>
+
       <p>
         Perhaps the simplest way to depart from this brute-force approach is to
         concatenate the class (or an embedding of the class) to the noise vector
@@ -2260,7 +2260,7 @@
         value in connecting those methods, which is why part of this article is
         devoted to a literature review.
       </p>
-      <h2>Generative modeling</h2>
+      <h3>Generative modeling</h3>
       <p>
         As described above, an improvement over the simple idea of concatenating
 conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
@@ -2467,7 +2467,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         WaveNet <d-cite key="oord2016wavenet"></d-cite> both employ a
         self-conditioned tanh-sigmoid gated nonlinearity.
       </p>
-      <h2>Reinforcement learning</h2>
+      <h3>Reinforcement learning</h3>
       <p>
         Examples of application include the Gated-Attention architecture
         <d-cite key="chaplot2017gated"></d-cite>, which uses feature-wise
@@ -2562,7 +2562,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         network with task-specific gains and biases, which can be viewed as
         inserting FiLM layers throughout its hierarchy.
       </p>
-      <h2>Natural language processing</h2>
+      <h3>Natural language processing</h3>
       <p>
         Sometimes the sigmoidal restriction can be lifted, as is the case for
         the Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>.
@@ -2745,7 +2745,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
           </g>
         </svg>
       </figure>
-      <h2>Visual question-answering</h2>
+      <h3>Visual question-answering</h3>
       <p>
         By combining conditional biasing and conditional scaling, we obtain the
         FiLM layer, which implements a conditional feature-wise affine
@@ -3173,7 +3173,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         can be viewed as an instance of FiLM where the post-normalization
         feature-wise affine transformation is replaced with a FiLM layer.
       </p>
-      <h2>Style transfer</h2>
+      <h3>Style transfer</h3>
       <p>
         We can also use FiLM layers to condition a style transfer network on a
         chosen style image. In Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
@@ -3489,7 +3489,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         FiLM parameters. Therefore, the model can be seen as <em>both</em> the
         FiLM-ed network the FiLM generator.
       </p>
-      <h2>Computer vision</h2>
+      <h3>Computer vision</h3>
       <p>
         As we have seen so far, feature-wise transformations can be used as a
         conditioning mechanism to incorporate external information such as
@@ -3586,7 +3586,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
           </g>
         </svg>
       </figure>
-      <h2>Speech recognition</h2>
+      <h3>Speech recognition</h3>
       <p>
         In the speech recognition domain, Kim et al. <d-cite key="kim2017dynamic"></d-cite>
         modulates a deep bidirectional LSTM using a form of conditional
@@ -3910,7 +3910,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         image to stylized image for the latter.
       </p>
 
-      <h2>FiLM parameters as task embeddings</h2>
+      <h3>FiLM parameters as task embeddings</h3>
       <figure class="l-body-outset" id="clevr-tsne">
         <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
           <rect x="10" y="10" width="480" height="480" style="fill: none;" id="scatter-plot"/>
