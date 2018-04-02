@@ -572,7 +572,7 @@
       </figure>
       <p>
         The brute-force approach to this problem involves learning separate
-        decoders for every possible class (Dogs, cat etc.). This is both expensive &mdash; it
+        decoders for every possible class (dogs, cats etc.). This is both expensive &mdash; it
         requires as many model replicas as there are classes &mdash; and
         wasteful: in our above example, classes corresponding to different
         types of dogs (puppy, terrier, dalmatian, etc.) are likely to share
@@ -4610,7 +4610,7 @@ performs a a linear</tspan>
 	   <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
    <text x="10" y="72.640007" dy="13" class="figure-text" id="text1400" style="font-size:13px;opacity:0.6;fill:#000000">
       <tspan id="tspan1390">The FiLM Generator predicts the FilM parameters </tspan>
-      <tspan x="10" dy="19.5" id="tspan1394">conditioned on the network interal activations</tspan>
+      <tspan x="10" dy="19.5" id="tspan1394">conditioned on the network internal activations</tspan>
     </text>
     <text x="10" y="218.64001" dy="13" class="figure-text" id="text1406" style="font-size:13px;opacity:0.6;fill:#000000">
       <tspan id="tspan1402">An arbitrary input vector (or feature-map) </tspan>
@@ -4648,8 +4648,8 @@ performs a a linear</tspan>
         <text x="15" y="60" dy="0.40000001em" style="font-weight:bold;font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,15,60)" class="figure-text" id="text1512">FiLM layer</text>
       </g>
       <g id="g1504-0" style="opacity:1" transform="translate(-18.743374,-258.46851)">
-        <rect width="50" height="120" class="figure-filmed-network figure-element figure-box" id="rect1500-9" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
-        <text x="25" y="60" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,25,60)" class="figure-text" id="text1502-3">FiLM Generator</text>
+        <rect width="50" height="120" class="figure-film-generator figure-element figure-box" id="rect1500-9" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
+        <text x="25" y="65" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,25,60)" class="figure-text" id="text1502-3">FiLM generator</text>
       </g>
     </g>
   </g>
@@ -5226,14 +5226,14 @@ performs a a linear</tspan>
       <p>
         <h3 id="bibliographic-bilinear">Bilinear Models and Applications</h3>
 			<p>
-			Bilinear models were first introduced by the vision community by to better untangle latent perceptual factors<d-cite key="tenenbaum1997separating"></d-cite>.
+			Bilinear models were first introduced in the vision community by to better untangle latent perceptual factors<d-cite key="tenenbaum1997separating"></d-cite>.
 			As described by the paper's title, the authors wanted to separate the image style from its content, arguing that classic linear models were not rich enough to extract such complex interaction.
 			There, they demonstrate the effectiveness of their approach by applying it for spoken vowel identification or zero-shot font classification.
 		    </p>
 			<p>
-			Among other the first bilinear applications, one remarkable case was to perform facial animation<d-cite key="chuang2002facial"></d-cite>.
+			Among the first bilinear model applications one remarkable case was to perform facial animation<d-cite key="chuang2002facial"></d-cite>.
 			While the style describes the key facial features, the content encodes the visual emotions. 
-			This allows, for example, a sequence originally recorded with a happy expression to be modified so that the speaker appears to be speaking with an angry or neutral expression
+			This allows, for example, a sequence originally recorded with a happy expression to be modified so that the speaker appears to be speaking with an angry or neutral expression.
 			Bilinear models are also present in recommendation system by extracting user and item information in various settings<d-cite key="chu2009personalized,yang2011like"></d-cite>. 
 			More generally, recommendation system heavily rely on matrix factorization methods<d-cite key="koren2009matrix"></d-cite>, which is a bilinear model where one of the latent is fixed<d-cite key="tenenbaum1997separating"></d-cite>.
 			More recently, bilinear models have inspired new neural architecture in visual recognition<d-cite key="lin2015bilinear"></d-cite>, video action recogintion<d-cite key="feichtenhofer2016convolutional"></d-cite> or visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.
