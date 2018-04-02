@@ -276,12 +276,11 @@
         neural network; the deeper we get, the more diffuse and indirect its
         influence becomes. A solution to that is simply to concatenate the class
         or class embedding to the input of <em>all</em> layers in the decoder.
-        We refer to this mechanism as concatenation-based conditioning (shown
-        here for a convolutional network):
+        We refer to this mechanism as concatenation-based conditioning:
       </p>
       <figure class="l-body-outset" id="concatenation-diagram">
-        <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
-          <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
+        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
+          <path d="M475,10l0,280" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
           <text x="10" y="10" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
@@ -303,12 +302,16 @@
               output.
             </tspan>
           </text>
-          <g transform="translate(10, 180)">
+          <g transform="translate(10, 120)">
             <g transform="translate(0, 60)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
             </g>
+            <text x="191" y="-30" dy="-0.35em" style="text-anchor: end; font-weight: bold;" class="figure-text">
+              <tspan>conditioning</tspan>
+              <tspan x="191" dy="1.5em">representation</tspan>
+            </text>
             <g transform="translate(201, -60)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
@@ -346,7 +349,6 @@
             <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
             <path d="M 211 0 L 211 25" class="figure-line"/>
             <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
-            <text x="211" y="-60" dy="-0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">conditioning representation</text>
           </g>
         </svg>
       </figure>
