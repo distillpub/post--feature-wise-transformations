@@ -605,89 +605,78 @@
         We refer to this mechanism as concatenation-based conditioning (shown
         here for a convolutional network):
       </p>
-      <figure class="l-body-outset" id="concatenation-diagram">
-        <svg viewBox="0 0 744 430" xmlns="http://www.w3.org/2000/svg">
-         
+   <figure class="l-body-outset" id="concatenation-diagram">
+        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
+          <path d="M475,10l0,280" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
           <text x="10" y="10" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
-              in convolutional neural networks
+              is implemented by
             </tspan>
             <tspan x="10" dy="1.5em">
-              is implemented by <tspan style="font-weight: bold;">broadcasting</tspan>
-              the conditioning representation into
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              a feature map (or stack of feature
-              maps) and <tspan style="font-weight: bold;">concatenating</tspan>
-              it to
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              the input along the channel axis.
+              <tspan style="font-weight: bold;">concatenating</tspan>
+              the conditioning representation to the input.
             </tspan>
           </text>
           <text x="495" y="10" class="figure-text">
             <tspan>
-              The resulting stack of feature maps is then
+              The resulting vector is then passed through
             </tspan>
             <tspan x="495" dy="1.5em">
-              <tspan style="font-weight: bold;">convolved</tspan>
-              to produce the conditioned
+              a linear layer to produce the conditioned
             </tspan>
             <tspan x="495" dy="1.5em">
               output.
             </tspan>
           </text>
-<g xmlns="http://www.w3.org/2000/svg" transform="translate(10,212)" id="g140">
-    <g transform="translate(302,30)" id="g98">
-      <rect x="0" y="22" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect84"/>
-      <rect x="10" y="32" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect86"/>
-      <rect x="20" y="42" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect88"/>
-      <text x="30" y="52" dy="5.2000003" class="figure-text" id="text90" style="font-size:13px;opacity:0.6;fill:#000000">input</text>
-      <rect x="-134.71346" y="-120.26901" width="15.935673" height="15.935673" style="fill-opacity:1;stroke-width:0.23903508px;stroke-miterlimit:10" class="figure-film-generator figure-element figure-box" id="rect92-3"/>
-      <text x="-193.85629" y="-108.48023" dy="-5.2000003" style="font-weight:bold;font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" class="figure-text" id="text138">conditioning</text>
-      <text x="-193.85629" y="-100.48023" style="font-weight:bold;font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" class="figure-text" id="text953">representation</text>
-      <rect x="40.350876" y="62.906441" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-film-generator figure-element figure-box" id="rect92-5"/>
-      <text x="50" y="72" dy="5.2000003" class="figure-text" id="text96" style="font-size:13px;opacity:0.6;fill:#000000">conditioning<tspan x="50" dy="19.5" id="tspan94">representation</tspan>
-</text>
-      <rect x="4.0601435" y="-161.12282" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-film-generator figure-element figure-box" id="rect92-5-9"/>
-      <text x="11.709252" y="-152.02924" dy="5.2000003" class="figure-text" id="text96-1" style="font-size:13px;opacity:0.6;fill:#000000">conditioning<tspan x="11.709252" dy="19.5" id="tspan94-27">representation</tspan>
-</text>
-    </g>
-    <g transform="translate(0,52)" id="g76">
-      <rect x="0" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect68"/>
-      <rect x="10" y="10" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect70"/>
-      <rect x="20" y="20" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect72"/>
-      <text x="30" y="30" dy="0.40000001em" class="figure-text" id="text74" style="font-size:13px;opacity:0.6;fill:#000000">input</text>
-    </g>
-    <g transform="translate(493,52)" id="g104">
-      <rect width="40" height="120" class="figure-element figure-box" id="rect100" x="0" y="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"/>
-      <text x="20" y="60" dy="0.40000001em" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,20,60)" class="figure-text" id="text102">convolution</text>
-    </g>
-    <g transform="translate(604,52)" id="g114">
-      <rect x="0" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect106"/>
-      <rect x="10" y="10" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect108"/>
-      <rect x="20" y="20" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect110"/>
-      <text x="30" y="30" dy="0.40000001em" class="figure-text" id="text112" style="font-size:13px;opacity:0.6;fill:#000000">output</text>
-    </g>
-    <path d="M 120,112 H 293.86" class="figure-line" id="path116" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"/>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(300,112)" class="figure-path" id="use118" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
-    <path d="m 442,112 h 46" class="figure-line" id="path124" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"/>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(488,112)" class="figure-path" id="use126" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
-    <path d="m 533,112 h 66" class="figure-line" id="path128" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"/>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(599,112)" class="figure-path" id="use130" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
-    <path d="M 182.99123,-82.400585 H 304.77486" class="figure-line" id="path132" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"/>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="rotate(-90,111.18714,-193.58772)" class="figure-path" id="use134" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:transform-center-x="20.669871" inkscape:transform-center-y="58.479951"/>
-    <text x="208.07016" y="-83.784348" dy="-5.2000003" class="figure-text" id="text136" style="font-size:13px;opacity:0.6;fill:#000000">broadcast</text>
-    <g id="g82" transform="rotate(90,213.25484,203.0957)">
-      <rect y="0" x="0" width="40" height="120" class="figure-element figure-box" id="rect78" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"/>
-      <text x="20" y="60" dy="0.40000001em" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,20,60)" class="figure-text" id="text80">concatenate</text>
-    </g>
-    <path d="M 356.36704,31.169336 V 44.922763" class="figure-line" id="path132-6" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"/>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="translate(356.36704,51.062763)" class="figure-path" id="use134-7" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:transform-center-x="58.479951" inkscape:transform-center-y="-20.669869"/>
-    <path d="m 356.85701,-31.561479 v 13.75343" class="figure-line" id="path132-6-5" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"/>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="translate(356.85701,-11.668059)" class="figure-path" id="use134-7-3" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:transform-center-x="58.479951" inkscape:transform-center-y="-20.669869"/>
-  </g>
+          <g transform="translate(10, 120)">
+            <g transform="translate(0, 60)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+            </g>
+            <text x="191" y="-30" dy="-0.35em" style="text-anchor: end; font-weight: bold;" class="figure-text">
+              <tspan>conditioning</tspan>
+              <tspan x="191" dy="1.5em">representation</tspan>
+            </text>
+            <g transform="translate(201, -60)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+            </g>
+            <g transform="translate(191, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
+            </g>
+            <g transform="translate(302, 30)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
+            </g>
+            <g transform="translate(493, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
+            </g>
+            <g transform="translate(604, 50)">
+              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+            </g>
+            <path d="M 20 90 L 186 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
+            <path d="M 231 90 L 297 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
+            <path d="M 327 90 L 488 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
+            <path d="M 533 90 L 599 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
+            <path d="M 211 0 L 211 25" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
+          </g>
         </svg>
       </figure>
       <p>
@@ -3375,8 +3364,9 @@ performs a a linear</tspan>
         the input of convolutional and transposed convolutional layers in the
         generator and discriminator networks.
       </p>
-      <figure class="l-body-outset" id="dcgan-diagram">
-        <svg viewBox="0 0 744 450" xmlns="http://www.w3.org/2000/svg">
+  <figure class="l-body-outset" id="dcgan-diagram">
+        <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
+          <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
           <text x="10" y="10" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
@@ -3401,54 +3391,48 @@ performs a a linear</tspan>
               output.
             </tspan>
           </text>
-<g xmlns="http://www.w3.org/2000/svg" transform="translate(10,212)" id="g140">
-    <g transform="translate(302,30)" id="g98">
-      <rect x="0" y="22" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect84"></rect>
-      <rect x="10" y="32" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect86"></rect>
-      <rect x="20" y="42" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect88"></rect>
-      <text x="30" y="52" dy="5" class="figure-text" id="text90" style="font-size:13px;opacity:0.6;fill:#000000">input</text>
-      <rect x="-134.71346" y="-120.26901" width="15.935673" height="15.935673" style="fill-opacity:1;stroke-width:0.23903508px;stroke-miterlimit:10" class="figure-film-generator figure-element figure-box" id="rect92-3"></rect>
-      <text x="-193.85629" y="-110" dy="-5" style="font-weight:bold;font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" class="figure-text" id="text138">class label </text>
-      <text x="-193.85629" y="-90" dy="-5" style="font-weight:bold;font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" class="figure-text" id="text138">(dog, cat etc.)</text>
-      <rect x="40.350876" y="62.906441" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-film-generator figure-element figure-box" id="rect92-5"></rect>
-      <text x="50" y="72" dy="5" class="figure-text" id="text96" style="font-size:13px;opacity:0.6;fill:#000000">class label</text>
-      <rect x="4.0601435" y="-160" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-film-generator figure-element figure-box" id="rect92-5-9"></rect>
-      <text x="11.709252" y="-150" dy="5" class="figure-text" id="text96-1" style="font-size:13px;opacity:0.6;fill:#000000">class label</text>
-    </g>
-    <g transform="translate(0,52)" id="g76">
-      <rect x="0" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect68"></rect>
-      <rect x="10" y="10" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect70"></rect>
-      <rect x="20" y="20" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect72"></rect>
-      <text x="30" y="30" dy="0.40000001em" class="figure-text" id="text74" style="font-size:13px;opacity:0.6;fill:#000000">input</text>
-    </g>
-    <g transform="translate(493,52)" id="g104">
-      <rect width="40" height="120" class="figure-element figure-box" id="rect100" x="0" y="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"></rect>
-      <text x="20" y="60" dy="0.40000001em" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,20,60)" class="figure-text" id="text102">convolution</text>
-    </g>
-    <g transform="translate(604,52)" id="g114">
-      <rect x="0" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect106"></rect>
-      <rect x="10" y="10" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect108"></rect>
-      <rect x="20" y="20" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect110"></rect>
-      <text x="30" y="30" dy="0.40000001em" class="figure-text" id="text112" style="font-size:13px;opacity:0.6;fill:#000000">output</text>
-    </g>
-    <path d="M 120,112 H 293.86" class="figure-line" id="path116" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"></path>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(300,112)" class="figure-path" id="use118" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"></use>
-    <path d="m 442,112 h 46" class="figure-line" id="path124" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"></path>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(488,112)" class="figure-path" id="use126" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"></use>
-    <path d="m 533,112 h 66" class="figure-line" id="path128" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"></path>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(599,112)" class="figure-path" id="use130" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"></use>
-    <path d="M 182.99123,-82.400585 H 304.77486" class="figure-line" id="path132" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"></path>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="rotate(-90,111.18714,-193.58772)" class="figure-path" id="use134" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:transform-center-x="20.669871" inkscape:transform-center-y="58.479951"></use>
-    <text x="208.07016" y="-83.784348" dy="-5.2000003" class="figure-text" id="text136" style="font-size:13px;opacity:0.6;fill:#000000">broadcast</text>
-    <g id="g82" transform="rotate(90,213.25484,203.0957)">
-      <rect y="0" x="0" width="40" height="120" class="figure-element figure-box" id="rect78" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10"></rect>
-      <text x="20" y="60" dy="0.40000001em" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,20,60)" class="figure-text" id="text80">concatenate</text>
-    </g>
-    <path d="M 356.36704,31.169336 V 44.922763" class="figure-line" id="path132-6" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"></path>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="translate(356.36704,51.062763)" class="figure-path" id="use134-7" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:transform-center-x="58.479951" inkscape:transform-center-y="-20.669869"></use>
-    <path d="m 356.85701,-31.561479 v 13.75343" class="figure-line" id="path132-6-5" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"></path>
-    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="translate(356.85701,-11.668059)" class="figure-path" id="use134-7-3" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:transform-center-x="58.479951" inkscape:transform-center-y="-20.669869"></use>
-  </g>
+          <g transform="translate(10, 180)">
+            <g transform="translate(0, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+            </g>
+            <g transform="translate(191, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
+            </g>
+            <g transform="translate(302, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+              <rect x="40" y="40" width="100" height="100" style="fill-opacity: 1;" class="figure-film-generator figure-element figure-box"/>
+              <text x="50" y="50" dy="0.4em" class="figure-text">class label</text>
+            </g>
+            <g transform="translate(493, 30)">
+              <rect width="40" height="120" class="figure-element figure-box"/>
+              <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">convolution</text>
+            </g>
+            <g transform="translate(604, 30)">
+              <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+              <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+            </g>
+            <path d="M 120 90 L 186 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
+            <path d="M 231 90 L 297 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
+            <path d="M 442 90 L 488 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
+            <path d="M 533 90 L 599 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
+            <path d="M 211 -50 L 211 25" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
+            <text x="211" y="10" dy="-0.4em" transform="rotate(-90, 211, 10)" class="figure-text">broadcast</text>
+            <text x="211" y="-60" dy="-0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">class label</text>
+          </g>
         </svg>
       </figure>
       <p>
@@ -4609,7 +4593,7 @@ performs a a linear</tspan>
 <figure class="l-page-outset" id="self-conditioning">
 	   <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
    <text x="10" y="72.640007" dy="13" class="figure-text" id="text1400" style="font-size:13px;opacity:0.6;fill:#000000">
-      <tspan id="tspan1390">The FiLM Generator predicts the FilM parameters </tspan>
+      <tspan id="tspan1390">The FiLM generator predicts the FilM parameters </tspan>
       <tspan x="10" dy="19.5" id="tspan1394">conditioned on the network internal activations</tspan>
     </text>
     <text x="10" y="218.64001" dy="13" class="figure-text" id="text1406" style="font-size:13px;opacity:0.6;fill:#000000">
