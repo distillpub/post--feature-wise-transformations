@@ -246,7 +246,7 @@
       </figure>
       <p>
         The brute-force approach to this problem involves learning separate
-        decoders for every possible class. This is both expensive &mdash; it
+        decoders for every possible class (dogs, cats etc.). This is both expensive &mdash; it
         requires as many model replicas as there are classes &mdash; and
         wasteful: in our above example, classes corresponding to different
         types of dogs (puppy, terrier, dalmatian, etc.) are likely to share
@@ -436,7 +436,7 @@
         </d-footnote>
       </p>
       <figure class="l-body-outset" id="concatenation-as-biasing">
-        <svg viewBox="0 0 744 420" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="20" class="figure-text">
             <tspan>
               Concatenation-based conditioning
@@ -445,156 +445,156 @@
               is equivalent to <tspan style="font-weight: bold;">conditional biasing</tspan>.
             </tspan>
           </text>
-          <text x="260" y="20" class="figure-text">
+          <text x="336" y="20" class="figure-text">
             <tspan>
               We can decompose the matrix-vector
             </tspan>
-            <tspan x="260" dy="1.5em">
+            <tspan x="336" dy="1.5em">
               into two matrix-vector subproducts.
             </tspan>
           </text>
-          <text x="520" y="20" class="figure-text">
+          <text x="646" y="20" class="figure-text">
             <tspan>
               The resulting two vectors are added
             </tspan>
-            <tspan x="520" dy="1.5em">
+            <tspan x="646" dy="1.5em">
               together to produce the output. The
             </tspan>
-            <tspan x="520" dy="1.5em">
+            <tspan x="646" dy="1.5em">
               <tspan style="font-weight: bold;">z</tspan>-dependent vector can
               be thought of
             </tspan>
-            <tspan x="520" dy="1.5em">
+            <tspan x="646" dy="1.5em">
               as a conditional bias.
             </tspan>
           </text>
-          <g transform="translate(60, 90)">
-            <g transform="translate(10, 100)">
-              <g>
-                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-film-generator figure-element"/>
-                <text x="60" y="90" dy="0.4em" style="text-anchor: middle;" class="figure-text">W</text>
-              </g>
-              <g transform="translate(125, 0)">
-                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 60)" class="figure-line"/>
-                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
-                <text x="45" y="90" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
-              </g>
-            </g>
-            <g transform="translate(240, 10)">
-              <g>
-                <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-filmed-network figure-element"/>
-              </g>
-              <g transform="translate(65, 0)">
-                <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
-                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">x</text>
-              </g>
-            </g>
-            <g transform="translate(240, 240)">
-              <g>
-                <use xlink:href="#matrix-center" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-top-right" transform="translate(40, 0)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#matrix-bottom-right" transform="translate(40, 60)" class="figure-film-generator figure-element"/>
-              </g>
-              <g transform="translate(65, 0)">
-                <use xlink:href="#column-middle" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-                <use xlink:href="#curly-brace-vertical" transform="translate(25, 0)" class="figure-line"/>
-                <text x="45" y="30" dy="0.4em" style="font-weight: bold;" class="figure-text">z</text>
-              </g>
-            </g>
-            <g transform="translate(405, 10)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
-            </g>
-            <g transform="translate(405, 240)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
-            </g>
-            <g transform="translate(505, 150)">
-              <circle cx="10" cy="10" r="10" class="figure-element"/>
-              <path d="M 10 5 l 0 10" class="figure-line"/>
-              <path d="M 5 10 l 10 0" class="figure-line"/>
-            </g>
-            <g transform="translate(605, 120)">
-              <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
-              <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
-            </g>
-            <path d="M 195 130 C 225 110 195 40 235 50" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(235, 50)" class="figure-path"/>
-            <path d="M 195 190 C 225 210 195 290 235 280" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(235, 280)" class="figure-path"/>
-            <path d="M 365 50 l 35 0" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(400, 50)" class="figure-path"/>
-            <path d="M 365 280 l 35 0" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(400, 280)" class="figure-path"/>
-            <path d="M 430 50 L 509 50 a 6 6 0 0 1 6 6 L 515 145" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(515, 145)" class="figure-path"/>
-            <path d="M 430 280 L 509 280 a 6 6 0 0 0 6 -6 L 515 175" class="figure-line"/>
-            <use xlink:href="#arrow-up" transform="translate(515, 175)" class="figure-path"/>
-            <text x="435" y="295" class="figure-text">conditional bias</text>
-            <path d="M 525 160 l 70 0" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(600, 160)" class="figure-path"/>
-          </g>
+         <g xmlns="http://www.w3.org/2000/svg" id="g292" transform="translate(60,90)">
+    <g id="g142" transform="translate(10,100)">
+      <g id="g118">
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use68" class="figure-filmed-network figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-top-left"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use70" class="figure-filmed-network figure-element" transform="translate(20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use72" class="figure-filmed-network figure-element" transform="translate(40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use74" class="figure-film-generator figure-element" transform="translate(60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use76" class="figure-film-generator figure-element" transform="translate(80)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use78" class="figure-film-generator figure-element" transform="translate(100)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-top-right"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use80" class="figure-filmed-network figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use82" class="figure-filmed-network figure-element" transform="translate(20,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use84" class="figure-filmed-network figure-element" transform="translate(40,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use86" class="figure-film-generator figure-element" transform="translate(60,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use88" class="figure-film-generator figure-element" transform="translate(80,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use90" class="figure-film-generator figure-element" transform="translate(100,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use92" class="figure-filmed-network figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use94" class="figure-filmed-network figure-element" transform="translate(20,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use96" class="figure-filmed-network figure-element" transform="translate(40,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use98" class="figure-film-generator figure-element" transform="translate(60,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use100" class="figure-film-generator figure-element" transform="translate(80,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use102" class="figure-film-generator figure-element" transform="translate(100,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use104" class="figure-filmed-network figure-element" transform="translate(0,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-bottom-left"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use106" class="figure-filmed-network figure-element" transform="translate(20,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use108" class="figure-filmed-network figure-element" transform="translate(40,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use110" class="figure-film-generator figure-element" transform="translate(60,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use112" class="figure-film-generator figure-element" transform="translate(80,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use114" class="figure-film-generator figure-element" transform="translate(100,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-bottom-right"/>
+        <text id="text116" class="figure-text" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" dy="0.40000001em" y="90" x="60">W</text>
+      </g>
+      <g id="g140" transform="translate(125)">
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use120" class="figure-filmed-network figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-top"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use122" class="figure-filmed-network figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use124" class="figure-filmed-network figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use126" class="figure-film-generator figure-element" transform="translate(0,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use128" class="figure-film-generator figure-element" transform="translate(0,80)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use130" class="figure-film-generator figure-element" transform="translate(0,100)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-bottom"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use132" class="figure-line" transform="translate(25)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curly-brace-vertical"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use134" class="figure-line" transform="translate(25,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curly-brace-vertical"/>
+        <text id="text136" class="figure-text" style="font-weight:bold;font-size:13px;opacity:0.6;fill:#000000" dy="0.40000001em" y="30" x="45">x</text>
+        <text id="text138" class="figure-text" style="font-weight:bold;font-size:13px;opacity:0.6;fill:#000000" dy="0.40000001em" y="90" x="45">z</text>
+      </g>
+    </g>
+    <g id="g182" transform="translate(316,10)">
+      <g id="g168">
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use144" class="figure-filmed-network figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-top-left"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use146" class="figure-filmed-network figure-element" transform="translate(20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use148" class="figure-filmed-network figure-element" transform="translate(40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use150" class="figure-filmed-network figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use152" class="figure-filmed-network figure-element" transform="translate(20,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use154" class="figure-filmed-network figure-element" transform="translate(40,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use156" class="figure-filmed-network figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use158" class="figure-filmed-network figure-element" transform="translate(20,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use160" class="figure-filmed-network figure-element" transform="translate(40,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use162" class="figure-filmed-network figure-element" transform="translate(0,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-bottom-left"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use164" class="figure-filmed-network figure-element" transform="translate(20,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use166" class="figure-filmed-network figure-element" transform="translate(40,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+      </g>
+      <g id="g180" transform="translate(65)">
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use170" class="figure-filmed-network figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-top"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use172" class="figure-filmed-network figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use174" class="figure-filmed-network figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use176" class="figure-line" transform="translate(25)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curly-brace-vertical"/>
+        <text id="text178" class="figure-text" style="font-weight:bold;font-size:13px;opacity:0.6;fill:#000000" dy="0.40000001em" y="30" x="45">x</text>
+      </g>
+    </g>
+    <g id="g222" transform="translate(316,240)">
+      <g id="g208">
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use184" class="figure-film-generator figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use186" class="figure-film-generator figure-element" transform="translate(20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use188" class="figure-film-generator figure-element" transform="translate(40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-top-right"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use190" class="figure-film-generator figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use192" class="figure-film-generator figure-element" transform="translate(20,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use194" class="figure-film-generator figure-element" transform="translate(40,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use196" class="figure-film-generator figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use198" class="figure-film-generator figure-element" transform="translate(20,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use200" class="figure-film-generator figure-element" transform="translate(40,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use202" class="figure-film-generator figure-element" transform="translate(0,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use204" class="figure-film-generator figure-element" transform="translate(20,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-center"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use206" class="figure-film-generator figure-element" transform="translate(40,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#matrix-bottom-right"/>
+      </g>
+      <g id="g220" transform="translate(65)">
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use210" class="figure-film-generator figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use212" class="figure-film-generator figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use214" class="figure-film-generator figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-bottom"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use216" class="figure-line" transform="translate(25)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#curly-brace-vertical"/>
+        <text id="text218" class="figure-text" style="font-weight:bold;font-size:13px;opacity:0.6;fill:#000000" dy="0.40000001em" y="30" x="45">z</text>
+      </g>
+    </g>
+    <g id="g232" transform="translate(531,10)">
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use224" class="figure-filmed-network figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-top"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use226" class="figure-filmed-network figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use228" class="figure-filmed-network figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use230" class="figure-filmed-network figure-element" transform="translate(0,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-bottom"/>
+    </g>
+    <g id="g242" transform="translate(531,240)">
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use234" class="figure-film-generator figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-top"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use236" class="figure-film-generator figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use238" class="figure-film-generator figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use240" class="figure-film-generator figure-element" transform="translate(0,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-bottom"/>
+    </g>
+    <g id="g250" transform="translate(631,150)">
+      <circle style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="circle244" class="figure-element" r="10" cy="10" cx="10"/>
+      <path style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="path246" class="figure-line" d="M 10,5 V 15"/>
+      <path style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="path248" class="figure-line" d="M 5,10 H 15"/>
+    </g>
+    <g id="g260" transform="translate(731,120)">
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use252" class="figure-filmed-network figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-top"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use254" class="figure-filmed-network figure-element" transform="translate(0,20)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use256" class="figure-filmed-network figure-element" transform="translate(0,40)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-middle"/>
+      <use height="100%" width="100%" y="0" x="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10" id="use258" class="figure-filmed-network figure-element" transform="translate(0,60)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#column-bottom"/>
+    </g>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none" id="path262" class="figure-line" d="m 195,130 c 83.895,-20 0,-90 111.86,-80"/>
+    <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use264" class="figure-path" transform="translate(313,50)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"/>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none" id="path266" class="figure-line" d="m 195,190 c 85.395,20 0,100 113.86,90"/>
+    <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use268" class="figure-path" transform="translate(315,280)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"/>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none" id="path270" class="figure-line" d="m 441,50 h 82.86"/>
+    <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use272" class="figure-path" transform="translate(530,50)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"/>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none" id="path274" class="figure-line" d="m 441,280 h 78.86"/>
+    <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use276" class="figure-path" transform="translate(526,280)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"/>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="path278" class="figure-line" d="m 556,50 h 79 a 6,6 0 0 1 6,6 v 89"/>
+    <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use280" class="figure-path" transform="translate(641,145)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down"/>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="path282" class="figure-line" d="m 556,280 h 79 a 6,6 0 0 0 6,-6 v -99"/>
+    <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use284" class="figure-path" transform="translate(641,175)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-up"/>
+    <text style="font-size:13px;opacity:0.6;fill:#000000" id="text286" class="figure-text" y="295" x="561">conditional bias</text>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="path288" class="figure-line" d="m 651,160 h 70"/>
+    <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use290" class="figure-path" transform="translate(726,160)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"/>
+  </g>
         </svg>
       </figure>
       <p>
@@ -1673,6 +1673,7 @@
             svg.select("g#cnn-figure g#shifted-layer").selectAll("g.feature").data(convData);
             svg.select("g#cnn-figure g#relued-layer").selectAll("g.feature").data(convData);
 
+
             function updateSingle(selection, accessor) {
                 selection.selectAll("g.feature").each(function (d, i) {
                     var r = accessor(d);
@@ -1686,7 +1687,6 @@
                         .attr("transform", "matrix(" + [s, 0, 0, s, 20, 20] + ")");
                 });
             }
-
             function updateSingleConv(selection, accessor) {
                 selection.selectAll("g.feature").each(function (d, i) {
                     var r = accessor(d);
@@ -1704,7 +1704,6 @@
                         .attr("transform", "matrix(" + [s, 0, 0, s, 15, 15] + ")");
                 });
             }
-
             function update() {
                 updateSingle(svg.select("g#mlp-figure g#input-layer"), function(d) { return d.feature; });
                 updateSingle(svg.select("g#mlp-figure g#gamma"), function(d) { return d.gamma; });
@@ -1717,9 +1716,7 @@
                 updateSingleConv(svg.select("g#cnn-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
                 updateSingleConv(svg.select("g#cnn-figure g#relued-layer"), function(d) { return Math.max(0.0, d.gamma * d.feature + d.beta); });
             }
-
             update();
-
             svg.select("g#mlp-figure g#gamma")
               .selectAll("g.feature")
                 .on("mousemove", function (d) {
@@ -1742,6 +1739,8 @@
                 });
         })();
       </script>
+
+
       <h2>Connecting FiLM to other approaches</h2>
       <p>
         FiLM shares with HyperNetworks <d-cite key="ha2016hypernetworks"></d-cite>
@@ -1790,7 +1789,730 @@
         complementary tools in the neural toolbox.
       </p>
       <p>
-        <span class="todo">TODO: add figure.</span>
+		  
+
+<figure class="l-page-outset" id="filmVsAttention-diagram">
+	<svg width="1080" height="420"> 
+	<defs id="defs1067">
+    <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" style="opacity:0.8;fill:#dd3a96" x="0" y="0"></rect>
+    <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" style="opacity:0.8;fill:#3a5edd" x="0" y="0"></rect>
+    <rect id="convolutional-patch-positive" width="20" height="20" rx="6" ry="6" style="opacity:0.8;fill:#dd3a96" x="0" y="0"></rect>
+    <rect id="convolutional-patch-negative" width="20" height="20" rx="6" ry="6" style="opacity:0.8;fill:#3a5edd" x="0" y="0"></rect>
+    <path id="arrow-left" d="M 0,0 C -2.779,1 -5.376,2.445 -7.69,4.28 L -6.14,0 -7.69,-4.28 C -5.376,-2.445 -2.779,-1 0,0 Z" transform="scale(-1)" inkscape:connector-curvature="0"></path>
+    <path id="arrow-right" d="M 0,0 C -2.779,1 -5.376,2.445 -7.69,4.28 L -6.14,0 -7.69,-4.28 C -5.376,-2.445 -2.779,-1 0,0 Z" inkscape:connector-curvature="0"></path>
+    <path id="arrow-up" d="M 0,0 C 1,2.779 2.445,5.376 4.28,7.69 L 0,6.14 -4.28,7.69 C -2.444,5.376 -1,2.77 0,0 Z" inkscape:connector-curvature="0"></path>
+    <path id="arrow-down" d="M 0,0 C 1,2.779 2.445,5.376 4.28,7.69 L 0,6.14 -4.28,7.69 C -2.444,5.376 -1,2.77 0,0 Z" transform="scale(-1)" inkscape:connector-curvature="0"></path>
+    <path id="convolutional-feature" d="M 0,0 H 30 V 30 H 0 Z" inkscape:connector-curvature="0"></path>
+    
+    <g id="vector-arrow">
+      <path d="M 0,0 V -16" id="path1036" inkscape:connector-curvature="0"></path>
+      <path d="m 0,-16 -4,4 4,-4 4,4" id="path1038" inkscape:connector-curvature="0"></path>
+    </g>
+    <path id="row-left" d="M 0,6 A 6,6 0 0 1 6,0 H 20 V 20 H 6 A 6,6 0 0 1 0,14 Z" inkscape:connector-curvature="0"></path>
+    <path id="row-middle" d="M 0,0 H 20 V 20 H 0 Z" inkscape:connector-curvature="0"></path>
+    <path id="row-right" d="m 0,0 h 14 a 6,6 0 0 1 6,6 v 8 a 6,6 0 0 1 -6,6 H 0 Z" inkscape:connector-curvature="0"></path>
+    
+  </defs>
+  
+      <g id="cnn-figure-attention" transform="translate(139.01763,172.38096)">
+        <text style="font-size:13px;opacity:0.6;fill:#000000" id="text1277-4" class="figure-text" y="-13" x="-132"><tspan id="tspan1269-6-3" style="font-weight:bold">Attention</tspan>
+ pipeline:</text>
+        <g id="input-conv-att" transform="translate(147.5,4)">
+          <g transform="translate(-78)" id="g1353-3">
+            <g id="g1287-3" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1281-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-negative" id="use1283-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1295-1" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1289-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-negative" id="use1291-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1303-6" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1297-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-positive" id="use1299-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1311-8" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1305-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-positive" id="use1307-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1319-1" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1313-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.47328641" href="#convolutional-patch-positive" id="use1315-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1327-3" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1321-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.35777091" href="#convolutional-patch-positive" id="use1323-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1335-0" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1329-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-negative" id="use1331-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1343-6" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1337-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-positive" id="use1339-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1351-0" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1345-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-positive" id="use1347-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+          </g>
+          <g id="g81" transform="translate(-78,-20)">
+            <g id="g1361-6" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1355-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-positive" id="use1357-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1369-6" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1363-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.17888543" href="#convolutional-patch-negative" id="use1365-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1377-1" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1371-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.4" href="#convolutional-patch-positive" id="use1373-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1385-9" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1379-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-negative" id="use1381-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1393-2" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1387-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.47328641" href="#convolutional-patch-negative" id="use1389-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1401-3" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1395-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.4" href="#convolutional-patch-positive" id="use1397-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1409-3" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1403-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.30983869" href="#convolutional-patch-negative" id="use1405-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1417-3" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1411-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-negative" id="use1413-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1425-7" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1419-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.25298223" href="#convolutional-patch-negative" id="use1421-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+          </g>
+          <g id="g1501-2" transform="translate(-78,-40)">
+            <g id="g1435-4" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1429-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-positive" id="use1431-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1443-6" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1437-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-negative" id="use1439-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1451-2" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1445-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-positive" id="use1447-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1459-8" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1453-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.25298223" href="#convolutional-patch-negative" id="use1455-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1467-2" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1461-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.35777091" href="#convolutional-patch-negative" id="use1463-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1475-7" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1469-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.25298223" href="#convolutional-patch-positive" id="use1471-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1483-6" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1477-9" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-negative" id="use1479-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1491-3" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1485-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.17888543" href="#convolutional-patch-positive" id="use1487-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1499-9" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1493-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.30983869" href="#convolutional-patch-negative" id="use1495-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+          </g>
+        </g>
+        <g id="g1519-4" transform="translate(204,3)">
+          <circle r="15" id="ellipse1515-8" class="figure-element" style="fill:#e8e8e8;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" cy="0" cx="0"/>
+          <circle style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" r="2" cy="0" cx="0" id="ellipse1517-1" class="figure-path"/>
+        </g>
+        <g id="alpha-conv-att" transform="translate(292.5,-2.5)">
+          <g id="g1671-7" transform="translate(0,-20)">
+            <g id="g1605-4" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1599-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.11587309" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1601-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1613-0" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1607-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.19504347" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1609-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1621-7" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1615-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.14959154" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1617-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1629-4" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1623-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.10577716" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1625-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1637-7" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1631-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.29918303" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1633-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1645-6" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1639-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.47304993" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1641-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1653-5" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1647-9" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.1337987" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1649-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1661-3" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1655-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.2591001" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1657-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1669-9" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1663-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.39578199" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1665-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+        </g>
+        <g id="out-conv-att" transform="translate(591.5,-2)">
+          <g id="g1843-3">
+            <g id="g1777-0" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1771-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.08975489" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1773-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1785-6" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1779-9" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.15108002" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1781-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1793-9" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1787-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.1337987" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1789-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1801-8" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1795-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.08193467" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1797-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1809-7" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1803-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.25031451" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1805-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1817-2" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1811-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.29918303" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1813-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1825-9" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1819-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.11967325" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1821-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1833-7" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1827-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.23174618" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1829-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1841-8" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1835-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.37547177" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1837-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+          <g id="g1917-5" transform="translate(0,-20)">
+            <g id="g1851-6" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1845-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.10992689" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1847-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1859-8" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1853-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.06167818" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1855-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1867-5" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1861-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.10577716" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1863-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1875-0" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1869-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.09461" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1871-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1883-2" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1877-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.25031451" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1879-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1891-3" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1885-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.33449683" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1887-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1899-1" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1893-9" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.07328461" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1895-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1907-4" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1901-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.24580395" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1903-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1915-1" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1909-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.17699908" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1911-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+          <g id="g283" transform="translate(0,-40)">
+            <g id="g1991-2" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1919-9" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.10364003" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1921-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1933-3" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1927-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.18503448" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1929-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1941-4" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1935-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.11587309" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1937-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1949-2" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1943-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.047305" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1945-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1957-8" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1951-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.18921999" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1953-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1965-6" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1959-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.21155437" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1961-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1973-2" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1967-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.10364003" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1969-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1981-7" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1975-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.08193467" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1977-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1989-2" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1983-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.21677874" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1985-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+        </g>
+        <g transform="translate(-78,-140)" id="g1509">
+          <text x="796" y="114" class="figure-text" style="font-size:20px;font-family:serif;opacity:0.6;fill:#000000" id="text1509-9">Σ</text>
+          <line x1="784.43481" y1="142.46939" x2="822.08472" y2="142.46939" class="figure-line" id="line1767-3-7" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"/>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="rotate(-90,485.34705,-342.87766)" class="figure-path" id="use1769-8-4" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+          <line x1="784.58282" y1="126.0182" x2="829.45233" y2="126.0182" class="figure-line" id="line1767-3-7-4" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"/>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="rotate(-90,477.73527,-351.71706)" class="figure-path" id="use1769-8-4-0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+          <line x1="784.23975" y1="158.42897" x2="821.99023" y2="158.42897" class="figure-line" id="line1767-3-7-9" style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none"/>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down" transform="rotate(-90,493.2796,-334.85063)" class="figure-path" id="use1769-8-4-4" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+        </g>
+        <line style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none" id="line1767-3-7-9-7" class="figure-line" y2="-0.74957275" x2="519.78448" y1="-0.74957275" x1="397.1687"/>
+        <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use1769-8-4-4-2" class="figure-path" transform="rotate(-90,262.63156,-263.38114)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down"/>
+        <g transform="translate(608.27128,1.04025)" id="out-feat-att">
+          <g transform="matrix(1,0,-0.5,0.5,182.41039,11.41255)" class="feature" id="g1817-2-1">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" class="figure-element" id="use1811-1-6" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+            <use style="opacity:0.57119673" href="#convolutional-patch-positive" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" transform="translate(5,5)" class="convolutional-patch" id="use1813-7-3" x="0" y="0" width="100%" height="100%"/>
+          </g>
+          <g transform="matrix(1,0,-0.5,0.5,182.41039,-8.58745)" class="feature" id="g1817-2-1-3">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" class="figure-element" id="use1811-1-6-3" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+            <use style="opacity:0.19331486" href="#convolutional-patch-negative" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" transform="translate(5,5)" class="convolutional-patch" id="use1813-7-3-4" x="0" y="0" width="100%" height="100%"/>
+          </g>
+          <g transform="matrix(1,0,-0.5,0.5,182.41039,-28.58745)" class="feature" id="g1817-2-1-1">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" class="figure-element" id="use1811-1-6-5" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+            <use style="opacity:0.23319014" href="#convolutional-patch-negative" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" transform="translate(5,5)" class="convolutional-patch" id="use1813-7-3-6" x="0" y="0" width="100%" height="100%"/>
+          </g>
+        </g>
+        <text style="font-size:13px;opacity:0.6;fill:#000000" id="text1277-4-5-4-5" class="figure-text" y="-41.913574" x="760.8479">Attention output</text>
+        <text style="font-size:16px;opacity:0.6;fill:#000000" id="text1277-4-5-4-5-7" class="figure-text" y="-29.532982" x="330.18359">
+          <tspan id="tspan642" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Suruma;-inkscape-font-specification:Suruma">α</tspan>
+        </text>
+      </g>
+      <g id="cnn-figure-film" transform="translate(43.699302,170.33376)">
+        <text style="font-size:13px;opacity:0.6;fill:#000000" id="text1277-4-7" class="figure-text" y="171" x="-2"><tspan id="tspan327" style="font-weight:bold">FiLM</tspan>
+ pipeline:</text>
+        <g id="input-conv-film" transform="translate(165.5,188)">
+          <g id="g1353-3-8">
+            <g id="g1287-3-9" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1281-3-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-negative" id="use1283-8-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1295-1-4" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1289-0-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-negative" id="use1291-8-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1303-6-8" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1297-3-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-positive" id="use1299-5-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1311-8-5" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1305-0-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-positive" id="use1307-4-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1319-1-5" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1313-3-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.47328641" href="#convolutional-patch-positive" id="use1315-5-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1327-3-8" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1321-4-9" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.35777091" href="#convolutional-patch-positive" id="use1323-1-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1335-0-9" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1329-8-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-negative" id="use1331-3-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1343-6-5" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1337-5-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-positive" id="use1339-9-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1351-0-0" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1345-7-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-positive" id="use1347-6-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+          </g>
+          <g id="g1427-7-9" transform="translate(0,-20)">
+            <g id="g1361-6-9" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1355-1-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-positive" id="use1357-5-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1369-6-5" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1363-5-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.17888543" href="#convolutional-patch-negative" id="use1365-0-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1377-1-6" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1371-2-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.4" href="#convolutional-patch-positive" id="use1373-2-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1385-9-0" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1379-1-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-negative" id="use1381-0-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1393-2-3" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1387-7-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.47328641" href="#convolutional-patch-negative" id="use1389-4-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1401-3-6" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1395-2-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.4" href="#convolutional-patch-positive" id="use1397-8-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1409-3-0" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1403-7-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.30983869" href="#convolutional-patch-negative" id="use1405-0-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1417-3-5" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1411-4-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-negative" id="use1413-9-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1425-7-6" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1419-4-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.25298223" href="#convolutional-patch-negative" id="use1421-2-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+          </g>
+          <g id="g1501-2-3" transform="translate(0,-40)">
+            <g id="g1435-4-6" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1429-4-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.50596439" href="#convolutional-patch-positive" id="use1431-3-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1443-6-7" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1437-0-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.53665634" href="#convolutional-patch-negative" id="use1439-8-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1451-2-6" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1445-2-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-positive" id="use1447-3-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1459-8-4" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1453-3-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.25298223" href="#convolutional-patch-negative" id="use1455-4-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1467-2-6" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1461-4-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.35777091" href="#convolutional-patch-negative" id="use1463-5-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1475-7-7" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1469-5-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.25298223" href="#convolutional-patch-positive" id="use1471-7-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1483-6-0" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1477-9-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.43817803" href="#convolutional-patch-negative" id="use1479-8-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1491-3-1" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1485-3-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.17888543" href="#convolutional-patch-positive" id="use1487-3-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+            <g id="g1499-9-5" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1493-8-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature" x="0" y="0" width="100%" height="100%"/>
+              <use style="opacity:0.30983869" href="#convolutional-patch-negative" id="use1495-6-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative" x="0" y="0" width="100%" height="100%"/>
+            </g>
+          </g>
+        </g>
+        <g id="g1519-4-0" transform="translate(298,187)">
+          <circle r="15" id="ellipse1515-8-6" class="figure-element" style="fill:#e8e8e8;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" cy="0" cx="0"/>
+          <circle style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" r="2" cy="0" cx="0" id="ellipse1517-1-3" class="figure-path"/>
+        </g>
+        <g id="gamma-conv-film" transform="translate(387.25,51.125)">
+          <g id="g1597-8-1">
+            <g id="g1587-5-8-3" class="feature" transform="matrix(1,0,-0.5,0.5,-4.75,151.875)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1581-0-1-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.71554176" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1583-9-3-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+          <g transform="translate(0,-20)" id="g1671-7-4">
+            <g id="g1661-3-7-4" class="feature" transform="matrix(1,0,-0.5,0.5,-4.181669,150.0472)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1655-6-0-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1657-4-7-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+          <g id="g1745-1-0" transform="translate(0,-38)">
+            <g id="g1711-5-0-4" class="feature" transform="matrix(1,0,-0.5,0.5,-5,147)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1705-8-8-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1707-9-3-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+        </g>
+        <g id="out-conv-film" transform="translate(945.5,188)">
+          <g transform="translate(-80)" id="g1843-3-1">
+            <g id="g1777-0-6" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1771-7-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.55425624" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1773-7-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1785-6-8" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1779-9-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.55425624" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1781-1-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1793-9-7" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1787-0-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.63999999" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1789-8-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1801-8-1" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1795-8-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.55425624" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1797-0-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1809-7-7" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1803-0-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.59866519" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1805-6-2" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1817-2-15" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1811-1-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.452549" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1813-7-38" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1825-9-8" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1819-7-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.63999999" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1821-6-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1833-7-8" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1827-1-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.63999999" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1829-5-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1841-8-3" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1835-4-7" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.67882254" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1837-5-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+          <g id="g1917-5-7" transform="translate(-80,-20)">
+            <g id="g1851-6-1" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1845-8-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.47999998" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1847-4-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1859-8-4" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1853-3-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.16000001" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1855-8-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1867-5-9" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1861-2-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.35777091" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1863-4-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1875-0-6" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1869-5-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.452549" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1871-7-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1883-2-2" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1877-7-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.42332076" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1879-2-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1891-3-1" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1885-4-3" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.35777091" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1887-9-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1899-1-2" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1893-9-4" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.27712815" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1895-5-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1907-4-0" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1901-1-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.47999998" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1903-2-1" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1915-1-3" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1909-6-0" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.2262742" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1911-2-0" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+          <g id="g1991-2-2" transform="translate(-80,-40)">
+            <g id="g1925-2-2" class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1919-9-2" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.67882254" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1921-7-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1933-3-9" class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1927-5-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.72000002" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1929-6-5" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1941-4-7" class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1935-0-8" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.58787752" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1937-3-6" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1949-2-0" class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1943-7-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.3394113" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1945-7-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1957-8-7" class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1951-1-5" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.47999998" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1953-0-8" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1965-6-0" class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1959-0-9" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.3394113" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1961-1-3" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1973-2-2" class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1967-5-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.58787752" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1969-1-4" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1981-7-8" class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1975-1-6" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.23999999" href="#convolutional-patch-positive" height="100%" width="100%" y="0" x="0" id="use1977-3-7" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+            <g id="g1989-2-8" class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+              <use height="100%" width="100%" y="0" x="0" style="fill:#ffffff;fill-opacity:0.8;stroke:#666666;stroke-width:1.5px;stroke-miterlimit:10" id="use1983-0-1" class="figure-element" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-feature"/>
+              <use style="opacity:0.4156922" href="#convolutional-patch-negative" height="100%" width="100%" y="0" x="0" id="use1985-6-9" class="convolutional-patch" transform="translate(5,5)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#convolutional-patch-negative"/>
+            </g>
+          </g>
+        </g>
+        <use height="100%" width="100%" y="0" x="0" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" id="use1769-8-4-4-2-0" class="figure-path" transform="rotate(-90,493.90154,-304.65112)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down"/>
+        <text id="text1509-6" style="font-size:20px;font-family:serif;opacity:0.6;fill:#000000" class="figure-text" dy="0 0 0" y="190.28311" x="606.81836">...</text>
+        <text style="font-size:13px;opacity:0.6;fill:#000000" id="text1277-4-5-4-5-2" class="figure-text" y="133.94168" x="825.72754">FiLM output</text>
+        <text style="font-size:13px;opacity:0.6;fill:#000000" id="text1277-4-5-4-5-2-3" class="figure-text" y="179.13362" x="532.50708">Scaling is omitted for clarity.</text>
+        <text style="font-size:13px;opacity:0.6;fill:#000000" id="text1277-4-7-5" class="figure-text" y="-137.34595" x="398.17145">
+          <tspan id="tspan331-9" x="398.17145"/>
+        </text>
+        <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none" x="498.78806" y="-39.557491" id="text6688"><tspan id="tspan6686" x="498.78806" y="-4.1668663"/></text>
+        <text style="font-size:16px;opacity:0.6;fill:#000000" id="text1277-4-5-4-5-7-0" class="figure-text" y="148.33553" x="389.42404">γ</text>
+        <line style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none" id="line1767-3-7-9-7-2-3" class="figure-line" y2="189.25043" x2="589.05255" y1="189.25043" x1="444.64417"/>
+        <line style="fill:none;stroke:#666666;stroke-width:1.5;stroke-miterlimit:10;stroke-dasharray:none" id="line1767-3-7-9-7-2-3-6" class="figure-line" y2="189.25043" x2="792.41266" y1="189.25043" x1="644.31067"/>
+      </g>
+      <g transform="translate(59.444975,109.82754)" id="g1629">
+        <text x="320.56332" y="-93.601944" class="figure-text" id="text1277-4-5-4-5-1" style="font-size:13px;opacity:0.6;fill:#000000"><tspan style="font-weight:bold" id="tspan510">Attention</tspan>
+ computes a probability</text>
+        <text x="320.59927" y="-76.854675" class="figure-text" id="text1277-4-5-4-5-1-6" style="font-size:13px;opacity:0.6;fill:#000000">distribution alpha over the spatial</text>
+        <text x="320.76428" y="-59.223896" class="figure-text" id="text1277-4-5-4-5-1-6-7" style="font-size:13px;opacity:0.6;fill:#000000">dimension while <tspan style="font-weight:bold" id="tspan555">FiLM</tspan>
+ computes a</text>
+        <text x="321.64777" y="-41.82608" class="figure-text" style="font-size:13px;opacity:0.6;fill:#000000" id="text557">vector over the feature dimension.</text>
+      </g>
+      <g transform="translate(75.918655,109.82754)" id="g1638">
+        <text x="616.77771" y="-92.9683" class="figure-text" id="text1277-4-5-4-5-1-4" style="font-size:13px;opacity:0.6;fill:#000000"><tspan style="font-weight:bold" id="tspan510-0">Attention</tspan>
+ performs a sum-pooling over</text>
+        <text x="616.81366" y="-76.221031" class="figure-text" id="text1277-4-5-4-5-1-6-6" style="font-size:13px;opacity:0.6;fill:#000000">the spatial dimension reducing the output</text>
+        <text x="616.9787" y="-58.590256" class="figure-text" id="text1277-4-5-4-5-1-6-7-4" style="font-size:13px;opacity:0.6;fill:#000000">to a 1-dimensional vector. <tspan style="font-weight:bold" id="tspan634">FiLM</tspan>
+ does not</text>
+        <text x="617.86218" y="-41.19244" class="figure-text" style="font-size:13px;opacity:0.6;fill:#000000" id="text557-4">rely on a pooling mechanism and preserves</text>
+        <text x="617.07904" y="-24.75568" class="figure-text" style="font-size:13px;opacity:0.6;fill:#000000" id="text557-4-8">preserve the dimension of the feature maps.</text>
+      </g>
+</svg>
+      </figure>
+      <script>
+        (function() {
+            var svg = d3.select("#filmVsAttention-diagram > svg");
+            var featureMaps = [
+                [[-0.6, -0.6,  0.8], [ 0.6,  0.7,  0.4], [-0.8,  0.8,  0.9]],
+                [[ 0.9, -0.1,  0.5], [-0.8, -0.7,  0.5], [-0.3, -0.9, -0.2]],
+                [[0.8, -0.9,  0.6], [-0.2, -0.4,  0.2], [-0.6,  0.1, -0.3]]
+            ];
+            
+            var gammas = [-1.6, 0.8, 1.8];
+            var betas = [1.0, 0.5, -0.5];
+            
+            // Note Alpha must be positif            
+            var alpha = [[0.6, 1.7,  1], [ 0.5,  4,  10], [0.8,  3,  7]];	
+            alpha_norm = 0
+            for (var i = 0; i < 3; i++) {
+               for (var j = 0; j < 3; j++) {
+					alpha_norm = alpha_norm + alpha[i][j]
+				}
+			}
+			for (var i = 0; i < 3; i++) {
+               for (var j = 0; j < 3; j++) {
+					alpha[i][j] = 2* alpha[i][j] / alpha_norm
+				}
+			}
+            
+            
+            var data = [];
+            for (var k = 0; k < 3; k++) {
+                data.push({featureMap: featureMaps[k], gamma: gammas[k], beta: betas[k], alpha: alpha});
+            }
+            
+            var convData = [];
+            for (var k = 0; k < 3; k++) {
+                for (var i = 0; i < 3; i++) {
+                    for (var j = 0; j < 3; j++) {
+                        var d = {feature: featureMaps[k][i][j], gamma: gammas[k], beta: betas[k], alpha: alpha[i][j]};
+                        convData.push(d);
+                    }
+                }
+            }
+            
+
+            
+            var amplitudeScale = d3.scaleSqrt().domain([0.0, 2.0]).range([0.0, 0.8]).clamp(true);
+
+            function updatePatch(selection, accessor) {
+                selection.selectAll("g.feature").each(function (d, i) {
+                    var r = accessor(d);
+                    var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+                    d3.select(this)
+                      .select(".convolutional-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ?  "#convolutional-patch-negative" : "#convolutional-patch-positive");
+                });
+            }
+            
+            
+
+
+			// Attention pipeline
+			svg.select("g#cnn-figure-attention g#input-conv-att").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-attention g#alpha-conv-att").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-attention g#out-conv-att").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-attention g#out-feat-att").selectAll("g.feature").data(data);
+                        	
+			// FiLM pipeline
+			svg.select("g#cnn-figure-film g#input-conv-film").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-film g#gamma-conv-film").selectAll("g.feature").data(data);
+            svg.select("g#cnn-figure-film g#out-conv-film").selectAll("g.feature").data(convData);
+            
+            function update() {    
+				
+				// Attention pipeline
+				updatePatch(svg.select("g#cnn-figure-attention g#input-conv-att"), function(d) { return d.feature; });
+				updatePatch(svg.select("g#cnn-figure-attention g#alpha-conv-att"), function(d) { return d.alpha; });
+				updatePatch(svg.select("g#cnn-figure-attention g#out-conv-att"), function(d) { return d.alpha * d.feature; });
+				updatePatch(svg.select("g#cnn-figure-attention g#out-feat-att"), function(d)   { 
+					attention_pool = 0
+					n = 0
+					for (var i = 0; i < 3; i++) {
+							for (var j = 0; j < 3; j++) {
+								attention_pool = attention_pool + d.alpha[i][j] * d.featureMap[i][j]
+								n = n + 1
+							}
+						}
+					
+						return attention_pool; 
+				}); 
+				
+				// FiLM pipeline
+				updatePatch(svg.select("g#cnn-figure-film g#input-conv-film"), function(d) { return d.feature; });
+				updatePatch(svg.select("g#cnn-figure-film g#gamma-conv-film"), function(d) { return d.gamma; });
+				updatePatch(svg.select("g#cnn-figure-film g#out-conv-film"), function(d) { return d.gamma * d.feature; });
+			}    
+			update()						
+
+        })();
+      </script>
+
       </p>
       <p>
         Finally, FiLM layers can be seen as a special case of a bilinear
@@ -2273,7 +2995,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         the input of convolutional and transposed convolutional layers in the
         generator and discriminator networks.
       </p>
-      <figure class="l-body-outset" id="dcgan-diagram">
+  <figure class="l-body-outset" id="dcgan-diagram">
         <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
           <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
           <text x="10" y="10" class="figure-text">
@@ -3178,8 +3900,8 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         We can also use FiLM layers to condition a style transfer network on a
         chosen style image. In Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
         transfer networks are extended to accommodate multiple styles by
-        introducing <strong>c</strong>onditional <strong>i</strong>nstance
-        <strong>n</strong>ormalization (CIN) layers. Each style modeled by the
+        introducing Conditional Instance
+        normalization (CIN) layers. Each style modeled by the
         network is associated with its own set of instance normalization
         parameters, and conditioning is achieved by applying the normalization
         with style-specific parameters.
@@ -3497,7 +4219,61 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         information. However, there is nothing preventing us from considering a
         neural network's hidden activations <em>themselves</em> as conditioning
         information. This idea gives rise to various forms of
-        <em>self-conditioned</em> models. For instance, the LSTM
+        <em>self-conditioned</em> models. 
+        
+              <p>
+<figure class="l-page-outset" id="self-conditioning">
+	   <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
+   <text x="10" y="72.640007" dy="13" class="figure-text" id="text1400" style="font-size:13px;opacity:0.6;fill:#000000">
+      <tspan id="tspan1390">The FiLM generator predicts the FilM parameters </tspan>
+      <tspan x="10" dy="19.5" id="tspan1394">conditioned on the network internal activations</tspan>
+    </text>
+    <text x="10" y="218.64001" dy="13" class="figure-text" id="text1406" style="font-size:13px;opacity:0.6;fill:#000000">
+      <tspan id="tspan1402">An arbitrary input vector (or feature-map) </tspan>
+      <tspan x="10" dy="19.5" id="tspan1404">is used to modulate some future activations.</tspan>
+    </text>
+    <g xmlns="http://www.w3.org/2000/svg" transform="translate(10,10)" id="g1488">
+    <g transform="translate(303.44,208.64)" id="g1416">
+      <rect x="0" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect1408"/>
+      <text x="8" y="15" dy="0.40000001em" class="figure-text" id="text1414" style="font-size:13px;opacity:0.6;fill:#000000">input</text>
+    </g>
+    <path d="M 478.25817,259.72088 H 425.52632" class="figure-line" id="path1418" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(484.39817,259.72088)" class="figure-path" id="use1420" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+    <path d="m 596.44,260 h 80" class="figure-line" id="path1428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(676.44,260)" class="figure-path" id="use1430" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+    <g transform="translate(765.68,208.64)" id="g1440">
+      <rect x="-88.560043" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect1432"/>
+      <text x="-80" y="15" dy="5.2000003" class="figure-text" id="text1438" style="font-size:13px;opacity:0.6;fill:#000000">output</text>
+    </g>
+    <path d="m 403.93022,259.6739 h 24 a 6,4.1428758 0 0 0 6,-4.14288 v -129.8101 a 6,4.1428758 0 0 1 6,-4.14288 h 10" class="figure-line" id="path1442" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(483.55856,121.52894)" class="figure-path" id="use1444" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+    <g transform="translate(595)" id="g1470"/>
+    <path d="M 477.41856,121.52894 H 439.68671" class="figure-line" id="path1418-6" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
+    <path style="fill:none;stroke:#666666;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 536.51315,122.09215 32.56579,-0.36584 c 0,0 13.42106,0.9146 12.82896,10.06055 0,9.33067 -0.98684,63.10707 -0.98684,63.10707" id="path2113" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" sodipodi:nodetypes="cccc"/>
+    <path d="M 559.00059,259.72261 H 536.31323" class="figure-line" id="path1418-1" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(565.14059,259.72261)" class="figure-path" id="use1420-8" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
+    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="rotate(90,190.70519,390.21588)" class="figure-path" id="use1420-8-7" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="-3" y="0" width="100%" height="100%"/>
+    <g transform="translate(505.58431,318.35086)" id="g1516">
+      <g class="figure-faded" id="g1504" style="opacity:0.35" transform="translate(-18.792716,-120.44838)">
+        <rect width="50" height="120" class="figure-filmed-network figure-element figure-box" id="rect1500" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
+        <text x="25" y="60" dy="0.40000001em" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,25,60)" class="figure-text" id="text1502">sub-network</text>
+      </g>
+      <g class="figure-faded" id="g1508" style="opacity:0.35"/>
+      <g transform="translate(61.447284,-120.44838)" id="g1514">
+        <rect width="30" height="120" class="figure-filmed-network figure-element figure-box" id="rect1510" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
+        <text x="15" y="60" dy="0.40000001em" style="font-weight:bold;font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,15,60)" class="figure-text" id="text1512">FiLM layer</text>
+      </g>
+      <g id="g1504-0" style="opacity:1" transform="translate(-18.743374,-258.46851)">
+        <rect width="50" height="120" class="figure-film-generator figure-element figure-box" id="rect1500-9" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
+        <text x="25" y="65" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,25,60)" class="figure-text" id="text1502-3">FiLM generator</text>
+      </g>
+    </g>
+  </g>
+        </svg>
+      </figure>
+              </p>
+                    <p>
+        For instance, the LSTM
         <d-cite key="hochreiter1997long"></d-cite> architecture, which is
         itself a building block in some of the models we referenced thus far,
         makes heavy use of feature-wise sigmoidal gating in its input, forget,
@@ -4064,10 +4840,20 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </ul>
       </p>
       <p>
-        <span class="todo">
-            TODO(fstrub95): insert bibliographic note on bilinear
-            transformations here.
-        </span>
+        <h3 id="bibliographic-bilinear">Bilinear Models and Applications</h3>
+			<p>
+			Bilinear models were first introduced in the vision community by to better untangle latent perceptual factors<d-cite key="tenenbaum1997separating"></d-cite>.
+			As described by the paper's title, the authors wanted to separate the image style from its content, arguing that classic linear models were not rich enough to extract such complex interaction.
+			There, they demonstrate the effectiveness of their approach by applying it for spoken vowel identification or zero-shot font classification.
+		    </p>
+			<p>
+			Among the first bilinear model applications one remarkable case was to perform facial animation<d-cite key="chuang2002facial"></d-cite>.
+			While the style describes the key facial features, the content encodes the visual emotions. 
+			This allows, for example, a sequence originally recorded with a happy expression to be modified so that the speaker appears to be speaking with an angry or neutral expression.
+			Bilinear models are also present in recommendation system by extracting user and item information in various settings<d-cite key="chu2009personalized,yang2011like"></d-cite>. 
+			More generally, recommendation system heavily rely on matrix factorization methods<d-cite key="koren2009matrix"></d-cite>, which is a bilinear model where one of the latent is fixed<d-cite key="tenenbaum1997separating"></d-cite>.
+			More recently, bilinear models have inspired new neural architecture in visual recognition<d-cite key="lin2015bilinear"></d-cite>, video action recogintion<d-cite key="feichtenhofer2016convolutional"></d-cite> or visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.
+			</p>
       </p>
       <p>
         <span class="todo">
