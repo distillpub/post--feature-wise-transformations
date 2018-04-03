@@ -2975,26 +2975,22 @@
 
       <h1 id="film-in-literature">Feature-wise transformations in the literature</h1>
       <p>
-        Because of their very general nature and wide applicability,
-        feature-wise transformations are sometimes treated as accessory
-        to the proposed models to which they are applied. We believe there is
-        value in connecting those methods, which is why part of this article is
-        devoted to a literature review.
+        Feature-wise transformations find their way in lots of problem
+        settings, but because of their very general nature and wide
+        applicability, this connection is seldom drawn. Here are notable
+        examples, grouped by application domain.
       </p>
       <h3>Generative modeling</h3>
       <p>
-        As described above, an improvement over the simple idea of concatenating
-conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
-        <d-math>\mathbf{z}</d-math> to the input of <em>all</em> layers in the
-        neural network. This is in fact the approach adopted by the conditional
-        variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
+        Concatenation-based conditioning is used in the conditional variant of
+        DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
         well-recognized class of network architectures for generative
         adversarial networks (GANs) <d-cite key="goodfellow2014generative"></d-cite>.
         The class label is broadcasted as a feature map and is concatenated to
         the input of convolutional and transposed convolutional layers in the
         generator and discriminator networks.
       </p>
-  <figure class="l-body-outset" id="dcgan-diagram">
+      <figure class="l-body-outset" id="dcgan-diagram">
         <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
           <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
           <text x="10" y="10" class="figure-text">
@@ -3066,10 +3062,19 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        Conditional biasing of layers in the neural network is itself employed
-        in PixelCNN <d-cite key="oord2016conditional"></d-cite> and WaveNet
-        <d-cite key="oord2016wavenet"></d-cite>, two recent advances in
-        autoregressive modeling of image and audio data, respectively.
+        Conditional biasing is used by PixelCNN <d-cite key="oord2016conditional"></d-cite>
+        and WaveNet <d-cite key="oord2016wavenet"></d-cite>, two recent
+        advances in autoregressive modeling of image and audio data,
+        respectively. In its simplest form, conditioning in PixelCNN is
+        achieved by adding feature-wise, conditional biases to the output of
+        all convolutional layers. In FiLM parlance, this means inserting FiLM
+        layers after each convolutional layer and setting the scaling
+        coefficients to a constant value of 1.
+        <d-footnote>
+          The authors also describe a location-dependent biasing scheme which
+          cannot be expressed in terms of FiLM layers due to the absence of the
+          feature-wise property.
+        </d-footnote>
       </p>
       <figure class="l-body-outset" id="pixelcnn-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -3144,19 +3149,6 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        In its simplest form, conditioning in PixelCNN models is achieved by
-        adding feature-wise, class-conditional biases to the output of all
-        convolutional layers. In FiLM parlance, this means inserting FiLM layers
-        after each convolutional layer and expressing the FiLM-generating
-        network as an embedding lookup on the class labels, with the scaling
-        coefficients set to a constant value of 1.
-        <d-footnote>
-          The authors also describe a location-dependent biasing scheme which
-          cannot be expressed in terms of FiLM layers due to the absence of the
-          feature-wise property.
-        </d-footnote>
-      </p>
-      <p>
         WaveNet describes two ways in which conditional biasing allows external
         information to modulate the behavior of the model:
       </p>
@@ -3182,20 +3174,13 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         expresses it as a mapping from an input sequence of conditioning
         information to an output sequence of FiLM parameters.
       </p>
-      <p>
-        Finally, in addition to conditional biasing,
-        PixelCNN <d-cite key="oord2016conditional"></d-cite> and
-        WaveNet <d-cite key="oord2016wavenet"></d-cite> both employ a
-        self-conditioned tanh-sigmoid gated nonlinearity.
-      </p>
       <h3>Reinforcement learning</h3>
       <p>
-        Examples of application include the Gated-Attention architecture
-        <d-cite key="chaplot2017gated"></d-cite>, which uses feature-wise
-        sigmoidal gating to fuse linguistic and visual inputs in the context of
-        a reinforcement learning agent trained to follow simple natural language
-        instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite>
-        3D environment.
+        Feature-wise sigmoidal gating is used in the Gated-Attention architecture
+        <d-cite key="chaplot2017gated"></d-cite> to fuse linguistic and visual
+        information in an agent trained to follow simple natural language
+        instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
+        environment.
       </p>
       <figure class="l-body-outset" id="gated-attention-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -3275,24 +3260,22 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        Feature-wise affine transformations are also used in the reinforcement
-        learning (RL) setting. In Kirkpatrick et al. <d-cite key="kirkpatrick2017overcoming"></d-cite>,
-        the authors briefly touch the idea of applying conditional feature-wise
-        affine transformations to a reinforcement learning problem. They train
-        an agent that learns to play 10 Atari games using a single Double DQN
-        network with task-specific gains and biases, which can be viewed as
-        inserting FiLM layers throughout its hierarchy.
+        Feature-wise affine transformations are used in Kirkpatrick et al.
+        <d-cite key="kirkpatrick2017overcoming"></d-cite> to condition the
+        policy of an agent trained to play 10 different Atari games on the game
+        being played. More specifically, game-specific gains and biases are
+        used in a shared policy network, which can be viewed as inserting FiLM
+        layers throughout its hierarchy.
       </p>
       <h3>Natural language processing</h3>
       <p>
-        Sometimes the sigmoidal restriction can be lifted, as is the case for
-        the Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>.
-        The model extracts information from a text by conditioning the document
-        reading network on a query.  Its architecture is formed of multiple
-        Gated-Attention modules, which involve element-wise multiplications
-        between document representation tokens and token-specific query
-        representations extracted via soft attention on the query representation
-        tokens.
+        Feature-wise scaling is used in the Gated-Attention Reader
+        <d-cite key="dhingra2017gated"></d-cite>. The model extracts
+        information from a text by conditioning the document reading network on
+        a query. Its architecture is formed of multiple Gated-Attention
+        modules, which involve element-wise multiplications between document
+        representation tokens and token-specific query representations
+        extracted via soft attention on the query representation tokens.
       </p>
       <figure class="l-body-outset" id="gated-attention-reader-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -3386,14 +3369,13 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        In the natural language domain, Dauphin et al. <d-cite key="dauphin2017language"></d-cite>
-        propose to build a finite context using stacked convolutions to tackle
-        language modeling and introduce gated linear units, which use half of
-        the features to apply feature-wise sigmoidal gating to the second half.
-        This architectural feature is also adopted by
-        Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, who introduce a
-        fast and parallelizable model for machine translation in the form of a
-        purely convolutional architecture.
+        Sigmoidal gating is used by Dauphin et al.
+        <d-cite key="dauphin2017language"></d-cite> in their proposed gated
+        linear unit, which use half of the input features to apply feature-wise
+        sigmoidal gating to the second half. This architectural feature is also
+        adopted by Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>,
+        who introduce a fast and parallelizable model for machine translation
+        in the form of a purely convolutional architecture.
       </p>
       <figure class="l-body-outset" id="convseq2seq-diagram">
         <svg viewBox="0 0 744 260" xmlns="http://www.w3.org/2000/svg">
@@ -3468,14 +3450,11 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
       </figure>
       <h3>Visual question-answering</h3>
       <p>
-        By combining conditional biasing and conditional scaling, we obtain the
-        FiLM layer, which implements a conditional feature-wise affine
-        transformation. We can use FiLM layers to condition a visual processing
-        pipeline to answer textual questions about an image. In <d-cite
-        key="perez2017learning"></d-cite>, and in its expanded version <d-cite
-        key="perez2017film"></d-cite>, a visual reasoning model is trained on the
-        CLEVR dataset <d-cite key="johnson2017clevr"></d-cite> to answer
-        synthetic questions about a synthetic input image.
+        Figure-wise affine transformations are used by Perez et al.
+        <d-cite key="perez2017learning,perez2017film"></d-cite> to build a
+        visual reasoning model trained on the CLEVR dataset
+        <d-cite key="johnson2017clevr"></d-cite> to answer synthetic questions
+        about a synthetic input image.
       </p>
       <figure class="l-page-outset" id="clevr-diagram">
         <svg viewBox="0 0 1080 500" xmlns="http://www.w3.org/2000/svg">
