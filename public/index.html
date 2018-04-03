@@ -25,7 +25,7 @@
           {
             "author": "Ethan Perez",
             "authorURL": "http://ethanperez.net/",
-            "affiliation": "Rice University",
+            "affiliation": "Rice University, MILA",
             "affiliationURL": "http://www.rice.edu/"
           },
           {
@@ -702,14 +702,26 @@
         zeroed out.
       </p>
       <p>
+        Given that conditioning with additive interactions (such as conditional biasing)
+        seems natural and intuitive, why use multiplicative interactions?
+        Multiplicative interactions are useful in learning relationships between inputs,
+        as these interactions natural identify “matches”; elements with highly similar values
+        (regardless of sign) will produce higher values when multiplied and lower values otherwise.
+        Dot products, for instance, are thus often used to determine how similar two vectors are.
+        In contrast, additive interactions are more natural for carrying out different tasks,
+        such as feature aggregation or feature detection (i.e. checking if a feature is present in
+        either of two inputs), that are less strongly dependent on the joint values of two inputs.
+      </p>
+      <p>
         This brings us to the combination of conditional scaling and
         conditional shifting into a conditional feature-wise affine
         transformation,
         <d-footnote>
           An affine transformation is a transformation of the form
-          <d-math>y = m . x + b</d-math>.
+          <d-math>y = m * x + b</d-math>.
         </d-footnote>
-        which acts as an umbrella for all approaches discussed so far.
+        which acts as an umbrella for all approaches discussed so far
+        and may retain the advantages of each.
         In general, feature-wise transformations enjoy very good scaling
         properties &mdash; their number of parameters scales linearly with the
         total number of features in the network &mdash; and as we will see, they
@@ -755,7 +767,7 @@
           <path d="M460,10l0,510" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
           <text x="500" y="20" class="figure-text">
             <tspan>
-              The <tspan style="font-weight: bold;">FiLM-ed network</tspan>'s
+              Here, the <tspan style="font-weight: bold;">FiLM-ed network</tspan>'s
               computation is
             </tspan>
             <tspan x="500" dy="1.5em">
@@ -2426,9 +2438,9 @@
 
             var gammas = [-1.6, 0.8, 1.8];
             var betas = [1.0, 0.5, -0.5];
-            
-            // Note Alpha must be positif            
-            var alpha = [[0.6, 1.7, 1], [0.5, 4, 10], [0.8, 3, 7]];	
+
+            // Note Alpha must be positif
+            var alpha = [[0.6, 1.7, 1], [0.5, 4, 10], [0.8, 3, 7]];
             alpha_norm = 0;
             for (var i = 0; i < 3; i++) {
                 for (var j = 0; j < 3; j++) {
@@ -2480,12 +2492,12 @@
             svg.select("g#cnn-figure-film g#gamma-conv-film").selectAll("g.feature").data(data);
             svg.select("g#cnn-figure-film g#out-conv-film").selectAll("g.feature").data(convData);
 
-            function update() {    
+            function update() {
                 // Attention pipeline
                 updatePatch(svg.select("g#cnn-figure-attention g#input-conv-att"), function(d) { return d.feature; });
                 updatePatch(svg.select("g#cnn-figure-attention g#alpha-conv-att"), function(d) { return d.alpha; });
                 updatePatch(svg.select("g#cnn-figure-attention g#out-conv-att"), function(d) { return d.alpha * d.feature; });
-                updatePatch(svg.select("g#cnn-figure-attention g#out-feat-att"), function(d)   { 
+                updatePatch(svg.select("g#cnn-figure-attention g#out-feat-att"), function(d)   {
                     attention_pool = 0;
                     n = 0;
                     for (var i = 0; i < 3; i++) {
@@ -2494,14 +2506,14 @@
                             n = n + 1
                         }
                     }
-                    return attention_pool; 
-                }); 
+                    return attention_pool;
+                });
 
                 // FiLM pipeline
                 updatePatch(svg.select("g#cnn-figure-film g#input-conv-film"), function(d) { return d.feature; });
                 updatePatch(svg.select("g#cnn-figure-film g#gamma-conv-film"), function(d) { return d.gamma; });
                 updatePatch(svg.select("g#cnn-figure-film g#out-conv-film"), function(d) { return d.gamma * d.feature; });
-            }    
+            }
             update()
         })();
       </script>
@@ -4218,8 +4230,8 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         information. However, there is nothing preventing us from considering a
         neural network's hidden activations <em>themselves</em> as conditioning
         information. This idea gives rise to various forms of
-        <em>self-conditioned</em> models. 
-        
+        <em>self-conditioned</em> models.
+
               <p>
 <figure class="l-page-outset" id="self-conditioning">
 	   <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
@@ -4956,10 +4968,20 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </li>
       </ul>
       <p>
-        <span class="todo">
-            TODO(ethanjperez): insert bibliographic note three-way interactions
-            here.
-        </span>
+          Introduced in computer vision originally as "mapping units"
+          <d-cite key="hinton1981a"></d-cite> and "dynamic mappings"
+          <d-cite key="vonderMalsburg1994the"></d-cite>,
+          multiplicative interactions alone have had a history of success in various domains.
+          These domains include Action Recognition<d-cite key="le2011learning"></d-cite>
+          <d-cite key="taylor2010convolutional"></d-cite>,
+          Tracking<d-cite key="ross2006combining"></d-cite>
+          <d-cite key="denil2012learning"></d-cite>,
+          Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
+          Denoising<d-cite key="tang2012boltzmann"></d-cite>,
+          Character-level Language Modeling<d-cite key="sutskever2011generating"></d-cite>,
+          and, more generally, tasks involving relating or matching inputs,
+          such as from different modalities or points in time.
+          <d-cite key="memisevic2013learning"></d-cite>
       </p>
       <h3>Acknowledgements</h3>
       <p>
