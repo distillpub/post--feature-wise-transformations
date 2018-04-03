@@ -201,73 +201,69 @@
 
       <h1 id="film-nomenclature">Building towards FiLM</h1>
       <p>
-        Consider for instance conditional image generation. In conditional
-        decoder-based generative models, we would like to map a source of noise
-        to model samples in a way that is class-aware. This involves injecting
-        class information into the decoder network:
+        To make things concrete, consider the problem of conditional image
+        generation. In conditional decoder-based generative models, we would
+        like to map a source of noise to model samples in a way that is
+        class-aware.
       </p>
       <figure class="l-body">
-        <svg viewBox="0 0 648 240" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" class="figure-text">
+        <svg viewBox="0 0 648 170" xmlns="http://www.w3.org/2000/svg">
+          <text x="490" y="10" dy="1em" class="figure-text">
             <tspan>
-              The <tspan style="font-weight: bold;">decoder-based generative model</tspan>
+              The <tspan style="font-weight: bold;">decoder-based</tspan>
             </tspan>
-            <tspan x="10" dy="1.5em">
-              maps a source of noise to a sample in the
+            <tspan x="490" dy="1.5em">
+              <tspan style="font-weight: bold;">generative model</tspan> maps a
             </tspan>
-            <tspan x="10" dy="1.5em">
-              context of the "puppy" class.
+            <tspan x="490" dy="1.5em">
+              source of noise to a sample
             </tspan>
-          </text>
-          <text x="465" y="195" dy="1.5em" style="font-style: italic;" class="figure-text">
-            <tspan>
-              Credit: image taken from
+            <tspan x="490" dy="1.5em">
+              in the context of the "puppy"
             </tspan>
-            <tspan x="465" dy="1.5em">
-              ImageNet.
+            <tspan x="490" dy="1.5em">
+              class.
             </tspan>
           </text>
           <g transform="translate(0, 0)">
-            <text x="120" y="120" dy="0.4em" class="figure-text">noise</text>
-            <path d="M 160 120 L 235 120" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(235, 120)" class="figure-path"/>
-            <text x="315" y="10" style="text-anchor: middle;" class="figure-text">"puppy"</text>
-            <path d="M 315 15 L 315 75" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(315, 75)" class="figure-path"/>
-            <g transform="translate(240, 80)">
+            <text x="0" y="85" dy="0.4em" class="figure-text">noise</text>
+            <path d="M 40 85 L 75 85" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(75, 85)" class="figure-path"/>
+            <text x="155" y="10" style="text-anchor: middle;" class="figure-text">"puppy"</text>
+            <path d="M 155 20 L 155 40" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(155, 40)" class="figure-path"/>
+            <g transform="translate(80, 45)">
               <rect width="150" height="80" class="figure-group figure-box"/>
               <text x="75" y="40" dy="0.4em" style="text-anchor: middle;" class="figure-text">decoder</text>
             </g>
-            <path d="M 390 120 L 460 120" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(460, 120)" class="figure-path"/>
-            <image x="465" y="45" width="150" height="150" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/puppy.jpg"/>
+            <path d="M 230 85 L 300 85" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(300, 85)" class="figure-path"/>
+            <image x="305" y="10" width="150" height="150" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/puppy.jpg"/>
           </g>
         </svg>
       </figure>
       <p>
-        The brute-force approach to this problem involves learning separate
-        decoders for every possible class (dogs, cats etc.). This is both expensive &mdash; it
-        requires as many model replicas as there are classes &mdash; and
-        wasteful: in our above example, classes corresponding to different
-        types of dogs (puppy, terrier, dalmatian, etc.) are likely to share
-        computation when mapping from the abstract noise vector to the output
-        image. Even worse: imagine that the conditioning information is not a
-        category, but some real-valued quantity (e.g., the dog's height). In
-        that case, we can't reasonably expect to train a separate network for
+        A brute-force solution would be to learn separate decoders for every
+        possible class (puppy, boat, airplane, etc.). This solution scales
+        poorly &mdash; it requires as many separate models as there are classes
+        &mdash; and is wasteful: in our above example, classes corresponding to
+        different types of dogs (puppy, terrier, dalmatian, etc.) are likely to
+        share computation when mapping from the abstract noise vector to the
+        output image. Even worse: imagine that the conditioning information is
+        not a category, but some real-valued quantity (e.g., the dog's height).
+        In that case, we can't reasonably expect to train a separate network for
         <em>all</em> possible conditioning values! We are therefore looking for
         more efficient alternatives, preferably involving as much parameter
         sharing as possible.
       </p>
-
       <p>
-        Perhaps the simplest way to depart from this brute-force approach is to
-        concatenate the class (or an embedding of the class) to the noise vector
-        and treat the result as the decoder's input, crossing our fingers in
-        hope that the decoder will implicitly learn to combine the two in a
-        sensible manner. Using this approach, <em>all</em> parameters in the
-        decoder are shared between classes, save for the first layer's
-        parameters. Furthermore, the increase in number of parameters in the
-        decoder's first layer is very modest: just enough to accomodate the
+        A simple fix would be to concatenate the class (or an embedding of the
+        class) to the noise vector and treat the result as the decoder's input,
+        crossing our fingers in hope that the decoder will implicitly learn to
+        combine the two in a sensible manner. Using this approach, <em>all</em>
+        parameters in the decoder are shared between classes, save for the first
+        layer's parameters. Furthermore, the increase in number of parameters in
+        the decoder's first layer is very modest: just enough to accomodate the
         class or class embedding in the layer's input.
       </p>
       <p>
