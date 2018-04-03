@@ -1775,7 +1775,7 @@
       </p>
       <figure class="l-page-outset" id="filmVsAttention-diagram">
         <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
-          <g id="cnn-figure-attention" transform="translate(10,172)">
+          <g id="cnn-figure-attention" transform="translate(10,170)">
             <g id="input-conv-att" transform="translate(0,0)">
               <g transform="translate(45,0)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
@@ -2064,7 +2064,7 @@
             </g>
             <path d="M 380 0 430 0" class="figure-line"/>
             <use transform="translate(430 0)" class="figure-path" xlink:href="#arrow-right"/>
-            <g transform="translate(780,10)" id="out-feat-att">
+            <g transform="translate(810,10)" id="out-feat-att">
               <g transform="matrix(1,0,-0.5,0.5,0,0)" class="feature">
                 <use xlink:href="#convolutional-feature" class="figure-element"/>
                 <use xlink:href="#convolutional-patch-negative" transform="translate(5,5)" class="convolutional-patch"/>
@@ -2079,10 +2079,9 @@
               </g>
             </g>
           </g>
-          <g id="cnn-figure-film" transform="translate(44,170)">
-            <text class="figure-text" y="171" x="-2"><tspan style="font-weight:bold">FiLM</tspan> pipeline:</text>
-            <g id="input-conv-film" transform="translate(166,188)">
-              <g>
+          <g id="cnn-figure-film" transform="translate(10,370)">
+            <g id="input-conv-film" transform="translate(0,0)">
+              <g transform="translate(45,0)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
                   <use class="figure-element" xlink:href="#convolutional-feature"/>
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
@@ -2120,7 +2119,7 @@
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
                 </g>
               </g>
-              <g transform="translate(0,-20)">
+              <g transform="translate(45,-20)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
                   <use class="figure-element" xlink:href="#convolutional-feature"/>
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
@@ -2154,6 +2153,62 @@
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
                 </g>
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+              </g>
+              <g transform="translate(45,-40)">
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+              </g>
+            </g>
+            <g transform="translate(200,0)">
+              <circle r="15" class="figure-element" style="fill:#e8e8e8" cy="0" cx="0"/>
+              <circle r="2" cy="0" cx="0" class="figure-path"/>
+            </g>
+            <g id="gamma-conv-film" transform="translate(290,10)">
+              <g transform="translate(0, 0)">
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
+                  <use class="figure-element" xlink:href="#convolutional-feature"/>
+                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
+                </g>
+              </g>
+              <g transform="translate(0,-20)">
+                <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
                   <use class="figure-element" xlink:href="#convolutional-feature"/>
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
                 </g>
@@ -2163,66 +2218,17 @@
                   <use class="figure-element" xlink:href="#convolutional-feature"/>
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
                 </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,30,0)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,60,0)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,-15,15)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,15,15)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,45,15)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,-30,30)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,0,30)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,30,30)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
               </g>
             </g>
-            <g transform="translate(298,187)">
-              <circle r="15" class="figure-element" style="fill:#e8e8e8" cy="0" cx="0"/>
-              <circle r="2" cy="0" cx="0" class="figure-path"/>
-            </g>
-            <g id="gamma-conv-film" transform="translate(387,51)">
-              <g>
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,-4.75,151.875)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-              </g>
-              <g transform="translate(0,-20)">
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,-4.181669,150.0472)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-              </g>
-              <g transform="translate(0,-38)">
-                <g class="feature" transform="matrix(1,0,-0.5,0.5,-5,147)">
-                  <use class="figure-element" xlink:href="#convolutional-feature"/>
-                  <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
-                </g>
-              </g>
-            </g>
-            <g id="out-conv-film" transform="translate(946,188)">
-              <g transform="translate(-80)">
+            <path d="M 380 0 430 0" class="figure-line"/>
+            <use transform="translate(430 0)" class="figure-path" xlink:href="#arrow-right"/>
+            <text class="figure-text" x="480" y="0" style="text-anchor: middle; font-size: 18px;">...</text>
+            <text class="figure-text" x="480" y="0" dy="-2em" style="text-anchor: middle; opacity: 0.3;">(scaling is omitted for clarity)</text>
+            <text class="figure-text" x="300" y="-45" style="font-family: serif; font-size: 18px;">γ</text>
+            <path d="M 530 0 720 0" class="figure-line"/>
+            <use class="figure-path" transform="translate(720,0)" xlink:href="#arrow-right"/>
+            <g id="out-conv-film" transform="translate(735,0)">
+              <g transform="translate(45,0)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
                   <use class="figure-element" xlink:href="#convolutional-feature"/>
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
@@ -2260,7 +2266,7 @@
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
                 </g>
               </g>
-              <g transform="translate(-80,-20)">
+              <g transform="translate(45,-20)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
                   <use class="figure-element" xlink:href="#convolutional-feature"/>
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
@@ -2298,7 +2304,7 @@
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
                 </g>
               </g>
-              <g transform="translate(-80,-40)">
+              <g transform="translate(45,-40)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
                   <use class="figure-element" xlink:href="#convolutional-feature"/>
                   <use class="convolutional-patch" transform="translate(5,5)" xlink:href="#convolutional-patch-negative"/>
@@ -2337,13 +2343,6 @@
                 </g>
               </g>
             </g>
-            <path d="M 445 189 589 189" class="figure-line"/>
-            <path d="M 644 189 792 189" class="figure-line"/>
-            <use class="figure-path" transform="translate(792,189)" xlink:href="#arrow-right"/>
-            <text class="figure-text" dy="0 0 0" y="190" x="606">...</text>
-            <text class="figure-text" y="134" x="826">FiLM output</text>
-            <text class="figure-text" y="179" x="533">Scaling is omitted for clarity.</text>
-            <text class="figure-text" y="148" x="389">γ</text>
           </g>
           <g transform="translate(59,110)">
             <text x="320.56332" y="-93.601944" class="figure-text" style="font-weight:bold">Attention</tspan>
