@@ -201,10 +201,10 @@
 
       <h1 id="film-nomenclature">Building towards FiLM</h1>
       <p>
-        To make things concrete, consider the problem of conditional image
-        generation. In conditional decoder-based generative models, we would
-        like to map a source of noise to model samples in a way that is
-        class-aware.
+        Imagine you're tasked with building a generative model of various
+        classes of images (puppy, boat, airplane, etc.). The model takes a
+        source of noise and a class as input and outputs an image sample for
+        the requested class.
       </p>
       <figure class="l-body">
         <svg viewBox="0 0 648 170" xmlns="http://www.w3.org/2000/svg">
@@ -247,36 +247,36 @@
         </svg>
       </figure>
       <p>
-        A brute-force solution would be to learn separate decoders for every
-        possible class (puppy, boat, airplane, etc.). This solution scales
-        poorly &mdash; it requires as many separate models as there are classes
-        &mdash; and is wasteful: in our above example, classes corresponding to
-        different types of dogs (puppy, terrier, dalmatian, etc.) are likely to
-        share computation when mapping from the abstract noise vector to the
-        output image. Even worse: imagine that the conditioning information is
-        not a category, but some real-valued quantity (e.g., the dog's height).
-        In that case, we can't reasonably expect to train a separate network for
-        <em>all</em> possible conditioning values! We are therefore looking for
-        more efficient alternatives, preferably involving as much parameter
-        sharing as possible.
+        Your first instinct might be to build a separate model for every
+        possible class. For a small number of class this is not too bad a
+        solution, but for thousands of classes you quickly run into scaling
+        issues: the number of parameters you're required to train and store
+        is multiplied by the number of classes. You are also missing out on
+        the opportunity to leverage commonalities between classes: for
+        instance, different types of dogs (puppy, terrier, dalmatian, etc.)
+        share common visual traits and are likely to share computation when
+        mapping from the abstract noise vector to the output image.
       </p>
       <p>
-        A simple fix would be to concatenate the class (or an embedding of the
-        class) to the noise vector and treat the result as the decoder's input,
-        crossing our fingers in hope that the decoder will implicitly learn to
-        combine the two in a sensible manner. Using this approach, <em>all</em>
-        parameters in the decoder are shared between classes, save for the first
-        layer's parameters. Furthermore, the increase in number of parameters in
-        the decoder's first layer is very modest: just enough to accomodate the
-        class or class embedding in the layer's input.
+        Now imagine that in addition to the various classes you are also
+        required to take into account various attributes, like size or color.
+        In that case, you can't reasonably expect to train a separate network
+        for <em>all</em> possible conditioning values! Let's examine a few
+        options.
       </p>
       <p>
-        However, this approach suffers from the fact that the conditioning
-        information has a direct influence only in the first few layers of the
-        neural network; the deeper we get, the more diffuse and indirect its
-        influence becomes. A solution to that is simply to concatenate the class
-        or class embedding to the input of <em>all</em> layers in the decoder.
-        We refer to this mechanism as concatenation-based conditioning:
+        A simple fix would be to concatenate a representation of the
+        conditioning information to the noise vector and treat the result as
+        the model's input. This is very parameter-efficient &mdash; all we need
+        to do is to increase the size of the first layer's weight matrix to
+        accomodate the conditioning representation &mdash; but the deeper we
+        get into the network, the more diffuse and indirect the conditioning
+        information's influence becomes.
+      </p>
+      <p>
+        No problem, you think: let's simply concatenate the conditioning
+        representation to the input of <em>all</em> layers in the network!
+        We call this concatenation-based conditioning:
       </p>
       <figure class="l-body-outset" id="concatenation-diagram">
         <svg viewBox="0 0 744 230" xmlns="http://www.w3.org/2000/svg">
@@ -359,9 +359,14 @@
         </svg>
       </figure>
       <p>
-        As an alternative to concatenation-based conditioning, we can consider
-        applying a feature-wise additive bias to the input. We call this
-        conditional biasing:
+        One advantage repeated concatenation has over just concatenating to the
+        input of the first (or sometimes last) layer is that you don't really
+        need to choose <em>when</em> is the best time to integrate the
+        conditioning information into the network; you let the network figure
+        it out while it trains. Maybe you want to give yourself options,
+        though: concatenation works fine, but are there other mechanisms to
+        use? What about biasing the hidden layers of your network based on the
+        conditioning representation?
       <figure class="l-body-outset" id="conditional-biasing-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
@@ -617,12 +622,8 @@
       <p>
         Each vector product between <d-math>\mathbf{z}</d-math> and its
         corresponding subset of a row of the weight matrix can be thought of
-        as a bias that gets added to the corresponding output feature.
-      </p>
-      <p>
-        We can also leverage multiplicative interactions as opposed to additive
-        interactions and multiply the input with a feature-wise scaling vector.
-        We call this conditional scaling:
+        as a bias that gets added to the corresponding output feature. How about
+        multiplicative interactions, then?
       </p>
       <figure class="l-body-outset" id="conditional-scaling-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -701,9 +702,9 @@
         zeroed out.
       </p>
       <p>
-        This brings us to the combination of conditional feature-wise scaling
-        and conditional feature-wise shifting into a conditional feature-wise
-        affine transformation,
+        This brings us to the combination of conditional scaling and
+        conditional shifting into a conditional feature-wise affine
+        transformation,
         <d-footnote>
           An affine transformation is a transformation of the form
           <d-math>y = m . x + b</d-math>.
