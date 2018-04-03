@@ -1772,37 +1772,9 @@
       <p>
         Some parallels can be drawn between FiLM and attention, but the two
         operate in different ways which we think are important to disambiguate.
-        Attention is applied to either the spatial axes (in the case of
-        convolutional neural networks) or the temporal axis (in the case of
-        recurrent neural networks) of the data. In other words, the
-        <em>attention distribution</em> (be it location-based or content-based)
-        is the same across the different feature maps of a convolutional input
-        or across the different features of a sequence of feature vectors. In
-        contrast, FiLM is applied to the feature axis; this means that the same
-        affine transformation is applied to all spatial locations in a given
-        feature map or to the value of a given feature at all time steps. This
-        difference stems from two different intuitions underlying attention and
-        FiLM: for attention, it is assumed that the useful information is
-        contained in specific spatial locations or time steps, whereas for
-        FiLM, it is assumed that the useful information is contained in
-        specific features or feature maps.
       </p>
-      <p>
-        Furthermore, attention is mainly used as a pooling method to summarize
-        a stack of feature maps or a sequence of feature vectors into a single
-        vector. FiLM, on the other hand, modulates its input without changing
-        its underlying shape. We also note that the weighted sum computed by an
-        attention mechanism is often normalized using a softmax on the weights
-        such that they sum up to one, whereas FiLM does not usually implement
-        this sort of constraint, but this is more of an implementation detail
-        than anything else. In the end, FiLM and attention can be seen as two
-        complementary tools in the neural toolbox.
-      </p>
-      <p>
-		  
-
-<figure class="l-page-outset" id="filmVsAttention-diagram">
-	<svg width="1080" height="420"> 
+      <figure class="l-page-outset" id="filmVsAttention-diagram">
+        <svg width="1080" height="420"> 
 	<defs id="defs1067">
     <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" style="opacity:0.8;fill:#dd3a96" x="0" y="0"></rect>
     <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" style="opacity:0.8;fill:#3a5edd" x="0" y="0"></rect>
@@ -2431,30 +2403,29 @@
                 [[ 0.9, -0.1,  0.5], [-0.8, -0.7,  0.5], [-0.3, -0.9, -0.2]],
                 [[0.8, -0.9,  0.6], [-0.2, -0.4,  0.2], [-0.6,  0.1, -0.3]]
             ];
-            
+
             var gammas = [-1.6, 0.8, 1.8];
             var betas = [1.0, 0.5, -0.5];
             
             // Note Alpha must be positif            
-            var alpha = [[0.6, 1.7,  1], [ 0.5,  4,  10], [0.8,  3,  7]];	
-            alpha_norm = 0
+            var alpha = [[0.6, 1.7, 1], [0.5, 4, 10], [0.8, 3, 7]];	
+            alpha_norm = 0;
             for (var i = 0; i < 3; i++) {
-               for (var j = 0; j < 3; j++) {
-					alpha_norm = alpha_norm + alpha[i][j]
-				}
-			}
-			for (var i = 0; i < 3; i++) {
-               for (var j = 0; j < 3; j++) {
-					alpha[i][j] = 2* alpha[i][j] / alpha_norm
-				}
-			}
-            
-            
+                for (var j = 0; j < 3; j++) {
+                    alpha_norm = alpha_norm + alpha[i][j]
+                }
+            }
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    alpha[i][j] = 2* alpha[i][j] / alpha_norm
+                }
+            }
+
             var data = [];
             for (var k = 0; k < 3; k++) {
                 data.push({featureMap: featureMaps[k], gamma: gammas[k], beta: betas[k], alpha: alpha});
             }
-            
+
             var convData = [];
             for (var k = 0; k < 3; k++) {
                 for (var i = 0; i < 3; i++) {
@@ -2464,9 +2435,7 @@
                     }
                 }
             }
-            
 
-            
             var amplitudeScale = d3.scaleSqrt().domain([0.0, 2.0]).range([0.0, 0.8]).clamp(true);
 
             function updatePatch(selection, accessor) {
@@ -2474,55 +2443,55 @@
                     var r = accessor(d);
                     var s = Math.sign(r) * amplitudeScale(Math.abs(r));
                     d3.select(this)
-                      .select(".convolutional-patch")
+                        .select(".convolutional-patch")
                         .attr("opacity", Math.abs(s))
                         .attr("href", r < 0 ?  "#convolutional-patch-negative" : "#convolutional-patch-positive");
                 });
             }
-            
-            
 
-
-			// Attention pipeline
-			svg.select("g#cnn-figure-attention g#input-conv-att").selectAll("g.feature").data(convData);
+            // Attention pipeline
+            svg.select("g#cnn-figure-attention g#input-conv-att").selectAll("g.feature").data(convData);
             svg.select("g#cnn-figure-attention g#alpha-conv-att").selectAll("g.feature").data(convData);
             svg.select("g#cnn-figure-attention g#out-conv-att").selectAll("g.feature").data(convData);
             svg.select("g#cnn-figure-attention g#out-feat-att").selectAll("g.feature").data(data);
-                        	
-			// FiLM pipeline
-			svg.select("g#cnn-figure-film g#input-conv-film").selectAll("g.feature").data(convData);
+
+            // FiLM pipeline
+            svg.select("g#cnn-figure-film g#input-conv-film").selectAll("g.feature").data(convData);
             svg.select("g#cnn-figure-film g#gamma-conv-film").selectAll("g.feature").data(data);
             svg.select("g#cnn-figure-film g#out-conv-film").selectAll("g.feature").data(convData);
-            
-            function update() {    
-				
-				// Attention pipeline
-				updatePatch(svg.select("g#cnn-figure-attention g#input-conv-att"), function(d) { return d.feature; });
-				updatePatch(svg.select("g#cnn-figure-attention g#alpha-conv-att"), function(d) { return d.alpha; });
-				updatePatch(svg.select("g#cnn-figure-attention g#out-conv-att"), function(d) { return d.alpha * d.feature; });
-				updatePatch(svg.select("g#cnn-figure-attention g#out-feat-att"), function(d)   { 
-					attention_pool = 0
-					n = 0
-					for (var i = 0; i < 3; i++) {
-							for (var j = 0; j < 3; j++) {
-								attention_pool = attention_pool + d.alpha[i][j] * d.featureMap[i][j]
-								n = n + 1
-							}
-						}
-					
-						return attention_pool; 
-				}); 
-				
-				// FiLM pipeline
-				updatePatch(svg.select("g#cnn-figure-film g#input-conv-film"), function(d) { return d.feature; });
-				updatePatch(svg.select("g#cnn-figure-film g#gamma-conv-film"), function(d) { return d.gamma; });
-				updatePatch(svg.select("g#cnn-figure-film g#out-conv-film"), function(d) { return d.gamma * d.feature; });
-			}    
-			update()						
 
+            function update() {    
+                // Attention pipeline
+                updatePatch(svg.select("g#cnn-figure-attention g#input-conv-att"), function(d) { return d.feature; });
+                updatePatch(svg.select("g#cnn-figure-attention g#alpha-conv-att"), function(d) { return d.alpha; });
+                updatePatch(svg.select("g#cnn-figure-attention g#out-conv-att"), function(d) { return d.alpha * d.feature; });
+                updatePatch(svg.select("g#cnn-figure-attention g#out-feat-att"), function(d)   { 
+                    attention_pool = 0;
+                    n = 0;
+                    for (var i = 0; i < 3; i++) {
+                        for (var j = 0; j < 3; j++) {
+                            attention_pool = attention_pool + d.alpha[i][j] * d.featureMap[i][j]
+                            n = n + 1
+                        }
+                    }
+                    return attention_pool; 
+                }); 
+
+                // FiLM pipeline
+                updatePatch(svg.select("g#cnn-figure-film g#input-conv-film"), function(d) { return d.feature; });
+                updatePatch(svg.select("g#cnn-figure-film g#gamma-conv-film"), function(d) { return d.gamma; });
+                updatePatch(svg.select("g#cnn-figure-film g#out-conv-film"), function(d) { return d.gamma * d.feature; });
+            }    
+            update()
         })();
       </script>
-
+      <p>
+        This difference stems from two different intuitions underlying
+        attention and FiLM: for attention, it is assumed that the useful
+        information is contained in specific spatial locations or time steps,
+        whereas for FiLM, it is assumed that the useful information is
+        contained in specific features or feature maps.  In the end, FiLM and
+        attention can be seen as two complementary tools in the neural toolbox.
       </p>
       <p>
         Finally, FiLM layers can be seen as a special case of a bilinear
