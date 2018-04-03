@@ -279,36 +279,39 @@
         We refer to this mechanism as concatenation-based conditioning:
       </p>
       <figure class="l-body-outset" id="concatenation-diagram">
-        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
-          <path d="M475,10l0,280" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
-          <text x="10" y="10" class="figure-text">
+        <svg viewBox="0 0 744 230" xmlns="http://www.w3.org/2000/svg">
+          <text x="260" y="10" dy="1em" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
-              is implemented by
             </tspan>
-            <tspan x="10" dy="1.5em">
-              <tspan style="font-weight: bold;">concatenating</tspan>
-              the conditioning representation to the input.
+            <tspan x="260" dy="1.5em">
+              is implemented by <tspan style="font-weight: bold;">concatenating</tspan>
+            </tspan>
+            <tspan x="260" dy="1.5em">
+              the conditioning representation to
+            </tspan>
+            <tspan x="260" dy="1.5em">
+              the input.
             </tspan>
           </text>
-          <text x="495" y="10" class="figure-text">
+          <text x="445" y="110" dy="0.4em" class="figure-text">
             <tspan>
-              The resulting vector is then passed through
+              The result is passed through a linear
             </tspan>
-            <tspan x="495" dy="1.5em">
-              a linear layer to produce the conditioned
-            </tspan>
-            <tspan x="495" dy="1.5em">
-              output.
+            <tspan x="445" dy="1.5em">
+              layer to produce the output.
             </tspan>
           </text>
-          <g transform="translate(10, 120)">
-            <g transform="translate(0, 60)">
+          <g transform="translate(10, 70)">
+            <text x="0" y="90" dy="0.4em" class="figure-text">
+              input
+            </text>
+            <g transform="translate(40, 60)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
             </g>
-            <text x="191" y="-30" dy="-0.35em" style="text-anchor: end; font-weight: bold;" class="figure-text">
+            <text x="191" y="-30" dy="-0.35em" style="text-anchor: end;" class="figure-text">
               <tspan>conditioning</tspan>
               <tspan x="191" dy="1.5em">representation</tspan>
             </text>
@@ -329,24 +332,27 @@
               <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
             </g>
-            <g transform="translate(493, 30)">
+            <g transform="translate(380, 30)">
               <rect width="40" height="120" class="figure-element figure-box"/>
               <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
             </g>
-            <g transform="translate(604, 50)">
+            <g transform="translate(660, 50)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
             </g>
-            <path d="M 20 90 L 186 90" class="figure-line"/>
+            <text x="690" y="90" dy="0.4em" class="figure-text">
+              output
+            </text>
+            <path d="M 60 90 L 186 90" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
             <path d="M 231 90 L 297 90" class="figure-line"/>
             <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
-            <path d="M 327 90 L 488 90" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
-            <path d="M 533 90 L 599 90" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(599, 90)" class="figure-path"/>
+            <path d="M 327 90 L 375 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(375, 90)" class="figure-path"/>
+            <path d="M 420 90 L 655 90" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(655, 90)" class="figure-path"/>
             <path d="M 211 0 L 211 25" class="figure-line"/>
             <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
           </g>
