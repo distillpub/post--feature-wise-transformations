@@ -3679,8 +3679,8 @@
         image-question-answer tuples.
       </p>
       <p>
-        We can also leverage FiLM to condition a pre-trained network. In
-        de Vries et al. <d-cite key="vries2017modulating"></d-cite>, the visual pipeline of a
+        de Vries et al. <d-cite key="vries2017modulating"></d-cite> leverage
+        FiLM to condition a pre-trained network. The visual pipeline of a
         visual question-answering (VQA) model is modulated by the model's
         linguistic pipeline through conditional batch normalization (CBN),
         which can be viewed as a special case of FiLM. The model is trained on
@@ -3875,12 +3875,12 @@
       </p>
       <h3>Style transfer</h3>
       <p>
-        We can also use FiLM layers to condition a style transfer network on a
-        chosen style image. In Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
-        transfer networks are extended to accommodate multiple styles by
-        introducing Conditional Instance
-        normalization (CIN) layers. Each style modeled by the
-        network is associated with its own set of instance normalization
+        Feature-wise transformations are used in Dumoulin et al.
+        <d-cite key="dumoulin2017learned"></d-cite> to condition a style
+        transfer network on a chosen style image. Conditional instance
+        normalization (CIN) layers are introduced into a fast feedforward style
+        transfer network to accommodate multiple styles. Each style modeled by
+        the network is associated with its own set of instance normalization
         parameters, and conditioning is achieved by applying the normalization
         with style-specific parameters.
       </p>
@@ -4021,8 +4021,9 @@
       <p>
         Like CBN, CIN can be seen as an instance of FiLM where the
         post-normalization feature-wise affine transformation is replaced with a
-        FiLM layer. The main differentiator between Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>
-        and Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
+        FiLM layer. The main differentiator between Dumoulin et al.
+        <d-cite key="dumoulin2017learned"></d-cite> and Ghiasi et al.
+        <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
         implementation: in the former the generator is a simple embedding
         lookup, whereas in the latter the generator is a convolutional neural
         network.
@@ -4340,10 +4341,10 @@
         </svg>
       </figure>
       <p>
-        In the visual domain, the ImageNet 2017 winning model
-        <d-cite key="hu2017squeeze"></d-cite> employs a self-conditioning
-        scheme in the form of feature-wise sigmoidal gating as a way to
-        "recalibrate" a layer's activations conditioned on <em>themselves</em>.
+        The ImageNet 2017 winning model <d-cite key="hu2017squeeze"></d-cite>
+        employs a self-conditioning scheme in the form of feature-wise
+        sigmoidal gating as a way to "recalibrate" a layer's activations
+        conditioned on <em>themselves</em>.
       </p>
       <figure class="l-page-outset" id="squeeze-diagram">
         <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
