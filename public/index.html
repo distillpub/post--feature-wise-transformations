@@ -4804,49 +4804,68 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
       <h3 id="bibliographic-notes">Bibliographic Notes</h3>
       <p>
         Many models lie on the spectrum between FiLM and Hypernetworks:
-        <ul>
-          <li>
-            Adaptive CNN (ACNN) <d-cite key="kang2017incorporating"></d-cite>
-            predicts the value of several of the model's convolution filters as
-            a function of auxiliary inputs like camera perspective, level of
-            noise, etc. The resulting convolution filters turn out to be very
-            effective in difficult vision tasks such as crowd counting or image
-            deblurring.
-          </li>
-          <li>
-            Residual Adapters <d-cite key="rebuffi2017residualadapters"></d-cite>
-            also propose to predict entire convolutional filters conditioned on
-            the visual recognition domain they are operating in.
-          </li>
-          <li>
-            In the zero-shot/one-shot learning setting, the model proposed by Ba
-            et al. <d-cite key="lei2015predicting"></d-cite> predicts
-            convolutional filters and classifiers weights based on textual
-            descriptions of object classes.
-          </li>
-          <li>
-            In the reinforcement learning setting, the model proposed by Oh et
-            al. <d-cite key="oh2017zero"></d-cite> computes the parameters of a
-            policy-convolutional network conditioned on the task description.
-          </li>
-        </ul>
       </p>
+      <ul>
+        <li>
+          Adaptive CNN (ACNN) <d-cite key="kang2017incorporating"></d-cite>
+          predicts the value of several of the model's convolution filters as
+          a function of auxiliary inputs like camera perspective, level of
+          noise, etc. The resulting convolution filters turn out to be very
+          effective in difficult vision tasks such as crowd counting or image
+          deblurring.
+        </li>
+        <li>
+          Residual Adapters <d-cite key="rebuffi2017residualadapters"></d-cite>
+          also propose to predict entire convolutional filters conditioned on
+          the visual recognition domain they are operating in.
+        </li>
+        <li>
+          In the zero-shot/one-shot learning setting, the model proposed by Ba
+          et al. <d-cite key="lei2015predicting"></d-cite> predicts
+          convolutional filters and classifiers weights based on textual
+          descriptions of object classes.
+        </li>
+        <li>
+          In the reinforcement learning setting, the model proposed by Oh et
+          al. <d-cite key="oh2017zero"></d-cite> computes the parameters of a
+          policy-convolutional network conditioned on the task description.
+        </li>
+      </ul>
       <p>
-        <h3 id="bibliographic-bilinear">Bilinear Models and Applications</h3>
-			<p>
-			Bilinear models were first introduced in the vision community by to better untangle latent perceptual factors<d-cite key="tenenbaum1997separating"></d-cite>.
-			As described by the paper's title, the authors wanted to separate the image style from its content, arguing that classic linear models were not rich enough to extract such complex interaction.
-			There, they demonstrate the effectiveness of their approach by applying it for spoken vowel identification or zero-shot font classification.
-		    </p>
-			<p>
-			Among the first bilinear model applications one remarkable case was to perform facial animation<d-cite key="chuang2002facial"></d-cite>.
-			While the style describes the key facial features, the content encodes the visual emotions. 
-			This allows, for example, a sequence originally recorded with a happy expression to be modified so that the speaker appears to be speaking with an angry or neutral expression.
-			Bilinear models are also present in recommendation system by extracting user and item information in various settings<d-cite key="chu2009personalized,yang2011like"></d-cite>. 
-			More generally, recommendation system heavily rely on matrix factorization methods<d-cite key="koren2009matrix"></d-cite>, which is a bilinear model where one of the latent is fixed<d-cite key="tenenbaum1997separating"></d-cite>.
-			More recently, bilinear models have inspired new neural architecture in visual recognition<d-cite key="lin2015bilinear"></d-cite>, video action recogintion<d-cite key="feichtenhofer2016convolutional"></d-cite> or visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.
-			</p>
+        Bilinear models were first introduced in the vision community by
+        Tenenbaum et al. <d-cite key="tenenbaum1997separating"></d-cite> to
+        better untangle latent perceptual factors. The authors wanted to
+        separate the image style from its content, arguing that classic linear
+        models were not rich enough to extract such complex interaction. They
+        demonstrate the effectiveness of their approach by applying it for
+        spoken vowel identification or zero-shot font classification. Notable
+        applications include:
       </p>
+      <ul>
+        <li>
+          Chuang et al. <d-cite key="chuang2002facial"></d-cite> perform facial
+          animation using bilinear transformations by separating key facial
+          features (the style) from visual emotions (the content). This allows
+          to modify a sequence originally recorded with a happy expression so
+          that the subject appears to be speaking with an angry or neutral
+          expression.
+        </li>
+        <li>
+          Chu et al. <d-cite key="chu2009personalized"></d-cite> and Yang et
+          al. <d-cite key="yang2011like"></d-cite> apply bilinear models to
+          recommendation systems by extracting user and item information in
+          various settings. More generally, recommendation systems rely heavily
+          on matrix factorization methods <d-cite key="koren2009matrix"></d-cite>,
+          which can be viewed as a bilinear model in which one of the latent
+          vectors is kept fixed<d-cite key="tenenbaum1997separating"></d-cite>.
+        </li>
+        <li>
+          More recently, bilinear models have inspired new neural architecture
+          in visual recognition <d-cite key="lin2015bilinear"></d-cite>, video
+          action recognition <d-cite key="feichtenhofer2016convolutional"></d-cite>,
+          and visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.
+        </li>
+      </ul>
       <p>
         <span class="todo">
             TODO(ethanjperez): insert bibliographic note three-way interactions
