@@ -1774,8 +1774,70 @@
         operate in different ways which we think are important to disambiguate.
       </p>
       <figure class="l-page-outset" id="filmVsAttention-diagram">
-        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
-          <g id="cnn-figure-attention" transform="translate(10,170)">
+        <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(270,10)">
+            <text x="0" y="0" class="figure-text">
+              <tspan>
+                <tspan style="font-weight: bold;">Attention</tspan> computes a
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                probability distribution
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                over <tspan style="font-weight: bold;">locations</tspan>.
+              </tspan>
+            </text>
+          </g>
+          <g transform="translate(500,10)">
+            <text x="0" y="0" class="figure-text">
+              <tspan>
+                <tspan style="font-weight: bold;">Attention</tspan> features a
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                <tspan style="font-weight: bold;">pooling</tspan> stage.
+              </tspan>
+            </text>
+          </g>
+          <g transform="translate(760,10)">
+            <text x="0" y="0" class="figure-text">
+              <tspan>
+                The output of <tspan style="font-weight: bold;">attention</tspan>
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                summarizes the input
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                into a vector.
+              </tspan>
+            </text>
+          </g>
+          <g transform="translate(270,280)">
+            <text x="0" y="0" class="figure-text">
+              <tspan>
+                <tspan style="font-weight: bold;">FiLM</tspan> computes a scaling
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                vector which is applied
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                to the <tspan style="font-weight: bold;">feature</tspan> axis.
+              </tspan>
+            </text>
+          </g>
+          <g transform="translate(760,280)">
+            <text x="0" y="0" class="figure-text">
+              <tspan>
+                The output of <tspan style="font-weight: bold;">FiLM</tspan>
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                conserves the input
+              </tspan>
+              <tspan x="0" dy="1.5em">
+                dimensions.
+              </tspan>
+            </text>
+          </g>
+          <g id="cnn-figure-attention" transform="translate(10,130)">
             <g id="input-conv-att" transform="translate(0,0)">
               <g transform="translate(45,0)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
@@ -2079,7 +2141,7 @@
               </g>
             </g>
           </g>
-          <g id="cnn-figure-film" transform="translate(10,370)">
+          <g id="cnn-figure-film" transform="translate(10,420)">
             <g id="input-conv-film" transform="translate(0,0)">
               <g transform="translate(45,0)">
                 <g class="feature" transform="matrix(1,0,-0.5,0.5,0,0)">
@@ -2343,23 +2405,6 @@
                 </g>
               </g>
             </g>
-          </g>
-          <g transform="translate(59,110)">
-            <text x="320.56332" y="-93.601944" class="figure-text" style="font-weight:bold">Attention</tspan>
-            computes a probability</text>
-            <text x="320.59927" y="-76.854675" class="figure-text">distribution alpha over the spatial</text>
-            <text x="320.76428" y="-59.223896" class="figure-text">dimension while <tspan style="font-weight:bold">FiLM</tspan>
-            computes a</text>
-            <text x="321.64777" y="-41.82608" class="figure-text">vector over the feature dimension.</text>
-          </g>
-          <g transform="translate(75.918655,109.82754)">
-            <text x="616.77771" y="-92.9683" class="figure-text"><tspan style="font-weight:bold">Attention</tspan>
-            performs a sum-pooling over</text>
-            <text x="616.81366" y="-76.221031" class="figure-text">the spatial dimension reducing the output</text>
-            <text x="616.9787" y="-58.590256" class="figure-text">to a 1-dimensional vector. <tspan style="font-weight:bold">FiLM</tspan>
-            does not</text>
-            <text x="617.86218" y="-41.19244" class="figure-text">rely on a pooling mechanism and preserves</text>
-            <text x="617.07904" y="-24.75568" class="figure-text">preserve the dimension of the feature maps.</text>
           </g>
         </svg>
       </figure>
