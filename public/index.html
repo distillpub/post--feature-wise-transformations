@@ -702,15 +702,19 @@
         zeroed out.
       </p>
       <p>
-        Given that conditioning with additive interactions (such as conditional biasing)
+        Given that conditioning with additive interactions
         seems natural and intuitive, why use multiplicative interactions?
         Multiplicative interactions are useful in learning relationships between inputs,
         as these interactions natural identify “matches”; elements with highly similar values
-        (regardless of sign) will produce higher values when multiplied and lower values otherwise.
-        Dot products, for instance, are thus often used to determine how similar two vectors are.
-        In contrast, additive interactions are more natural for carrying out different tasks,
-        such as feature aggregation or feature detection (i.e. checking if a feature is present in
-        either of two inputs), that are less strongly dependent on the joint values of two inputs.
+        (regardless of sign) will generally produce higher values when multiplied and lower values otherwise.
+        This feature is why dot products are often used to determine how similar two vectors are.
+        In contrast, additive interactions are more natural for functions that are less strongly
+        dependent on the joint values of two inputs, such as feature aggregation or feature detection
+        (i.e. checking if a feature is present in either of two inputs).
+        <d-footnote>
+          Multiplicative interactions alone have had a history of success in various domains.
+          &mdash; see <a href="#bibliographic-notes">Bibliographic Notes</a>.
+        </d-footnote>
       </p>
       <p>
         This brings us to the combination of conditional scaling and
@@ -4904,6 +4908,22 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
     <d-appendix>
       <h3 id="bibliographic-notes">Bibliographic Notes</h3>
       <p>
+          Multiplicative interactions have succeeded on various tasks,
+          ever since they were introduced in computer vision as "mapping units"
+          <d-cite key="hinton1981a"></d-cite> and "dynamic mappings"
+          <d-cite key="vonderMalsburg1994the"></d-cite> around 40 years ago.
+          These domains include Action Recognition<d-cite key="le2011learning"></d-cite>
+          <d-cite key="taylor2010convolutional"></d-cite>,
+          Tracking<d-cite key="ross2006combining"></d-cite>
+          <d-cite key="denil2012learning"></d-cite>,
+          Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
+          Denoising<d-cite key="tang2012boltzmann"></d-cite>,
+          Character-level Language Modeling<d-cite key="sutskever2011generating"></d-cite>,
+          and, more generally, tasks involving relating or matching inputs,
+          such as from different modalities or points in time.
+          <d-cite key="memisevic2013learning"></d-cite>
+      </p>
+      <p>
         Many models lie on the spectrum between FiLM and Hypernetworks:
       </p>
       <ul>
@@ -4967,22 +4987,6 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
           and visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.
         </li>
       </ul>
-      <p>
-          Introduced in computer vision originally as "mapping units"
-          <d-cite key="hinton1981a"></d-cite> and "dynamic mappings"
-          <d-cite key="vonderMalsburg1994the"></d-cite>,
-          multiplicative interactions alone have had a history of success in various domains.
-          These domains include Action Recognition<d-cite key="le2011learning"></d-cite>
-          <d-cite key="taylor2010convolutional"></d-cite>,
-          Tracking<d-cite key="ross2006combining"></d-cite>
-          <d-cite key="denil2012learning"></d-cite>,
-          Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
-          Denoising<d-cite key="tang2012boltzmann"></d-cite>,
-          Character-level Language Modeling<d-cite key="sutskever2011generating"></d-cite>,
-          and, more generally, tasks involving relating or matching inputs,
-          such as from different modalities or points in time.
-          <d-cite key="memisevic2013learning"></d-cite>
-      </p>
       <h3>Acknowledgements</h3>
       <p>
         This article would be nowhere near where it is today without the honest
