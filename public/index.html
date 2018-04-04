@@ -4732,44 +4732,17 @@
       <h1 id="understanding-film">Properties of FiLM-ed networks</h1>
       <p>
         If you are like us, you probably find the success of feature-wise
-        transformations intriguing given how simple they are. In this section,
-        we examine empirical observations we have made while carrying out some
-        of the work presented above, some of which we think may paint a picture
-        explaining <em>how</em> feature-wise transformations are able to
-        succeed in drastically modulating neural networks.
-        <!-- <d-footnote> -->
-        <!--   Before we begin, a word of caution: these observations are far from -->
-        <!--   complete. We consider only <em>one</em> family of feature-wise -->
-        <!--   transformations &mdash; FiLM-related methods &mdash; and <em>two</em> -->
-        <!--   problem settings &mdash; visual reasoning and style transfer. The extent -->
-        <!--   to which these observations extrapolate to other feature-wise -->
-        <!--   transformation families (e.g., sigmoidal gating) has yet to be verified. -->
-        <!--   Furthermore, although we think the hypothesis we are about to propose -->
-        <!--   explains our observations fairly well, we still feel like further -->
-        <!--   experiments and analysis would be necessary before we feel comfortable -->
-        <!--   strongly defending it. -->
-        <!-- </d-footnote> -->
+        transformations intriguing given how simple they are. It appears that
+        modulating the values of FiLM parameters &mdash; which we reiterate are
+        a tiny subset of the model's parameters &mdash; is sufficient to have
+        drastic effects on the computational behaviour of the FiLM-ed network.
       </p>
-      <p>
-        Let us consider two FiLM-ed networks trained in fairly different problem
-        settings: the visual reasoning model presented in Perez et al.
-        <d-cite key="perez2017film"></d-cite> and the style transfer model
-        presented in Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>.
-        Both models feature a well-defined FiLM generator: a linguistic pipeline
-        mapping from textual query to FiLM parameters for the former, and a CNN
-        mapping from style image to FiLM parameters for the latter. Both models
-        also implement fairly standard FiLM-ed networks: a CNN mapping from
-        image to query answer for the former, and a CNN mapping from content
-        image to stylized image for the latter.
-      </p>
-
-      <h3>FiLM parameters as task embeddings</h3>
       <p>
         In adopting the FiLM perspective, we implicitly introduce a notion of
         <em>task representation</em>: each task &mdash; be it a question about
-        a scene or a style image to imitate &mdash; elicits a different set of
-        FiLM parameters via the FiLM generator which can be understood as its
-        representation in terms of how to modulate the FiLMed network. This
+        an image or a painting style to imitate &mdash; elicits a different set
+        of FiLM parameters via the FiLM generator which can be understood as
+        its representation in terms of how to modulate the FiLMed network. This
         representation can be leveraged in various ways.
       </p>
       <p>
@@ -4777,6 +4750,14 @@
         generate stylizations that are in-between two different paintings by
         interpolating between their respective FiLM parameter values.
       </p>
+      <figure class="l-body-outset" id="interpolation-diagram">
+        <svg viewBox="0 0 744 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="724" height="180" class="figure-element"/>
+          <text x="372" y="100" dy="0.4em" style="text-anchor: middle;" class="figure-text">
+            Figure goes here.
+          </text>
+        </svg>
+      </figure>
       <p>
         We can use it to create task analogies. For example, in a visual
         reasoning setting we can make successful predictions for questions
@@ -4789,6 +4770,14 @@
         the three questions in the same way to obtain the FiLM parameters
         that answer the new question.
       </p>
+      <figure class="l-body-outset" id="analogy-diagram">
+        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="724" height="280" class="figure-element"/>
+          <text x="372" y="150" dy="0.4em" style="text-anchor: middle;" class="figure-text">
+            Figure goes here.
+          </text>
+        </svg>
+      </figure>
       <p>
         We can use it to gain insights into the relationship between tasks,
         for instance by applying dimensionality reduction techniques on the
@@ -4822,9 +4811,6 @@
             <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 1</text>
           </g>
         </svg>
-        <figcaption>
-            WRITEME.
-        </figcaption>
       </figure>
       <script>
         (function() {
@@ -4900,6 +4886,14 @@
             }
         })();
       </script>
+      <p>
+        In light of these observations, we wonder: <em>how</em> are
+        feature-wise affine transformations able to perform these sorts of
+        modulations on the FiLM-ed network?
+      </p>
+      <p>
+        <span class="todo">TODO(nschuc): fill this part in.</span>
+      </p>
 
       <hr />
 
