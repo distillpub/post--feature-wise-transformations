@@ -4900,20 +4900,72 @@
         })();
       </script>
       <p>
-        We can also use it to create task analogies. For example, in a visual
-        reasoning setting we can make successful predictions for questions
-        that involves combinations of concepts that have not been seen during
-        training. If the question can be expressed in terms of three
-        questions that have already been seen (e.g., "What is the blue big
-        cylinder made of?" = "What is the blue big sphere made of?" + "What
-        is the green big cylinder made of?" - "What is the green big sphere
-        made of?"), then we can combine the FiLM parameters associated with
-        the three questions in the same way to obtain the FiLM parameters
-        that answer the new question.
+        We can also use it to create task analogies. For example, Perez et al.
+        <d-cite key="perez2018film"></d-cite> show that this idea can be used to
+        allow their visual reasoning model to make successful predictions for
+        questions that involves combinations of concepts that have not been seen
+        during training.
       </p>
       <figure class="l-body-outset" id="analogy-diagram">
-        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
-          <image x="130" y="0" width="500" xlink:href="assets/analogies.jpg"/>
+        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" class="figure-text">
+            <tspan>
+              The model is asked a question involving a combination
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              of concepts unseen during training, which the FiLM
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              generator has trouble handling.
+            </tspan>
+          </text>
+          <text x="400" y="10" class="figure-text">
+            <tspan>
+              By combining the FiLM parameters produced by three
+            </tspan>
+            <tspan x="400" dy="1.5em">
+              familiar question, the model produces the correct answer
+            </tspan>
+            <tspan x="400" dy="1.5em">
+              (metal).
+            </tspan>
+          </text>
+          <image x="10" y="100" height="192" xlink:href="assets/analogy_image.jpg"/>
+          <text x="10" y="292" dy="2em" style="font-style: italic;" class="figure-text">
+            <tspan>
+              <tspan style="font-weight: bold;">Question:</tspan> "What is the blue big cylinder made of?"
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              <tspan style="font-weight: bold;">Answer:</tspan> Rubber
+            </tspan>
+          </text>
+          <path d="M 400 196 L 734 196" style="stroke-width: 0.5px" class="figure-line"/>
+          <path d="M 430 100 L 430 292" style="stroke-width: 0.5px" class="figure-line"/>
+          <text x="440" y="80" class="figure-text">
+            <tspan>
+              A: "What is the blue big cylinder made of?"
+            </tspan>
+            <tspan x="440" dy="1.5em">
+              B: "What is the blue big cylinder made of?"
+            </tspan>
+            <tspan x="440" dy="1.5em">
+              C: "What is the blue big cylinder made of?"
+            </tspan>
+          </text>
+          <path d="M 430 196 L 560 140" class="figure-line"/>
+          <use x="560" y="140" xlink:href="#arrow-right" class="figure-path"/>
+          <text x="480" y="165" class="figure-text">A</text>
+          <path d="M 560 140 L 600 220" class="figure-line"/>
+          <use x="600" y="220" xlink:href="#arrow-down" class="figure-path"/>
+          <text x="590" y="170" class="figure-text">B</text>
+          <path d="M 600 220 L 500 270" class="figure-line"/>
+          <use x="500" y="270" xlink:href="#arrow-left" class="figure-path"/>
+          <text x="540" y="270" class="figure-text">-C</text>
+          <path d="M 430 196 L 500 270" class="figure-line figure-dashed"/>
+          <use x="500" y="270" xlink:href="#arrow-right" class="figure-path"/>
+          <text x="440" y="292" dy="2em" style="font-style: italic;" class="figure-text">
+            "What is the blue big cylinder made of?" = A + B - C
+          </text>
         </svg>
       </figure>
       <p>
