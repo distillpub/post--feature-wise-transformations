@@ -4872,7 +4872,7 @@
         })();
       </script>
       <p>
-        We can use it to create task analogies. For example, in a visual
+        We can also use it to create task analogies. For example, in a visual
         reasoning setting we can make successful predictions for questions
         that involves combinations of concepts that have not been seen during
         training. If the question can be expressed in terms of three
@@ -4889,37 +4889,46 @@
         </svg>
       </figure>
       <p>
-        We can use it to gain insights into the relationship between tasks,
-        for instance by applying dimensionality reduction techniques on the
-        FiLM parameter values.
+        Finally, we can use it to gain insights into the relationship between
+        tasks, for instance by applying dimensionality reduction techniques on
+        the FiLM parameter values.
       </p>
-      <figure class="l-body-outset" id="clevr-tsne">
-        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="480" height="480" style="fill: none;" id="scatter-plot"/>
-          <g transform="matrix(1, 0, 0, 1.000065, 10, -87.145264)" id="film-layer-6">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 6</text>
+      <figure class="l-page-outset" id="tsne-diagram">
+        <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <g id="clevr-plot">
+              <rect x="10" y="10" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
+            </g>
+            <g transform="translate(300, 20)" id="question-types"></g>
+            <g transform="translate(270, 390)" id="film-layer-6">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 6</text>
+            </g>
+            <g transform="translate(140, 390)" id="film-layer-5">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 5</text>
+            </g>
+            <g transform="translate(10, 390)" id="film-layer-4">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 4</text>
+            </g>
+            <g transform="translate(270, 350)" id="film-layer-3">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 3</text>
+            </g>
+            <g transform="translate(140, 350)" id="film-layer-2">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 2</text>
+            </g>
+            <g transform="translate(10, 350)" id="film-layer-1">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 1</text>
+            </g>
           </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, -39.909805)" id="film-layer-5">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 5</text>
+          <g id="style-transfer-plot">
+            <rect x="520" y="10" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 7.325655)" id="film-layer-4">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 4</text>
-          </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 54.561115)" id="film-layer-3">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 3</text>
-          </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 101.79657)" id="film-layer-2">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 2</text>
-          </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 149.032059)" id="film-layer-1">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 1</text>
-          </g>
+          <g transform="translate(800, 20)" id="artist-names">
         </svg>
       </figure>
       <script>
@@ -4927,10 +4936,15 @@
             var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
                           "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
                           "#fee3c8", "#d1d2e7", "#fc8161"];
+            var question_types = [
+                "Exists", "Less than", "Greater than", "Count", "Query material",
+                "Query size", "Query color", "Query shape", "Equal color",
+                "Equal integer", "Equal shape", "Equal size", "Equal material"
+            ];
 
-            var svg = d3.select("#clevr-tsne > svg");
+            var svg = d3.select("#tsne-diagram > svg");
 
-            var scatterPlot = svg.select("#scatter-plot");
+            var scatterPlot = svg.select("#clevr-scatter-plot");
             var xMin = parseInt(scatterPlot.attr("x"));
             var xMax = xMin + parseInt(scatterPlot.attr("width"));
             var yMin = parseInt(scatterPlot.attr("y"));
@@ -4951,6 +4965,30 @@
             var xScales;
             var yScales;
             d3.json("assets/clevr_res_baseline6.json", function(data) {
+                svg.select("#question-types").selectAll("text")
+                    .data(question_types)
+                  .enter().append("text")
+                    .attrs({
+                        "x": 20,
+                        "y": function(d, i) { return 20 * i; },
+                        "dy": "0.4em",
+                    })
+                    .classed("figure-text", true)
+                    .text(function(d) { return d; });
+
+                svg.select("#question-types").selectAll("circle")
+                    .data(question_types)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": 0,
+                        "cy": function(d, i) { return 20 * i; },
+                        "r": 4,
+                    })
+                    .style("fill", function(d, i) { return colors[i]; })
+                    .style("opacity", 0.6)
+                    .style("stroke", "#666")
+                    .style("stroke-width", 1.5);
+
                 dataset = data;
                 xScales = [];
                 yScales = [];
@@ -4969,7 +5007,7 @@
                     );
                 }
 
-                svg.selectAll("circle")
+                svg.select("#clevr-plot").selectAll("circle")
                     .data(dataset)
                   .enter().append("circle")
                     .attrs({
@@ -4981,6 +5019,32 @@
                     .style("opacity", 0.6)
                     .style("stroke", "#666")
                     .style("stroke-width", 1.5);
+
+                var focusAll = function() {
+                    svg.select("#question-types").selectAll("text")
+                        .style("opacity", 0.6);
+                    svg.select("#question-types").selectAll("circle")
+                        .style("opacity", 0.6);
+                    svg.select("#clevr-plot").selectAll("circle")
+                        .style("opacity", 0.6)
+                };
+
+                var focus = function(j) {
+                    svg.select("#question-types").selectAll("text")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#question-types").selectAll("circle")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#clevr-plot").selectAll("circle")
+                        .style("opacity", function(d, i) { return d.question_type == j ?  0.6 : 0.05; })
+                };
+
+                svg.select("#question-types").selectAll("circle")
+                    .on("mouseover", function (d, i) {
+                        focus(i);
+                    })
+                    .on("mouseout", focusAll);
+
+                focusAll();
             });
 
             for (var k = 0; k < 6; k++) {
@@ -4995,22 +5059,13 @@
                     });
             }
         })();
-      </script>
-      <figure class="l-body-outset" id="style-tsne">
-        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="480" height="480" style="fill: none;" id="scatter-plot"/>
-          <g transform="translate(540, 20)" id="artist-names">
-          </g>
-        </svg>
-      </figure>
-      <script>
         (function() {
             var colors = ["#1f77b4", "#ff770e", "#2ca02c", "#d62728", "#9467bd",
                           "#8c564b", "#e377c2", "#7f7f7f"];
 
-            var svg = d3.select("#style-tsne > svg");
+            var svg = d3.select("#tsne-diagram > svg");
 
-            var scatterPlot = svg.select("#scatter-plot");
+            var scatterPlot = svg.select("#style-transfer-scatter-plot");
             var xMin = parseInt(scatterPlot.attr("x"));
             var xMax = xMin + parseInt(scatterPlot.attr("width"));
             var yMin = parseInt(scatterPlot.attr("y"));
@@ -5030,7 +5085,7 @@
                              d3.max(dataset.points, function (d) { return d.y; })])
                     .rangeRound([yMin, yMax])
 
-                svg.selectAll("circle")
+                svg.select("#style-transfer-plot").selectAll("circle")
                     .data(dataset.points)
                   .enter().append("circle")
                     .attrs({
@@ -5039,7 +5094,7 @@
                         "r": 4,
                     })
                     .style("fill", function(d) { return colors[d.artist_index]; })
-                    .style("opacity", function(d) { return d.artist_index == 4 ?  0.6 : 0.1; })
+                    .style("opacity", 0.6)
                     .style("stroke", "#666")
                     .style("stroke-width", 1.5);
 
@@ -5063,9 +5118,35 @@
                         "r": 4,
                     })
                     .style("fill", function(d, i) { return colors[i]; })
-                    .style("opacity", function(d, i) { return i == 4 ?  0.6 : 0.1; })
+                    .style("opacity", 0.6)
                     .style("stroke", "#666")
                     .style("stroke-width", 1.5);
+
+                var focusAll = function() {
+                    svg.select("#artist-names").selectAll("text")
+                        .style("opacity", 0.6);
+                    svg.select("#artist-names").selectAll("circle")
+                        .style("opacity", 0.6);
+                    svg.select("#style-transfer-plot").selectAll("circle")
+                        .style("opacity", 0.6)
+                };
+
+                var focus = function(j) {
+                    svg.select("#artist-names").selectAll("text")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#artist-names").selectAll("circle")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#style-transfer-plot").selectAll("circle")
+                        .style("opacity", function(d, i) { return d.artist_index == j ?  0.6 : 0.05; })
+                };
+
+                svg.select("#artist-names").selectAll("circle")
+                    .on("mouseover", function (d, i) {
+                        focus(i);
+                    })
+                    .on("mouseout", focusAll);
+
+                focusAll();
             });
         })();
       </script>
