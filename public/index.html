@@ -4895,44 +4895,66 @@
       <p>
         Finally, we can use it to gain insights into the relationship between
         tasks, for instance by applying dimensionality reduction techniques on
-        the FiLM parameter values.
+        the FiLM parameter values such as t-SNE <d-cite key="maaten2008visualizing"></d-cite>.
       </p>
       <figure class="l-page-outset" id="tsne-diagram">
-        <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              t-SNE projection of the FiLM parameters associated with
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              questions from the CLEVR validation set, color-coded by
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              question type.
+            </tspan>
+          </text>
+          <text x="520" y="10" dy="1em" class="figure-text">
+            <tspan>
+              t-SNE projection of the FiLM parameters associated with
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              style images from the Painter by Numbers test set, color-
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              coded by artist name.
+            </tspan>
+          </text>
           <g>
             <g id="clevr-plot">
-              <rect x="10" y="10" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
+              <rect x="10" y="100" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
             </g>
-            <g transform="translate(300, 20)" id="question-types"></g>
-            <g transform="translate(270, 390)" id="film-layer-6">
+            <g transform="translate(300, 110)" id="question-types"></g>
+            <g transform="translate(270, 440)" id="film-layer-6">
               <rect width="120" height="30" class="figure-element figure-box"/>
               <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 6</text>
             </g>
-            <g transform="translate(140, 390)" id="film-layer-5">
+            <g transform="translate(140, 440)" id="film-layer-5">
               <rect width="120" height="30" class="figure-element figure-box"/>
               <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 5</text>
             </g>
-            <g transform="translate(10, 390)" id="film-layer-4">
+            <g transform="translate(10, 440)" id="film-layer-4">
               <rect width="120" height="30" class="figure-element figure-box"/>
               <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 4</text>
             </g>
-            <g transform="translate(270, 350)" id="film-layer-3">
+            <g transform="translate(270, 400)" id="film-layer-3">
               <rect width="120" height="30" class="figure-element figure-box"/>
               <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 3</text>
             </g>
-            <g transform="translate(140, 350)" id="film-layer-2">
+            <g transform="translate(140, 400)" id="film-layer-2">
               <rect width="120" height="30" class="figure-element figure-box"/>
               <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 2</text>
             </g>
-            <g transform="translate(10, 350)" id="film-layer-1">
+            <g transform="translate(10, 400)" id="film-layer-1">
               <rect width="120" height="30" class="figure-element figure-box"/>
               <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 1</text>
             </g>
           </g>
           <g id="style-transfer-plot">
-            <rect x="520" y="10" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
+            <rect x="520" y="100" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
           </g>
-          <g transform="translate(800, 20)" id="artist-names">
+          <g transform="translate(800, 110)" id="artist-names">
         </svg>
       </figure>
       <script>
