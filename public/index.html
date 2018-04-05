@@ -10,7 +10,6 @@
           crossorigin="anonymous">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
     <d-front-matter>
       <script type="text/json">{
@@ -1670,193 +1669,109 @@
         </svg>
       </figure>
       <script>
-      (function() {
-  var svg = d3.select("#film-diagram > svg");
-  var features = [0.9, -0.5, -0.8];
-  var featureMaps = [
-    [[-0.6, -0.6, 0.8], [0.6, 0.7, 0.4], [-0.8, 0.8, 0.9]],
-    [[0.9, -0.1, 0.5], [-0.8, -0.7, 0.5], [-0.3, -0.9, -0.2]],
-    [[-0.5, -0.9, 0.6], [-0.2, -0.4, 0.2], [-0.6, 0.1, -0.3]]
-  ];
-  var gammas = [-1.6, 0.8, 1.8];
-  var betas = [1.0, 0.5, -0.5];
-  var data = [];
-  for (var i = 0; i < 3; i++) {
-    data.push({
-      feature: features[i],
-      featureMap: [],
-      gamma: gammas[i],
-      beta: betas[i]
-    });
-  }
-  var convData = [];
-  for (var k = 0; k < 3; k++) {
-    for (var i = 0; i < 3; i++) {
-      for (var j = 0; j < 3; j++) {
-        var d = {
-          feature: featureMaps[i][j][k],
-          gamma: gammas[k],
-          beta: betas[k]
-        };
-        convData.push(d);
-        data[2 - k].featureMap.push(d);
-      }
-    }
-  }
-  var amplitudeScale = d3
-    .scaleSqrt()
-    .domain([0.0, 2.0])
-    .range([0.0, 0.8])
-    .clamp(true);
-  var mouseScale = d3
-    .scaleLinear()
-    .domain([0.0, 40.0])
-    .range([2.0, -2.0])
-    .clamp(true);
-  svg
-    .select("g#mlp-figure g#input-layer")
-    .selectAll("g.feature")
-    .data(data);
-  svg
-    .select("g#mlp-figure g#gamma")
-    .selectAll("g.feature")
-    .data(data);
-  svg
-    .select("g#mlp-figure g#beta")
-    .selectAll("g.feature")
-    .data(data);
-  svg
-    .select("g#mlp-figure g#scaled-layer")
-    .selectAll("g.feature")
-    .data(data);
-  svg
-    .select("g#mlp-figure g#shifted-layer")
-    .selectAll("g.feature")
-    .data(data);
-  svg
-    .select("g#mlp-figure g#relued-layer")
-    .selectAll("g.feature")
-    .data(data);
-  svg
-    .select("g#cnn-figure g#input-layer")
-    .selectAll("g.feature")
-    .data(convData);
-  svg
-    .select("g#cnn-figure g#scaled-layer")
-    .selectAll("g.feature")
-    .data(convData);
-  svg
-    .select("g#cnn-figure g#shifted-layer")
-    .selectAll("g.feature")
-    .data(convData);
-  svg
-    .select("g#cnn-figure g#relued-layer")
-    .selectAll("g.feature")
-    .data(convData);
+        (function() {
+            var svg = d3.select("#film-diagram > svg");
+            var features = [0.9, -0.5, -0.8];
+            var featureMaps = [
+                [[-0.6, -0.6,  0.8], [ 0.6,  0.7,  0.4], [-0.8,  0.8,  0.9]],
+                [[ 0.9, -0.1,  0.5], [-0.8, -0.7,  0.5], [-0.3, -0.9, -0.2]],
+                [[-0.5, -0.9,  0.6], [-0.2, -0.4,  0.2], [-0.6,  0.1, -0.3]]
+            ];
+            var gammas = [-1.6, 0.8, 1.8];
+            var betas = [1.0, 0.5, -0.5];
+            var data = [];
+            for (var i = 0; i < 3; i++) {
+                data.push({feature: features[i], featureMap: [], gamma: gammas[i], beta: betas[i]});
+            }
+            var convData = [];
+            for (var k = 0; k < 3; k++) {
+                for (var i = 0; i < 3; i++) {
+                    for (var j = 0; j < 3; j++) {
+                        var d = {feature: featureMaps[i][j][k], gamma: gammas[k], beta: betas[k]};
+                        convData.push(d);
+                        data[2 - k].featureMap.push(d);
+                    }
+                }
+            }
+            var amplitudeScale = d3.scaleSqrt().domain([0.0, 2.0]).range([0.0, 0.8]).clamp(true);
+            var mouseScale = d3.scaleLinear().domain([0.0, 40.0]).range([2.0, -2.0]).clamp(true);
+            svg.select("g#mlp-figure g#input-layer").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#gamma").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#beta").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#scaled-layer").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#shifted-layer").selectAll("g.feature").data(data);
+            svg.select("g#mlp-figure g#relued-layer").selectAll("g.feature").data(data);
+            svg.select("g#cnn-figure g#input-layer").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure g#scaled-layer").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure g#shifted-layer").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure g#relued-layer").selectAll("g.feature").data(convData);
 
-  function updateSingle(selection, accessor) {
-    selection.selectAll("g.feature").each(function(d, i) {
-      var r = accessor(d);
-      var s = Math.sign(r) * amplitudeScale(Math.abs(r));
-      d3
-        .select(this)
-        .select(".vector-patch")
-        .attr("opacity", Math.abs(s))
-        .attr(
-          "href",
-          r < 0 ? "#vector-patch-negative" : "#vector-patch-positive"
-        );
-      d3
-        .select(this)
-        .select(".figure-line")
-        .attr("transform", "matrix(" + [s, 0, 0, s, 20, 20] + ")");
-    });
-  }
-  function updateSingleConv(selection, accessor) {
-    selection.selectAll("g.feature").each(function(d, i) {
-      var r = accessor(d);
-      var s = Math.sign(r) * amplitudeScale(Math.abs(r));
-      d3
-        .select(this)
-        .select(".convolutional-patch")
-        .attr("opacity", Math.abs(s))
-        .attr(
-          "href",
-          r < 0
-            ? "#convolutional-patch-negative"
-            : "#convolutional-patch-positive"
-        );
-      d3
-        .select(this)
-        .select(".vector-patch")
-        .attr("opacity", Math.abs(s))
-        .attr(
-          "href",
-          r < 0 ? "#vector-patch-negative" : "#vector-patch-positive"
-        );
-      d3
-        .select(this)
-        .select(".figure-line")
-        .attr("transform", "matrix(" + [s, 0, 0, s, 15, 15] + ")");
-    });
-  }
-  function update() {
-    updateSingle(svg.select("g#mlp-figure g#input-layer"), function(d) {
-      return d.feature;
-    });
-    updateSingle(svg.select("g#mlp-figure g#gamma"), function(d) {
-      return d.gamma;
-    });
-    updateSingle(svg.select("g#mlp-figure g#beta"), function(d) {
-      return d.beta;
-    });
-    updateSingle(svg.select("g#mlp-figure g#scaled-layer"), function(d) {
-      return d.gamma * d.feature;
-    });
-    updateSingle(svg.select("g#mlp-figure g#shifted-layer"), function(d) {
-      return d.gamma * d.feature + d.beta;
-    });
-    updateSingle(svg.select("g#mlp-figure g#relued-layer"), function(d) {
-      return Math.max(0.0, d.gamma * d.feature + d.beta);
-    });
-    updateSingleConv(svg.select("g#cnn-figure g#input-layer"), function(d) {
-      return d.feature;
-    });
-    updateSingleConv(svg.select("g#cnn-figure g#scaled-layer"), function(d) {
-      return d.gamma * d.feature;
-    });
-    updateSingleConv(svg.select("g#cnn-figure g#shifted-layer"), function(d) {
-      return d.gamma * d.feature + d.beta;
-    });
-    updateSingleConv(svg.select("g#cnn-figure g#relued-layer"), function(d) {
-      return Math.max(0.0, d.gamma * d.feature + d.beta);
-    });
-  }
-  update();
-  svg
-    .select("g#mlp-figure g#gamma")
-    .selectAll("g.feature")
-    .on("mousemove", function(d) {
-      var newValue = mouseScale(d3.mouse(this)[1]);
-      d.gamma = newValue;
-      for (var i = 0; i < 9; i++) {
-        d.featureMap[i].gamma = newValue;
-      }
-      update();
-    });
-  svg
-    .select("g#mlp-figure g#beta")
-    .selectAll("g.feature")
-    .on("mousemove", function(d, i) {
-      var newValue = mouseScale(d3.mouse(this)[1]);
-      d.beta = newValue;
-      for (var i = 0; i < 9; i++) {
-        d.featureMap[i].beta = newValue;
-      }
-      update();
-    });
-})();
-</script>
+
+            function updateSingle(selection, accessor) {
+                selection.selectAll("g.feature").each(function (d, i) {
+                    var r = accessor(d);
+                    var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+                    d3.select(this)
+                      .select(".vector-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ? "#vector-patch-negative" : "#vector-patch-positive");
+                    d3.select(this)
+                      .select(".figure-line")
+                        .attr("transform", "matrix(" + [s, 0, 0, s, 20, 20] + ")");
+                });
+            }
+            function updateSingleConv(selection, accessor) {
+                selection.selectAll("g.feature").each(function (d, i) {
+                    var r = accessor(d);
+                    var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+                    d3.select(this)
+                      .select(".convolutional-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ?  "#convolutional-patch-negative" : "#convolutional-patch-positive");
+                    d3.select(this)
+                      .select(".vector-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ?  "#vector-patch-negative" : "#vector-patch-positive");
+                    d3.select(this)
+                      .select(".figure-line")
+                        .attr("transform", "matrix(" + [s, 0, 0, s, 15, 15] + ")");
+                });
+            }
+            function update() {
+                updateSingle(svg.select("g#mlp-figure g#input-layer"), function(d) { return d.feature; });
+                updateSingle(svg.select("g#mlp-figure g#gamma"), function(d) { return d.gamma; });
+                updateSingle(svg.select("g#mlp-figure g#beta"), function(d) { return d.beta; });
+                updateSingle(svg.select("g#mlp-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
+                updateSingle(svg.select("g#mlp-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
+                updateSingle(svg.select("g#mlp-figure g#relued-layer"), function(d) { return Math.max(0.0, d.gamma * d.feature + d.beta); });
+                updateSingleConv(svg.select("g#cnn-figure g#input-layer"), function(d) { return d.feature; });
+                updateSingleConv(svg.select("g#cnn-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
+                updateSingleConv(svg.select("g#cnn-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
+                updateSingleConv(svg.select("g#cnn-figure g#relued-layer"), function(d) { return Math.max(0.0, d.gamma * d.feature + d.beta); });
+            }
+            update();
+            svg.select("g#mlp-figure g#gamma")
+              .selectAll("g.feature")
+                .on("mousemove", function (d) {
+                    var newValue = mouseScale(d3.mouse(this)[1]);
+                    d.gamma = newValue;
+                    for (var i = 0; i < 9; i++) {
+                        d.featureMap[i].gamma = newValue;
+                    }
+                    update();
+                });
+            svg.select("g#mlp-figure g#beta")
+              .selectAll("g.feature")
+                .on("mousemove", function (d, i) {
+                    var newValue = mouseScale(d3.mouse(this)[1]);
+                    d.beta = newValue;
+                    for (var i = 0; i < 9; i++) {
+                        d.featureMap[i].beta = newValue;
+                    }
+                    update();
+                });
+        })();
+      </script>
 
 
       <h2>Connecting FiLM to other approaches</h2>
@@ -2517,156 +2432,95 @@
         </svg>
       </figure>
       <script>
-      (function() {
-  var svg = d3.select("#filmVsAttention-diagram > svg");
-  var featureMaps = [
-    [[-0.6, -0.6, 0.8], [0.6, 0.7, 0.4], [-0.8, 0.8, 0.9]],
-    [[0.9, -0.1, 0.5], [-0.8, -0.7, 0.5], [-0.3, -0.9, -0.2]],
-    [[0.8, -0.9, 0.6], [-0.2, -0.4, 0.2], [-0.6, 0.1, -0.3]]
-  ];
+        (function() {
+            var svg = d3.select("#filmVsAttention-diagram > svg");
+            var featureMaps = [
+                [[-0.6, -0.6,  0.8], [ 0.6,  0.7,  0.4], [-0.8,  0.8,  0.9]],
+                [[ 0.9, -0.1,  0.5], [-0.8, -0.7,  0.5], [-0.3, -0.9, -0.2]],
+                [[0.8, -0.9,  0.6], [-0.2, -0.4,  0.2], [-0.6,  0.1, -0.3]]
+            ];
 
-  var gammas = [-1.6, 0.8, 1.8];
-  var betas = [1.0, 0.5, -0.5];
+            var gammas = [-1.6, 0.8, 1.8];
+            var betas = [1.0, 0.5, -0.5];
 
-  // Note Alpha must be positif
-  var alpha = [[0.6, 1.7, 1], [0.5, 4, 10], [0.8, 3, 7]];
-  alpha_norm = 0;
-  for (var i = 0; i < 3; i++) {
-    for (var j = 0; j < 3; j++) {
-      alpha_norm = alpha_norm + alpha[i][j];
-    }
-  }
-  for (var i = 0; i < 3; i++) {
-    for (var j = 0; j < 3; j++) {
-      alpha[i][j] = 2 * alpha[i][j] / alpha_norm;
-    }
-  }
+            // Note Alpha must be positif
+            var alpha = [[0.6, 1.7, 1], [0.5, 4, 10], [0.8, 3, 7]];
+            alpha_norm = 0;
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    alpha_norm = alpha_norm + alpha[i][j]
+                }
+            }
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    alpha[i][j] = 2* alpha[i][j] / alpha_norm
+                }
+            }
 
-  var data = [];
-  for (var k = 0; k < 3; k++) {
-    data.push({
-      featureMap: featureMaps[k],
-      gamma: gammas[k],
-      beta: betas[k],
-      alpha: alpha
-    });
-  }
+            var data = [];
+            for (var k = 0; k < 3; k++) {
+                data.push({featureMap: featureMaps[k], gamma: gammas[k], beta: betas[k], alpha: alpha});
+            }
 
-  var convData = [];
-  for (var k = 0; k < 3; k++) {
-    for (var i = 0; i < 3; i++) {
-      for (var j = 0; j < 3; j++) {
-        var d = {
-          feature: featureMaps[k][i][j],
-          gamma: gammas[k],
-          beta: betas[k],
-          alpha: alpha[i][j]
-        };
-        convData.push(d);
-      }
-    }
-  }
+            var convData = [];
+            for (var k = 0; k < 3; k++) {
+                for (var i = 0; i < 3; i++) {
+                    for (var j = 0; j < 3; j++) {
+                        var d = {feature: featureMaps[k][i][j], gamma: gammas[k], beta: betas[k], alpha: alpha[i][j]};
+                        convData.push(d);
+                    }
+                }
+            }
 
-  var amplitudeScale = d3
-    .scaleSqrt()
-    .domain([0.0, 2.0])
-    .range([0.0, 0.8])
-    .clamp(true);
+            var amplitudeScale = d3.scaleSqrt().domain([0.0, 2.0]).range([0.0, 0.8]).clamp(true);
 
-  function updatePatch(selection, accessor) {
-    selection.selectAll("g.feature").each(function(d, i) {
-      var r = accessor(d);
-      var s = Math.sign(r) * amplitudeScale(Math.abs(r));
-      d3
-        .select(this)
-        .select(".convolutional-patch")
-        .attr("opacity", Math.abs(s))
-        .attr(
-          "href",
-          r < 0
-            ? "#convolutional-patch-negative"
-            : "#convolutional-patch-positive"
-        );
-    });
-  }
+            function updatePatch(selection, accessor) {
+                selection.selectAll("g.feature").each(function (d, i) {
+                    var r = accessor(d);
+                    var s = Math.sign(r) * amplitudeScale(Math.abs(r));
+                    d3.select(this)
+                        .select(".convolutional-patch")
+                        .attr("opacity", Math.abs(s))
+                        .attr("href", r < 0 ?  "#convolutional-patch-negative" : "#convolutional-patch-positive");
+                });
+            }
 
-  // Attention pipeline
-  svg
-    .select("g#cnn-figure-attention g#input-conv-att")
-    .selectAll("g.feature")
-    .data(convData);
-  svg
-    .select("g#cnn-figure-attention g#alpha-conv-att")
-    .selectAll("g.feature")
-    .data(convData);
-  svg
-    .select("g#cnn-figure-attention g#out-conv-att")
-    .selectAll("g.feature")
-    .data(convData);
-  svg
-    .select("g#cnn-figure-attention g#out-feat-att")
-    .selectAll("g.feature")
-    .data(data);
+            // Attention pipeline
+            svg.select("g#cnn-figure-attention g#input-conv-att").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-attention g#alpha-conv-att").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-attention g#out-conv-att").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-attention g#out-feat-att").selectAll("g.feature").data(data);
 
-  // FiLM pipeline
-  svg
-    .select("g#cnn-figure-film g#input-conv-film")
-    .selectAll("g.feature")
-    .data(convData);
-  svg
-    .select("g#cnn-figure-film g#gamma-conv-film")
-    .selectAll("g.feature")
-    .data(data);
-  svg
-    .select("g#cnn-figure-film g#out-conv-film")
-    .selectAll("g.feature")
-    .data(convData);
+            // FiLM pipeline
+            svg.select("g#cnn-figure-film g#input-conv-film").selectAll("g.feature").data(convData);
+            svg.select("g#cnn-figure-film g#gamma-conv-film").selectAll("g.feature").data(data);
+            svg.select("g#cnn-figure-film g#out-conv-film").selectAll("g.feature").data(convData);
 
-  function update() {
-    // Attention pipeline
-    updatePatch(svg.select("g#cnn-figure-attention g#input-conv-att"), function(
-      d
-    ) {
-      return d.feature;
-    });
-    updatePatch(svg.select("g#cnn-figure-attention g#alpha-conv-att"), function(
-      d
-    ) {
-      return d.alpha;
-    });
-    updatePatch(svg.select("g#cnn-figure-attention g#out-conv-att"), function(
-      d
-    ) {
-      return d.alpha * d.feature;
-    });
-    updatePatch(svg.select("g#cnn-figure-attention g#out-feat-att"), function(
-      d
-    ) {
-      attention_pool = 0;
-      n = 0;
-      for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
-          attention_pool = attention_pool + d.alpha[i][j] * d.featureMap[i][j];
-          n = n + 1;
-        }
-      }
-      return attention_pool;
-    });
+            function update() {
+                // Attention pipeline
+                updatePatch(svg.select("g#cnn-figure-attention g#input-conv-att"), function(d) { return d.feature; });
+                updatePatch(svg.select("g#cnn-figure-attention g#alpha-conv-att"), function(d) { return d.alpha; });
+                updatePatch(svg.select("g#cnn-figure-attention g#out-conv-att"), function(d) { return d.alpha * d.feature; });
+                updatePatch(svg.select("g#cnn-figure-attention g#out-feat-att"), function(d)   {
+                    attention_pool = 0;
+                    n = 0;
+                    for (var i = 0; i < 3; i++) {
+                        for (var j = 0; j < 3; j++) {
+                            attention_pool = attention_pool + d.alpha[i][j] * d.featureMap[i][j]
+                            n = n + 1
+                        }
+                    }
+                    return attention_pool;
+                });
 
-    // FiLM pipeline
-    updatePatch(svg.select("g#cnn-figure-film g#input-conv-film"), function(d) {
-      return d.feature;
-    });
-    updatePatch(svg.select("g#cnn-figure-film g#gamma-conv-film"), function(d) {
-      return d.gamma;
-    });
-    updatePatch(svg.select("g#cnn-figure-film g#out-conv-film"), function(d) {
-      return d.gamma * d.feature;
-    });
-  }
-  update();
-})();
-</script>
+                // FiLM pipeline
+                updatePatch(svg.select("g#cnn-figure-film g#input-conv-film"), function(d) { return d.feature; });
+                updatePatch(svg.select("g#cnn-figure-film g#gamma-conv-film"), function(d) { return d.gamma; });
+                updatePatch(svg.select("g#cnn-figure-film g#out-conv-film"), function(d) { return d.gamma * d.feature; });
+            }
+            update()
+        })();
+      </script>
       <p>
         This difference stems from two different intuitions underlying
         attention and FiLM: for attention, it is assumed that the useful
@@ -5034,127 +4888,79 @@
         </svg>
       </figure>
       <script>
-      (function() {
-  var colors = [
-    "#8ed08b",
-    "#afaed4",
-    "#ecebf4",
-    "#8d89c0",
-    "#fdc692",
-    "#fda057",
-    "#89bedc",
-    "#f67824",
-    "#f44f39",
-    "#fcaf93",
-    "#fee3c8",
-    "#d1d2e7",
-    "#fc8161"
-  ];
+        (function() {
+            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
+                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
+                          "#fee3c8", "#d1d2e7", "#fc8161"];
 
-  var svg = d3.select("#clevr-tsne > svg");
+            var svg = d3.select("#clevr-tsne > svg");
 
-  var scatterPlot = svg.select("#scatter-plot");
-  var xMin = parseInt(scatterPlot.attr("x"));
-  var xMax = xMin + parseInt(scatterPlot.attr("width"));
-  var yMin = parseInt(scatterPlot.attr("y"));
-  var yMax = yMin + parseInt(scatterPlot.attr("height"));
+            var scatterPlot = svg.select("#scatter-plot");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
 
-  var coordinates = function(d, i) {
-    switch (i) {
-      case 0:
-        return d.layer_0;
-      case 1:
-        return d.layer_1;
-      case 2:
-        return d.layer_2;
-      case 3:
-        return d.layer_3;
-      case 4:
-        return d.layer_4;
-      case 5:
-        return d.layer_5;
-    }
-  };
+            var coordinates = function(d, i) {
+                switch (i) {
+                    case 0: return d.layer_0;
+                    case 1: return d.layer_1;
+                    case 2: return d.layer_2;
+                    case 3: return d.layer_3;
+                    case 4: return d.layer_4;
+                    case 5: return d.layer_5;
+                }
+            }
 
-  var dataset;
-  var xScales;
-  var yScales;
-  d3.json("assets/clevr_res_baseline6.json", function(data) {
-    dataset = data;
-    xScales = [];
-    yScales = [];
-    for (var i = 0; i < 6; i++) {
-      xScales.push(
-        d3
-          .scaleLinear()
-          .domain([
-            d3.min(dataset, function(d) {
-              return coordinates(d, i).x;
-            }),
-            d3.max(dataset, function(d) {
-              return coordinates(d, i).x;
-            })
-          ])
-          .rangeRound([xMin, xMax])
-      );
-      yScales.push(
-        d3
-          .scaleLinear()
-          .domain([
-            d3.min(dataset, function(d) {
-              return coordinates(d, i).y;
-            }),
-            d3.max(dataset, function(d) {
-              return coordinates(d, i).y;
-            })
-          ])
-          .rangeRound([yMin, yMax])
-      );
-    }
+            var dataset;
+            var xScales;
+            var yScales;
+            d3.json("assets/clevr_res_baseline6.json", function(data) {
+                dataset = data;
+                xScales = [];
+                yScales = [];
+                for (var i = 0; i < 6; i++) {
+                    xScales.push(
+                        d3.scaleLinear()
+                            .domain([d3.min(dataset, function (d) { return coordinates(d, i).x; }),
+                                     d3.max(dataset, function (d) { return coordinates(d, i).x; })])
+                            .rangeRound([xMin, xMax])
+                    );
+                    yScales.push(
+                        d3.scaleLinear()
+                            .domain([d3.min(dataset, function (d) { return coordinates(d, i).y; }),
+                                     d3.max(dataset, function (d) { return coordinates(d, i).y; })])
+                            .rangeRound([yMin, yMax])
+                    );
+                }
 
-    svg
-      .selectAll("circle")
-      .data(dataset)
-      .enter()
-      .append("circle")
-      .attrs({
-        cx: function(d) {
-          return xScales[0](d.layer_0.x);
-        },
-        cy: function(d) {
-          return yScales[0](d.layer_0.y);
-        },
-        r: 4
-      })
-      .style("fill", function(d) {
-        return colors[d.question_type];
-      })
-      .style("opacity", 0.6)
-      .style("stroke", "#666")
-      .style("stroke-width", 1.5);
-  });
+                svg.selectAll("circle")
+                    .data(dataset)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScales[0](d.layer_0.x); },
+                        "cy": function(d) { return yScales[0](d.layer_0.y); },
+                        "r": 4,
+                    })
+                    .style("fill", function(d) { return colors[d.question_type]; })
+                    .style("opacity", 0.6)
+                    .style("stroke", "#666")
+                    .style("stroke-width", 1.5);
+            });
 
-  for (var k = 0; k < 6; k++) {
-    svg.select("#film-layer-" + (k + 1)).on("click", function() {
-      var layer =
-        parseInt(
-          d3
-            .select(this)
-            .attr("id")
-            .charAt(11)
-        ) - 1;
-      svg.selectAll("circle").attrs({
-        cx: function(d) {
-          return xScales[layer](coordinates(d, layer).x);
-        },
-        cy: function(d) {
-          return yScales[layer](coordinates(d, layer).y);
-        }
-      });
-    });
-  }
-})();
-</script>
+            for (var k = 0; k < 6; k++) {
+                svg.select("#film-layer-" + (k + 1))
+                    .on("click", function () {
+                        var layer = parseInt(d3.select(this).attr("id").charAt(11)) - 1;
+                        svg.selectAll("circle")
+                            .attrs({
+                                "cx": function(d) { return xScales[layer](coordinates(d, layer).x); },
+                                "cy": function(d) { return yScales[layer](coordinates(d, layer).y); }
+                            });
+                    });
+            }
+        })();
+      </script>
       <p>
         In light of these observations, we wonder: <em>how</em> are
         feature-wise affine transformations able to perform these sorts of
