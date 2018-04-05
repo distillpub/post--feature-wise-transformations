@@ -4750,92 +4750,105 @@
         generate stylizations that are in-between two different paintings by
         interpolating between their respective FiLM parameter values.
       </p>
-      <figure class="l-body-outset" id="interpolation-diagram">
-        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <image x="334" y="400" width="64" xlink:href="assets/content_stylized_0.jpg"/>
-          <image x="403" y="400" width="64" class="figure-faded" xlink:href="assets/content_stylized_1.jpg"/>
-          <image x="472" y="400" width="64" class="figure-faded" xlink:href="assets/content_stylized_2.jpg"/>
-          <image x="541" y="400" width="64" class="figure-faded" xlink:href="assets/content_stylized_3.jpg"/>
-          <image x="610" y="400" width="64" class="figure-faded" xlink:href="assets/content_stylized_4.jpg"/>
-          <image x="679" y="400" width="64" class="figure-faded" xlink:href="assets/content_stylized_5.jpg"/>
+      <figure class="l-page-outset" id="interpolation-diagram">
+        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(0, 120)">
-            <image x="10" y="10" width="64" class="figure-faded" xlink:href="assets/style1.jpg"/>
-            <image x="10" y="96" width="64" class="figure-faded" xlink:href="assets/style2.jpg"/>
-            <g transform="translate(135, 40)" class="film-generator">
-              <rect width="180" height="100" class="figure-film-generator figure-group figure-box figure-faded"/>
-              <text x="90" y="50" dy="0.4em" style="text-anchor: middle;" class="figure-text figure-text-faded">FiLM generator</text>
+            <image x="10" y="10" width="64" xlink:href="assets/style1.jpg"/>
+            <path d="M 74 42 C 110 42 94 74 130 74" class="figure-line"/>
+            <use x="130" y="74" xlink:href="#arrow-right" class="figure-path"/>
+            <image x="10" y="94" width="64" xlink:href="assets/style2.jpg"/>
+            <path d="M 74 126 C 110 126 94 94 130 94" class="figure-line"/>
+            <use x="130" y="94" xlink:href="#arrow-right" class="figure-path"/>
+            <g transform="translate(135, 44)">
+              <rect width="180" height="80" class="figure-film-generator figure-group figure-box"/>
+              <text x="90" y="40" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM generator</text>
             </g>
-            <g class="figure-faded">
-              <path d="M 76 43 C 106 43 100 63 130 63" class="figure-line"/>
-              <use x="130" y="63" xlink:href="#arrow-right" class="figure-path"/>
-              <path d="M 76 129 C 106 129 100 109 130 109" class="figure-line"/>
-              <use x="130" y="109" xlink:href="#arrow-right" class="figure-path"/>
-              <path d="M 315 63 L 390 20" class="figure-line"/>
-              <use x="390" y="20" xlink:href="#arrow-right" class="figure-path"/>
-              <path d="M 315 109 L 390 160" class="figure-line"/>
-              <use x="390" y="160" xlink:href="#arrow-right" class="figure-path"/>
-            </g>
-            <g>
-              <ellipse rx="4" ry="4" transform="translate(400, 20)" class="figure-path"/>
-              <path d="M 400 20 L 480 90" class="figure-line"/>
-            </g>
-            <g class="figure-faded">
-              <ellipse rx="2" ry="2" transform="translate(400, 48)" class="figure-path"/>
-              <path d="M 400 48 L 480 90" class="figure-line"/>
-            </g>
-            <g class="figure-faded">
-              <ellipse rx="2" ry="2" transform="translate(400, 76)" class="figure-path"/>
-              <path d="M 400 76 L 480 90" class="figure-line"/>
-            </g>
-            <g class="figure-faded">
-              <ellipse rx="2" ry="2" transform="translate(400, 104)" class="figure-path"/>
-              <path d="M 400 104 L 480 90" class="figure-line"/>
-            </g>
-            <g class="figure-faded">
-              <ellipse rx="2" ry="2" transform="translate(400, 132)" class="figure-path"/>
-              <path d="M 400 132 L 480 90" class="figure-line"/>
-            </g>
-            <g class="figure-faded">
-              <ellipse rx="2" ry="2" transform="translate(400, 160)" class="figure-path"/>
-              <path d="M 400 160 L 480 90" class="figure-line"/>
-            </g>
+            <path d="M 315 74 C 370 74 335 20 390 20" class="figure-line"/>
+            <use x="390" y="20" xlink:href="#arrow-right" class="figure-path"/>
+            <path d="M 315 94 C 370 94 335 160 390 160" class="figure-line"/>
+            <use x="390" y="160" xlink:href="#arrow-right" class="figure-path"/>
             <use x="480" y="90" xlink:href="#arrow-right" class="figure-path"/>
           </g>
-          <image x="540" y="10" width="64" class="figure-faded" xlink:href="assets/content.jpg"/>
-          <g class="figure-faded">
-            <path d="M 573 76 L 573 115" class="figure-line"/>
-            <use x="573" y="115" xlink:href="#arrow-down" class="figure-path"/>
+          <image x="523" y="10" width="64" xlink:href="assets/content.jpg"/>
+          <path d="M 555 74 L 555 105" class="figure-line"/>
+          <use x="555" y="105" xlink:href="#arrow-down" class="figure-path"/>
+          <g transform="translate(485, 110)">
+            <rect width="140" height="200" class="figure-filmed-network figure-group figure-box"/>
+            <text x="70" y="100" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM-ed network</text>
           </g>
-          <g transform="translate(500, 120)">
-            <rect width="160" height="200" class="figure-filmed-network figure-group figure-box figure-faded"/>
-            <text x="80" y="100" dy="0.4em" style="text-anchor: middle;" class="figure-text figure-text-faded">FiLM-ed network</text>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 140)" class="figure-path"/>
+            <path d="M 400 140 C 460 140 420 210 480 210" class="figure-line"/>
+            <image x="350" y="400" width="64" xlink:href="assets/content_stylized_0.jpg"/>
+            <path d="M 555 310 C 555 380 382 330 382 400" class="figure-line"/>
+            <use x="382" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g>
-            <path d="M 580 320 L 370 400" class="figure-line"/>
-            <use x="370" y="400" xlink:href="#arrow-down" class="figure-path"/>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 168)" class="figure-path"/>
+            <path d="M 400 168 C 460 168 420 210 480 210" class="figure-line"/>
+            <image x="419" y="400" width="64" xlink:href="assets/content_stylized_1.jpg"/>
+            <path d="M 555 310 C 555 380 451 330 451 400" class="figure-line"/>
+            <use x="451" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g class="figure-faded">
-            <path d="M 580 320 L 440 400" class="figure-line"/>
-            <use x="440" y="400" xlink:href="#arrow-down" class="figure-path"/>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 196)" class="figure-path"/>
+            <path d="M 400 196 C 460 196 420 210 480 210" class="figure-line"/>
+            <image x="488" y="400" width="64" xlink:href="assets/content_stylized_2.jpg"/>
+            <path d="M 555 310 C 555 380 510 330 510 400" class="figure-line"/>
+            <use x="510" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g class="figure-faded">
-            <path d="M 580 320 L 500 400" class="figure-line"/>
-            <use x="500" y="400" xlink:href="#arrow-down" class="figure-path"/>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 224)" class="figure-path"/>
+            <path d="M 400 224 C 460 224 420 210 480 210" class="figure-line"/>
+            <image x="557" y="400" width="64" xlink:href="assets/content_stylized_3.jpg"/>
+            <path d="M 555 310 C 555 380 589 330 589 400" class="figure-line"/>
+            <use x="589" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g class="figure-faded">
-            <path d="M 580 320 L 570 400" class="figure-line"/>
-            <use x="570" y="400" xlink:href="#arrow-down" class="figure-path"/>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 252)" class="figure-path"/>
+            <path d="M 400 252 C 460 252 420 210 480 210" class="figure-line"/>
+            <image x="626" y="400" width="64" xlink:href="assets/content_stylized_4.jpg"/>
+            <path d="M 555 310 C 555 380 658 330 658 400" class="figure-line"/>
+            <use x="658" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g class="figure-faded">
-            <path d="M 580 320 L 630 400" class="figure-line"/>
-            <use x="630" y="400" xlink:href="#arrow-down" class="figure-path"/>
-          </g>
-          <g class="figure-faded">
-            <path d="M 580 320 L 700 400" class="figure-line"/>
-            <use x="700" y="400" xlink:href="#arrow-down" class="figure-path"/>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 280)" class="figure-path"/>
+            <path d="M 400 280 C 460 280 420 210 480 210" class="figure-line"/>
+            <image x="695" y="400" width="64" xlink:href="assets/content_stylized_5.jpg"/>
+            <path d="M 555 310 C 555 380 727 330 727 400" class="figure-line"/>
+            <use x="727" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
         </svg>
       </figure>
+      <script>
+        (function() {
+            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
+                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
+                          "#fee3c8", "#d1d2e7", "#fc8161"];
+
+            var svg = d3.select("#interpolation-diagram > svg");
+
+            svg.selectAll("g.interpolation-style")
+                .data([0, 1, 2, 3, 4, 5]);
+            svg.selectAll("g.interpolation-style > circle")
+                .data([0, 1, 2, 3, 4, 5]);
+
+            var focus = function(i) {
+                svg.selectAll("g.interpolation-style")
+                    .each(function(j) {
+                        d3.select(this)
+                            .classed("figure-faded", i != j);
+                    });
+            };
+
+            svg.selectAll("g.interpolation-style > circle")
+                .on("mouseover", function (d) {
+                    focus(d);
+                });
+
+            focus(0);
+        })();
+      </script>
       <p>
         We can use it to create task analogies. For example, in a visual
         reasoning setting we can make successful predictions for questions
