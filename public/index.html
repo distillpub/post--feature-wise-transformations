@@ -739,7 +739,7 @@
       <h2>FiLM</h2>
       <p>
         To center the discussion around a common language, we propose to use
-        the nomenclature of Perez et al. <d-cite key="perez2017film"></d-cite>, which
+        the nomenclature of Perez et al. <d-cite key="perez2018film"></d-cite>, which
         formalizes feature-wise <em>affine</em> transformations under the
         acronym <em>FiLM</em>, for Feature-wise Linear Modulation.
         <d-footnote>
@@ -3470,10 +3470,10 @@
       </figure>
       <h3>Visual question-answering</h3>
       <p>
-        Figure-wise affine transformations are used by Perez et al.
-        <d-cite key="perez2017learning,perez2017film"></d-cite> to build a
+        Feature-wise affine transformations are used by Perez et al.
+        <d-cite key="perez2017learning,perez2018film"></d-cite> to build a
         visual reasoning model trained on the CLEVR dataset
-        <d-cite key="johnson2017clevr"></d-cite> to answer synthetic questions
+        <d-cite key="johnson2017clevr"></d-cite> to answer questions
         about a synthetic input image.
       </p>
       <figure class="l-page-outset" id="clevr-diagram">
@@ -4048,6 +4048,14 @@
         implementation: in the former the generator is a simple embedding
         lookup, whereas in the latter the generator is a convolutional neural
         network.
+      </p>
+      <p>
+        It's worth quickly noting that Yang et al. <d-cite key="yang2018efficient"></d-cite>
+        succeeding in using a variant of this style of conditioning for video object segmentation,
+        the task of segmenting objects throughout a video given the first frame's image segmentation.
+        Their model conditions an image segmentation network over a video frame on the
+        provided first frame segmentation using feature-wise gains, as well
+        as on the previous frame using position-wise biases.
       </p>
       <p>
         So far, the models we covered have two sub-networks: a primary network
@@ -5195,7 +5203,7 @@
       </script>
       <p>
         The projection on the left is borrowed from Perez et al.
-        <d-cite key="perez2017film"></d-cite>, who observed that depending on
+        <d-cite key="perez2018film"></d-cite>, who observed that depending on
         which FiLM layer they used to make the projection, questions cluster
         differently: lower FiLM layers tend to cluster questions by low-level
         reasoning functions (color, shape, size, etc.), whereas higher FiLM
@@ -5279,10 +5287,8 @@
           Character-level Language Modeling<d-cite key="sutskever2011generating"></d-cite>,
           Image Denoising<d-cite key="tang2012boltzmann"></d-cite>,
           Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
-          Tracking<d-cite key="ross2006combining"></d-cite>
-          <d-cite key="denil2012learning"></d-cite>,
-          Action Recognition<d-cite key="le2011learning"></d-cite>
-          <d-cite key="taylor2010convolutional"></d-cite>,
+          Tracking<d-cite key="ross2006combining,denil2012learning"></d-cite>,
+          Action Recognition<d-cite key="le2011learning,taylor2010convolutional"></d-cite>,
           and, more generally, tasks involving relating or matching inputs,
           such as from different modalities or points in time.
           <d-cite key="memisevic2013learning"></d-cite>
