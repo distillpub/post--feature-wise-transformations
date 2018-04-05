@@ -369,69 +369,71 @@
         conditioning representation?
       <figure class="l-body-outset" id="conditional-biasing-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
+          <text x="330" y="30" dy="1em" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Conditional biasing</tspan>
               is implemented
             </tspan>
-            <tspan x="10" dy="1.5em">
+            <tspan x="330" dy="1.5em">
               by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
             </tspan>
-            <tspan x="10" dy="1.5em">
+            <tspan x="330" dy="1.5em">
               <tspan style="font-weight: bold;">representation</tspan>
               to a bias vector.
             </tspan>
           </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
+          <text x="330" y="200" dy="1em" class="figure-text">
             <tspan>
               The bias vector is then added to
             </tspan>
-            <tspan x="10" dy="1.5em">
+            <tspan x="330" dy="1.5em">
               the input.
             </tspan>
           </text>
           <g transform="translate(-20, 10)">
-            <g transform="translate(284, 200)">
+            <text x="20" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">input</text>
+            <text x="605" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">output</text>
+            <g transform="translate(60, 200)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
             </g>
-            <path d="M 309 240 L 488 240" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(488, 240)" class="figure-path"/>
-            <g transform="translate(504, 240)">
+            <path d="M 80 240 L 300 240" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(300, 240)" class="figure-path"/>
+            <g transform="translate(315, 240)">
               <circle r="10" class="figure-element"/>
               <path d="M -5 0 L 5 0" class="figure-line"/>
               <path d="M 0 -5 L 0 5" class="figure-line"/>
             </g>
-            <path d="M 514 240 L 699 240" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(699, 240)" class="figure-path"/>
-            <g transform="translate(704, 200)">
+            <path d="M 325 240 L 570 240" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(570, 240)" class="figure-path"/>
+            <g transform="translate(575, 200)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
             </g>
-            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
+            <text x="20" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
               <tspan>conditioning</tspan>
-              <tspan x="284" dy="1.5em">representation</tspan>
+              <tspan x="20" dy="1.5em">representation</tspan>
             </text>
-            <g transform="translate(414, 0)">
+            <g transform="translate(170, 0)">
               <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
               <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
             </g>
-            <g transform="translate(494, 20)">
+            <g transform="translate(305, 20)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
             </g>
-            <path d="M 380 60  L 409 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
-            <path d="M 455 60  L 489 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
-            <path d="M 504 100 L 504 225" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(504, 225)" class="figure-path"/>
+            <path d="M 120 60  L 165 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(165, 60)" class="figure-path"/>
+            <path d="M 210 60  L 300 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(300, 60)" class="figure-path"/>
+            <path d="M 315 100 L 315 225" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(315, 225)" class="figure-path"/>
           </g>
         </svg>
       </figure>
@@ -625,70 +627,72 @@
         as a bias that gets added to the corresponding output feature. How about
         multiplicative interactions, then?
       </p>
-      <figure class="l-body-outset" id="conditional-scaling-diagram">
+      <figure class="l-body-outset" id="conditional-biasing-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" dy="1em" class="figure-text">
+          <text x="330" y="30" dy="1em" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Conditional scaling</tspan>
               is implemented
             </tspan>
-            <tspan x="10" dy="1.5em">
+            <tspan x="330" dy="1.5em">
               by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
             </tspan>
-            <tspan x="10" dy="1.5em">
+            <tspan x="330" dy="1.5em">
               <tspan style="font-weight: bold;">representation</tspan>
               to a scaling vector.
             </tspan>
           </text>
-          <text x="10" y="210" dy="1em" class="figure-text">
+          <text x="330" y="200" dy="1em" class="figure-text">
             <tspan>
               The scaling vector is then multiplied
             </tspan>
-            <tspan x="10" dy="1.5em">
+            <tspan x="330" dy="1.5em">
               with the input.
             </tspan>
           </text>
           <g transform="translate(-20, 10)">
-            <g transform="translate(284, 200)">
+            <text x="20" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">input</text>
+            <text x="605" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">output</text>
+            <g transform="translate(60, 200)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
             </g>
-            <path d="M 309 240 L 488 240" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(488, 240)" class="figure-path"/>
-            <g transform="translate(504, 240)">
+            <path d="M 80 240 L 300 240" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(300, 240)" class="figure-path"/>
+            <g transform="translate(315, 240)">
               <circle r="10" class="figure-element"/>
               <ellipse rx="2" ry="2" class="figure-path"/>
             </g>
-            <path d="M 514 240 L 699 240" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(699, 240)" class="figure-path"/>
-            <g transform="translate(704, 200)">
+            <path d="M 325 240 L 570 240" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(570, 240)" class="figure-path"/>
+            <g transform="translate(575, 200)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
             </g>
-            <text x="284" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
+            <text x="20" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
               <tspan>conditioning</tspan>
-              <tspan x="284" dy="1.5em">representation</tspan>
+              <tspan x="20" dy="1.5em">representation</tspan>
             </text>
-            <g transform="translate(414, 0)">
+            <g transform="translate(170, 0)">
               <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
               <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
             </g>
-            <g transform="translate(494, 20)">
+            <g transform="translate(305, 20)">
               <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
               <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
               <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
             </g>
-            <path d="M 380 60  L 409 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(409, 60)" class="figure-path"/>
-            <path d="M 455 60  L 489 60" class="figure-line"/>
-            <use xlink:href="#arrow-right" transform="translate(489, 60)" class="figure-path"/>
-            <path d="M 504 100 L 504 225" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(504, 225)" class="figure-path"/>
+            <path d="M 120 60  L 165 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(165, 60)" class="figure-path"/>
+            <path d="M 210 60  L 300 60" class="figure-line"/>
+            <use xlink:href="#arrow-right" transform="translate(300, 60)" class="figure-path"/>
+            <path d="M 315 100 L 315 225" class="figure-line"/>
+            <use xlink:href="#arrow-down" transform="translate(315, 225)" class="figure-path"/>
           </g>
         </svg>
       </figure>
@@ -2991,26 +2995,22 @@
 
       <h1 id="film-in-literature">Feature-wise transformations in the literature</h1>
       <p>
-        Because of their very general nature and wide applicability,
-        feature-wise transformations are sometimes treated as accessory
-        to the proposed models to which they are applied. We believe there is
-        value in connecting those methods, which is why part of this article is
-        devoted to a literature review.
+        Feature-wise transformations find their way in lots of problem
+        settings, but because of their very general nature and wide
+        applicability, this connection is seldom drawn. Here are notable
+        examples, grouped by application domain.
       </p>
       <h3>Generative modeling</h3>
       <p>
-        As described above, an improvement over the simple idea of concatenating
-conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
-        <d-math>\mathbf{z}</d-math> to the input of <em>all</em> layers in the
-        neural network. This is in fact the approach adopted by the conditional
-        variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
+        Concatenation-based conditioning is used in the conditional variant of
+        DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
         well-recognized class of network architectures for generative
         adversarial networks (GANs) <d-cite key="goodfellow2014generative"></d-cite>.
         The class label is broadcasted as a feature map and is concatenated to
         the input of convolutional and transposed convolutional layers in the
         generator and discriminator networks.
       </p>
-  <figure class="l-body-outset" id="dcgan-diagram">
+      <figure class="l-body-outset" id="dcgan-diagram">
         <svg viewBox="0 0 744 400" xmlns="http://www.w3.org/2000/svg">
           <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
           <text x="10" y="10" class="figure-text">
@@ -3082,10 +3082,19 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        Conditional biasing of layers in the neural network is itself employed
-        in PixelCNN <d-cite key="oord2016conditional"></d-cite> and WaveNet
-        <d-cite key="oord2016wavenet"></d-cite>, two recent advances in
-        autoregressive modeling of image and audio data, respectively.
+        Conditional biasing is used by PixelCNN <d-cite key="oord2016conditional"></d-cite>
+        and WaveNet <d-cite key="oord2016wavenet"></d-cite>, two recent
+        advances in autoregressive modeling of image and audio data,
+        respectively. In its simplest form, conditioning in PixelCNN is
+        achieved by adding feature-wise, conditional biases to the output of
+        all convolutional layers. In FiLM parlance, this means inserting FiLM
+        layers after each convolutional layer and setting the scaling
+        coefficients to a constant value of 1.
+        <d-footnote>
+          The authors also describe a location-dependent biasing scheme which
+          cannot be expressed in terms of FiLM layers due to the absence of the
+          feature-wise property.
+        </d-footnote>
       </p>
       <figure class="l-body-outset" id="pixelcnn-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -3160,19 +3169,6 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        In its simplest form, conditioning in PixelCNN models is achieved by
-        adding feature-wise, class-conditional biases to the output of all
-        convolutional layers. In FiLM parlance, this means inserting FiLM layers
-        after each convolutional layer and expressing the FiLM-generating
-        network as an embedding lookup on the class labels, with the scaling
-        coefficients set to a constant value of 1.
-        <d-footnote>
-          The authors also describe a location-dependent biasing scheme which
-          cannot be expressed in terms of FiLM layers due to the absence of the
-          feature-wise property.
-        </d-footnote>
-      </p>
-      <p>
         WaveNet describes two ways in which conditional biasing allows external
         information to modulate the behavior of the model:
       </p>
@@ -3198,20 +3194,13 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         expresses it as a mapping from an input sequence of conditioning
         information to an output sequence of FiLM parameters.
       </p>
-      <p>
-        Finally, in addition to conditional biasing,
-        PixelCNN <d-cite key="oord2016conditional"></d-cite> and
-        WaveNet <d-cite key="oord2016wavenet"></d-cite> both employ a
-        self-conditioned tanh-sigmoid gated nonlinearity.
-      </p>
       <h3>Reinforcement learning</h3>
       <p>
-        Examples of application include the Gated-Attention architecture
-        <d-cite key="chaplot2017gated"></d-cite>, which uses feature-wise
-        sigmoidal gating to fuse linguistic and visual inputs in the context of
-        a reinforcement learning agent trained to follow simple natural language
-        instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite>
-        3D environment.
+        Feature-wise sigmoidal gating is used in the Gated-Attention architecture
+        <d-cite key="chaplot2017gated"></d-cite> to fuse linguistic and visual
+        information in an agent trained to follow simple natural language
+        instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
+        environment.
       </p>
       <figure class="l-body-outset" id="gated-attention-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -3291,24 +3280,22 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        Feature-wise affine transformations are also used in the reinforcement
-        learning (RL) setting. In Kirkpatrick et al. <d-cite key="kirkpatrick2017overcoming"></d-cite>,
-        the authors briefly touch the idea of applying conditional feature-wise
-        affine transformations to a reinforcement learning problem. They train
-        an agent that learns to play 10 Atari games using a single Double DQN
-        network with task-specific gains and biases, which can be viewed as
-        inserting FiLM layers throughout its hierarchy.
+        Feature-wise affine transformations are used in Kirkpatrick et al.
+        <d-cite key="kirkpatrick2017overcoming"></d-cite> to condition the
+        policy of an agent trained to play 10 different Atari games on the game
+        being played. More specifically, game-specific gains and biases are
+        used in a shared policy network, which can be viewed as inserting FiLM
+        layers throughout its hierarchy.
       </p>
       <h3>Natural language processing</h3>
       <p>
-        Sometimes the sigmoidal restriction can be lifted, as is the case for
-        the Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>.
-        The model extracts information from a text by conditioning the document
-        reading network on a query.  Its architecture is formed of multiple
-        Gated-Attention modules, which involve element-wise multiplications
-        between document representation tokens and token-specific query
-        representations extracted via soft attention on the query representation
-        tokens.
+        Feature-wise scaling is used in the Gated-Attention Reader
+        <d-cite key="dhingra2017gated"></d-cite>. The model extracts
+        information from a text by conditioning the document reading network on
+        a query. Its architecture is formed of multiple Gated-Attention
+        modules, which involve element-wise multiplications between document
+        representation tokens and token-specific query representations
+        extracted via soft attention on the query representation tokens.
       </p>
       <figure class="l-body-outset" id="gated-attention-reader-diagram">
         <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
@@ -3402,14 +3389,13 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         </svg>
       </figure>
       <p>
-        In the natural language domain, Dauphin et al. <d-cite key="dauphin2017language"></d-cite>
-        propose to build a finite context using stacked convolutions to tackle
-        language modeling and introduce gated linear units, which use half of
-        the features to apply feature-wise sigmoidal gating to the second half.
-        This architectural feature is also adopted by
-        Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, who introduce a
-        fast and parallelizable model for machine translation in the form of a
-        purely convolutional architecture.
+        Sigmoidal gating is used by Dauphin et al.
+        <d-cite key="dauphin2017language"></d-cite> in their proposed gated
+        linear unit, which use half of the input features to apply feature-wise
+        sigmoidal gating to the second half. This architectural feature is also
+        adopted by Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>,
+        who introduce a fast and parallelizable model for machine translation
+        in the form of a purely convolutional architecture.
       </p>
       <figure class="l-body-outset" id="convseq2seq-diagram">
         <svg viewBox="0 0 744 260" xmlns="http://www.w3.org/2000/svg">
@@ -3484,14 +3470,11 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
       </figure>
       <h3>Visual question-answering</h3>
       <p>
-        By combining conditional biasing and conditional scaling, we obtain the
-        FiLM layer, which implements a conditional feature-wise affine
-        transformation. We can use FiLM layers to condition a visual processing
-        pipeline to answer textual questions about an image. In <d-cite
-        key="perez2017learning"></d-cite>, and in its expanded version <d-cite
-        key="perez2017film"></d-cite>, a visual reasoning model is trained on the
-        CLEVR dataset <d-cite key="johnson2017clevr"></d-cite> to answer
-        synthetic questions about a synthetic input image.
+        Figure-wise affine transformations are used by Perez et al.
+        <d-cite key="perez2017learning,perez2017film"></d-cite> to build a
+        visual reasoning model trained on the CLEVR dataset
+        <d-cite key="johnson2017clevr"></d-cite> to answer synthetic questions
+        about a synthetic input image.
       </p>
       <figure class="l-page-outset" id="clevr-diagram">
         <svg viewBox="0 0 1080 500" xmlns="http://www.w3.org/2000/svg">
@@ -3716,8 +3699,8 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
         image-question-answer tuples.
       </p>
       <p>
-        We can also leverage FiLM to condition a pre-trained network. In
-        de Vries et al. <d-cite key="vries2017modulating"></d-cite>, the visual pipeline of a
+        de Vries et al. <d-cite key="vries2017modulating"></d-cite> leverage
+        FiLM to condition a pre-trained network. The visual pipeline of a
         visual question-answering (VQA) model is modulated by the model's
         linguistic pipeline through conditional batch normalization (CBN),
         which can be viewed as a special case of FiLM. The model is trained on
@@ -3912,12 +3895,12 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
       </p>
       <h3>Style transfer</h3>
       <p>
-        We can also use FiLM layers to condition a style transfer network on a
-        chosen style image. In Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>, fast feedforward style
-        transfer networks are extended to accommodate multiple styles by
-        introducing Conditional Instance
-        normalization (CIN) layers. Each style modeled by the
-        network is associated with its own set of instance normalization
+        Feature-wise transformations are used in Dumoulin et al.
+        <d-cite key="dumoulin2017learned"></d-cite> to condition a style
+        transfer network on a chosen style image. Conditional instance
+        normalization (CIN) layers are introduced into a fast feedforward style
+        transfer network to accommodate multiple styles. Each style modeled by
+        the network is associated with its own set of instance normalization
         parameters, and conditioning is achieved by applying the normalization
         with style-specific parameters.
       </p>
@@ -4058,8 +4041,9 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
       <p>
         Like CBN, CIN can be seen as an instance of FiLM where the
         post-normalization feature-wise affine transformation is replaced with a
-        FiLM layer. The main differentiator between Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>
-        and Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
+        FiLM layer. The main differentiator between Dumoulin et al.
+        <d-cite key="dumoulin2017learned"></d-cite> and Ghiasi et al.
+        <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
         implementation: in the former the generator is a simple embedding
         lookup, whereas in the latter the generator is a convolutional neural
         network.
@@ -4390,7 +4374,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
       </figure>
       <p>
         The ImageNet 2017 winning model
-        <d-cite key="hu2017squeeze"></d-cite> also employ feature-wise sigmoidal gating
+        <d-cite key="hu2017squeeze"></d-cite> also employs feature-wise sigmoidal gating
         in a self-conditioning manner, as a way to
         "recalibrate" a layer's activations conditioned on <em>themselves</em>.
       </p>
@@ -4761,72 +4745,118 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
 
       <hr />
 
-      <h1 id="understanding-film">A take on understanding FiLM-ed networks</h1>
+      <h1 id="understanding-film">Properties of FiLM-ed networks</h1>
       <p>
         If you are like us, you probably find the success of feature-wise
-        transformations intriguing given how simple they are. In this section,
-        we would like to examine empirical observations we have made while
-        carrying out some of the work presented above which we think may paint a
-        picture explaining <em>how</em> feature-wise transformations are able to
-        succeed in drastically modulating neural networks.
+        transformations intriguing given how simple they are. It appears that
+        modulating the values of FiLM parameters &mdash; which we reiterate are
+        a tiny subset of the model's parameters &mdash; is sufficient to have
+        drastic effects on the computational behaviour of the FiLM-ed network.
       </p>
-      <d-footnote>
-        Before we begin, a word of caution: these observations are far from
-        complete. We consider only <em>one</em> family of feature-wise
-        transformations &mdash; FiLM-related methods &mdash; and <em>two</em>
-        problem settings &mdash; visual reasoning and style transfer. The extent
-        to which these observations extrapolate to other feature-wise
-        transformation families (e.g., sigmoidal gating) has yet to be verified.
-        Furthermore, although we think the hypothesis we are about to propose
-        explains our observations fairly well, we still feel like further
-        experiments and analysis would be necessary before we feel comfortable
-        strongly defending it.
-      </d-footnote>
       <p>
-        Let us consider two FiLM-ed networks trained in fairly different problem
-        settings: the visual reasoning model presented in Perez et al.
-        <d-cite key="perez2017film"></d-cite> and the style transfer model
-        presented in Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>.
-        Both models feature a well-defined FiLM generator: a linguistic pipeline
-        mapping from textual query to FiLM parameters for the former, and a CNN
-        mapping from style image to FiLM parameters for the latter. Both models
-        also implement fairly standard FiLM-ed networks: a CNN mapping from
-        image to query answer for the former, and a CNN mapping from content
-        image to stylized image for the latter.
+        In adopting the FiLM perspective, we implicitly introduce a notion of
+        <em>task representation</em>: each task &mdash; be it a question about
+        an image or a painting style to imitate &mdash; elicits a different set
+        of FiLM parameters via the FiLM generator which can be understood as
+        its representation in terms of how to modulate the FiLMed network. This
+        representation can be leveraged in various ways.
       </p>
-
-      <h3>FiLM parameters as task embeddings</h3>
-      <figure class="l-body-outset" id="clevr-tsne">
-        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="10" width="480" height="480" style="fill: none;" id="scatter-plot"/>
-          <g transform="matrix(1, 0, 0, 1.000065, 10, -87.145264)" id="film-layer-6">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 6</text>
+      <p>
+        We can use it to "interpolate" between tasks. For instance, we can
+        generate stylizations that are in-between two different paintings by
+        interpolating between their respective FiLM parameter values.
+      </p>
+      <figure class="l-page-outset" id="interpolation-diagram">
+        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              Two style images are passed
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              through the FiLM generator.
+            </tspan>
+          </text>
+          <text x="300" y="10" dy="1em" class="figure-text">
+            <tspan>
+              The two resulting sets
+            </tspan>
+            <tspan x="300" dy="1.5em">
+              of FiLM parameters are
+            </tspan>
+            <tspan x="300" dy="1.5em">
+              linearly interpolated and
+            </tspan>
+            <tspan x="300" dy="1.5em">
+              fed to the FiLM-ed network.
+            </tspan>
+          </text>
+          <g transform="translate(0, 120)">
+            <image x="10" y="10" width="64" xlink:href="assets/style1.jpg"/>
+            <path d="M 74 42 C 110 42 94 74 130 74" class="figure-line"/>
+            <use x="130" y="74" xlink:href="#arrow-right" class="figure-path"/>
+            <image x="10" y="94" width="64" xlink:href="assets/style2.jpg"/>
+            <path d="M 74 126 C 110 126 94 94 130 94" class="figure-line"/>
+            <use x="130" y="94" xlink:href="#arrow-right" class="figure-path"/>
+            <g transform="translate(135, 44)">
+              <rect width="180" height="80" class="figure-film-generator figure-group figure-box"/>
+              <text x="90" y="40" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM generator</text>
+            </g>
+            <path d="M 315 74 C 370 74 335 20 390 20" class="figure-line"/>
+            <use x="390" y="20" xlink:href="#arrow-right" class="figure-path"/>
+            <path d="M 315 94 C 370 94 335 160 390 160" class="figure-line"/>
+            <use x="390" y="160" xlink:href="#arrow-right" class="figure-path"/>
+            <use x="480" y="90" xlink:href="#arrow-right" class="figure-path"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, -39.909805)" id="film-layer-5">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 5</text>
+          <image x="523" y="10" width="64" xlink:href="assets/content.jpg"/>
+          <path d="M 555 74 L 555 105" class="figure-line"/>
+          <use x="555" y="105" xlink:href="#arrow-down" class="figure-path"/>
+          <g transform="translate(485, 110)">
+            <rect width="140" height="200" class="figure-filmed-network figure-group figure-box"/>
+            <text x="70" y="100" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM-ed network</text>
           </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 7.325655)" id="film-layer-4">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 4</text>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 140)" class="figure-path"/>
+            <path d="M 400 140 C 460 140 420 210 480 210" class="figure-line"/>
+            <image x="350" y="400" width="64" xlink:href="assets/content_stylized_0.jpg"/>
+            <path d="M 555 310 C 555 380 382 330 382 400" class="figure-line"/>
+            <use x="382" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 54.561115)" id="film-layer-3">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 3</text>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 168)" class="figure-path"/>
+            <path d="M 400 168 C 460 168 420 210 480 210" class="figure-line"/>
+            <image x="419" y="400" width="64" xlink:href="assets/content_stylized_1.jpg"/>
+            <path d="M 555 310 C 555 380 451 330 451 400" class="figure-line"/>
+            <use x="451" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 101.79657)" id="film-layer-2">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 2</text>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 196)" class="figure-path"/>
+            <path d="M 400 196 C 460 196 420 210 480 210" class="figure-line"/>
+            <image x="488" y="400" width="64" xlink:href="assets/content_stylized_2.jpg"/>
+            <path d="M 555 310 C 555 380 510 330 510 400" class="figure-line"/>
+            <use x="510" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
-          <g transform="matrix(1, 0, 0, 1.000065, 9.999977, 149.032059)" id="film-layer-1">
-            <rect x="500" y="97.139" width="121.65" height="29.998" class="figure-element figure-box"/>
-            <text x="603.791" y="32.789" transform="matrix(1, 0, 0, 1.000002, -77.089043, 84.380135)" class="figure-text">FiLM layer 1</text>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 224)" class="figure-path"/>
+            <path d="M 400 224 C 460 224 420 210 480 210" class="figure-line"/>
+            <image x="557" y="400" width="64" xlink:href="assets/content_stylized_3.jpg"/>
+            <path d="M 555 310 C 555 380 589 330 589 400" class="figure-line"/>
+            <use x="589" y="400" xlink:href="#arrow-down" class="figure-path"/>
+          </g>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 252)" class="figure-path"/>
+            <path d="M 400 252 C 460 252 420 210 480 210" class="figure-line"/>
+            <image x="626" y="400" width="64" xlink:href="assets/content_stylized_4.jpg"/>
+            <path d="M 555 310 C 555 380 658 330 658 400" class="figure-line"/>
+            <use x="658" y="400" xlink:href="#arrow-down" class="figure-path"/>
+          </g>
+          <g class="interpolation-style">
+            <circle r="6" transform="translate(400, 280)" class="figure-path"/>
+            <path d="M 400 280 C 460 280 420 210 480 210" class="figure-line"/>
+            <image x="695" y="400" width="64" xlink:href="assets/content_stylized_5.jpg"/>
+            <path d="M 555 310 C 555 380 727 330 727 400" class="figure-line"/>
+            <use x="727" y="400" xlink:href="#arrow-down" class="figure-path"/>
           </g>
         </svg>
-        <figcaption>
-            WRITEME.
-        </figcaption>
       </figure>
       <script>
         (function() {
@@ -4834,9 +4864,125 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
                           "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
                           "#fee3c8", "#d1d2e7", "#fc8161"];
 
-            var svg = d3.select("#clevr-tsne > svg");
+            var svg = d3.select("#interpolation-diagram > svg");
 
-            var scatterPlot = svg.select("#scatter-plot");
+            svg.selectAll("g.interpolation-style")
+                .data([0, 1, 2, 3, 4, 5]);
+            svg.selectAll("g.interpolation-style > circle")
+                .data([0, 1, 2, 3, 4, 5]);
+
+            var focus = function(i) {
+                svg.selectAll("g.interpolation-style")
+                    .each(function(j) {
+                        d3.select(this)
+                            .classed("figure-faded", i != j);
+                    });
+            };
+
+            svg.selectAll("g.interpolation-style > circle")
+                .on("mouseover", function (d) {
+                    focus(d);
+                });
+
+            focus(0);
+        })();
+      </script>
+      <p>
+        We can also use it to create task analogies. For example, in a visual
+        reasoning setting we can make successful predictions for questions
+        that involves combinations of concepts that have not been seen during
+        training. If the question can be expressed in terms of three
+        questions that have already been seen (e.g., "What is the blue big
+        cylinder made of?" = "What is the blue big sphere made of?" + "What
+        is the green big cylinder made of?" - "What is the green big sphere
+        made of?"), then we can combine the FiLM parameters associated with
+        the three questions in the same way to obtain the FiLM parameters
+        that answer the new question.
+      </p>
+      <figure class="l-body-outset" id="analogy-diagram">
+        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
+          <image x="130" y="0" width="500" xlink:href="assets/analogies.jpg"/>
+        </svg>
+      </figure>
+      <p>
+        Finally, we can use it to gain insights into the relationship between
+        tasks, for instance by applying dimensionality reduction techniques on
+        the FiLM parameter values such as t-SNE <d-cite key="maaten2008visualizing"></d-cite>.
+      </p>
+      <figure class="l-page-outset" id="tsne-diagram">
+        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              t-SNE projection of the FiLM parameters associated with
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              questions from the CLEVR validation set, color-coded by
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              question type.
+            </tspan>
+          </text>
+          <text x="520" y="10" dy="1em" class="figure-text">
+            <tspan>
+              t-SNE projection of the FiLM parameters associated with
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              style images from the Painter by Numbers test set, color-
+            </tspan>
+            <tspan x="520" dy="1.5em">
+              coded by artist name.
+            </tspan>
+          </text>
+          <g>
+            <g id="clevr-plot">
+              <rect x="10" y="100" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
+            </g>
+            <g transform="translate(300, 110)" id="question-types"></g>
+            <g transform="translate(270, 440)" id="film-layer-6">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 6</text>
+            </g>
+            <g transform="translate(140, 440)" id="film-layer-5">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 5</text>
+            </g>
+            <g transform="translate(10, 440)" id="film-layer-4">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 4</text>
+            </g>
+            <g transform="translate(270, 400)" id="film-layer-3">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 3</text>
+            </g>
+            <g transform="translate(140, 400)" id="film-layer-2">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 2</text>
+            </g>
+            <g transform="translate(10, 400)" id="film-layer-1">
+              <rect width="120" height="30" class="figure-element figure-box"/>
+              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 1</text>
+            </g>
+          </g>
+          <g id="style-transfer-plot">
+            <rect x="520" y="100" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
+          </g>
+          <g transform="translate(800, 110)" id="artist-names">
+        </svg>
+      </figure>
+      <script>
+        (function() {
+            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
+                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
+                          "#fee3c8", "#d1d2e7", "#fc8161"];
+            var question_types = [
+                "Exists", "Less than", "Greater than", "Count", "Query material",
+                "Query size", "Query color", "Query shape", "Equal color",
+                "Equal integer", "Equal shape", "Equal size", "Equal material"
+            ];
+
+            var svg = d3.select("#tsne-diagram > svg");
+
+            var scatterPlot = svg.select("#clevr-scatter-plot");
             var xMin = parseInt(scatterPlot.attr("x"));
             var xMax = xMin + parseInt(scatterPlot.attr("width"));
             var yMin = parseInt(scatterPlot.attr("y"));
@@ -4857,6 +5003,30 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
             var xScales;
             var yScales;
             d3.json("assets/clevr_res_baseline6.json", function(data) {
+                svg.select("#question-types").selectAll("text")
+                    .data(question_types)
+                  .enter().append("text")
+                    .attrs({
+                        "x": 20,
+                        "y": function(d, i) { return 20 * i; },
+                        "dy": "0.4em",
+                    })
+                    .classed("figure-text", true)
+                    .text(function(d) { return d; });
+
+                svg.select("#question-types").selectAll("circle")
+                    .data(question_types)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": 0,
+                        "cy": function(d, i) { return 20 * i; },
+                        "r": 4,
+                    })
+                    .style("fill", function(d, i) { return colors[i]; })
+                    .style("opacity", 0.6)
+                    .style("stroke", "#666")
+                    .style("stroke-width", 1.5);
+
                 dataset = data;
                 xScales = [];
                 yScales = [];
@@ -4875,7 +5045,7 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
                     );
                 }
 
-                svg.selectAll("circle")
+                svg.select("#clevr-plot").selectAll("circle")
                     .data(dataset)
                   .enter().append("circle")
                     .attrs({
@@ -4887,6 +5057,32 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
                     .style("opacity", 0.6)
                     .style("stroke", "#666")
                     .style("stroke-width", 1.5);
+
+                var focusAll = function() {
+                    svg.select("#question-types").selectAll("text")
+                        .style("opacity", 0.6);
+                    svg.select("#question-types").selectAll("circle")
+                        .style("opacity", 0.6);
+                    svg.select("#clevr-plot").selectAll("circle")
+                        .style("opacity", 0.6)
+                };
+
+                var focus = function(j) {
+                    svg.select("#question-types").selectAll("text")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#question-types").selectAll("circle")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#clevr-plot").selectAll("circle")
+                        .style("opacity", function(d, i) { return d.question_type == j ?  0.6 : 0.05; })
+                };
+
+                svg.select("#question-types").selectAll("circle")
+                    .on("mouseover", function (d, i) {
+                        focus(i);
+                    })
+                    .on("mouseout", focusAll);
+
+                focusAll();
             });
 
             for (var k = 0; k < 6; k++) {
@@ -4901,7 +5097,105 @@ conditioning information <d-math>\mathbf{z}</d-math>  would be to concatenate
                     });
             }
         })();
+        (function() {
+            var colors = ["#1f77b4", "#ff770e", "#2ca02c", "#d62728", "#9467bd",
+                          "#8c564b", "#e377c2", "#7f7f7f"];
+
+            var svg = d3.select("#tsne-diagram > svg");
+
+            var scatterPlot = svg.select("#style-transfer-scatter-plot");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/style_tsne.json", function(data) {
+                dataset = data;
+                xScale = d3.scaleLinear()
+                    .domain([d3.min(dataset.points, function (d) { return d.x; }),
+                             d3.max(dataset.points, function (d) { return d.x; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([d3.min(dataset.points, function (d) { return d.y; }),
+                             d3.max(dataset.points, function (d) { return d.y; })])
+                    .rangeRound([yMin, yMax])
+
+                svg.select("#style-transfer-plot").selectAll("circle")
+                    .data(dataset.points)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.x); },
+                        "cy": function(d) { return yScale(d.y); },
+                        "r": 4,
+                    })
+                    .style("fill", function(d) { return colors[d.artist_index]; })
+                    .style("opacity", 0.6)
+                    .style("stroke", "#666")
+                    .style("stroke-width", 1.5);
+
+                svg.select("#artist-names").selectAll("text")
+                    .data(Object.values(dataset.artists))
+                  .enter().append("text")
+                    .attrs({
+                        "x": 20,
+                        "y": function(d, i) { return 20 * i; },
+                        "dy": "0.4em",
+                    })
+                    .classed("figure-text", true)
+                    .text(function(d) { return d; });
+
+                svg.select("#artist-names").selectAll("circle")
+                    .data(Object.values(dataset.artists))
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": 0,
+                        "cy": function(d, i) { return 20 * i; },
+                        "r": 4,
+                    })
+                    .style("fill", function(d, i) { return colors[i]; })
+                    .style("opacity", 0.6)
+                    .style("stroke", "#666")
+                    .style("stroke-width", 1.5);
+
+                var focusAll = function() {
+                    svg.select("#artist-names").selectAll("text")
+                        .style("opacity", 0.6);
+                    svg.select("#artist-names").selectAll("circle")
+                        .style("opacity", 0.6);
+                    svg.select("#style-transfer-plot").selectAll("circle")
+                        .style("opacity", 0.6)
+                };
+
+                var focus = function(j) {
+                    svg.select("#artist-names").selectAll("text")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#artist-names").selectAll("circle")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    svg.select("#style-transfer-plot").selectAll("circle")
+                        .style("opacity", function(d, i) { return d.artist_index == j ?  0.6 : 0.05; })
+                };
+
+                svg.select("#artist-names").selectAll("circle")
+                    .on("mouseover", function (d, i) {
+                        focus(i);
+                    })
+                    .on("mouseout", focusAll);
+
+                focusAll();
+            });
+        })();
       </script>
+      <p>
+        In light of these observations, we wonder: <em>how</em> are
+        feature-wise affine transformations able to perform these sorts of
+        modulations on the FiLM-ed network?
+      </p>
+      <p>
+        <span class="todo">TODO(nschuc): fill this part in.</span>
+      </p>
 
       <hr />
 
