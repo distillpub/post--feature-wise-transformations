@@ -4906,8 +4906,9 @@
       </figure>
       <p>
         Finally, we can use it to gain insights into the relationship between
-        tasks, for instance by applying dimensionality reduction techniques on
-        the FiLM parameter values such as t-SNE <d-cite key="maaten2008visualizing"></d-cite>.
+        tasks, for instance by applying dimensionality reduction techniques
+        such as t-SNE <d-cite key="maaten2008visualizing"></d-cite> on the FiLM
+        parameter values.
       </p>
       <figure class="l-page-outset" id="tsne-diagram">
         <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
@@ -5188,6 +5189,58 @@
             });
         })();
       </script>
+      <p>
+        The projection on the left is borrowed from Perez et al.
+        <d-cite key="perez2017film"></d-cite>, who observed that depending on
+        which FiLM layer they used to make the projection, questions cluster
+        differently: lower FiLM layers tend to cluster questions by low-level
+        reasoning functions (color, shape, size, etc.), whereas higher FiLM
+        layers tend to cluster questions by high-level reasoning functions
+        (equality, query, etc.).
+      </p>
+      <p>
+        The projection on the right is inspired by a similar projection done by
+        Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their
+        style transfer network. While examining the projection, our attention
+        was drawn to the isolated cluster in the middle-right in which paintings
+        by Ivan Shishkin and Rembrandt are aggregated. This is surprising, given
+        that the two painters exhibit fairly different styles.
+      </p>
+      <figure class="l-body-outset" id="analogy-diagram">
+        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
+          <image x="0" y="0" height="256" xlink:href="assets/woman-with-a-pink.jpg"/>
+          <text x="0" y="266" dy="1em" class="figure-text">
+            <tspan>
+              Rembrandt's Woman with a Pink.
+            </tspan>
+          </text>
+          <image x="250" y="0" height="256" xlink:href="assets/a-woman-with-a-boy-in-the-forest.jpg"/>
+          <text x="250" y="266" dy="1em" class="figure-text">
+            <tspan>
+              Shishkin's Woman with a Boy in
+            </tspan>
+            <tspan x="250" dy="1.5em">
+              the Forest.
+            </tspan>
+          </text>
+          <image x="500" y="0" height="192" xlink:href="assets/abraham-and-isaac.jpg"/>
+          <image x="564" y="64" height="192" xlink:href="assets/pines-on-the-beach.jpg"/>
+          <text x="500" y="266" dy="1em" class="figure-text">
+            <tspan>
+              Sketches by Rembrandt and Shishkin
+            </tspan>
+            <tspan x="500" dy="1.5em">
+              found in the same t-SNE cluster.
+            </tspan>
+          </text>
+        </svg>
+      </figure>
+      <p>
+        Upon examining the paintings in the cluster, we realized that they were
+        all sketches! This goes to show that the learned task
+        representation can provide interesting insights into the relationship
+        between tasks.
+      </p>
       <p>
         In light of these observations, we wonder: <em>how</em> are
         feature-wise affine transformations able to perform these sorts of
