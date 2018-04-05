@@ -4210,7 +4210,19 @@
         FiLM parameters. Therefore, the model can be seen as <em>both</em> the
         FiLM-ed network the FiLM generator.
       </p>
-      <h3>Computer vision</h3>
+      <h3>Domain adaptation</h3>
+      <p>
+        Li et al. <d-cite key="li2018adaptive"></d-cite> find a similar approach highly effective
+        for domain adaptation, updating the per-channel
+        batch normalization statistics (mean and variance) of a network trained on one domain
+        with that network's statistics in a new, target domain.
+        Updating these statistics is mathematically equivalent to modifying the feature-wise
+        affine transformations in batch normalization layers, as in Conditional Batch
+        Normalization.
+        Notably, this approach, along with Adaptive Instance Normalization, has the particular
+        advantage of not requiring any extra, trainable parameters.
+      </p>
+      <h3>Image recognition</h3>
       <p>
         As we have seen so far, feature-wise transformations can be used as a
         conditioning mechanism to incorporate external information such as
@@ -4361,10 +4373,10 @@
         </svg>
       </figure>
       <p>
-        The ImageNet 2017 winning model <d-cite key="hu2017squeeze"></d-cite>
-        employs a self-conditioning scheme in the form of feature-wise
-        sigmoidal gating as a way to "recalibrate" a layer's activations
-        conditioned on <em>themselves</em>.
+        The ImageNet 2017 winning model
+        <d-cite key="hu2017squeeze"></d-cite> also employs feature-wise sigmoidal gating
+        in a self-conditioning manner, as a way to
+        "recalibrate" a layer's activations conditioned on <em>themselves</em>.
       </p>
       <figure class="l-page-outset" id="squeeze-diagram">
         <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
