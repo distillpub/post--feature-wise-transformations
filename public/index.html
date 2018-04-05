@@ -4961,6 +4961,79 @@
             }
         })();
       </script>
+      <figure class="l-body-outset" id="style-tsne">
+        <svg viewBox="0 0 744 500" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="480" height="480" style="fill: none;" id="scatter-plot"/>
+          <g transform="translate(540, 20)" id="artist-names">
+          </g>
+        </svg>
+      </figure>
+      <script>
+        (function() {
+            var colors = ["#1f77b4", "#ff770e", "#2ca02c", "#d62728", "#9467bd",
+                          "#8c564b", "#e377c2", "#7f7f7f"];
+
+            var svg = d3.select("#style-tsne > svg");
+
+            var scatterPlot = svg.select("#scatter-plot");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/style_tsne.json", function(data) {
+                dataset = data;
+                xScale = d3.scaleLinear()
+                    .domain([d3.min(dataset.points, function (d) { return d.x; }),
+                             d3.max(dataset.points, function (d) { return d.x; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([d3.min(dataset.points, function (d) { return d.y; }),
+                             d3.max(dataset.points, function (d) { return d.y; })])
+                    .rangeRound([yMin, yMax])
+
+                svg.selectAll("circle")
+                    .data(dataset.points)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.x); },
+                        "cy": function(d) { return yScale(d.y); },
+                        "r": 4,
+                    })
+                    .style("fill", function(d) { return colors[d.artist_index]; })
+                    .style("opacity", function(d) { return d.artist_index == 4 ?  0.6 : 0.1; })
+                    .style("stroke", "#666")
+                    .style("stroke-width", 1.5);
+
+                svg.select("#artist-names").selectAll("text")
+                    .data(Object.values(dataset.artists))
+                  .enter().append("text")
+                    .attrs({
+                        "x": 20,
+                        "y": function(d, i) { return 20 * i; },
+                        "dy": "0.4em",
+                    })
+                    .classed("figure-text", true)
+                    .text(function(d) { return d; });
+
+                svg.select("#artist-names").selectAll("circle")
+                    .data(Object.values(dataset.artists))
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": 0,
+                        "cy": function(d, i) { return 20 * i; },
+                        "r": 4,
+                    })
+                    .style("fill", function(d, i) { return colors[i]; })
+                    .style("opacity", function(d, i) { return i == 4 ?  0.6 : 0.1; })
+                    .style("stroke", "#666")
+                    .style("stroke-width", 1.5);
+            });
+        })();
+      </script>
       <p>
         In light of these observations, we wonder: <em>how</em> are
         feature-wise affine transformations able to perform these sorts of
