@@ -25,7 +25,7 @@
           {
             "author": "Ethan Perez",
             "authorURL": "http://ethanperez.net/",
-            "affiliation": "Rice University, MILA",
+            "affiliation": "Rice University; MILA",
             "affiliationURL": "http://www.rice.edu/"
           },
           {
@@ -3005,7 +3005,7 @@
         Concatenation-based conditioning is used in the conditional variant of
         DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
         well-recognized class of network architectures for generative
-        adversarial networks (GANs) <d-cite key="goodfellow2014generative"></d-cite>.
+        adversarial networks <d-cite key="goodfellow2014generative"></d-cite>.
         The class label is broadcasted as a feature map and is concatenated to
         the input of convolutional and transposed convolutional layers in the
         generator and discriminator networks.
@@ -3181,7 +3181,7 @@
         <li>
           <strong>Local conditioning</strong> applies a conditional bias which
           varies across time steps of the generated sequence and is used e.g.
-          to let linguistic features in a text-to-speech (TTS) model influence
+          to let linguistic features in a text-to-speech model influence
           which sounds are produced.
         </li>
       </ol>
@@ -3701,8 +3701,8 @@
       <p>
         de Vries et al. <d-cite key="vries2017modulating"></d-cite> leverage
         FiLM to condition a pre-trained network. The visual pipeline of a
-        visual question-answering (VQA) model is modulated by the model's
-        linguistic pipeline through conditional batch normalization (CBN),
+        visual question-answering model is modulated by the model's
+        linguistic pipeline through conditional batch normalization,
         which can be viewed as a special case of FiLM. The model is trained on
         the "oracle" sub-task of the GuessWhat?! task
         <d-cite key="vries2017guesswhat"></d-cite> &mdash; which features
@@ -3887,10 +3887,10 @@
       </figure>
       <p>
         The visual pipeline consists of a pre-trained residual network and is
-        kept fixed throughout training. The linguistic pipeline interacts with
-        the visual pipeline by outputting perturbations to the residual
-        network's batch normalization parameters. Like hinted at earlier, CBN
-        can be viewed as an instance of FiLM where the post-normalization
+        kept fixed throughout training. The linguistic pipeline manipulates
+        the visual pipeline by perturbing the residual
+        network's batch normalization parameters. As hinted earlier, conditional batch
+        normalization can be viewed as an instance of FiLM where the post-normalization
         feature-wise affine transformation is replaced with a FiLM layer.
       </p>
       <h3>Style transfer</h3>
@@ -3898,7 +3898,7 @@
         Feature-wise transformations are used in Dumoulin et al.
         <d-cite key="dumoulin2017learned"></d-cite> to condition a style
         transfer network on a chosen style image. Conditional instance
-        normalization (CIN) layers are introduced into a fast feedforward style
+        normalization layers are introduced into a fast feedforward style
         transfer network to accommodate multiple styles. Each style modeled by
         the network is associated with its own set of instance normalization
         parameters, and conditioning is achieved by applying the normalization
@@ -4039,7 +4039,8 @@
         normalization parameters directly from a given style image.
       </p>
       <p>
-        Like CBN, CIN can be seen as an instance of FiLM where the
+        Like conditional batch normalization, conditional instance normalization
+        can be seen as an instance of FiLM where the
         post-normalization feature-wise affine transformation is replaced with a
         FiLM layer. The main differentiator between Dumoulin et al.
         <d-cite key="dumoulin2017learned"></d-cite> and Ghiasi et al.
@@ -4055,7 +4056,7 @@
         this distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
         is not strictly necessary. As an example, Huang et al. <d-cite key="huang2017arbitrary"></d-cite>
         proposes an alternative for fast and arbitrary style transfer in the
-        form of an adaptive instance normalization (AdaIN) layer, which computes
+        form of an adaptive instance normalization layer, which computes
         the normalization parameters using a simple heuristic.
       </p>
       <figure class="l-page-outset" id="adain-diagram">
@@ -4082,7 +4083,10 @@
                 through the model up
               </tspan>
               <tspan x="200" dy="1.5em">
-                to the AdaIN layer.
+                to the adaptive instance
+              </tspan>
+              <tspan x="200" dy="1.5em">
+                normalization layer.
               </tspan>
             </text>
             <text x="380" y="-150" dy="1em" class="figure-text">
@@ -4198,13 +4202,13 @@
       </figure>
       <p>
         The content and style images are first fed through the model up to the
-        AdaIN layer. The stack of content feature maps is then
+        adaptive instance normalization layer. The stack of content feature maps is then
         instance-normalized, and the mean and standard deviation statistics of
         the stack of style feature maps are used to parametrize the
         post-normalization affine transformation.
 
-        AdaIN can be interpreted as inserting a FiLM layer midway through the
-        model architecture. However, rather than relying on a secondary network
+        Adaptive instance normalization can be interpreted as inserting a FiLM layer midway
+        through the model architecture. However, rather than relying on a secondary network
         to predict the FiLM parameters from the style image, the main network
         itself is used to extract style features which are used to compute the
         FiLM parameters. Therefore, the model can be seen as <em>both</em> the
@@ -5268,16 +5272,17 @@
       <h3 id="bibliographic-notes">Bibliographic Notes</h3>
       <p>
           Multiplicative interactions have succeeded on various tasks,
-          ever since they were introduced in computer vision as "mapping units"
+          ever since they were introduced in vision as "mapping units"
           <d-cite key="hinton1981a"></d-cite> and "dynamic mappings"
           <d-cite key="vonderMalsburg1994the"></d-cite> around 40 years ago.
-          These tasks include Action Recognition<d-cite key="le2011learning"></d-cite>
-          <d-cite key="taylor2010convolutional"></d-cite>,
+          These tasks include
+          Character-level Language Modeling<d-cite key="sutskever2011generating"></d-cite>,
+          Image Denoising<d-cite key="tang2012boltzmann"></d-cite>,
+          Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
           Tracking<d-cite key="ross2006combining"></d-cite>
           <d-cite key="denil2012learning"></d-cite>,
-          Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
-          Denoising<d-cite key="tang2012boltzmann"></d-cite>,
-          Character-level Language Modeling<d-cite key="sutskever2011generating"></d-cite>,
+          Action Recognition<d-cite key="le2011learning"></d-cite>
+          <d-cite key="taylor2010convolutional"></d-cite>,
           and, more generally, tasks involving relating or matching inputs,
           such as from different modalities or points in time.
           <d-cite key="memisevic2013learning"></d-cite>
@@ -5287,7 +5292,7 @@
       </p>
       <ul>
         <li>
-          Adaptive CNN (ACNN) <d-cite key="kang2017incorporating"></d-cite>
+          Adaptive CNN <d-cite key="kang2017incorporating"></d-cite>
           predicts the value of several of the model's convolution filters as
           a function of auxiliary inputs like camera perspective, level of
           noise, etc. The resulting convolution filters turn out to be very
@@ -5353,8 +5358,8 @@
         several organizations. We would like to thank Archy de Berker, Xavier
         Snelgrove, Pedro Oliveira Pinheiro, Alexei Nordell-Markovits, Masha
         Krol, and Minh Dao from Element AI. We would also like to thank Roland
-        Memisevic from TwentyBN, Dzmitry Bahdanau from MILA, Olivier Pietquin
-        from DeepMind and Jérémie Mary from Criteo.
+        Memisevic from TwentyBN, Dzmitry Bahdanau from MILA, Ameesh Shah from Rice,
+        Olivier Pietquin from DeepMind and Jérémie Mary from Criteo.
       </p>
       <d-footnote-list></d-footnote-list>
       <d-citation-list></d-citation-list>
