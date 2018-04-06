@@ -4908,8 +4908,8 @@
       </p>
       <figure class="l-body-outset" id="clevr-interpolation-diagram">
         <svg viewBox="0 0 744 210" xmlns="http://www.w3.org/2000/svg">
-          <image x="10" y="10" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/CLEVR_val_000017.png"/>
-          <text x="280" y="180" class="figure-text">
+          <image x="10" y="50" width="128" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/CLEVR_val_000017.png"/>
+          <text x="280" y="10" class="figure-text">
             <tspan>
               How many <tspan style="font-weight: bold;">purple</tspan>
             </tspan>
@@ -4917,51 +4917,62 @@
               things are there?
             </tspan>
           </text>
-          <text x="600" y="180" class="figure-text">
+          <text x="570" y="10" class="figure-text">
             <tspan>
               How many <tspan style="font-weight: bold;">brown</tspan>
             </tspan>
-            <tspan x="600" dy="1.5em">
+            <tspan x="570" dy="1.5em">
               things are there?
             </tspan>
           </text>
-          <text x="280" y="150" class="figure-text">0</text>
-          <rect x="280" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="320" y="150" class="figure-text">1</text>
-          <rect x="320" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="360" y="150" class="figure-text">2</text>
-          <rect x="360" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="400" y="150" class="figure-text">3</text>
-          <rect x="400" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="440" y="150" class="figure-text">4</text>
-          <rect x="440" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="480" y="150" class="figure-text">5</text>
-          <rect x="480" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="520" y="150" class="figure-text">6</text>
-          <rect x="520" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="560" y="150" class="figure-text">7</text>
-          <rect x="560" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="600" y="150" class="figure-text">8</text>
-          <rect x="600" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="640" y="150" class="figure-text">9</text>
-          <rect x="640" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <text x="680" y="150" class="figure-text">10</text>
-          <rect x="680" y="10" width="20" height="120" class="figure-element figure-box"/>
-          <circle r="4" transform="translate(400, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(420, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(440, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(460, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(480, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(500, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(520, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(540, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(560, 180)" class="figure-path"/>
-          <circle r="4" transform="translate(580, 180)" class="figure-path"/>
+          <g transform="translate(0, 50)">
+          <g transform="translate(0, 150)">
+          <text x="280" class="figure-text">0</text>
+          <text x="320" class="figure-text">1</text>
+          <text x="360" class="figure-text">2</text>
+          <text x="400" class="figure-text">3</text>
+          <text x="440" class="figure-text">4</text>
+          <text x="480" class="figure-text">5</text>
+          <text x="520" class="figure-text">6</text>
+          <text x="560" class="figure-text">7</text>
+          <text x="600" class="figure-text">8</text>
+          <text x="640" class="figure-text">9</text>
+          <text x="680" class="figure-text">10</text>
+          </g>
+
+            <rect x="280" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="320" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="360" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="400" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="440" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="480" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="520" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="560" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="600" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="640" width="20" height="120" class="figure-element figure-box"/> 
+            <rect x="680" width="20" height="120" class="figure-element figure-box"/>
+          </g>
+          <g transform="translate(360, 50)">
+            <path d="M 0 0 L 0 270" class="figure-faded"></path>
+            <g class="interpolated-params">
+              <circle r="4" cx="0" class="figure-faded"/>
+              <circle r="4" cx="30" class="figure-path"/>
+              <circle r="4" cx="60" class="figure-path"/>
+              <circle r="4" cx="90" class="figure-path"/>
+              <circle r="4" cx="120" class="figure-path"/>
+              <circle r="4" cx="150" class="figure-path"/>
+              <circle r="4" cx="180" class="figure-path"/>
+              <circle r="4" cx="210" class="figure-path"/>
+              <circle r="4" cx="240" class="figure-path"/>
+              <circle r="4" cx="270" class="figure-faded"/>
+            </g>
+          </g>
         </svg>
       </figure>
       <script>
         (function() {
             var svg = d3.select("#clevr-interpolation-diagram > svg");
+            var interpParams = svg.select(".interpolated-params");
             var dataset;
 
             d3.json("assets/clevr_interpolation.json", function(data) {
@@ -4978,21 +4989,30 @@
                     }
                 }
 
-                var transition = function(i) {
+                var update = function(i) {
                     svg.selectAll("rect")
                       .data(probs)
+                      .transition()
                         .attrs({
                             "y": function(d) { return 10 + (1 - d[i]) * 120; },
                             "height": function(d) { return d[i] * 120; },
                         });
-                };
-                transition(0);
+                    interpParams.selectAll("circle")
+                      .each(function(j) {
+                        d3.select(this)
+                          .classed("figure-faded", i != j);
+                      });
 
-                svg.selectAll("circle")
+                };
+                update(0);
+
+                interpParams.selectAll("circle")
                   .data([0, 40, 45, 50, 55, 60, 65, 70, 90, 100])
-                    .on("mouseover", function (d) {
-                        transition(d);
-                    });
+                  .attr('cx', function(d, i) { return i * 30; })
+                  .on("mouseover", function (d) {
+                      update(d);
+                  })
+                  .enter()
             });
         })();
       </script>
