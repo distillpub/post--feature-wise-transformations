@@ -3394,8 +3394,8 @@
       <p>
         Sigmoidal gating is used by Dauphin et al.
         <d-cite key="dauphin2017language"></d-cite> in their proposed gated
-        linear unit, which use half of the input features to apply feature-wise
-        sigmoidal gating to the second half. This architectural feature is also
+        linear unit, which uses half of the input features to apply feature-wise
+        sigmoidal gating to the other half. This architectural feature is also
         adopted by Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>,
         who introduce a fast and parallelizable model for machine translation
         in the form of a purely convolutional architecture.
@@ -3409,16 +3409,13 @@
             </tspan>
             <tspan x="380" dy="1.5em">
               uses <tspan style="font-weight: bold;">sigmoidal gating</tspan>.
-              The first half of
+              Half of the input features go
             </tspan>
             <tspan x="380" dy="1.5em">
-              the input features goes through a
+              through a sigmoid function and
             </tspan>
             <tspan x="380" dy="1.5em">
-              sigmoid function and treated as a gating
-            </tspan>
-            <tspan x="380" dy="1.5em">
-              vector.
+              are treated as a gating vector.
             </tspan>
           </text>
           <text x="380" y="170" dy="1em" class="figure-text">
@@ -3473,11 +3470,11 @@
       </figure>
       <h3>Visual question-answering</h3>
       <p>
-        Feature-wise affine transformations are used by Perez et al.
-        <d-cite key="perez2017learning,perez2018film"></d-cite> to build a
+        Perez et al. <d-cite key="perez2017learning,perez2018film"></d-cite>
+	use feature-wise affine transformations to build a
         visual reasoning model trained on the CLEVR dataset
         <d-cite key="johnson2017clevr"></d-cite> to answer questions
-        about a synthetic input image.
+        about synthetic input images.
       </p>
       <figure class="l-page-outset" id="clevr-diagram">
         <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
@@ -3706,9 +3703,9 @@
         FiLM to condition a pre-trained network. The visual pipeline of a
         visual question-answering model is modulated by the model's
         linguistic pipeline through conditional batch normalization,
-        which can be viewed as a special case of FiLM. The model is trained to
+        which can be viewed as a special case of FiLM. The model learns to
 	answer natural language questions about real-world images 
-	using the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
+	for the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
 	and VQAv1 <d-cite key="agrawal2015vqa"></d-cite> datasets.
       </p>
       <figure class="l-page-outset" id="guesswhat-diagram">
@@ -3899,7 +3896,7 @@
       <h3>Style transfer</h3>
       <p>
         Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use feature-wise
-	affine transformations - in the form of conditional instance normalization layers -
+	affine transformations &mdash; in the form of conditional instance normalization layers &mdash;
 	to condition a style transfer network on a chosen style image.
 	Like conditional batch normalization, conditional instance normalization
         can be seen as an instance of FiLM where the
@@ -4056,7 +4053,7 @@
         as on the previous frame using position-wise biases.
       </p>
       <p>
-        So far, the models we covered have two sub-networks: a primary network
+        So far, many of the models we covered have two sub-networks: a primary network
         in which feature-wise transformations are applied, and a secondary
         network which outputs parameters for these transformations. However,
         this distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
@@ -4240,12 +4237,12 @@
 <figure class="l-page-outset" id="self-conditioning">
 	   <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
    <text x="10" y="72.640007" dy="13" class="figure-text" id="text1400" style="font-size:13px;opacity:0.6;fill:#000000">
-      <tspan id="tspan1390">The FiLM generator predicts the FilM parameters </tspan>
-      <tspan x="10" dy="19.5" id="tspan1394">conditioned on the network internal activations</tspan>
+      <tspan id="tspan1390">The FiLM generator predicts the FiLM parameters </tspan>
+      <tspan x="10" dy="19.5" id="tspan1394">conditioned on the network's internal activations</tspan>
     </text>
     <text x="10" y="218.64001" dy="13" class="figure-text" id="text1406" style="font-size:13px;opacity:0.6;fill:#000000">
-      <tspan id="tspan1402">An arbitrary input vector (or feature-map) </tspan>
-      <tspan x="10" dy="19.5" id="tspan1404">is used to modulate some future activations.</tspan>
+      <tspan id="tspan1402">An arbitrary input vector (or feature map) </tspan>
+      <tspan x="10" dy="19.5" id="tspan1404">is used to modulate downstream activations.</tspan>
     </text>
     <g xmlns="http://www.w3.org/2000/svg" transform="translate(10,10)" id="g1488">
     <g transform="translate(303.44,208.64)" id="g1416">
@@ -4288,9 +4285,9 @@
       </figure>
               </p>
       <p>
-        A prime example of this principle being applied can be found in Highway
-        Networks <d-cite key="srivastava2015highway"></d-cite>, which take
-        inspiration from the LSTMs' <d-cite key="hochreiter1997long"></d-cite>
+        Highway Networks <d-cite key="srivastava2015highway"></d-cite> are a prime example
+	of applying this principle of self-conditioning. This network architecture
+	takes inspiration from the LSTMs' <d-cite key="hochreiter1997long"></d-cite>
         heavy use of feature-wise sigmoidal gating in their input, forget, and
         output gates to regulate information flow:
       </p>
@@ -4380,7 +4377,7 @@
         The ImageNet 2017 winning model
         <d-cite key="hu2017squeeze"></d-cite> also employs feature-wise sigmoidal gating
         in a self-conditioning manner, as a way to
-        "recalibrate" a layer's activations conditioned on <em>themselves</em>.
+        "recalibrate" a layer's activations conditioned on themselves.
       </p>
       <figure class="l-page-outset" id="squeeze-diagram">
         <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
@@ -4461,13 +4458,13 @@
       </figure>
       <h3>Speech recognition</h3>
       <p>
-        In the speech recognition domain, Kim et al. <d-cite key="kim2017dynamic"></d-cite>
+        In the speech recognition domain, the model from Kim et al. <d-cite key="kim2017dynamic"></d-cite>
         modulates a deep bidirectional LSTM using a form of conditional
         normalization which the authors call <em>dynamic layer normalization</em>.
-        In analogy to conditional instance normalization and conditional batch
+        Similar to conditional instance normalization and conditional batch
         normalization, dynamic layer normalization can be seen as an instance of
         FiLM where the post-normalization feature-wise affine transformation is
-        disabled and a FiLM layer is placed immediately after the instance
+        disabled and a FiLM layer is placed immediately after the
         normalization layer.
       </p>
       <figure class="l-page-outset" id="dln-diagram">
@@ -4742,7 +4739,7 @@
       </figure>
       <p>
         The key difference here is that the conditioning signal does not come
-        from an external source, but is rather computed from utterance
+        from an external source, but it is instead computed from utterance
         summarization feature vectors extracted in each layer of the network
         as a way of adapting the neural acoustic model.
       </p>
@@ -5409,11 +5406,11 @@
         This article had quite a lot of ground to cover. We set out to better
         understand feature-wise transformations in the context of fusing
         multiple sources of information in a neural network. We examined several
-        approaches which can be reasoned about using the FiLM formulation, and
+        approaches which can be reasoned about using the FiLM formulation and
         reviewed their use in the literature. We outlined some of the ways in
         which the implicit task representation learned by FiLM shows itself
-        useful. We hope that the recognition of the wide range of applications
-        feature-wise transformations found in the literature will stimulate
+        useful. We hope recognizing the wide range of applications of
+        feature-wise transformations in the literature will stimulate
         research into applying them to even more problem settings.
       </p>
     </d-article>
@@ -5470,7 +5467,7 @@
         better untangle latent perceptual factors. The authors wanted to
         separate the image style from its content, arguing that classic linear
         models were not rich enough to extract such complex interaction. They
-        demonstrate the effectiveness of their approach by applying it for
+        demonstrate the effectiveness of their approach by applying it to
         spoken vowel identification or zero-shot font classification. Notable
         applications include:
       </p>
