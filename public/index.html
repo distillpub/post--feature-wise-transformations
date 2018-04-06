@@ -186,9 +186,9 @@
         <a href="#film-nomenclature"> Feature-wise Linear Modulation (FiLM)</a>
         nomenclature. We will then point out their
         <a href="#film-in-literature">numerous uses in the recent literature</a>.
-        Finally, we will take a stab at
-        <a href="#understanding-film">understanding the computational mechanisms</a>
-        that allow them to work.
+        Finally, we will take a look at
+        <a href="#film-properties">interesting and intriguing properties</a>
+        that arise from the use of FiLM.
       </p>
       <p>
         We hope the insights contributed by this article will help highlight
@@ -278,8 +278,8 @@
         representation to the input of <em>all</em> layers in the network!
         We call this concatenation-based conditioning:
       </p>
-      <figure class="l-body-outset" id="concatenation-diagram">
-        <svg viewBox="0 0 744 230" xmlns="http://www.w3.org/2000/svg">
+      <figure class="l-body" id="concatenation-diagram">
+        <svg viewBox="0 0 648 230" xmlns="http://www.w3.org/2000/svg">
           <text x="260" y="10" dy="1em" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
@@ -367,8 +367,8 @@
         though: concatenation works fine, but are there other mechanisms to
         use? What about biasing the hidden layers of your network based on the
         conditioning representation?
-      <figure class="l-body-outset" id="conditional-biasing-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+      <figure class="l-body" id="conditional-biasing-diagram">
+        <svg viewBox="0 0 648 300" xmlns="http://www.w3.org/2000/svg">
           <text x="330" y="30" dy="1em" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Conditional biasing</tspan>
@@ -627,8 +627,8 @@
         as a bias that gets added to the corresponding output feature. How about
         multiplicative interactions, then?
       </p>
-      <figure class="l-body-outset" id="conditional-biasing-diagram">
-        <svg viewBox="0 0 744 340" xmlns="http://www.w3.org/2000/svg">
+      <figure class="l-body" id="conditional-biasing-diagram">
+        <svg viewBox="0 0 648 300" xmlns="http://www.w3.org/2000/svg">
           <text x="330" y="30" dy="1em" class="figure-text">
             <tspan>
               <tspan style="font-weight: bold;">Conditional scaling</tspan>
@@ -3477,7 +3477,7 @@
         about a synthetic input image.
       </p>
       <figure class="l-page-outset" id="clevr-diagram">
-        <svg viewBox="0 0 1080 500" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(10, 10)" class="film-generator">
             <text x="0" y="30" dy="1em" class="figure-text">
               <tspan>
@@ -3565,8 +3565,8 @@
                 <text x="25" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 25, 60)" class="figure-text">...</text>
               </g>
               <g class="figure-faded">
-                <path d="M 700 348 L 784 348" class="figure-line"/>
-                <use xlink:href="#arrow-right" transform="translate(784, 348)" class="figure-path"/>
+                <path d="M 700 348 L 730 348" class="figure-line"/>
+                <use xlink:href="#arrow-right" transform="translate(730, 348)" class="figure-path"/>
               </g>
               <g transform="translate(180, 100)">
                 <rect width="520" height="40" class="figure-film-generator figure-element figure-box"/>
@@ -3709,7 +3709,7 @@
 	and VQAv1 <d-cite key="agrawal2015vqa"></d-cite> datasets.
       </p>
       <figure class="l-page-outset" id="guesswhat-diagram">
-        <svg viewBox="0 0 1080 470" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(10, 10)">
             <text x="0" y="30" dy="1em" class="figure-text">
               <tspan>
@@ -3908,7 +3908,7 @@
         with style-specific parameters.
       </p>
       <figure class="l-page-outset" id="alrfas-diagram">
-        <svg viewBox="0 0 1080 420" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(10, 10)">
             <text x="0" y="0" dy="1em" class="figure-text">
               <tspan>
@@ -3946,8 +3946,8 @@
             <g class="figure-faded">
               <path d="M 296 298 L 335 298" class="figure-line"/>
               <use xlink:href="#arrow-right" transform="translate(335, 298)" class="figure-path"/>
-              <path d="M 760 298 L 799 298" class="figure-line"/>
-              <use xlink:href="#arrow-right" transform="translate(799, 298)" class="figure-path"/>
+              <path d="M 760 298 L 789 298" class="figure-line"/>
+              <use xlink:href="#arrow-right" transform="translate(789, 298)" class="figure-path"/>
               <path d="M 730 96 L 730 233" class="figure-line"/>
               <use xlink:href="#arrow-down" transform="translate(730, 233)" class="figure-path"/>
             </g>
@@ -4030,7 +4030,7 @@
                   normalization
                 </tspan>
               </text>
-              <image x="564" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
+              <image x="554" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
             </g>
           </g>
         </svg>
@@ -4062,7 +4062,7 @@
         the normalization parameters using a simple heuristic.
       </p>
       <figure class="l-page-outset" id="adain-diagram">
-        <svg viewBox="0 0 1080 570" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 570" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="linearStroke" x1="0%" y1="0%" x2="0%" y2="100%" spreadMethod="pad">
               <stop offset="0%"   stop-color="#2196f3"/>
@@ -4240,7 +4240,7 @@
 
               <p>
 <figure class="l-page-outset" id="self-conditioning">
-	   <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
+	   <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
    <text x="10" y="72.640007" dy="13" class="figure-text" id="text1400" style="font-size:13px;opacity:0.6;fill:#000000">
       <tspan id="tspan1390">The FiLM generator predicts the FilM parameters </tspan>
       <tspan x="10" dy="19.5" id="tspan1394">conditioned on the network internal activations</tspan>
@@ -4385,7 +4385,7 @@
         "recalibrate" a layer's activations conditioned on <em>themselves</em>.
       </p>
       <figure class="l-page-outset" id="squeeze-diagram">
-        <svg viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
               The <tspan style="font-style: italic;">squeeze-and-excitation</tspan>
@@ -4751,7 +4751,7 @@
 
       <hr />
 
-      <h1 id="understanding-film">Properties of FiLM-ed networks</h1>
+      <h1 id="film-properties">Properties of FiLM-ed networks</h1>
       <p>
         If you are like us, you probably find the success of feature-wise
         transformations intriguing given how simple they are. It appears that
@@ -5034,26 +5034,26 @@
           <path d="M 430 100 L 430 292" style="stroke-width: 0.5px" class="figure-line"/>
           <text x="440" y="80" class="figure-text">
             <tspan>
-              A: "What is the blue big sphere made of?"
+              A: "What is the blue big <tspan style="font-weight: bold">sphere</tspan> made of?"
             </tspan>
             <tspan x="440" dy="1.5em">
-              B: "What is the green big cylinder made of?"
+              B: "What is the <tspan style="font-weight: bold">green</tspan> big cylinder made of?"
             </tspan>
             <tspan x="440" dy="1.5em">
-              C: "What is the green big sphere made of?"
+              C: "What is the <tspan style="font-weight: bold">green</tspan> big <tspan style="font-weight: bold">sphere</tspan> made of?"
             </tspan>
           </text>
           <path d="M 430 196 L 560 140" class="figure-line"/>
-          <use x="560" y="140" xlink:href="#arrow-right" class="figure-path"/>
+          <use x="560" y="140" transform="rotate(-25, 560, 140)" xlink:href="#arrow-right" class="figure-path"/>
           <text x="480" y="165" class="figure-text">A</text>
           <path d="M 560 140 L 600 220" class="figure-line"/>
-          <use x="600" y="220" xlink:href="#arrow-down" class="figure-path"/>
+          <use x="600" y="220" transform="rotate(-25, 600, 220)" xlink:href="#arrow-down" class="figure-path"/>
           <text x="590" y="170" class="figure-text">B</text>
           <path d="M 600 220 L 500 270" class="figure-line"/>
-          <use x="500" y="270" xlink:href="#arrow-left" class="figure-path"/>
+          <use x="500" y="270" transform="rotate(-25, 500, 270)" xlink:href="#arrow-left" class="figure-path"/>
           <text x="540" y="270" class="figure-text">-C</text>
           <path d="M 430 196 L 500 270" class="figure-line figure-dashed"/>
-          <use x="500" y="270" xlink:href="#arrow-right" class="figure-path"/>
+          <use x="500" y="270" transform="rotate(50, 500, 270)" style="fill: none;" xlink:href="#arrow-right" class="figure-path"/>
           <text x="440" y="292" dy="2em" style="font-style: italic;" class="figure-text">
             "What is the blue big cylinder made of?" = A + B - C
           </text>
@@ -5066,7 +5066,7 @@
         parameter values.
       </p>
       <figure class="l-page-outset" id="tsne-diagram">
-        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
               t-SNE projection of the FiLM parameters associated with
@@ -5089,40 +5089,20 @@
               coded by artist name.
             </tspan>
           </text>
-          <g>
-            <g id="clevr-plot">
-              <rect x="10" y="100" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
-            </g>
-            <g transform="translate(300, 110)" id="question-types"></g>
-            <g transform="translate(270, 440)" id="film-layer-6">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 6</text>
-            </g>
-            <g transform="translate(140, 440)" id="film-layer-5">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 5</text>
-            </g>
-            <g transform="translate(10, 440)" id="film-layer-4">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 4</text>
-            </g>
-            <g transform="translate(270, 400)" id="film-layer-3">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 3</text>
-            </g>
-            <g transform="translate(140, 400)" id="film-layer-2">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 2</text>
-            </g>
-            <g transform="translate(10, 400)" id="film-layer-1">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 1</text>
-            </g>
+          <g id="clevr-plot">
+            <rect x="10" y="100" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
           </g>
+          <g transform="translate(300, 110)" id="question-types"></g>
           <g id="style-transfer-plot">
             <rect x="520" y="100" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
           </g>
-          <g transform="translate(800, 110)" id="artist-names">
+          <circle cx="733" cy="220" r="20" style="stroke-width: 4px; fill: none;" class="figure-element"/>
+          <g transform="translate(800, 110)" id="artist-names"></g>
+          <text x="10" y="400" dy="1em" style="fill: red" class="figure-text">
+            TODO: add the ability to hover over points and visualize questions
+            or style images; for now we can only hover over the legend to focus
+            on different labels.
+          </text>
         </svg>
       </figure>
       <script>
@@ -5143,17 +5123,6 @@
             var xMax = xMin + parseInt(scatterPlot.attr("width"));
             var yMin = parseInt(scatterPlot.attr("y"));
             var yMax = yMin + parseInt(scatterPlot.attr("height"));
-
-            var coordinates = function(d, i) {
-                switch (i) {
-                    case 0: return d.layer_0;
-                    case 1: return d.layer_1;
-                    case 2: return d.layer_2;
-                    case 3: return d.layer_3;
-                    case 4: return d.layer_4;
-                    case 5: return d.layer_5;
-                }
-            }
 
             var dataset;
             var xScales;
@@ -5183,20 +5152,20 @@
                     .style("stroke", "#666")
                     .style("stroke-width", 1.5);
 
-                dataset = data;
+                dataset = data.slice(0, 512);
                 xScales = [];
                 yScales = [];
-                for (var i = 0; i < 6; i++) {
+                for (var i = 0; i < 1; i++) {
                     xScales.push(
                         d3.scaleLinear()
-                            .domain([d3.min(dataset, function (d) { return coordinates(d, i).x; }),
-                                     d3.max(dataset, function (d) { return coordinates(d, i).x; })])
+                            .domain([d3.min(dataset, function (d) { return d.layer_all.x; }),
+                                     d3.max(dataset, function (d) { return d.layer_all.x; })])
                             .rangeRound([xMin, xMax])
                     );
                     yScales.push(
                         d3.scaleLinear()
-                            .domain([d3.min(dataset, function (d) { return coordinates(d, i).y; }),
-                                     d3.max(dataset, function (d) { return coordinates(d, i).y; })])
+                            .domain([d3.min(dataset, function (d) { return d.layer_all.y; }),
+                                     d3.max(dataset, function (d) { return d.layer_all.y; })])
                             .rangeRound([yMin, yMax])
                     );
                 }
@@ -5205,8 +5174,8 @@
                     .data(dataset)
                   .enter().append("circle")
                     .attrs({
-                        "cx": function(d) { return xScales[0](d.layer_0.x); },
-                        "cy": function(d) { return yScales[0](d.layer_0.y); },
+                        "cx": function(d) { return xScales[0](d.layer_all.x); },
+                        "cy": function(d) { return yScales[0](d.layer_all.y); },
                         "r": 4,
                     })
                     .style("fill", function(d) { return colors[d.question_type]; })
@@ -5240,18 +5209,6 @@
 
                 focusAll();
             });
-
-            for (var k = 0; k < 6; k++) {
-                svg.select("#film-layer-" + (k + 1))
-                    .on("click", function () {
-                        var layer = parseInt(d3.select(this).attr("id").charAt(11)) - 1;
-                        svg.selectAll("circle")
-                            .attrs({
-                                "cx": function(d) { return xScales[layer](coordinates(d, layer).x); },
-                                "cy": function(d) { return yScales[layer](coordinates(d, layer).y); }
-                            });
-                    });
-            }
         })();
         (function() {
             var colors = ["#1f77b4", "#ff770e", "#2ca02c", "#d62728", "#9467bd",
@@ -5269,7 +5226,7 @@
             var xScale;
             var yScale;
             d3.json("assets/style_tsne.json", function(data) {
-                dataset = data;
+                dataset = {"artists": data.artists, "points": data.points.slice(0, 512)};
                 xScale = d3.scaleLinear()
                     .domain([d3.min(dataset.points, function (d) { return d.x; }),
                              d3.max(dataset.points, function (d) { return d.x; })])
@@ -5345,21 +5302,18 @@
         })();
       </script>
       <p>
-        The projection on the left is borrowed from Perez et al.
-        <d-cite key="perez2018film"></d-cite>, who observed that depending on
-        which FiLM layer they used to make the projection, questions cluster
-        differently: lower FiLM layers tend to cluster questions by low-level
-        reasoning functions (color, shape, size, etc.), whereas higher FiLM
-        layers tend to cluster questions by high-level reasoning functions
-        (equality, query, etc.).
+        The projection on the left is inspired by a similar projection done by
+        Perez et al.  <d-cite key="perez2018film"></d-cite> for their visual
+        reasoning model trained on CLEVR and shows how questions group by
+        question type.
       </p>
       <p>
         The projection on the right is inspired by a similar projection done by
         Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their
         style transfer network. While examining the projection, our attention
-        was drawn to the isolated cluster in the middle-right in which paintings
-        by Ivan Shishkin and Rembrandt are aggregated. This is surprising, given
-        that the two painters exhibit fairly different styles.
+        was drawn to an isolated cluster (circled in the figure) in which
+        paintings by Ivan Shishkin and Rembrandt are aggregated. This is
+        surprising, given that the two painters exhibit fairly different styles.
       </p>
       <figure class="l-body-outset" id="analogy-diagram">
         <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
@@ -5396,14 +5350,6 @@
         representation can provide interesting insights into the relationship
         between tasks.
       </p>
-      <p>
-        In light of these observations, we wonder: <em>how</em> are
-        feature-wise affine transformations able to perform these sorts of
-        modulations on the FiLM-ed network?
-      </p>
-      <p>
-        <span class="todo">TODO(nschuc): fill this part in.</span>
-      </p>
 
       <hr />
 
@@ -5411,9 +5357,11 @@
       <p>
         This article had quite a lot of ground to cover. We set out to better
         understand feature-wise transformations in the context of fusing
-        multiple sources of information in a neural network. We examined
-        several approaches which are encompassed by the FiLM formulation, and
-        reviewed their use in the literature. We hope that the recognition of the wide range of applications
+        multiple sources of information in a neural network. We examined several
+        approaches which can be reasoned about using the FiLM formulation, and
+        reviewed their use in the literature. We outlined some of the ways in
+        which the implicit task representation learned by FiLM shows itself
+        useful. We hope that the recognition of the wide range of applications
         feature-wise transformations found in the literature will stimulate
         research into applying them to even more problem settings.
       </p>
