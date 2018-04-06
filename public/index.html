@@ -4211,12 +4211,6 @@
         </svg>
       </figure>
       <p>
-        The content and style images are first fed through the model up to the
-        adaptive instance normalization layer. The stack of content feature maps is then
-        instance-normalized, and the mean and standard deviation statistics of
-        the stack of style feature maps are used to parametrize the
-        post-normalization affine transformation.
-
         Adaptive instance normalization can be interpreted as inserting a FiLM layer midway
         through the model architecture. However, rather than relying on a secondary network
         to predict the FiLM parameters from the style image, the main network
