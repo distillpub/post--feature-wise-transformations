@@ -5102,6 +5102,7 @@
           <g id="style-transfer-plot">
             <rect x="520" y="100" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
           </g>
+          <circle cx="733" cy="220" r="20" style="stroke-width: 4px; fill: none;" class="figure-element"/>
           <g transform="translate(800, 110)" id="artist-names"></g>
           <text x="10" y="400" dy="1em" style="fill: red" class="figure-text">
             TODO: add the ability to hover over points and visualize questions
@@ -5157,7 +5158,7 @@
                     .style("stroke", "#666")
                     .style("stroke-width", 1.5);
 
-                dataset = data;
+                dataset = data.slice(0, 512);
                 xScales = [];
                 yScales = [];
                 for (var i = 0; i < 1; i++) {
@@ -5231,7 +5232,7 @@
             var xScale;
             var yScale;
             d3.json("assets/style_tsne.json", function(data) {
-                dataset = data;
+                dataset = {"artists": data.artists, "points": data.points.slice(0, 512)};
                 xScale = d3.scaleLinear()
                     .domain([d3.min(dataset.points, function (d) { return d.x; }),
                              d3.max(dataset.points, function (d) { return d.x; })])
@@ -5316,9 +5317,9 @@
         The projection on the right is inspired by a similar projection done by
         Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their
         style transfer network. While examining the projection, our attention
-        was drawn to the isolated cluster in the middle-right in which paintings
-        by Ivan Shishkin and Rembrandt are aggregated. This is surprising, given
-        that the two painters exhibit fairly different styles.
+        was drawn to an isolated cluster (circled in the figure) in which
+        paintings by Ivan Shishkin and Rembrandt are aggregated. This is
+        surprising, given that the two painters exhibit fairly different styles.
       </p>
       <figure class="l-body-outset" id="analogy-diagram">
         <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
