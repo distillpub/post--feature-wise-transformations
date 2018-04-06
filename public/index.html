@@ -5040,26 +5040,26 @@
           <path d="M 430 100 L 430 292" style="stroke-width: 0.5px" class="figure-line"/>
           <text x="440" y="80" class="figure-text">
             <tspan>
-              A: "What is the blue big cylinder made of?"
+              A: "What is the blue big <tspan style="font-weight: bold">sphere</tspan> made of?"
             </tspan>
             <tspan x="440" dy="1.5em">
-              B: "What is the blue big cylinder made of?"
+              B: "What is the <tspan style="font-weight: bold">green</tspan> big cylinder made of?"
             </tspan>
             <tspan x="440" dy="1.5em">
-              C: "What is the blue big cylinder made of?"
+              C: "What is the <tspan style="font-weight: bold">green</tspan> big <tspan style="font-weight: bold">sphere</tspan> made of?"
             </tspan>
           </text>
           <path d="M 430 196 L 560 140" class="figure-line"/>
-          <use x="560" y="140" xlink:href="#arrow-right" class="figure-path"/>
+          <use x="560" y="140" transform="rotate(-25, 560, 140)" xlink:href="#arrow-right" class="figure-path"/>
           <text x="480" y="165" class="figure-text">A</text>
           <path d="M 560 140 L 600 220" class="figure-line"/>
-          <use x="600" y="220" xlink:href="#arrow-down" class="figure-path"/>
+          <use x="600" y="220" transform="rotate(-25, 600, 220)" xlink:href="#arrow-down" class="figure-path"/>
           <text x="590" y="170" class="figure-text">B</text>
           <path d="M 600 220 L 500 270" class="figure-line"/>
-          <use x="500" y="270" xlink:href="#arrow-left" class="figure-path"/>
+          <use x="500" y="270" transform="rotate(-25, 500, 270)" xlink:href="#arrow-left" class="figure-path"/>
           <text x="540" y="270" class="figure-text">-C</text>
           <path d="M 430 196 L 500 270" class="figure-line figure-dashed"/>
-          <use x="500" y="270" xlink:href="#arrow-right" class="figure-path"/>
+          <use x="500" y="270" transform="rotate(50, 500, 270)" style="fill: none;" xlink:href="#arrow-right" class="figure-path"/>
           <text x="440" y="292" dy="2em" style="font-style: italic;" class="figure-text">
             "What is the blue big cylinder made of?" = A + B - C
           </text>
