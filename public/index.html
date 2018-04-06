@@ -5374,9 +5374,18 @@
       <p>
         The projection on the right is inspired by a similar projection done by
         Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their
-        style transfer network. While examining the projection, our attention
-        was drawn to an isolated cluster (circled in the figure) in which
-        paintings by Ivan Shishkin and Rembrandt are aggregated. This is
+        style transfer network. What's immediately obvious is that there isn't
+	as clear clustering.
+	Why might this make sense?
+	For one, image stylization requires a network
+	to maintain information about the entire input image's content in order to reconstruct a whole image,
+	as opposed to emit a single answer, as in visual question-answering.
+	Thus, it might make sense that the network should not be as strongly influenced by conditioning information,
+	to maintain the necessary information from the main, visual input for the task.
+	Secondly, there are still patterns embedded in the t-SNE, they are just
+	of a different form.
+	For example, in the t-SNE, there is an isolated cluster (circled in the figure) in which
+        paintings by Ivan Shishkin and Rembrandt are aggregated. This finding is
         surprising, given that the two painters exhibit fairly different styles.
       </p>
       <figure class="l-body-outset" id="analogy-diagram">
