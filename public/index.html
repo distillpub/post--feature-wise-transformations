@@ -201,7 +201,7 @@
 
       <h1 id="film-nomenclature">Building towards FiLM</h1>
       <p>
-        We begin by considering a data that is not typicaly considered multimodal: images and category labels. 
+        We begin by considering a data combination that is not typicaly considered multimodal: images and category labels. 
 	Imagine you're tasked with building a generative model of various
         classes of images (puppy, boat, airplane, etc.). The model takes a
         source of noise and a class as input and outputs an image sample for
@@ -3288,17 +3288,13 @@
       </figure>
       <p>
         Feature-wise affine transformations are used in Kirkpatrick et al.
-        <d-cite key="kirkpatrick2017overcoming"></d-cite> to condition the
-        policy of an agent trained to play 10 different Atari games on the game
-        being played. More specifically, game-specific gains and biases are
-        used in a shared policy network, which can be viewed as inserting FiLM
-        layers throughout its hierarchy.
+        <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single agent to play 10 different Atari games. They used game-specific scaling and biases to condition a shared policy network. 
       </p>
       <h3>Natural language processing</h3>
       <p>
-        Feature-wise scaling is used in the Gated-Attention Reader
+        Feature-wise scaling is also used in the Gated-Attention Reader
         <d-cite key="dhingra2017gated"></d-cite>. The model extracts
-        information from a text by conditioning the document reading network on
+        information from text by conditioning the document reading network on
         a query. Its architecture is formed of multiple Gated-Attention
         modules, which involve element-wise multiplications between document
         representation tokens and token-specific query representations
@@ -4051,8 +4047,8 @@
 	to predict the conditioning parameters directly from a given style image.
       </p>
       <p>
-        It's worth quickly noting that Yang et al. <d-cite key="yang2018efficient"></d-cite>
-        succeeded in using a related architecture for video object segmentation,
+        Yang et al. <d-cite key="yang2018efficient"></d-cite>
+        use a related architecture for video object segmentation,
         the task of segmenting a particular object throughout a video given that
 	object's segmentation in the first frame.
         Their model conditions an image segmentation network over a video frame on the
@@ -4896,7 +4892,7 @@
         })();
       </script>
       <p>
-        Interestingly, this idea of interpolating between tasks can be applied
+        The notion of interpolating between tasks can be applied
         even in a context where its meaning is not immediately obvious. Using
         the model trained in Perez et al. <d-cite key="perez2018film"></d-cite>,
         we tried interpolating between the FiLM parameters for two CLEVR
@@ -5368,19 +5364,12 @@
       <p>
         The projection on the right is inspired by a similar projection done by
         Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their
-        style transfer network. What's immediately obvious is that there isn't
-	as clear clustering.
-	Why might this make sense?
-	For one, image stylization requires a network
-	to maintain information about the entire input image's content in order to reconstruct a whole image,
-	as opposed to emit a single answer, as in visual question-answering.
-	Thus, it might make sense that the network should not be as strongly influenced by conditioning information,
-	to maintain the necessary information from the main, visual input for the task.
-	Secondly, there are still patterns embedded in the t-SNE, they are just
-	of a different form.
-	For example, in the t-SNE, there is an isolated cluster (circled in the figure) in which
-        paintings by Ivan Shishkin and Rembrandt are aggregated. This finding is
-        surprising, given that the two painters exhibit fairly different styles.
+        style transfer network. The projection does not cluster artists as
+        neatly as the projection on the left, but this is to be expected, given
+        that an artist's style may vary widely over time. We can still however detect interesting patterns in the
+        projection: note for instance the isolated cluster (circled in the figure) in which
+        paintings by Ivan Shishkin and Rembrandt are aggregated. While these two painters
+        exhibit fairly different styles, the cluster is a grouping of their sketches.
       </p>
       <figure class="l-body-outset" id="analogy-diagram">
         <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
@@ -5411,12 +5400,7 @@
           </text>
         </svg>
       </figure>
-      <p>
-        Upon examining the paintings in the cluster, we realized that they were
-        all sketches! This goes to show that the learned task
-        representation can provide interesting insights into the relationship
-        between tasks.
-      </p>
+      
 
       <hr />
 
