@@ -186,9 +186,9 @@
         <a href="#film-nomenclature"> Feature-wise Linear Modulation (FiLM)</a>
         nomenclature. We will then point out their
         <a href="#film-in-literature">numerous uses in the recent literature</a>.
-        Finally, we will take a stab at
-        <a href="#understanding-film">understanding the computational mechanisms</a>
-        that allow them to work.
+        Finally, we will take a look at
+        <a href="#film-properties">interesting and intriguing properties</a>
+        that arise from the use of FiLM.
       </p>
       <p>
         We hope the insights contributed by this article will help highlight
@@ -4757,7 +4757,7 @@
 
       <hr />
 
-      <h1 id="understanding-film">Properties of FiLM-ed networks</h1>
+      <h1 id="film-properties">Properties of FiLM-ed networks</h1>
       <p>
         If you are like us, you probably find the success of feature-wise
         transformations intriguing given how simple they are. It appears that
@@ -5072,7 +5072,7 @@
         parameter values.
       </p>
       <figure class="l-page-outset" id="tsne-diagram">
-        <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
               t-SNE projection of the FiLM parameters associated with
@@ -5095,40 +5095,19 @@
               coded by artist name.
             </tspan>
           </text>
-          <g>
-            <g id="clevr-plot">
-              <rect x="10" y="100" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
-            </g>
-            <g transform="translate(300, 110)" id="question-types"></g>
-            <g transform="translate(270, 440)" id="film-layer-6">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 6</text>
-            </g>
-            <g transform="translate(140, 440)" id="film-layer-5">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 5</text>
-            </g>
-            <g transform="translate(10, 440)" id="film-layer-4">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 4</text>
-            </g>
-            <g transform="translate(270, 400)" id="film-layer-3">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 3</text>
-            </g>
-            <g transform="translate(140, 400)" id="film-layer-2">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 2</text>
-            </g>
-            <g transform="translate(10, 400)" id="film-layer-1">
-              <rect width="120" height="30" class="figure-element figure-box"/>
-              <text x="60" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM layer 1</text>
-            </g>
+          <g id="clevr-plot">
+            <rect x="10" y="100" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
           </g>
+          <g transform="translate(300, 110)" id="question-types"></g>
           <g id="style-transfer-plot">
             <rect x="520" y="100" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
           </g>
-          <g transform="translate(800, 110)" id="artist-names">
+          <g transform="translate(800, 110)" id="artist-names"></g>
+          <text x="10" y="400" dy="1em" style="fill: red" class="figure-text">
+            TODO: add the ability to hover over points and visualize questions
+            or style images; for now we can only hover over the legend to focus
+            on different labels.
+          </text>
         </svg>
       </figure>
       <script>
@@ -5192,7 +5171,7 @@
                 dataset = data;
                 xScales = [];
                 yScales = [];
-                for (var i = 0; i < 6; i++) {
+                for (var i = 0; i < 1; i++) {
                     xScales.push(
                         d3.scaleLinear()
                             .domain([d3.min(dataset, function (d) { return coordinates(d, i).x; }),
@@ -5246,18 +5225,6 @@
 
                 focusAll();
             });
-
-            for (var k = 0; k < 6; k++) {
-                svg.select("#film-layer-" + (k + 1))
-                    .on("click", function () {
-                        var layer = parseInt(d3.select(this).attr("id").charAt(11)) - 1;
-                        svg.selectAll("circle")
-                            .attrs({
-                                "cx": function(d) { return xScales[layer](coordinates(d, layer).x); },
-                                "cy": function(d) { return yScales[layer](coordinates(d, layer).y); }
-                            });
-                    });
-            }
         })();
         (function() {
             var colors = ["#1f77b4", "#ff770e", "#2ca02c", "#d62728", "#9467bd",
@@ -5351,13 +5318,10 @@
         })();
       </script>
       <p>
-        The projection on the left is borrowed from Perez et al.
-        <d-cite key="perez2018film"></d-cite>, who observed that depending on
-        which FiLM layer they used to make the projection, questions cluster
-        differently: lower FiLM layers tend to cluster questions by low-level
-        reasoning functions (color, shape, size, etc.), whereas higher FiLM
-        layers tend to cluster questions by high-level reasoning functions
-        (equality, query, etc.).
+        The projection on the left is inspired by a similar projection done by
+        Perez et al.  <d-cite key="perez2018film"></d-cite> for their visual
+        reasoning model trained on CLEVR and shows how questions group by
+        question type.
       </p>
       <p>
         The projection on the right is inspired by a similar projection done by
@@ -5402,14 +5366,6 @@
         representation can provide interesting insights into the relationship
         between tasks.
       </p>
-      <p>
-        In light of these observations, we wonder: <em>how</em> are
-        feature-wise affine transformations able to perform these sorts of
-        modulations on the FiLM-ed network?
-      </p>
-      <p>
-        <span class="todo">TODO(nschuc): fill this part in.</span>
-      </p>
 
       <hr />
 
@@ -5417,9 +5373,11 @@
       <p>
         This article had quite a lot of ground to cover. We set out to better
         understand feature-wise transformations in the context of fusing
-        multiple sources of information in a neural network. We examined
-        several approaches which are encompassed by the FiLM formulation, and
-        reviewed their use in the literature. We hope that the recognition of the wide range of applications
+        multiple sources of information in a neural network. We examined several
+        approaches which can be reasoned about using the FiLM formulation, and
+        reviewed their use in the literature. We outlined some of the ways in
+        which the implicit task representation learned by FiLM shows itself
+        useful. We hope that the recognition of the wide range of applications
         feature-wise transformations found in the literature will stimulate
         research into applying them to even more problem settings.
       </p>
