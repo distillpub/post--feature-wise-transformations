@@ -713,8 +713,8 @@
         (regardless of sign) will generally produce higher values when multiplied and lower values otherwise.
         This feature is why dot products are often used to determine how similar two vectors are.
         In contrast, additive interactions are more natural for functions that are less strongly
-        dependent on the joint values of two inputs, such as feature aggregation or feature detection
-        (i.e. checking if a feature is present in either of two inputs).
+        dependent on the joint values of two inputs. Such functions might include feature aggregation
+	or feature detection (i.e. checking if a feature is present in either of two inputs), for instance.
         <d-footnote>
           Multiplicative interactions alone have had a history of success in various domains.
           &mdash; see <a href="#bibliographic-notes">Bibliographic Notes</a>.
@@ -754,7 +754,7 @@
         architecture. These are parametrized by some form of conditioning
         information, and the mapping from conditioning information to FiLM
         parameters is called the <em>FiLM generator</em>.
-        In other words, the FiLM generator is going to predict the parameters of the FiLM layers based on some arbitrary input.
+        In other words, the FiLM generator predicts the parameters of the FiLM layers based on some arbitrary input.
         For simplicity, you can assume that the FiLM generator outputs the concatenation of all
         FiLM parameters for the network architecture.
       </p>
@@ -1791,8 +1791,8 @@
           HyperNetworks (which predicts all network parameters) &mdash; see
           <a href="#bibliographic-notes">Bibliographic Notes</a>.
         </d-footnote>
-        FiLM layers require predicting far fewer parameters than Hypernetworks,
-        but is less flexible in its ability to modulate the model's computation.
+        FiLM requires predicting far fewer parameters than Hypernetworks,
+        but FiLM is also less flexible in its ability to modulate the model's computation.
         The ideal trade-off between flexibility and computational complexity is
         still an ongoing area of investigation.
       </p>
@@ -2531,14 +2531,14 @@
         information is contained in specific spatial locations or time steps,
         whereas for FiLM, it is assumed that the useful information is
         contained in specific features or feature maps.  In the end, FiLM and
-        attention can be seen as two complementary tools in the neural toolbox.
+        attention can be seen as two distinct tools in the neural toolbox.
       </p>
       <p>
         Finally, FiLM layers can be seen as a special case of a bilinear
         transformation <d-cite key="tenenbaum2000separating"></d-cite> with
         low-rank weight matrices.
         <d-footnote>
-          Bilinear transformations themselves have a long history in the machine
+          Bilinear transformations have a long history in the machine
           learning literature &mdash; see
           <a href="#bibliographic-notes">Bibliographic Notes</a>.
         </d-footnote>
@@ -3703,12 +3703,10 @@
         FiLM to condition a pre-trained network. The visual pipeline of a
         visual question-answering model is modulated by the model's
         linguistic pipeline through conditional batch normalization,
-        which can be viewed as a special case of FiLM. The model is trained on
-        the "oracle" sub-task of the GuessWhat?! task
-        <d-cite key="vries2017guesswhat"></d-cite> &mdash; which features
-        natural language questions on images answerable by yes, no, or N/A
-        &mdash; as well as the VQAv1 <d-cite key="agrawal2015vqa"></d-cite>
-        dataset.
+        which can be viewed as a special case of FiLM. The model is trained to
+	answer natural language questions about real-world images 
+	using the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
+	and VQAv1 <d-cite key="agrawal2015vqa"></d-cite> datasets.
       </p>
       <figure class="l-page-outset" id="guesswhat-diagram">
         <svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg">
@@ -3889,16 +3887,21 @@
         The visual pipeline consists of a pre-trained residual network and is
         kept fixed throughout training. The linguistic pipeline manipulates
         the visual pipeline by perturbing the residual
-        network's batch normalization parameters. As hinted earlier, conditional batch
+        network's batch normalization parameters, which re-scale and re-shift feature maps
+	after activations have been normalized to have zero mean and unit variance.
+	As hinted earlier, conditional batch
         normalization can be viewed as an instance of FiLM where the post-normalization
         feature-wise affine transformation is replaced with a FiLM layer.
       </p>
       <h3>Style transfer</h3>
       <p>
-        Feature-wise transformations are used in Dumoulin et al.
-        <d-cite key="dumoulin2017learned"></d-cite> to condition a style
-        transfer network on a chosen style image. Conditional instance
-        normalization layers are introduced into a fast feedforward style
+        Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use feature-wise
+	affine transformations - in the form of conditional instance normalization layers -
+	to condition a style transfer network on a chosen style image.
+	Like conditional batch normalization, conditional instance normalization
+        can be seen as an instance of FiLM where the
+        post-normalization feature-wise affine transformation is replaced with a
+        FiLM layer. These layers are introduced into a feedforward style
         transfer network to accommodate multiple styles. Each style modeled by
         the network is associated with its own set of instance normalization
         parameters, and conditioning is achieved by applying the normalization
@@ -4033,21 +4036,12 @@
         </svg>
       </figure>
       <p>
-        This intuition is pushed further by Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
-        with the introduction of a <em>style prediction network</em> which is
-        trained jointly with the style transfer network to predict the instance
-        normalization parameters directly from a given style image.
-      </p>
-      <p>
-        Like conditional batch normalization, conditional instance normalization
-        can be seen as an instance of FiLM where the
-        post-normalization feature-wise affine transformation is replaced with a
-        FiLM layer. The main differentiator between Dumoulin et al.
-        <d-cite key="dumoulin2017learned"></d-cite> and Ghiasi et al.
-        <d-cite key="ghiasi2017exploring"></d-cite> is the FiLM generator
-        implementation: in the former the generator is a simple embedding
-        lookup, whereas in the latter the generator is a convolutional neural
-        network.
+        Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use a simple embedding
+	lookup to produce the instance normalization parameters, while Ghiasi et al.
+	<d-cite key="ghiasi2017exploring"></d-cite> further introduce
+	a <em>style prediction network</em>,
+	trained jointly with the style transfer network
+	to predict the conditioning parameters directly from a given style image.
       </p>
       <p>
         It's worth quickly noting that Yang et al. <d-cite key="yang2018efficient"></d-cite>
