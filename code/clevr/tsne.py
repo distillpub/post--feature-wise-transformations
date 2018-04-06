@@ -29,33 +29,32 @@ def run_tsne(input_path, output_path, perplexity=350, num_points=None):
          np.transpose(
              np.stack((d['betas'] for d in data), axis=0), [1, 0, 2])],
         axis=2)
+    gamma_beta = gamma_beta.transpose((1, 0, 2)).reshape((num_points, -1))
     question_types = np.stack((d['question_type'] for d in data), axis=0)
 
     # Initialize output data structure
     tsne_data = [{'question_type': int(q)} for q in question_types]
 
-    # Loop over all layers
-    for n in range(6):
-        # Run t-SNE on gammas and betas for layer n
-        tsne_map = TSNE(
-            n_components=2,
-            perplexity=perplexity,
-            early_exaggeration=4.0,
-            learning_rate=500.0,
-            n_iter=5000,
-            n_iter_without_progress=50,
-            min_grad_norm=1e-07,
-            metric='euclidean',
-            init="random",
-            verbose=10,
-            random_state=1,
-            method='barnes_hut',
-            angle=0.5
-        ).fit_transform(gamma_beta[n])
+    # Run t-SNE on gammas and betas
+    tsne_map = TSNE(
+        n_components=2,
+        perplexity=perplexity,
+        early_exaggeration=4.0,
+        learning_rate=500.0,
+        n_iter=5000,
+        n_iter_without_progress=50,
+        min_grad_norm=1e-07,
+        metric='euclidean',
+        init="random",
+        verbose=10,
+        random_state=1,
+        method='barnes_hut',
+        angle=0.5
+    ).fit_transform(gamma_beta)
 
-        # Populate output data structure
-        for i, (x, y) in enumerate(tsne_map):
-            tsne_data[i]['layer_{}'.format(n)] = {'x': float(x), 'y': float(y)}
+    # Populate output data structure
+    for i, (x, y) in enumerate(tsne_map):
+        tsne_data[i]['layer_all'] = {'x': float(x), 'y': float(y)}
 
     # Serialize result into a JSON file
     with open(output_path, 'w') as f:
@@ -65,6 +64,6 @@ def run_tsne(input_path, output_path, perplexity=350, num_points=None):
 if __name__ == "__main__":
     run_tsne(
         input_path='/Users/vdumoulin/Downloads/res_baseline6.small.pkl',
-        output_path='public/assets/clevr_res_baseline6.json',
+        output_path='../../public/assets/clevr_res_baseline6.json',
         perplexity=350,
         num_points=3000)

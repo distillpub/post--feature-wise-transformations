@@ -5129,17 +5129,6 @@
             var yMin = parseInt(scatterPlot.attr("y"));
             var yMax = yMin + parseInt(scatterPlot.attr("height"));
 
-            var coordinates = function(d, i) {
-                switch (i) {
-                    case 0: return d.layer_0;
-                    case 1: return d.layer_1;
-                    case 2: return d.layer_2;
-                    case 3: return d.layer_3;
-                    case 4: return d.layer_4;
-                    case 5: return d.layer_5;
-                }
-            }
-
             var dataset;
             var xScales;
             var yScales;
@@ -5174,14 +5163,14 @@
                 for (var i = 0; i < 1; i++) {
                     xScales.push(
                         d3.scaleLinear()
-                            .domain([d3.min(dataset, function (d) { return coordinates(d, i).x; }),
-                                     d3.max(dataset, function (d) { return coordinates(d, i).x; })])
+                            .domain([d3.min(dataset, function (d) { return d.layer_all.x; }),
+                                     d3.max(dataset, function (d) { return d.layer_all.x; })])
                             .rangeRound([xMin, xMax])
                     );
                     yScales.push(
                         d3.scaleLinear()
-                            .domain([d3.min(dataset, function (d) { return coordinates(d, i).y; }),
-                                     d3.max(dataset, function (d) { return coordinates(d, i).y; })])
+                            .domain([d3.min(dataset, function (d) { return d.layer_all.y; }),
+                                     d3.max(dataset, function (d) { return d.layer_all.y; })])
                             .rangeRound([yMin, yMax])
                     );
                 }
@@ -5190,8 +5179,8 @@
                     .data(dataset)
                   .enter().append("circle")
                     .attrs({
-                        "cx": function(d) { return xScales[0](d.layer_0.x); },
-                        "cy": function(d) { return yScales[0](d.layer_0.y); },
+                        "cx": function(d) { return xScales[0](d.layer_all.x); },
+                        "cy": function(d) { return yScales[0](d.layer_all.y); },
                         "r": 4,
                     })
                     .style("fill", function(d) { return colors[d.question_type]; })
