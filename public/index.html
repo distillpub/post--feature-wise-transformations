@@ -3091,7 +3091,7 @@
       <p>
         Conditional biasing is used by PixelCNN <d-cite key="oord2016conditional"></d-cite>
         and WaveNet <d-cite key="oord2016wavenet"></d-cite>, two recent
-        advances in autoregressive modeling of image and audio data,
+        advances in autoregressive, generative modeling of image and audio data,
         respectively. In its simplest form, conditioning in PixelCNN is
         achieved by adding feature-wise, conditional biases to the output of
         all convolutional layers. In FiLM parlance, this means inserting FiLM
@@ -4207,12 +4207,6 @@
         </svg>
       </figure>
       <p>
-        The content and style images are first fed through the model up to the
-        adaptive instance normalization layer. The stack of content feature maps is then
-        instance-normalized, and the mean and standard deviation statistics of
-        the stack of style feature maps are used to parametrize the
-        post-normalization affine transformation.
-
         Adaptive instance normalization can be interpreted as inserting a FiLM layer midway
         through the model architecture. However, rather than relying on a secondary network
         to predict the FiLM parameters from the style image, the main network
@@ -4960,7 +4954,7 @@
             <text x="440" class="figure-text">9</text>
             <text x="480" class="figure-text">10</text>
 	    <text x="300" y="25" class="figure-text" style="text-anchor: middle;">
-	      Predicted class probabilities
+	      Predicted answer probabilities
 	      </text>
             </g>
 
@@ -5370,8 +5364,12 @@
       <p>
         The projection on the right is inspired by a similar projection done by
         Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their
-        style transfer network. Note the isolated cluster (circled in the figure) in which
-        paintings by Ivan Shishkin and Rembrandt are aggregated. While these two painters exhibit fairly different styles, the cluster is a grouping of their sketches.
+        style transfer network. The projection does not cluster artists as
+        neatly as the projection on the left, but this is to be expected, given
+        that an artist's style may vary widely over time. We can still however detect interesting patterns in the
+        projection: note for instance the isolated cluster (circled in the figure) in which
+        paintings by Ivan Shishkin and Rembrandt are aggregated. While these two painters
+        exhibit fairly different styles, the cluster is a grouping of their sketches.
       </p>
       <figure class="l-body-outset" id="analogy-diagram">
         <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
