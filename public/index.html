@@ -10,6 +10,7 @@
           crossorigin="anonymous">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
     <d-front-matter>
       <script type="text/json">{
@@ -5407,10 +5408,296 @@
         feature-wise affine transformations able to perform these sorts of
         modulations on the FiLM-ed network?
       </p>
-      <p>
-        <span class="todo">TODO(nschuc): fill this part in.</span>
-      </p>
 
+      <h3 id="understanding-film">A tale of two networks</h3>
+      <p>We began this analysis with a hypothesis: FiLM allows us to implement soft switching. Intuitively, this means that a FiLM generator acts as as compiler of sorts. It maps from a high-level task description to a set of parameters that describe how information should flow through the network.</p>
+
+      <p>To test this hypothesis we measure the effect different task descriptions have on the activations of the networks in question. We do this by computing forward passes of the network and measuring the magnitude (Frobenius norm) of each channel activations.</p>
+
+<figure id="interactive-film-style-examples" class="l-body-outset" style="">
+  <svg viewBox="0 0 744 500" width="600"  xmlns="http://www.w3.org/2000/svg">
+    <rect x="30" y="10" width="760" height="480" style="fill: none;" class="network-diagram"/>
+  </svg>
+	<figcaption>
+		<strong>Style Transfer</strong> channel activations. Each channel is coloured and elevated in proportion to the magnitude of the activation.
+<span class="todo">TODO(nschuc): Fix this </span>
+	</figcaption>
+</figure>
+
+<script>
+  (function(){
+    const svg = d3.select('#interactive-film-style-examples > svg')
+    const networkPlot = svg.select('.network-diagram')
+    var xMin = parseInt(networkPlot.attr("x"));
+    var xMax = xMin + parseInt(networkPlot.attr("width"));
+    var yMin = parseInt(networkPlot.attr("y"));
+    var yMax = yMin + parseInt(networkPlot.attr("height"));
+
+
+    const margin = 30;
+    const filterSize = 30;
+    const dx = 1.9, dy = 2.8;  
+    const padding = 2;
+
+
+    function renderNetworkDiagram(activations) {
+
+      let x = d3.scaleLinear().range([xMin, xMax - margin - 128 * dx]).domain([0, activations.statistics.length])
+      let layerDomain = d3.local()
+      let color = d3.scaleSequential(d3.interpolateViridis)
+      let opacity = d3.scaleLinear().range([0, 1])
+
+      let layerGroup = svg 
+        .selectAll('g')
+        .data([activations])
+        .enter().append('g')
+
+      layerGroup.append('text')
+        .text(d => 'Question: ' + d.name)
+        .attr('text-anchor', 'middle')
+        .attr("x", (d, i) => (xMax - xMin) / 2)
+        .attr("y", (d, i) =>  10)
+        .attr('font-size', 12)
+
+      let layer = layerGroup
+        .selectAll('g')
+        .data(d => d.statistics)
+        .enter().append('g')
+        .attr("transform", (d, i) => { return `translate(${x(i)}, 0)`})
+        .each(function(d, i) {
+          const localDomain = [d3.min(d) , d3.max(d)];
+          layerDomain.set(this, localDomain)
+        })
+        .selectAll("g")
+        .data(d => d)
+        .enter().append("g");
+
+      // Shadow
+      layer
+        .append("rect")
+        .attr('class', 'channel-shadow')
+        .attr("transform", function(d){ 
+          return `translate(0, 0)`
+        })
+        .attr("width", filterSize).attr("height", filterSize)
+        .attr("x", (d, i) => 50 + i*dx)
+        .attr("y", (d, i) => 100 + i*dy)
+
+      // Draw real layer
+      layer
+        .append('rect')
+        .attr('class', 'channel-activation')
+        .attr("width", filterSize).attr("height", filterSize)
+        .attr("fill", function(d){  
+          const domain = layerDomain.get(this)
+          return color.domain(domain)(d)
+        })
+        .attr("x", (d, i) => 50 + i*dx)
+        .attr("y", (d, i) => 0 + i*dy)
+				.transition()
+        .attr("opacity", function(d) { 
+          const domain = layerDomain.get(this)
+          return opacity.domain(domain)(d)
+        })
+        .attr("transform", function(d){ 
+          let scale = d3.scaleLinear().domain(layerDomain.get(this)).range([2*filterSize, 0])
+          return `translate(0, ${scale(d)})`
+        })
+    }
+
+    const parseStyle = (instance) => {
+      return {
+        name: instance.question,
+        statistics: Object.keys(instance.fmap_norms).map(k => instance.fmap_norms[k])
+      }
+    }
+
+		var clevrActivations;
+		var selectedExample = 0;
+    // Create a sequential color scale (dark for small radii, bright for large).
+    d3.json('assets/clevr_activations_varied.json', (data) => {
+      clevrActivations = data.map(item => parseClevr(item))
+      renderNetworkDiagram(clevrActivations[selectedExample])
+
+			svg.select('.clevr-input')
+				.on("click", function () {
+					console.log(selectedExample)
+					selectedExample = (selectedExample + 1) % clevrActivations.length;
+					renderNetworkDiagram(clevrActivations[selectedExample])
+				});
+    })
+  })();
+  </script>
+<p>
+	Similar activation properties are observed in the FiLM-ed network for the CLEVR task.
+</p>
+<figure id="interactive-film-clevr-examples" class="l-body-outset" style="">
+  <svg viewBox="0 0 744 500" width="600"  xmlns="http://www.w3.org/2000/svg">
+		<image x="0" y="240" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/clevr_input_23.png" class="clevr-input"></image>
+    <rect x="30" y="10" width="760" height="480" style="fill: none;" class="network-diagram"/>
+  </svg>
+	<figcaption>
+		<strong>CLEVR</strong> channel activations. Each channel is coloured and elevated in proportion to the magnitude of the activation.
+	</figcaption>
+</figure>
+<script>
+  (function(){
+    const svg = d3.select('#interactive-film-clevr-examples > svg')
+    const networkPlot = svg.select('.network-diagram')
+    var xMin = parseInt(networkPlot.attr("x"));
+    var xMax = xMin + parseInt(networkPlot.attr("width"));
+    var yMin = parseInt(networkPlot.attr("y"));
+    var yMax = yMin + parseInt(networkPlot.attr("height"));
+
+
+    const margin = 30;
+    const filterSize = 30;
+    const dx = 1.9, dy = 2.8;  
+    const padding = 2;
+
+    const parseClevr = (instance) => {
+      return {
+        name: instance.question,
+        statistics: Object.keys(instance.fmap_norms).map(k => instance.fmap_norms[k])
+      }
+    }
+
+    function renderNetworkDiagram(activations) {
+
+      let x = d3.scaleLinear().range([xMin, xMax - margin - 128 * dx]).domain([0, activations.statistics.length])
+      let layerDomain = d3.local()
+      let color = d3.scaleSequential(d3.interpolateViridis)
+      let opacity = d3.scaleLinear().range([0, 1])
+
+      let layerGroup = svg 
+        .selectAll('g')
+        .data([activations])
+        .enter().append('g')
+
+      layerGroup.append('text')
+        .text(d => 'Question: ' + d.name)
+        .attr('text-anchor', 'middle')
+        .attr("x", (d, i) => (xMax - xMin) / 2)
+        .attr("y", (d, i) =>  10)
+        .attr('font-size', 12)
+
+      let layer = layerGroup
+        .selectAll('g')
+        .data(d => d.statistics)
+        .enter().append('g')
+        .attr("transform", (d, i) => { return `translate(${x(i)}, 0)`})
+        .each(function(d, i) {
+          const localDomain = [d3.min(d) , d3.max(d)];
+          layerDomain.set(this, localDomain)
+        })
+        .selectAll("g")
+        .data(d => d)
+        .enter().append("g");
+
+      // Shadow
+      layer
+        .append("rect")
+        .attr('class', 'channel-shadow')
+        .attr("transform", function(d){ 
+          return `translate(0, 0)`
+        })
+        .attr("width", filterSize).attr("height", filterSize)
+        .attr("x", (d, i) => 50 + i*dx)
+        .attr("y", (d, i) => 100 + i*dy)
+
+      // Draw real layer
+      layer
+        .append('rect')
+        .attr('class', 'channel-activation')
+        .attr("width", filterSize).attr("height", filterSize)
+        .attr("fill", function(d){  
+          const domain = layerDomain.get(this)
+          return color.domain(domain)(d)
+        })
+        .attr("x", (d, i) => 50 + i*dx)
+        .attr("y", (d, i) => 0 + i*dy)
+				.transition()
+        .attr("opacity", function(d) { 
+          const domain = layerDomain.get(this)
+          return opacity.domain(domain)(d)
+        })
+        .attr("transform", function(d){ 
+          let scale = d3.scaleLinear().domain(layerDomain.get(this)).range([2*filterSize, 0])
+          return `translate(0, ${scale(d)})`
+        })
+    }
+		var clevrActivations;
+		var selectedExample = 0;
+    // Create a sequential color scale (dark for small radii, bright for large).
+    d3.json('assets/clevr_activations_varied.json', (data) => {
+      clevrActivations = data.map(item => parseClevr(item))
+      renderNetworkDiagram(clevrActivations[selectedExample])
+
+			svg.select('.clevr-input')
+				.on("click", function () {
+					console.log(selectedExample)
+					selectedExample = (selectedExample + 1) % clevrActivations.length;
+					renderNetworkDiagram(clevrActivations[selectedExample])
+				});
+    })
+  })();
+  </script>
+
+
+<p>These examples show that there is a fairly sparse activation pattern, and that it shifts with the task description. There are however two major caveats that somewhat invalidate our working hypothesis.</p>
+
+<p>First, although the patterns are somewhat sparse, there are relatively few full zeroed out channels. We considered that the FiLM generator could learn to use the ReLU-ed activation function <em>completely</em> zero out certain filters. Approximately 9% of the channels are completely switched off for the FiLM-CLEVR neural network, but it isn’t the effect we had initially predicted.</p>
+
+<p>Second, while there is some amount of switching—how else could the network complete the task description—there are also a number of channels that remain on consistently! Is this a fluke? Perhaps this set of examples happen to all utilize the same ‘soft program’. To determine this lets measure these activation magnitudes across the entire validation set.</p>
+
+<figure id="film-clevr-means" class="grid" style="">
+  <div>
+    <img src="assets/film_feature_map_norms.png">
+    <figcaption>
+    <strong>Channel Activation Magnitudes</strong> over the CLEVR validation set.
+    </figcaption>
+  </div>
+</figure>
+
+<p>
+Notice the prominent horizontal bands! From this height it appears that channels are mostly <em>on</em>, or mostly <em>off</em>. 
+Looking closely we can see the switching effects but they appear overpowered.
+We compute the mean and standard deviation over the validation set.
+</p>
+
+<figure id="film-clevr-means" class="grid" style="">
+  <div>
+    <img src="assets/film_means.png">
+    <figcaption>
+    <strong>Channel Means</strong> for the CLEVR task.
+    </figcaption>
+  </div>
+</figure>
+
+
+<p>The means show the increase in the signal magnitude as the network depth increases. </p>
+
+<figure id="film-clevr-stddevs" class="grid" style="">
+  <div>
+    <img src="assets/film_stddevs.png">
+    <figcaption>
+    <strong>Channel Standard Deviations</strong> for the CLEVR task.
+    </figcaption>
+  </div>
+</figure>
+
+<p>The standard deviations show us that while channels are activated more overall, the intensity of the switching increases as well.</p>
+
+<p>Where does this leave us? Our hypothesis is not clearly falsified nor validated by these observations. We observe some soft-switching effects, but there remains a distributed  effect. While the FiLM generator learns to switch channels off completely with ReLU /some/ of the time, it’s minor in comparison to the many, low-magnitude channel activations.</p>
+
+<p>Part of this effect is explained by the observation that many task descriptions will require the same information carry through till the end. And in the style transfer case, a great deal of information must be propagated as we’d like the content to remain invariant in some way.</p>
+
+<p>Further questions: recent Distill work on feature visualization allows us to probe into the semantics of these feature maps.
+
+- What do the channels that are consistently activated do?
+- What do the channels that are switch highly do?
+- If we replace this soft-switching mechanism with a binary predictor can we get the same results?
+</p>
       <hr />
 
       <h1>Conclusion</h1>

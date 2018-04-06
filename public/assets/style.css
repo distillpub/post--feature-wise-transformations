@@ -79,6 +79,17 @@
   color: red;
 }
 
+.channel-activation {
+  stroke: #3e3e3e;
+  stroke-opacity: 0.2;
+  opacity: 0.7;
+}
+
+.channel-shadow {
+  stroke: #3e3e3e;
+  opacity: 0.05;
+}
+
 #attentional-ex2 .background {
   fill: rgb(240, 240, 245);
   fill-opacity: 0.8;
