@@ -137,6 +137,7 @@
   display: none;
 }
 
+/* Toggle Section code from: https://inclusive-components.design/collapsible-sections/ */
 .controls {
  text-align: right;
  margin-bottom: 1em;
