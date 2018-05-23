@@ -201,7 +201,7 @@
 
       <h1 id="film-nomenclature">Building towards FiLM</h1>
       <p>
-        We begin by considering a data combination that is not typicaly considered multimodal: images and category labels. 
+        We begin by considering a data combination that is not typicaly considered multimodal: images and category labels.
 	Imagine you're tasked with building a generative model of various
         classes of images (puppy, boat, airplane, etc.). The model takes a
         source of noise and a class as input and outputs an image sample for
@@ -737,7 +737,8 @@
         work remarkably well as a conditioning mechanism despite their
         simplicity.
       </p>
-      <h2>FiLM</h2>
+      <hr />
+      <h1 id="film-explanation">FiLM</h1>
       <p>
         To center the discussion around a common language, we propose to use
         the nomenclature of Perez et al. <d-cite key="perez2018film"></d-cite>, which
@@ -1777,9 +1778,10 @@
                 });
         })();
       </script>
-
-
-      <h2>Connecting FiLM to other approaches</h2>
+      <hr />
+    <h1 id="film-related-work">Connecting FiLM to other approaches</h1>
+    <toggle-section open="false">
+      <h2 id="hypernetworks">HyperNetworks</h2>
       <p>
         FiLM shares with HyperNetworks <d-cite key="ha2016hypernetworks"></d-cite>
         the architectural feature that a secondary neural network computes some
@@ -1797,6 +1799,9 @@
         The ideal trade-off between flexibility and computational complexity is
         still an ongoing area of investigation.
       </p>
+    </toggle-section>
+    <toggle-section open="false">
+      <h2 id="attention">Attention</h2>
       <p>
         Some parallels can be drawn between FiLM and attention, but the two
         operate in different ways which we think are important to disambiguate.
@@ -2534,6 +2539,9 @@
         contained in specific features or feature maps.  In the end, FiLM and
         attention can be seen as two distinct tools in the neural toolbox.
       </p>
+    </toggle-section>
+    <toggle-section open="false">
+      <h2 id="bilinear-transformations">Bilinear transformations</h2>
       <p>
         Finally, FiLM layers can be seen as a special case of a bilinear
         transformation <d-cite key="tenenbaum2000separating"></d-cite> with
@@ -2997,7 +3005,7 @@
             </g>
         </svg>
       </figure>
-
+      </toggle-section>
       <hr />
 
       <h1 id="film-in-literature">Feature-wise transformations in the literature</h1>
@@ -3007,7 +3015,8 @@
         applicability, this connection is seldom drawn. Here are notable
         examples, grouped by application domain.
       </p>
-      <h3>Generative modeling</h3>
+    <toggle-section-2 open="false">
+      <h2 id="generative-modeling">Generative modeling</h2>
       <p>
         Concatenation-based conditioning is used in the conditional variant of
         DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a
@@ -3201,7 +3210,9 @@
         expresses it as a mapping from an input sequence of conditioning
         information to an output sequence of FiLM parameters.
       </p>
-      <h3>Reinforcement learning</h3>
+    </toggle-section-2>
+    <toggle-section-2 open="false">
+      <h2 id="reinforcement-learning">Reinforcement learning</h2>
       <p>
         Feature-wise sigmoidal gating is used in the Gated-Attention architecture
         <d-cite key="chaplot2017gated"></d-cite> to fuse linguistic and visual
@@ -3288,9 +3299,11 @@
       </figure>
       <p>
         Feature-wise affine transformations are used in Kirkpatrick et al.
-        <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single agent to play 10 different Atari games. They used game-specific scaling and biases to condition a shared policy network. 
+        <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single agent to play 10 different Atari games. They used game-specific scaling and biases to condition a shared policy network.
       </p>
-      <h3>Natural language processing</h3>
+    </toggle-section-2>
+    <toggle-section-2 open="false">
+      <h2 id="natural-language-processing">Natural language processing</h2>
       <p>
         Feature-wise scaling is also used in the Gated-Attention Reader
         <d-cite key="dhingra2017gated"></d-cite>. The model extracts
@@ -3467,7 +3480,9 @@
           </g>
         </svg>
       </figure>
-      <h3>Visual question-answering</h3>
+    </toggle-section-2>
+    <toggle-section-2 open="false">
+      <h2 id="visual-question-answering">Visual question-answering</h2>
       <p>
         Perez et al. <d-cite key="perez2017learning,perez2018film"></d-cite>
 	use feature-wise affine transformations to build a
@@ -3703,7 +3718,7 @@
         visual question-answering model is modulated by the model's
         linguistic pipeline through conditional batch normalization,
         which can be viewed as a special case of FiLM. The model learns to
-	answer natural language questions about real-world images 
+	answer natural language questions about real-world images
 	for the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
 	and VQAv1 <d-cite key="agrawal2015vqa"></d-cite> datasets.
       </p>
@@ -3892,7 +3907,9 @@
         normalization can be viewed as an instance of FiLM where the post-normalization
         feature-wise affine transformation is replaced with a FiLM layer.
       </p>
-      <h3>Style transfer</h3>
+    </toggle-section-2>
+    <toggle-section-2 open="false">
+      <h2 id="style-transfer">Style transfer</h2>
       <p>
         Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use feature-wise
 	affine transformations &mdash; in the form of conditional instance normalization layers &mdash;
@@ -4210,7 +4227,9 @@
         FiLM parameters. Therefore, the model can be seen as <em>both</em> the
         FiLM-ed network the FiLM generator.
       </p>
-      <h3>Domain adaptation</h3>
+    </toggle-section-2>
+    <toggle-section-2 open="false">
+      <h2 id="domain-adaptation">Domain adaptation</h2>
       <p>
         Li et al. <d-cite key="li2018adaptive"></d-cite> find a similar approach highly effective
         for domain adaptation, updating the per-channel
@@ -4222,7 +4241,9 @@
         Notably, this approach, along with Adaptive Instance Normalization, has the particular
         advantage of not requiring any extra, trainable parameters.
       </p>
-      <h3>Image recognition</h3>
+    </toggle-section-2>
+    <toggle-section-2 open="false">
+      <h2 id="image-recognition">Image recognition</h2>
       <p>
         As we have seen so far, feature-wise transformations can be used as a
         conditioning mechanism to incorporate external information such as
@@ -4455,7 +4476,9 @@
           </g>
         </svg>
       </figure>
-      <h3>Speech recognition</h3>
+    </toggle-section-2>
+    <toggle-section-2 open="false">
+      <h2 id="speech-recognition">Speech recognition</h2>
       <p>
         In the speech recognition domain, the model from Kim et al. <d-cite key="kim2017dynamic"></d-cite>
         modulates a deep bidirectional LSTM using a form of conditional
@@ -4742,6 +4765,7 @@
         summarization feature vectors extracted in each layer of the network
         as a way of adapting the neural acoustic model.
       </p>
+    </toggle-section-2>
 
       <hr />
 
@@ -4955,16 +4979,16 @@
             </g>
 
 	    <g class="clevr-probabilities">
-	    <rect x="80" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="120" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="160" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="200" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="240" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="280" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="320" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="360" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="400" width="20" height="120" class="figure-element figure-box"/> 
-	    <rect x="440" width="20" height="120" class="figure-element figure-box"/> 
+	    <rect x="80" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="120" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="160" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="200" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="240" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="280" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="320" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="360" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="400" width="20" height="120" class="figure-element figure-box"/>
+	    <rect x="440" width="20" height="120" class="figure-element figure-box"/>
 	    <rect x="480" width="20" height="120" class="figure-element figure-box"/>
 	    </g>
           </g>
@@ -5350,6 +5374,359 @@
                 focusAll();
             });
         })();
+        // Toggle Section code from: https://inclusive-components.design/collapsible-sections/
+        (function() {
+          // Check for <template> support
+          if ('content' in document.createElement('template')) {
+            const tmpl = document.createElement('template')
+
+            // Create the web component's template
+            // featuring a <slot> for the Light DOM content
+            tmpl.innerHTML = `
+              <h2>
+                <button aria-expanded="false">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 10">
+                    <rect class="vert" height="8" width="2" y="1" x="4"/>
+                    <rect height="2" width="8" y="4" x="1"/>
+                  </svg>
+                </button>
+              </h2>
+              <div class="content" hidden>
+                <slot></slot>
+              </div>
+              <style>
+                h2 {
+                  margin: 0;
+                }
+
+                h2 button {
+                  all: inherit;
+                  box-sizing: border-box;
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                  padding: 0.5em 0;
+                }
+
+                h2 button:focus svg {
+                  outline: 2px solid;
+                }
+
+                button svg {
+                  height: 1em;
+                  margin-left: 0.5em;
+                }
+
+                [aria-expanded="true"] .vert {
+                  display: none;
+                }
+
+                [aria-expanded] rect {
+                  fill: currentColor;
+                }
+              </style>
+            `
+            // Check for latest Shadow DOM syntax support
+            if (document.head.attachShadow) {
+              class ToggleSection extends HTMLElement {
+                constructor() {
+                  super()
+
+                  // Make the host element a region
+                  this.setAttribute('role', 'region')
+
+                  // Create a `shadowRoot` and populate from template
+                  this.attachShadow({ mode: 'open' })
+                  this.shadowRoot.appendChild(tmpl.content.cloneNode(true))
+
+                  // Assign the toggle button
+                  this.btn = this.shadowRoot.querySelector('h2 button')
+
+                  // Get the first element in Light DOM
+                  const oldHeading = this.querySelector(':first-child')
+                  // and cast its heading level (which should, but may not, exist)
+                  let level = parseInt(oldHeading.tagName.substr(1))
+                  // Then take its `id` (may be null)
+                  let id = oldHeading.id
+
+                  // Get the Shadow DOM <h2>
+                  this.heading = this.shadowRoot.querySelector('h2')
+
+                  // If `id` exists, apply it
+                  if (id) {
+                    this.heading.id = id
+                  }
+
+                  // If there is no level, there is no heading.
+                  // Add a warning.
+                  if (!level) {
+                    console.warn('The first element inside each <toggle-section> should be a heading of an appropriate level.')
+                  }
+
+                  // If the level is a real integer but not 2
+                  // set `aria-level` accordingly
+                  if (level && level !== 2) {
+                    this.heading.setAttribute('aria-level', level)
+                  }
+
+                  // Add the Light DOM heading label to the innerHTML of the toggle button
+                  // and remove the now unwanted Light DOM heading
+                  this.btn.innerHTML = oldHeading.textContent + this.btn.innerHTML
+                  oldHeading.parentNode.removeChild(oldHeading)
+
+                  // The main state switching function
+                  this.switchState = () => {
+                    let expanded = this.getAttribute('open') === 'true' || false
+
+                    // Toggle `aria-expanded`
+                    this.btn.setAttribute('aria-expanded', expanded)
+                    // Toggle the `.content` element's visibility
+                    this.shadowRoot.querySelector('.content').hidden = !expanded
+                  }
+
+                  this.btn.onclick = () => {
+                    // Change the component's `open` attribute value on click
+                    let open = this.getAttribute('open') === 'true' || false
+                    this.setAttribute('open', open ? 'false' : 'true')
+
+                    // Update the hash if the collapsible section's
+                    // heading has an `id` and we are opening, not closing
+                    if (this.heading.id && !open) {
+                      history.pushState(null, null, '#' + this.heading.id)
+                    }
+                  }
+                }
+
+                connectedCallback() {
+                  if (window.location.hash.substr(1) === this.heading.id) {
+                    this.setAttribute('open', 'true')
+                    this.btn.focus()
+                  }
+                }
+
+                // Identify just the `open` attribute as an observed attribute
+                static get observedAttributes() {
+                  return ['open']
+                }
+
+                // When `open` changes value, execute switchState()
+                attributeChangedCallback(name) {
+                  if (name === 'open') {
+                    this.switchState()
+                  }
+                }
+              }
+
+              // Add our new custom element to the window for use
+              window.customElements.define('toggle-section', ToggleSection)
+
+              // Define the expand/collapse all template
+              const buttons = document.createElement('div')
+              buttons.innerHTML = `
+                <ul class="controls" aria-label="section controls">
+                  <li><button id="expand">expand all</button></li>
+                  <li><button id="collapse">collapse all</button></li>
+                </ul>
+                `
+
+              // Get the first `toggle-section` on the page
+              // and all toggle sections as a node list
+              const first = document.querySelector('toggle-section')
+              const all = document.querySelectorAll('toggle-section')
+
+              // Insert the button controls before the first <toggle-section>
+              first.parentNode.insertBefore(buttons, first)
+
+              // Place the click on the parent <ul>...
+              buttons.addEventListener('click', (e) => {
+                // ...then determine which button was the target
+                let expand = e.target.id === 'expand' ? true : false
+
+                // Iterate over the toggle sections to switch
+                // each one's state uniformly
+                Array.prototype.forEach.call(all, (t) => {
+                  t.setAttribute('open', expand)
+                })
+              })
+            }
+          }
+        })();
+        (function() {
+          // Check for <template> support
+          if ('content' in document.createElement('template')) {
+            const tmpl = document.createElement('template')
+
+            // Create the web component's template
+            // featuring a <slot> for the Light DOM content
+            tmpl.innerHTML = `
+              <h2>
+                <button aria-expanded="false">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 10">
+                    <rect class="vert" height="8" width="2" y="1" x="4"/>
+                    <rect height="2" width="8" y="4" x="1"/>
+                  </svg>
+                </button>
+              </h2>
+              <div class="content" hidden>
+                <slot></slot>
+              </div>
+              <style>
+                h2 {
+                  margin: 0;
+                }
+
+                h2 button {
+                  all: inherit;
+                  box-sizing: border-box;
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                  padding: 0.5em 0;
+                }
+
+                h2 button:focus svg {
+                  outline: 2px solid;
+                }
+
+                button svg {
+                  height: 1em;
+                  margin-left: 0.5em;
+                }
+
+                [aria-expanded="true"] .vert {
+                  display: none;
+                }
+
+                [aria-expanded] rect {
+                  fill: currentColor;
+                }
+              </style>
+            `
+            // Check for latest Shadow DOM syntax support
+            if (document.head.attachShadow) {
+              class ToggleSection extends HTMLElement {
+                constructor() {
+                  super()
+
+                  // Make the host element a region
+                  this.setAttribute('role', 'region')
+
+                  // Create a `shadowRoot` and populate from template
+                  this.attachShadow({ mode: 'open' })
+                  this.shadowRoot.appendChild(tmpl.content.cloneNode(true))
+
+                  // Assign the toggle button
+                  this.btn = this.shadowRoot.querySelector('h2 button')
+
+                  // Get the first element in Light DOM
+                  const oldHeading = this.querySelector(':first-child')
+                  // and cast its heading level (which should, but may not, exist)
+                  let level = parseInt(oldHeading.tagName.substr(1))
+                  // Then take its `id` (may be null)
+                  let id = oldHeading.id
+
+                  // Get the Shadow DOM <h2>
+                  this.heading = this.shadowRoot.querySelector('h2')
+
+                  // If `id` exists, apply it
+                  if (id) {
+                    this.heading.id = id
+                  }
+
+                  // If there is no level, there is no heading.
+                  // Add a warning.
+                  if (!level) {
+                    console.warn('The first element inside each <toggle-section> should be a heading of an appropriate level.')
+                  }
+
+                  // If the level is a real integer but not 2
+                  // set `aria-level` accordingly
+                  if (level && level !== 2) {
+                    this.heading.setAttribute('aria-level', level)
+                  }
+
+                  // Add the Light DOM heading label to the innerHTML of the toggle button
+                  // and remove the now unwanted Light DOM heading
+                  this.btn.innerHTML = oldHeading.textContent + this.btn.innerHTML
+                  oldHeading.parentNode.removeChild(oldHeading)
+
+                  // The main state switching function
+                  this.switchState = () => {
+                    let expanded = this.getAttribute('open') === 'true' || false
+
+                    // Toggle `aria-expanded`
+                    this.btn.setAttribute('aria-expanded', expanded)
+                    // Toggle the `.content` element's visibility
+                    this.shadowRoot.querySelector('.content').hidden = !expanded
+                  }
+
+                  this.btn.onclick = () => {
+                    // Change the component's `open` attribute value on click
+                    let open = this.getAttribute('open') === 'true' || false
+                    this.setAttribute('open', open ? 'false' : 'true')
+
+                    // Update the hash if the collapsible section's
+                    // heading has an `id` and we are opening, not closing
+                    if (this.heading.id && !open) {
+                      history.pushState(null, null, '#' + this.heading.id)
+                    }
+                  }
+                }
+
+                connectedCallback() {
+                  if (window.location.hash.substr(1) === this.heading.id) {
+                    this.setAttribute('open', 'true')
+                    this.btn.focus()
+                  }
+                }
+
+                // Identify just the `open` attribute as an observed attribute
+                static get observedAttributes() {
+                  return ['open']
+                }
+
+                // When `open` changes value, execute switchState()
+                attributeChangedCallback(name) {
+                  if (name === 'open') {
+                    this.switchState()
+                  }
+                }
+              }
+
+              // Add our new custom element to the window for use
+              window.customElements.define('toggle-section-2', ToggleSection)
+
+              // Define the expand/collapse all template
+              const buttons = document.createElement('div')
+              buttons.innerHTML = `
+                <ul class="controls" aria-label="section controls">
+                  <li><button id="expand">expand all</button></li>
+                  <li><button id="collapse">collapse all</button></li>
+                </ul>
+                `
+
+              // Get the first `toggle-section` on the page
+              // and all toggle sections as a node list
+              const first = document.querySelector('toggle-section-2')
+              const all = document.querySelectorAll('toggle-section-2')
+
+              // Insert the button controls before the first <toggle-section>
+              first.parentNode.insertBefore(buttons, first)
+
+              // Place the click on the parent <ul>...
+              buttons.addEventListener('click', (e) => {
+                // ...then determine which button was the target
+                let expand = e.target.id === 'expand' ? true : false
+
+                // Iterate over the toggle sections to switch
+                // each one's state uniformly
+                Array.prototype.forEach.call(all, (t) => {
+                  t.setAttribute('open', expand)
+                })
+              })
+            }
+          }
+        })();
       </script>
       <p>
         The projection on the left is inspired by a similar projection done by
@@ -5396,7 +5773,7 @@
           </text>
         </svg>
       </figure>
-      
+
 
       <hr />
 
