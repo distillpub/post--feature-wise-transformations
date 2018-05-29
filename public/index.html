@@ -5826,6 +5826,100 @@
           </text>
         </svg>
       </figure>
+      <p>
+        How can we make sense of these observations? Can we explain how FiLM
+        achieves the kind of network modulation we observe in practice? To
+        answer these questions we probed the style transfer and visual reasoning
+        models, looking for common patterns which could help explain how FiLM
+        performs.
+      </p>
+      <p>
+        Let's start with a simple question: how do the FiLM parameters behave
+        as a function of the task description? Do we observe large
+        perturbations?
+      </p>
+      <figure class="l-body-outset" id="gamma-beta-diagram">
+        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
+          <image x="0" y="0" height="256" xlink:href="assets/gamma_beta_style.png"/>
+          <text x="0" y="266" dy="1em" class="figure-text">
+            <tspan>
+              Style transfer network
+            </tspan>
+          </text>
+          <image x="400" y="0" height="256" xlink:href="assets/gamma_beta_clevr.png"/>
+          <text x="400" y="266" dy="1em" class="figure-text">
+            <tspan>
+              Visual reasoning network
+            </tspan>
+          </text>
+        </svg>
+      </figure>
+      <p>
+        The scatter plots above depict how FiLM parameters vary as a function
+        of the task description (style image or query). Each point corresponds
+        to the FiLM parameter values of a single feature map and for a single
+        task description, and the points are color-coded according to which
+        feature map they belong to. We can see that for any given feature map
+        the FiLM parameter values for different task descriptions form a cluster
+        in parameter space. In other words, changing the task description
+        results in fairly local adjustments to the FiLM parameter values, as
+        opposed to drastic reconfigurations.
+      </p>
+      <p>
+        This may help explain why the FiLM parameter space lends itself well
+        to interpolations and analogies: it is dense and fairly well localized,
+        which means that any convex combination of FiLM parameters is likely to
+        correspond to a meaningful parametrization of the FiLMed network.
+      </p>
+      <p>
+        Let's now turn to a more complicated question: in what way are FiLM
+        parameters responsible for modulating the FiLMed network? Our naive
+        working hypothesis was that FiLM acts as a switching mechanism: through
+        scaling and shifting, FiLM zeroes out unwanted feature maps, which can
+        be understood as selecting which units of computation get carried out
+        and which don't. In other words, FiLM implicitly allows to compose
+        units of computation into a task-solving network. If that was the case,
+        we would be observing that a non-negligible fraction of the FiLMed
+        feature maps have a norm of exactly zero.
+      </p>
+      <figure class="l-body-outset" id="fm-norm-diagram">
+        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
+          <image x="0" y="0" height="256" xlink:href="assets/fm_norm_style.png"/>
+          <text x="0" y="266" dy="1em" class="figure-text">
+            <tspan>
+              Style transfer network
+            </tspan>
+          </text>
+        </svg>
+      </figure>
+      <p>
+        <span class="todo">
+          TODO: explain that this is not the case.  For the most part, the
+          naive view of FiLM acting as a switching mechanism is wrong. for
+          style transfer almost no feature maps are completely switched off for
+          an arbitrary pair of content and style images. for visual reasoning
+          we do observe some switching which we can attribute to the activation
+          distribution being shifted in the negative range by FiLM, but we have
+          yet to show that the location of feature maps that are switched off
+          changes as a function of the question, and more importantly this is a
+          fairly small effect: only ~10% of the feature maps are switched off
+          at any given time.
+        </span>
+      </p>
+      <p>
+        <span class="todo">
+          TODO: explain that There isn't a single explanation; FiLM operates in
+          ways that are adaptive to the problem and model architecture to which
+          it is applied.
+        </span>
+      </p>
+      <p>
+        <span class="todo">
+          TODO: It’s still a big mystery how small wiggles to gamma and beta
+          are able to compound into meaningful modulations of the FiLMed
+          network.
+        </span>
+      </p>
 
 
       <hr />
