@@ -136,3 +136,41 @@
 #attentional-ex2 .cell:last-child .arrow:first-of-type {
   display: none;
 }
+
+/* Toggle Section code from: https://inclusive-components.design/collapsible-sections/ */
+.controls {
+ text-align: right;
+ margin-bottom: 1em;
+}
+
+.controls li {
+  display: inline;
+}
+
+button {
+  background: #000;
+  color: #fff;
+  border: 0;
+  font-size: 0.85rem;
+  border-radius: 0.25rem;
+}
+
+/*
+Custom elements are inline by default
+*/
+toggle-section {
+  display: block;
+}
+
+/*
+Only applies if script runs and
+`role="region"` is added
+*/
+toggle-section[role="region"] {
+  border-width: 2px 0;
+  border-style: solid;
+}
+
+toggle-section[role="region"] + toggle-section {
+  border-top: 0;
+}
