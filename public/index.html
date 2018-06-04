@@ -3961,7 +3961,7 @@
 	Like conditional batch normalization, conditional instance normalization
         can be seen as an instance of FiLM where the
         post-normalization feature-wise affine transformation is replaced with a
-        FiLM layer. These layers are introduced into a feedforward style
+        FiLM layer. These layers are introduced into a feed-forward style
         transfer network to accommodate multiple styles. Each style modeled by
         the network is associated with its own set of instance normalization
         parameters, and conditioning is achieved by applying the normalization
@@ -4813,22 +4813,31 @@
 
       <hr />
 
-      <h1 id="film-properties">Leveraging the learned task representation</h1>
-      <!-- <p> -->
-      <!--   If you are like us, you probably find the success of feature-wise -->
-      <!--   transformations intriguing given how simple they are. It appears that -->
-      <!--   modulating the values of FiLM parameters &mdash; which we reiterate are -->
-      <!--   a tiny subset of the model's parameters &mdash; is sufficient to have -->
-      <!--   drastic effects on the computational behaviour of the FiLM-ed network. -->
-      <!-- </p> -->
+      <h1 id="film-properties">Properties of the learned task representation</h1>
       <p>
         As hinted at earlier, in adopting the FiLM perspective we implicitly
         introduce a notion of <em>task representation</em>: each task &mdash;
         be it a question about an image or a painting style to imitate &mdash;
         elicits a different set of FiLM parameters via the FiLM generator which
         can be understood as its representation in terms of how to modulate the
-        FiLMed network. This representation can be leveraged in various ways.
+        FiLMed network. To help better understand the properties of this
+        representation, let's focus on two FiLMed models used in fairly
+        different problem settings:
       </p>
+      <ul>
+        <li>
+          The visual reasoning model of Perez et al.
+          <d-cite key="perez2017learning,perez2018film"></d-cite>, which uses
+          FiLM to modulate a visual processing pipeline based off an input
+          question.
+        </li>
+        <li>
+          The artistic style transfer model of Ghiasi et al.
+          <d-cite key="ghiasi2017exploring"></d-cite>, which uses FiLM to
+          modulate a feed-forward style transfer network based off an input
+          style image.
+        </li>
+      </ul>
       <p>
         We can use it to "interpolate" between tasks. For instance, we can
         generate stylizations that are in-between two different paintings by
