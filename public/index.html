@@ -198,12 +198,12 @@
 
       <h1>Feature-wise transformations</h1>
       <p>
-        We begin by considering a data combination that is not typically
-        considered multimodal: images and category labels. For the purpose of
-        this example, we are interested in building a generative model of
-        various classes of images (puppy, boat, airplane, etc.). The model
-        takes a source of noise and a class as input and outputs an image
-        sample for the requested class.
+        We begin with a data combination that is not typically considered
+        multimodal: images and category labels. For the purpose of this example,
+        we are interested in building a generative model of various classes of
+        images (puppy, boat, airplane, etc.). The model takes a source of noise
+        and a class as input and outputs an image sample for the requested
+        class.
       </p>
       <figure class="l-body">
         <svg viewBox="0 0 648 170" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +263,7 @@
         possible conditioning values! Let's examine a few simple options.
       </p>
       <p>
-        A simple fix would be to concatenate a representation of the
+        A quick fix would be to concatenate a representation of the
         conditioning information to the noise vector and treat the result as
         the model's input. This is very parameter-efficient &mdash; all we need
         to do is to increase the size of the first layer's weight matrix to
@@ -718,8 +718,9 @@
         otherwise. This is why dot products are often used to determine how
         similar two vectors are.
         <d-footnote>
-          Multiplicative interactions alone have had a history of success in various domains.
-          &mdash; see <a href="#bibliographic-notes">Bibliographic Notes</a>.
+          Multiplicative interactions alone have had a history of success in
+          various domains &mdash; see
+          <a href="#bibliographic-notes">Bibliographic Notes</a>.
         </d-footnote>
         One argument in favor of <em>additive</em> interactions is that they
         are more natural fit for applications that are less strongly dependent
@@ -764,10 +765,11 @@
         <em>FiLM-ed</em>, through the insertion of <em>FiLM layers</em> in its
         architecture. These are parametrized by some form of conditioning
         information, and the mapping from conditioning information to FiLM
-        parameters is called the <em>FiLM generator</em>.
-        In other words, the FiLM generator predicts the parameters of the FiLM layers based on some arbitrary input.
-        For simplicity, you can assume that the FiLM generator outputs the concatenation of all
-        FiLM parameters for the network architecture.
+        parameters is called the <em>FiLM generator</em>. In other words, the
+        FiLM generator predicts the parameters of the FiLM layers based on some
+        arbitrary input.  For simplicity, you can assume that the FiLM generator
+        outputs the concatenation of all FiLM parameters for the network
+        architecture.
       </p>
       <figure class="l-body-outset" id="film-architecture-diagram">
         <svg viewBox="0 0 744 510" xmlns="http://www.w3.org/2000/svg">
@@ -869,7 +871,7 @@
 
         <d-math block>
             \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{z}) \odot \mathbf{x}
-                                                           + \beta(\mathbf{z}),
+                                                           + \beta(\mathbf{z}).
         </d-math>
 
         You can interact with the following fully-connected and convolutional
@@ -2590,13 +2592,12 @@
     <toggle-section open="false">
       <h2 id="bilinear-transformations">Bilinear transformations</h2>
       <p>
-        Finally, with a little bit of stretching the operation implemented by
-        FiLM layers can be seen as a special case of a bilinear transformation
-        <d-cite key="tenenbaum2000separating"></d-cite> with low-rank weight matrices.
-        A bilinear transformation defines the
-        relationship between two inputs <d-math>\mathbf{x}</d-math> and
-        <d-math>\mathbf{z}</d-math> and the <d-math>k^{th}</d-math> output
-        feature <d-math>y_k</d-math> as
+        With a little bit of stretching the operation implemented by FiLM layers
+        can be seen as a special case of a bilinear transformation
+        <d-cite key="tenenbaum2000separating"></d-cite> with low-rank weight
+        matrices. A bilinear transformation defines the relationship between two
+        inputs <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> and
+        the <d-math>k^{th}</d-math> output feature <d-math>y_k</d-math> as
 
         <d-math block>
           y_k = \mathbf{x}^T W_k \mathbf{z}.
