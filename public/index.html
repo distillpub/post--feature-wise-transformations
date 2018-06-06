@@ -4857,23 +4857,205 @@
         we observe the following:
       </p>
       <figure class="l-body-outset" id="gamma-beta-diagram">
-        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
-          <image x="0" y="0" height="256" xlink:href="assets/gamma_beta_style.png"/>
-          <text x="0" y="266" dy="1em" class="figure-text">
+        <!-- <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg"> -->
+        <!--   <image x="0" y="0" height="256" xlink:href="assets/gamma_beta_style.png"/> -->
+        <!--   <text x="0" y="266" dy="1em" class="figure-text"> -->
+        <!--     <tspan> -->
+        <!--       Style transfer network -->
+        <!--     </tspan> -->
+        <!--   </text> -->
+        <!--   <image x="400" y="0" height="256" xlink:href="assets/gamma_beta_clevr.png"/> -->
+        <!--   <text x="400" y="266" dy="1em" class="figure-text"> -->
+        <!--     <tspan> -->
+        <!--       Visual reasoning network -->
+        <!--     </tspan> -->
+        <!--   </text> -->
+        <!-- </svg> -->
+        <svg viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
-              Style transfer network
+              FiLM parameters of the visual reasoning model for 128 questions
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              chosen at random across 32 feature maps, also chosen at random.
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              Points are color-coded by feature map.
             </tspan>
           </text>
-          <image x="400" y="0" height="256" xlink:href="assets/gamma_beta_clevr.png"/>
-          <text x="400" y="266" dy="1em" class="figure-text">
+          <text x="490" y="10" dy="1em" class="figure-text">
             <tspan>
-              Visual reasoning network
+              FiLM parameters of the style transfer model for 128 style images
+            </tspan>
+            <tspan x="490" dy="1.5em">
+              chosen at random across 32 feature maps, also chosen at random.
+            </tspan>
+            <tspan x="490" dy="1.5em">
+              Points are color-coded by feature map.
             </tspan>
           </text>
+          <g id="clevr-plot">
+            <rect x="10" y="100" width="400" height="400" style="fill: none;" id="clevr-scatter-plot"/>
+          </g>
+          <g id="style-transfer-plot">
+            <rect x="490" y="100" width="400" height="400" style="fill: none;" id="style-transfer-scatter-plot"/>
+          </g>
         </svg>
       </figure>
+      <script>
+        (function() {
+            var colors = [
+                "#00E3E5", "#00CBE3", "#00B4E2", "#009EE1", "#0087E0", "#0071DE",
+                "#005BDD", "#0045DC", "#0045DC", "#002FDB", "#001AD9", "#0005D8",
+                "#0F00D7", "#2400D6", "#3800D5", "#4C00D3", "#6000D2", "#7400D1",
+                "#8700D0", "#9A00CE", "#AD00CD", "#C000CC", "#CB00C3", "#CA00AE",
+                "#C8009A", "#C70085", "#C60072", "#C5005E", "#C3004A", "#C20037",
+                "#C10024", "#C00011", "#BF0000"
+            ];
+
+            var svg = d3.select("#gamma-beta-diagram > svg");
+
+            var scatterPlot = svg.select("#clevr-scatter-plot");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var plotContainer = svg.select("#clevr-plot");
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/style_gamma_beta.json", function(data) {
+                dataset = data.slice(0, 5000);
+                xScale = d3.scaleLinear()
+                    .domain([d3.min(dataset, function (d) { return d.gamma; }),
+                             d3.max(dataset, function (d) { return d.gamma; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([d3.min(dataset, function (d) { return d.beta; }),
+                             d3.max(dataset, function (d) { return d.beta; })])
+                    .rangeRound([yMax, yMin])
+
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xMax - 10,
+                        "y": yScale(0.0) + 10,
+                        "dy": "0.4em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("γ");
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xScale(0.0) + 10,
+                        "y": yMin,
+                        "dy": "1em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("β");
+
+                plotContainer.selectAll("circle")
+                    .data(dataset)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.gamma); },
+                        "cy": function(d) { return yScale(d.beta); },
+                        "r": 2.0,
+                    })
+                    .style("fill", function(d) { return colors[d.feature_map]; })
+                    .style("opacity", function(d) { return d.feature_map == 28 ?  0.8 : 0.1; });
+            });
+        })();
+        (function() {
+            var colors = [
+                "#00E3E5", "#00CBE3", "#00B4E2", "#009EE1", "#0087E0", "#0071DE",
+                "#005BDD", "#0045DC", "#0045DC", "#002FDB", "#001AD9", "#0005D8",
+                "#0F00D7", "#2400D6", "#3800D5", "#4C00D3", "#6000D2", "#7400D1",
+                "#8700D0", "#9A00CE", "#AD00CD", "#C000CC", "#CB00C3", "#CA00AE",
+                "#C8009A", "#C70085", "#C60072", "#C5005E", "#C3004A", "#C20037",
+                "#C10024", "#C00011", "#BF0000"
+            ];
+
+            var svg = d3.select("#gamma-beta-diagram > svg");
+
+            var scatterPlot = svg.select("#style-transfer-scatter-plot");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var plotContainer = svg.select("#style-transfer-plot");
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/style_gamma_beta.json", function(data) {
+                dataset = data.slice(0, 5000);
+                xScale = d3.scaleLinear()
+                    .domain([d3.min(dataset, function (d) { return d.gamma; }),
+                             d3.max(dataset, function (d) { return d.gamma; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([d3.min(dataset, function (d) { return d.beta; }),
+                             d3.max(dataset, function (d) { return d.beta; })])
+                    .rangeRound([yMax, yMin])
+
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xMax - 10,
+                        "y": yScale(0.0) + 10,
+                        "dy": "0.4em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("γ");
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xScale(0.0) + 10,
+                        "y": yMin,
+                        "dy": "1em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("β");
+
+                plotContainer.selectAll("circle")
+                    .data(dataset)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.gamma); },
+                        "cy": function(d) { return yScale(d.beta); },
+                        "r": 2.0,
+                    })
+                    .style("fill", function(d) { return colors[d.feature_map]; })
+                    .style("opacity", function(d) { return d.feature_map == 31 ?  0.8 : 0.1; });
+            });
+        })();
+      </script>
       <p>
-        The plot above allows to make several interesting observations. First,
+        The plots above allow to make several interesting observations. First,
         we can see that FiLM parameters cluster by feature map in parameter
         space, but that the location of these clusters is not uniform across
         feature maps. This "drift" in cluster location can at least be explained
