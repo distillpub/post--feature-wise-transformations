@@ -4874,10 +4874,10 @@
         <svg viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
-              FiLM parameters of the visual reasoning model for 128 questions
+              FiLM parameters of the visual reasoning model for 256 questions
             </tspan>
             <tspan x="10" dy="1.5em">
-              chosen at random across 32 feature maps, also chosen at random.
+              chosen at random across 16 feature maps, also chosen at random.
             </tspan>
             <tspan x="10" dy="1.5em">
               Points are color-coded by feature map.
@@ -4885,10 +4885,10 @@
           </text>
           <text x="490" y="10" dy="1em" class="figure-text">
             <tspan>
-              FiLM parameters of the style transfer model for 128 style images
+              FiLM parameters of the style transfer model for 256 style images
             </tspan>
             <tspan x="490" dy="1.5em">
-              chosen at random across 32 feature maps, also chosen at random.
+              chosen at random across 16 feature maps, also chosen at random.
             </tspan>
             <tspan x="490" dy="1.5em">
               Points are color-coded by feature map.
@@ -4905,12 +4905,10 @@
       <script>
         (function() {
             var colors = [
-                "#00E3E5", "#00CBE3", "#00B4E2", "#009EE1", "#0087E0", "#0071DE",
-                "#005BDD", "#0045DC", "#0045DC", "#002FDB", "#001AD9", "#0005D8",
-                "#0F00D7", "#2400D6", "#3800D5", "#4C00D3", "#6000D2", "#7400D1",
-                "#8700D0", "#9A00CE", "#AD00CD", "#C000CC", "#CB00C3", "#CA00AE",
-                "#C8009A", "#C70085", "#C60072", "#C5005E", "#C3004A", "#C20037",
-                "#C10024", "#C00011", "#BF0000"
+                "#00E5E1", "#00E2B2", "#00DF83", "#00DD55", "#00DA29",
+                "#02D800", "#2DD500", "#57D300", "#7FD000", "#A7CE00",
+                "#CBC900", "#C99E00", "#C67400", "#C44C00", "#C12400",
+                "#BF0001", 
             ];
 
             var svg = d3.select("#gamma-beta-diagram > svg");
@@ -4926,15 +4924,15 @@
             var dataset;
             var xScale;
             var yScale;
-            d3.json("assets/style_gamma_beta.json", function(data) {
+            d3.json("assets/clevr_gamma_beta_subsampled.json", function(data) {
                 dataset = data.slice(0, 5000);
                 xScale = d3.scaleLinear()
-                    .domain([d3.min(dataset, function (d) { return d.gamma; }),
-                             d3.max(dataset, function (d) { return d.gamma; })])
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
                     .rangeRound([xMin, xMax]);
                 yScale = d3.scaleLinear()
-                    .domain([d3.min(dataset, function (d) { return d.beta; }),
-                             d3.max(dataset, function (d) { return d.beta; })])
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
                     .rangeRound([yMax, yMin])
 
                 plotContainer.append("path")
@@ -4972,20 +4970,18 @@
                     .attrs({
                         "cx": function(d) { return xScale(d.gamma); },
                         "cy": function(d) { return yScale(d.beta); },
-                        "r": 2.0,
+                        "r": 3.0,
                     })
                     .style("fill", function(d) { return colors[d.feature_map]; })
-                    .style("opacity", function(d) { return d.feature_map == 28 ?  0.8 : 0.1; });
+                    .style("opacity", 0.6);
             });
         })();
         (function() {
             var colors = [
-                "#00E3E5", "#00CBE3", "#00B4E2", "#009EE1", "#0087E0", "#0071DE",
-                "#005BDD", "#0045DC", "#0045DC", "#002FDB", "#001AD9", "#0005D8",
-                "#0F00D7", "#2400D6", "#3800D5", "#4C00D3", "#6000D2", "#7400D1",
-                "#8700D0", "#9A00CE", "#AD00CD", "#C000CC", "#CB00C3", "#CA00AE",
-                "#C8009A", "#C70085", "#C60072", "#C5005E", "#C3004A", "#C20037",
-                "#C10024", "#C00011", "#BF0000"
+                "#00E5E1", "#00E2B2", "#00DF83", "#00DD55", "#00DA29",
+                "#02D800", "#2DD500", "#57D300", "#7FD000", "#A7CE00",
+                "#CBC900", "#C99E00", "#C67400", "#C44C00", "#C12400",
+                "#BF0001", 
             ];
 
             var svg = d3.select("#gamma-beta-diagram > svg");
@@ -5001,15 +4997,15 @@
             var dataset;
             var xScale;
             var yScale;
-            d3.json("assets/style_gamma_beta.json", function(data) {
+            d3.json("assets/style_gamma_beta_subsampled.json", function(data) {
                 dataset = data.slice(0, 5000);
                 xScale = d3.scaleLinear()
-                    .domain([d3.min(dataset, function (d) { return d.gamma; }),
-                             d3.max(dataset, function (d) { return d.gamma; })])
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
                     .rangeRound([xMin, xMax]);
                 yScale = d3.scaleLinear()
-                    .domain([d3.min(dataset, function (d) { return d.beta; }),
-                             d3.max(dataset, function (d) { return d.beta; })])
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
                     .rangeRound([yMax, yMin])
 
                 plotContainer.append("path")
@@ -5047,10 +5043,10 @@
                     .attrs({
                         "cx": function(d) { return xScale(d.gamma); },
                         "cy": function(d) { return yScale(d.beta); },
-                        "r": 2.0,
+                        "r": 3.0,
                     })
                     .style("fill", function(d) { return colors[d.feature_map]; })
-                    .style("opacity", function(d) { return d.feature_map == 31 ?  0.8 : 0.1; });
+                    .style("opacity", 0.6);
             });
         })();
       </script>
