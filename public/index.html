@@ -4925,7 +4925,7 @@
             var xScale;
             var yScale;
             d3.json("assets/clevr_gamma_beta_subsampled.json", function(data) {
-                dataset = data.slice(0, 5000);
+                dataset = data;
                 xScale = d3.scaleLinear()
                     .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
                              1.15 * d3.max(dataset, function (d) { return d.gamma; })])
@@ -4998,7 +4998,7 @@
             var xScale;
             var yScale;
             d3.json("assets/style_gamma_beta_subsampled.json", function(data) {
-                dataset = data.slice(0, 5000);
+                dataset = data;
                 xScale = d3.scaleLinear()
                     .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
                              1.15 * d3.max(dataset, function (d) { return d.gamma; })])
@@ -5200,12 +5200,186 @@
       <p>
         For the visual reasoning model we can see that FiLM parameters sometimes
         form several sub-clusters for a given feature map, which is not true for
-        the style transfer model. At the very least, this may indicate that FiLM
-        learns to operate in ways that are problem-specific, and that we should
-        not expect to find a unified and problem-independent explanation for
-        FiLM's success in modulating FiLMed networks. The presence of
-        sub-clusters means that we should not expect question interpolation to
-        work all the time, but these sub-clusters don't preclude from performing
+        the style transfer model.
+      </p>
+      <figure class="l-body-outset" id="clevr-subcluster-diagram">
+        <svg viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              FiLM parameters of of the visual reasoning model for feature
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              map 26 of the first FiLM layer for 256 questions chosen
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              at random.
+            </tspan>
+          </text>
+          <text x="490" y="10" dy="1em" class="figure-text">
+            <tspan>
+              FiLM parameters of of the visual reasoning model for feature
+            </tspan>
+            <tspan x="490" dy="1.5em">
+              map 92 of the first FiLM layer for 256 questions chosen
+            </tspan>
+            <tspan x="490" dy="1.5em">
+              at random.
+            </tspan>
+          </text>
+          <g id="plot-1">
+            <rect x="10" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-1"/>
+          </g>
+          <g id="plot-2">
+            <rect x="490" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-2"/>
+          </g>
+        </svg>
+      </figure>
+      <script>
+        (function() {
+            var svg = d3.select("#clevr-subcluster-diagram > svg");
+
+            var scatterPlot = svg.select("#scatter-plot-1");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var plotContainer = svg.select("#plot-1");
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/clevr_gamma_beta_subcluster_fm_26.json", function(data) {
+                dataset = data;
+                xScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
+                    .rangeRound([yMax, yMin])
+
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xMax - 10,
+                        "y": yScale(0.0) + 10,
+                        "dy": "0.4em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("γ");
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xScale(0.0) + 10,
+                        "y": yMin,
+                        "dy": "1em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("β");
+
+                plotContainer.selectAll("circle")
+                    .data(dataset)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.gamma); },
+                        "cy": function(d) { return yScale(d.beta); },
+                        "r": 3.0,
+                    })
+                    .style("fill", "#666")
+                    .style("opacity", 0.6);
+            });
+        })();
+        (function() {
+            var svg = d3.select("#clevr-subcluster-diagram > svg");
+
+            var scatterPlot = svg.select("#scatter-plot-2");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var plotContainer = svg.select("#plot-2");
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/clevr_gamma_beta_subcluster_fm_92.json", function(data) {
+                dataset = data;
+                xScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
+                    .rangeRound([yMax, yMin])
+
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xMax - 10,
+                        "y": yScale(0.0) + 10,
+                        "dy": "0.4em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("γ");
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xScale(0.0) + 10,
+                        "y": yMin,
+                        "dy": "1em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("β");
+
+                plotContainer.selectAll("circle")
+                    .data(dataset)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.gamma); },
+                        "cy": function(d) { return yScale(d.beta); },
+                        "r": 3.0,
+                    })
+                    .style("fill", "#666")
+                    .style("opacity", 0.6);
+            });
+        })();
+      </script>
+      <p>
+        At the very least, this may indicate that FiLM learns to operate in ways
+        that are problem-specific, and that we should not expect to find a
+        unified and problem-independent explanation for FiLM's success in
+        modulating FiLMed networks. Perhaps the compositional nature of visual
+        reasoning requires the model to implement several well-defined modes of
+        operation which are less necessary for style transfer.
+      </p>
+      <p>
+        The presence of sub-clusters in the case of the visual reasoning model
+        also means that we should not expect question interpolations to work
+        reliably, but these sub-clusters don't preclude from performing
         arithmetic on the question representations, as Perez et al.
         <d-cite key="perez2018film"></d-cite> reported.
       </p>
@@ -5425,10 +5599,12 @@
         </svg>
       </figure>
       <p>
-        Focusing on individual feature maps, we can examine whether their
-        associated cluster or sub-clusters reveal any kind of structure when
-        color-coded by task metadata such as painter name or question type.
-        <span class="todo">TODO: expand on this</span>.
+        Focusing on individual feature maps which exhibit sub-clusters, we can
+        try to infer how questions regroup by color-coding the scatter plots
+        by question type.
+      </p>
+      <p>
+        <span class="todo">TODO: add figure showcasing this.</span>
       </p>
       <p>
         This structure has already been explored, albeit more indirectly, by
