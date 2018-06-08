@@ -61,18 +61,18 @@
 }
 
 .figure-film-generator {
-  stroke: hsla(28, 28%, 45%, 1.0);
-  fill: hsla(28, 89%, 86%, 1.0);
+  stroke: #006064;
+  fill: #80DEEA;
 }
 
 .figure-film-generator-shaded {
-  stroke: hsla(28, 28%, 45%, 1.0);
-  fill: hsla(28, 28%, 55%, 1.0);
+  stroke: #006064;
+  fill: #00838F;
 }
 
 .figure-filmed-network {
-  stroke: hsla(310, 12%, 42%, 1.0);
-  fill: hsla(310, 48%, 80%, 1.0);
+  stroke: #BF360C;
+  fill: #FFAB91;
 }
 
 .todo {

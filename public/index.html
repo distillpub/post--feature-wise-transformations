@@ -73,10 +73,10 @@
 
       <svg viewBox="0 0 0 0" style="display: none;" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);"/>
-          <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #3a5edd;"/>
-          <rect id="convolutional-patch-positive" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: rgb(221, 58, 150);"/>
-          <rect id="convolutional-patch-negative" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #3a5edd;"/>
+          <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #80DEEA;"/>
+          <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #FFAB91;"/>
+          <rect id="convolutional-patch-positive" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #80DEEA;"/>
+          <rect id="convolutional-patch-negative" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #FFAB91;"/>
 
           <path id="arrow-left" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z" transform="rotate(180, 0, 0)"/>
           <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
@@ -4905,10 +4905,10 @@
       <script>
         (function() {
             var colors = [
-                "#00E5E1", "#00E2B2", "#00DF83", "#00DD55", "#00DA29",
-                "#02D800", "#2DD500", "#57D300", "#7FD000", "#A7CE00",
-                "#CBC900", "#C99E00", "#C67400", "#C44C00", "#C12400",
-                "#BF0001", 
+                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
+                "#9E9E9E", 
             ];
 
             var svg = d3.select("#gamma-beta-diagram > svg");
@@ -4978,10 +4978,10 @@
         })();
         (function() {
             var colors = [
-                "#00E5E1", "#00E2B2", "#00DF83", "#00DD55", "#00DA29",
-                "#02D800", "#2DD500", "#57D300", "#7FD000", "#A7CE00",
-                "#CBC900", "#C99E00", "#C67400", "#C44C00", "#C12400",
-                "#BF0001", 
+                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
+                "#9E9E9E", 
             ];
 
             var svg = d3.select("#gamma-beta-diagram > svg");
@@ -5297,7 +5297,7 @@
                         "cy": function(d) { return yScale(d.beta); },
                         "r": 3.0,
                     })
-                    .style("fill", "#666")
+                    .style("fill", "#03A9F4")
                     .style("opacity", 0.6);
             });
         })();
@@ -5363,7 +5363,7 @@
                         "cy": function(d) { return yScale(d.beta); },
                         "r": 3.0,
                     })
-                    .style("fill", "#666")
+                    .style("fill", "#03A9F4")
                     .style("opacity", 0.6);
             });
         })();
@@ -5637,9 +5637,12 @@
       </figure>
       <script>
         (function() {
-            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
-                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
-                          "#fee3c8", "#d1d2e7", "#fc8161"];
+            var colors = [
+                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
+                "#9E9E9E", 
+            ];
 
             var svg = d3.select("#clevr-subcluster-color-diagram > svg");
 
@@ -5707,9 +5710,12 @@
             });
         })();
         (function() {
-            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
-                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
-                          "#fee3c8", "#d1d2e7", "#fc8161"];
+            var colors = [
+                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
+                "#9E9E9E", 
+            ];
 
             var svg = d3.select("#clevr-subcluster-color-diagram > svg");
 
@@ -5826,9 +5832,12 @@
       </figure>
       <script>
         (function() {
-            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
-                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
-                          "#fee3c8", "#d1d2e7", "#fc8161"];
+            var colors = [
+                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
+                "#9E9E9E", 
+            ];
             var question_types = [
                 "Exists", "Less than", "Greater than", "Count", "Query material",
                 "Query size", "Query color", "Query shape", "Equal color",
@@ -5864,12 +5873,10 @@
                     .attrs({
                         "cx": 0,
                         "cy": function(d, i) { return 20 * i; },
-                        "r": 4,
+                        "r": 5,
                     })
                     .style("fill", function(d, i) { return colors[i]; })
-                    .style("opacity", 0.6)
-                    .style("stroke", "#666")
-                    .style("stroke-width", 1.5);
+                    .style("opacity", 0.6);
 
                 dataset = data.slice(0, 512);
                 xScales = [];
@@ -5895,12 +5902,10 @@
                     .attrs({
                         "cx": function(d) { return xScales[0](d.layer_all.x); },
                         "cy": function(d) { return yScales[0](d.layer_all.y); },
-                        "r": 4,
+                        "r": 3,
                     })
                     .style("fill", function(d) { return colors[d.question_type]; })
-                    .style("opacity", 0.6)
-                    .style("stroke", "#666")
-                    .style("stroke-width", 1.5);
+                    .style("opacity", 0.6);
 
                 var focusAll = function() {
                     svg.select("#question-types").selectAll("text")
@@ -5930,8 +5935,12 @@
             });
         })();
         (function() {
-            var colors = ["#1f77b4", "#ff770e", "#2ca02c", "#d62728", "#9467bd",
-                          "#8c564b", "#e377c2", "#7f7f7f"];
+            var colors = [
+                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
+                "#9E9E9E", 
+            ];
 
             var svg = d3.select("#tsne-diagram > svg");
 
@@ -5961,12 +5970,10 @@
                     .attrs({
                         "cx": function(d) { return xScale(d.x); },
                         "cy": function(d) { return yScale(d.y); },
-                        "r": 4,
+                        "r": 3,
                     })
                     .style("fill", function(d) { return colors[d.artist_index]; })
-                    .style("opacity", 0.6)
-                    .style("stroke", "#666")
-                    .style("stroke-width", 1.5);
+                    .style("opacity", 0.6);
 
                 svg.select("#artist-names").selectAll("text")
                     .data(Object.values(dataset.artists))
@@ -5985,12 +5992,10 @@
                     .attrs({
                         "cx": 0,
                         "cy": function(d, i) { return 20 * i; },
-                        "r": 4,
+                        "r": 5,
                     })
                     .style("fill", function(d, i) { return colors[i]; })
-                    .style("opacity", 0.6)
-                    .style("stroke", "#666")
-                    .style("stroke-width", 1.5);
+                    .style("opacity", 0.6);
 
                 var focusAll = function() {
                     svg.select("#artist-names").selectAll("text")
