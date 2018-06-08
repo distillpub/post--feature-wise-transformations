@@ -4871,7 +4871,7 @@
         If we color-code each point according to the feature map it belongs to
         we observe the following:
       </p>
-      <figure class="l-body-outset" id="gamma-beta-diagram">
+      <figure class="l-page-outset" id="gamma-beta-diagram">
         <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
@@ -5275,7 +5275,7 @@
         form several sub-clusters for a given feature map, which is not true for
         the style transfer model.
       </p>
-      <figure class="l-body-outset" id="clevr-subcluster-diagram">
+      <figure class="l-page-outset" id="clevr-subcluster-diagram">
         <svg viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
@@ -5293,7 +5293,7 @@
               FiLM parameters of of the visual reasoning model for feature
             </tspan>
             <tspan x="490" dy="1.5em">
-              map 92 of the first FiLM layer for 256 questions chosen
+              map 76 of the first FiLM layer for 256 questions chosen
             </tspan>
             <tspan x="490" dy="1.5em">
               at random.
@@ -5388,7 +5388,7 @@
             var dataset;
             var xScale;
             var yScale;
-            d3.json("assets/clevr_gamma_beta_subcluster_fm_92.json", function(data) {
+            d3.json("assets/clevr_gamma_beta_subcluster_fm_76.json", function(data) {
                 dataset = data;
                 xScale = d3.scaleLinear()
                     .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
@@ -5676,8 +5676,8 @@
         try to infer how questions regroup by color-coding the scatter plots
         by question type.
       </p>
-      <figure class="l-body-outset" id="clevr-subcluster-color-diagram">
-        <svg viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg">
+      <figure class="l-page-outset" id="clevr-subcluster-color-diagram">
+        <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
               FiLM parameters of of the visual reasoning model for feature
@@ -5694,7 +5694,7 @@
               FiLM parameters of of the visual reasoning model for feature
             </tspan>
             <tspan x="490" dy="1.5em">
-              map 92 of the first FiLM layer for 256 questions chosen
+              map 76 of the first FiLM layer for 256 questions chosen
             </tspan>
             <tspan x="490" dy="1.5em">
               at random.
@@ -5703,9 +5703,13 @@
           <g id="plot-1">
             <rect x="10" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-1"/>
           </g>
+          <g transform="translate(10, 530)" id="plot-1-question-types"></g>
+          <use xlink:href="#pointer-icon" transform="translate(10, 490)"/>
           <g id="plot-2">
             <rect x="490" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-2"/>
           </g>
+          <g transform="translate(490, 530)" id="plot-2-question-types"></g>
+          <use xlink:href="#pointer-icon" transform="translate(490, 490)"/>
         </svg>
       </figure>
       <script>
@@ -5713,8 +5717,7 @@
             var colors = [
                 "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
                 "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
-                "#9E9E9E", 
+                "#8BC34A", "#CDDC39", "#FFEB3B",
             ];
 
             var svg = d3.select("#clevr-subcluster-color-diagram > svg");
@@ -5741,6 +5744,18 @@
                              1.15 * d3.max(dataset, function (d) { return d.beta; })])
                     .rangeRound([yMax, yMin])
 
+                svg.select("#plot-1-question-types").selectAll("circle")
+                    .data(colors)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d, i) { return 25 * i; },
+                        "cy": 0,
+                        "r": 6,
+                    })
+                    .style("fill", function(d, i) { return colors[i]; })
+                    .style("cursor", "pointer")
+                    .style("opacity", 0.6);
+
                 plotContainer.append("path")
                     .attrs({
                         "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
@@ -5780,14 +5795,35 @@
                     })
                     .style("fill", function(d) { return colors[d.question_type]; })
                     .style("opacity", 0.6);
+
+                var focusAll = function() {
+                    svg.select("#plot-1-question-types").selectAll("circle")
+                        .style("opacity", 0.6);
+                    plotContainer.selectAll("circle")
+                        .style("opacity", 0.6);
+                };
+
+                var focus = function(j) {
+                    svg.select("#plot-1-question-types").selectAll("circle")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    plotContainer.selectAll("circle")
+                        .style("opacity", function(d, i) { return d.question_type == j ?  0.6 : 0.05; })
+                };
+
+                svg.select("#plot-1-question-types").selectAll("circle")
+                    .on("mouseover", function (d, i) {
+                        focus(i);
+                    })
+                    .on("mouseout", focusAll);
+
+                focusAll();
             });
         })();
         (function() {
             var colors = [
                 "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
                 "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-                "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
-                "#9E9E9E", 
+                "#8BC34A", "#CDDC39", "#FFEB3B",
             ];
 
             var svg = d3.select("#clevr-subcluster-color-diagram > svg");
@@ -5803,7 +5839,7 @@
             var dataset;
             var xScale;
             var yScale;
-            d3.json("assets/clevr_gamma_beta_subcluster_fm_92.json", function(data) {
+            d3.json("assets/clevr_gamma_beta_subcluster_fm_76.json", function(data) {
                 dataset = data;
                 xScale = d3.scaleLinear()
                     .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
@@ -5813,6 +5849,18 @@
                     .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
                              1.15 * d3.max(dataset, function (d) { return d.beta; })])
                     .rangeRound([yMax, yMin])
+
+                svg.select("#plot-2-question-types").selectAll("circle")
+                    .data(colors)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d, i) { return 25 * i; },
+                        "cy": 0,
+                        "r": 6,
+                    })
+                    .style("fill", function(d, i) { return colors[i]; })
+                    .style("cursor", "pointer")
+                    .style("opacity", 0.6);
 
                 plotContainer.append("path")
                     .attrs({
@@ -5853,14 +5901,43 @@
                     })
                     .style("fill", function(d) { return colors[d.question_type]; })
                     .style("opacity", 0.6);
+
+                var focusAll = function() {
+                    svg.select("#plot-2-question-types").selectAll("circle")
+                        .style("opacity", 0.6);
+                    plotContainer.selectAll("circle")
+                        .style("opacity", 0.6);
+                };
+
+                var focus = function(j) {
+                    svg.select("#plot-2-question-types").selectAll("circle")
+                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                    plotContainer.selectAll("circle")
+                        .style("opacity", function(d, i) { return d.question_type == j ?  0.6 : 0.05; })
+                };
+
+                svg.select("#plot-2-question-types").selectAll("circle")
+                    .on("mouseover", function (d, i) {
+                        focus(i);
+                    })
+                    .on("mouseout", focusAll);
+
+                focusAll();
             });
         })();
       </script>
       <p>
-        This structure has already been explored, albeit more indirectly, by
-        Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> as well as
-        Perez et al.  <d-cite key="perez2018film"></d-cite>, who applied
-        t-SNE <d-cite key="maaten2008visualizing"></d-cite> on the FiLM
+        Sometimes a clear pattern emerges, like for the plot on the right, where
+        questions related to counting and integer equality concentrate in the
+        top-right cluster. Sometimes it is harder to draw a conclusion, like for
+        the plot on the left, where most question types are scattered throughout
+        the three clusters.
+      </p>
+      <p>
+        The existence of this structure has already been explored, albeit more
+        indirectly, by Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
+        as well as Perez et al. <d-cite key="perez2018film"></d-cite>, who
+        applied t-SNE <d-cite key="maaten2008visualizing"></d-cite> on the FiLM
         parameter values.
       </p>
       <figure class="l-page-outset" id="tsne-diagram">
@@ -5891,11 +5968,13 @@
             <rect x="10" y="100" width="250" height="250" style="fill: none;" id="clevr-scatter-plot"/>
           </g>
           <g transform="translate(300, 110)" id="question-types"></g>
+          <use xlink:href="#pointer-icon" transform="translate(285, 70)"/>
           <g id="style-transfer-plot">
             <rect x="520" y="100" width="250" height="250" style="fill: none;" id="style-transfer-scatter-plot"/>
           </g>
           <circle cx="733" cy="220" r="20" style="stroke-width: 4px; fill: none;" class="figure-element"/>
           <g transform="translate(800, 110)" id="artist-names"></g>
+          <use xlink:href="#pointer-icon" transform="translate(785, 70)"/>
           <text x="10" y="400" dy="1em" style="fill: red" class="figure-text">
             TODO: add the ability to hover over points and visualize questions
             or style images; for now we can only hover over the legend to focus
@@ -5946,9 +6025,10 @@
                     .attrs({
                         "cx": 0,
                         "cy": function(d, i) { return 20 * i; },
-                        "r": 5,
+                        "r": 6,
                     })
                     .style("fill", function(d, i) { return colors[i]; })
+                    .style("cursor", "pointer")
                     .style("opacity", 0.6);
 
                 dataset = data.slice(0, 512);
@@ -6065,9 +6145,10 @@
                     .attrs({
                         "cx": 0,
                         "cy": function(d, i) { return 20 * i; },
-                        "r": 5,
+                        "r": 6,
                     })
                     .style("fill", function(d, i) { return colors[i]; })
+                    .style("cursor", "pointer")
                     .style("opacity", 0.6);
 
                 var focusAll = function() {
@@ -6467,7 +6548,7 @@
         paintings by Ivan Shishkin and Rembrandt are aggregated. While these two painters
         exhibit fairly different styles, the cluster is a grouping of their sketches.
       </p>
-      <figure class="l-body-outset" id="analogy-diagram">
+      <figure class="l-body-outset" id="style-explained-diagram">
         <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
           <image x="0" y="0" height="256" xlink:href="assets/woman-with-a-pink.jpg"/>
           <text x="0" y="266" dy="1em" class="figure-text">
