@@ -5603,9 +5603,180 @@
         try to infer how questions regroup by color-coding the scatter plots
         by question type.
       </p>
-      <p>
-        <span class="todo">TODO: add figure showcasing this.</span>
-      </p>
+      <figure class="l-body-outset" id="clevr-subcluster-color-diagram">
+        <svg viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="10" dy="1em" class="figure-text">
+            <tspan>
+              FiLM parameters of of the visual reasoning model for feature
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              map 26 of the first FiLM layer for 256 questions chosen
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              at random.
+            </tspan>
+          </text>
+          <text x="490" y="10" dy="1em" class="figure-text">
+            <tspan>
+              FiLM parameters of of the visual reasoning model for feature
+            </tspan>
+            <tspan x="490" dy="1.5em">
+              map 92 of the first FiLM layer for 256 questions chosen
+            </tspan>
+            <tspan x="490" dy="1.5em">
+              at random.
+            </tspan>
+          </text>
+          <g id="plot-1">
+            <rect x="10" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-1"/>
+          </g>
+          <g id="plot-2">
+            <rect x="490" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-2"/>
+          </g>
+        </svg>
+      </figure>
+      <script>
+        (function() {
+            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
+                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
+                          "#fee3c8", "#d1d2e7", "#fc8161"];
+
+            var svg = d3.select("#clevr-subcluster-color-diagram > svg");
+
+            var scatterPlot = svg.select("#scatter-plot-1");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var plotContainer = svg.select("#plot-1");
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/clevr_gamma_beta_subcluster_fm_26.json", function(data) {
+                dataset = data;
+                xScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
+                    .rangeRound([yMax, yMin])
+
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xMax - 10,
+                        "y": yScale(0.0) + 10,
+                        "dy": "0.4em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("γ");
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xScale(0.0) + 10,
+                        "y": yMin,
+                        "dy": "1em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("β");
+
+                plotContainer.selectAll("circle")
+                    .data(dataset)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.gamma); },
+                        "cy": function(d) { return yScale(d.beta); },
+                        "r": 3.0,
+                    })
+                    .style("fill", function(d) { return colors[d.question_type]; })
+                    .style("opacity", 0.6);
+            });
+        })();
+        (function() {
+            var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
+                          "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
+                          "#fee3c8", "#d1d2e7", "#fc8161"];
+
+            var svg = d3.select("#clevr-subcluster-color-diagram > svg");
+
+            var scatterPlot = svg.select("#scatter-plot-2");
+            var xMin = parseInt(scatterPlot.attr("x"));
+            var xMax = xMin + parseInt(scatterPlot.attr("width"));
+            var yMin = parseInt(scatterPlot.attr("y"));
+            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+
+            var plotContainer = svg.select("#plot-2");
+
+            var dataset;
+            var xScale;
+            var yScale;
+            d3.json("assets/clevr_gamma_beta_subcluster_fm_92.json", function(data) {
+                dataset = data;
+                xScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
+                    .rangeRound([xMin, xMax]);
+                yScale = d3.scaleLinear()
+                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
+                    .rangeRound([yMax, yMin])
+
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xMax - 10,
+                        "y": yScale(0.0) + 10,
+                        "dy": "0.4em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("γ");
+                plotContainer.append("path")
+                    .attrs({
+                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
+                        "stroke": "grey",
+                    });
+                plotContainer.append("text")
+                    .attrs({
+                        "x": xScale(0.0) + 10,
+                        "y": yMin,
+                        "dy": "1em",
+                        "font-family": "serif",
+                    })
+                    .classed("figure-text", true)
+                    .text("β");
+
+                plotContainer.selectAll("circle")
+                    .data(dataset)
+                  .enter().append("circle")
+                    .attrs({
+                        "cx": function(d) { return xScale(d.gamma); },
+                        "cy": function(d) { return yScale(d.beta); },
+                        "r": 3.0,
+                    })
+                    .style("fill", function(d) { return colors[d.question_type]; })
+                    .style("opacity", 0.6);
+            });
+        })();
+      </script>
       <p>
         This structure has already been explored, albeit more indirectly, by
         Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> as well as
