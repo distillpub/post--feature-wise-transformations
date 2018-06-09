@@ -5203,146 +5203,89 @@
               at random.
             </tspan>
           </text>
-          <g id="plot-1">
-            <rect x="10" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-1"/>
+          <g id="first-plot">
+            <rect x="10" y="100" width="400" height="400" style="fill: none;"/>
+            <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+            <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+            <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+            <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
           </g>
-          <g id="plot-2">
-            <rect x="490" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-2"/>
+          <g transform="translate(10, 530)" id="first-legend"></g>
+          <g id="second-plot">
+            <rect x="490" y="100" width="400" height="400" style="fill: none;"/>
+            <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+            <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+            <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+            <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
           </g>
+          <g transform="translate(490, 530)" id="second-legend"></g>
         </svg>
       </figure>
       <script>
         (function() {
-            var svg = d3.select("#clevr-subcluster-diagram > svg");
+            var setUp = function(filename, keyword, color) {
+                // Get references to important tags
+                var svg = d3.select("#clevr-subcluster-diagram > svg");
+                var scatterPlot = svg.select(`#${keyword}-plot`);
+                var boundingBox = scatterPlot.select("rect");
+                var legend = svg.select(`#${keyword}-legend`);
 
-            var scatterPlot = svg.select("#scatter-plot-1");
-            var xMin = parseInt(scatterPlot.attr("x"));
-            var xMax = xMin + parseInt(scatterPlot.attr("width"));
-            var yMin = parseInt(scatterPlot.attr("y"));
-            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+                // Retrieve scatter plot bounding box coordinates
+                var xMin = parseInt(boundingBox.attr("x"));
+                var xMax = xMin + parseInt(boundingBox.attr("width"));
+                var yMin = parseInt(boundingBox.attr("y"));
+                var yMax = yMin + parseInt(boundingBox.attr("height"));
 
-            var plotContainer = svg.select("#plot-1");
+                var colors = [
+                    "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                    "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
+                    "#9E9E9E", 
+                ];
 
-            var dataset;
-            var xScale;
-            var yScale;
-            d3.json("assets/clevr_gamma_beta_subcluster_fm_26.json", function(data) {
-                dataset = data;
-                xScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
-                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
-                    .rangeRound([xMin, xMax]);
-                yScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
-                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
-                    .rangeRound([yMax, yMin])
+                var dataset;
+                var xScale;
+                var yScale;
 
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xMax - 10,
-                        "y": yScale(0.0) + 10,
-                        "dy": "0.4em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("γ");
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xScale(0.0) + 10,
-                        "y": yMin,
-                        "dy": "1em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("β");
+                d3.json(filename, function(data) {
+                    dataset = data;
 
-                plotContainer.selectAll("circle")
-                    .data(dataset)
-                  .enter().append("circle")
-                    .attrs({
-                        "cx": function(d) { return xScale(d.gamma); },
-                        "cy": function(d) { return yScale(d.beta); },
-                        "r": 3.0,
-                    })
-                    .style("fill", "#03A9F4")
-                    .style("opacity", 0.6);
-            });
-        })();
-        (function() {
-            var svg = d3.select("#clevr-subcluster-diagram > svg");
+                    // Create scales mapping gamma and beta values to bounding box
+                    // coordinates
+                    xScale = d3.scaleLinear()
+                        .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                                 1.15 * d3.max(dataset, function (d) { return d.gamma; })])
+                        .rangeRound([xMin, xMax]);
+                    yScale = d3.scaleLinear()
+                        .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                                 1.15 * d3.max(dataset, function (d) { return d.beta; })])
+                        .rangeRound([yMax, yMin])
 
-            var scatterPlot = svg.select("#scatter-plot-2");
-            var xMin = parseInt(scatterPlot.attr("x"));
-            var xMax = xMin + parseInt(scatterPlot.attr("width"));
-            var yMin = parseInt(scatterPlot.attr("y"));
-            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+                    // Set up axes
+                    scatterPlot.select("#x-axis")
+                        .attr("d", `M ${xMin} ${yScale(0)} L ${xMax} ${yScale(0)}`);
+                    scatterPlot.select("#x-axis-label")
+                        .attrs({"x": xMax - 10, "y": yScale(0.0) + 10});
+                    scatterPlot.select("#y-axis")
+                        .attr("d", `M ${xScale(0)} ${yMax} L ${xScale(0)} ${yMin}`);
+                    scatterPlot.select("#y-axis-label")
+                        .attrs({"x": xScale(0.0) + 10, "y": yMin});
 
-            var plotContainer = svg.select("#plot-2");
-
-            var dataset;
-            var xScale;
-            var yScale;
-            d3.json("assets/clevr_gamma_beta_subcluster_fm_76.json", function(data) {
-                dataset = data;
-                xScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
-                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
-                    .rangeRound([xMin, xMax]);
-                yScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
-                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
-                    .rangeRound([yMax, yMin])
-
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xMax - 10,
-                        "y": yScale(0.0) + 10,
-                        "dy": "0.4em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("γ");
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xScale(0.0) + 10,
-                        "y": yMin,
-                        "dy": "1em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("β");
-
-                plotContainer.selectAll("circle")
-                    .data(dataset)
-                  .enter().append("circle")
-                    .attrs({
-                        "cx": function(d) { return xScale(d.gamma); },
-                        "cy": function(d) { return yScale(d.beta); },
-                        "r": 3.0,
-                    })
-                    .style("fill", "#03A9F4")
-                    .style("opacity", 0.6);
-            });
+                    // Display data points
+                    scatterPlot.selectAll("circle")
+                        .data(dataset)
+                      .enter().append("circle")
+                        .attrs({
+                            "cx": function(d) { return xScale(d.gamma); },
+                            "cy": function(d) { return yScale(d.beta); },
+                            "r": 3.0,
+                        })
+                        .style("fill", colors[color])
+                        .style("opacity", 0.6);
+                });
+            };
+            setUp('assets/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
+            setUp('assets/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
         })();
       </script>
       <p>
