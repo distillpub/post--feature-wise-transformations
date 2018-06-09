@@ -893,7 +893,7 @@
         FiLM layers to get an intuition of the sort of modulation they allow:
       </p>
       <figure class="l-page-outset" id="film-diagram">
-        <svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 650" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(10, 10)" id="mlp-figure">
             <text x="240" y="10" class="figure-text">
               <tspan>
@@ -931,20 +931,8 @@
                 parameter.
               </tspan>
             </text>
-            <text x="0" y="680" dy="1em" class="figure-text">
-              <tspan>
-                When combined with a ReLU
-              </tspan>
-              <tspan x="0" dy="1.5em">
-                nonlinearity, FiLM can be used
-              </tspan>
-              <tspan x="0" dy="1.5em">
-                to turn off features or feature
-              </tspan>
-              <tspan x="0" dy="1.5em">
-                maps.
-              </tspan>
-            </text>
+            <use xlink:href="#pointer-icon" transform="translate(130, 220)"/>
+            <use xlink:href="#pointer-icon" transform="translate(130, 410)"/>
             <rect x="240" y="205" width="180" height="300" class="figure-group figure-box"/>
             <g transform="translate(270, 125)" id="input-layer">
               <g transform="translate(0, 0)" class="feature">
@@ -1038,31 +1026,6 @@
             <line x1="330" y1="470" x2="330" y2="545" class="figure-line"/>
             <use xlink:href="#arrow-down" transform="translate(330, 545)" class="figure-path"/>
             <g transform="translate(270, 550)" id="shifted-layer">
-              <g transform="translate(0, 0)" class="feature">
-                <use xlink:href="#big-row-left" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-              <g transform="translate(40, 0)" class="feature">
-                <use xlink:href="#big-row-middle" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-              <g transform="translate(80, 0)" class="feature">
-                <use xlink:href="#big-row-right" class="figure-element"/>
-                <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
-                <use xlink:href="#vector-arrow" transform="translate(20, 20)" class="figure-line"/>
-              </g>
-            </g>
-            <path d="M 330 590 L 330 675" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(330, 675)" class="figure-path"/>
-            <g transform="translate(290, 680)">
-              <rect width="80" height="30" class="figure-group figure-box"/>
-              <text x="40" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">ReLU</text>
-            </g>
-            <path d="M 330 710 L 330 750" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(330, 750)" class="figure-path"/>
-            <g transform="translate(270, 755)" id="relued-layer">
               <g transform="translate(0, 0)" class="feature">
                 <use xlink:href="#big-row-left" class="figure-element"/>
                 <use xlink:href="#vector-patch-negative" transform="translate(5, 5)" opacity="1" class="vector-patch"/>
@@ -1546,157 +1509,6 @@
                 </g>
               </g>
             </g>
-            <path d="M 272 640 L 272 675" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(272, 675)" class="figure-path"/>
-            <g transform="translate(232, 680)">
-              <rect width="80" height="30" class="figure-group figure-box"/>
-              <text x="40" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">ReLU</text>
-            </g>
-            <path d="M 272 710 L 272 750" class="figure-line"/>
-            <use xlink:href="#arrow-down" transform="translate(272, 750)" class="figure-path"/>
-            <g transform="translate(249.5, 795)" id="relued-layer">
-              <g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-              </g>
-              <g transform="translate(0, -20)">
-                <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-              </g>
-              <g transform="translate(0, -40)">
-                <g transform="matrix(1, 0, -0.5, 0.5, 0, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 30, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 60, 0)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, -15, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 15, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 45, 15)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, -30, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 0, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-                <g transform="matrix(1, 0, -0.5, 0.5, 30, 30)" class="feature">
-                  <use xlink:href="#convolutional-feature" class="figure-element"/>
-                  <use xlink:href="#convolutional-patch-negative" transform="translate(5, 5)" opacity="1" class="convolutional-patch"/>
-                  <use xlink:href="#convolutional-arrow" transform="translate(15, 15)" class="figure-line"/>
-                </g>
-              </g>
-            </g>
           </g>
         </svg>
       </figure>
@@ -1732,11 +1544,9 @@
             svg.select("g#mlp-figure g#beta").selectAll("g.feature").data(data);
             svg.select("g#mlp-figure g#scaled-layer").selectAll("g.feature").data(data);
             svg.select("g#mlp-figure g#shifted-layer").selectAll("g.feature").data(data);
-            svg.select("g#mlp-figure g#relued-layer").selectAll("g.feature").data(data);
             svg.select("g#cnn-figure g#input-layer").selectAll("g.feature").data(convData);
             svg.select("g#cnn-figure g#scaled-layer").selectAll("g.feature").data(convData);
             svg.select("g#cnn-figure g#shifted-layer").selectAll("g.feature").data(convData);
-            svg.select("g#cnn-figure g#relued-layer").selectAll("g.feature").data(convData);
 
 
             function updateSingle(selection, accessor) {
@@ -1775,15 +1585,14 @@
                 updateSingle(svg.select("g#mlp-figure g#beta"), function(d) { return d.beta; });
                 updateSingle(svg.select("g#mlp-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
                 updateSingle(svg.select("g#mlp-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
-                updateSingle(svg.select("g#mlp-figure g#relued-layer"), function(d) { return Math.max(0.0, d.gamma * d.feature + d.beta); });
                 updateSingleConv(svg.select("g#cnn-figure g#input-layer"), function(d) { return d.feature; });
                 updateSingleConv(svg.select("g#cnn-figure g#scaled-layer"), function(d) { return d.gamma * d.feature; });
                 updateSingleConv(svg.select("g#cnn-figure g#shifted-layer"), function(d) { return d.gamma * d.feature + d.beta; });
-                updateSingleConv(svg.select("g#cnn-figure g#relued-layer"), function(d) { return Math.max(0.0, d.gamma * d.feature + d.beta); });
             }
             update();
             svg.select("g#mlp-figure g#gamma")
               .selectAll("g.feature")
+                .style("cursor", "pointer")
                 .on("mousemove", function (d) {
                     var newValue = mouseScale(d3.mouse(this)[1]);
                     d.gamma = newValue;
@@ -1794,6 +1603,7 @@
                 });
             svg.select("g#mlp-figure g#beta")
               .selectAll("g.feature")
+                .style("cursor", "pointer")
                 .on("mousemove", function (d, i) {
                     var newValue = mouseScale(d3.mouse(this)[1]);
                     d.beta = newValue;
