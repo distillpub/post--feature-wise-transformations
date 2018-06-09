@@ -5524,7 +5524,7 @@
         by question type.
       </p>
       <figure class="l-page-outset" id="clevr-subcluster-color-diagram">
-        <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
               FiLM parameters of of the visual reasoning model for feature
@@ -5536,241 +5536,162 @@
               at random.
             </tspan>
           </text>
-          <text x="490" y="10" dy="1em" class="figure-text">
+          <text x="520" y="10" dy="1em" class="figure-text">
             <tspan>
               FiLM parameters of of the visual reasoning model for feature
             </tspan>
-            <tspan x="490" dy="1.5em">
+            <tspan x="520" dy="1.5em">
               map 76 of the first FiLM layer for 256 questions chosen
             </tspan>
-            <tspan x="490" dy="1.5em">
+            <tspan x="520" dy="1.5em">
               at random.
             </tspan>
           </text>
-          <g id="plot-1">
-            <rect x="10" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-1"/>
+          <g id="first-plot">
+            <rect x="10" y="100" width="250" height="250" style="fill: none;"/>
+            <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+            <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+            <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+            <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
           </g>
-          <g transform="translate(10, 530)" id="plot-1-question-types"></g>
-          <use xlink:href="#pointer-icon" transform="translate(10, 490)"/>
-          <g id="plot-2">
-            <rect x="490" y="100" width="400" height="400" style="fill: none;" id="scatter-plot-2"/>
+          <g transform="translate(300, 110)" id="first-legend"></g>
+          <use xlink:href="#pointer-icon" transform="translate(285, 70)"/>
+          <g id="second-plot">
+            <rect x="520" y="100" width="250" height="250" style="fill: none;"/>
+            <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+            <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+            <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+            <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
           </g>
-          <g transform="translate(490, 530)" id="plot-2-question-types"></g>
-          <use xlink:href="#pointer-icon" transform="translate(490, 490)"/>
+          <g transform="translate(800, 110)" id="second-legend"></g>
+          <use xlink:href="#pointer-icon" transform="translate(785, 70)"/>
         </svg>
       </figure>
       <script>
         (function() {
-            var colors = [
-                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-                "#8BC34A", "#CDDC39", "#FFEB3B",
-            ];
+            var setUp = function(filename, keyword, color) {
+                // Get references to important tags
+                var svg = d3.select("#clevr-subcluster-color-diagram > svg");
+                var scatterPlot = svg.select(`#${keyword}-plot`);
+                var boundingBox = scatterPlot.select("rect");
+                var legend = svg.select(`#${keyword}-legend`);
 
-            var svg = d3.select("#clevr-subcluster-color-diagram > svg");
+                // Retrieve scatter plot bounding box coordinates
+                var xMin = parseInt(boundingBox.attr("x"));
+                var xMax = xMin + parseInt(boundingBox.attr("width"));
+                var yMin = parseInt(boundingBox.attr("y"));
+                var yMax = yMin + parseInt(boundingBox.attr("height"));
 
-            var scatterPlot = svg.select("#scatter-plot-1");
-            var xMin = parseInt(scatterPlot.attr("x"));
-            var xMax = xMin + parseInt(scatterPlot.attr("width"));
-            var yMin = parseInt(scatterPlot.attr("y"));
-            var yMax = yMin + parseInt(scatterPlot.attr("height"));
+                var colors = [
+                    "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+                    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+                    "#8BC34A", "#CDDC39", "#FFEB3B",
+                ];
 
-            var plotContainer = svg.select("#plot-1");
+                var question_types = [
+                    "Exists", "Less than", "Greater than", "Count", "Query material",
+                    "Query size", "Query color", "Query shape", "Equal color",
+                    "Equal integer", "Equal shape", "Equal size", "Equal material"
+                ];
 
-            var dataset;
-            var xScale;
-            var yScale;
-            d3.json("assets/clevr_gamma_beta_subcluster_fm_26.json", function(data) {
-                dataset = data;
-                xScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
-                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
-                    .rangeRound([xMin, xMax]);
-                yScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
-                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
-                    .rangeRound([yMax, yMin])
+                var dataset;
+                var xScale;
+                var yScale;
 
-                svg.select("#plot-1-question-types").selectAll("circle")
-                    .data(colors)
-                  .enter().append("circle")
-                    .attrs({
-                        "cx": function(d, i) { return 25 * i; },
-                        "cy": 0,
-                        "r": 6,
-                    })
-                    .style("fill", function(d, i) { return colors[i]; })
-                    .style("cursor", "pointer")
-                    .style("opacity", 0.6);
+                d3.json(filename, function(data) {
+                    dataset = data;
 
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xMax - 10,
-                        "y": yScale(0.0) + 10,
-                        "dy": "0.4em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("γ");
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xScale(0.0) + 10,
-                        "y": yMin,
-                        "dy": "1em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("β");
+                    // Create scales mapping gamma and beta values to bounding box
+                    // coordinates
+                    xScale = d3.scaleLinear()
+                        .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                                 1.15 * d3.max(dataset, function (d) { return d.gamma; })])
+                        .rangeRound([xMin, xMax]);
+                    yScale = d3.scaleLinear()
+                        .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                                 1.15 * d3.max(dataset, function (d) { return d.beta; })])
+                        .rangeRound([yMax, yMin])
 
-                plotContainer.selectAll("circle")
-                    .data(dataset)
-                  .enter().append("circle")
-                    .attrs({
-                        "cx": function(d) { return xScale(d.gamma); },
-                        "cy": function(d) { return yScale(d.beta); },
-                        "r": 3.0,
-                    })
-                    .style("fill", function(d) { return colors[d.question_type]; })
-                    .style("opacity", 0.6);
+                    // Set up axes
+                    scatterPlot.select("#x-axis")
+                        .attr("d", `M ${xMin} ${yScale(0)} L ${xMax} ${yScale(0)}`);
+                    scatterPlot.select("#x-axis-label")
+                        .attrs({"x": xMax - 10, "y": yScale(0.0) + 10});
+                    scatterPlot.select("#y-axis")
+                        .attr("d", `M ${xScale(0)} ${yMax} L ${xScale(0)} ${yMin}`);
+                    scatterPlot.select("#y-axis-label")
+                        .attrs({"x": xScale(0.0) + 10, "y": yMin});
 
-                var focusAll = function() {
-                    svg.select("#plot-1-question-types").selectAll("circle")
+                    // Dispatch data points into groups by question type
+                    scatterPlot.selectAll("g")
+                        .data(colors)
+                      .enter().append("g")
+                        .style("opacity", 1.0)
+                        .each(function(c, i) {
+                            d3.select(this).selectAll("circle")
+                                .data(dataset.filter(function(d) { return d.question_type == i; }))
+                              .enter().append("circle")
+                                .attrs({
+                                    "cx": function(d) { return xScale(d.gamma); },
+                                    "cy": function(d) { return yScale(d.beta); },
+                                    "r": 3.0,
+                                })
+                                .style("fill", function(d) { return colors[i]; })
+                                .style("opacity", 0.6);
+                        });
+
+                    // Create legend
+                    legend.selectAll("circle")
+                        .data(colors)
+                      .enter().append("circle")
+                        .attrs({
+                            "cx": 0,
+                            "cy": function(d, i) { return 20 * i; },
+                            "r": 6,
+                        })
+                        .style("fill", function(d, i) { return colors[i]; })
+                        .style("cursor", "pointer")
                         .style("opacity", 0.6);
-                    plotContainer.selectAll("circle")
-                        .style("opacity", 0.6);
-                };
+                    legend.selectAll("text")
+                        .data(question_types)
+                      .enter().append("text")
+                        .attrs({
+                            "x": 20,
+                            "y": function(d, i) { return 20 * i; },
+                            "dy": "0.4em",
+                        })
+                        .classed("figure-text", true)
+                        .text(function(d) { return d; });
 
-                var focus = function(j) {
-                    svg.select("#plot-1-question-types").selectAll("circle")
-                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                    plotContainer.selectAll("circle")
-                        .style("opacity", function(d, i) { return d.question_type == j ?  0.6 : 0.05; })
-                };
+                    // Focuses on all points by resetting the opacities
+                    var focusAll = function() {
+                        legend.selectAll("circle")
+                            .style("opacity", 0.6);
+                        scatterPlot.selectAll("g")
+                            .style("opacity", 1.0);
+                    };
 
-                svg.select("#plot-1-question-types").selectAll("circle")
-                    .on("mouseover", function (d, i) {
-                        focus(i);
-                    })
-                    .on("mouseout", focusAll);
+                    // Focuses on a single question type by lowering other
+                    // question type opacities
+                    var focus = function(j) {
+                        legend.selectAll("circle")
+                            .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                        scatterPlot.selectAll("g")
+                            .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
+                    };
 
-                focusAll();
-            });
-        })();
-        (function() {
-            var colors = [
-                "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-                "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-                "#8BC34A", "#CDDC39", "#FFEB3B",
-            ];
+                    // Add hovering behavior to legend
+                    legend.selectAll("circle")
+                        .on("mouseover", function (d, i) {
+                            focus(i);
+                        })
+                        .on("mouseout", focusAll);
 
-            var svg = d3.select("#clevr-subcluster-color-diagram > svg");
-
-            var scatterPlot = svg.select("#scatter-plot-2");
-            var xMin = parseInt(scatterPlot.attr("x"));
-            var xMax = xMin + parseInt(scatterPlot.attr("width"));
-            var yMin = parseInt(scatterPlot.attr("y"));
-            var yMax = yMin + parseInt(scatterPlot.attr("height"));
-
-            var plotContainer = svg.select("#plot-2");
-
-            var dataset;
-            var xScale;
-            var yScale;
-            d3.json("assets/clevr_gamma_beta_subcluster_fm_76.json", function(data) {
-                dataset = data;
-                xScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
-                             1.15 * d3.max(dataset, function (d) { return d.gamma; })])
-                    .rangeRound([xMin, xMax]);
-                yScale = d3.scaleLinear()
-                    .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
-                             1.15 * d3.max(dataset, function (d) { return d.beta; })])
-                    .rangeRound([yMax, yMin])
-
-                svg.select("#plot-2-question-types").selectAll("circle")
-                    .data(colors)
-                  .enter().append("circle")
-                    .attrs({
-                        "cx": function(d, i) { return 25 * i; },
-                        "cy": 0,
-                        "r": 6,
-                    })
-                    .style("fill", function(d, i) { return colors[i]; })
-                    .style("cursor", "pointer")
-                    .style("opacity", 0.6);
-
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xMin + " " + yScale(0.0) + " " + xMax + " " + yScale(0.0),
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xMax - 10,
-                        "y": yScale(0.0) + 10,
-                        "dy": "0.4em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("γ");
-                plotContainer.append("path")
-                    .attrs({
-                        "d": "M " + xScale(0.0) + " " + yMax + " " + xScale(0.0) + " " + yMin,
-                        "stroke": "grey",
-                    });
-                plotContainer.append("text")
-                    .attrs({
-                        "x": xScale(0.0) + 10,
-                        "y": yMin,
-                        "dy": "1em",
-                        "font-family": "serif",
-                    })
-                    .classed("figure-text", true)
-                    .text("β");
-
-                plotContainer.selectAll("circle")
-                    .data(dataset)
-                  .enter().append("circle")
-                    .attrs({
-                        "cx": function(d) { return xScale(d.gamma); },
-                        "cy": function(d) { return yScale(d.beta); },
-                        "r": 3.0,
-                    })
-                    .style("fill", function(d) { return colors[d.question_type]; })
-                    .style("opacity", 0.6);
-
-                var focusAll = function() {
-                    svg.select("#plot-2-question-types").selectAll("circle")
-                        .style("opacity", 0.6);
-                    plotContainer.selectAll("circle")
-                        .style("opacity", 0.6);
-                };
-
-                var focus = function(j) {
-                    svg.select("#plot-2-question-types").selectAll("circle")
-                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                    plotContainer.selectAll("circle")
-                        .style("opacity", function(d, i) { return d.question_type == j ?  0.6 : 0.05; })
-                };
-
-                svg.select("#plot-2-question-types").selectAll("circle")
-                    .on("mouseover", function (d, i) {
-                        focus(i);
-                    })
-                    .on("mouseout", focusAll);
-
-                focusAll();
-            });
+                    focusAll();
+                });
+            };
+            setUp('assets/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
+            setUp('assets/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
         })();
       </script>
       <p>
