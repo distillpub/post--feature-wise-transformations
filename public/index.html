@@ -5545,9 +5545,7 @@
           <g transform="translate(800, 110)" id="artist-names"></g>
           <use xlink:href="#pointer-icon" transform="translate(785, 70)"/>
           <text x="10" y="400" dy="1em" style="fill: red" class="figure-text">
-            TODO: add the ability to hover over points and visualize questions
-            or style images; for now we can only hover over the legend to focus
-            on different labels.
+            TODO: udpate the json files with question/answer and image url -> then update the javascript
           </text>
         </svg>
       </figure>
@@ -5584,6 +5582,7 @@
                         "x": 20,
                         "y": function(d, i) { return 20 * i; },
                         "dy": "0.4em",
+                        "class": function(d, i) { return "question-type question-type-"+i; }
                     })
                     .classed("figure-text", true)
                     .text(function(d) { return d; });
@@ -5595,10 +5594,14 @@
                         "cx": 0,
                         "cy": function(d, i) { return 20 * i; },
                         "r": 6,
+                        "class": function(d, i) { return "question-type question-type-"+i; }
                     })
                     .style("fill", function(d, i) { return colors[i]; })
                     .style("cursor", "pointer")
-                    .style("opacity", 0.6);
+                    .style("opacity", 0.6)
+
+				svg.select("g#clevr").selectAll("circle")
+
 
                 dataset = data.slice(0, 512);
                 xScales = [];
@@ -5618,33 +5621,45 @@
                     );
                 }
 
-                svg.select("#clevr-plot").selectAll("circle")
-                    .data(dataset)
+				var tooltip = d3.select("body").append("div")
+											   .attr("id", "tooltip-tsne-clever")
+											   .attr("class", "tooltip")
+											   .style("opacity", 0);
+				
+                svg.select("#clevr-plot")
+					.style("cursor", "pointer")
+					.selectAll("circle").data(dataset)
                   .enter().append("circle")
                     .attrs({
                         "cx": function(d) { return xScales[0](d.layer_all.x); },
                         "cy": function(d) { return yScales[0](d.layer_all.y); },
                         "r": 3,
+                        "label": function(d) { return "yo! ("+d.question_type+")"; },
+                        "class": function(d) { return "question-type question-type-"+d.question_type; }
                     })
                     .style("fill", function(d) { return colors[d.question_type]; })
-                    .style("opacity", 0.6);
+                    .style("opacity", 0.6)
+                    .on("mouseover", function(d) {
+					  tooltip.transition()
+						   .duration(200)
+						   .style("opacity", .9);
+					  tooltip.html("Coucou! " +  Math.random())
+						   .style("left", (d3.event.pageX + 5) + "px")
+						   .style("top", (d3.event.pageY - 28) + "px");
+					  })
+					  .on("mouseout", function(d) {
+						  tooltip.transition()
+							   .duration(500)
+							   .style("opacity", 0);
+					  });
 
                 var focusAll = function() {
-                    svg.select("#question-types").selectAll("text")
-                        .style("opacity", 0.6);
-                    svg.select("#question-types").selectAll("circle")
-                        .style("opacity", 0.6);
-                    svg.select("#clevr-plot").selectAll("circle")
-                        .style("opacity", 0.6)
+                    svg.selectAll("#tsne-diagram .question-type").style("opacity", 0.6);
                 };
 
                 var focus = function(j) {
-                    svg.select("#question-types").selectAll("text")
-                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                    svg.select("#question-types").selectAll("circle")
-                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                    svg.select("#clevr-plot").selectAll("circle")
-                        .style("opacity", function(d, i) { return d.question_type == j ?  0.6 : 0.05; })
+					svg.selectAll("#tsne-diagram .question-type").style("opacity", 0.1);
+					svg.selectAll("#tsne-diagram .question-type-"+j).style("opacity", 0.6);
                 };
 
                 svg.select("#question-types").selectAll("circle")
@@ -5672,6 +5687,11 @@
             var yMin = parseInt(scatterPlot.attr("y"));
             var yMax = yMin + parseInt(scatterPlot.attr("height"));
 
+			var tooltip = d3.select("body").append("div")
+							   .attr("id", "tooltip-tsne-style")
+							   .attr("class", "tooltip")
+							   .style("opacity", 0);
+
             var dataset;
             var xScale;
             var yScale;
@@ -5686,6 +5706,7 @@
                              d3.max(dataset.points, function (d) { return d.y; })])
                     .rangeRound([yMin, yMax])
 
+                svg.select("#style-transfer-plot").style("cursor", "pointer")
                 svg.select("#style-transfer-plot").selectAll("circle")
                     .data(dataset.points)
                   .enter().append("circle")
@@ -5693,54 +5714,66 @@
                         "cx": function(d) { return xScale(d.x); },
                         "cy": function(d) { return yScale(d.y); },
                         "r": 3,
+                        "class": function(d, i) { return "artist-name artist-name-"+d.artist_index; }
                     })
                     .style("fill", function(d) { return colors[d.artist_index]; })
-                    .style("opacity", 0.6);
+                    .style("opacity", 0.6)
+					 .on("mouseover", function(d) {
+					  tooltip.transition()
+						   .duration(200)
+						   .style("opacity", .9);
+					  
+					  url = "http://www.google.com/intl/en_com/images/logo_plain.png";	   
+					   
+					  tooltip.html("<img src='"+url+"' class='loading'/>" + 
+								   "<br>"+
+								   "<span>This is the legend!!!</span>")
+						   .style("left", (d3.event.pageX + 5) + "px")
+						   .style("top", (d3.event.pageY - 28) + "px");
+					  })
+					  .on("mouseout", function(d) {
+						  tooltip.transition()
+							   .duration(500)
+							   .style("opacity", 0);
+					  });
 
                 svg.select("#artist-names").selectAll("text")
-                    .data(Object.values(dataset.artists))
+                    .data(Object.keys(dataset.artists))
                   .enter().append("text")
                     .attrs({
                         "x": 20,
-                        "y": function(d, i) { return 20 * i; },
+                        "y": function(artist_index, i) { return 20 * i; },
                         "dy": "0.4em",
+                        "class": function(artist_index) { return "artist-name artist-name-"+artist_index; }
                     })
                     .classed("figure-text", true)
-                    .text(function(d) { return d; });
-
+                    .text(function(artist_index) { return dataset.artists[artist_index]; });
+	
                 svg.select("#artist-names").selectAll("circle")
-                    .data(Object.values(dataset.artists))
+                    .data(Object.keys(dataset.artists))
                   .enter().append("circle")
                     .attrs({
                         "cx": 0,
                         "cy": function(d, i) { return 20 * i; },
                         "r": 6,
+                        "class": function(artist_index) { return "artist-name artist-name-"+artist_index; }
                     })
-                    .style("fill", function(d, i) { return colors[i]; })
+                    .style("fill", function(artist_index, i) { return colors[artist_index]; })
                     .style("cursor", "pointer")
                     .style("opacity", 0.6);
 
                 var focusAll = function() {
-                    svg.select("#artist-names").selectAll("text")
-                        .style("opacity", 0.6);
-                    svg.select("#artist-names").selectAll("circle")
-                        .style("opacity", 0.6);
-                    svg.select("#style-transfer-plot").selectAll("circle")
-                        .style("opacity", 0.6)
+					svg.selectAll("#tsne-diagram .artist-name").style("opacity", 0.6);
                 };
 
                 var focus = function(j) {
-                    svg.select("#artist-names").selectAll("text")
-                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                    svg.select("#artist-names").selectAll("circle")
-                        .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                    svg.select("#style-transfer-plot").selectAll("circle")
-                        .style("opacity", function(d, i) { return d.artist_index == j ?  0.6 : 0.05; })
+					svg.selectAll("#tsne-diagram .artist-name").style("opacity", 0.1);
+					svg.selectAll("#tsne-diagram .artist-name-"+j).style("opacity", 0.6);
                 };
 
                 svg.select("#artist-names").selectAll("circle")
                     .on("mouseover", function (d, i) {
-                        focus(i);
+                        focus(d);
                     })
                     .on("mouseout", focusAll);
 
@@ -5857,7 +5890,7 @@
                     this.shadowRoot.querySelector('.content').hidden = !expanded
                   }
 
-                  this.btn.onclick = () => {
+                  this.btn.onclick =	 () => {
                     // Change the component's `open` attribute value on click
                     let open = this.getAttribute('open') === 'true' || false
                     this.setAttribute('open', open ? 'false' : 'true')

@@ -174,3 +174,10 @@ toggle-section[role="region"] {
 toggle-section[role="region"] + toggle-section {
   border-top: 0;
 }
+
+.tooltip {
+  position: absolute;
+  max-width: 300px;
+  max-height: 300px;
+  pointer-events: none;
+}
