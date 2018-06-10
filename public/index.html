@@ -5244,9 +5244,9 @@
       <!--       }); -->
       <!--   })(); -->
       <!-- </script> -->
-      <figure class="l-body-outset" id="analogy-diagram">
-        <svg viewBox="0 0 744 270" xmlns="http://www.w3.org/2000/svg">
-          <text x="10" y="10" class="figure-text">
+      <figure class="l-body" id="analogy-diagram">
+        <svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="0" dy="1em" class="figure-text">
             <tspan>
               The model is asked a question which
             </tspan>
@@ -5257,73 +5257,69 @@
               concepts and gives the wrong answer.
             </tspan>
           </text>
-          <text x="300" y="10" class="figure-text">
+          <text x="10" y="220" dy="1em" class="figure-text">
             <tspan>
-              Rather than direcly relying on the FiLM generator, we can combine the FiLM
-            </tspan>
-            <tspan x="300" dy="1.5em">
-              parameters produced by three familiar questions and feed the
-              result to the visual
-            </tspan>
-            <tspan x="300" dy="1.5em">
-              pipeline. This corrects the model's answer.
-            </tspan>
-          </text>
-          <image x="10" y="100" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/analogy_image.jpg"/>
-          <text x="10" y="250" style="font-style: italic;" class="figure-text">
-            <tspan>
-              What is the blue big cylinder made of?
+              Rather than direcly relying on the FiLM
             </tspan>
             <tspan x="10" dy="1.5em">
-              <tspan style="font-weight: bold;">Model answer:</tspan> Rubber
+              generator, we can combine the FiLM
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              parameters produced by three familiar
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              questions and feed the result to the
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              visual pipeline. This corrects the
+            </tspan>
+            <tspan x="10" dy="1.5em">
+              model's answer.
             </tspan>
           </text>
-          <path d="M 300 180 L 550 180" style="stroke-width: 0.5px" class="figure-line"/>
-          <path d="M 310 100 L 310 220" style="stroke-width: 0.5px" class="figure-line"/>
-          <text x="580" y="100" dy="1em" class="figure-text">
-            <tspan>A</tspan>
-            <tspan x="580" dy="3.5em">B</tspan>
-            <tspan x="580" dy="3.5em">C</tspan>
+          <image x="260" y="0" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/analogy_image.jpg"/>
+          <text x="260" y="150" style="font-style: italic;" class="figure-text">
+            Q: What is the blue big cylinder made of?
           </text>
-          <text x="600" y="100" dy="1em" style="font-style: italic;" class="figure-text">
+          <text x="490" y="70" dy="-1em" style="font-style: italic;" class="figure-text">
+            Q ?
+          </text>
+          <path d="M 457 70 L 550 70" class="figure-path"/>
+          <use x="550" y="70" xlink:href="#arrow-right" class="figure-path"/>
+          <text x="560" y="70" dy="0.4em" class="figure-text">Rubber</text>
+          <image x="260" y="220" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/analogy_image.jpg"/>
+          <text x="260" y="370" style="font-style: italic;" class="figure-text">
             <tspan>
-              What is the blue big
+              Q<tspan dy="4px" class="subscript">A</tspan>
             </tspan>
-            <tspan x="600" dy="1.5em">
+            <tspan dy="-4px">
+              : What is the <tspan style="font-weight: bold">blue</tspan> big
               <tspan style="font-weight: bold">sphere</tspan> made of?
             </tspan>
-            <tspan x="600" dy="2em">
-              What is the <tspan style="font-weight: bold">green</tspan> big
+            <tspan x="260" dy="2em">
+              Q<tspan dy="4px" class="subscript">B</tspan>
             </tspan>
-            <tspan x="600" dy="1.5em">
-              cylinder made of?
+            <tspan dy="-4px">
+              : What is the <tspan style="font-weight: bold">green</tspan> big
+              <tspan style="font-weight: bold">cylinder</tspan> made of?
             </tspan>
-            <tspan x="600" dy="2em">
-              What is the <tspan style="font-weight: bold">green</tspan> big
+            <tspan x="260" dy="2em">
+              Q<tspan dy="4px" class="subscript">C</tspan>
             </tspan>
-            <tspan x="600" dy="1.5em">
+            <tspan dy="-4px">
+              : What is the <tspan style="font-weight: bold">green</tspan> big
               <tspan style="font-weight: bold">sphere</tspan> made of?
             </tspan>
           </text>
-          <path d="M 310 180 L 420 100" class="figure-line"/>
-          <use x="420" y="100" transform="rotate(-35, 420, 100)" xlink:href="#arrow-right" class="figure-path"/>
-          <text x="350" y="139" class="figure-text">A</text>
-          <path d="M 420 100 L 530 160" class="figure-line"/>
-          <use x="530" y="160" transform="rotate(30, 530, 160)" xlink:href="#arrow-right" class="figure-path"/>
-          <text x="480" y="125" class="figure-text">B</text>
-          <path d="M 530 160 L 420 210" class="figure-line"/>
-          <use x="420" y="210" transform="rotate(155, 420, 210)" xlink:href="#arrow-right" class="figure-path"/>
-          <text x="470" y="210" class="figure-text">-C</text>
-          <path d="M 310 180 L 420 210" class="figure-line figure-dashed"/>
-          <use x="420" y="210" transform="rotate(20, 420, 210)" xlink:href="#arrow-right" class="figure-path"/>
-          <text x="300" y="250" style="font-style: italic;" class="figure-text">
-            <tspan>
-              A + B - C ?
-            </tspan>
-            <tspan x="300" dy="1.5em">
-              <tspan style="font-weight: bold;">Model answer:</tspan> Metal
-            </tspan>
+          <text x="460" y="290" dy="-1em" style="font-style: italic;" class="figure-text">
+            <tspan>Q</tspan><tspan dy="4px" class="subscript">A</tspan>
+            <tspan dy="-4px">+ Q</tspan><tspan dy="4px" class="subscript">B</tspan>
+            <tspan dy="-4px">- Q</tspan><tspan dy="4px" class="subscript">C</tspan>
+            <tspan dy="-4px"> ?</tspan>
           </text>
+          <path d="M 457 290 L 550 290" class="figure-path"/>
+          <use x="550" y="290" xlink:href="#arrow-right" class="figure-path"/>
+          <text x="560" y="290" dy="0.4em" class="figure-text">Metal</text>
         </svg>
       </figure>
       <p>
