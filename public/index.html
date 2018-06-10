@@ -4744,7 +4744,7 @@
                     "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
                     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
                     "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
-                    "#9E9E9E", 
+                    "#9E9E9E",
                 ];
 
                 var dataset;
@@ -4993,7 +4993,7 @@
         <svg viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
-              FiLM parameters of of the visual reasoning model for feature
+              FiLM parameters of the visual reasoning model for feature
             </tspan>
             <tspan x="10" dy="1.5em">
               map 26 of the first FiLM layer for 256 questions chosen
@@ -5004,7 +5004,7 @@
           </text>
           <text x="490" y="10" dy="1em" class="figure-text">
             <tspan>
-              FiLM parameters of of the visual reasoning model for feature
+              FiLM parameters of the visual reasoning model for feature
             </tspan>
             <tspan x="490" dy="1.5em">
               map 76 of the first FiLM layer for 256 questions chosen
@@ -5050,7 +5050,7 @@
                     "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
                     "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
                     "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
-                    "#9E9E9E", 
+                    "#9E9E9E",
                 ];
 
                 var dataset;
@@ -5566,7 +5566,7 @@
                 "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
                 "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
                 "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
-                "#9E9E9E", 
+                "#9E9E9E",
             ];
             var question_types = [
                 "Exists", "Less than", "Greater than", "Count", "Query material",
@@ -5670,7 +5670,7 @@
                 "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
                 "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
                 "#8BC34A", "#CDDC39", "#FFEB3B", "#FF9800", "#795548",
-                "#9E9E9E", 
+                "#9E9E9E",
             ];
 
             var svg = d3.select("#tsne-diagram > svg");
@@ -6121,7 +6121,7 @@
         Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their
         style transfer network. The projection does not cluster artists as
         neatly as the projection on the left, but this is to be expected, given
-        that an artist's style may vary widely over time. We can still however detect interesting patterns in the
+        that an artist's style may vary widely over time. However, we can still detect interesting patterns in the
         projection: note for instance the isolated cluster (circled in the figure) in which
         paintings by Ivan Shishkin and Rembrandt are aggregated. While these two painters
         exhibit fairly different styles, the cluster is a grouping of their sketches.
@@ -6155,63 +6155,31 @@
           </text>
         </svg>
       </figure>
-      <p>
-        To summarize, the mapping learned by the FiLM generator contains a lot
-        of interesting structure which helps explain why it is possible to
-        perform task interpolations, task analogies, and dimensionality
-        reduction on the task representation. It also appears that the FiLM
-        generator learns to perform fairly local modulations to the FiLM
-        parameter values as the task description changes. How these small, local
-        modulations are able to compound into large and meaningful modulations
-        of the FiLMed network is still an open question, but we believe we can
-        at least eliminate one naive hypothesis.
-      </p>
-      <p>
-        This hypothesis states that FiLM acts as a switching mechanism: through
-        scaling and shifting, FiLM zeroes out unwanted feature maps, which can
-        be understood as selecting which units of computation get carried out
-        and which don't. In other words, the hypothesis is that FiLM implicitly
-        allows to compose units of computation into a task-solving network. If
-        that was the case, we would be observing that a non-negligible fraction
-        of the FiLMed feature maps have a norm of exactly zero.
-      </p>
-      <figure class="l-body-outset" id="fm-norm-diagram">
-        <svg viewBox="0 0 744 300" xmlns="http://www.w3.org/2000/svg">
-          <image x="0" y="0" height="256" xlink:href="assets/fm_norm_style.png"/>
-          <text x="0" y="266" dy="1em" class="figure-text">
-            <tspan>
-              Style transfer network
-            </tspan>
-          </text>
-        </svg>
-      </figure>
-      <p>
-        As the plot above shows, this is not the case. For the most part, the
-        naive view of FiLM acting as a switching mechanism is wrong. For style
-        transfer almost no feature maps are completely switched off for an
-        arbitrary pair of content and style images. For visual reasoning we do
-        observe some switching but this is a fairly small effect: only roughly
-        10% of the feature maps are switched off at any given time.
-      </p>
-
       <hr />
 
       <h1>Conclusion</h1>
       <p>
-        This article had quite a lot of ground to cover. We set out to better
-        understand feature-wise transformations in the context of fusing
-        multiple sources of information in a neural network. We examined several
-        approaches which can be reasoned about using the FiLM formulation and
-        reviewed their use in the literature. We outlined some of the ways in
-        which the implicit task representation learned by FiLM shows itself
-        useful and provided an intuition as to why this is the case by exposing
-        how FiLM parameters are distributed as a function of the task
-        description. How local perturbations to FiLM parameters can compound
-        into meaningful modulations of the FiLMed network is still unclear, but
-        we hope this article will help spark research interest into the
-        question, and we hope recognizing the wide range of applications of
-        feature-wise transformations in the literature will stimulate research
-        into applying them to even more problem settings.
+        To summarize, the way neural networks learn to use FiLM layers seems to
+        vary task to task, input to input, and even feature to
+        feature; there does not seem to be a single mechanism by which the
+        network uses FiLM to condition computation.
+        This flexibility may explain why FiLM-related methods have been
+        successful across such a wide variety of domains.
+        It also appears that the learned FiLM representation contains
+        a lot of interesting task information which helps explain why it is
+        possible to perform task interpolations, analogies, and analysis using
+        this representation.
+      </p>
+
+      <p>
+        Precisely how changes on the feature level
+        alone are able to compound into large and meaningful modulations of the
+        FiLMed network is still an open question, and hopefully we will gain a
+        better idea in the future.
+        For now, though, it is a question evokes the even grander mystery of
+        how neural networks in general compound simple operations like
+        matrix multiplications and element-wise non-linearities into
+        semantically meaningful transformations.
       </p>
     </d-article>
 
