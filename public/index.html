@@ -5829,6 +5829,7 @@
                 <slot></slot>
               </div>
               <style>
+
                 h2 {
                   margin: 0;
                 }
@@ -5843,7 +5844,8 @@
                 }
 
                 h2 button:focus svg {
-                  outline: 2px solid;
+                  /* An affordance for the the selected subsection button */
+                  /* outline: 0px solid; */
                 }
 
                 button svg {
@@ -5867,7 +5869,7 @@
                   super()
 
                   // Make the host element a region
-                  this.setAttribute('role', 'region')
+                  // this.setAttribute('role', 'region')
 
                   // Create a `shadowRoot` and populate from template
                   this.attachShadow({ mode: 'open' })
@@ -6019,7 +6021,8 @@
                 }
 
                 h2 button:focus svg {
-                  outline: 2px solid;
+                  /* An affordance for the the selected subsection button */
+                  /* outline: 2px solid; */
                 }
 
                 button svg {
@@ -6043,7 +6046,7 @@
                   super()
 
                   // Make the host element a region
-                  this.setAttribute('role', 'region')
+                  // this.setAttribute('role', 'region')
 
                   // Create a `shadowRoot` and populate from template
                   this.attachShadow({ mode: 'open' })
