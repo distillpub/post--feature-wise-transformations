@@ -70,7 +70,6 @@
     <d-byline></d-byline>
     <d-article>
 
-
       <svg viewBox="0 0 0 0" style="display: none;" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #80DEEA;"/>
@@ -5752,11 +5751,9 @@
 						   .duration(200)
 						   .style("opacity", .9);
 					  
-					  url = "http://www.google.com/intl/en_com/images/logo_plain.png";	   
+					  url = "assets/style_images/" + d.filename;	   
 					   
-					  tooltip.html("<img src='"+url+"' class='loading'/>" + 
-								   "<br>"+
-								   "<span>This is the legend!!!</span>")
+                      tooltip.html(`<img src=${url} class='loading'/>`)
 						   .style("left", (d3.event.pageX + 5) + "px")
 						   .style("top", (d3.event.pageY - 28) + "px");
 					  })
