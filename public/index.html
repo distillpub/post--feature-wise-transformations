@@ -5651,8 +5651,9 @@
 
 				var tooltip = d3.select("body").append("div")
 											   .attr("id", "tooltip-tsne-clever")
-											   .attr("class", "tooltip")
-											   .style("opacity", 0);
+											   .attr("class", "tooltip figure-text")
+											   .style("opacity", 0)
+											   .style("background", "lightsteelblue");
 				
                 svg.select("#clevr-plot")
 					.style("cursor", "pointer")
@@ -5671,7 +5672,7 @@
 					  tooltip.transition()
 						   .duration(200)
 						   .style("opacity", .9);
-					  tooltip.html("Coucou! " +  Math.random())
+					  tooltip.html(d.question + "?")
 						   .style("left", (d3.event.pageX + 5) + "px")
 						   .style("top", (d3.event.pageY - 28) + "px");
 					  })

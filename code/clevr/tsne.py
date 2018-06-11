@@ -31,9 +31,11 @@ def run_tsne(input_path, output_path, perplexity=350, num_points=None):
         axis=2)
     gamma_beta = gamma_beta.transpose((1, 0, 2)).reshape((num_points, -1))
     question_types = np.stack((d['question_type'] for d in data), axis=0)
+    questions = [d['question'] for d in data]
 
     # Initialize output data structure
-    tsne_data = [{'question_type': int(q)} for q in question_types]
+    tsne_data = [{'question_type': int(qt), 'question': q} for qt, q in
+                 zip(question_types, questions)]
 
     # Run t-SNE on gammas and betas
     tsne_map = TSNE(
