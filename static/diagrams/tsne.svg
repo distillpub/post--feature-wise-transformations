@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1072 400" xmlns="http://www.w3.org/2000/svg">
+  <text x="10" y="10" dy="1em" class="figure-text">
+    <tspan>
+      t-SNE projection of the FiLM parameters associated with
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      questions from the CLEVR validation set, color-coded by
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      question type.
+    </tspan>
+  </text>
+  <text x="520" y="10" dy="1em" class="figure-text">
+    <tspan>
+      t-SNE projection of the FiLM parameters associated with
+    </tspan>
+    <tspan x="520" dy="1.5em">
+      style images from the Painter by Numbers test set, color-
+    </tspan>
+    <tspan x="520" dy="1.5em">
+      coded by artist name.
+    </tspan>
+  </text>
+  <g id="clevr-plot">
+    <rect x="10" y="100" width="250" height="250" style="fill: none;"/>
+  </g>
+  <g transform="translate(300, 110)" id="clevr-legend"></g>
+  <image x="285" y="70" height="27" width="27" xlink:href="../images/pointer.svg"/>
+  <g id="style-transfer-plot">
+    <rect x="520" y="100" width="250" height="250" style="fill: none;"/>
+  </g>
+  <circle cx="733" cy="220" r="20" style="stroke-width: 4px; fill: none;" class="figure-element"/>
+  <g transform="translate(800, 110)" id="style-transfer-legend"></g>
+  <image x="785" y="70" height="27" width="27" xlink:href="../images/pointer.svg"/>
+</svg>

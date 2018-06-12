@@ -2,40 +2,16 @@
 
 ## Submission document
 
-The submission document is located at [`public/index.html`](public/index.html).
+The submission document is located at [`src/index.ejs`](src/index.ejs).
 
-## Previewing the submission
+## Developing
 
-1. Change directory into `public`.
-2. Launch a local http server (you can replace port `8888` with whichever port you want):
-   ``` bash
-   python -m SimpleHTTPServer 8888 # Python 2.7
-   ```
-   or
-   ``` bash
-   python -m http.server 8888 # Python 3
-   ```
-3. Load [localhost:8888](http://localhost:8888) in your web browser.
+`npm install` to install dependencies. (Can take minutes!)
 
-## Working with the Distill web framework
+`npm run dev` to run a watching server.
 
-Distill provides [documentation](https://distill.pub/guide/) on how to create a
-submission using its web framework.
+`npm run build` to build, transpile, babel-ify and minify files.
 
-## Making a change
+Components are in `src`. The `.html` files are [svelte](https://svelte.technology/guide) components, the `.js` files are compilation endpoints that are also defined in `webpack.config.js`. These compiled endpoints are then consumed by hand authored `.ejs` files in `src`.
 
-To avoid stepping on each other's toes, please use the following workflow to
-make changes:
-
-1. Create a uniquely named branch (suggestion: `[first name]_[purpose]`, e.g.
-   `vincent_survey`)
-2. Commit your changes in that branch.
-3. Push the branch to GitHub.
-4. Open a pull request to have the branch merged into the `master` branch. Most
-   of the time you will get a quick LGTM ("looks good to me") and be able to
-   merge right away, but sometimes a more thorough discussion is required, which
-   is what this step of the workflow enables.
-5. Upon receiving an LGTM from someone else in the team, merge onto the `master`
-   branch.
-6. Pull from the GitHub `master` branch onto your local clone.
-6. Delete your branch locally (`git branch -d [branch_name]`) and on GitHub.
+Visit [localhost:8080/index.html](localhost:8080/index.html) for a hot-reloading preview of the article.

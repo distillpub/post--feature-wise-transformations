@@ -1,0 +1,38 @@
+<svg viewBox="0 0 1072 360" xmlns="http://www.w3.org/2000/svg">
+  <text x="90" y="10" dy="1em" class="figure-text">
+    <tspan>
+      FiLM parameters of the visual reasoning model for feature
+    </tspan>
+    <tspan x="90" dy="1.5em">
+      map 26 of the first FiLM layer for 256 questions chosen
+    </tspan>
+    <tspan x="90" dy="1.5em">
+      at random.
+    </tspan>
+  </text>
+  <text x="490" y="10" dy="1em" class="figure-text">
+    <tspan>
+      FiLM parameters of the visual reasoning model for feature
+    </tspan>
+    <tspan x="490" dy="1.5em">
+      map 76 of the first FiLM layer for 256 questions chosen
+    </tspan>
+    <tspan x="490" dy="1.5em">
+      at random.
+    </tspan>
+  </text>
+  <g id="first-plot">
+    <rect x="90" y="100" width="250" height="250" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+  </g>
+  <g id="second-plot">
+    <rect x="490" y="100" width="250" height="250" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+  </g>
+</svg>

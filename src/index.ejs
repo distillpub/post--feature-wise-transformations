@@ -1,0 +1,954 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://distill.pub/template.v2.js"></script>
+  <style><%= require("raw-loader!../static/style.css") %></style>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+</head>
+
+<body>
+
+<d-front-matter>
+  <script type="text/json">{
+    "title": "Understanding FiLM",
+    "description": "Description of the post",
+    "authors": [
+      {
+        "author": "Vincent Dumoulin",
+        "authorURL": "https://vdumoulin.github.io",
+        "affiliation": "Google Brain",
+        "affiliationURL": "g.co/brain"
+      },
+      {
+        "author": "Ethan Perez",
+        "authorURL": "http://ethanperez.net/",
+        "affiliation": "Rice University; MILA",
+        "affiliationURL": "http://www.rice.edu/"
+      },
+      {
+        "author": "Florian Strub",
+        "authorURL": "https://fstrub95.github.io/",
+        "affiliation": "Univ. of Lille, Inria",
+        "affiliationURL": "https://team.inria.fr/sequel/"
+      },
+      {
+        "author": "Harm de Vries",
+        "authorURL": "http://www-etud.iro.umontreal.ca/~devries/",
+        "affiliation": "MILA",
+        "affiliationURL": "https://mila.quebec/en/"
+      },
+      {
+        "author": "Nathan Schucher",
+        "authorURL": "https://nathanschucher.com/",
+        "affiliation": "Element AI",
+        "affiliationURL": "https://element.ai/"
+      },
+      {
+        "author": "Aaron Courville",
+        "authorURL": "https://aaroncourville.wordpress.com/",
+        "affiliation": "MILA",
+        "affiliationURL": "https://mila.quebec/en/"
+      },
+      {
+        "author": "Yoshua Bengio",
+        "authorURL": "http://www.iro.umontreal.ca/~bengioy/yoshua_en/",
+        "affiliation": "MILA",
+        "affiliationURL": "https://mila.quebec/en/"
+      }
+    ],
+    "katex": {
+      "delimiters": [
+        {
+          "left": "$",
+          "right": "$",
+          "display": false
+        },
+        {
+          "left": "$$",
+          "right": "$$",
+          "display": true
+        }
+      ]
+    }
+  }</script>
+</d-front-matter>
+
+<d-title>
+  <h1>Feature-wise transformations</h1>
+  <p>A family of methods for fusing multiple sources of information</p>
+  <div class="l-page" id="vtoc"></div>
+</d-title>
+
+<d-article>
+  <p>
+    Many important problems require handling multiple sources of information;
+    some refer to this as multimodal learning, and refer to the consolidation of
+    information from multiple modalities in a neural network as modality fusion.
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/multimodal.svg") %>
+  </figure>
+  <p>
+    We sometimes take a step further and assign a relationship between
+    modalities; for instance, in the rightmost example above one could choose to
+    extract meaning from the image <em>in the context of</em> the question being
+    asked. We loosely refer to this as <em>conditioning</em>: the computation
+    carried out by a neural network is <em>modulated</em> by information
+    extracted from an auxiliary modality.
+  </p>
+  <p>
+    Finding an effective and efficient way to achieve modality fusion or
+    conditioning is a research problem which is relevant to many application
+    areas, and as such many people are attacking it from many different
+    perspectives. In this article, we concentrate on a specific family of
+    approaches &mdash; which we propose to call <em>feature-wise transformations</em>
+    &mdash; and examine their use in a surprisingly large number of neural
+    network architectures to solve various problems. We will argue that these
+    architectures can be understood from a multi-task learning perspective
+    &mdash; where the conditioning signal is taken to be a task description
+    &mdash; and that doing so gives rise to the notion of a
+    <em>learned task representation</em> which allows to capture and leverage
+    the relationship between these tasks.
+  </p>
+
+  <hr/>
+
+  <h1>Feature-wise transformations</h1>
+  <p>
+    We begin with a data combination that is not typically considered
+    multimodal: images and category labels. For the purpose of this example, we
+    are interested in building a generative model of various classes of images
+    (puppy, boat, airplane, etc.). The model takes a source of noise and a class
+    as input and outputs an image sample for the requested class.
+  </p>
+  <figure class="l-body">
+    <%= require("../static/diagrams/conditional-generation.svg") %>
+  </figure>
+  <p>
+    Our first instinct might be to build a separate model for every possible
+    class. For a small number of classes this is not too bad a solution, but for
+    thousands of classes we quickly run into scaling issues, because the number
+    of parameters we need to train and store grows with the number of classes.
+    We are also missing out on the opportunity to leverage commonalities between
+    classes: for instance, different types of dogs (puppy, terrier, dalmatian,
+    etc.) share common visual traits and are likely to share computation when
+    mapping from the abstract noise vector to the output image.
+  </p>
+  <p>
+    Now let's imagine that in addition to the various classes we also need to
+    take into account attributes like size or color.  In that case, we can't
+    reasonably expect to train a separate network for <em>all</em> possible
+    conditioning values! Let's examine a few simple options.
+  </p>
+  <p>
+    A quick fix would be to concatenate a representation of the conditioning
+    information to the noise vector and treat the result as the model's input.
+    This is very parameter-efficient &mdash; all we need to do is to increase
+    the size of the first layer's weight matrix to accomodate the conditioning
+    representation &mdash; but in doing so we make the implicit assumption that
+    the input is where the model needs to take class information into account.
+    Maybe this is the right assumption, or maybe it's not: it could be that the
+    model does not need to take the class into account until late into the
+    generation process, in which case we are forcing it to carry this
+    information around unaltered for a long time.
+  </p>
+  <p>
+    Because this is a cheap operation, we might as well avoid making any
+    assumption and concatenate the conditioning representation to the input of
+    <em>all</em> layers in the network. We propose to call this
+    <em>concatenation-based conditioning</em>.
+  </p>
+  <figure class="l-body">
+    <%= require("../static/diagrams/concatenation-based-conditioning.svg") %>
+  </figure>
+  <p>
+    Aside from concatenation, another efficient way to integrate class
+    information into the network is via <em>biasing</em> of the hidden layers
+    based on the conditioning representation &mdash; which is sometimes referred
+    to as <em>conditional biasing</em>.
+  </p>
+  <figure class="l-body">
+    <%= require("../static/diagrams/conditional-biasing.svg") %>
+  </figure>
+  <p>
+    It's interesting to note that conditional biasing is an equivalent way of
+    implementing concatenation-based conditioning. To understand the
+    equivalence, consider a simple fully-connected linear layer applied to the
+    concatenation of an input <d-math>\mathbf{x}</d-math> and a conditioning
+    representation <d-math>\mathbf{z}</d-math>.
+    <d-footnote>
+      The same argument applies to convolutional networks, provided we ignore
+      the border effects due to zero-padding.
+    </d-footnote>
+  </p>
+  <figure class="l-body-outset">
+    <%= require("../static/diagrams/concatenation-as-biasing.svg") %>
+  </figure>
+  <p>
+    Yet another efficient way to integrate class information into the network is
+    via <em>scaling</em> of the hidden layers based on the conditioning
+    representation. We refer to this as <em>conditional scaling</em>.
+  </p>
+  <figure class="l-body">
+    <%= require("../static/diagrams/conditional-scaling.svg") %>
+  </figure>
+  <p>
+    A special instance of conditional scaling is feature-wise sigmoidal gating:
+    each feature is scaled by a scalar between <d-math>0</d-math> and
+    <d-math>1</d-math> as a function of the conditioning representation. This
+    constraint is often enforced via a sigmoidal layer, hence the name.
+    Intuitively, feature-wise sigmoidal gating allows the conditioning
+    information to select which features are passed forward and which are zeroed
+    out.
+  </p>
+  <p>
+    Given that both additive and multiplicative interactions seem natural and
+    intuitive, which one should we pick? One argument in favor of
+    <em>multiplicative</em> interactions is that they are useful in learning
+    relationships between inputs, as these interactions naturally identify
+    "matches": elements with highly similar values (regardless of sign) will
+    generally produce higher values when multiplied and lower values otherwise.
+    This is why dot products are often used to determine how similar two vectors
+    are.
+    <d-footnote>
+      Multiplicative interactions alone have had a history of success in various
+      domains &mdash; see <a href="#bibliographic-notes">Bibliographic Notes</a>.
+    </d-footnote>
+    One argument in favor of <em>additive</em> interactions is that they are
+    more natural fit for applications that are less strongly dependent on the
+    joint values of two inputs, like feature aggregation or feature detection
+    (i.e., checking if a feature is present in either of two inputs). In the
+    spirit of making as few assumptions about the problem as possible, we might
+    combine <em>both</em> into what we refer to as
+    <em>conditional affine transformations</em>.
+    <d-footnote>
+      An affine transformation is a transformation of the form
+      <d-math>y = m * x + b</d-math>.
+    </d-footnote>
+  </p>
+  <p>
+    All methods outlined above share the common trait that they act at the
+    <em>feature</em> level; in other words, they leverage <em>feature-wise</em>
+    interactions between the conditioning representation and the conditioned
+    network. More complex forms of interactions are certainly possible, but in
+    practice feature-wise interactions strike a happy compromise between
+    effectiveness and efficiency: the number of scaling and/or shifting
+    coefficients we need to predict to condition the network scales linearly
+    with the total number of features in the network.
+  </p>
+  <h3>Nomenclature</h3>
+  <p>
+    To continue the discussion on feature-wise transformations we need to
+    abstract away the distinction between multiplicative and additive
+    interactions. Without losing generality, let's focus on feature-wise affine
+    transformations, and let's adopt the nomenclature of Perez et al.
+    <d-cite key="perez2018film"></d-cite>, which formalizes these
+    transformations under the acronym <em>FiLM</em>, for Feature-wise Linear
+    Modulation.
+    <d-footnote>
+      Strictly speaking, <em>linear</em> is a misnomer, as we allow biasing, but
+      we hope the more rigorous-minded reader will forgive us for the sake of a
+      better-sounding acronym.
+    </d-footnote>
+  </p>
+  <p>
+    We say that a neural network is modulated using FiLM, or <em>FiLM-ed</em>,
+    through the insertion of <em>FiLM layers</em> in its architecture. These are
+    parametrized by some form of conditioning information, and the mapping from
+    conditioning information to FiLM parameters is called the <em>FiLM generator</em>.
+    In other words, the FiLM generator predicts the parameters of the FiLM
+    layers based on some arbitrary input. For simplicity, you can assume that
+    the FiLM generator outputs the concatenation of all FiLM parameters for the
+    network architecture.
+  </p>
+  <figure class="l-body-outset">
+    <%= require("../static/diagrams/film-architecture.svg") %>
+  </figure>
+  <p>
+    As the name implies, a FiLM layer applies a feature-wise affine
+    transformation to its input. By <em>feature-wise</em>, we mean that scaling
+    and shifting are applied element-wise, or in the case of convolutional
+    networks, feature map-wise.
+    <d-footnote>
+      To expand a little more on the convolutional case, feature maps can be
+      thought of as the same feature detector being evaluated at different
+      spatial locations, in which case it makes sense to apply the same affine
+      transformation to all spatial locations.
+    </d-footnote>
+    In other words, assuming <d-math>\mathbf{x}</d-math> is a FiLM layer's input
+    and <d-math>\mathbf{z}</d-math> is the conditioning information, and
+    assuming <d-math>\gamma</d-math> and <d-math>\beta</d-math> are
+    <d-math>\mathbf{z}</d-math>-dependent scaling and shifting vectors,
+
+    <d-math block>
+        \textrm{FiLM}(\mathbf{x}) = \gamma(\mathbf{z}) \odot \mathbf{x}
+                                                       + \beta(\mathbf{z}).
+    </d-math>
+
+    You can interact with the following fully-connected and convolutional FiLM
+    layers to get an intuition of the sort of modulation they allow:
+  </p>
+  <figure class="l-page-outset" id="film-layer-diagram">
+    <%= require("../static/diagrams/film-layer.svg") %>
+  </figure>
+  <p>
+    In addition to being a good abstraction of conditional feature-wise
+    transformations, the FiLM nomenclature lends itself well to the notion of a
+    <em>task representation</em>. What we mean is that the relationship between
+    the conditioning signal and the network it modulates can be understood from
+    the point of view of multi-task learning, where the conditioning signal acts
+    as a task description, and where the concatenation of all scaling and
+    shifting coefficients output by the FiLM generator can be thought of as both
+    an instruction on <em>how to modulate</em> the conditioned network and a
+    <em>representation</em> of the task at hand. We will explore and illustrate
+    this idea later in the article.
+  </p>
+
+  <h1>Related ideas</h1>
+  <p>
+    FiLM is not the first instantiation of this idea of a duality between neural
+    network conditioning and multi-task learning &mdash; it is in fact heavily
+    inspired by earlier work by Dumoulin et al.
+    <d-cite key="dumoulin2017learned"></d-cite> on folding multiple feed-forward
+    style transfer networks into a single conditional network. In that work,
+    conditional feature-wise affine transformations were heavily coupled with a
+    normalization operation, which is why FiLM is preferred as an abstraction
+    for this article.
+  </p>
+  <p>
+    Some connections can also be drawn between FiLM and the following models and
+    concepts:
+  </p>
+  <h2>Zero-shot learning</h2>
+  <p>
+    The idea of a learning a task representation shares a strong connection with
+    the zero-shot learning problem. For instance, when attempting to generalize
+    to unseen object categories in an image classification setting it is usually
+    assumed that each object category is represented by a semantic embedding
+    vector, and the relationship between training and testing labels is
+    leveraged to make predictions for unseen labels.  Notable examples of this
+    idea being put in practice include Frome et al.
+    <d-cite key="frome2013devise"></d-cite>, Socher et al.
+    <d-cite key="socher2013zero"></d-cite>, and Norouzi et al.
+    <d-cite key="norouzi2014zero"></d-cite>.
+  </p>
+  <h2>HyperNetworks</h2>
+  <p>
+    The notion of a secondary network predicting the parameters of a primary
+    network is probably best exemplified by HyperNetworks
+    <d-cite key="ha2016hypernetworks"></d-cite>. From that perspective, the FiLM
+    generator can be viewed as a specialized instance of a HyperNetwork which
+    predicts the FiLM parameters of the FiLM-ed network.  The main distinction
+    between the two resides in the number and specificity of predicted
+    parameters: FiLM requires predicting far fewer parameters than
+    Hypernetworks, but FiLM is also less flexible in its ability to modulate the
+    model's computation. The ideal trade-off between flexibility and
+    computational complexity is still an ongoing area of investigation &mdash;
+    curious readers can read about many proposed approaches that lie on the
+    spectrum ranging from FiLM to HyperNetworks in the
+    <a href="#bibliographic-notes">Bibliographic Notes</a>.
+  </p>
+  <h2>Attention</h2>
+  <p>
+    Some parallels can be drawn between methods represented by the FiLM
+    abstraction and attention, but the two operate in different ways which we
+    think are important to disambiguate.
+  </p>
+  <figure class="l-page-outset" id="film-vs-attention-diagram">
+    <%= require("../static/diagrams/film-vs-attention.svg") %>
+  </figure>
+  <p>
+    This difference stems from two different intuitions underlying
+    attention and conditional feature-wise transformations: for the former,
+    it is assumed that the useful information is contained in specific
+    spatial locations or time steps, whereas for the latter, it is assumed
+    that the useful information is contained in specific features or
+    feature maps.
+  </p>
+  <h2>Bilinear transformations</h2>
+  <p>
+    With a little bit of stretching the operation implemented by FiLM layers can
+    be seen as a special case of a bilinear transformation
+    <d-cite key="tenenbaum2000separating"></d-cite> with low-rank weight
+    matrices. A bilinear transformation defines the relationship between two
+    inputs <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> and the
+    <d-math>k^{th}</d-math> output feature <d-math>y_k</d-math> as
+
+    <d-math block>
+      y_k = \mathbf{x}^T W_k \mathbf{z}.
+    </d-math>
+
+    Note that for each output feature <d-math>y_k</d-math> we have a separate
+    matrix <d-math>W_k</d-math>, so the full set of weights forms a 3-tensor.
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/bilinear.svg") %>
+  </figure>
+  <p>
+    If we view <d-math>\mathbf{z}</d-math> as the concatenation of the
+    scaling and shifting vectors <d-math>\gamma</d-math> and
+    <d-math>\beta</d-math>, and if we augment the input
+    <d-math>\mathbf{x}</d-math> with a 1-valued feature,
+    <d-footnote>
+      As is commonly done to turn a linear transformation into an affine
+      transformation.
+    </d-footnote>
+    we can represent a feature-wise affine transformation using a bilinear
+    transformation by zeroing out the appropriate entries of the weight
+    matrices:
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/film-as-bilinear.svg") %>
+  </figure>
+  <p>
+    Readers interested in learning about explicit applications of bilinear
+    transformations can consult the
+    <a href="#bibliographic-notes">Bibliographic Notes</a>.
+  </p>
+
+  <hr />
+
+  <h1>Feature-wise transformations in the literature</h1>
+  <p>
+    Feature-wise transformations find their way in many problem settings, but
+    because of their very general nature and wide applicability, this connection
+    is seldom drawn. Here are recent notable examples, grouped by application
+    domain.
+  </p>
+  <h2>Generative modeling</h2>
+  <p>
+    Concatenation-based conditioning is used in the conditional variant of DCGAN
+    <d-cite key="radford2016unsupervised"></d-cite>, a well-recognized class of
+    network architectures for generative adversarial networks
+    <d-cite key="goodfellow2014generative"></d-cite>. The class label is
+    broadcasted as a feature map and is concatenated to the input of
+    convolutional and transposed convolutional layers in the generator and
+    discriminator networks.
+  </p>
+  <figure class="l-body-outset">
+    <%= require("../static/diagrams/dcgan.svg") %>
+  </figure>
+  <p>
+    Conditional biasing is used by PixelCNN <d-cite key="oord2016conditional"></d-cite>
+    and WaveNet <d-cite key="oord2016wavenet"></d-cite>, two recent advances in
+    autoregressive, generative modeling of image and audio data, respectively.
+    In its simplest form, conditioning in PixelCNN is achieved by adding
+    feature-wise, conditional biases to the output of all convolutional layers.
+    In FiLM parlance, this means inserting FiLM layers after each convolutional
+    layer and setting the scaling coefficients to a constant value of 1.
+    <d-footnote>
+      The authors also describe a location-dependent biasing scheme which cannot
+      be expressed in terms of FiLM layers due to the absence of the
+      feature-wise property.
+    </d-footnote>
+  </p>
+  <figure class="l-body-outset">
+    <%= require("../static/diagrams/pixelcnn.svg") %>
+  </figure>
+  <p>
+    WaveNet describes two ways in which conditional biasing allows external
+    information to modulate the behavior of the model:
+  </p>
+  <ol>
+    <li>
+      <strong>Global conditioning</strong> applies the same conditional bias to
+      the whole generated sequence and is used e.g. to condition on speaker
+      identity.
+    </li>
+    <li>
+      <strong>Local conditioning</strong> applies a conditional bias which
+      varies across time steps of the generated sequence and is used e.g. to
+      let linguistic features in a text-to-speech model influence which sounds
+      are produced.
+    </li>
+  </ol>
+  <p>
+    Like for PixelCNN, both approaches can be viewed as inserting FiLM layers
+    after each convolutional layer. The main difference lies in the way in which
+    the FiLM-generating network is defined: global conditioning expresses the
+    FiLM-generating network as an embedding lookup which is broadcasted to the
+    whole time series, whereas local conditioning expresses it as a mapping from
+    an input sequence of conditioning information to an output sequence of FiLM
+    parameters.
+  </p>
+  <h2>Reinforcement learning</h2>
+  <p>
+    Feature-wise sigmoidal gating is used in the Gated-Attention architecture
+    <d-cite key="chaplot2017gated"></d-cite> to fuse linguistic and visual
+    information in an agent trained to follow simple natural language
+    instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
+    environment.
+  </p>
+  <figure class="l-body-outset">
+    <%= require("../static/diagrams/gated-attention.svg") %>
+  </figure>
+  <p>
+    Feature-wise affine transformations are used in Kirkpatrick et al.
+    <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single
+    agent to play 10 different Atari games. They used game-specific scaling and
+    biases to condition a shared policy network.
+  </p>
+  <h2 id="natural-language-processing">Natural language processing</h2>
+  <p>
+    Feature-wise scaling is also used in the Gated-Attention Reader
+    <d-cite key="dhingra2017gated"></d-cite>. The model extracts information
+    from text by conditioning the document reading network on a query. Its
+    architecture is formed of multiple Gated-Attention modules, which involve
+    element-wise multiplications between document representation tokens and
+    token-specific query representations extracted via soft attention on the
+    query representation tokens.
+  </p>
+  <figure class="l-body-outset">
+    <%= require("../static/diagrams/gated-attention-reader.svg") %>
+  </figure>
+  <p>
+    Sigmoidal gating is used by Dauphin et al.
+    <d-cite key="dauphin2017language"></d-cite> in their proposed gated linear
+    unit, which uses half of the input features to apply feature-wise sigmoidal
+    gating to the other half. This architectural feature is also adopted by
+    Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>, who
+    introduce a fast and parallelizable model for machine translation in the
+    form of a purely convolutional architecture.
+  </p>
+  <figure class="l-body-outset">
+    <%= require("../static/diagrams/convseq2seq.svg") %>
+  </figure>
+  <h2>Visual question-answering</h2>
+  <p>
+    Perez et al. <d-cite key="perez2017learning,perez2018film"></d-cite> use
+    feature-wise affine transformations to build a visual reasoning model
+    trained on the CLEVR dataset <d-cite key="johnson2017clevr"></d-cite> to
+    answer questions about synthetic input images.
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/film-clevr.svg") %>
+  </figure>
+  <p>
+    The model features a FiLM generator in the form of a linguistic pipeline
+    extracting a question representation which is then linearly mapped to
+    the FiLM parameter values. The visual pipeline is conditioned by
+    inserting a FiLM layer in the residual pathway of each residual block of
+    the convolutional neural network. The model is trained end-to-end on
+    image-question-answer tuples.
+  </p>
+  <p>
+    de Vries et al. <d-cite key="vries2017modulating"></d-cite> leverage FiLM to
+    condition a pre-trained network. The visual pipeline of a visual
+    question-answering model is modulated by the model's linguistic pipeline
+    through conditional batch normalization, which can be viewed as a special
+    case of FiLM. The model learns to answer natural language questions about
+    real-world images for the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
+    and VQAv1 <d-cite key="agrawal2015vqa"></d-cite> datasets.
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/guesswhat.svg") %>
+  </figure>
+  <p>
+    The visual pipeline consists of a pre-trained residual network and is
+    kept fixed throughout training. The linguistic pipeline manipulates the
+    visual pipeline by perturbing the residual network's batch normalization
+    parameters, which re-scale and re-shift feature maps after activations
+    have been normalized to have zero mean and unit variance.  As hinted
+    earlier, conditional batch normalization can be viewed as an instance of
+    FiLM where the post-normalization feature-wise affine transformation is
+    replaced with a FiLM layer.
+  </p>
+  <h2>Style transfer</h2>
+  <p>
+    Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use feature-wise
+    affine transformations &mdash; in the form of conditional instance
+    normalization layers &mdash; to condition a style transfer network on a
+    chosen style image.  Like conditional batch normalization, conditional
+    instance normalization can be seen as an instance of FiLM where the
+    post-normalization feature-wise affine transformation is replaced with a
+    FiLM layer. These layers are introduced into a feed-forward style transfer
+    network to accommodate multiple styles. Each style modeled by the network is
+    associated with its own set of instance normalization parameters, and
+    conditioning is achieved by applying the normalization with style-specific
+    parameters.
+  </p>
+  <figure class="l-page-outset" id="alrfas-diagram">
+    <%= require("../static/diagrams/alrfas.svg") %>
+  </figure>
+  <p>
+    Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use a simple
+    embedding lookup to produce the instance normalization parameters, while
+    Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> further introduce
+    a <em>style prediction network</em>, trained jointly with the style transfer
+    network to predict the conditioning parameters directly from a given style
+    image.
+  </p>
+  <p>
+    Yang et al. <d-cite key="yang2018efficient"></d-cite> use a related
+    architecture for video object segmentation, the task of segmenting a
+    particular object throughout a video given that object's segmentation in the
+    first frame.  Their model conditions an image segmentation network over a
+    video frame on the provided first frame segmentation using feature-wise
+    gains, as well as on the previous frame using position-wise biases.
+  </p>
+  <p>
+    So far, many of the models we covered have two sub-networks: a primary
+    network in which feature-wise transformations are applied, and a secondary
+    network which outputs parameters for these transformations. However, this
+    distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em> is
+    not strictly necessary. As an example, Huang et al.
+    <d-cite key="huang2017arbitrary"></d-cite> proposes an alternative for fast
+    and arbitrary style transfer in the form of an adaptive instance
+    normalization layer, which computes the normalization parameters using a
+    simple heuristic.
+  </p>
+  <figure class="l-page-outset" id="adain-diagram">
+    <%= require("../static/diagrams/adain.svg") %>
+  </figure>
+  <p>
+    Adaptive instance normalization can be interpreted as inserting a FiLM layer
+    midway through the model architecture. However, rather than relying on a
+    secondary network to predict the FiLM parameters from the style image, the
+    main network itself is used to extract style features which are used to
+    compute the FiLM parameters. Therefore, the model can be seen as
+    <em>both</em> the FiLM-ed network the FiLM generator.
+  </p>
+  <h2>Domain adaptation</h2>
+  <p>
+    Li et al. <d-cite key="li2018adaptive"></d-cite> find a similar approach
+    highly effective for domain adaptation, updating the per-channel batch
+    normalization statistics (mean and variance) of a network trained on one
+    domain with that network's statistics in a new, target domain.  Updating
+    these statistics is mathematically equivalent to modifying the feature-wise
+    affine transformations in batch normalization layers, as in Conditional
+    Batch Normalization. Notably, this approach, along with Adaptive Instance
+    Normalization, has the particular advantage of not requiring any extra,
+    trainable parameters.
+  </p>
+  <h2 id="image-recognition">Image recognition</h2>
+  <p>
+    As we have seen so far, feature-wise transformations can be used as a
+    conditioning mechanism to incorporate external information such as
+    context representation, task description, class information, or user
+    information. However, there is nothing preventing us from considering a
+    neural network's hidden activations <em>themselves</em> as conditioning
+    information. This idea gives rise to various forms of
+    <em>self-conditioned</em> models.
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/self-conditioning.svg") %>
+  </figure>
+  <p>
+    Highway Networks <d-cite key="srivastava2015highway"></d-cite> are a prime
+    example of applying this principle of self-conditioning. This network
+    architecture takes inspiration from the LSTMs'
+    <d-cite key="hochreiter1997long"></d-cite> heavy use of feature-wise
+    sigmoidal gating in their input, forget, and output gates to regulate
+    information flow:
+  </p>
+  <figure class="l-body">
+    <%= require("../static/diagrams/highway-networks.svg") %>
+  </figure>
+  <p>
+    The ImageNet 2017 winning model <d-cite key="hu2017squeeze"></d-cite> also
+    employs feature-wise sigmoidal gating in a self-conditioning manner, as a
+    way to "recalibrate" a layer's activations conditioned on themselves.
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/squeeze-and-excitation.svg") %>
+  </figure>
+  <h2>Speech recognition</h2>
+  <p>
+    In the speech recognition domain, the model from Kim et al.
+    <d-cite key="kim2017dynamic"></d-cite> modulates a deep bidirectional LSTM
+    using a form of conditional normalization which the authors call
+    <em>dynamic layer normalization</em>. Similar to conditional instance
+    normalization and conditional batch normalization, dynamic layer
+    normalization can be seen as an instance of FiLM where the
+    post-normalization feature-wise affine transformation is disabled and a FiLM
+    layer is placed immediately after the normalization layer.
+  </p>
+  <figure class="l-page-outset">
+    <%= require("../static/diagrams/dln.svg") %>
+  </figure>
+  <p>
+    The key difference here is that the conditioning signal does not come from
+    an external source, but it is instead computed from utterance summarization
+    feature vectors extracted in each layer of the network as a way of adapting
+    the neural acoustic model.
+  </p>
+
+  <hr />
+
+  <h1>Properties of the learned task representation</h1>
+  <p>
+    As hinted at earlier, in adopting the FiLM perspective we implicitly
+    introduce a notion of <em>task representation</em>: each task &mdash; be it
+    a question about an image or a painting style to imitate &mdash; elicits a
+    different set of FiLM parameters via the FiLM generator which can be
+    understood as its representation in terms of how to modulate the FiLMed
+    network. To help better understand the properties of this representation,
+    let's focus on two FiLMed models used in fairly different problem settings:
+  </p>
+  <ul>
+    <li>
+      The visual reasoning model of Perez et al.
+      <d-cite key="perez2017learning,perez2018film"></d-cite>, which uses FiLM
+      to modulate a visual processing pipeline based off an input question.
+    </li>
+    <li>
+      The artistic style transfer model of Ghiasi et al.
+      <d-cite key="ghiasi2017exploring"></d-cite>, which uses FiLM to modulate a
+      feed-forward style transfer network based off an input style image.
+    </li>
+  </ul>
+  <p>
+    As a starting point, can we discern any pattern in the FiLM parameters as a
+    function of the task description? It could be that FiLM parameters follow a
+    simple distribution, indicating that perhaps FiLM is used in consistent ways
+    throughout the network. It could also be that there is more structure to the
+    FiLM parameter distribution, perhaps because FiLM serves multiple purposes
+    in the network.
+  </p>
+  <p>
+    One way to visualize the FiLM parameter space is to plot
+    <d-math>\gamma</d-math> against <d-math>\beta</d-math>, with each point
+    corresponding to a specific task description and a specific feature map.  If
+    we color-code each point according to the feature map it belongs to we
+    observe the following:
+  </p>
+  <figure class="l-page-outset" id="gamma-beta-diagram">
+    <%= require("../static/diagrams/gamma-beta.svg") %>
+  </figure>
+  <p>
+    The plots above allow us to make several interesting observations.  First,
+    FiLM parameters cluster by feature map in parameter space, and the cluster
+    locations are not uniform across feature maps. The orientation of these
+    clusters is also not uniform across feature maps: the main axis of variation
+    can be <d-math>\gamma</d-math>-aligned, <d-math>\beta</d-math>-aligned, or
+    diagonal at varying angles. These findings suggest that the affine
+    transformation in FiLM layers is not modulated in a single, consistent way,
+    i.e., mostly using <d-math>\gamma</d-math> only, <d-math>\beta</d-math>
+    only, or <d-math>\gamma</d-math> and <d-math>\beta</d-math> together in some
+    specific way. Maybe this is due to the affine transformation being
+    overspecified, or maybe this shows that FiLM layers can be used to perform
+    modulation operations in several distinct ways.
+  </p>
+  <p>
+    Nevertheless, the fact that these parameter clusters are often somewhat
+    "dense" may help explain why the style transfer model of Ghiasi et al.
+    <d-cite key="ghiasi2017exploring"></d-cite> is able to perform style
+    interpolations: any convex combination of FiLM parameters is likely to
+    correspond to a meaningful parametrization of the FiLMed network.
+  </p>
+  <figure class="l-body-outset" id="style-interpolation-diagram">
+    <%= require("../static/diagrams/style-interpolation.svg") %>
+  </figure>
+  <p>
+    A priori, we may have expected the model to simply trade off its confidence
+    between its answers to the two end point questions. Alternatively, we may
+    have expected the model to answer erratically or incoherently throughout the
+    interpolation, jumping from one arbitrary number to another or giving
+    non-numerical answers.  Instead, we find the model's answer interpolates in
+    a semantically meaningful way through the output space, varying its answer
+    somewhat smoothly from 0 to 4 using the numbers in between. Why might this
+    make sense?  By interpolating in the FiLM question embedding space, we
+    expect we are no longer asking the model about purple or brown specifically,
+    but rather some average or expected hue in between. In return, the model
+    seems to be responding with a sort of expected value of the answer, or an
+    answer based on the average color, i.e., some number in between the end
+    point answers. It is neat that the model has learned to represent and
+    interpret FiLM parameters in a way that results in this behavior, without
+    being explicitly trained to do so.
+  </p>
+  <p>
+    One interesting difference across the two problem settings is that, for the
+    visual reasoning model, FiLM parameters sometimes form several sub-clusters
+    for a given feature map, which is not true for the style transfer model.
+  </p>
+  <figure class="l-page-outset" id="clevr-subcluster-diagram">
+    <%= require("../static/diagrams/clevr-subcluster.svg") %>
+  </figure>
+  <p>
+    At the very least, this may indicate that FiLM learns to operate in ways
+    that are problem-specific, and that we should not expect to find a unified
+    and problem-independent explanation for FiLM's success in modulating FiLMed
+    networks. Perhaps the compositional or discrete nature of visual reasoning
+    requires the model to implement several well-defined modes of operation
+    which are less necessary for style transfer.
+  </p>
+  <p>
+    The presence of sub-clusters in the case of the visual reasoning model also
+    suggests that question interpolations may not always work reliably
+    (especially across, for example, question categories), but these
+    sub-clusters don't preclude one from performing arithmetic on the question
+    representations, as Perez et al. <d-cite key="perez2018film"></d-cite>
+    reported.
+  </p>
+  <figure class="l-body">
+    <%= require("../static/diagrams/analogy.svg") %>
+  </figure>
+  <p>
+    Focusing on individual feature maps which exhibit sub-clusters, we can try
+    to infer how questions regroup by color-coding the scatter plots by question
+    type.
+  </p>
+  <figure class="l-page-outset" id="clevr-subcluster-color-diagram">
+    <%= require("../static/diagrams/clevr-subcluster-color.svg") %>
+  </figure>
+  <p>
+    Sometimes a clear pattern emerges, like for the plot on the right, where
+    questions related to counting and integer equality concentrate in the
+    top-right cluster. Sometimes it is harder to draw a conclusion, like for
+    the plot on the left, where most question types are scattered throughout
+    the three clusters.
+  </p>
+  <p>
+    The existence of this structure has already been explored, albeit more
+    indirectly, by Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
+    as well as Perez et al. <d-cite key="perez2018film"></d-cite>, who
+    applied t-SNE <d-cite key="maaten2008visualizing"></d-cite> on the FiLM
+    parameter values.
+  </p>
+  <figure class="l-page-outset" id="tsne-diagram">
+    <%= require("../static/diagrams/tsne.svg") %>
+  </figure>
+  <p>
+    The projection on the left is inspired by a similar projection done by Perez
+    et al. <d-cite key="perez2018film"></d-cite> for their visual reasoning
+    model trained on CLEVR and shows how questions group by question type.
+  </p>
+  <p>
+    The projection on the right is inspired by a similar projection done by
+    Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their style
+    transfer network. The projection does not cluster artists as neatly as the
+    projection on the left, but this is to be expected, given that an artist's
+    style may vary widely over time. However, we can still detect interesting
+    patterns in the projection: note for instance the isolated cluster (circled
+    in the figure) in which paintings by Ivan Shishkin and Rembrandt are
+    aggregated. While these two painters exhibit fairly different styles, the
+    cluster is a grouping of their sketches.
+  </p>
+  <figure class="l-body" id="style-explained-diagram">
+    <%= require("../static/diagrams/style-explained.svg") %>
+  </figure>
+  <p>
+    To summarize, the way neural networks learn to use FiLM layers seems to
+    vary task to task, input to input, and even feature to
+    feature; there does not seem to be a single mechanism by which the
+    network uses FiLM to condition computation.
+    This flexibility may explain why FiLM-related methods have been
+    successful across such a wide variety of domains.
+    It also appears that the learned FiLM representation contains
+    a lot of interesting task information which helps explain why it is
+    possible to perform task interpolations, analogies, and analysis using
+    this representation.
+  </p>
+  <p>
+    Precisely how changes on the feature level
+    alone are able to compound into large and meaningful modulations of the
+    FiLMed network is still an open question, and hopefully we will gain a
+    better idea in the future.
+    For now, though, it is a question evokes the even grander mystery of
+    how neural networks in general compound simple operations like
+    matrix multiplications and element-wise non-linearities into
+    semantically meaningful transformations.
+  </p>
+</d-article>
+
+<d-appendix>
+  <h3 id="bibliographic-notes">Bibliographic Notes</h3>
+  <p>
+      Multiplicative interactions have succeeded on various tasks, ever since
+      they were introduced in vision as "mapping units" <d-cite key="hinton1981a"></d-cite>
+      and "dynamic mappings" <d-cite key="vonderMalsburg1994the"></d-cite>
+      around 40 years ago.  These tasks include Character-level Language
+      Modeling<d-cite key="sutskever2011generating"></d-cite>,
+      Image Denoising<d-cite key="tang2012boltzmann"></d-cite>,
+      Pose Estimation<d-cite key="taylor2009factored"></d-cite>,
+      Tracking<d-cite key="ross2006combining,denil2012learning"></d-cite>,
+      Action Recognition<d-cite key="le2011learning,taylor2010convolutional"></d-cite>,
+      and, more generally, tasks involving relating or matching inputs, such as
+      from different modalities or points in time
+      <d-cite key="memisevic2013learning"></d-cite>.
+  </p>
+  <p>
+    Many models lie on the spectrum between FiLM and Hypernetworks:
+  </p>
+  <ul>
+    <li>
+      Adaptive CNN <d-cite key="kang2017incorporating"></d-cite> predicts the
+      value of several of the model's convolution filters as a function of
+      auxiliary inputs like camera perspective, level of noise, etc. The
+      resulting convolution filters turn out to be very effective in difficult
+      vision tasks such as crowd counting or image deblurring.
+    </li>
+    <li>
+      Residual Adapters <d-cite key="rebuffi2017residualadapters"></d-cite> also
+      propose to predict entire convolutional filters conditioned on the visual
+      recognition domain they are operating in.
+    </li>
+    <li>
+      In the zero-shot/one-shot learning setting, the model proposed by Ba et
+      al. <d-cite key="lei2015predicting"></d-cite> predicts convolutional
+      filters and classifiers weights based on textual descriptions of object
+      classes.
+    </li>
+    <li>
+      In the reinforcement learning setting, the model proposed by Oh et al.
+      <d-cite key="oh2017zero"></d-cite> computes the parameters of a
+      policy-convolutional network conditioned on the task description.
+    </li>
+  </ul>
+  <p>
+    Bilinear models were first introduced in the vision community by Tenenbaum
+    et al. <d-cite key="tenenbaum1997separating"></d-cite> to better untangle
+    latent perceptual factors. The authors wanted to separate the image style
+    from its content, arguing that classic linear models were not rich enough to
+    extract such complex interaction. They demonstrate the effectiveness of
+    their approach by applying it to spoken vowel identification or zero-shot
+    font classification. Notable applications include:
+  </p>
+  <ul>
+    <li>
+      Chuang et al. <d-cite key="chuang2002facial"></d-cite> perform facial
+      animation using bilinear transformations by separating key facial features
+      (the style) from visual emotions (the content). This allows to modify a
+      sequence originally recorded with a happy expression so that the subject
+      appears to be speaking with an angry or neutral expression.
+    </li>
+    <li>
+      Chu et al. <d-cite key="chu2009personalized"></d-cite> and Yang et al.
+      <d-cite key="yang2011like"></d-cite> apply bilinear models to
+      recommendation systems by extracting user and item information in various
+      settings. More generally, recommendation systems rely heavily on matrix
+      factorization methods <d-cite key="koren2009matrix"></d-cite>, which can
+      be viewed as a bilinear model in which one of the latent vectors is kept
+      fixed<d-cite key="tenenbaum1997separating"></d-cite>.
+    </li>
+    <li>
+      More recently, bilinear models have inspired new neural architecture in
+      visual recognition <d-cite key="lin2015bilinear"></d-cite>, video action
+      recognition <d-cite key="feichtenhofer2016convolutional"></d-cite>, and
+      visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.
+    </li>
+  </ul>
+  <h3>Acknowledgements</h3>
+  <p>
+    This article would be nowhere near where it is today without the honest and
+    constructive feedback we received from various people across several
+    organizations. We would like to thank Chris Olah from the Distill editorial
+    team for being so generous with his time and advice. We would also like to
+    thank Archy de Berker, Xavier Snelgrove, Pedro Oliveira Pinheiro, Alexei
+    Nordell-Markovits, Masha Krol, and Minh Dao from Element AI; Roland
+    Memisevic from TwentyBN; Dzmitry Bahdanau from MILA; Ameesh Shah from Rice;
+    Olivier Pietquin and Jon Shlens from Goolgle Brain; and Jérémie Mary from
+    Criteo.
+  </p>
+
+  <d-footnote-list></d-footnote-list>
+  <d-citation-list></d-citation-list>
+</d-appendix>
+
+<!-- bibliography will be inlined during Distill pipeline's pre-rendering -->
+<d-bibliography src="bibliography.bib"></d-bibliography>
+
+</body>

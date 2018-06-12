@@ -1,0 +1,267 @@
+<svg viewBox="0 0 1072 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="arrow-up" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z"/>
+    <path id="big-row-left" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z"/>
+    <path id="big-row-middle" d="M 0 0 l 40 0 l 0 40 l -40 0 Z"/>
+    <path id="big-row-right" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z"/>
+    <path id="column-top" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z"/>
+    <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+    <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
+    <path id="matrix-top-left" d="M 0 6 a 6 6 0 0 1 6 -6 l 14 0 l 0 20 l -20 0 Z"/>
+    <path id="matrix-top-right" d="M 0 0 l 14 0 a 6 6 0 0 1 6 6 l 0 14l -20 0 Z"/>
+    <path id="matrix-bottom-left" d="M 0 0 l 20 0 l 0 20 l -14 0 a 6 6 0 0 1 -6 -6 Z"/>
+    <path id="matrix-bottom-right" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -14 0 Z"/>
+    <path id="matrix-center" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+    <path id="big-curly-brace-horizontal" d="M 0 0 C 0 -16 52.5 0 52.5 -16 C 52.5 0 105 -16 105 0"/>
+    <path id="bigger-curly-brace-horizontal" d="M 0 0 C 0 -16 72.5 0 72.5 -16 C 72.5 0 145 -16 145 0"/>
+    <path id="curly-brace-vertical" d="M 0 0 C 12 0 0 30 12 30 C 0 30 12 60 0 60"/>
+  </defs>
+  <text x="10" y="10" dy="1em" class="figure-text">
+    <tspan>
+      FiLM computes elements of the output
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      vector as
+      y<tspan dy="4px" class="subscript">k</tspan>
+    </tspan>
+    <tspan dy="-4px">
+      = <tspan style="font-family: serif;">γ</tspan><tspan dy="4px" class="subscript">k</tspan>
+    </tspan>
+    <tspan dy="-4px">
+      x<tspan dy="4px" class="subscript">k</tspan>
+    </tspan>
+    <tspan dy="-4px">
+      + <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>.
+    </tspan>
+  </text>
+  <text x="10" y="100" dy="1em" class="figure-text">
+    <tspan>
+      This can be expressed as a dot product
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      between a 1-augmented <tspan style="font-weight: bold;">x</tspan>
+      and a sparse
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      vector containing <tspan style="font-family: serif;">γ</tspan><tspan dy="4px" class="subscript">k</tspan>
+    </tspan>
+    <tspan dy="-4px">
+      and <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>
+    </tspan>
+    <tspan dy="-4px">
+      (shaded
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      cells have a zero value).
+    </tspan>
+  </text>
+  <text x="10" y="210" dy="1em" class="figure-text">
+    <tspan>
+      The sparse vector itself is obtained by
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      multiplying a low-rank weight matrix with
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      the concatenation of <tspan style="font-family: serif;">γ</tspan>
+      and <tspan style="font-family: serif;">β</tspan> (once again,
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      shaded cells have a zero value).
+    </tspan>
+  </text>
+  <g transform="translate(280, 10)">
+    <g transform="translate(222, 0)">
+      <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-filmed-network figure-element"/>
+      <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#big-row-right" transform="translate(80, 0)" class="figure-filmed-network figure-element"/>
+      <text x="-15" y="20" dy="0.4em" dy="0.4em" style="font-weight: bold;" class="figure-text">y</text>
+      <path class="figure-line" d="M -169.5 74 C -169.5 64 30 95 20 45"/>
+      <use xlink:href="#arrow-up" transform="translate(20, 45)" class="figure-path"/>
+      <path class="figure-line" d="M 35.5 74 C 35.5 64 60 75 60 45"/>
+      <use xlink:href="#arrow-up" transform="translate(60, 45)" class="figure-path"/>
+      <path class="figure-line" d="M 240.5 74 C 240.5 64 90 85 100 45"/>
+      <use xlink:href="#arrow-up" transform="translate(100, 45)" class="figure-path"/>
+    </g>
+    <g transform="translate(0, 100)">
+      <g transform="translate(0, 0)">
+        <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-filmed-network figure-element"/>
+        <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-filmed-network figure-element"/>
+        <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+        <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+      </g>
+      <g transform="translate(85, 0)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+        <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+      </g>
+      <use xlink:href="#big-curly-brace-horizontal" transform="translate(0, -5)" class="figure-line"/>
+      <g transform="translate(205, 0)">
+        <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-filmed-network figure-element"/>
+        <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-filmed-network figure-element"/>
+        <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+        <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+      </g>
+      <g transform="translate(290, 0)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+        <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+      </g>
+      <use xlink:href="#big-curly-brace-horizontal" transform="translate(205, -5)" class="figure-line"/>
+      <g transform="translate(410, 0)">
+        <use xlink:href="#row-left" transform="translate(0, 0)"  class="figure-filmed-network figure-element"/>
+        <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#singleton" transform="translate(60, 0)" class="figure-filmed-network figure-element"/>
+        <text x="70" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+        <text x="30" y="30" dy="0.4em" style="text-anchor: middle; font-weight: bold" class="figure-text">x</text>
+      </g>
+      <use xlink:href="#big-curly-brace-horizontal" transform="translate(410, -5)" class="figure-line"/>
+      <g transform="translate(495, 0)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+        <text x="25" y="40" dy="0.4em" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan><tspan dy="-4px" style="font-weight: bold;"> z</tspan></text>
+      </g>
+    </g>
+    <g transform="translate(22.5, 210)">
+      <g transform="translate(0, 0)">
+        <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-film-generator-shaded figure-element"/>
+        <text x="60" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">1</tspan></text>
+        <text x="10" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+        <text x="70" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+      </g>
+      <g transform="translate(125, 0)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-film-generator figure-element"/>
+        <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+      </g>
+      <use xlink:href="#curly-brace-vertical" transform="translate(150, 0)" class="figure-line"/>
+      <text x="170" y="30" dy="0.3em" style="font-family: serif;" class="figure-text">γ</text>
+      <text x="170" y="90" dy="0.3em" style="font-family: serif;" class="figure-text">β</text>
+      <use xlink:href="#curly-brace-vertical" transform="translate(150, 60)" class="figure-line"/>
+      <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(0, -5)" class="figure-line"/>
+      <g transform="translate(205, 0)">
+        <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-film-generator-shaded figure-element"/>
+        <text x="60" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">2</tspan></text>
+        <text x="30" y="30" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+        <text x="90" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+      </g>
+      <g transform="translate(330, 0)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-film-generator figure-element"/>
+        <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+      </g>
+      <use xlink:href="#curly-brace-vertical" transform="translate(355, 0)" class="figure-line"/>
+      <text x="375" y="30" dy="0.3em" style="font-family: serif;" class="figure-text">γ</text>
+      <text x="375" y="90" dy="0.3em" style="font-family: serif;" class="figure-text">β</text>
+      <use xlink:href="#curly-brace-vertical" transform="translate(355, 60)" class="figure-line"/>
+      <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(205, -5)" class="figure-line"/>
+      <g transform="translate(410, 0)">
+        <use xlink:href="#matrix-top-left" transform="translate(0, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-top-right" transform="translate(100, 0)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(0, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(100, 20)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(0, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 40)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(100, 40)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-bottom-left" transform="translate(0, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(20, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(40, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(60, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-center" transform="translate(80, 60)" class="figure-film-generator-shaded figure-element"/>
+        <use xlink:href="#matrix-bottom-right" transform="translate(100, 60)" class="figure-film-generator figure-element"/>
+        <text x="60" y="95" style="text-anchor: middle;" class="figure-text"><tspan>W</tspan><tspan dy="4px" class="subscript">3</tspan></text>
+        <text x="50" y="50" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+        <text x="110" y="70" dy="0.4em" style="text-anchor: middle;" class="figure-text">1</text>
+      </g>
+      <g transform="translate(535, 0)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-film-generator figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-film-generator figure-element"/>
+        <text x="10" y="135" style="text-anchor: middle; font-weight: bold;" class="figure-text">z</text>
+      </g>
+      <use xlink:href="#curly-brace-vertical" transform="translate(560, 0)" class="figure-line"/>
+      <text x="580" y="30" dy="0.3em" style="font-family: serif;" class="figure-text">γ</text>
+      <text x="580" y="90" dy="0.3em" style="font-family: serif;" class="figure-text">β</text>
+      <use xlink:href="#curly-brace-vertical" transform="translate(560, 60)" class="figure-line"/>
+      <use xlink:href="#bigger-curly-brace-horizontal" transform="translate(410, -5)" class="figure-line"/>
+    </g>
+</svg>

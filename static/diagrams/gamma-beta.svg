@@ -1,0 +1,42 @@
+<svg viewBox="0 0 1072 560" xmlns="http://www.w3.org/2000/svg">
+  <text x="10" y="10" dy="1em" class="figure-text">
+    <tspan>
+      FiLM parameters of the visual reasoning model for 256 questions
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      chosen at random across 16 feature maps, also chosen at random.
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      Points are color-coded by feature map.
+    </tspan>
+  </text>
+  <text x="490" y="10" dy="1em" class="figure-text">
+    <tspan>
+      FiLM parameters of the style transfer model for 256 style images
+    </tspan>
+    <tspan x="490" dy="1.5em">
+      chosen at random across 16 feature maps, also chosen at random.
+    </tspan>
+    <tspan x="490" dy="1.5em">
+      Points are color-coded by feature map.
+    </tspan>
+  </text>
+  <g id="clevr-plot">
+    <rect x="10" y="100" width="400" height="400" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+  </g>
+  <g transform="translate(10, 540)" id="clevr-legend"></g>
+  <image x="340" y="527" height="27" width="27" xlink:href="../images/pointer.svg"/>
+  <g id="style-transfer-plot">
+    <rect x="490" y="100" width="400" height="400" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+  </g>
+  <g transform="translate(490, 540)" id="style-transfer-legend"></g>
+  <image x="820" y="527" height="27" width="27" xlink:href="../images/pointer.svg"/>
+</svg>
