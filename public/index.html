@@ -3173,7 +3173,7 @@
       </figure>
       <p>
         Feature-wise affine transformations are used in Kirkpatrick et al.
-        <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single agent to play 10 different Atari games. They used game-specific scaling and biases to condition a shared policy network.
+        <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single agent to play 10 different Atari games. They used game-specific scaling and biasing to condition a shared policy network.
       </p>
     </toggle-section-2>
     <toggle-section-2 open="false">
@@ -5264,8 +5264,7 @@
       <p>
         The presence of sub-clusters in the case of the visual reasoning model
         also suggests that question interpolations may not always work
-        reliably (especially across, for example, question categories),
-        but these sub-clusters don't preclude one from performing
+        reliably, but these sub-clusters don't preclude one from performing
         arithmetic on the question representations, as Perez et al.
         <d-cite key="perez2018film"></d-cite> reported.
       </p>
@@ -5274,33 +5273,30 @@
         <svg viewBox="0 0 600 430" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="0" dy="1em" class="figure-text">
             <tspan>
-              The model is asked a question which
+              The model incorrectly answers a question
             </tspan>
             <tspan x="10" dy="1.5em">
-              involves an unseen combination (in <tspan style="font-weight: bold">bold</tspan>)
+              which involves an unseen combination
             </tspan>
             <tspan x="10" dy="1.5em">
-              of concepts and gives the wrong answer.
+              of concepts (in <tspan style="font-weight: bold">bold</tspan>).
             </tspan>
           </text>
           <text x="10" y="220" dy="1em" class="figure-text">
             <tspan>
-              Rather than direcly relying on the FiLM
+              Rather than using the FiLM parameters
             </tspan>
             <tspan x="10" dy="1.5em">
-              generator, we can combine the FiLM
+              of the FiLM generator, we can use those
             </tspan>
             <tspan x="10" dy="1.5em">
-              parameters produced by three familiar
+              produced by combining questions with
             </tspan>
             <tspan x="10" dy="1.5em">
-              questions (in <tspan style="font-weight: bold">bold</tspan>) and feed the result
+              familiar combinations of concepts (in
             </tspan>
             <tspan x="10" dy="1.5em">
-             to the visual pipeline. This corrects the
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              model's answer.
+              <tspan style="font-weight: bold">bold</tspan>). This corrects the model's answer.
             </tspan>
           </text>
           <image x="260" y="0" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="assets/analogy_image.jpg"/>
@@ -5357,24 +5353,18 @@
         <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg">
           <text x="10" y="10" dy="1em" class="figure-text">
             <tspan>
-              FiLM parameters of of the visual reasoning model for feature
+              FiLM parameters of the visual reasoning model for feature map
             </tspan>
             <tspan x="10" dy="1.5em">
-              map 26 of the first FiLM layer for 256 questions chosen
-            </tspan>
-            <tspan x="10" dy="1.5em">
-              at random.
+              26 of the first FiLM layer for 256 questions chosen randomly.
             </tspan>
           </text>
           <text x="520" y="10" dy="1em" class="figure-text">
             <tspan>
-              FiLM parameters of of the visual reasoning model for feature
+              FiLM parameters of the visual reasoning model for feature map
             </tspan>
             <tspan x="520" dy="1.5em">
-              map 76 of the first FiLM layer for 256 questions chosen
-            </tspan>
-            <tspan x="520" dy="1.5em">
-              at random.
+              76 of the first FiLM layer for 256 questions chosen randomly.
             </tspan>
           </text>
           <g id="first-plot">
@@ -5525,10 +5515,10 @@
         })();
       </script>
       <p>
-        Sometimes a clear pattern emerges, like for the plot on the right, where
+        Sometimes a clear pattern emerges, as in the right plot, where
         questions related to counting and integer equality concentrate in the
-        top-right cluster. Sometimes it is harder to draw a conclusion, like for
-        the plot on the left, where most question types are scattered throughout
+        top-right cluster. Sometimes it is harder to draw a conclusion, as in
+        the left plot, where question types are scattered across
         the three clusters.
       </p>
       <p>
@@ -5652,7 +5642,7 @@
 											   .attr("class", "tooltip figure-text")
 											   .style("opacity", 0)
 											   .style("background", "lightsteelblue");
-				
+
                 svg.select("#clevr-plot")
 					.style("cursor", "pointer")
 					.selectAll("circle").data(dataset)
@@ -5749,9 +5739,9 @@
 					  tooltip.transition()
 						   .duration(200)
 						   .style("opacity", .9);
-					  
-					  url = "assets/style_images/" + d.filename;	   
-					   
+
+					  url = "assets/style_images/" + d.filename;
+
                       tooltip.html(`<img src=${url} class='loading'/>`)
 						   .style("left", (d3.event.pageX + 5) + "px")
 						   .style("top", (d3.event.pageY - 28) + "px");
@@ -5773,7 +5763,7 @@
                     })
                     .classed("figure-text", true)
                     .text(function(artist_index) { return dataset.artists[artist_index]; });
-	
+
                 svg.select("#artist-names").selectAll("circle")
                     .data(Object.keys(dataset.artists))
                   .enter().append("circle")
