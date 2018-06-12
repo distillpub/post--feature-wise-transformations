@@ -1,33 +1,33 @@
-<svg viewBox="0 0 704 270" xmlns="http://www.w3.org/2000/svg">
-  <image x="0" y="0" height="200" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/woman-with-a-pink.jpg"/>
-  <text x="0" y="210" dy="1em" class="figure-text">
+<svg viewBox="0 0 704 320" xmlns="http://www.w3.org/2000/svg">
+  <image x="0" y="0" height="250" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/woman-with-a-pink.jpg"/>
+  <text x="0" y="260" dy="1em" class="figure-text">
     <tspan>
-      Rembrandt's <tspan style="font-style: italic;">Woman</tspan>
+      Rembrandt's <tspan style="font-style: italic;">Woman with a</tspan>
     </tspan>
     <tspan x="0" dy="1.5em">
-      <tspan style="font-style: italic;">with a Pink</tspan>.
+      <tspan style="font-style: italic;">Pink</tspan>.
     </tspan>
   </text>
-  <image x="200" y="0" height="200" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/a-woman-with-a-boy-in-the-forest.jpg"/>
-  <text x="200" y="210" dy="1em" class="figure-text">
+  <image x="260" y="0" height="250" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/a-woman-with-a-boy-in-the-forest.jpg"/>
+  <text x="260" y="260" dy="1em" class="figure-text">
     <tspan>
-      Shishkin's <tspan style="font-style: italic;">Woman with</tspan>
+      Shishkin's <tspan style="font-style: italic;">Woman with a boy</tspan>
     </tspan>
-    <tspan x="200" dy="1.5em">
-      <tspan style="font-style: italic;">a Boy in the forest</tspan>.
+    <tspan x="260" dy="1.5em">
+      <tspan style="font-style: italic;">in the forest</tspan>.
     </tspan>
   </text>
-  <image x="400" y="0" height="160" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/abraham-and-isaac.jpg"/>
-  <image x="440" y="40" height="160" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/pines-on-the-beach.jpg"/>
-  <text x="400" y="210" dy="1em" class="figure-text">
+  <image x="510" y="0" height="200" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/abraham-and-isaac.jpg"/>
+  <image x="560" y="50" height="200" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/pines-on-the-beach.jpg"/>
+  <text x="510" y="260" dy="1em" class="figure-text">
     <tspan>
       Sketches by Rembrandt and
     </tspan>
-    <tspan x="400" dy="1.5em">
-      Shishkin found in the same
+    <tspan x="510" dy="1.5em">
+      Shishkin found in the same t-SNE
     </tspan>
-    <tspan x="400" dy="1.5em">
-      t-SNE cluster.
+    <tspan x="510" dy="1.5em">
+      cluster.
     </tspan>
   </text>
 </svg>

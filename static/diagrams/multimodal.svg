@@ -1,11 +1,11 @@
-<svg viewBox="0 0 1072 280" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 888 280" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter x="0" y="0" width="1" height="1" id="zoolander-text-background">
       <feFlood flood-color="#fdf6f2"/>
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g transform="translate(100, 0)">
+  <g transform="translate(70, 0)">
     <text x="0" y="210" class="figure-text">
       <tspan>
         A model is given access to both the video sequence and the audio
@@ -21,7 +21,7 @@
     <path d="M 0 0 C 15 -50 27.5 -50 42.5 0 S 70 50 85 0 S 110.5 -50 127.5 0 S 155 50 170 0 S 197.5 -50 212.5 0 S 240 50 255 0 S 282.5 -50 297.5 0 S 325 50 340 0 S 367.5 -50 382.5 0 S 410 50 425 0" style="fill: none; stroke: #fdf6f2; stroke-width: 3px;" transform="scale(0.59) translate(10, 53)"/>
     <text filter="url(#zoolander-text-background)" x="130" y="30" dy="0.4em" style="opacity: 1; text-anchor: middle;" class="figure-text">"I'm having a nervous breakdown!"</text>
   </g>
-  <g transform="translate(520, 0)">
+  <g transform="translate(530, 0)">
     <text x="0" y="210" class="figure-text">
       <tspan>
         An image needs to be processed in the context of

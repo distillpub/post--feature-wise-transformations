@@ -1,4 +1,4 @@
-<svg viewBox="0 0 888 420" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 704 420" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
     <path id="arrow-up" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z"/>
@@ -39,7 +39,7 @@
       </tspan>
     </text>
   </g>
-  <g transform="translate(570, 20)">
+  <g transform="translate(540, 20)">
     <text x="0" y="0" class="figure-text">
       <tspan>
         The resulting two vectors
@@ -163,7 +163,7 @@
       <path d="M 10 5 l 0 10" class="figure-line"/>
       <path d="M 5 10 l 10 0" class="figure-line"/>
     </g>
-    <g transform="translate(655, 120)">
+    <g transform="translate(615, 120)">
       <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
       <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
       <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
@@ -182,7 +182,7 @@
     <path d="M 430 280 L 569 280 a 6 6 0 0 0 6 -6 L 575 175" class="figure-line"/>
     <use xlink:href="#arrow-up" transform="translate(575, 175)" class="figure-path"/>
     <text x="435" y="295" class="figure-text">conditional bias</text>
-    <path d="M 585 160 l 60 0" class="figure-line"/>
-    <use xlink:href="#arrow-right" transform="translate(650, 160)" class="figure-path"/>
+    <path d="M 585 160 l 20 0" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(610, 160)" class="figure-path"/>
   </g>
 </svg>

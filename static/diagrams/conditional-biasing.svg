@@ -6,28 +6,28 @@
     <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
     <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
   </defs>
-  <text x="330" y="30" dy="1em" class="figure-text">
+  <text x="340" y="30" dy="1em" class="figure-text">
     <tspan>
       <tspan style="font-weight: bold;">Conditional biasing</tspan>
       is implemented
     </tspan>
-    <tspan x="330" dy="1.5em">
+    <tspan x="340" dy="1.5em">
       by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
     </tspan>
-    <tspan x="330" dy="1.5em">
+    <tspan x="340" dy="1.5em">
       <tspan style="font-weight: bold;">representation</tspan>
       to a bias vector.
     </tspan>
   </text>
-  <text x="330" y="200" dy="1em" class="figure-text">
+  <text x="340" y="200" dy="1em" class="figure-text">
     <tspan>
       The bias vector is then added to
     </tspan>
-    <tspan x="330" dy="1.5em">
+    <tspan x="340" dy="1.5em">
       the input.
     </tspan>
   </text>
-  <g transform="translate(-20, 10)">
+  <g transform="translate(-10, 10)">
     <text x="20" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">input</text>
     <text x="605" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">output</text>
     <g transform="translate(60, 200)">

@@ -1,47 +1,58 @@
-<svg viewBox="0 0 1072 340" xmlns="http://www.w3.org/2000/svg">
-<text x="10" y="72.640007" dy="13" class="figure-text" id="text1400" style="font-size:13px;opacity:0.6;fill:#000000">
-<tspan id="tspan1390">The FiLM generator predicts the FiLM parameters </tspan>
-<tspan x="10" dy="19.5" id="tspan1394">conditioned on the network's internal activations</tspan>
-</text>
-<text x="10" y="218.64001" dy="13" class="figure-text" id="text1406" style="font-size:13px;opacity:0.6;fill:#000000">
-<tspan id="tspan1402">An arbitrary input vector (or feature map) </tspan>
-<tspan x="10" dy="19.5" id="tspan1404">is used to modulate downstream activations.</tspan>
-</text>
-<g xmlns="http://www.w3.org/2000/svg" transform="translate(10,10)" id="g1488">
-<g transform="translate(303.44,208.64)" id="g1416">
-<rect x="0" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect1408"/>
-<text x="8" y="15" dy="0.40000001em" class="figure-text" id="text1414" style="font-size:13px;opacity:0.6;fill:#000000">input</text>
-</g>
-<path d="M 478.25817,259.72088 H 425.52632" class="figure-line" id="path1418" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(484.39817,259.72088)" class="figure-path" id="use1420" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
-<path d="m 596.44,260 h 80" class="figure-line" id="path1428" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(676.44,260)" class="figure-path" id="use1430" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
-<g transform="translate(765.68,208.64)" id="g1440">
-<rect x="-88.560043" y="0" width="100" height="100" style="fill-opacity:1;stroke-width:1.5px;stroke-miterlimit:10" class="figure-filmed-network figure-element figure-box" id="rect1432"/>
-<text x="-80" y="15" dy="5.2000003" class="figure-text" id="text1438" style="font-size:13px;opacity:0.6;fill:#000000">output</text>
-</g>
-<path d="m 403.93022,259.6739 h 24 a 6,4.1428758 0 0 0 6,-4.14288 v -129.8101 a 6,4.1428758 0 0 1 6,-4.14288 h 10" class="figure-line" id="path1442" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(483.55856,121.52894)" class="figure-path" id="use1444" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
-<g transform="translate(595)" id="g1470"/>
-<path d="M 477.41856,121.52894 H 439.68671" class="figure-line" id="path1418-6" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
-<path style="fill:none;stroke:#666666;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 536.51315,122.09215 32.56579,-0.36584 c 0,0 13.42106,0.9146 12.82896,10.06055 0,9.33067 -0.98684,63.10707 -0.98684,63.10707" id="path2113" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" sodipodi:nodetypes="cccc"/>
-<path d="M 559.00059,259.72261 H 536.31323" class="figure-line" id="path1418-1" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:connector-curvature="0" style="fill:none;stroke:#666666;stroke-width:1.62;stroke-miterlimit:10;stroke-dasharray:none"/>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="translate(565.14059,259.72261)" class="figure-path" id="use1420-8" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="0" y="0" width="100%" height="100%"/>
-<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right" transform="rotate(90,190.70519,390.21588)" class="figure-path" id="use1420-8-7" style="fill:#666666;stroke:#666666;stroke-width:1px;stroke-miterlimit:10" x="-3" y="0" width="100%" height="100%"/>
-<g transform="translate(505.58431,318.35086)" id="g1516">
-<g class="figure-faded" id="g1504" style="opacity:0.35" transform="translate(-18.792716,-120.44838)">
-<rect width="50" height="120" class="figure-filmed-network figure-element figure-box" id="rect1500" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
-<text x="25" y="60" dy="0.40000001em" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,25,60)" class="figure-text" id="text1502">sub-network</text>
-</g>
-<g class="figure-faded" id="g1508" style="opacity:0.35"/>
-<g transform="translate(61.447284,-120.44838)" id="g1514">
-<rect width="30" height="120" class="figure-filmed-network figure-element figure-box" id="rect1510" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
-<text x="15" y="60" dy="0.40000001em" style="font-weight:bold;font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,15,60)" class="figure-text" id="text1512">FiLM layer</text>
-</g>
-<g id="g1504-0" style="opacity:1" transform="translate(-18.743374,-258.46851)">
-<rect width="50" height="120" class="figure-film-generator figure-element figure-box" id="rect1500-9" x="0" y="0" style="fill-opacity:0.8;stroke-width:1.5px;stroke-miterlimit:10"/>
-<text x="25" y="65" style="font-size:13px;text-anchor:middle;opacity:0.6;fill:#000000" transform="rotate(-90,25,60)" class="figure-text" id="text1502-3">FiLM generator</text>
-</g>
-</g>
-</g>
+<svg viewBox="0 0 704 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+  </defs>
+  <text x="10" y="10" dy="1em" class="figure-text">
+    <tspan>
+      The FiLM generator predicts the
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      FiLM parameters conditioned on
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      the network's internal activations.
+    </tspan>
+  </text>
+  <text x="10" y="200" dy="1em" class="figure-text">
+    <tspan>
+      An arbitrary input vector (or feature
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      map) is used to modulate downstream
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      activations.
+    </tspan>
+  </text>
+  <g transform="translate(260,200)">
+    <rect x="0" y="0" width="100" height="100" class="figure-filmed-network figure-element figure-box"/>
+    <text x="10" y="10" dy="0.4em" class="figure-text">input</text>
+  </g>
+  <path d="M 360 250 L 408 250" class="figure-line"/>
+  <use xlink:href="#arrow-right" transform="translate(408, 250)" class="figure-path"/>
+  <path d="M 360 250 L 374 250 a 6 6 0 0 0 6 -6 L 380 76 a 6 6 0 0 1 6 -6 L 408 70" class="figure-line"/>
+  <use xlink:href="#arrow-right" transform="translate(408, 70)" class="figure-path"/>
+  <g transform="translate(413, 190)">
+    <rect x="0" y="0" width="50" height="120" class="figure-faded figure-filmed-network figure-element figure-box"/>
+    <text x="25" y="60" dy="0.4em" transform="rotate(-90,25,60)" style="text-anchor: middle;" class="figure-text figure-text-faded">sub-network</text>
+  </g>
+  <path d="M 463 250 L 511 250" class="figure-line"/>
+  <use xlink:href="#arrow-right" transform="translate(511, 250)" class="figure-path"/>
+  <g transform="translate(516, 190)">
+    <rect x="0" y="0" width="30" height="120" class="figure-filmed-network figure-element figure-box"/>
+    <text x="15" y="60" dy="0.4em" transform="rotate(-90,15,60)" style="text-anchor: middle;" class="figure-text" >FiLM layer</text>
+  </g>
+  <path d="M 546 250 L 595 250" class="figure-line"/>
+  <use xlink:href="#arrow-right" transform="translate(595, 250)" class="figure-path"/>
+  <g transform="translate(413, 10)">
+    <rect width="50" height="120" class="figure-film-generator figure-element figure-box"  x="0" y="0" />
+    <text x="25" y="65" transform="rotate(-90,25,60)" style="text-anchor: middle;" class="figure-text" >FiLM generator</text>
+  </g>
+  <path d="M 463 70 L 525 70 a 6 6 0 0 1 6 6 L 531 185" class="figure-line"/>
+  <use xlink:href="#arrow-down" transform="translate(531, 185)" class="figure-path"/>
+  <g transform="translate(600,200)">
+    <rect x="0" y="0" width="100" height="100" class="figure-filmed-network figure-element figure-box"/>
+    <text x="10" y="10" dy="0.4em" class="figure-text">output</text>
+  </g>
 </svg>

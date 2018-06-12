@@ -3,7 +3,7 @@
     <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
     <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
   </defs>
-  <g transform="translate(490, 0)">
+  <g transform="translate(520, 0)">
     <text x="0" y="10" dy="1em" class="figure-text">
       <tspan>
         The <tspan style="font-weight: bold;">decoder-based</tspan>
@@ -24,7 +24,7 @@
       </tspan>
     </text>
   </g>
-  <g transform="translate(0, 0)">
+  <g transform="translate(30, 0)">
     <text x="0" y="85" dy="0.4em" class="figure-text">noise</text>
     <path d="M 40 85 L 75 85" class="figure-line"/>
     <use xlink:href="#arrow-right" transform="translate(75, 85)" class="figure-path"/>

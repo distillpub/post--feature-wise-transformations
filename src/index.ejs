@@ -88,7 +88,7 @@
     some refer to this as multimodal learning, and refer to the consolidation of
     information from multiple modalities in a neural network as modality fusion.
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body-outset">
     <%= require("../static/diagrams/multimodal.svg") %>
   </figure>
   <p>
@@ -184,7 +184,7 @@
       the border effects due to zero-padding.
     </d-footnote>
   </p>
-  <figure class="l-body-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/concatenation-as-biasing.svg") %>
   </figure>
   <p>
@@ -264,7 +264,7 @@
     the FiLM generator outputs the concatenation of all FiLM parameters for the
     network architecture.
   </p>
-  <figure class="l-body-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/film-architecture.svg") %>
   </figure>
   <p>
@@ -291,7 +291,7 @@
     You can interact with the following fully-connected and convolutional FiLM
     layers to get an intuition of the sort of modulation they allow:
   </p>
-  <figure class="l-page-outset" id="film-layer-diagram">
+  <figure class="l-body-outset" id="film-layer-diagram">
     <%= require("../static/diagrams/film-layer.svg") %>
   </figure>
   <p>
@@ -357,7 +357,7 @@
     abstraction and attention, but the two operate in different ways which we
     think are important to disambiguate.
   </p>
-  <figure class="l-page-outset" id="film-vs-attention-diagram">
+  <figure class="l-body-outset" id="film-vs-attention-diagram">
     <%= require("../static/diagrams/film-vs-attention.svg") %>
   </figure>
   <p>
@@ -384,7 +384,7 @@
     Note that for each output feature <d-math>y_k</d-math> we have a separate
     matrix <d-math>W_k</d-math>, so the full set of weights forms a 3-tensor.
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body-outset">
     <%= require("../static/diagrams/bilinear.svg") %>
   </figure>
   <p>
@@ -400,7 +400,7 @@
     transformation by zeroing out the appropriate entries of the weight
     matrices:
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body-outset">
     <%= require("../static/diagrams/film-as-bilinear.svg") %>
   </figure>
   <p>
@@ -428,7 +428,7 @@
     convolutional and transposed convolutional layers in the generator and
     discriminator networks.
   </p>
-  <figure class="l-body-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/dcgan.svg") %>
   </figure>
   <p>
@@ -445,7 +445,7 @@
       feature-wise property.
     </d-footnote>
   </p>
-  <figure class="l-body-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/pixelcnn.svg") %>
   </figure>
   <p>
@@ -482,7 +482,7 @@
     instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
     environment.
   </p>
-  <figure class="l-body-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/gated-attention.svg") %>
   </figure>
   <p>
@@ -501,7 +501,7 @@
     token-specific query representations extracted via soft attention on the
     query representation tokens.
   </p>
-  <figure class="l-body-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/gated-attention-reader.svg") %>
   </figure>
   <p>
@@ -513,7 +513,7 @@
     introduce a fast and parallelizable model for machine translation in the
     form of a purely convolutional architecture.
   </p>
-  <figure class="l-body-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/convseq2seq.svg") %>
   </figure>
   <h2>Visual question-answering</h2>
@@ -523,7 +523,7 @@
     trained on the CLEVR dataset <d-cite key="johnson2017clevr"></d-cite> to
     answer questions about synthetic input images.
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body-outset">
     <%= require("../static/diagrams/film-clevr.svg") %>
   </figure>
   <p>
@@ -543,7 +543,7 @@
     real-world images for the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
     and VQAv1 <d-cite key="agrawal2015vqa"></d-cite> datasets.
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body-outset">
     <%= require("../static/diagrams/guesswhat.svg") %>
   </figure>
   <p>
@@ -570,7 +570,7 @@
     conditioning is achieved by applying the normalization with style-specific
     parameters.
   </p>
-  <figure class="l-page-outset" id="alrfas-diagram">
+  <figure class="l-body-outset" id="alrfas-diagram">
     <%= require("../static/diagrams/alrfas.svg") %>
   </figure>
   <p>
@@ -600,7 +600,7 @@
     normalization layer, which computes the normalization parameters using a
     simple heuristic.
   </p>
-  <figure class="l-page-outset" id="adain-diagram">
+  <figure class="l-body-outset" id="adain-diagram">
     <%= require("../static/diagrams/adain.svg") %>
   </figure>
   <p>
@@ -633,7 +633,7 @@
     information. This idea gives rise to various forms of
     <em>self-conditioned</em> models.
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/self-conditioning.svg") %>
   </figure>
   <p>
@@ -652,7 +652,7 @@
     employs feature-wise sigmoidal gating in a self-conditioning manner, as a
     way to "recalibrate" a layer's activations conditioned on themselves.
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body">
     <%= require("../static/diagrams/squeeze-and-excitation.svg") %>
   </figure>
   <h2>Speech recognition</h2>
@@ -666,7 +666,7 @@
     post-normalization feature-wise affine transformation is disabled and a FiLM
     layer is placed immediately after the normalization layer.
   </p>
-  <figure class="l-page-outset">
+  <figure class="l-body-outset">
     <%= require("../static/diagrams/dln.svg") %>
   </figure>
   <p>
@@ -715,7 +715,7 @@
     we color-code each point according to the feature map it belongs to we
     observe the following:
   </p>
-  <figure class="l-page-outset" id="gamma-beta-diagram">
+  <figure class="l-body-outset" id="gamma-beta-diagram">
     <%= require("../static/diagrams/gamma-beta.svg") %>
   </figure>
   <p>
@@ -739,7 +739,7 @@
     interpolations: any convex combination of FiLM parameters is likely to
     correspond to a meaningful parametrization of the FiLMed network.
   </p>
-  <figure class="l-body-outset" id="style-interpolation-diagram">
+  <figure class="l-body" id="style-interpolation-diagram">
     <%= require("../static/diagrams/style-interpolation.svg") %>
   </figure>
   <p>
@@ -764,7 +764,7 @@
     visual reasoning model, FiLM parameters sometimes form several sub-clusters
     for a given feature map, which is not true for the style transfer model.
   </p>
-  <figure class="l-page-outset" id="clevr-subcluster-diagram">
+  <figure class="l-body-outset" id="clevr-subcluster-diagram">
     <%= require("../static/diagrams/clevr-subcluster.svg") %>
   </figure>
   <p>
@@ -791,7 +791,7 @@
     to infer how questions regroup by color-coding the scatter plots by question
     type.
   </p>
-  <figure class="l-page-outset" id="clevr-subcluster-color-diagram">
+  <figure class="l-body-outset" id="clevr-subcluster-color-diagram">
     <%= require("../static/diagrams/clevr-subcluster-color.svg") %>
   </figure>
   <p>
@@ -808,7 +808,7 @@
     applied t-SNE <d-cite key="maaten2008visualizing"></d-cite> on the FiLM
     parameter values.
   </p>
-  <figure class="l-page-outset" id="tsne-diagram">
+  <figure class="l-body-outset" id="tsne-diagram">
     <%= require("../static/diagrams/tsne.svg") %>
   </figure>
   <p>
