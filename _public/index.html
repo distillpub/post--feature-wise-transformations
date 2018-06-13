@@ -5667,6 +5667,7 @@
                     .style("fill", function(d) { return colors[d.question_type]; })
                     .style("opacity", 0.6)
                     .on("mouseover", function(d) {
+					  focusType(d.question_type)
 					  tooltip.transition()
 						   .duration(200)
 						   .style("opacity", .9);
@@ -5675,6 +5676,7 @@
 						   .style("top", (d3.event.pageY - 28) + "px");
 					  })
 					  .on("mouseout", function(d) {
+						  focusAll()
 						  tooltip.transition()
 							   .duration(500)
 							   .style("opacity", 0);
@@ -5687,6 +5689,11 @@
                 var focus = function(j) {
 					svg.selectAll("#tsne-diagram .question-type").style("opacity", 0.1);
 					svg.selectAll("#tsne-diagram .question-type-"+j).style("opacity", 0.6);
+                };
+                
+                var focusType = function(j) {
+					svg.selectAll("#tsne-diagram #question-types .question-type").style("opacity", 0.1);
+					svg.selectAll("#tsne-diagram #question-types .question-type-"+j).style("opacity", 0.6);
                 };
 
                 svg.select("#question-types").selectAll("circle")
@@ -5746,6 +5753,7 @@
                     .style("fill", function(d) { return colors[d.artist_index]; })
                     .style("opacity", 0.6)
 					 .on("mouseover", function(d) {
+					  focusType(d.artist_index)
 					  tooltip.transition()
 						   .duration(200)
 						   .style("opacity", .9);
@@ -5757,6 +5765,7 @@
 						   .style("top", (d3.event.pageY - 28) + "px");
 					  })
 					  .on("mouseout", function(d) {
+						  focusAll()
 						  tooltip.transition()
 							   .duration(500)
 							   .style("opacity", 0);
@@ -5795,6 +5804,12 @@
 					svg.selectAll("#tsne-diagram .artist-name").style("opacity", 0.1);
 					svg.selectAll("#tsne-diagram .artist-name-"+j).style("opacity", 0.6);
                 };
+                
+                var focusType = function(j) {
+					svg.selectAll("#tsne-diagram #artist-names .artist-name").style("opacity", 0.1);
+					svg.selectAll("#tsne-diagram #artist-names .artist-name-"+j).style("opacity", 0.6);
+                };
+
 
                 svg.select("#artist-names").selectAll("circle")
                     .on("mouseover", function (d, i) {
