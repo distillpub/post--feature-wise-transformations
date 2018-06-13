@@ -744,6 +744,16 @@
     <%= require("../static/diagrams/style-interpolation.svg") %>
   </figure>
   <p>
+    To some extent, the notion of interpolating between tasks using FiLM
+    parameters can be applied even in the visual question-answering setting.
+    Using the model trained in Perez et al. <d-cite key="perez2018film"></d-cite>,
+    we interpolated between the model's FiLM parameters for two CLEVR questions
+    and plotted the model's post-softmax answer probabilities:
+  </p>
+  <figure class="l-body" id="question-interpolation-diagram">
+    <%= require("../static/diagrams/question-interpolation.svg") %>
+  </figure>
+  <p>
     A priori, we may have expected the model to simply trade off its confidence
     between its answers to the two end point questions. Alternatively, we may
     have expected the model to answer erratically or incoherently throughout the
