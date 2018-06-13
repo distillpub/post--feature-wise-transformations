@@ -5588,6 +5588,10 @@
                 "Query size", "Query color", "Query shape", "Equal color",
                 "Equal integer", "Equal shape", "Equal size", "Equal material"
             ];
+            
+            // Ugly hard-coded mapping - should use json mapping instead of hard-coded one
+            //var question_type_mapping = [5, 0, 11, 9, 8, 2, 3, 7, 4, 6, 10, 1, 12]
+            var question_type_mapping = [1, 11, 5, 6, 8, 0, 9, 7, 4, 3, 10, 2, 12]
 
             var svg = d3.select("#tsne-diagram > svg");
 
@@ -5661,13 +5665,12 @@
                         "cx": function(d) { return xScales[0](d.layer_all.x); },
                         "cy": function(d) { return yScales[0](d.layer_all.y); },
                         "r": 3,
-                        "label": function(d) { return "yo! ("+d.question_type+")"; },
-                        "class": function(d) { return "question-type question-type-"+d.question_type; }
+                        "class": function(d) { return "question-type question-type-"+question_type_mapping[d.question_type]; }
                     })
-                    .style("fill", function(d) { return colors[d.question_type]; })
+                    .style("fill", function(d) { return colors[question_type_mapping[d.question_type]]; })
                     .style("opacity", 0.6)
                     .on("mouseover", function(d) {
-					  focusType(d.question_type)
+					  focusType(question_type_mapping[d.question_type])
 					  tooltip.transition()
 						   .duration(200)
 						   .style("opacity", .9);
