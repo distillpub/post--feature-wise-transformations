@@ -500,7 +500,7 @@
       Feature-wise affine transformations are used in Kirkpatrick et al.
       <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single
       agent to play 10 different Atari games. They used game-specific scaling
-      and biases to condition a shared policy network.
+      and biasing to condition a shared policy network.
     </p>
   </div>
   <button class="collapsible">Natural language processing<span style="float: right;">+</span></button>
@@ -802,10 +802,9 @@
   </p>
   <p>
     The presence of sub-clusters in the case of the visual reasoning model also
-    suggests that question interpolations may not always work reliably
-    (especially across, for example, question categories), but these
-    sub-clusters don't preclude one from performing arithmetic on the question
-    representations, as Perez et al. <d-cite key="perez2018film"></d-cite>
+    suggests that question interpolations may not always work reliably, but
+    these sub-clusters don't preclude one from performing arithmetic on the
+    question representations, as Perez et al. <d-cite key="perez2018film"></d-cite>
     reported.
   </p>
   <figure class="l-body">
@@ -820,11 +819,10 @@
     <%= require("../static/diagrams/clevr-subcluster-color.svg") %>
   </figure>
   <p>
-    Sometimes a clear pattern emerges, like for the plot on the right, where
-    questions related to counting and integer equality concentrate in the
-    top-right cluster. Sometimes it is harder to draw a conclusion, like for
-    the plot on the left, where most question types are scattered throughout
-    the three clusters.
+    Sometimes a clear pattern emerges, as in the right plot, where questions
+    related to counting and integer equality concentrate in the top-right
+    cluster. Sometimes it is harder to draw a conclusion, as in the left plot,
+    where question types are scattered across the three clusters.
   </p>
   <p>
     The existence of this structure has already been explored, albeit more

@@ -2,24 +2,18 @@
   <path d="M444,10l0,340" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
   <text x="10" y="10" dy="1em" class="figure-text">
     <tspan>
-      FiLM parameters of of the visual reasoning model for feature
+      FiLM parameters of the visual reasoning model for feature map
     </tspan>
     <tspan x="10" dy="1.5em">
-      map 26 of the first FiLM layer for 256 questions chosen
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      at random.
+      26 of the first FiLM layer for 256 questions chosen randomly.
     </tspan>
   </text>
   <text x="500" y="10" dy="1em" class="figure-text">
     <tspan>
-      FiLM parameters of of the visual reasoning model for feature
+      FiLM parameters of the visual reasoning model for feature map
     </tspan>
     <tspan x="500" dy="1.5em">
-      map 76 of the first FiLM layer for 256 questions chosen
-    </tspan>
-    <tspan x="500" dy="1.5em">
-      at random.
+      76 of the first FiLM layer for 256 questions chosen randomly.
     </tspan>
   </text>
   <g id="first-plot">

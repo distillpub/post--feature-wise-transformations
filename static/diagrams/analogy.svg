@@ -5,33 +5,31 @@
   </defs>
   <text x="10" y="0" dy="1em" class="figure-text">
     <tspan>
-      The model is asked a question which
+      The model incorrectly answers a question
     </tspan>
     <tspan x="10" dy="1.5em">
-      involves an unseen combination (in <tspan style="font-weight: bold">bold</tspan>)
+      which involves an unseen combination
     </tspan>
     <tspan x="10" dy="1.5em">
-      of concepts and gives the wrong answer.
+      of concepts (in <tspan style="font-weight: bold">bold</tspan>).
     </tspan>
   </text>
   <text x="10" y="220" dy="1em" class="figure-text">
     <tspan>
-      Rather than direcly relying on the FiLM
+      Rather than using the FiLM parameters
     </tspan>
     <tspan x="10" dy="1.5em">
-      generator, we can combine the FiLM
+      of the FiLM generator, we can use those
     </tspan>
     <tspan x="10" dy="1.5em">
-      parameters produced by three familiar
+      produced by combining questions with
     </tspan>
     <tspan x="10" dy="1.5em">
-      questions (in <tspan style="font-weight: bold">bold</tspan>) and feed the result
+      familiar combinations of concepts (in
     </tspan>
     <tspan x="10" dy="1.5em">
-     to the visual pipeline. This corrects the
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      model's answer.
+     <tspan style="font-weight: bold">bold</tspan>). This corrects the model's
+     answer.
     </tspan>
   </text>
   <g transform="translate(90, 0)">
