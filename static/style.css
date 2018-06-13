@@ -144,7 +144,6 @@ d-figure > figure {
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
-  padding: 20px 0;
   display: none;
   overflow: hidden;
   background-color: none;

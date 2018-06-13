@@ -1,18 +1,13 @@
 (function() {
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
-    }
+    d3.selectAll(".collapsible")
+        .on("click", function() {
+            d3.selectAll('.content[content-name="' + d3.select(this).attr("content-name") + '"]')
+                .style("display", function() {
+                    return d3.select(this).style("display") === "block" ? "none" : "block";
+                });
+            var symbolSpan = d3.select(this).select("span");
+            symbolSpan.html(symbolSpan.html() === "+" ? "-" : "+");
+        });
 })();
 
 (function() {
