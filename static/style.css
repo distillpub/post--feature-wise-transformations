@@ -128,3 +128,24 @@ d-figure > figure {
   max-height: 300px;
   pointer-events: none;
 }
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  cursor: pointer;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 20px 0;
+  display: none;
+  overflow: hidden;
+  background-color: none;
+}
