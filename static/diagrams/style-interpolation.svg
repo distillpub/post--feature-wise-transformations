@@ -1,97 +1,52 @@
 <svg viewBox="0 0 704 500" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10,250l684,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
   <defs>
     <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
-    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
   </defs>
-  <text x="10" y="10" dy="1em" class="figure-text">
-    <tspan>
-      Two style images are passed
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      through the FiLM generator.
-    </tspan>
-  </text>
-  <text x="300" y="10" dy="1em" class="figure-text">
-    <tspan>
-      The two resulting sets
-    </tspan>
-    <tspan x="300" dy="1.5em">
-      of FiLM parameters are
-    </tspan>
-    <tspan x="300" dy="1.5em">
-      linearly interpolated and
-    </tspan>
-    <tspan x="300" dy="1.5em">
-      fed to the FiLM-ed network.
-    </tspan>
-  </text>
-  <g transform="translate(-20, 0)">
-    <image x="347" y="100" height="27" width="27" xlink:href="../images/pointer.svg"/>
-    <g transform="translate(15, 120)">
-      <image x="10" y="10" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/style1.jpg"/>
-      <path d="M 74 42 C 110 42 94 74 130 74" class="figure-line"/>
-      <use x="130" y="74" xlink:href="#arrow-right" class="figure-path"/>
-      <image x="10" y="94" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/style2.jpg"/>
-      <path d="M 74 126 C 110 126 94 94 130 94" class="figure-line"/>
-      <use x="130" y="94" xlink:href="#arrow-right" class="figure-path"/>
-      <g transform="translate(135, 44)">
-        <rect width="140" height="80" class="figure-film-generator figure-group figure-box"/>
-        <text x="70" y="40" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM generator</text>
-      </g>
-      <path d="M 275 74 C 330 74 295 20 335 20" class="figure-line"/>
-      <use x="335" y="20" xlink:href="#arrow-right" class="figure-path"/>
-      <path d="M 275 94 C 330 94 295 160 335 160" class="figure-line"/>
-      <use x="335" y="160" xlink:href="#arrow-right" class="figure-path"/>
-      <use x="425" y="90" xlink:href="#arrow-right" class="figure-path"/>
+  <g id="example-1" transform="translate(0, 0)">
+    <image x="144" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/style1.jpg"/>
+    <path d="M 277 40 L 541 40" class="figure-line"/>
+    <g transform="translate(0, 40)">
+      <circle r="6" transform="translate(277, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(330, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(383, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(435, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(488, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(541, 0)" style="cursor: pointer;" class="figure-path"/>
     </g>
-    <image x="483" y="10" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content.jpg"/>
-    <path d="M 515 74 L 515 105" class="figure-line"/>
-    <use x="515" y="105" xlink:href="#arrow-down" class="figure-path"/>
-    <g transform="translate(445, 110)">
-      <rect width="140" height="200" class="figure-filmed-network figure-group figure-box"/>
-      <text x="70" y="100" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM-ed network</text>
+    <image x="594" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/style2.jpg"/>
+    <image x="0" y="120" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content.jpg"/>
+    <g transform="translate(144, 120)">
+      <image x="0" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_0.jpg"/>
+      <image x="90" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_1.jpg"/>
+      <image x="180" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_2.jpg"/>
+      <image x="270" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_3.jpg"/>
+      <image x="360" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_4.jpg"/>
+      <image x="450" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_5.jpg"/>
     </g>
-    <g class="interpolation-style">
-      <circle r="6" transform="translate(360, 140)" style="cursor: pointer;" class="figure-path"/>
-      <path d="M 360 140 C 420 140 380 210 440 210" class="figure-line"/>
-      <image x="310" y="400" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_0.jpg"/>
-      <path d="M 515 310 C 515 380 342 330 342 395" class="figure-line"/>
-      <use x="342" y="395" xlink:href="#arrow-down" class="figure-path"/>
+    <image x="396" y="0" height="27" width="27" xlink:href="../images/pointer.svg"/>
+  </g>
+  <g id="example-2" transform="translate(0, 300)">
+    <image x="144" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/trees_in_a_lane.png"/>
+    <path d="M 277 40 L 541 40" class="figure-line"/>
+    <g transform="translate(0, 40)">
+      <circle r="6" transform="translate(277, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(330, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(383, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(435, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(488, 0)" style="cursor: pointer;" class="figure-path"/>
+      <circle r="6" transform="translate(541, 0)" style="cursor: pointer;" class="figure-path"/>
     </g>
-    <g class="interpolation-style">
-      <circle r="6" transform="translate(360, 168)" style="cursor: pointer;" class="figure-path"/>
-      <path d="M 360 168 C 420 168 380 210 440 210" class="figure-line"/>
-      <image x="379" y="400" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_1.jpg"/>
-      <path d="M 515 310 C 515 380 411 330 411 395" class="figure-line"/>
-      <use x="411" y="395" xlink:href="#arrow-down" class="figure-path"/>
+    <image x="594" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/three_fishing_boats.png"/>
+    <image x="0" y="120" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/golden_gate.png"/>
+    <g transform="translate(144, 120)">
+      <image x="0" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_2_stylized_0.jpg"/>
+      <image x="90" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_2_stylized_1.jpg"/>
+      <image x="180" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_2_stylized_2.jpg"/>
+      <image x="270" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_2_stylized_3.jpg"/>
+      <image x="360" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_2_stylized_4.jpg"/>
+      <image x="450" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_2_stylized_5.jpg"/>
     </g>
-    <g class="interpolation-style">
-      <circle r="6" transform="translate(360, 196)" style="cursor: pointer;" class="figure-path"/>
-      <path d="M 360 196 C 420 196 380 210 440 210" class="figure-line"/>
-      <image x="448" y="400" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_2.jpg"/>
-      <path d="M 515 310 C 515 380 480 330 480 395" class="figure-line"/>
-      <use x="480" y="395" xlink:href="#arrow-down" class="figure-path"/>
-    </g>
-    <g class="interpolation-style">
-      <circle r="6" transform="translate(360, 224)" style="cursor: pointer;" class="figure-path"/>
-      <path d="M 360 224 C 420 224 380 210 440 210" class="figure-line"/>
-      <image x="517" y="400" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_3.jpg"/>
-      <path d="M 515 310 C 515 380 549 330 549 395" class="figure-line"/>
-      <use x="549" y="395" xlink:href="#arrow-down" class="figure-path"/>
-    </g>
-    <g class="interpolation-style">
-      <circle r="6" transform="translate(360, 252)" style="cursor: pointer;" class="figure-path"/>
-      <path d="M 360 252 C 420 252 380 210 440 210" class="figure-line"/>
-      <image x="586" y="400" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_4.jpg"/>
-      <path d="M 515 310 C 515 380 618 330 618 395" class="figure-line"/>
-      <use x="618" y="395" xlink:href="#arrow-down" class="figure-path"/>
-    </g>
-    <g class="interpolation-style">
-      <circle r="6" transform="translate(360, 280)" style="cursor: pointer;" class="figure-path"/>
-      <path d="M 360 280 C 420 280 380 210 440 210" class="figure-line"/>
-      <image x="655" y="400" width="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/content_stylized_5.jpg"/>
-      <path d="M 515 310 C 515 380 687 330 687 395" class="figure-line"/>
-      <use x="687" y="395" xlink:href="#arrow-down" class="figure-path"/>
-    </g>
+    <image x="396" y="0" height="27" width="27" xlink:href="../images/pointer.svg"/>
   </g>
 </svg>

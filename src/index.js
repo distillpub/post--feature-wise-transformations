@@ -318,25 +318,34 @@
 
     var svg = d3.select("#style-interpolation-diagram > svg");
 
-    svg.selectAll("g.interpolation-style")
-        .data([0, 1, 2, 3, 4, 5]);
-    svg.selectAll("g.interpolation-style > circle")
-        .data([0, 1, 2, 3, 4, 5]);
+    var processExample = function(example) {
+        svg.selectAll("g#" + example + " > g > circle")
+            .data([0, 1, 2, 3, 4, 5]);
+        svg.selectAll("g#" + example + " > g > image")
+            .data([0, 1, 2, 3, 4, 5]);
 
-    var focus = function(i) {
-        svg.selectAll("g.interpolation-style")
-            .each(function(j) {
-                d3.select(this)
-                    .classed("figure-faded", i != j);
+        var focus = function(i) {
+            svg.selectAll("g#" + example + " > g > image")
+                .each(function(j) {
+                    d3.select(this)
+                        .classed("figure-faded", i != j);
+                });
+            svg.selectAll("g#" + example + " > g > circle")
+                .each(function(j) {
+                    d3.select(this)
+                        .classed("figure-faded", i != j);
+                });
+        };
+
+        svg.selectAll("g#" + example + " > g > circle")
+            .on("mouseover", function (d) {
+                focus(d);
             });
+
+        focus(0);
     };
-
-    svg.selectAll("g.interpolation-style > circle")
-        .on("mouseover", function (d) {
-            focus(d);
-        });
-
-    focus(0);
+    processExample("example-1");
+    processExample("example-2");
 })();
 
 (function() {
@@ -603,12 +612,15 @@
         "Query size", "Query color", "Query shape", "Equal color",
         "Equal integer", "Equal shape", "Equal size", "Equal material"
     ];
+        
+    // Ugly workaround for permuted question types in JSON file.
+    var question_type_mapping = [1, 5, 11, 6, 8, 0, 9, 7, 12, 3, 10, 2, 4];
 
     var dataset;
     var xScale;
     var yScale;
     d3.json("../data/clevr_tsne.json", function(data) {
-        dataset = data.slice(0, 512);
+        dataset = data.slice(0, 1024);
 
         // Create scales
         xScale = d3.scaleLinear()
@@ -623,7 +635,9 @@
         var tooltip = d3.select("body").append("div")
             .attr("id", "tooltip-tsne-clever")
             .attr("class", "tooltip figure-text")
-            .style("background", "lightsteelblue")
+            .style("background", "#ddd")
+            .style("border-radius", "6px")
+            .style("padding", "10px")
             .style("opacity", 0);
 
         // Dispatch data points into groups by question type
@@ -633,7 +647,7 @@
             .style("opacity", 1.0)
             .each(function(c, i) {
                 d3.select(this).selectAll("circle")
-                    .data(dataset.filter(function(d) { return d.question_type == i; }))
+                    .data(dataset.filter(function(d) { return question_type_mapping[d.question_type] == i; }))
                   .enter().append("circle")
                     .attrs({
                         "cx": function(d) { return xScale(d.layer_all.x); },
@@ -644,6 +658,7 @@
                     .style("fill", function(d) { return colors[i]; })
                     .style("opacity", 0.6)
                     .on("mouseover", function(d) {
+                        focusType(question_type_mapping[d.question_type]);
                         tooltip.transition()
                              .duration(200)
                              .style("opacity", .9);
@@ -652,6 +667,7 @@
                              .style("top", (d3.event.pageY - 28) + "px");
                     })
                     .on("mouseout", function(d) {
+                        focusAll();
                         tooltip.transition()
                            .duration(500)
                            .style("opacity", 0);
@@ -696,6 +712,11 @@
                 .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
             scatterPlot.selectAll("g")
                 .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
+        };
+
+        var focusType = function(j) {
+            legend.selectAll("circle")
+                .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
         };
 
         // Add hovering behavior to legend
@@ -765,6 +786,7 @@
                     .style("fill", function(d) { return colors[i]; })
                     .style("opacity", 0.6)
                     .on("mouseover", function(d) {
+                        focusType(d.artist_index);
                         tooltip.transition()
                              .duration(200)
                              .style("opacity", .9);
@@ -776,6 +798,7 @@
                              .style("top", (d3.event.pageY - 28) + "px");
                     })
                     .on("mouseout", function(d) {
+                        focusAll();
                         tooltip.transition()
                            .duration(500)
                            .style("opacity", 0);
@@ -820,6 +843,11 @@
                 .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
             scatterPlot.selectAll("g")
                 .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
+        };
+
+        var focusType = function(j) {
+            legend.selectAll("circle")
+                .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
         };
 
         // Add hovering behavior to legend
