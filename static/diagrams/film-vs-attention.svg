@@ -29,16 +29,13 @@
         </tspan>
       </text>
     </g>
-    <g transform="translate(760,10)">
+    <g transform="translate(757,10)">
       <text x="0" y="0" class="figure-text">
         <tspan>
-          The output of <tspan style="font-weight: bold;">attention</tspan>
+          <tspan style="font-weight: bold;">Attention</tspan> summarizes
         </tspan>
         <tspan x="0" dy="1.5em">
-          summarizes the input
-        </tspan>
-        <tspan x="0" dy="1.5em">
-          into a vector.
+           the input into a vector.
         </tspan>
       </text>
     </g>
@@ -55,16 +52,13 @@
         </tspan>
       </text>
     </g>
-    <g transform="translate(760,280)">
+    <g transform="translate(757,280)">
       <text x="0" y="0" class="figure-text">
         <tspan>
-          The output of <tspan style="font-weight: bold;">FiLM</tspan>
+          <tspan style="font-weight: bold;">FiLM</tspan> conserves the
         </tspan>
         <tspan x="0" dy="1.5em">
-          conserves the input
-        </tspan>
-        <tspan x="0" dy="1.5em">
-          dimensions.
+          input dimensions.
         </tspan>
       </text>
     </g>
