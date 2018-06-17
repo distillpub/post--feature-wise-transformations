@@ -84,42 +84,52 @@
 
 <d-article>
   <p>
-    Many important problems require handling multiple sources of information;
-    some refer to this as multimodal learning, and refer to the consolidation of
-    information from multiple modalities in a neural network as modality fusion.
+    Many real-world problems require integrating multiple sources of information.
+    Sometimes these problems involve multiple, distinct modalities of
+    information &mdash; vision, language, audio, etc. &mdash; as is required
+    to understand a scene in a movie or answer a question about an image.
+    Other times, these problems involve multiple sources of the same
+    kind of input, i.e. when summarizing several documents or drawing one
+    image in the style of another.
   </p>
   <figure class="l-body-outset">
     <%= require("../static/diagrams/multimodal.svg") %>
   </figure>
   <p>
-    We sometimes take a step further and assign a relationship between
-    modalities; for instance, in the rightmost example above one could choose to
-    extract meaning from the image <em>in the context of</em> the question being
-    asked. We loosely refer to this as <em>conditioning</em>: the computation
-    carried out by a neural network is <em>modulated</em> by information
-    extracted from an auxiliary modality.
+    When approaching such problems, it often makes sense to process one source
+    of information <em>in the context of</em> another; for instance, in the
+    right example above, one can extract meaning from the image
+    in the context of the question asked to answer it correctly. In machine
+    learning, we often refer to this context-based processing as
+    <em>conditioning</em>: the computation carried out by a model is conditioned
+    or <em>modulated</em> by information extracted from an auxiliary input.
   </p>
   <p>
-    Finding an effective and efficient way to achieve modality fusion or
-    conditioning is a research problem which is relevant to many application
-    areas, and as such many people are attacking it from many different
-    perspectives. In this article, we concentrate on a specific family of
-    approaches &mdash; which we propose to call <em>feature-wise transformations</em>
-    &mdash; and examine their use in a surprisingly large number of neural
-    network architectures to solve various problems. We will argue that these
-    architectures can be understood from a multi-task learning perspective
-    &mdash; where the conditioning signal is taken to be a task description
-    &mdash; and that doing so gives rise to the notion of a
-    <em>learned task representation</em> which allows to capture and leverage
-    the relationship between these tasks.
+    Finding an effective way to condition on or fuse sources of information
+    is an open research problem, and
+    <!-- Introduction -->
+    in this article, we concentrate on a specific family of approaches we call
+    <em>feature-wise transformations</em>.
+    <!-- Related Work -->
+    We will examine the use of feature-wise transformations in many neural network
+    architectures to solve a surprisingly large and diverse set of problems;
+    <!-- Experiments -->
+    their success, we will argue, is due to being flexible enough to learn an
+    effective representation of conditioning input in varied settings.
+    In the language of multi-task learning, where the conditioning signal is
+    taken to be a task description, feature-wise transformations
+    learn a task representation which allows them to capture and leverage the
+    relationship between multiple sources of information, even in remarkably
+    different problem settings.
   </p>
 
   <hr/>
 
   <h1>Feature-wise transformations</h1>
   <p>
-    We begin with a data combination that is not typically considered
-    multimodal: images and category labels. For the purpose of this example, we
+    To motivate feature-wise transformations, we start with a basic example,
+    where the two inputs are images and category labels, respectively.
+    For the purpose of this example, we
     are interested in building a generative model of various classes of images
     (puppy, boat, airplane, etc.). The model takes a source of noise and a class
     as input and outputs an image sample for the requested class.
@@ -197,7 +207,7 @@
   </figure>
   <p>
     A special instance of conditional scaling is feature-wise sigmoidal gating:
-    each feature is scaled by a scalar between <d-math>0</d-math> and
+    each feature is scaled by a value between <d-math>0</d-math> and
     <d-math>1</d-math> as a function of the conditioning representation. This
     constraint is often enforced via a sigmoidal layer, hence the name.
     Intuitively, feature-wise sigmoidal gating allows the conditioning
@@ -222,8 +232,8 @@
     joint values of two inputs, like feature aggregation or feature detection
     (i.e., checking if a feature is present in either of two inputs). In the
     spirit of making as few assumptions about the problem as possible, we might
-    combine <em>both</em> into what we refer to as
-    <em>conditional affine transformations</em>.
+    combine <em>both</em> into a conditional
+    <em>affine transformation</em>.
     <d-footnote>
       An affine transformation is a transformation of the form
       <d-math>y = m * x + b</d-math>.
@@ -841,7 +851,7 @@
   </figure>
   <p>
     To summarize, the way neural networks learn to use FiLM layers seems to
-    vary task to task, input to input, and even feature to
+    vary problem to problem, input to input, and even feature to
     feature; there does not seem to be a single mechanism by which the
     network uses FiLM to condition computation.
     This flexibility may explain why FiLM-related methods have been

@@ -8,10 +8,10 @@
   <g transform="translate(70, 0)">
     <text x="0" y="210" class="figure-text">
       <tspan>
-        A model is given access to both the video sequence and the audio
+        Video and audio must be understood in the context of each
       </tspan>
       <tspan x="0" dy="1.5em">
-        waveform of a movie scene and is asked to predict what is going on.
+        other to understand the scene.
       </tspan>
       <tspan x="0" dy="2em" style="font-style: italic;">
         Credit: still frame taken from the movie Charade.
