@@ -610,20 +610,18 @@
     used to compute the FiLM parameters. Therefore, the model can be seen as
     <em>both</em> the FiLM-ed network the FiLM generator.
   </p>
-  <button class="collapsible">Domain adaptation<span style="float: right;">+</span></button>
-  <div class="content">
-    <p>
-      Li et al. <d-cite key="li2018adaptive"></d-cite> find a similar approach
-      highly effective for domain adaptation, updating the per-channel batch
-      normalization statistics (mean and variance) of a network trained on one
-      domain with that network's statistics in a new, target domain.  Updating
-      these statistics is mathematically equivalent to modifying the
-      feature-wise affine transformations in batch normalization layers, as in
-      Conditional Batch Normalization. Notably, this approach, along with
-      Adaptive Instance Normalization, has the particular advantage of not
-      requiring any extra, trainable parameters.
-    </p>
-  </div>
+  <button class="collapsible" content-name="domain-adaptation">Domain adaptation<span style="float: right;">+</span></button>
+  <p class="content" content-name="domain-adaptation">
+    Li et al. <d-cite key="li2018adaptive"></d-cite> find a similar approach
+    highly effective for domain adaptation, updating the per-channel batch
+    normalization statistics (mean and variance) of a network trained on one
+    domain with that network's statistics in a new, target domain.  Updating
+    these statistics is mathematically equivalent to modifying the
+    feature-wise affine transformations in batch normalization layers, as in
+    Conditional Batch Normalization. Notably, this approach, along with
+    Adaptive Instance Normalization, has the particular advantage of not
+    requiring any extra, trainable parameters.
+  </p>
   <button class="collapsible" content-name="image-recognition">Image recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="image-recognition">
     As we have seen so far, feature-wise transformations can be used as a
