@@ -307,8 +307,8 @@
             focusAll();
         });
     };
-    setUp('../data/clevr_gamma_beta_subsampled.json', 'clevr');
-    setUp('../data/style_gamma_beta_subsampled.json', 'style-transfer');
+    setUp('data/clevr_gamma_beta_subsampled.json', 'clevr');
+    setUp('data/style_gamma_beta_subsampled.json', 'style-transfer');
 })();
 
 (function() {
@@ -397,9 +397,9 @@
               .enter()
         });
     };
-    processExample("example-1", "../data/clevr_interpolation_1.json");
+    processExample("example-1", "data/clevr_interpolation_1.json");
     // TODO: switch to clevr_interpolation_2.json when we have it.
-    processExample("example-2", "../data/clevr_interpolation_1.json");
+    processExample("example-2", "data/clevr_interpolation_1.json");
 })();
 
 (function() {
@@ -464,8 +464,8 @@
                 .style("opacity", 0.6);
         });
     };
-    setUp('../data/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
-    setUp('../data/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
+    setUp('data/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
+    setUp('data/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
 })();
 
 (function() {
@@ -590,8 +590,8 @@
             focusAll();
         });
     };
-    setUp('../data/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
-    setUp('../data/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
+    setUp('data/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
+    setUp('data/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
 })();
 
 (function() {
@@ -625,7 +625,7 @@
     var dataset;
     var xScale;
     var yScale;
-    d3.json("../data/clevr_tsne.json", function(data) {
+    d3.json("data/clevr_tsne.json", function(data) {
         dataset = data.slice(0, 1024);
 
         // Create scales
@@ -756,7 +756,7 @@
     var dataset;
     var xScale;
     var yScale;
-    d3.json("../data/style_tsne.json", function(data) {
+    d3.json("data/style_tsne.json", function(data) {
         dataset = {"artists": data.artists, "points": data.points.slice(0, 512)};
 
         // Create scales
@@ -797,7 +797,7 @@
                              .duration(200)
                              .style("opacity", .9);
 
-                        var url = "../images/style_images/" + d.filename;
+                        var url = "images/style_images/" + d.filename;
 
                         tooltip.html("<img src=" + url + " class='loading'/>")
                              .style("left", (d3.event.pageX + 5) + "px")

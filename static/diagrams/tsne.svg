@@ -26,11 +26,11 @@
     <rect x="10" y="100" width="250" height="250" style="fill: none;"/>
   </g>
   <g transform="translate(300, 110)" id="clevr-legend"></g>
-  <image x="285" y="70" height="27" width="27" xlink:href="../images/pointer.svg"/>
+  <image x="285" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
   <g id="style-transfer-plot">
     <rect x="490" y="100" width="250" height="250" style="fill: none;"/>
   </g>
   <circle cx="703" cy="220" r="20" style="stroke-width: 4px; fill: none;" class="figure-element"/>
   <g transform="translate(770, 110)" id="style-transfer-legend"></g>
-  <image x="755" y="70" height="27" width="27" xlink:href="../images/pointer.svg"/>
+  <image x="755" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
 </svg>

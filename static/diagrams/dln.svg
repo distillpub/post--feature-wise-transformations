@@ -100,7 +100,7 @@
       </g>
       <g transform="translate(59, 257)">
         <rect width="70" height="40" class="figure-element figure-box"/>
-        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="../images/dln_gate.png"/>
+        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="images/dln_gate.png"/>
       </g>
       <g class="figure-faded">
         <path d="M 188 257 L 188 240" class="figure-line"/>
@@ -108,7 +108,7 @@
       </g>
       <g transform="translate(154, 257)">
         <rect width="70" height="40" class="figure-element figure-box"/>
-        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="../images/dln_gate.png"/>
+        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="images/dln_gate.png"/>
       </g>
       <g class="figure-faded">
         <path d="M 283 257 L 283 240" class="figure-line"/>
@@ -116,7 +116,7 @@
       </g>
       <g transform="translate(249, 257)">
         <rect width="70" height="40" class="figure-element figure-box"/>
-        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="../images/dln_gate.png"/>
+        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="images/dln_gate.png"/>
       </g>
       <g class="figure-faded">
         <path d="M 378 257 L 378 240" class="figure-line"/>
@@ -124,7 +124,7 @@
       </g>
       <g transform="translate(344, 257)">
         <rect width="70" height="40" class="figure-element figure-box"/>
-        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="../images/dln_gate.png"/>
+        <image x="3" y="2" width="63" height="36" style="clip-path: inset(0 0 0 0 round 3px);"xlink:href="images/dln_gate.png"/>
       </g>
       <text x="0" y="376" dy="0.4em" class="figure-text figure-text-faded"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t-1</tspan></text>
       <g transform="translate(0, 337)">

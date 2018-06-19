@@ -33,7 +33,7 @@
     </tspan>
   </text>
   <g transform="translate(90, 0)">
-    <image x="260" y="0" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/analogy_image.jpg"/>
+    <image x="260" y="0" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/analogy_image.jpg"/>
     <text x="260" y="150" style="font-style: italic;" class="figure-text">
       Q: What is the <tspan style="font-weight: bold">blue</tspan> big <tspan style="font-weight: bold">cylinder</tspan> made of?
     </text>
@@ -43,7 +43,7 @@
     <path d="M 457 70 L 535 70" class="figure-path"/>
     <use x="535" y="70" xlink:href="#arrow-right" class="figure-path"/>
     <text x="545" y="70" dy="0.4em" class="figure-text" style="fill: red">Rubber ✘</text>
-    <image x="260" y="220" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/analogy_image.jpg"/>
+    <image x="260" y="220" width="192" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/analogy_image.jpg"/>
     <text x="260" y="370" style="font-style: italic;" class="figure-text">
       <tspan>
         Q<tspan dy="4px" class="subscript">A</tspan>

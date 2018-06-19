@@ -34,7 +34,7 @@
       </tspan>
     </text>
     <g transform="translate(200, 0)">
-      <image x="0" y="316" width="64" height="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/guesswhat_input.jpg"/>
+      <image x="0" y="316" width="64" height="64" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/guesswhat_input.jpg"/>
       <path d="M 64 348 L 95 348" class="figure-line"/>
       <use xlink:href="#arrow-right" transform="translate(95, 348)" class="figure-path"/>
       <g transform="translate(100, 288)" class="figure-faded">

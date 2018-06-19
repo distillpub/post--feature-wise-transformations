@@ -30,7 +30,7 @@
     <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
   </g>
   <g transform="translate(10, 540)" id="clevr-legend"></g>
-  <image x="340" y="527" height="27" width="27" xlink:href="../images/pointer.svg"/>
+  <image x="340" y="527" height="27" width="27" xlink:href="images/pointer.svg"/>
   <g id="style-transfer-plot">
     <rect x="515" y="100" width="360" height="360" style="fill: none;"/>
     <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
@@ -39,5 +39,5 @@
     <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
   </g>
   <g transform="translate(515, 540)" id="style-transfer-legend"></g>
-  <image x="820" y="527" height="27" width="27" xlink:href="../images/pointer.svg"/>
+  <image x="820" y="527" height="27" width="27" xlink:href="images/pointer.svg"/>
 </svg>

@@ -1,9 +1,9 @@
 <svg viewBox="0 0 704 600" xmlns="http://www.w3.org/2000/svg">
   <path d="M10,300l684,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
   <g transform="translate(-10, 0)" id="example-1">
-    <image x="462" y="5" height="27" width="27" xlink:href="../images/pointer.svg"/>
+    <image x="462" y="5" height="27" width="27" xlink:href="images/pointer.svg"/>
     <g transform="translate(0, 30)">
-      <image x="30" y="50" width="196" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/question_interpolation_input.png"/>
+      <image x="30" y="50" width="196" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/question_interpolation_input.png"/>
     </g>
     <text x="280" y="10" class="figure-text">
       <tspan>
@@ -71,9 +71,9 @@
     </g>
   </g>
   <g transform="translate(-10, 350)" id="example-2">
-    <image x="462" y="5" height="27" width="27" xlink:href="../images/pointer.svg"/>
+    <image x="462" y="5" height="27" width="27" xlink:href="images/pointer.svg"/>
     <g transform="translate(0, 30)">
-      <image x="30" y="50" width="196" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/question_interpolation_input.png"/>
+      <image x="30" y="50" width="196" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/question_interpolation_input.png"/>
     </g>
     <text x="280" y="10" class="figure-text">
       <tspan>

@@ -34,7 +34,7 @@
       </tspan>
     </text>
     <g transform="translate(-15, 0)">
-      <image x="200" y="0" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/cassis_cap_lombard_opus_196.jpg"/>
+      <image x="200" y="0" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/cassis_cap_lombard_opus_196.jpg"/>
       <g transform="translate(340, 0)">
         <rect width="420" height="96" class="figure-film-generator figure-element figure-box"/>
         <text x="210" y="48" dy="0.4em" style="font-weight: bold; text-anchor: middle;" class="figure-text">FiLM generator</text>
@@ -54,7 +54,7 @@
       <path d="M 665 96 L 665 233" class="figure-line"/>
       <use xlink:href="#arrow-down" transform="translate(665, 233)" class="figure-path"/>
       <text x="340" y="106" dy="1em" class="figure-text">FiLM parameters</text>
-      <image x="200" y="250" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/tuebingen_neckarfront.jpg"/>
+      <image x="200" y="250" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/tuebingen_neckarfront.jpg"/>
       <g transform="translate(240, -50)">
         <g transform="translate(100, 288)">
           <rect width="60" height="120" class="figure-filmed-network figure-element figure-box figure-faded"/>
@@ -126,7 +126,7 @@
             normalization
           </tspan>
         </text>
-        <image x="554" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
+        <image x="554" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
       </g>
     </g>
   </g>

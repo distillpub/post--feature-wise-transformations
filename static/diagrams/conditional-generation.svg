@@ -37,6 +37,6 @@
     </g>
     <path d="M 230 85 L 300 85" class="figure-line"/>
     <use xlink:href="#arrow-right" transform="translate(300, 85)" class="figure-path"/>
-    <image x="305" y="10" width="150" height="150" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/puppy.jpg"/>
+    <image x="305" y="10" width="150" height="150" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/puppy.jpg"/>
   </g>
 </svg>

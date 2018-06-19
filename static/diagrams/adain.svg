@@ -55,8 +55,8 @@
         the stylized image.
       </tspan>
     </text>
-    <image x="0" y="0" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/cassis_cap_lombard_opus_196.jpg"/>
-    <image x="0" y="250" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/tuebingen_neckarfront.jpg"/>
+    <image x="0" y="0" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/cassis_cap_lombard_opus_196.jpg"/>
+    <image x="0" y="250" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/tuebingen_neckarfront.jpg"/>
     <g class="figure-faded">
       <path d="M 96 298 L 195 298" class="figure-line"/>
       <use xlink:href="#arrow-right" transform="translate(195, 298)" class="figure-path"/>
@@ -127,7 +127,7 @@
         <path d="M 440 348 L 525 348" class="figure-line"/>
         <use xlink:href="#arrow-right" transform="translate(525, 348)" class="figure-path"/>
       </g>
-      <image x="530" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
+      <image x="530" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
     </g>
   </g>
 </svg>

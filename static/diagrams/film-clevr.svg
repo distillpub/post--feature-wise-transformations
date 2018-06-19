@@ -25,7 +25,7 @@
       </tspan>
     </text>
     <g transform="translate(140, 0)">
-      <image x="48" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/clevr_input.jpg"/>
+      <image x="48" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/clevr_input.jpg"/>
       <g class="figure-faded">
         <path d="M 144 348 L 175 348" class="figure-line"/>
         <use xlink:href="#arrow-right" transform="translate(175, 348)" class="figure-path"/>

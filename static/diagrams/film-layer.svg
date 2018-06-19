@@ -57,8 +57,8 @@
           parameter.
         </tspan>
       </text>
-      <image x="130" y="220" height="27" width="27" xlink:href="../images/pointer.svg"/>
-      <image x="130" y="410" height="27" width="27" xlink:href="../images/pointer.svg"/>
+      <image x="130" y="220" height="27" width="27" xlink:href="images/pointer.svg"/>
+      <image x="130" y="410" height="27" width="27" xlink:href="images/pointer.svg"/>
       <rect x="240" y="205" width="180" height="300" class="figure-group figure-box"/>
       <g transform="translate(270, 125)" id="input-layer">
         <g transform="translate(0, 0)" class="feature">
