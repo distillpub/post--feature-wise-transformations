@@ -1,5 +1,6 @@
-<svg viewBox="0 0 704 250" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(-10, 0)">
+<svg viewBox="0 0 704 600" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10,300l684,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <g transform="translate(-10, 0)" id="example-1">
     <image x="462" y="5" height="27" width="27" xlink:href="../images/pointer.svg"/>
     <g transform="translate(0, 30)">
       <image x="30" y="50" width="196" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/question_interpolation_input.png"/>
@@ -15,6 +16,76 @@
     <text x="570" y="10" class="figure-text">
       <tspan>
         How many <tspan style="font-weight: bold;">brown</tspan>
+      </tspan>
+      <tspan x="570" dy="1.5em">
+        things are there?
+      </tspan>
+    </text>
+    <g transform="translate(340, 50)">
+      <g class="figure-faded">
+        <path d="M 0 0 L 270 0" class="figure-line"></path>
+      </g>
+      <g class="interpolated-params" class="figure-path">
+        <circle r="4" cx="0" style="cursor: pointer;" class="figure-faded"/>
+        <circle r="4" cx="30" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="60" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="90" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="120" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="150" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="180" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="210" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="240" style="cursor: pointer;" class="figure-path"/>
+        <circle r="4" cx="270" style="cursor: pointer;" class="figure-faded"/>
+      </g>
+    </g>
+    <g transform="translate(180, 70)">
+      <g transform="translate(0, 150)">
+        <text x="80" class="figure-text">0</text>
+        <text x="120" class="figure-text">1</text>
+        <text x="160" class="figure-text">2</text>
+        <text x="200" class="figure-text">3</text>
+        <text x="240" class="figure-text">4</text>
+        <text x="280" class="figure-text">5</text>
+        <text x="320" class="figure-text">6</text>
+        <text x="360" class="figure-text">7</text>
+        <text x="400" class="figure-text">8</text>
+        <text x="440" class="figure-text">9</text>
+        <text x="480" class="figure-text">10</text>
+        <text x="300" y="25" class="figure-text" style="text-anchor: middle;">
+          Predicted answer probabilities
+        </text>
+      </g>
+      <g class="clevr-probabilities">
+        <rect x="80" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="120" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="160" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="200" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="240" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="280" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="320" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="360" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="400" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="440" width="20" height="120" class="figure-element figure-box"/>
+        <rect x="480" width="20" height="120" class="figure-element figure-box"/>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(-10, 350)" id="example-2">
+    <image x="462" y="5" height="27" width="27" xlink:href="../images/pointer.svg"/>
+    <g transform="translate(0, 30)">
+      <image x="30" y="50" width="196" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="../images/question_interpolation_input.png"/>
+    </g>
+    <text x="280" y="10" class="figure-text">
+      <tspan>
+        How many <tspan style="font-weight: bold;">brown</tspan>
+      </tspan>
+      <tspan x="280" dy="1.5em">
+        things are there?
+      </tspan>
+    </text>
+    <text x="570" y="10" class="figure-text">
+      <tspan>
+        How many <tspan style="font-weight: bold;">yellow</tspan>
       </tspan>
       <tspan x="570" dy="1.5em">
         things are there?

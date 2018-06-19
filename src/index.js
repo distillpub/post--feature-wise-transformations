@@ -349,51 +349,57 @@
 })();
 
 (function() {
-    var svg = d3.select("#question-interpolation-diagram > svg");
-    var interpParams = svg.select(".interpolated-params");
-    var dataset;
+    var processExample = function(example, filepath) {
+        var group = d3.select("#question-interpolation-diagram > svg > #" + example);
+        var interpParams = group.select(".interpolated-params");
+        var dataset;
 
-    d3.json("../data/clevr_interpolation.json", function(data) {
-        dataset = data;
-        var probs = [[], [], [], [], [], [], [], [], [], [], []];
-        for(var i = 0; i < dataset.length; i++) {
-            var p = dataset[i];
-            var sum = 0.0;
-            for(var j = 0; j < 11; j++) {
-                sum += p[j];
+        d3.json(filepath, function(data) {
+            dataset = data;
+            var probs = [[], [], [], [], [], [], [], [], [], [], []];
+            for(var i = 0; i < dataset.length; i++) {
+                var p = dataset[i];
+                var sum = 0.0;
+                for(var j = 0; j < 11; j++) {
+                    sum += p[j];
+                }
+                for(var j = 0; j < 11; j++) {
+                    probs[j].push(p[j]);
+                }
             }
-            for(var j = 0; j < 11; j++) {
-                probs[j].push(p[j] / sum);
-            }
-        }
+            console.log(dataset);
 
-        var update = function(i) {
-            svg.select('.clevr-probabilities')
-    .selectAll("rect")
-              .data(probs)
-              .transition()
-                .attrs({
-                    "y": function(d) { return 10 + (1 - d[i]) * 120; },
-                    "height": function(d) { return d[i] * 120; },
-                });
+            var update = function(i) {
+                group.select('.clevr-probabilities')
+        .selectAll("rect")
+                  .data(probs)
+                  .transition()
+                    .attrs({
+                        "y": function(d) { return 10 + (1 - d[i]) * 120; },
+                        "height": function(d) { return d[i] * 120; },
+                    });
+
+                interpParams.selectAll("circle")
+                  .each(function(j) {
+                    d3.select(this)
+                      .classed("figure-faded", i != j);
+                  });
+
+            };
+            update(0);
 
             interpParams.selectAll("circle")
-              .each(function(j) {
-                d3.select(this)
-                  .classed("figure-faded", i != j);
-              });
-
-        };
-        update(0);
-
-        interpParams.selectAll("circle")
-          .data([0, 45, 47, 50, 55, 60, 65, 70, 90, 95])
-          .attr('cx', function(d, i) { return i * 30; })
-          .on("mouseover", function (d) {
-              update(d);
-          })
-          .enter()
-    });
+              .data([0, 45, 47, 50, 55, 60, 65, 70, 90, 95])
+              .attr('cx', function(d, i) { return i * 30; })
+              .on("mouseover", function (d) {
+                  update(d);
+              })
+              .enter()
+        });
+    };
+    processExample("example-1", "../data/clevr_interpolation_1.json");
+    // TODO: switch to clevr_interpolation_2.json when we have it.
+    processExample("example-2", "../data/clevr_interpolation_1.json");
 })();
 
 (function() {

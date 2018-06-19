@@ -746,7 +746,9 @@
     parameters can be applied even in the visual question-answering setting.
     Using the model trained in Perez et al. <d-cite key="perez2018film"></d-cite>,
     we interpolated between the model's FiLM parameters for two CLEVR questions
-    and plotted the model's post-softmax answer probabilities:
+    and plotted the model's post-softmax answer probabilities (we omit
+    non-numerical answers, as we found they had negligible probability for the
+    questions we report on):
   </p>
   <figure class="l-body" id="question-interpolation-diagram">
     <%= require("../static/diagrams/question-interpolation.svg") %>
