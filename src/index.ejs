@@ -317,115 +317,14 @@
     this idea later in the article.
   </p>
 
-  <h1>Related ideas</h1>
-  <p>
-    FiLM is not the first instantiation of this idea of a duality between neural
-    network conditioning and multi-task learning &mdash; it is in fact heavily
-    inspired by earlier work by Dumoulin et al.
-    <d-cite key="dumoulin2017learned"></d-cite> on folding multiple feed-forward
-    style transfer networks into a single conditional network. In that work,
-    conditional feature-wise affine transformations were heavily coupled with a
-    normalization operation, which is why FiLM is preferred as an abstraction
-    for this article.
-  </p>
-  <p>
-    Some connections can also be drawn between FiLM and the following models and
-    concepts:
-  </p>
-  <button class="collapsible" content-name="zero-shot">Zero-shot learning<span style="float: right;">+</span></button>
-  <p class="content" content-name="zero-shot">
-    The idea of a learning a task representation shares a strong connection with
-    the zero-shot learning problem, where semantic task embeddings, learned
-    from external information, are leveraged in order to make predictions
-    for classes without training examples. For instance, when attempting to
-    generalize to unseen object categories in an image classification setting,
-    it is possible to construct semantic task embeddings
-    from text-only descriptions, and exploit their text-based relationship
-    to predict unseen image categories. Notable examples of this
-    idea being put in practice include Frome et al.
-    <d-cite key="frome2013devise"></d-cite>, Socher et al.
-    <d-cite key="socher2013zero"></d-cite>, and Norouzi et al.
-    <d-cite key="norouzi2014zero"></d-cite>.
-  </p>
-  <button class="collapsible" content-name="hypernetworks">HyperNetworks<span style="float: right;">+</span></button>
-  <p class="content" content-name="hypernetworks">
-    The notion of a secondary network predicting the parameters of a primary
-    network is probably best exemplified by HyperNetworks
-    <d-cite key="ha2016hypernetworks"></d-cite>. From that perspective, the FiLM
-    generator can be viewed as a specialized instance of a HyperNetwork which
-    predicts the FiLM parameters of the FiLM-ed network. The main distinction
-    between the two resides in the number and specificity of predicted
-    parameters: FiLM requires predicting far fewer parameters than
-    Hypernetworks, but FiLM is also less flexible in its ability to modulate the
-    model's computation. The ideal trade-off between flexibility and
-    computational complexity is still an ongoing area of investigation &mdash;
-    curious readers can read about many proposed approaches that lie on the
-    spectrum ranging from FiLM to HyperNetworks in the
-    <a href="#bibliographic-notes">Bibliographic Notes</a>.
-  </p>
-  <button class="collapsible" content-name="attention">Attention<span style="float: right;">+</span></button>
-  <p class="content" content-name="attention">
-    Some parallels can be drawn between methods represented by the FiLM
-    abstraction and attention, but the two operate in different ways which we
-    think are important to disambiguate.
-  </p>
-  <figure class="content l-body-outset" content-name="attention" id="film-vs-attention-diagram">
-    <%= require("../static/diagrams/film-vs-attention.svg") %>
-  </figure>
-  <p class="content" content-name="attention">
-    This difference stems from two different intuitions underlying attention and
-    conditional feature-wise transformations: for the former, it is assumed that
-    the useful information is contained in specific spatial locations or time
-    steps, whereas for the latter, it is assumed that the useful information is
-    contained in specific features or feature maps.
-  </p>
-  <button class="collapsible" content-name="bilinear">Bilinear transformations<span style="float: right;">+</span></button>
-  <p class="content" content-name="bilinear">
-    With a little bit of stretching the operation implemented by FiLM layers can
-    be seen as a special case of a bilinear transformation
-    <d-cite key="tenenbaum2000separating"></d-cite> with low-rank weight
-    matrices. A bilinear transformation defines the relationship between two
-    inputs <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> and the
-    <d-math>k^{th}</d-math> output feature <d-math>y_k</d-math> as
-
-    <d-math block>
-      y_k = \mathbf{x}^T W_k \mathbf{z}.
-    </d-math>
-
-    Note that for each output feature <d-math>y_k</d-math> we have a separate
-    matrix <d-math>W_k</d-math>, so the full set of weights forms a 3-tensor.
-  </p>
-  <figure class="content l-body-outset" content-name="bilinear">
-    <%= require("../static/diagrams/bilinear.svg") %>
-  </figure>
-  <p class="content" content-name="bilinear">
-    If we view <d-math>\mathbf{z}</d-math> as the concatenation of the scaling
-    and shifting vectors <d-math>\gamma</d-math> and <d-math>\beta</d-math>, and
-    if we augment the input <d-math>\mathbf{x}</d-math> with a 1-valued feature,
-    <d-footnote>
-      As is commonly done to turn a linear transformation into an affine
-      transformation.
-    </d-footnote>
-    we can represent a feature-wise affine transformation using a bilinear
-    transformation by zeroing out the appropriate entries of the weight
-    matrices:
-  </p>
-  <figure class="content l-body-outset" content-name="bilinear">
-    <%= require("../static/diagrams/film-as-bilinear.svg") %>
-  </figure>
-  <p class="content" content-name="bilinear">
-    Readers interested in learning about explicit applications of bilinear
-    transformations can consult the <a href="#bibliographic-notes">Bibliographic Notes</a>.
-  </p>
-
-  <hr />
+  <hr/>
 
   <h1>Feature-wise transformations in the literature</h1>
   <p>
-    Feature-wise transformations find their way in many problem settings, but
-    because of their very general nature and wide applicability, this connection
-    is seldom drawn. Here are recent notable examples, grouped by application
-    domain.
+    Feature-wise transformations find their way into many problem settings, but
+    because of their simplicity, their broad effectiveness is seldom
+    highlighted. Here are recent notable examples,
+    grouped by application domain.
   </p>
   <button class="collapsible" content-name="generative-modeling">Generative modeling<span style="float: right;">+</span></button>
   <p class="content" content-name="generative-modeling">
@@ -476,7 +375,7 @@
     </li>
   </ol>
   <p class="content" content-name="generative-modeling">
-    Like for PixelCNN, both approaches can be viewed as inserting FiLM layers
+    As for PixelCNN, both approaches can be viewed as inserting FiLM layers
     after each convolutional layer. The main difference lies in the way in
     which the FiLM-generating network is defined: global conditioning
     expresses the FiLM-generating network as an embedding lookup which is
@@ -488,7 +387,7 @@
   <p class="content" content-name="reinforcement-learning">
     Feature-wise sigmoidal gating is used in the Gated-Attention architecture
     <d-cite key="chaplot2017gated"></d-cite> to fuse linguistic and visual
-    information in an agent trained to follow simple natural language
+    information in an agent trained to follow simple language
     instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
     environment.
   </p>
@@ -571,7 +470,7 @@
     Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use
     feature-wise affine transformations &mdash; in the form of conditional
     instance normalization layers &mdash; to condition a style transfer
-    network on a chosen style image.  Like conditional batch normalization,
+    network on a chosen style image. Like conditional batch normalization,
     conditional instance normalization can be seen as an instance of FiLM
     where the post-normalization feature-wise affine transformation is
     replaced with a FiLM layer. These layers are introduced into a
@@ -590,6 +489,11 @@
     introduce a <em>style prediction network</em>, trained jointly with the
     style transfer network to predict the conditioning parameters directly
     from a given style image.
+  </p>
+  <p class="content" content-name="style-transfer">
+    Though for this article, we prefer FiLM as an abstraction because it is
+    decoupled from any normalization operations, FiLM layers were themselves
+    heavily inspired by conditional normalization layers.
   </p>
   <p class="content" content-name="style-transfer">
     Yang et al. <d-cite key="yang2018efficient"></d-cite> use a related
@@ -687,7 +591,100 @@
     way of adapting the neural acoustic model.
   </p>
 
-  <hr />
+  <hr/>
+
+  <h1>Related ideas</h1>
+  <p>
+    Aside from methods which directly use feature-wise transformations, FiLM
+    connects more broadly with other methods and concepts:
+  </p>
+  <button class="collapsible" content-name="zero-shot">Zero-shot learning<span style="float: right;">+</span></button>
+  <p class="content" content-name="zero-shot">
+    The idea of a learning a task representation shares a strong connection with
+    the zero-shot learning problem, where semantic task embeddings, learned
+    from external information, are leveraged in order to make predictions
+    for classes without training examples. For instance, when attempting to
+    generalize to unseen object categories in an image classification setting,
+    it is possible to construct semantic task embeddings
+    from text-only descriptions, and exploit their text-based relationship
+    to predict unseen image categories. Notable examples of this
+    idea being put in practice include Frome et al.
+    <d-cite key="frome2013devise"></d-cite>, Socher et al.
+    <d-cite key="socher2013zero"></d-cite>, and Norouzi et al.
+    <d-cite key="norouzi2014zero"></d-cite>.
+  </p>
+  <button class="collapsible" content-name="hypernetworks">HyperNetworks<span style="float: right;">+</span></button>
+  <p class="content" content-name="hypernetworks">
+    The notion of a secondary network predicting the parameters of a primary
+    network is probably best exemplified by HyperNetworks
+    <d-cite key="ha2016hypernetworks"></d-cite>. From that perspective, the FiLM
+    generator can be viewed as a specialized instance of a HyperNetwork which
+    predicts the FiLM parameters of the FiLM-ed network. The main distinction
+    between the two resides in the number and specificity of predicted
+    parameters: FiLM requires predicting far fewer parameters than
+    Hypernetworks, but FiLM is also less flexible in its ability to modulate the
+    model's computation. The ideal trade-off between flexibility and
+    computational complexity is still an ongoing area of investigation &mdash;
+    curious readers can read about many proposed approaches that lie on the
+    spectrum ranging from FiLM to HyperNetworks in the
+    <a href="#bibliographic-notes">Bibliographic Notes</a>.
+  </p>
+  <button class="collapsible" content-name="attention">Attention<span style="float: right;">+</span></button>
+  <p class="content" content-name="attention">
+    Some parallels can be drawn between methods represented by the FiLM
+    abstraction and attention, but the two operate in different ways which we
+    think are important to disambiguate.
+  </p>
+  <figure class="content l-body-outset" content-name="attention" id="film-vs-attention-diagram">
+    <%= require("../static/diagrams/film-vs-attention.svg") %>
+  </figure>
+  <p class="content" content-name="attention">
+    This difference stems from two different intuitions underlying attention and
+    conditional feature-wise transformations: for the former, it is assumed that
+    the useful information is contained in specific spatial locations or time
+    steps, whereas for the latter, it is assumed that the useful information is
+    contained in specific features or feature maps.
+  </p>
+  <button class="collapsible" content-name="bilinear">Bilinear transformations<span style="float: right;">+</span></button>
+  <p class="content" content-name="bilinear">
+    With a little bit of stretching the operation implemented by FiLM layers can
+    be seen as a special case of a bilinear transformation
+    <d-cite key="tenenbaum2000separating"></d-cite> with low-rank weight
+    matrices. A bilinear transformation defines the relationship between two
+    inputs <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> and the
+    <d-math>k^{th}</d-math> output feature <d-math>y_k</d-math> as
+
+    <d-math block>
+      y_k = \mathbf{x}^T W_k \mathbf{z}.
+    </d-math>
+
+    Note that for each output feature <d-math>y_k</d-math> we have a separate
+    matrix <d-math>W_k</d-math>, so the full set of weights forms a 3-tensor.
+  </p>
+  <figure class="content l-body-outset" content-name="bilinear">
+    <%= require("../static/diagrams/bilinear.svg") %>
+  </figure>
+  <p class="content" content-name="bilinear">
+    If we view <d-math>\mathbf{z}</d-math> as the concatenation of the scaling
+    and shifting vectors <d-math>\gamma</d-math> and <d-math>\beta</d-math>, and
+    if we augment the input <d-math>\mathbf{x}</d-math> with a 1-valued feature,
+    <d-footnote>
+      As is commonly done to turn a linear transformation into an affine
+      transformation.
+    </d-footnote>
+    we can represent a feature-wise affine transformation using a bilinear
+    transformation by zeroing out the appropriate entries of the weight
+    matrices:
+  </p>
+  <figure class="content l-body-outset" content-name="bilinear">
+    <%= require("../static/diagrams/film-as-bilinear.svg") %>
+  </figure>
+  <p class="content" content-name="bilinear">
+    Readers interested in learning about explicit applications of bilinear
+    transformations can consult the <a href="#bibliographic-notes">Bibliographic Notes</a>.
+  </p>
+
+  <hr/>
 
   <h1>Properties of the learned task representation</h1>
   <p>
