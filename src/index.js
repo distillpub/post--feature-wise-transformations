@@ -8,6 +8,20 @@
             var symbolSpan = d3.select(this).select("span");
             symbolSpan.html(symbolSpan.html() === "+" ? "-" : "+");
         });
+    d3.selectAll(".expand-collapse-button")
+        .on("click", function() {
+            var mode = d3.select(this).html();
+            var contentType = d3.select(this).attr("content-type");
+            d3.select(this).html(mode === "expand all" ? "collapse all" : "expand all");
+            d3.selectAll('.content[content-type="' + contentType + '"]')
+                .style("display", function() {
+                    return mode === "expand all" ? "block" : "none";
+                });
+            d3.selectAll('.collapsible[content-type="' + contentType + '"]').select("span")
+                .html(function() {
+                    return mode === "expand all" ? "-" : "+";
+                });
+        });
 })();
 
 (function() {

@@ -129,7 +129,6 @@ d-figure > figure {
   pointer-events: none;
 }
 
-/* Style the button that is used to open and close the collapsible content */
 .collapsible {
   cursor: pointer;
   padding-top: 12px;
@@ -142,9 +141,17 @@ d-figure > figure {
   font-weight: 700;
 }
 
-/* Style the collapsible content. Note: hidden by default */
 .content {
   display: none;
   overflow: hidden;
   background-color: none;
+}
+
+.expand-collapse-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 700;
+  float: right;
 }
