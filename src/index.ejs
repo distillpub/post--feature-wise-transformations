@@ -601,11 +601,13 @@
   <button class="collapsible" content-name="zero-shot">Zero-shot learning<span style="float: right;">+</span></button>
   <p class="content" content-name="zero-shot">
     The idea of a learning a task representation shares a strong connection with
-    the zero-shot learning problem. For instance, when attempting to generalize
-    to unseen object categories in an image classification setting it is usually
-    assumed that each object category is represented by a semantic embedding
-    vector, and the relationship between training and testing labels is
-    leveraged to make predictions for unseen labels.  Notable examples of this
+    the zero-shot learning problem, where semantic task embeddings, learned
+    from external information, are leveraged in order to make predictions
+    for classes without training examples. For instance, when attempting to
+    generalize to unseen object categories in an image classification setting,
+    it is possible to construct semantic task embeddings
+    from text-only descriptions, and exploit their text-based relationship
+    to predict unseen image categories. Notable examples of this
     idea being put in practice include Frome et al.
     <d-cite key="frome2013devise"></d-cite>, Socher et al.
     <d-cite key="socher2013zero"></d-cite>, and Norouzi et al.
