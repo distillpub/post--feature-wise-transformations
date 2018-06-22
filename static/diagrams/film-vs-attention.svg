@@ -510,7 +510,7 @@
       <path d="M 380 0 430 0" class="figure-line"/>
       <use transform="translate(430 0)" class="figure-path" xlink:href="#arrow-right"/>
       <text class="figure-text" x="480" y="0" style="text-anchor: middle; font-size: 18px;">...</text>
-      <text class="figure-text" x="480" y="0" dy="-2em" style="text-anchor: middle; opacity: 0.3;">(shifting is omitted for clarity)</text>
+      <text class="figure-text" x="480" y="0" dy="-2em" style="text-anchor: middle; opacity: 0.3;">(β is omitted for clarity)</text>
       <text class="figure-text" x="300" y="-45" style="font-family: serif; font-size: 18px;">γ</text>
       <path d="M 530 0 720 0" class="figure-line"/>
       <use class="figure-path" transform="translate(720,0)" xlink:href="#arrow-right"/>
