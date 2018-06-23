@@ -326,40 +326,39 @@
 })();
 
 (function() {
-    var colors = ["#8ed08b", "#afaed4", "#ecebf4", "#8d89c0", "#fdc692",
-                  "#fda057", "#89bedc", "#f67824", "#f44f39", "#fcaf93",
-                  "#fee3c8", "#d1d2e7", "#fc8161"];
-
-    var svg = d3.select("#style-interpolation-diagram > svg");
-
     var processExample = function(example) {
-        svg.selectAll("g#" + example + " > g > circle")
-            .data([0, 1, 2, 3, 4, 5]);
-        svg.selectAll("g#" + example + " > g > image")
-            .data([0, 1, 2, 3, 4, 5]);
+        var svg = d3.select("#style-interpolation-diagram > svg");
+        var imageSelector = svg.select("#example-" + example + " > .image-selector");
 
-        var focus = function(i) {
-            svg.selectAll("g#" + example + " > g > image")
-                .each(function(j) {
-                    d3.select(this)
-                        .classed("figure-faded", i != j);
-                });
-            svg.selectAll("g#" + example + " > g > circle")
-                .each(function(j) {
-                    d3.select(this)
-                        .classed("figure-faded", i != j);
-                });
-        };
+        var xMin = +imageSelector.select("line").attr("x1");
+        var xMax = +imageSelector.select("line").attr("x2");
+        var nTicks = 6;
+        var length = (xMax - xMin) / (nTicks - 1.0);
+        var ticks = [];
+        for(var i = 0; i < nTicks; i++) {
+          ticks.push(xMin + i * length);
+        }
 
-        svg.selectAll("g#" + example + " > g > circle")
-            .on("mouseover", function (d) {
-                focus(d);
-            });
 
-        focus(0);
+        var circle = imageSelector.append("circle")
+            .attrs({"cx": ticks[0], "cy": 0, "r": 6})
+            .style("cursor", "pointer")
+            .classed("figure-path", true);
+
+        var drag = d3.drag()
+          .on("drag", function() {
+              var newX = Math.min(ticks[nTicks - 1], Math.max(ticks[0], d3.event.x));
+              var newTick = Math.round((newX - ticks[0]) / length);
+              newX = ticks[0] + length * newTick;
+              d3.select(this).attr("cx", newX);
+              svg.select("#example-" + example + " > .stylized-image")
+                  .attr("xlink:href", "images/stylized-" + example + "-" + (+newTick + 1) + ".jpg");
+          });
+
+        drag(circle);
     };
-    processExample("example-1");
-    processExample("example-2");
+    processExample("1");
+    processExample("2");
 })();
 
 (function() {
