@@ -9,38 +9,30 @@
   </defs>
   <text x="10" y="10" dy="1em" class="figure-text">
     <tspan>
-      <tspan style="font-weight: bold;">Conditional scaling</tspan> is
-      used by Dhingra
+      Dhingra et al. use <tspan style="font-weight: bold;">conditional scaling</tspan> to
     </tspan>
     <tspan x="10" dy="1.5em">
-      et al. as a way to integrate information
+      integrate query information into a document
     </tspan>
     <tspan x="10" dy="1.5em">
-      about the query to a document
+      processing network. Applying soft attention
     </tspan>
     <tspan x="10" dy="1.5em">
-      processing network. The scaling vector
+       to the
+      <tspan style="font-weight: bold;">query representation tokens</tspan>
     </tspan>
     <tspan x="10" dy="1.5em">
-      is the direct result of applying soft
     </tspan>
     <tspan x="10" dy="1.5em">
-      attention to the
-      <tspan style="font-weight: bold;">query representation</tspan>
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      <tspan style="font-weight: bold;">tokens</tspan>.
+      produces the scaling vector.
     </tspan>
   </text>
   <text x="10" y="210" dy="1em" class="figure-text">
     <tspan>
-      The scaling vector is then multiplied
+      The scaling vector is then multiplied with
     </tspan>
     <tspan x="10" dy="1.5em">
-      with the input <tspan style="font-weight: bold;">document</tspan>
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      <tspan style="font-weight: bold;">representation token</tspan>.
+      the input <tspan style="font-weight: bold;">document representation token</tspan>
     </tspan>
   </text>
   <g transform="translate(0, 10)">

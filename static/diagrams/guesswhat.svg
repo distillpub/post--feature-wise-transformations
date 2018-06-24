@@ -7,30 +7,33 @@
   <g transform="translate(10, 10)">
     <text x="0" y="30" dy="1em" class="figure-text">
       <tspan>
-        The <tspan style="font-weight: bold;">linguistic pipeline</tspan>
+        The <tspan style="font-weight: bold;">linguistic pipeline</tspan> acts
       </tspan>
       <tspan x="0" dy="1.5em">
-        acts as the FiLM generator in
+        as the FiLM generator and also
       </tspan>
       <tspan x="0" dy="1.5em">
-        addition to being passed as
+        directly passes the question
       </tspan>
       <tspan x="0" dy="1.5em">
-        input to the fusion block.
+        representation to the rest
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        of the network.
       </tspan>
     </text>
     <text x="0" y="300" dy="1em" class="figure-text">
       <tspan>
-        The pre-trained <tspan style="font-weight: bold;">visual pipeline</tspan>
+        FiLM layers modulate the pre-
       </tspan>
       <tspan x="0" dy="1.5em">
-        is FiLMed by making the batch
+        trained <tspan style="font-weight: bold;">visual pipeline</tspan> by
       </tspan>
       <tspan x="0" dy="1.5em">
-        normalization parameters
+        making the batch normalization
       </tspan>
       <tspan x="0" dy="1.5em">
-        query-dependent.
+        parameters query-dependent.
       </tspan>
     </text>
     <g transform="translate(200, 0)">
@@ -114,7 +117,7 @@
       <use xlink:href="#arrow-down" transform="translate(490, 283)" class="figure-path"/>
       <g transform="translate(580, 100)" style="opacity: 0.6;">
         <rect width="40" height="308" style="fill: #e0e0e0;" class="figure-element figure-box"/>
-        <text x="20" y="154" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 154)" class="figure-text">fusion block</text>
+        <text x="20" y="154" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 154)" class="figure-text">...</text>
       </g>
       <path d="M 620 254 L 650 254" class="figure-line"/>
       <use xlink:href="#arrow-right" transform="translate(650, 254)" class="figure-path"/>

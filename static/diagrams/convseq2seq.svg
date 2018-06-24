@@ -19,7 +19,7 @@
       features go through a sigmoid function
     </tspan>
     <tspan x="380" dy="1.5em">
-      and are treated as a gating vector.
+      to produce a gating vector.
     </tspan>
   </text>
   <text x="380" y="170" dy="1em" class="figure-text">
