@@ -4,6 +4,7 @@
     <path id="big-row-left" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z"/>
     <path id="big-row-middle" d="M 0 0 l 40 0 l 0 40 l -40 0 Z"/>
     <path id="big-row-right" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z"/>
+    <path id="singleton" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 8 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
     <path id="column-top" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z"/>
     <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
     <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
