@@ -14,7 +14,7 @@
         other to understand the scene.
       </tspan>
       <tspan x="0" dy="2em" style="font-style: italic;">
-        Credit: still frame taken from the movie Charade.
+        Credit: still frame from the movie Charade.
       </tspan>
     </text>
     <image x="0" y="0" height="182" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/charade.png"/>
@@ -30,7 +30,7 @@
         a question being asked.
       </tspan>
       <tspan x="0" dy="2em" style="font-style: italic;">
-        Credit: image-question pair taken from CLEVR.
+        Credit: image-question pair from the CLEVR dataset.
       </tspan>
     </text>
     <image x="0" y="0" height="182" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/clevr_image.jpg"/>

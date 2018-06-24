@@ -11,13 +11,10 @@
       <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
     </tspan>
     <tspan x="260" dy="1.5em">
-      is implemented by <tspan style="font-weight: bold;">concatenating</tspan>
+      simply concatenates the conditioning
     </tspan>
     <tspan x="260" dy="1.5em">
-      the conditioning representation to
-    </tspan>
-    <tspan x="260" dy="1.5em">
-      the input.
+      representation to the input.
     </tspan>
   </text>
   <text x="445" y="100" dy="0.4em" class="figure-text">

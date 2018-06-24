@@ -9,14 +9,13 @@
   <text x="340" y="30" dy="1em" class="figure-text">
     <tspan>
       <tspan style="font-weight: bold;">Conditional scaling</tspan>
-      is implemented
+      first maps the
     </tspan>
     <tspan x="340" dy="1.5em">
-      by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
+      <tspan style="font-weight: bold;">conditioning representation</tspan> to a
     </tspan>
     <tspan x="340" dy="1.5em">
-      <tspan style="font-weight: bold;">representation</tspan>
-      to a scaling vector.
+      scaling vector.
     </tspan>
   </text>
   <text x="340" y="200" dy="1em" class="figure-text">

@@ -127,64 +127,62 @@
     where the two inputs are images and category labels, respectively.
     For the purpose of this example, we
     are interested in building a generative model of various classes of images
-    (puppy, boat, airplane, etc.). The model takes a source of noise and a class
-    as input and outputs an image sample for the requested class.
+    (puppy, boat, airplane, etc.). The model takes as input a class and a source
+    of random noise (i.e., a vector sampled from a normal distribution)
+    and outputs an image sample for the requested class.
   </p>
   <figure class="l-body">
     <%= require("../static/diagrams/conditional-generation.svg") %>
   </figure>
   <p>
-    Our first instinct might be to build a separate model for every possible
-    class. For a small number of classes this is not too bad a solution, but for
-    thousands of classes we quickly run into scaling issues, because the number
-    of parameters we need to train and store grows with the number of classes.
+    Our first instinct might be to build a separate model for each
+    class. For a small number of classes this approach is not too bad a solution,
+    but for thousands of classes, we quickly run into scaling issues, as the number
+    of parameters to store and train grows with the number of classes.
     We are also missing out on the opportunity to leverage commonalities between
-    classes: for instance, different types of dogs (puppy, terrier, dalmatian,
-    etc.) share common visual traits and are likely to share computation when
+    classes; for instance, different types of dogs (puppy, terrier, dalmatian,
+    etc.) share visual traits and are likely to share computation when
     mapping from the abstract noise vector to the output image.
   </p>
   <p>
-    Now let's imagine that in addition to the various classes we also need to
-    take into account attributes like size or color.  In that case, we can't
-    reasonably expect to train a separate network for <em>all</em> possible
-    conditioning values! Let's examine a few simple options.
+    Now let's imagine that, in addition to the various classes, we also need to
+    model attributes like size or color. In this case, we can't
+    reasonably expect to train a separate network for <em>each</em> possible
+    conditioning combination! Let's examine a few simple options.
   </p>
   <p>
     A quick fix would be to concatenate a representation of the conditioning
     information to the noise vector and treat the result as the model's input.
-    This is very parameter-efficient &mdash; all we need to do is to increase
-    the size of the first layer's weight matrix to accomodate the conditioning
-    representation &mdash; but in doing so we make the implicit assumption that
-    the input is where the model needs to take class information into account.
-    Maybe this is the right assumption, or maybe it's not: it could be that the
-    model does not need to take the class into account until late into the
-    generation process, in which case we are forcing it to carry this
-    information around unaltered for a long time.
+    This solution is quite parameter-efficient, as we only need to increase
+    the size of the first layer's weight matrix. However, this approach makes the implicit
+    assumption that the input is where the model needs to use the conditioning information.
+    Maybe this assumption is correct, or maybe it's not; perhaps the
+    model does not need to incorporate the conditioning information until late
+    into the generation process. In this case, we would be forcing the model to
+    carry this information around unaltered for many layers.
   </p>
   <p>
-    Because this is a cheap operation, we might as well avoid making any
-    assumption and concatenate the conditioning representation to the input of
-    <em>all</em> layers in the network. We propose to call this
+    Because this operation is cheap, we might as well avoid making any such
+    assumptions and concatenate the conditioning representation to the input of
+    <em>all</em> layers in the network. Let's call this approach
     <em>concatenation-based conditioning</em>.
   </p>
   <figure class="l-body">
     <%= require("../static/diagrams/concatenation-based-conditioning.svg") %>
   </figure>
   <p>
-    Aside from concatenation, another efficient way to integrate class
-    information into the network is via <em>biasing</em> of the hidden layers
-    based on the conditioning representation &mdash; which is sometimes referred
-    to as <em>conditional biasing</em>.
+    Another efficient way to integrate conditional information into the network
+    is via <em>conditional biasing</em>, namely, by adding a <em>bias</em> to
+    the hidden layers based on the conditioning representation.
   </p>
   <figure class="l-body">
     <%= require("../static/diagrams/conditional-biasing.svg") %>
   </figure>
   <p>
-    It's interesting to note that conditional biasing is an equivalent way of
-    implementing concatenation-based conditioning. To understand the
-    equivalence, consider a simple fully-connected linear layer applied to the
-    concatenation of an input <d-math>\mathbf{x}</d-math> and a conditioning
-    representation <d-math>\mathbf{z}</d-math>.
+    Interestingly, conditional biasing is actually just another way to implement
+    concatenation-based conditioning. Consider a fully-connected linear layer
+    applied to a concatenated an input <d-math>\mathbf{x}</d-math> and
+    conditioning representation <d-math>\mathbf{z}</d-math>:
     <d-footnote>
       The same argument applies to convolutional networks, provided we ignore
       the border effects due to zero-padding.
@@ -195,55 +193,62 @@
   </figure>
   <p>
     Yet another efficient way to integrate class information into the network is
-    via <em>scaling</em> of the hidden layers based on the conditioning
-    representation. We refer to this as <em>conditional scaling</em>.
+    via <em>conditional scaling</em>, i.e., scaling hidden layers
+    based on the conditioning representation.
   </p>
   <figure class="l-body">
     <%= require("../static/diagrams/conditional-scaling.svg") %>
   </figure>
   <p>
     A special instance of conditional scaling is feature-wise sigmoidal gating:
-    each feature is scaled by a value between <d-math>0</d-math> and
-    <d-math>1</d-math> as a function of the conditioning representation. This
-    constraint is often enforced via a sigmoidal layer, hence the name.
-    Intuitively, feature-wise sigmoidal gating allows the conditioning
-    information to select which features are passed forward and which are zeroed
-    out.
+    scaled each feature by a value between <d-math>0</d-math> and
+    <d-math>1</d-math> (enforced by applying the sigmoid function), as a
+    function of the conditioning representation. Intuitively, this gating allows
+    the conditioning information to select which features are passed forward
+    and which are zeroed out.
   </p>
   <p>
     Given that both additive and multiplicative interactions seem natural and
-    intuitive, which one should we pick? One argument in favor of
+    intuitive, which approach should we pick? One argument in favor of
     <em>multiplicative</em> interactions is that they are useful in learning
     relationships between inputs, as these interactions naturally identify
-    "matches": elements with highly similar values (regardless of sign) will
+    "matches": elements with similar values (regardless of sign) will
     generally produce higher values when multiplied and lower values otherwise.
-    This is why dot products are often used to determine how similar two vectors
-    are.
+    This property is why dot products are often used to determine how similar
+    two vectors are.
     <d-footnote>
       Multiplicative interactions alone have had a history of success in various
       domains &mdash; see <a href="#bibliographic-notes">Bibliographic Notes</a>.
     </d-footnote>
     One argument in favor of <em>additive</em> interactions is that they are
-    more natural fit for applications that are less strongly dependent on the
+    more natural for applications that are less strongly dependent on the
     joint values of two inputs, like feature aggregation or feature detection
-    (i.e., checking if a feature is present in either of two inputs). In the
-    spirit of making as few assumptions about the problem as possible, we might
-    combine <em>both</em> into a conditional
-    <em>affine transformation</em>.
+    (i.e., checking if a feature is present in either of two inputs).
+  </p>
+  <p>
+    In the spirit of making as few assumptions about the problem as possible,
+    we may as well combine <em>both</em> into a
+    conditional <em>affine transformation</em>,
     <d-footnote>
       An affine transformation is a transformation of the form
       <d-math>y = m * x + b</d-math>.
     </d-footnote>
+    There is some evidence to suggest that using both kinds of interactions
+    is more effective than either alone
+    <d-cite key="perez2018film,yu2018guided"></d-cite>,
+    perhaps from getting the best of both worlds.
   </p>
   <p>
     All methods outlined above share the common trait that they act at the
     <em>feature</em> level; in other words, they leverage <em>feature-wise</em>
     interactions between the conditioning representation and the conditioned
-    network. More complex forms of interactions are certainly possible, but in
-    practice feature-wise interactions strike a happy compromise between
-    effectiveness and efficiency: the number of scaling and/or shifting
-    coefficients we need to predict to condition the network scales linearly
-    with the total number of features in the network.
+    network. It is certainly possible to use more complex interactions,
+    but feature-wise interactions strike a happy compromise between
+    effectiveness and efficiency: the number of conditioning scaling and/or
+    shifting coefficients to predictscales linearly with the number of features
+    in the network. Also, in practice, feature-wise transformations (often
+    compounded across multiple layers) frequently have enough capacity to
+    model complex phenomenon in numerous settings, as we will review later on.
   </p>
   <h3>Nomenclature</h3>
   <p>
@@ -251,7 +256,7 @@
     abstract away the distinction between multiplicative and additive
     interactions. Without losing generality, let's focus on feature-wise affine
     transformations, and let's adopt the nomenclature of Perez et al.
-    <d-cite key="perez2018film"></d-cite>, which formalizes these
+    <d-cite key="perez2018film"></d-cite>, which formalizes conditional affine
     transformations under the acronym <em>FiLM</em>, for Feature-wise Linear
     Modulation.
     <d-footnote>
@@ -262,11 +267,11 @@
   </p>
   <p>
     We say that a neural network is modulated using FiLM, or <em>FiLM-ed</em>,
-    through the insertion of <em>FiLM layers</em> in its architecture. These are
+    after inserting <em>FiLM layers</em> into its architecture. These layers are
     parametrized by some form of conditioning information, and the mapping from
     conditioning information to FiLM parameters is called the <em>FiLM generator</em>.
     In other words, the FiLM generator predicts the parameters of the FiLM
-    layers based on some arbitrary input. For simplicity, you can assume that
+    layers based on some auxiliary input. For simplicity, you can assume that
     the FiLM generator outputs the concatenation of all FiLM parameters for the
     network architecture.
   </p>
@@ -277,16 +282,16 @@
     As the name implies, a FiLM layer applies a feature-wise affine
     transformation to its input. By <em>feature-wise</em>, we mean that scaling
     and shifting are applied element-wise, or in the case of convolutional
-    networks, feature map-wise.
+    networks, feature map -wise.
     <d-footnote>
       To expand a little more on the convolutional case, feature maps can be
       thought of as the same feature detector being evaluated at different
       spatial locations, in which case it makes sense to apply the same affine
       transformation to all spatial locations.
     </d-footnote>
-    In other words, assuming <d-math>\mathbf{x}</d-math> is a FiLM layer's input
-    and <d-math>\mathbf{z}</d-math> is the conditioning information, and
-    assuming <d-math>\gamma</d-math> and <d-math>\beta</d-math> are
+    In other words, assuming <d-math>\mathbf{x}</d-math> is a FiLM layer's
+    input, <d-math>\mathbf{z}</d-math> is conditioning input, and
+    <d-math>\gamma</d-math> and <d-math>\beta</d-math> are
     <d-math>\mathbf{z}</d-math>-dependent scaling and shifting vectors,
 
     <d-math block>
@@ -303,14 +308,12 @@
   <p>
     In addition to being a good abstraction of conditional feature-wise
     transformations, the FiLM nomenclature lends itself well to the notion of a
-    <em>task representation</em>. What we mean is that the relationship between
-    the conditioning signal and the network it modulates can be understood from
-    the point of view of multi-task learning, where the conditioning signal acts
-    as a task description, and where the concatenation of all scaling and
-    shifting coefficients output by the FiLM generator can be thought of as both
+    <em>task representation</em>. From the perspective of multi-task learning,
+    we can view the conditioning signal as the task description, and we can view the
+    concatenation of all FiLM scaling and shifting coefficients as both
     an instruction on <em>how to modulate</em> the conditioned network and a
     <em>representation</em> of the task at hand. We will explore and illustrate
-    this idea later in the article.
+    this idea later on.
   </p>
 
   <hr/>
@@ -507,7 +510,7 @@
     So far, many of the models we covered have two sub-networks: a primary
     network in which feature-wise transformations are applied, and a secondary
     network which outputs parameters for these transformations. However, this
-    distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
+    distinction between <em>FiLMed network</em> and <em>FiLM generator</em>
     is not strictly necessary. As an example, Huang et al.
     <d-cite key="huang2017arbitrary"></d-cite> proposes an alternative for
     fast and arbitrary style transfer in the form of an adaptive instance
@@ -523,7 +526,7 @@
     on a secondary network to predict the FiLM parameters from the style
     image, the main network itself is used to extract style features which are
     used to compute the FiLM parameters. Therefore, the model can be seen as
-    <em>both</em> the FiLM-ed network the FiLM generator.
+    <em>both</em> the FiLMed network the FiLM generator.
   </p>
   <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation<span style="float: right;">+</span></button>
   <p class="content" content-name="domain-adaptation" content-type="literature">
@@ -595,7 +598,7 @@
   <h1>Related ideas</h1>
   <p>
     Aside from methods which directly use feature-wise transformations, FiLM
-    connects more broadly with other methods and concepts:
+    connects more broadly with other methods and concepts as well.
   </p>
   <div style="width: 100%">
     <button class="expand-collapse-button" content-type="related">expand all</button>
@@ -621,7 +624,7 @@
     network is probably best exemplified by HyperNetworks
     <d-cite key="ha2016hypernetworks"></d-cite>. From that perspective, the FiLM
     generator can be viewed as a specialized instance of a HyperNetwork which
-    predicts the FiLM parameters of the FiLM-ed network. The main distinction
+    predicts the FiLM parameters of the FiLMed network. The main distinction
     between the two resides in the number and specificity of predicted
     parameters: FiLM requires predicting far fewer parameters than
     Hypernetworks, but FiLM is also less flexible in its ability to modulate the

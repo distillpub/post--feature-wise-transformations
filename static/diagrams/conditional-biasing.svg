@@ -9,22 +9,21 @@
   <text x="340" y="30" dy="1em" class="figure-text">
     <tspan>
       <tspan style="font-weight: bold;">Conditional biasing</tspan>
-      is implemented
+      first maps
     </tspan>
     <tspan x="340" dy="1.5em">
-      by first mapping the <tspan style="font-weight: bold;">conditioning</tspan>
+      the <tspan style="font-weight: bold;">conditioning representation</tspan>
     </tspan>
     <tspan x="340" dy="1.5em">
-      <tspan style="font-weight: bold;">representation</tspan>
       to a bias vector.
     </tspan>
   </text>
   <text x="340" y="200" dy="1em" class="figure-text">
     <tspan>
-      The bias vector is then added to
+      The bias vector is then
     </tspan>
     <tspan x="340" dy="1.5em">
-      the input.
+      added to the input.
     </tspan>
   </text>
   <g transform="translate(-10, 10)">

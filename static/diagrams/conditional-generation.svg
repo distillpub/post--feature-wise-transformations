@@ -6,7 +6,7 @@
   <g transform="translate(520, 0)">
     <text x="0" y="10" dy="1em" class="figure-text">
       <tspan>
-        The <tspan style="font-weight: bold;">decoder-based</tspan>
+        A <tspan style="font-weight: bold;">decoder-based</tspan>
       </tspan>
       <tspan x="0" dy="1.5em">
         <tspan style="font-weight: bold;">generative model</tspan>
