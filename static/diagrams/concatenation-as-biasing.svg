@@ -19,7 +19,7 @@
   <g transform="translate(10, 20)">
     <text x="0" y="0" class="figure-text">
       <tspan>
-        Concatenation-based conditioning
+        <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
       </tspan>
       <tspan x="0" dy="1.5em">
         is equivalent to <tspan style="font-weight: bold;">conditional biasing</tspan>.
@@ -42,19 +42,16 @@
   <g transform="translate(540, 20)">
     <text x="0" y="0" class="figure-text">
       <tspan>
-        The resulting two vectors
+        We can then add the
       </tspan>
       <tspan x="0" dy="1.5em">
-        are added together. The <tspan style="font-weight: bold;">z</tspan>-
+        resulting two vectors.
       </tspan>
       <tspan x="0" dy="1.5em">
-        dependent vector can be
+        The <tspan style="font-weight: bold;">z</tspan>-dependent vector
       </tspan>
       <tspan x="0" dy="1.5em">
-        thought of as a conditional
-      </tspan>
-      <tspan x="0" dy="1.5em">
-        bias.
+        is a conditional bias.
       </tspan>
     </text>
   </g>
