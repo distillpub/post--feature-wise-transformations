@@ -127,6 +127,7 @@ d-figure > figure {
   max-width: 300px;
   max-height: 300px;
   pointer-events: none;
+  transition: opacity;
 }
 
 .collapsible {
@@ -154,4 +155,18 @@ d-figure > figure {
   font-size: 18px;
   font-weight: 700;
   float: right;
+}
+
+.feature-map-select {
+    font-size: 20px;
+}
+
+.feature-map-select select {
+    padding: 5px 8px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    cursor: pointer;
+    font-size: inherit;
 }

@@ -826,6 +826,25 @@
     where question types are scattered across the three clusters.
   </p>
   <p>
+    In cases where question types alone cannot explain the clustering of the
+    FiLM parameters, we can turn to the conditioning content itself to gain
+    and understanding of the mechanism at play. In the following plots we again
+    plot gamma-beta pairs for individual feature maps, but we color code
+    this time by indicator words in questions.
+  </p>
+  <figure class="l-body-outset" id="clevr-subcluster-color-words-diagram">
+    <span class="feature-map-select">
+      <label for="clevr-words-feat-idx">Select a feature map to visualize:</label>
+      <select id="clevr-words-feat-idx">
+      <% 
+            fm_indices = [26, 38, 56, 60, 76, 85, 92,  98, 243];
+            for(var i=0; i < fm_indices.length; i++) { %>
+            <option value="<%= fm_indices[i] %>">Feature Map <%= fm_indices[i] %></option>
+            <% } %>
+      </select></span>
+    <%= require("../static/diagrams/clevr-subcluster-color.svg") %>
+  </figure>
+  <p>
     The existence of this structure has already been explored, albeit more
     indirectly, by Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
     as well as Perez et al. <d-cite key="perez2018film"></d-cite>, who
