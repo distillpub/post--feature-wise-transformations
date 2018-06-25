@@ -828,22 +828,22 @@
   <p>
     In cases where question types alone cannot explain the clustering of the
     FiLM parameters, we can turn to the conditioning content itself to gain
-    and understanding of the mechanism at play. In the following plots we again
-    plot gamma-beta pairs for individual feature maps, but we color code
-    this time by indicator words in questions.
+    and understanding of the mechanism at play. Let's take a look at the same
+    feature map scatter plots, but this time see if coloring gamma-beta parameters 
+    by the words in the questions can explain these cluster shapes.
   </p>
   <figure class="l-body-outset" id="clevr-subcluster-color-words-diagram">
-    <span class="feature-map-select">
-      <label for="clevr-words-feat-idx">Select a feature map to visualize:</label>
-      <select id="clevr-words-feat-idx">
-      <% 
-            fm_indices = [26, 38, 56, 60, 76, 85, 92,  98, 243];
-            for(var i=0; i < fm_indices.length; i++) { %>
-            <option value="<%= fm_indices[i] %>">Feature Map <%= fm_indices[i] %></option>
-            <% } %>
-      </select></span>
-    <%= require("../static/diagrams/clevr-subcluster-color.svg") %>
+    <%= require("../static/diagrams/clevr-subcluster-color-words.svg") %>
   </figure>
+  <p>
+    In the left plot (feature map 26), the left subcluster corresponds 
+    to questions discussing objects positioned "in front" of other objects, while
+    the right subcluster to those "behind" other objects. 
+    In the right plot we see some evidence of separation based
+    on object materials. The left subcluster corresponds to questions involving matte
+    and rubber objects, while the right subcluster contains questions about shiny, metal,
+    or metallic objects.
+  </p>
   <p>
     The existence of this structure has already been explored, albeit more
     indirectly, by Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>

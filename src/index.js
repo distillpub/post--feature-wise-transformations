@@ -381,7 +381,6 @@
                     probs[j].push(p[j]);
                 }
             }
-            console.log(dataset);
 
             var update = function(i) {
                 group.select('.clevr-probabilities')
@@ -630,13 +629,8 @@
             focusAll();
         });
     };
-    var select = d3.select("#clevr-subcluster-color-words-diagram select")
-        .on('change', function(d, i) {
-            var selectValue = select.property('value')
-            console.log(selectValue);
-            setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_' + selectValue + '.json', 'first', 0);
-        });
     setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
+    setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_92.json', 'second', 0);
 })();
 
 (function() {
