@@ -857,13 +857,29 @@
     To summarize, the way neural networks learn to use FiLM layers seems to
     vary problem to problem, input to input, and even feature to
     feature; there does not seem to be a single mechanism by which the
-    network uses FiLM to condition computation.
-    This flexibility may explain why FiLM-related methods have been
-    successful across such a wide variety of domains.
-    It also appears that the learned FiLM representation contains
-    a lot of interesting task information which helps explain why it is
-    possible to perform task interpolations, analogies, and analysis using
-    this representation.
+    network uses FiLM to condition computation. This flexibility may
+    explain why FiLM-related methods have been successful across such a
+    wide variety of domains.
+  </p>
+  <p>
+    On the other side, the generality of feature-wise transformations
+    also means that certain families of tasks may require a stronger
+    inductive bias to generalize successfully. For instance, in the domain of visual
+    reasoning, Compositional Attention Networks
+    <d-cite key="arad2018compositional"></d-cite> outperform
+    FiLM on the CLEVR task by explicitly biasing the model towards
+    learning multiple, compositional reasoning steps. One can also
+    combine FiLM with other inductive biases or architectural priors,
+    such as weight decay and attention mechanisms, though it is currently
+    an open question how FiLM interacts with them; In particular, to what extent
+    the architecture of the FiLM generator influences the emergence of linear
+    task representations &mdash; the observed property of FiLM architectures that allow
+    for task interpolations, analogies, and question arithmetic on the CLEVR
+    task &mdash; as well as its generalization performance. Does it arise from
+    inserting FiLM layers into a convolutional network or is it due to the use of
+    particular building blocks, such as GRU and ReLU, that enforce linearity?
+    We find such questions intriguing, and we
+    hope that future work will shine some light on this.
   </p>
   <p>
     Precisely how changes on the feature level
