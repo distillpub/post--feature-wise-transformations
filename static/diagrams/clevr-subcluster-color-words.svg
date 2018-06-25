@@ -5,7 +5,7 @@
       FiLM parameters of the visual reasoning model for feature map 26,
     </tspan>
     <tspan x="10" dy="1.5em">
-      indicating an "in front"/"behind" separation mechanism.
+      indicating an object position separation mechanism.
     </tspan>
   </text>
   <text x="500" y="10" dy="1em" class="figure-text">
