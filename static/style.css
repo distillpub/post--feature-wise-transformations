@@ -127,6 +127,7 @@ d-figure > figure {
   max-width: 300px;
   max-height: 300px;
   pointer-events: none;
+  transition: opacity;
 }
 
 .collapsible {

@@ -1,0 +1,38 @@
+<svg viewBox="0 0 888 360" xmlns="http://www.w3.org/2000/svg">
+  <path d="M444,10l0,340" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="10" y="10" dy="1em" class="figure-text">
+    <tspan>
+      FiLM parameters of the visual reasoning model for feature map 26,
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      indicating an object position separation mechanism.
+    </tspan>
+  </text>
+  <text x="500" y="10" dy="1em" class="figure-text">
+    <tspan>
+      FiLM parameters of the visual reasoning model for feature map 92,
+    </tspan>
+    <tspan x="500" dy="1.5em">
+      indicating an object material separation mechanism.
+    </tspan>
+  </text>
+  <g id="first-plot">
+    <rect x="10" y="100" width="250" height="250" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+  </g>
+  <g transform="translate(300, 110)" id="first-legend"></g>
+  <image x="285" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
+  <g id="second-plot">
+    <rect x="500" y="100" width="250" height="250" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+  </g>
+  <g transform="translate(780, 110)" id="second-legend"></g>
+  <image x="765" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
+</svg>
+
