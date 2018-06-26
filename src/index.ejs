@@ -777,31 +777,13 @@
     To some extent, the notion of interpolating between tasks using FiLM
     parameters can be applied even in the visual question-answering setting.
     Using the model trained in Perez et al. <d-cite key="perez2018film"></d-cite>,
-    we interpolated between the model's FiLM parameters for two CLEVR questions
-    and plotted the model's post-softmax answer probabilities (we omit
-    non-numerical answers, as we found they had negligible probability for the
-    questions we report on):
+    we interpolated between the model's FiLM parameters for two pairs of CLEVR
+    questions. Here we visualize which parts of the input are responsible for
+    the globally-pooled features fed to the visual pipeline's output classifier:
   </p>
   <figure class="l-body" id="question-interpolation-diagram">
     <%= require("../static/diagrams/question-interpolation.svg") %>
   </figure>
-  <p>
-    A priori, we may have expected the model to simply trade off its confidence
-    between its answers to the two end point questions. Alternatively, we may
-    have expected the model to answer erratically or incoherently throughout the
-    interpolation, jumping from one arbitrary number to another or giving
-    non-numerical answers.  Instead, we find the model's answer interpolates in
-    a semantically meaningful way through the output space, varying its answer
-    somewhat smoothly from 0 to 4 using the numbers in between. Why might this
-    make sense?  By interpolating in the FiLM question embedding space, we
-    expect we are no longer asking the model about purple or brown specifically,
-    but rather some average or expected hue in between. In return, the model
-    seems to be responding with a sort of expected value of the answer, or an
-    answer based on the average color, i.e., some number in between the end
-    point answers. It is neat that the model has learned to represent and
-    interpret FiLM parameters in a way that results in this behavior, without
-    being explicitly trained to do so.
-  </p>
   <p>
     One interesting difference across the two problem settings is that, for the
     visual reasoning model, FiLM parameters sometimes form several sub-clusters

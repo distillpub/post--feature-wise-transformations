@@ -362,56 +362,39 @@
 })();
 
 (function() {
-    var processExample = function(example, filepath) {
-        var group = d3.select("#question-interpolation-diagram > svg > #" + example);
-        var interpParams = group.select(".interpolated-params");
-        var dataset;
+    var processExample = function(example) {
+        var svg = d3.select("#question-interpolation-diagram > svg");
+        var imageSelector = svg.select("#example-" + example + " > .image-selector");
 
-        d3.json(filepath, function(data) {
-            dataset = data;
-            var probs = [[], [], [], [], [], [], [], [], [], [], []];
-            for(var i = 0; i < dataset.length; i++) {
-                var p = dataset[i];
-                var sum = 0.0;
-                for(var j = 0; j < 11; j++) {
-                    sum += p[j];
-                }
-                for(var j = 0; j < 11; j++) {
-                    probs[j].push(p[j]);
-                }
-            }
+        var xMin = +imageSelector.select("line").attr("x1");
+        var xMax = +imageSelector.select("line").attr("x2");
+        var nTicks = 11;
+        var length = (xMax - xMin) / (nTicks - 1.0);
+        var ticks = [];
+        for(var i = 0; i < nTicks; i++) {
+          ticks.push(xMin + i * length);
+        }
 
-            var update = function(i) {
-                group.select('.clevr-probabilities')
-        .selectAll("rect")
-                  .data(probs)
-                  .transition()
-                    .attrs({
-                        "y": function(d) { return 10 + (1 - d[i]) * 120; },
-                        "height": function(d) { return d[i] * 120; },
-                    });
 
-                interpParams.selectAll("circle")
-                  .each(function(j) {
-                    d3.select(this)
-                      .classed("figure-faded", i != j);
-                  });
+        var circle = imageSelector.append("circle")
+            .attrs({"cx": ticks[0], "cy": 0, "r": 6})
+            .style("cursor", "pointer")
+            .classed("figure-path", true);
 
-            };
-            update(0);
+        var drag = d3.drag()
+          .on("drag", function() {
+              var newX = Math.min(ticks[nTicks - 1], Math.max(ticks[0], d3.event.x));
+              var newTick = Math.round((newX - ticks[0]) / length);
+              newX = ticks[0] + length * newTick;
+              d3.select(this).attr("cx", newX);
+              svg.select("mask#m-" + example + " > image")
+                  .attr("xlink:href", "images/question-interpolation-" + example + "-mask-" + (+newTick + 1) + ".png");
+          });
 
-            interpParams.selectAll("circle")
-              .data([0, 45, 47, 50, 55, 60, 65, 70, 90, 95])
-              .attr('cx', function(d, i) { return i * 30; })
-              .on("mouseover", function (d) {
-                  update(d);
-              })
-              .enter()
-        });
+        drag(circle);
     };
-    processExample("example-1", "data/clevr_interpolation_1.json");
-    // TODO: switch to clevr_interpolation_2.json when we have it.
-    processExample("example-2", "data/clevr_interpolation_1.json");
+    processExample("1");
+    processExample("2");
 })();
 
 (function() {
