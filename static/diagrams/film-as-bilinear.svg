@@ -47,28 +47,28 @@
       vector containing <tspan style="font-family: serif;">γ</tspan><tspan dy="4px" class="subscript">k</tspan>
     </tspan>
     <tspan dy="-4px">
-      and <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>
+      and <tspan style="font-family: serif;">β</tspan><tspan dy="4px" class="subscript">k</tspan>.
     </tspan>
     <tspan dy="-4px">
-      (shaded
+      (Shaded
     </tspan>
     <tspan x="10" dy="1.5em">
-      cells have a zero value).
+      cells have a zero value.)
     </tspan>
   </text>
   <text x="10" y="210" dy="1em" class="figure-text">
     <tspan>
-      The sparse vector itself is obtained by
+      The sparse vector is given by multiplying
     </tspan>
     <tspan x="10" dy="1.5em">
-      multiplying a low-rank weight matrix with
+      a low-rank weight matrix with the
     </tspan>
     <tspan x="10" dy="1.5em">
-      the concatenation of <tspan style="font-family: serif;">γ</tspan>
-      and <tspan style="font-family: serif;">β</tspan> (once again,
+      concatenation of <tspan style="font-family: serif;">γ</tspan>
+      and <tspan style="font-family: serif;">β</tspan>. (Shaded cells
     </tspan>
     <tspan x="10" dy="1.5em">
-      shaded cells have a zero value).
+      again have a zero value.)
     </tspan>
   </text>
   <g transform="translate(280, 10)">

@@ -228,7 +228,7 @@
   <p>
     In the spirit of making as few assumptions about the problem as possible,
     we may as well combine <em>both</em> into a
-    conditional <em>affine transformation</em>,
+    conditional <em>affine transformation</em>.
     <d-footnote>
       An affine transformation is a transformation of the form
       <d-math>y = m * x + b</d-math>.
@@ -527,7 +527,7 @@
     network in which feature-wise transformations are applied and a secondary
     network which outputs parameters for these transformations. However, this
     distinction between <em>FiLMed network</em> and <em>FiLM generator</em>
-    is not strictly necessary. As an example, Huang et al.
+    is not strictly necessary. As an example, Huang and Belongie
     <d-cite key="huang2017arbitrary"></d-cite> propose an alternative
     style transfer network that uses adaptive instance normalization layers,
     which compute normalization parameters using a simple heuristic.
@@ -617,55 +617,56 @@
   </div>
   <button class="collapsible" content-name="zero-shot" content-type="related">Zero-shot learning<span style="float: right;">+</span></button>
   <p class="content" content-name="zero-shot" content-type="related">
-    The idea of a learning a task representation shares a strong connection with
-    the zero-shot learning problem, where semantic task embeddings, learned
-    from external information, are leveraged in order to make predictions
-    for classes without training examples. For instance, when attempting to
-    generalize to unseen object categories in an image classification setting,
-    it is possible to construct semantic task embeddings
-    from text-only descriptions, and exploit their text-based relationship
-    to predict unseen image categories. Notable examples of this
-    idea being put in practice include Frome et al.
+    The idea of learning a task representation shares a strong connection with
+    approaches in zero-shot learning.
+    In zero-shot learning, semantic task embeddings may be learned from
+    external information and then leveraged to make predictions about classes
+    without training examples. For instance, to
+    generalize to unseen object categories for image classification,
+    one may construct semantic task embeddings
+    from text-only descriptions and exploit objects' text-based relationships
+    to predict unseen image categories. Frome et al.
     <d-cite key="frome2013devise"></d-cite>, Socher et al.
     <d-cite key="socher2013zero"></d-cite>, and Norouzi et al.
-    <d-cite key="norouzi2014zero"></d-cite>.
+    <d-cite key="norouzi2014zero"></d-cite> are a few notable exemplars
+    of this idea.
   </p>
   <button class="collapsible" content-name="hypernetworks" content-type="related">HyperNetworks<span style="float: right;">+</span></button>
   <p class="content" content-name="hypernetworks" content-type="related">
     The notion of a secondary network predicting the parameters of a primary
-    network is probably best exemplified by HyperNetworks
-    <d-cite key="ha2016hypernetworks"></d-cite>. From that perspective, the FiLM
-    generator can be viewed as a specialized instance of a HyperNetwork which
+    network is also well exemplified by HyperNetworks
+    <d-cite key="ha2016hypernetworks"></d-cite>, which predict weights
+    describing entire layers (e.g., in a recurrent neural network).
+    From this perspective, the FiLM
+    generator is a specialized HyperNetwork that
     predicts the FiLM parameters of the FiLMed network. The main distinction
     between the two resides in the number and specificity of predicted
     parameters: FiLM requires predicting far fewer parameters than
-    Hypernetworks, but FiLM is also less flexible in its ability to modulate the
-    model's computation. The ideal trade-off between flexibility and
-    computational complexity is still an ongoing area of investigation &mdash;
-    curious readers can read about many proposed approaches that lie on the
-    spectrum ranging from FiLM to HyperNetworks in the
-    <a href="#bibliographic-notes">Bibliographic Notes</a>.
+    Hypernetworks, but FiLM also has less capacity to modulate
+    other networks. The ideal trade-off between capacity and regularization (and
+    computational complexity) in using conditioning information is still an
+    ongoing area of investigation, and many proposed approaches lie on the
+    spectrum between FiLM and HyperNetworks (see
+    <a href="#bibliographic-notes">Bibliographic Notes</a>).
   </p>
   <button class="collapsible" content-name="attention" content-type="related">Attention<span style="float: right;">+</span></button>
   <p class="content" content-name="attention" content-type="related">
-    Some parallels can be drawn between methods represented by the FiLM
-    abstraction and attention, but the two operate in different ways which we
-    think are important to disambiguate.
+    Some parallels can be drawn between attention and FiLM, but the two operate
+    in different ways which are important to disambiguate.
   </p>
   <figure class="content l-body-outset" content-name="attention" content-type="related" id="film-vs-attention-diagram">
     <%= require("../static/diagrams/film-vs-attention.svg") %>
   </figure>
   <p class="content" content-name="attention" content-type="related">
-    This difference stems from two different intuitions underlying attention and
-    conditional feature-wise transformations: for the former, it is assumed that
-    the useful information is contained in specific spatial locations or time
-    steps, whereas for the latter, it is assumed that the useful information is
-    contained in specific features or feature maps.
+    This difference stems from distinct intuitions underlying attention and
+    FiLM: the former assumes that specific spatial locations or time steps
+    contain the most useful information, whereas the latter assumes that
+    specific features or feature maps contain the most useful information.
   </p>
   <button class="collapsible" content-name="bilinear" content-type="related">Bilinear transformations<span style="float: right;">+</span></button>
   <p class="content" content-name="bilinear" content-type="related">
-    With a little bit of stretching the operation implemented by FiLM layers can
-    be seen as a special case of a bilinear transformation
+    With a little bit of stretching, FiLM can be seen as a special case of a
+    bilinear transformation
     <d-cite key="tenenbaum2000separating"></d-cite> with low-rank weight
     matrices. A bilinear transformation defines the relationship between two
     inputs <d-math>\mathbf{x}</d-math> and <d-math>\mathbf{z}</d-math> and the
@@ -676,36 +677,36 @@
     </d-math>
 
     Note that for each output feature <d-math>y_k</d-math> we have a separate
-    matrix <d-math>W_k</d-math>, so the full set of weights forms a 3-tensor.
+    matrix <d-math>W_k</d-math>, so the full set of weights forms a
+    multi-dimensional array.
   </p>
   <figure class="content l-body-outset" content-name="bilinear" content-type="related">
     <%= require("../static/diagrams/bilinear.svg") %>
   </figure>
   <p class="content" content-name="bilinear" content-type="related">
     If we view <d-math>\mathbf{z}</d-math> as the concatenation of the scaling
-    and shifting vectors <d-math>\gamma</d-math> and <d-math>\beta</d-math>, and
+    and shifting vectors <d-math>\gamma</d-math> and <d-math>\beta</d-math> and
     if we augment the input <d-math>\mathbf{x}</d-math> with a 1-valued feature,
     <d-footnote>
       As is commonly done to turn a linear transformation into an affine
       transformation.
     </d-footnote>
-    we can represent a feature-wise affine transformation using a bilinear
-    transformation by zeroing out the appropriate entries of the weight
-    matrices:
+    we can represent FiLM using a bilinear transformation by zeroing out the
+    appropriate weight matrix entries:
   </p>
   <figure class="content l-body-outset" content-name="bilinear" content-type="related">
     <%= require("../static/diagrams/film-as-bilinear.svg") %>
   </figure>
   <p class="content" content-name="bilinear" content-type="related">
-    Readers interested in learning about explicit applications of bilinear
-    transformations can consult the <a href="#bibliographic-notes">Bibliographic Notes</a>.
+    For explicit applications of bilinear transformations,
+    see the <a href="#bibliographic-notes">Bibliographic Notes</a>.
   </p>
 
   <hr/>
 
   <h1>Properties of the learned task representation</h1>
   <p>
-    As hinted at earlier, in adopting the FiLM perspective we implicitly
+    As hinted, in adopting the FiLM perspective we implicitly
     introduce a notion of <em>task representation</em>: each task &mdash; be it
     a question about an image or a painting style to imitate &mdash; elicits a
     different set of FiLM parameters via the FiLM generator which can be
@@ -778,8 +779,8 @@
     parameters can be applied even in the visual question-answering setting.
     Using the model trained in Perez et al. <d-cite key="perez2018film"></d-cite>,
     we interpolated between the model's FiLM parameters for two pairs of CLEVR
-    questions. Here we visualize which parts of the input are responsible for
-    the globally-pooled features fed to the visual pipeline's output classifier:
+    questions. Here we visualize the input locations responsible for
+    the globally max-pooled features fed to the visual pipeline's output classifier:
   </p>
   <figure class="l-body" id="question-interpolation-diagram">
     <%= require("../static/diagrams/question-interpolation.svg") %>
@@ -828,16 +829,16 @@
     In cases where question types alone cannot explain the clustering of the
     FiLM parameters, we can turn to the conditioning content itself to gain
     an understanding of the mechanism at play. Let's take a look at the same
-    feature map scatter plots, but this time see if coloring gamma-beta parameters 
+    feature map scatter plots, but this time see if coloring gamma-beta parameters
     by the words in the questions can explain these cluster shapes.
   </p>
   <figure class="l-body-outset" id="clevr-subcluster-color-words-diagram">
     <%= require("../static/diagrams/clevr-subcluster-color-words.svg") %>
   </figure>
   <p>
-    In the left plot (feature map 26), the left subcluster corresponds 
+    In the left plot (feature map 26), the left subcluster corresponds
     to questions discussing objects positioned "in front" of other objects, while
-    the right subcluster to those "behind" other objects. 
+    the right subcluster to those "behind" other objects.
     In the right plot we see some evidence of separation based
     on object materials. The left subcluster corresponds to questions involving matte
     and rubber objects, while the right subcluster contains questions about shiny, metal,
@@ -929,21 +930,21 @@
       recognition domain they are operating in.
     </li>
     <li>
-      In the zero-shot/one-shot learning setting, the model proposed by Ba et
-      al. <d-cite key="lei2015predicting"></d-cite> predicts convolutional
-      filters and classifiers weights based on textual descriptions of object
-      classes.
+      In zero-shot/one-shot learning, Ba et al.
+      <d-cite key="lei2015predicting"></d-cite> propose a model that predicts
+      convolutional filters and classifiers weights based on textual
+      descriptions of object classes.
     </li>
     <li>
-      In the reinforcement learning setting, the model proposed by Oh et al.
-      <d-cite key="oh2017zero"></d-cite> computes the parameters of a
-      policy-convolutional network conditioned on the task description.
+      In reinforcement learning, Oh et al. <d-cite key="oh2017zero"></d-cite>
+      propose a model that computes the parameters of a
+      convolutional policy network conditioned on the task description.
     </li>
   </ul>
   <p>
-    Bilinear models were first introduced in the vision community by Tenenbaum
-    et al. <d-cite key="tenenbaum1997separating"></d-cite> to better untangle
-    latent perceptual factors. The authors wanted to separate the image style
+    Tenenbaum and Freeman <d-cite key="tenenbaum1997separating"></d-cite> first
+    introduced bilinear models in the vision community to better disentangle
+    latent perceptual factors. The authors wanted to separate an image's style
     from its content, arguing that classic linear models were not rich enough to
     extract such complex interaction. They demonstrate the effectiveness of
     their approach by applying it to spoken vowel identification or zero-shot
@@ -953,21 +954,21 @@
     <li>
       Chuang et al. <d-cite key="chuang2002facial"></d-cite> perform facial
       animation using bilinear transformations by separating key facial features
-      (the style) from visual emotions (the content). This allows to modify a
-      sequence originally recorded with a happy expression so that the subject
-      appears to be speaking with an angry or neutral expression.
+      (the style) from visual emotions (the content). Their method can modify
+      a speaking subject's expression in recorded sequence from happy to angry
+      or neutral.
     </li>
     <li>
-      Chu et al. <d-cite key="chu2009personalized"></d-cite> and Yang et al.
+      Chu and Park <d-cite key="chu2009personalized"></d-cite> and Yang et al.
       <d-cite key="yang2011like"></d-cite> apply bilinear models to
       recommendation systems by extracting user and item information in various
       settings. More generally, recommendation systems rely heavily on matrix
       factorization methods <d-cite key="koren2009matrix"></d-cite>, which can
-      be viewed as a bilinear model in which one of the latent vectors is kept
+      be viewed as a bilinear model where one of the latent vectors is
       fixed<d-cite key="tenenbaum1997separating"></d-cite>.
     </li>
     <li>
-      More recently, bilinear models have inspired new neural architecture in
+      More recently, bilinear models have inspired new neural architectures in
       visual recognition <d-cite key="lin2015bilinear"></d-cite>, video action
       recognition <d-cite key="feichtenhofer2016convolutional"></d-cite>, and
       visual question-answering<d-cite key="fukui2016multimodal"></d-cite>.

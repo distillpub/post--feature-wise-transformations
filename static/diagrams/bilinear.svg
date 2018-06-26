@@ -17,22 +17,19 @@
   </defs>
   <text x="10" y="10" dy="1em" class="figure-text">
     <tspan>
-      In a bilinear transformation, each element
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      y<tspan dy="4px" class="subscript">k</tspan>
+      Each element y<tspan dy="4px" class="subscript">k</tspan>
     </tspan>
     <tspan dy="-4px">
-      of the output vector <tspan style="font-weight: bold;">y</tspan> is the result of a
+      of the output vector <tspan style="font-weight: bold;">y</tspan> is the
     </tspan>
     <tspan x="10" dy="1.5em">
-      distinct vector-matrix-vector product.
+      result of a distinct vector-matrix-vector product.
     </tspan>
     <tspan x="10" dy="1.5em">
-      This allows multiplicative interactions
+      This enables multiplicative interactions between
     </tspan>
     <tspan x="10" dy="1.5em">
-      between any pair of elements of
+      any pair of elements of
       <tspan style="font-weight: bold;">x</tspan> and
       <tspan style="font-weight: bold;">z</tspan>.
     </tspan>
