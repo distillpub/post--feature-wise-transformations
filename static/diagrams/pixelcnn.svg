@@ -8,28 +8,25 @@
   </defs>
   <text x="10" y="10" dy="1em" class="figure-text">
     <tspan>
-      <tspan style="font-weight: bold;">Conditional biasing</tspan> is
-      used in
+      PixelCNN uses
+      <tspan style="font-weight: bold;">conditional biasing</tspan>.
     </tspan>
     <tspan x="10" dy="1.5em">
-      PixelCNN. Selected convolutional
+      The model first maps a high-level
     </tspan>
     <tspan x="10" dy="1.5em">
-      layers are conditioned by first
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      mapping a high-level image
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      description to a bias vector.
+      image description to a bias vector.
     </tspan>
   </text>
   <text x="10" y="210" dy="1em" class="figure-text">
     <tspan>
-      The bias vector is then added to
+      Then, it adds the bias vector to
     </tspan>
     <tspan x="10" dy="1.5em">
-      the input stack of feature maps.
+      the input stack of feature maps
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      to condition convolutional layers.
     </tspan>
   </text>
   <g transform="translate(-30, 10)">

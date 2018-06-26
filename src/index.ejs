@@ -243,12 +243,20 @@
     <em>feature</em> level; in other words, they leverage <em>feature-wise</em>
     interactions between the conditioning representation and the conditioned
     network. It is certainly possible to use more complex interactions,
-    but feature-wise interactions strike a happy compromise between
+    but feature-wise interactions often strike a happy compromise between
     effectiveness and efficiency: the number of conditioning scaling and/or
-    shifting coefficients to predictscales linearly with the number of features
+    shifting coefficients to predict scales linearly with the number of features
     in the network. Also, in practice, feature-wise transformations (often
     compounded across multiple layers) frequently have enough capacity to
-    model complex phenomenon in numerous settings, as we will review later on.
+    model complex phenomenon in various settings.
+  </p>
+  <p>
+    Lastly, note how limited an inductive bias these transformations provide
+    &mdash; how general their motivation is. This quality can be a downside, as
+    some problems may be easier to solve with a stronger inductive bias.
+    However, it is this characteristic which also enables these transformations
+    to be so widely effective across problem domains, as we will review later
+    on.
   </p>
   <h3>Nomenclature</h3>
   <p>
@@ -320,36 +328,38 @@
 
   <h1>Feature-wise transformations in the literature</h1>
   <p>
-    Feature-wise transformations find their way into many problem settings, but
-    because of their simplicity, their broad effectiveness is seldom
-    highlighted. Here are recent notable examples,
-    grouped by application domain.
+    Feature-wise transformations find their way into methods in many problem
+    settings, but because of their simplicity, their effectiveness is
+    seldom highlighted in lieu of other novel research contributions.
+    Below are a few notable examples of feature-wise transformations in the
+    literature, grouped by application domain. The diversity of these
+    applications underscores the flexible, general-purpose ability of
+    feature-wise interactions to learn effective task representations.
   </p>
   <div style="width: 100%">
     <button class="expand-collapse-button" content-type="literature">expand all</button>
   </div>
   <button class="collapsible" content-name="generative-modeling" content-type="literature">Generative modeling<span style="float: right;">+</span></button>
   <p class="content" content-name="generative-modeling" content-type="literature">
-    Concatenation-based conditioning is used in the conditional variant of
-    DCGAN <d-cite key="radford2016unsupervised"></d-cite>, a well-recognized
-    class of network architectures for generative adversarial networks
-    <d-cite key="goodfellow2014generative"></d-cite>. The class label is
-    broadcasted as a feature map and is concatenated to the input of
-    convolutional and transposed convolutional layers in the generator and
-    discriminator networks.
+    The conditional variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>,
+    a well-recognized class of network architectures for generative adversarial networks
+    <d-cite key="goodfellow2014generative"></d-cite>, uses concatenation-based
+    conditioning. The class label is broadcasted as a feature map and then
+    concatenated to the input of convolutional and transposed convolutional
+    layers in the discriminator and generator networks.
   </p>
   <figure class="content l-body" content-name="generative-modeling" content-type="literature">
     <%= require("../static/diagrams/dcgan.svg") %>
   </figure>
   <p class="content" content-name="generative-modeling" content-type="literature">
-    Conditional biasing is used by PixelCNN <d-cite key="oord2016conditional"></d-cite>
-    and WaveNet <d-cite key="oord2016wavenet"></d-cite>, two recent advances
-    in autoregressive, generative modeling of image and audio data,
-    respectively.  In its simplest form, conditioning in PixelCNN is achieved
-    by adding feature-wise, conditional biases to the output of all
-    convolutional layers.  In FiLM parlance, this means inserting FiLM layers
-    after each convolutional layer and setting the scaling coefficients to a
-    constant value of 1.
+    PixelCNN <d-cite key="oord2016conditional"></d-cite>
+    and WaveNet <d-cite key="oord2016wavenet"></d-cite> are two recent advances
+    in autoregressive, generative modeling (of images and audio,
+    respectively) which use conditional biasing. The simplest form of
+    conditioning in PixelCNN adds feature-wise biases to all convolutional layer
+    outputs. In FiLM parlance, this operation is equivalent to
+    inserting FiLM layers after each convolutional layer and setting the
+    scaling coefficients to a constant value of 1.
     <d-footnote>
       The authors also describe a location-dependent biasing scheme which
       cannot be expressed in terms of FiLM layers due to the absence of the
@@ -361,7 +371,8 @@
   </figure>
   <p class="content" content-name="generative-modeling" content-type="literature">
     WaveNet describes two ways in which conditional biasing allows external
-    information to modulate the behavior of the model:
+    information to modulate the audio or speech generation process based on
+    conditioning input:
   </p>
   <ol class="content" content-name="generative-modeling" content-type="literature">
     <li>
@@ -377,9 +388,9 @@
     </li>
   </ol>
   <p class="content" content-name="generative-modeling" content-type="literature">
-    As for PixelCNN, both approaches can be viewed as inserting FiLM layers
-    after each convolutional layer. The main difference lies in the way in
-    which the FiLM-generating network is defined: global conditioning
+    As in PixelCNN, conditioning in WaveNet can be viewed as inserting FiLM
+    layers after each convolutional layer. The main difference lies in how
+    the FiLM-generating network is defined: global conditioning
     expresses the FiLM-generating network as an embedding lookup which is
     broadcasted to the whole time series, whereas local conditioning expresses
     it as a mapping from an input sequence of conditioning information to an
@@ -387,9 +398,9 @@
   </p>
   <button class="collapsible" content-name="reinforcement-learning" content-type="literature">Reinforcement learning<span style="float: right;">+</span></button>
   <p class="content" content-name="reinforcement-learning" content-type="literature">
-    Feature-wise sigmoidal gating is used in the Gated-Attention architecture
-    <d-cite key="chaplot2017gated"></d-cite> to fuse linguistic and visual
-    information in an agent trained to follow simple language
+    The Gated-Attention architecture <d-cite key="chaplot2017gated"></d-cite>
+    uses feature-wise sigmoidal gating to fuse linguistic and visual
+    information in an agent trained to follow simple "go-to" language
     instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
     environment.
   </p>
@@ -397,17 +408,27 @@
     <%= require("../static/diagrams/gated-attention.svg") %>
   </figure>
   <p class="content" content-name="reinforcement-learning" content-type="literature">
-    Feature-wise affine transformations are used in Kirkpatrick et al.
-    <d-cite key="kirkpatrick2017overcoming"></d-cite> to help train a single
-    agent to play 10 different Atari games. They used game-specific scaling
-    and biasing to condition a shared policy network.
+    Bahdanau et al.<d-cite key="bahdanau2018learning"></d-cite> use FiLM
+    layers to condition Neural Module Network<d-cite key="andreas2016neural"></d-cite>
+    and LSTM<d-cite key="hochreiter1997long"></d-cite> -based policies to follow
+    basic, compositional language instructions (arranging objects and going
+    to particular locations) in a 2D grid world. They train this policy
+    in an adversarial manner using rewards from another FiLM-based network,
+    trained to discriminate between ground-truth examples of achieved
+    instruction states and failed policy trajectories states.
+  </p>
+  <p class="content" content-name="reinforcement-learning" content-type="literature">
+    Outside instruction-following, Kirkpatrick et al.
+    <d-cite key="kirkpatrick2017overcoming"></d-cite> also use
+    game-specific scaling and biasing to condition a shared policy network
+    trained to play 10 different Atari games.
   </p>
   <button class="collapsible" content-name="nlp" content-type="literature">Natural language processing<span style="float: right;">+</span></button>
   <p class="content" content-name="nlp" content-type="literature">
-    Feature-wise scaling is also used in the Gated-Attention Reader
-    <d-cite key="dhingra2017gated"></d-cite>. The model extracts information
-    from text by conditioning the document reading network on a query. Its
-    architecture is formed of multiple Gated-Attention modules, which involve
+    The Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>
+    uses feature-wise scaling, extracting information
+    from text by conditioning a document reading network on a query. Its
+    architecture consists of multiple Gated-Attention modules, which involve
     element-wise multiplications between document representation tokens and
     token-specific query representations extracted via soft attention on the
     query representation tokens.
@@ -416,13 +437,13 @@
     <%= require("../static/diagrams/gated-attention-reader.svg") %>
   </figure>
   <p class="content" content-name="nlp" content-type="literature">
-    Sigmoidal gating is used by Dauphin et al.
-    <d-cite key="dauphin2017language"></d-cite> in their proposed gated linear
-    unit, which uses half of the input features to apply feature-wise
-    sigmoidal gating to the other half. This architectural feature is also
-    adopted by Gehring et al. <d-cite key="gehring2017convolutional"></d-cite>,
-    who introduce a fast and parallelizable model for machine translation in
-    the form of a purely convolutional architecture.
+    Dauphin et al. <d-cite key="dauphin2017language"></d-cite> use sigmoidal
+    gating in their proposed gated linear
+    unit, which uses one half of the input features to apply feature-wise
+    sigmoidal gating to the other half. Gehring et al.
+    <d-cite key="gehring2017convolutional"></d-cite> adopt this
+    architectural feature, introducing a fast, parallelizable model for
+    machine translation in the form of a fully convolutional network.
   </p>
   <figure class="content l-body" content-name="nlp" content-type="literature">
     <%= require("../static/diagrams/convseq2seq.svg") %>
@@ -430,35 +451,33 @@
   <button class="collapsible" content-name="vqa" content-type="literature">Visual question-answering<span style="float: right;">+</span></button>
   <p class="content" content-name="vqa" content-type="literature">
     Perez et al. <d-cite key="perez2017learning,perez2018film"></d-cite> use
-    feature-wise affine transformations to build a visual reasoning model
+    FiLM layers to build a visual reasoning model
     trained on the CLEVR dataset <d-cite key="johnson2017clevr"></d-cite> to
-    answer questions about synthetic input images.
+    answer multi-step, compositional questions about synthetic images.
   </p>
   <figure class="content l-body-outset" content-name="vqa" content-type="literature">
     <%= require("../static/diagrams/film-clevr.svg") %>
   </figure>
   <p class="content" content-name="vqa" content-type="literature">
-    The model features a FiLM generator in the form of a linguistic pipeline
-    extracting a question representation which is then linearly mapped to the
-    FiLM parameter values. The visual pipeline is conditioned by inserting a
-    FiLM layer in the residual pathway of each residual block of the
-    convolutional neural network. The model is trained end-to-end on
-    image-question-answer tuples.
+    The model's linguistic pipeline is a FiLM generator which
+    extracts a question representation that is linearly mapped to
+    FiLM parameter values. Using these values, FiLM layers inserted within each
+    residual block condition the visual pipeline. The model is trained
+    end-to-end on image-question-answer triples.
   </p>
   <p class="content" content-name="vqa" content-type="literature">
     de Vries et al. <d-cite key="vries2017modulating"></d-cite> leverage FiLM
-    to condition a pre-trained network. The visual pipeline of a visual
-    question-answering model is modulated by the model's linguistic pipeline
-    through conditional batch normalization, which can be viewed as a special
-    case of FiLM. The model learns to answer natural language questions about
-    real-world images for the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
+    to condition a pre-trained network. Their model's linguistic pipeline
+    modulates the visual pipeline via conditional batch normalization,
+    which can be viewed as a special case of FiLM. The model learns to answer natural language questions about
+    real-world images on the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
     and VQAv1 <d-cite key="agrawal2015vqa"></d-cite> datasets.
   </p>
   <figure class="content l-body-outset" content-name="vqa" content-type="literature">
     <%= require("../static/diagrams/guesswhat.svg") %>
   </figure>
   <p class="content" content-name="vqa" content-type="literature">
-    The visual pipeline consists of a pre-trained residual network and is kept
+    The visual pipeline consists of a pre-trained residual network that is
     fixed throughout training. The linguistic pipeline manipulates the visual
     pipeline by perturbing the residual network's batch normalization
     parameters, which re-scale and re-shift feature maps after activations
@@ -472,27 +491,24 @@
     Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use
     feature-wise affine transformations &mdash; in the form of conditional
     instance normalization layers &mdash; to condition a style transfer
-    network on a chosen style image. Like conditional batch normalization,
+    network on a chosen style image. Like conditional batch normalization
+    discussed in the previous subsection,
     conditional instance normalization can be seen as an instance of FiLM
-    where the post-normalization feature-wise affine transformation is
-    replaced with a FiLM layer. These layers are introduced into a
-    feed-forward style transfer network to accommodate multiple styles. Each
-    style modeled by the network is associated with its own set of instance
-    normalization parameters, and conditioning is achieved by applying the
-    normalization with style-specific parameters.
+    where a FiLM layer replaces the post-normalization feature-wise affine
+    transformation. For style transfer, the network models each style as a separate set of
+    instance normalization parameters, and it applies normalization with these
+    style-specific parameters.
   </p>
   <figure class="content l-body-outset" content-name="style-transfer" id="alrfas-diagram" content-type="literature">
     <%= require("../static/diagrams/alrfas.svg") %>
   </figure>
   <p class="content" content-name="style-transfer" content-type="literature">
     Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite> use a simple
-    embedding lookup to produce the instance normalization parameters, while
+    embedding lookup to produce instance normalization parameters, while
     Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> further
     introduce a <em>style prediction network</em>, trained jointly with the
     style transfer network to predict the conditioning parameters directly
     from a given style image.
-  </p>
-  <p class="content" content-name="style-transfer" content-type="literature">
     Though for this article, we prefer FiLM as an abstraction because it is
     decoupled from any normalization operations, FiLM layers were themselves
     heavily inspired by conditional normalization layers.
@@ -500,7 +516,7 @@
   <p class="content" content-name="style-transfer" content-type="literature">
     Yang et al. <d-cite key="yang2018efficient"></d-cite> use a related
     architecture for video object segmentation, the task of segmenting a
-    particular object throughout a video given that object's segmentation in
+    particular object throughout a video, given that object's segmentation in
     the first frame.  Their model conditions an image segmentation network
     over a video frame on the provided first frame segmentation using
     feature-wise gains, as well as on the previous frame using position-wise
@@ -508,46 +524,44 @@
   </p>
   <p class="content" content-name="style-transfer" content-type="literature">
     So far, many of the models we covered have two sub-networks: a primary
-    network in which feature-wise transformations are applied, and a secondary
+    network in which feature-wise transformations are applied and a secondary
     network which outputs parameters for these transformations. However, this
     distinction between <em>FiLMed network</em> and <em>FiLM generator</em>
     is not strictly necessary. As an example, Huang et al.
-    <d-cite key="huang2017arbitrary"></d-cite> proposes an alternative for
-    fast and arbitrary style transfer in the form of an adaptive instance
-    normalization layer, which computes the normalization parameters using a
-    simple heuristic.
+    <d-cite key="huang2017arbitrary"></d-cite> propose an alternative
+    style transfer network that uses adaptive instance normalization layers,
+    which compute normalization parameters using a simple heuristic.
   </p>
   <figure class="content l-body-outset" content-name="style-transfer" id="adain-diagram" content-type="literature">
     <%= require("../static/diagrams/adain.svg") %>
   </figure>
   <p class="content" content-name="style-transfer" content-type="literature">
     Adaptive instance normalization can be interpreted as inserting a FiLM
-    layer midway through the model architecture. However, rather than relying
+    layer midway through the model. However, rather than relying
     on a secondary network to predict the FiLM parameters from the style
-    image, the main network itself is used to extract style features which are
-    used to compute the FiLM parameters. Therefore, the model can be seen as
+    image, the main network itself is used to extract the style features
+    used to compute FiLM parameters. Therefore, the model can be seen as
     <em>both</em> the FiLMed network the FiLM generator.
   </p>
   <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation<span style="float: right;">+</span></button>
   <p class="content" content-name="domain-adaptation" content-type="literature">
-    Li et al. <d-cite key="li2018adaptive"></d-cite> find a similar approach
-    highly effective for domain adaptation, updating the per-channel batch
+    Li et al. <d-cite key="li2018adaptive"></d-cite> find that
+    updating the per-channel batch
     normalization statistics (mean and variance) of a network trained on one
-    domain with that network's statistics in a new, target domain.  Updating
+    domain with that network's statistics in a new, target domain. Updating
     these statistics is mathematically equivalent to modifying the
     feature-wise affine transformations in batch normalization layers, as in
-    Conditional Batch Normalization. Notably, this approach, along with
+    conditional normalization layers discussed in the "Visual question-answering"
+    and "Style transfer" subsections. Notably, this approach, along with
     Adaptive Instance Normalization, has the particular advantage of not
     requiring any extra, trainable parameters.
   </p>
   <button class="collapsible" content-name="image-recognition" content-type="literature">Image recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="image-recognition" content-type="literature">
-    As we have seen so far, feature-wise transformations can be used as a
-    conditioning mechanism to incorporate external information such as
-    context representation, task description, class information, or user
-    information. However, there is nothing preventing us from considering a
+    Many models thus far condition on a separate source of conditioning
+    information, but there is nothing preventing us from considering a
     neural network's hidden activations <em>themselves</em> as conditioning
-    information. This idea gives rise to various forms of
+    information. This idea gives rise to
     <em>self-conditioned</em> models.
   </p>
   <figure class="content l-body" content-name="image-recognition" content-type="literature">
@@ -574,23 +588,21 @@
   </figure>
   <button class="collapsible" content-name="speech-recognition" content-type="literature">Speech recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="speech-recognition" content-type="literature">
-    In the speech recognition domain, the model from Kim et al.
-    <d-cite key="kim2017dynamic"></d-cite> modulates a deep bidirectional LSTM
-    using a form of conditional normalization which the authors call
-    <em>dynamic layer normalization</em>. Similar to conditional instance
-    normalization and conditional batch normalization, dynamic layer
-    normalization can be seen as an instance of FiLM where the
+    Kim et al.<d-cite key="kim2017dynamic"></d-cite> modulate a deep
+    bidirectional LSTM using <em>dynamic layer normalization</em>, a form
+    of conditional normalization as discussed in the "Visual question-answering"
+    and "Style transfer" subsections.
+    Dynamic layer normalization can also be seen as an instance of FiLM where the
     post-normalization feature-wise affine transformation is disabled and a
-    FiLM layer is placed immediately after the normalization layer.
+    FiLM layer is placed immediately after the normalization.
   </p>
   <figure class="content l-body-outset" content-name="speech-recognition" content-type="literature">
     <%= require("../static/diagrams/dln.svg") %>
   </figure>
   <p class="content" content-name="speech-recognition" content-type="literature">
     The key difference here is that the conditioning signal does not come from
-    an external source, but it is instead computed from utterance
-    summarization feature vectors extracted in each layer of the network as a
-    way of adapting the neural acoustic model.
+    an external source but rather from utterance
+    summarization feature vectors extracted in each layer to adapt the model.
   </p>
 
   <hr/>
@@ -823,6 +835,25 @@
     related to counting and integer equality concentrate in the top-right
     cluster. Sometimes it is harder to draw a conclusion, as in the left plot,
     where question types are scattered across the three clusters.
+  </p>
+  <p>
+    In cases where question types alone cannot explain the clustering of the
+    FiLM parameters, we can turn to the conditioning content itself to gain
+    an understanding of the mechanism at play. Let's take a look at the same
+    feature map scatter plots, but this time see if coloring gamma-beta parameters 
+    by the words in the questions can explain these cluster shapes.
+  </p>
+  <figure class="l-body-outset" id="clevr-subcluster-color-words-diagram">
+    <%= require("../static/diagrams/clevr-subcluster-color-words.svg") %>
+  </figure>
+  <p>
+    In the left plot (feature map 26), the left subcluster corresponds 
+    to questions discussing objects positioned "in front" of other objects, while
+    the right subcluster to those "behind" other objects. 
+    In the right plot we see some evidence of separation based
+    on object materials. The left subcluster corresponds to questions involving matte
+    and rubber objects, while the right subcluster contains questions about shiny, metal,
+    or metallic objects.
   </p>
   <p>
     The existence of this structure has already been explored, albeit more

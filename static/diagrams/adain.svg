@@ -6,16 +6,13 @@
   <g transform="translate(60, 160)">
     <text x="200" y="-150" dy="1em" class="figure-text">
       <tspan>
-        The content and style
+        The model processes
       </tspan>
       <tspan x="200" dy="1.5em">
-        images are first fed
+        content and style images
       </tspan>
       <tspan x="200" dy="1.5em">
-        through the model up
-      </tspan>
-      <tspan x="200" dy="1.5em">
-        to the adaptive instance
+        up to the adaptive instance
       </tspan>
       <tspan x="200" dy="1.5em">
         normalization layer.
@@ -40,16 +37,13 @@
     </text>
     <text x="550" y="-150" dy="1em" class="figure-text">
       <tspan>
-        The FiLMed stack of
+        The FiLMed feature maps
       </tspan>
       <tspan x="550" dy="1.5em">
-        feature maps is fed
+        are fed to the remainder
       </tspan>
       <tspan x="550" dy="1.5em">
-        through the remainder of
-      </tspan>
-      <tspan x="550" dy="1.5em">
-        the network to produce
+        of the network to produce
       </tspan>
       <tspan x="550" dy="1.5em">
         the stylized image.

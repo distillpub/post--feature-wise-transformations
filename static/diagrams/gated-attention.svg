@@ -8,34 +8,27 @@
   </defs>
   <text x="10" y="10" dy="1em" class="figure-text">
     <tspan>
-      <tspan style="font-weight: bold;">Sigmoidal gating</tspan> is
-      used by Chaplot
+      Chaplot et al. use <tspan style="font-weight: bold;">sigmoidal gating</tspan>
     </tspan>
     <tspan x="10" dy="1.5em">
-      et al. as a multimodal fusion
+      as a multimodal fusion mechanism.
     </tspan>
     <tspan x="10" dy="1.5em">
-      mechanism. A representation of the
+      An instruction representation is mapped
     </tspan>
     <tspan x="10" dy="1.5em">
-      instruction is mapped to a scaling
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      vector via a sigmoid layer.
+      to a scaling vector via a sigmoid layer.
     </tspan>
   </text>
   <text x="10" y="210" dy="1em" class="figure-text">
     <tspan>
-      The scaling vector is then multiplied
+      The scaling vector is then multiplied with
     </tspan>
     <tspan x="10" dy="1.5em">
-      with the input stack of feature maps
+      the input feature maps. A policy network
     </tspan>
     <tspan x="10" dy="1.5em">
-      as a way to fuse information from the
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      image and instruction representations.
+      uses the result to decide the next action.
     </tspan>
   </text>
   <g transform="translate(-30, 10)">

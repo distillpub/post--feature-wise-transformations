@@ -381,7 +381,6 @@
                     probs[j].push(p[j]);
                 }
             }
-            console.log(dataset);
 
             var update = function(i) {
                 group.select('.clevr-probabilities')
@@ -485,7 +484,7 @@
 (function() {
     var setUp = function(filename, keyword, color) {
         // Get references to important tags
-        var svg = d3.select("#clevr-subcluster-color-diagram > svg");
+        var svg = d3.select("#clevr-subcluster-color-words-diagram > svg");
         var scatterPlot = svg.select("#" + keyword + "-plot");
         var boundingBox = scatterPlot.select("rect");
         var legend = svg.select("#" + keyword + "-legend");
@@ -499,13 +498,11 @@
         var colors = [
             "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
             "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-            "#8BC34A", "#CDDC39", "#FFEB3B",
         ];
 
-        var question_types = [
-            "Exists", "Less than", "Greater than", "Count", "Query material",
-            "Query size", "Query color", "Query shape", "Equal color",
-            "Equal integer", "Equal shape", "Equal size", "Equal material"
+        var question_words = [
+            "front", "behind", "left", "right",
+            "material", "rubber", "matte", "metal", "metallic", "shiny",
         ];
 
         var dataset;
@@ -536,15 +533,171 @@
             scatterPlot.select("#y-axis-label")
                 .attrs({"x": xScale(0.0) + 10, "y": yMin});
 
+
+            var tooltip = d3.select("body").append("div")
+                .attr("id", "tooltip-clevr-words-clever")
+                .attr("class", "tooltip figure-text")
+                .style("background", "#ddd")
+                .style("border-radius", "6px")
+                .style("padding", "10px")
+                .style("opacity", 0);
+
+            scatterPlot.selectAll("g").remove();
             // Dispatch data points into groups by question type
             scatterPlot.selectAll("g")
                 .data(colors)
-              .enter().append("g")
+                .enter().append("g")
+                .style("opacity", 1.0)
+                .each(function(c, i) {
+                    d3.select(this).selectAll("circle")
+                        .data(dataset.filter(function(d) { 
+                            return d.question.indexOf(question_words[i]) >= 0; 
+                        }))
+                        .enter().append("circle")
+                        .attrs({
+                            "cx": function(d) { return xScale(d.gamma); },
+                            "cy": function(d) { return yScale(d.beta); },
+                            "r": 3.0,
+                        })
+                        .style("fill", function(d) { return colors[i]; })
+                        .style("opacity", 0.6)
+                        .on("mouseover", function(d) {
+                            tooltip.transition()
+                                .duration(200)
+                                .style("opacity", .9);
+                            tooltip.html(d.question.join(" ") + "?")
+                                .style("left", (d3.event.pageX + 5) + "px")
+                                .style("top", (d3.event.pageY - 28) + "px");
+                        })
+                        .on("mouseout", function(d) {
+                            focusAll();
+                            tooltip.transition()
+                                .duration(500)
+                                .style("opacity", 0);
+                        })
+                })
+                .exit().remove();
+            ;
+
+            // Create legend
+            legend.selectAll("circle")
+                .data(colors)
+              .enter().append("circle")
+                .attrs({
+                    "cx": 0,
+                    "cy": function(d, i) { return 20 * i; },
+                    "r": 6,
+                })
+                .style("fill", function(d, i) { return colors[i]; })
+                .style("cursor", "pointer")
+                .style("opacity", 0.6);
+            legend.selectAll("text")
+                .data(question_words)
+              .enter().append("text")
+                .attrs({
+                    "x": 20,
+                    "y": function(d, i) { return 20 * i; },
+                    "dy": "0.4em",
+                })
+                .classed("figure-text", true)
+                .text(function(d) { return d; });
+
+            // Focuses on all points by resetting the opacities
+            var focusAll = function() {
+                legend.selectAll("circle")
+                    .style("opacity", 0.6);
+                scatterPlot.selectAll("g")
+                    .style("opacity", 1.0);
+            };
+
+            // Focuses on a single question type by lowering other
+            // question type opacities
+            var focus = function(j) {
+                legend.selectAll("circle")
+                    .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+                scatterPlot.selectAll("g")
+                    .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
+            };
+
+            // Add hovering behavior to legend
+            legend.selectAll("circle")
+                .on("mouseover", function (d, i) {
+                    focus(i);
+                })
+                .on("mouseout", focusAll);
+
+            focusAll();
+        });
+    };
+    setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
+    setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_92.json', 'second', 0);
+})();
+
+(function() {
+    var setUp = function(filename, keyword, color) {
+        // Get references to important tags
+        var svg = d3.select("#clevr-subcluster-color-diagram > svg");
+        var scatterPlot = svg.select("#" + keyword + "-plot");
+        var boundingBox = scatterPlot.select("rect");
+        var legend = svg.select("#" + keyword + "-legend");
+
+        // Retrieve scatter plot bounding box coordinates
+        var xMin = parseInt(boundingBox.attr("x"));
+        var xMax = xMin + parseInt(boundingBox.attr("width"));
+        var yMin = parseInt(boundingBox.attr("y"));
+        var yMax = yMin + parseInt(boundingBox.attr("height"));
+
+        var colors = [
+            "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+            "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+            "#8BC34A", "#CDDC39", "#FFEB3B",
+        ];
+
+        var question_types = [
+            "Exists", "Less than", "Greater than", "Count", "Query material",
+            "Query size", "Query color", "Query shape", "Equal color",
+            "Equal integer", "Equal shape", "Equal size", "Equal material"
+        ];
+
+
+        var dataset;
+        var xScale;
+        var yScale;
+
+        d3.json(filename, function(data) {
+            dataset = data;
+
+            // Create scales mapping gamma and beta values to bounding box
+            // coordinates
+            xScale = d3.scaleLinear()
+                .domain([1.15 * d3.min(dataset, function (d) { return d.gamma; }),
+                         1.15 * d3.max(dataset, function (d) { return d.gamma; })])
+                .rangeRound([xMin, xMax]);
+            yScale = d3.scaleLinear()
+                .domain([1.15 * d3.min(dataset, function (d) { return d.beta; }),
+                         1.15 * d3.max(dataset, function (d) { return d.beta; })])
+                .rangeRound([yMax, yMin])
+
+            // Set up axes
+            scatterPlot.select("#x-axis")
+                .attr("d", "M" +  xMin + " " +  yScale(0) + " L " + xMax + " " + yScale(0));
+            scatterPlot.select("#x-axis-label")
+                .attrs({"x": xMax - 10, "y": yScale(0.0) + 10});
+            scatterPlot.select("#y-axis")
+                .attr("d", "M" +  xScale(0) + " " +  yMax + " L " + xScale(0) + " " + yMin);
+            scatterPlot.select("#y-axis-label")
+                .attrs({"x": xScale(0.0) + 10, "y": yMin});
+
+
+            // Dispatch data points into groups by question type
+            scatterPlot.selectAll("g")
+                .data(colors)
+                .enter().append("g")
                 .style("opacity", 1.0)
                 .each(function(c, i) {
                     d3.select(this).selectAll("circle")
                         .data(dataset.filter(function(d) { return d.question_type == i; }))
-                      .enter().append("circle")
+                        .enter().append("circle")
                         .attrs({
                             "cx": function(d) { return xScale(d.gamma); },
                             "cy": function(d) { return yScale(d.beta); },
@@ -553,7 +706,6 @@
                         .style("fill", function(d) { return colors[i]; })
                         .style("opacity", 0.6);
                 });
-
             // Create legend
             legend.selectAll("circle")
                 .data(colors)
