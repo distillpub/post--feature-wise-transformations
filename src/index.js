@@ -480,7 +480,9 @@
         var colors = [
             "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
             "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+            "#8BC34A", "#CDDC39", "#FFEB3B",
         ];
+
 
         var question_words = [
             "front", "behind", "left", "right",
@@ -524,55 +526,32 @@
                 .style("padding", "10px")
                 .style("opacity", 0);
 
-            scatterPlot.selectAll("g").remove();
             // Dispatch data points into groups by question type
-            scatterPlot.selectAll("g")
-                .data(colors)
-                .enter().append("g")
-                .style("opacity", 1.0)
-                .each(function(c, i) {
-                    d3.select(this).selectAll("circle")
-                        .data(dataset.filter(function(d) { 
-                            return d.question.indexOf(question_words[i]) >= 0; 
-                        }))
-                        .enter().append("circle")
-                        .attrs({
-                            "cx": function(d) { return xScale(d.gamma); },
-                            "cy": function(d) { return yScale(d.beta); },
-                            "r": 3.0,
-                        })
-                        .style("fill", function(d) { return colors[i]; })
-                        .style("opacity", 0.6)
-                        .on("mouseover", function(d) {
-                            tooltip.transition()
-                                .duration(200)
-                                .style("opacity", .9);
-                            tooltip.html(d.question.join(" ") + "?")
-                                .style("left", (d3.event.pageX + 5) + "px")
-                                .style("top", (d3.event.pageY - 28) + "px");
-                        })
-                        .on("mouseout", function(d) {
-                            focusAll();
-                            tooltip.transition()
-                                .duration(500)
-                                .style("opacity", 0);
-                        })
-                })
-                .exit().remove();
-            ;
-
-            // Create legend
-            legend.selectAll("circle")
-                .data(colors)
-              .enter().append("circle")
+            scatterPlot.selectAll("circle")
+                .data(dataset)
+                .enter().append("circle")
                 .attrs({
-                    "cx": 0,
-                    "cy": function(d, i) { return 20 * i; },
-                    "r": 6,
+                    "cx": function(d) { return xScale(d.gamma); },
+                    "cy": function(d) { return yScale(d.beta); },
+                    "r": 3.0,
                 })
-                .style("fill", function(d, i) { return colors[i]; })
-                .style("cursor", "pointer")
-                .style("opacity", 0.6);
+                .style("fill", colors[color])
+                .style("opacity", 0.6)
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    tooltip.html(d.question.join(" ") + "?")
+                        .style("left", (d3.event.pageX + 5) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on("mouseout", function(d) {
+                    focusAll();
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                })
+
             legend.selectAll("text")
                 .data(question_words)
               .enter().append("text")
@@ -582,37 +561,39 @@
                     "dy": "0.4em",
                 })
                 .classed("figure-text", true)
+                .style("cursor", "pointer")
+                .style("opacity", 0.6)
                 .text(function(d) { return d; });
 
             // Focuses on all points by resetting the opacities
             var focusAll = function() {
-                legend.selectAll("circle")
+                legend.selectAll("text")
                     .style("opacity", 0.6);
-                scatterPlot.selectAll("g")
+                scatterPlot.selectAll("circle")
                     .style("opacity", 1.0);
             };
 
             // Focuses on a single question type by lowering other
             // question type opacities
-            var focus = function(j) {
-                legend.selectAll("circle")
-                    .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                scatterPlot.selectAll("g")
-                    .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
+            var focus = function(word) {
+                legend.selectAll("text")
+                    .style("opacity", function(d, i) { return d == word ?  0.6 : 0.1; });
+                scatterPlot.selectAll("circle")
+                    .style("opacity", function(d, i) { return d.question.indexOf(word) >= 0 ?  1.0 : 0.1; })
             };
 
             // Add hovering behavior to legend
-            legend.selectAll("circle")
+            legend.selectAll("text")
                 .on("mouseover", function (d, i) {
-                    focus(i);
+                    focus(d);
                 })
                 .on("mouseout", focusAll);
 
             focusAll();
         });
     };
-    setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
-    setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_92.json', 'second', 0);
+    setUp('data/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
+    setUp('data/clevr_gamma_beta_words_subcluster_fm_92.json', 'second', 8);
 })();
 
 (function() {

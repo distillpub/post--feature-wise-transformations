@@ -24,7 +24,7 @@
     <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
   </g>
   <g transform="translate(300, 110)" id="first-legend"></g>
-  <image x="285" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
+  <image x="320" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
   <g id="second-plot">
     <rect x="500" y="100" width="250" height="250" style="fill: none;"/>
     <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
@@ -33,6 +33,6 @@
     <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
   </g>
   <g transform="translate(780, 110)" id="second-legend"></g>
-  <image x="765" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
+  <image x="800" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
 </svg>
 
