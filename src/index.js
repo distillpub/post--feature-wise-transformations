@@ -611,8 +611,8 @@
             focusAll();
         });
     };
-    setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
-    setUp('../data/subclusters/clevr_gamma_beta_words_subcluster_fm_92.json', 'second', 0);
+    setUp('../data/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
+    setUp('../data/clevr_gamma_beta_words_subcluster_fm_92.json', 'second', 0);
 })();
 
 (function() {
