@@ -15,13 +15,13 @@
     </text>
     <text x="0" y="300" dy="1em" class="figure-text">
       <tspan>
-        The <tspan style="font-weight: bold;">visual pipeline</tspan> is
+        FiLM layers in each residual
       </tspan>
       <tspan x="0" dy="1.5em">
-        FiLMed by adding a FiLM
+        block modulate the <tspan style="font-weight: bold;">visual</tspan>
       </tspan>
       <tspan x="0" dy="1.5em">
-        layer to each residual block.
+        <tspan style="font-weight: bold;">pipeline</tspan>.
       </tspan>
     </text>
     <g transform="translate(140, 0)">

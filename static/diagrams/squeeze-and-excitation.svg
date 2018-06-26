@@ -16,10 +16,10 @@
       First, the
     </tspan>
     <tspan x="10" dy="1.5em">
-      input stack of feature maps is
+      network maps input feature maps
     </tspan>
     <tspan x="10" dy="1.5em">
-      mapped to a gating vector.
+      to a gating vector.
     </tspan>
   </text>
   <text x="260" y="220" dy="1em" class="figure-text">
@@ -27,7 +27,7 @@
       The gating vector is then multiplied
     </tspan>
     <tspan x="260" dy="1.5em">
-      with the input stack of feature maps.
+      with the input feature maps.
     </tspan>
   </text>
   <g transform="translate(-190, 10)">
