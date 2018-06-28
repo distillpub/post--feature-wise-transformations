@@ -337,115 +337,6 @@
   <div style="width: 100%">
     <button class="expand-collapse-button" content-type="literature">expand all</button>
   </div>
-  <button class="collapsible" content-name="generative-modeling" content-type="literature">Generative modeling<span style="float: right;">+</span></button>
-  <p class="content" content-name="generative-modeling" content-type="literature">
-    The conditional variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>,
-    a well-recognized class of network architectures for generative adversarial networks
-    <d-cite key="goodfellow2014generative"></d-cite>, uses concatenation-based
-    conditioning. The class label is broadcasted as a feature map and then
-    concatenated to the input of convolutional and transposed convolutional
-    layers in the discriminator and generator networks.
-  </p>
-  <figure class="content l-body" content-name="generative-modeling" content-type="literature">
-    <%= require("../static/diagrams/dcgan.svg") %>
-  </figure>
-  <p class="content" content-name="generative-modeling" content-type="literature">
-    PixelCNN <d-cite key="oord2016conditional"></d-cite>
-    and WaveNet <d-cite key="oord2016wavenet"></d-cite> are two recent advances
-    in autoregressive, generative modeling (of images and audio,
-    respectively) which use conditional biasing. The simplest form of
-    conditioning in PixelCNN adds feature-wise biases to all convolutional layer
-    outputs. In FiLM parlance, this operation is equivalent to
-    inserting FiLM layers after each convolutional layer and setting the
-    scaling coefficients to a constant value of 1.
-    <d-footnote>
-      The authors also describe a location-dependent biasing scheme which
-      cannot be expressed in terms of FiLM layers due to the absence of the
-      feature-wise property.
-    </d-footnote>
-  </p>
-  <figure class="content l-body" content-name="generative-modeling" content-type="literature">
-    <%= require("../static/diagrams/pixelcnn.svg") %>
-  </figure>
-  <p class="content" content-name="generative-modeling" content-type="literature">
-    WaveNet describes two ways in which conditional biasing allows external
-    information to modulate the audio or speech generation process based on
-    conditioning input:
-  </p>
-  <ol class="content" content-name="generative-modeling" content-type="literature">
-    <li>
-      <strong>Global conditioning</strong> applies the same conditional bias
-      to the whole generated sequence and is used e.g. to condition on speaker
-      identity.
-    </li>
-    <li>
-      <strong>Local conditioning</strong> applies a conditional bias which
-      varies across time steps of the generated sequence and is used e.g. to
-      let linguistic features in a text-to-speech model influence which sounds
-      are produced.
-    </li>
-  </ol>
-  <p class="content" content-name="generative-modeling" content-type="literature">
-    As in PixelCNN, conditioning in WaveNet can be viewed as inserting FiLM
-    layers after each convolutional layer. The main difference lies in how
-    the FiLM-generating network is defined: global conditioning
-    expresses the FiLM-generating network as an embedding lookup which is
-    broadcasted to the whole time series, whereas local conditioning expresses
-    it as a mapping from an input sequence of conditioning information to an
-    output sequence of FiLM parameters.
-  </p>
-  <button class="collapsible" content-name="reinforcement-learning" content-type="literature">Reinforcement learning<span style="float: right;">+</span></button>
-  <p class="content" content-name="reinforcement-learning" content-type="literature">
-    The Gated-Attention architecture <d-cite key="chaplot2017gated"></d-cite>
-    uses feature-wise sigmoidal gating to fuse linguistic and visual
-    information in an agent trained to follow simple "go-to" language
-    instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
-    environment.
-  </p>
-  <figure class="content l-body" content-name="reinforcement-learning" content-type="literature">
-    <%= require("../static/diagrams/gated-attention.svg") %>
-  </figure>
-  <p class="content" content-name="reinforcement-learning" content-type="literature">
-    Bahdanau et al.<d-cite key="bahdanau2018learning"></d-cite> use FiLM
-    layers to condition Neural Module Network<d-cite key="andreas2016neural"></d-cite>
-    and LSTM<d-cite key="hochreiter1997long"></d-cite> -based policies to follow
-    basic, compositional language instructions (arranging objects and going
-    to particular locations) in a 2D grid world. They train this policy
-    in an adversarial manner using rewards from another FiLM-based network,
-    trained to discriminate between ground-truth examples of achieved
-    instruction states and failed policy trajectories states.
-  </p>
-  <p class="content" content-name="reinforcement-learning" content-type="literature">
-    Outside instruction-following, Kirkpatrick et al.
-    <d-cite key="kirkpatrick2017overcoming"></d-cite> also use
-    game-specific scaling and biasing to condition a shared policy network
-    trained to play 10 different Atari games.
-  </p>
-  <button class="collapsible" content-name="nlp" content-type="literature">Natural language processing<span style="float: right;">+</span></button>
-  <p class="content" content-name="nlp" content-type="literature">
-    The Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>
-    uses feature-wise scaling, extracting information
-    from text by conditioning a document-reading network on a query. Its
-    architecture consists of multiple Gated-Attention modules, which involve
-    element-wise multiplications between document representation tokens and
-    token-specific query representations extracted via soft attention on the
-    query representation tokens.
-  </p>
-  <figure class="content l-body" content-name="nlp" content-type="literature">
-    <%= require("../static/diagrams/gated-attention-reader.svg") %>
-  </figure>
-  <p class="content" content-name="nlp" content-type="literature">
-    Dauphin et al. <d-cite key="dauphin2017language"></d-cite> use sigmoidal
-    gating in their proposed gated linear
-    unit, which uses half of the input features to apply feature-wise
-    sigmoidal gating to the other half. Gehring et al.
-    <d-cite key="gehring2017convolutional"></d-cite> adopt this
-    architectural feature, introducing a fast, parallelizable model for
-    machine translation in the form of a fully convolutional network.
-  </p>
-  <figure class="content l-body" content-name="nlp" content-type="literature">
-    <%= require("../static/diagrams/convseq2seq.svg") %>
-  </figure>
   <button class="collapsible" content-name="vqa" content-type="literature">Visual question-answering<span style="float: right;">+</span></button>
   <p class="content" content-name="vqa" content-type="literature">
     Perez et al. <d-cite key="perez2017learning,perez2018film"></d-cite> use
@@ -541,18 +432,6 @@
     used to compute FiLM parameters. Therefore, the model can be seen as
     <em>both</em> the FiLMed network the FiLM generator.
   </p>
-  <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation<span style="float: right;">+</span></button>
-  <p class="content" content-name="domain-adaptation" content-type="literature">
-    Li et al. <d-cite key="li2018adaptive"></d-cite> find that we can benefit
-    from updating the per-channel batch normalization statistics (mean and
-    variance) of a network trained on one domain with that network's statistics
-    in a new, target domain. Updating these statistics is mathematically
-    equivalent to modifying the feature-wise affine transformations in batch
-    normalization layers, as in conditional normalization layers discussed in
-    the "Visual question-answering" and "Style transfer" subsections. Notably,
-    this approach, along with Adaptive Instance Normalization, has the
-    particular advantage of not requiring any extra, trainable parameters.
-  </p>
   <button class="collapsible" content-name="image-recognition" content-type="literature">Image recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="image-recognition" content-type="literature">
     Many models thus far condition on a separate source of conditioning
@@ -583,6 +462,115 @@
   <figure class="content l-body" content-name="image-recognition" content-type="literature">
     <%= require("../static/diagrams/squeeze-and-excitation.svg") %>
   </figure>
+  <button class="collapsible" content-name="nlp" content-type="literature">Natural language processing<span style="float: right;">+</span></button>
+  <p class="content" content-name="nlp" content-type="literature">
+    The Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>
+    uses feature-wise scaling, extracting information
+    from text by conditioning a document-reading network on a query. Its
+    architecture consists of multiple Gated-Attention modules, which involve
+    element-wise multiplications between document representation tokens and
+    token-specific query representations extracted via soft attention on the
+    query representation tokens.
+  </p>
+  <figure class="content l-body" content-name="nlp" content-type="literature">
+    <%= require("../static/diagrams/gated-attention-reader.svg") %>
+  </figure>
+  <p class="content" content-name="nlp" content-type="literature">
+    Dauphin et al. <d-cite key="dauphin2017language"></d-cite> use sigmoidal
+    gating in their proposed gated linear
+    unit, which uses half of the input features to apply feature-wise
+    sigmoidal gating to the other half. Gehring et al.
+    <d-cite key="gehring2017convolutional"></d-cite> adopt this
+    architectural feature, introducing a fast, parallelizable model for
+    machine translation in the form of a fully convolutional network.
+  </p>
+  <figure class="content l-body" content-name="nlp" content-type="literature">
+    <%= require("../static/diagrams/convseq2seq.svg") %>
+  </figure>
+  <button class="collapsible" content-name="reinforcement-learning" content-type="literature">Reinforcement learning<span style="float: right;">+</span></button>
+  <p class="content" content-name="reinforcement-learning" content-type="literature">
+    The Gated-Attention architecture <d-cite key="chaplot2017gated"></d-cite>
+    uses feature-wise sigmoidal gating to fuse linguistic and visual
+    information in an agent trained to follow simple "go-to" language
+    instructions in the VizDoom <d-cite key="kempa2016vizdoom"></d-cite> 3D
+    environment.
+  </p>
+  <figure class="content l-body" content-name="reinforcement-learning" content-type="literature">
+    <%= require("../static/diagrams/gated-attention.svg") %>
+  </figure>
+  <p class="content" content-name="reinforcement-learning" content-type="literature">
+    Bahdanau et al.<d-cite key="bahdanau2018learning"></d-cite> use FiLM
+    layers to condition Neural Module Network<d-cite key="andreas2016neural"></d-cite>
+    and LSTM<d-cite key="hochreiter1997long"></d-cite> -based policies to follow
+    basic, compositional language instructions (arranging objects and going
+    to particular locations) in a 2D grid world. They train this policy
+    in an adversarial manner using rewards from another FiLM-based network,
+    trained to discriminate between ground-truth examples of achieved
+    instruction states and failed policy trajectories states.
+  </p>
+  <p class="content" content-name="reinforcement-learning" content-type="literature">
+    Outside instruction-following, Kirkpatrick et al.
+    <d-cite key="kirkpatrick2017overcoming"></d-cite> also use
+    game-specific scaling and biasing to condition a shared policy network
+    trained to play 10 different Atari games.
+  </p>
+  <button class="collapsible" content-name="generative-modeling" content-type="literature">Generative modeling<span style="float: right;">+</span></button>
+  <p class="content" content-name="generative-modeling" content-type="literature">
+    The conditional variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>,
+    a well-recognized class of network architectures for generative adversarial networks
+    <d-cite key="goodfellow2014generative"></d-cite>, uses concatenation-based
+    conditioning. The class label is broadcasted as a feature map and then
+    concatenated to the input of convolutional and transposed convolutional
+    layers in the discriminator and generator networks.
+  </p>
+  <figure class="content l-body" content-name="generative-modeling" content-type="literature">
+    <%= require("../static/diagrams/dcgan.svg") %>
+  </figure>
+  <p class="content" content-name="generative-modeling" content-type="literature">
+    PixelCNN <d-cite key="oord2016conditional"></d-cite>
+    and WaveNet <d-cite key="oord2016wavenet"></d-cite> are two recent advances
+    in autoregressive, generative modeling (of images and audio,
+    respectively) which use conditional biasing. The simplest form of
+    conditioning in PixelCNN adds feature-wise biases to all convolutional layer
+    outputs. In FiLM parlance, this operation is equivalent to
+    inserting FiLM layers after each convolutional layer and setting the
+    scaling coefficients to a constant value of 1.
+    <d-footnote>
+      The authors also describe a location-dependent biasing scheme which
+      cannot be expressed in terms of FiLM layers due to the absence of the
+      feature-wise property.
+    </d-footnote>
+  </p>
+  <figure class="content l-body" content-name="generative-modeling" content-type="literature">
+    <%= require("../static/diagrams/pixelcnn.svg") %>
+  </figure>
+  <p class="content" content-name="generative-modeling" content-type="literature">
+    WaveNet describes two ways in which conditional biasing allows external
+    information to modulate the audio or speech generation process based on
+    conditioning input:
+  </p>
+  <ol class="content" content-name="generative-modeling" content-type="literature">
+    <li>
+      <strong>Global conditioning</strong> applies the same conditional bias
+      to the whole generated sequence and is used e.g. to condition on speaker
+      identity.
+    </li>
+    <li>
+      <strong>Local conditioning</strong> applies a conditional bias which
+      varies across time steps of the generated sequence and is used e.g. to
+      let linguistic features in a text-to-speech model influence which sounds
+      are produced.
+    </li>
+  </ol>
+  <p class="content" content-name="generative-modeling" content-type="literature">
+    As in PixelCNN, conditioning in WaveNet can be viewed as inserting FiLM
+    layers after each convolutional layer. The main difference lies in how
+    the FiLM-generating network is defined: global conditioning
+    expresses the FiLM-generating network as an embedding lookup which is
+    broadcasted to the whole time series, whereas local conditioning expresses
+    it as a mapping from an input sequence of conditioning information to an
+    output sequence of FiLM parameters.
+  </p>
   <button class="collapsible" content-name="speech-recognition" content-type="literature">Speech recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="speech-recognition" content-type="literature">
     Kim et al.<d-cite key="kim2017dynamic"></d-cite> modulate a deep
@@ -600,6 +588,18 @@
     The key difference here is that the conditioning signal does not come from
     an external source but rather from utterance
     summarization feature vectors extracted in each layer to adapt the model.
+  </p>
+  <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation<span style="float: right;">+</span></button>
+  <p class="content" content-name="domain-adaptation" content-type="literature">
+    Li et al. <d-cite key="li2018adaptive"></d-cite> find that we can benefit
+    from updating the per-channel batch normalization statistics (mean and
+    variance) of a network trained on one domain with that network's statistics
+    in a new, target domain. Updating these statistics is mathematically
+    equivalent to modifying the feature-wise affine transformations in batch
+    normalization layers, as in conditional normalization layers discussed in
+    the "Visual question-answering" and "Style transfer" subsections. Notably,
+    this approach, along with Adaptive Instance Normalization, has the
+    particular advantage of not requiring any extra, trainable parameters.
   </p>
 
   <hr/>
