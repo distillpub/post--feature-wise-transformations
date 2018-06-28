@@ -140,6 +140,15 @@ d-figure > figure {
   outline: none;
   font-size: 25px;
   font-weight: 700;
+  border-radius: 25px;
+  border: 1px solid grey;
+  background-color: white;
+  padding: 0.5em;
+  margin: 0.2em;
+}
+
+.collapsible:hover {
+    background-color: rgba(0,0,0,0.1);
 }
 
 .content {
@@ -155,4 +164,8 @@ d-figure > figure {
   font-size: 18px;
   font-weight: 700;
   float: right;
+  background-color: white
+}
+.expand-collapse-button:hover {
+  text-decoration: underline;
 }
