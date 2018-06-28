@@ -124,12 +124,11 @@
   <h2>Feature-wise transformations</h2>
   <p>
     To motivate feature-wise transformations, we start with a basic example,
-    where the two inputs are images and category labels, respectively.
-    For the purpose of this example, we
-    are interested in building a generative model of various classes of images
-    (puppy, boat, airplane, etc.). The model takes as input a class and a source
-    of random noise (i.e., a vector sampled from a normal distribution)
-    and outputs an image sample for the requested class.
+    where the two inputs are images and category labels, respectively. For the
+    purpose of this example, we are interested in building a generative model of
+    images of various classes (puppy, boat, airplane, etc.). The model takes as
+    input a class and a source of random noise (i.e., a vector sampled from a
+    normal distribution) and outputs an image sample for the requested class.
   </p>
   <figure class="l-body">
     <%= require("../static/diagrams/conditional-generation.svg") %>
@@ -212,10 +211,9 @@
     intuitive, which approach should we pick? One argument in favor of
     <em>multiplicative</em> interactions is that they are useful in learning
     relationships between inputs, as these interactions naturally identify
-    "matches": elements with similar values (regardless of sign) will
-    generally produce higher values when multiplied and lower values otherwise.
-    This property is why dot products are often used to determine how similar
-    two vectors are.
+    "matches": multiplying elements that agree in sign yields larger values than
+    multiplying elements that disagree. This property is why dot products are
+    often used to determine how similar two vectors are.
     <d-footnote>
       Multiplicative interactions alone have had a history of success in various
       domains &mdash; see <a href="#bibliographic-notes">Bibliographic Notes</a>.
@@ -427,7 +425,7 @@
   <p class="content" content-name="nlp" content-type="literature">
     The Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>
     uses feature-wise scaling, extracting information
-    from text by conditioning a document reading network on a query. Its
+    from text by conditioning a document-reading network on a query. Its
     architecture consists of multiple Gated-Attention modules, which involve
     element-wise multiplications between document representation tokens and
     token-specific query representations extracted via soft attention on the
@@ -439,7 +437,7 @@
   <p class="content" content-name="nlp" content-type="literature">
     Dauphin et al. <d-cite key="dauphin2017language"></d-cite> use sigmoidal
     gating in their proposed gated linear
-    unit, which uses one half of the input features to apply feature-wise
+    unit, which uses half of the input features to apply feature-wise
     sigmoidal gating to the other half. Gehring et al.
     <d-cite key="gehring2017convolutional"></d-cite> adopt this
     architectural feature, introducing a fast, parallelizable model for
@@ -507,19 +505,19 @@
     embedding lookup to produce instance normalization parameters, while
     Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> further
     introduce a <em>style prediction network</em>, trained jointly with the
-    style transfer network to predict the conditioning parameters directly
-    from a given style image.
-    Though for this article, we prefer FiLM as an abstraction because it is
-    decoupled from any normalization operations, FiLM layers were themselves
-    heavily inspired by conditional normalization layers.
+    style transfer network to predict the conditioning parameters directly from
+    a given style image. Even though for this article we prefer FiLM as an
+    abstraction because it is decoupled from any normalization operations, FiLM
+    layers were actually themselves heavily inspired by conditional
+    normalization layers.
   </p>
   <p class="content" content-name="style-transfer" content-type="literature">
     Yang et al. <d-cite key="yang2018efficient"></d-cite> use a related
     architecture for video object segmentation, the task of segmenting a
     particular object throughout a video, given that object's segmentation in
-    the first frame.  Their model conditions an image segmentation network
-    over a video frame on the provided first frame segmentation using
-    feature-wise gains, as well as on the previous frame using position-wise
+    the first frame. Their model conditions an image segmentation network over a
+    video frame on the provided first frame segmentation using feature-wise
+    scaling factors, as well as on the previous frame using position-wise
     biases.
   </p>
   <p class="content" content-name="style-transfer" content-type="literature">
@@ -545,16 +543,15 @@
   </p>
   <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation<span style="float: right;">+</span></button>
   <p class="content" content-name="domain-adaptation" content-type="literature">
-    Li et al. <d-cite key="li2018adaptive"></d-cite> find that
-    updating the per-channel batch
-    normalization statistics (mean and variance) of a network trained on one
-    domain with that network's statistics in a new, target domain. Updating
-    these statistics is mathematically equivalent to modifying the
-    feature-wise affine transformations in batch normalization layers, as in
-    conditional normalization layers discussed in the "Visual question-answering"
-    and "Style transfer" subsections. Notably, this approach, along with
-    Adaptive Instance Normalization, has the particular advantage of not
-    requiring any extra, trainable parameters.
+    Li et al. <d-cite key="li2018adaptive"></d-cite> find that we can benefit
+    from updating the per-channel batch normalization statistics (mean and
+    variance) of a network trained on one domain with that network's statistics
+    in a new, target domain. Updating these statistics is mathematically
+    equivalent to modifying the feature-wise affine transformations in batch
+    normalization layers, as in conditional normalization layers discussed in
+    the "Visual question-answering" and "Style transfer" subsections. Notably,
+    this approach, along with Adaptive Instance Normalization, has the
+    particular advantage of not requiring any extra, trainable parameters.
   </p>
   <button class="collapsible" content-name="image-recognition" content-type="literature">Image recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="image-recognition" content-type="literature">
@@ -875,7 +872,7 @@
   </figure>
   <p>
     To summarize, the way neural networks learn to use FiLM layers seems to
-    vary problem to problem, input to input, and even feature to
+    vary from problem to problem, input to input, and even from feature to
     feature; there does not seem to be a single mechanism by which the
     network uses FiLM to condition computation. This flexibility may
     explain why FiLM-related methods have been successful across such a
@@ -910,7 +907,7 @@
     alone are able to compound into large and meaningful modulations of the
     FiLMed network is still an open question, and hopefully we will gain a
     better idea in the future.
-    For now, though, it is a question evokes the even grander mystery of
+    For now, though, it is a question that evokes the even grander mystery of
     how neural networks in general compound simple operations like
     matrix multiplications and element-wise non-linearities into
     semantically meaningful transformations.
@@ -1002,9 +999,9 @@
     team for being so generous with his time and advice. We would also like to
     thank Archy de Berker, Xavier Snelgrove, Pedro Oliveira Pinheiro, Alexei
     Nordell-Markovits, Masha Krol, and Minh Dao from Element AI; Roland
-    Memisevic from TwentyBN; Dzmitry Bahdanau from MILA; Ameesh Shah from Rice;
-    Olivier Pietquin and Jon Shlens from Goolgle Brain; and Jérémie Mary from
-    Criteo.
+    Memisevic from TwentyBN; Dzmitry Bahdanau from MILA; Ameesh Shah from Rice
+    university; Eleni Triantafillou from Toronto University; Olivier Pietquin
+    and Jon Shlens from Goolgle Brain; and Jérémie Mary from Criteo.
   </p>
 
   <d-footnote-list></d-footnote-list>
