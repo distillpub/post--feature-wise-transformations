@@ -589,17 +589,26 @@
     an external source but rather from utterance
     summarization feature vectors extracted in each layer to adapt the model.
   </p>
-  <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation<span style="float: right;">+</span></button>
+  <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation and few-shot learning<span style="float: right;">+</span></button>
   <p class="content" content-name="domain-adaptation" content-type="literature">
-    Li et al. <d-cite key="li2018adaptive"></d-cite> find that we can benefit
-    from updating the per-channel batch normalization statistics (mean and
-    variance) of a network trained on one domain with that network's statistics
-    in a new, target domain. Updating these statistics is mathematically
-    equivalent to modifying the feature-wise affine transformations in batch
-    normalization layers, as in conditional normalization layers discussed in
-    the "Visual question-answering" and "Style transfer" subsections. Notably,
-    this approach, along with Adaptive Instance Normalization, has the
-    particular advantage of not requiring any extra, trainable parameters.
+    For domain adaptation Li et al. <d-cite key="li2018adaptive"></d-cite> find
+    that we can benefit from updating the per-channel batch normalization
+    statistics (mean and variance) of a network trained on one domain with that
+    network's statistics in a new, target domain. Updating these statistics is
+    mathematically equivalent to modifying the feature-wise affine
+    transformations in batch normalization layers, as in conditional
+    normalization layers discussed in the "Visual question-answering" and "Style
+    transfer" subsections. Notably, this approach, along with Adaptive Instance
+    Normalization, has the particular advantage of not requiring any extra,
+    trainable parameters.
+  </p>
+  <p class="content" content-name="domain-adaptation" content-type="literature">
+    On the few-shot learning front Oreshkin et al.
+    <d-cite key="oreshkin2018tadam"></d-cite> explore the idea of using FiLM
+    layers to modulate a feature extractor used in a Prototypical Network-like
+    setup <d-cite key="snell2017prototypical"></d-cite>, where the FiLM
+    parameters are predicted from the support set of a given few-shot learning
+    episode.
   </p>
 
   <hr/>
