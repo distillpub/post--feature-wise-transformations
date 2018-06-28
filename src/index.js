@@ -870,7 +870,8 @@
           fit: true,
           center: true,
           minZoom: 0.1,
-        }); 
+          controlIconsEnabled: true,
+        }).zoomAtPointBy(0.7, {x: -50, y: 250}); 
        
 })();
 (function() {
@@ -1010,6 +1011,7 @@
 	  zoomEnabled: true,
 	  fit: true,
 	  center: true,
-	  minZoom: 0.1,
-	}); 
+	  minZoom: 0.1, 
+	  controlIconsEnabled: true,
+	}).zoomAtPointBy(0.7, {x: -50, y: 250}); 
 })();

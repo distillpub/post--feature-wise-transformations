@@ -1,8 +1,9 @@
 <svg width="444" height="400" xmlns="http://www.w3.org/2000/svg" id="clevr-plot-svg">
-  <g id="clevr-plot">
+  <g id="clevr-plot" style="z-index: -1;">
     <rect x="10" y="100" width="250" height="250" style="fill: none;"/>
   </g>
-  
+  <rect width="444" height="70" style="fill:white" />
+  <rect width="150" height="270" style="fill:white" transform="translate(285, 0)"/>
   <text x="10" y="10" dy="1em" class="figure-text">
     <tspan>
       t-SNE projection of the FiLM parameters associated with
@@ -19,9 +20,11 @@
  </svg> 
   
  <svg width="444" height="400" xmlns="http://www.w3.org/2000/svg" id="style-transfer-plot-svg">
-  <g id="style-transfer-plot">
+  <g id="style-transfer-plot" style="z-index: -1;">
     <rect x="0" y="100" width="250" height="250" style="fill: none;"/>
   </g>
+  <rect width="444" height="70" style="fill:white" />
+  <rect width="150" height="270" style="fill:white" transform="translate(285, 0)"/>
   <text x="0" y="10" dy="1em" class="figure-text">
     <tspan>
       t-SNE projection of the FiLM parameters associated with
@@ -33,6 +36,6 @@
       coded by artist name.
     </tspan>
   </text>
-  <g transform="translate(285, 110)" id="style-transfer-legend"></g>
+  <g transform="translate(300, 110)" id="style-transfer-legend"></g>
   <image x="285" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
 </svg>
