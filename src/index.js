@@ -725,7 +725,7 @@
 
 (function() {
     // Get references to important tags
-    var svg = d3.select("#tsne-diagram > svg");
+    var svg = d3.select("#clevr-plot-svg");
     var scatterPlot = svg.select("#clevr-plot");
     var boundingBox = scatterPlot.select("rect");
     var legend = svg.select("#clevr-legend");
@@ -863,10 +863,19 @@
 
         focusAll();
     });
+    svgPanZoom = require('svg-pan-zoom')
+    svgPanZoom('#clevr-plot-svg', {
+          viewportSelector: '#tsne-diagram #clevr-plot',
+          zoomEnabled: true,
+          fit: true,
+          center: true,
+          minZoom: 0.1,
+        }); 
+       
 })();
 (function() {
     // Get references to important tags
-    var svg = d3.select("#tsne-diagram > svg");
+    var svg = d3.select("#style-transfer-plot-svg");
     var scatterPlot = svg.select("#style-transfer-plot");
     var boundingBox = scatterPlot.select("rect");
     var legend = svg.select("#style-transfer-legend");
@@ -994,4 +1003,13 @@
 
         focusAll();
     });
+    
+   svgPanZoom = require('svg-pan-zoom')
+   svgPanZoom('#style-transfer-plot-svg', {
+	  viewportSelector: '#tsne-diagram #style-transfer-plot',
+	  zoomEnabled: true,
+	  fit: true,
+	  center: true,
+	  minZoom: 0.1,
+	}); 
 })();
