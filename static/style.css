@@ -171,8 +171,14 @@ d-figure > figure {
   font-size: 18px;
   font-weight: 700;
   float: right;
-  background-color: white
 }
-.expand-collapse-button:hover {
-  text-decoration: underline;
+
+#clevr-plot-svg {
+ width:440px;
+ height:400px
+}
+
+#style-transfer-plot-svg {
+ width:440px;
+ height:400px
 }
