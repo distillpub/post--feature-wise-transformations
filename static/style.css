@@ -144,18 +144,18 @@ d-figure > figure {
   color: rgba(0, 0, 0, 0.8);
   padding: 0.5em;
   margin: 0.2em;
-  padding-left: 0px;
+  transform: translateX(0px);
   transition: 
       color 0.1s ease-out,
-      padding 0.2s ease-in;
+      transform 0.25s ease;
 }
 
 .collapsible:hover {
   border-bottom: 1px solid inset;
   color: rgba(0, 0, 0, 0.4);
-  padding-left: 5px;
+  transform: translateX(10px);
   transition: 
-      padding 0.1s ease-in-out;
+      transform 0.25s ease;
 }
 
 .content {
