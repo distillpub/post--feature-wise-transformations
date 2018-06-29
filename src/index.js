@@ -864,14 +864,20 @@
         focusAll();
     });
     svgPanZoom = require('svg-pan-zoom')
-    svgPanZoom('#clevr-plot-svg', {
+    var panZoom = svgPanZoom('#clevr-plot-svg', {
           viewportSelector: '#tsne-diagram #clevr-plot',
           zoomEnabled: true,
           fit: true,
           center: true,
           minZoom: 0.1,
-          controlIconsEnabled: true,
+          controlIconsEnabled: false,
         }).zoomAtPointBy(0.7, {x: -50, y: 250}); 
+        
+    svg.select("#clevr-zoom").on("click", function(d){
+		panZoom.resetZoom()
+		panZoom.resetPan()
+		panZoom.zoomAtPointBy(0.7, {x: -50, y: 250}); 
+	});
        
 })();
 (function() {
@@ -1006,12 +1012,19 @@
     });
     
    svgPanZoom = require('svg-pan-zoom')
-   svgPanZoom('#style-transfer-plot-svg', {
+   var panZoom = svgPanZoom('#style-transfer-plot-svg', {
 	  viewportSelector: '#tsne-diagram #style-transfer-plot',
 	  zoomEnabled: true,
 	  fit: true,
 	  center: true,
 	  minZoom: 0.1, 
-	  controlIconsEnabled: true,
-	}).zoomAtPointBy(0.7, {x: -50, y: 250}); 
+	  controlIconsEnabled: false,
+	});
+	panZoom.zoomAtPointBy(0.7, {x: -50, y: 250}); 
+	
+	d3.select("#style-zoom").on("click", function(d){
+		panZoom.resetZoom()
+		panZoom.resetPan()
+		panZoom.zoomAtPointBy(0.7, {x: -50, y: 250}); 
+	});
 })();

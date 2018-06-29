@@ -3,7 +3,7 @@
     <rect x="10" y="100" width="250" height="250" style="fill: none;"/>
   </g>
   <rect width="444" height="70" style="fill:white" />
-  <rect width="150" height="270" style="fill:white" transform="translate(285, 0)"/>
+  <rect width="150" height="360" style="fill:white" transform="translate(285, 0)"/>
   <text x="10" y="10" dy="1em" class="figure-text">
     <tspan>
       t-SNE projection of the FiLM parameters associated with
@@ -17,6 +17,7 @@
   </text>
   <g transform="translate(300, 110)" id="clevr-legend"></g>
   <image x="285" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
+   <image x="15" y="370" height="27" width="27" xlink:href="images/zoom.png"/ id="clevr-zoom" style="cursor: pointer;">
  </svg> 
   
  <svg width="444" height="400" xmlns="http://www.w3.org/2000/svg" id="style-transfer-plot-svg">
@@ -38,4 +39,5 @@
   </text>
   <g transform="translate(300, 110)" id="style-transfer-legend"></g>
   <image x="285" y="70" height="27" width="27" xlink:href="images/pointer.svg"/>
+  <image x="15" y="370" height="27" width="27" xlink:href="images/zoom.png" id="style-zoom" style="cursor: pointer;"/>
 </svg>
