@@ -10,10 +10,10 @@
   </text>
   <text x="500" y="10" dy="1em" class="figure-text">
     <tspan>
-      FiLM parameters of the visual reasoning model for feature map 92,
+      FiLM parameters of the visual reasoning model for feature map
     </tspan>
     <tspan x="500" dy="1.5em">
-      indicating an object material separation mechanism.
+      92, indicating an object material separation mechanism.
     </tspan>
   </text>
   <g id="first-plot">

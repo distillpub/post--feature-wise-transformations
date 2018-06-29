@@ -827,9 +827,11 @@
   <p>
     In cases where question types alone cannot explain the clustering of the
     FiLM parameters, we can turn to the conditioning content itself to gain
-    an understanding of the mechanism at play. Let's take a look at the same
-    feature map scatter plots, but this time see if coloring gamma-beta parameters
-    by the words in the questions can explain these cluster shapes.
+    an understanding of the mechanism at play. Let's take a look at two more plots,
+    one for feature map 26 as in the previous figure, and another for a different
+    feature map exhibiting the same FiLM parameter clusters. This time we'll
+    see if coloring gamma-beta parameters by the words in the questions can
+    explain the clustering behaviour.
   </p>
   <figure class="l-body-outset" id="clevr-subcluster-color-words-diagram">
     <%= require("../static/diagrams/clevr-subcluster-color-words.svg") %>
@@ -838,7 +840,7 @@
     In the left plot (feature map 26), the left subcluster corresponds
     to questions discussing objects positioned "in front" of other objects, while
     the right subcluster to those "behind" other objects.
-    In the right plot we see some evidence of separation based
+    In the right plot (feature map 92) we see some evidence of separation based
     on object materials. The left subcluster corresponds to questions involving matte
     and rubber objects, while the right subcluster contains questions about shiny, metal,
     or metallic objects.
