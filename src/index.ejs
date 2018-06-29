@@ -233,9 +233,6 @@
       An affine transformation is a transformation of the form
       <d-math>y = m * x + b</d-math>.
     </d-footnote>
-    There is some evidence to suggest that using both kinds of interactions
-    is more effective than either alone
-    <d-cite key="perez2018film,yu2018guided"></d-cite>.
   </p>
   <p>
     All methods outlined above share the common trait that they act at the
@@ -250,11 +247,11 @@
     phenomenon in various settings.
   </p>
   <p>
-    Lastly, these transformations only enforce a limited inductive bias
-    &mdash; and remain domain-agnostic. This quality can be a downside, as
-    some problems may be easier to solve with a stronger inductive bias.
-    However, it is this characteristic which also enables these transformations
-    to be so widely effective across problem domains, as we will later review.
+    Lastly, these transformations only enforce a limited inductive bias and
+    remain domain-agnostic. This quality can be a downside, as some problems may
+    be easier to solve with a stronger inductive bias.  However, it is this
+    characteristic which also enables these transformations to be so widely
+    effective across problem domains, as we will later review.
   </p>
   <h3>Nomenclature</h3>
   <p>
@@ -296,7 +293,7 @@
       transformation to all spatial locations.
     </d-footnote>
     In other words, assuming <d-math>\mathbf{x}</d-math> is a FiLM layer's
-    input, <d-math>\mathbf{z}</d-math> is conditioning input, and
+    input, <d-math>\mathbf{z}</d-math> is a conditioning input, and
     <d-math>\gamma</d-math> and <d-math>\beta</d-math> are
     <d-math>\mathbf{z}</d-math>-dependent scaling and shifting vectors,
 
@@ -326,13 +323,13 @@
 
   <h2>Feature-wise transformations in the literature</h2>
   <p>
-    Feature-wise transformations find their way into methods in many problem
-    settings, but because of their simplicity, their effectiveness is
-    seldom highlighted in lieu of other novel research contributions.
-    Below are a few notable examples of feature-wise transformations in the
-    literature, grouped by application domain. The diversity of these
-    applications underscores the flexible, general-purpose ability of
-    feature-wise interactions to learn effective task representations.
+    Feature-wise transformations find their way into methods applied to many
+    problem settings, but because of their simplicity, their effectiveness is
+    seldom highlighted in lieu of other novel research contributions.  Below are
+    a few notable examples of feature-wise transformations in the literature,
+    grouped by application domain. The diversity of these applications
+    underscores the flexible, general-purpose ability of feature-wise
+    interactions to learn effective task representations.
   </p>
   <div style="width: 100%">
     <button class="expand-collapse-button" content-type="literature">expand all</button>
@@ -397,16 +394,17 @@
     Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> further
     introduce a <em>style prediction network</em>, trained jointly with the
     style transfer network to predict the conditioning parameters directly from
-    a given style image. Even though for this article we prefer FiLM as an
-    abstraction because it is decoupled from any normalization operations, FiLM
-    layers were actually themselves heavily inspired by conditional
-    normalization layers.
+    a given style image. In this article we opt to use the FiLM nomenclature
+    because it is decoupled from normalization operations, but the FiLM
+    layers used by Perez et al. <d-cite key="perez2018film"></d-cite> were
+    themselves heavily inspired by the conditional normalization layers used
+    by Dumoulin et al. <d-cite key="dumoulin2017learned"></d-cite>.
   </p>
   <p class="content" content-name="style-transfer" content-type="literature">
     Yang et al. <d-cite key="yang2018efficient"></d-cite> use a related
-    architecture for video object segmentation, the task of segmenting a
-    particular object throughout a video, given that object's segmentation in
-    the first frame. Their model conditions an image segmentation network over a
+    architecture for video object segmentation &mdash; the task of segmenting a
+    particular object throughout a video given that object's segmentation in the
+    first frame. Their model conditions an image segmentation network over a
     video frame on the provided first frame segmentation using feature-wise
     scaling factors, as well as on the previous frame using position-wise
     biases.
@@ -415,7 +413,7 @@
     So far, many of the models we covered have two sub-networks: a primary
     network in which feature-wise transformations are applied and a secondary
     network which outputs parameters for these transformations. However, this
-    distinction between <em>FiLMed network</em> and <em>FiLM generator</em>
+    distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
     is not strictly necessary. As an example, Huang and Belongie
     <d-cite key="huang2017arbitrary"></d-cite> propose an alternative
     style transfer network that uses adaptive instance normalization layers,
@@ -430,7 +428,7 @@
     on a secondary network to predict the FiLM parameters from the style
     image, the main network itself is used to extract the style features
     used to compute FiLM parameters. Therefore, the model can be seen as
-    <em>both</em> the FiLMed network the FiLM generator.
+    <em>both</em> the FiLM-ed network the FiLM generator.
   </p>
   <button class="collapsible" content-name="image-recognition" content-type="literature">Image recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="image-recognition" content-type="literature">
@@ -445,11 +443,10 @@
   </figure>
   <p class="content" content-name="image-recognition" content-type="literature">
     Highway Networks <d-cite key="srivastava2015highway"></d-cite> are a prime
-    example of applying this principle of self-conditioning. This network
-    architecture takes inspiration from the LSTMs'
-    <d-cite key="hochreiter1997long"></d-cite> heavy use of feature-wise
-    sigmoidal gating in their input, forget, and output gates to regulate
-    information flow:
+    example of applying this self-conditioning principle. They take inspiration
+    from the LSTMs' <d-cite key="hochreiter1997long"></d-cite> heavy use of
+    feature-wise sigmoidal gating in their input, forget, and output gates to
+    regulate information flow:
   </p>
   <figure class="content l-body" content-name="image-recognition" content-type="literature">
     <%= require("../static/diagrams/highway-networks.svg") %>
@@ -477,12 +474,11 @@
   </figure>
   <p class="content" content-name="nlp" content-type="literature">
     Dauphin et al. <d-cite key="dauphin2017language"></d-cite> use sigmoidal
-    gating in their proposed gated linear
-    unit, which uses half of the input features to apply feature-wise
-    sigmoidal gating to the other half. Gehring et al.
-    <d-cite key="gehring2017convolutional"></d-cite> adopt this
-    architectural feature, introducing a fast, parallelizable model for
-    machine translation in the form of a fully convolutional network.
+    gating in their proposed <em>gated linear unit</em>, which uses half of the
+    input features to apply feature-wise sigmoidal gating to the other half.
+    Gehring et al.  <d-cite key="gehring2017convolutional"></d-cite> adopt this
+    architectural feature, introducing a fast, parallelizable model for machine
+    translation in the form of a fully convolutional network.
   </p>
   <figure class="content l-body" content-name="nlp" content-type="literature">
     <%= require("../static/diagrams/convseq2seq.svg") %>
@@ -528,13 +524,13 @@
   </figure>
   <p class="content" content-name="generative-modeling" content-type="literature">
     PixelCNN <d-cite key="oord2016conditional"></d-cite>
-    and WaveNet <d-cite key="oord2016wavenet"></d-cite> are two recent advances
-    in autoregressive, generative modeling (of images and audio,
-    respectively) which use conditional biasing. The simplest form of
+    and WaveNet <d-cite key="oord2016wavenet"></d-cite> &mdash; two recent
+    advances in autoregressive, generative modeling of images and audio,
+    respectively &mdash; use conditional biasing. The simplest form of
     conditioning in PixelCNN adds feature-wise biases to all convolutional layer
-    outputs. In FiLM parlance, this operation is equivalent to
-    inserting FiLM layers after each convolutional layer and setting the
-    scaling coefficients to a constant value of 1.
+    outputs. In FiLM parlance, this operation is equivalent to inserting FiLM
+    layers after each convolutional layer and setting the scaling coefficients
+    to a constant value of 1.
     <d-footnote>
       The authors also describe a location-dependent biasing scheme which
       cannot be expressed in terms of FiLM layers due to the absence of the
@@ -575,11 +571,11 @@
   <p class="content" content-name="speech-recognition" content-type="literature">
     Kim et al.<d-cite key="kim2017dynamic"></d-cite> modulate a deep
     bidirectional LSTM using <em>dynamic layer normalization</em>, a form
-    of conditional normalization as discussed in the "Visual question-answering"
-    and "Style transfer" subsections.
-    Dynamic layer normalization can also be seen as an instance of FiLM where the
-    post-normalization feature-wise affine transformation is disabled and a
-    FiLM layer is placed immediately after the normalization.
+    of conditional normalization similar to those discussed in the
+    <em>Visual question-answering</em> and <em>Style transfer</em> subsections.
+    Dynamic layer normalization can also be seen as an instance of FiLM where
+    the post-normalization feature-wise affine transformation is disabled and a
+    FiLM layer is placed immediately after the normalization operation.
   </p>
   <figure class="content l-body-outset" content-name="speech-recognition" content-type="literature">
     <%= require("../static/diagrams/dln.svg") %>
@@ -591,16 +587,14 @@
   </p>
   <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation and few-shot learning<span style="float: right;">+</span></button>
   <p class="content" content-name="domain-adaptation" content-type="literature">
-    For domain adaptation Li et al. <d-cite key="li2018adaptive"></d-cite> find
-    that we can benefit from updating the per-channel batch normalization
+    On the domain adaptation front Li et al. <d-cite key="li2018adaptive"></d-cite>
+    find that we can benefit from updating the per-channel batch normalization
     statistics (mean and variance) of a network trained on one domain with that
-    network's statistics in a new, target domain. Updating these statistics is
-    mathematically equivalent to modifying the feature-wise affine
-    transformations in batch normalization layers, as in conditional
-    normalization layers discussed in the "Visual question-answering" and "Style
-    transfer" subsections. Notably, this approach, along with Adaptive Instance
-    Normalization, has the particular advantage of not requiring any extra,
-    trainable parameters.
+    network's statistics in a new, target domain. As was discussed in the
+    <em>Style transfer</em> subsection, this is akin to using the network as
+    both the FiLM generator and the FiLM-ed network. Notably, this approach,
+    along with Adaptive Instance Normalization, has the particular advantage of
+    not requiring any extra trainable parameters.
   </p>
   <p class="content" content-name="domain-adaptation" content-type="literature">
     On the few-shot learning front Oreshkin et al.
@@ -616,7 +610,7 @@
   <h2>Related ideas</h2>
   <p>
     Aside from methods which directly use feature-wise transformations, FiLM
-    connects more broadly with other methods and concepts as well.
+    connects more broadly with other methods and concepts.
   </p>
   <div style="width: 100%">
     <button class="expand-collapse-button" content-type="related">expand all</button>
@@ -645,7 +639,7 @@
     describing entire layers (e.g., in a recurrent neural network).
     From this perspective, the FiLM
     generator is a specialized HyperNetwork that
-    predicts the FiLM parameters of the FiLMed network. The main distinction
+    predicts the FiLM parameters of the FiLM-ed network. The main distinction
     between the two resides in the number and specificity of predicted
     parameters: FiLM requires predicting far fewer parameters than
     Hypernetworks, but FiLM also has less capacity to modulate
@@ -716,9 +710,9 @@
     introduce a notion of <em>task representation</em>: each task &mdash; be it
     a question about an image or a painting style to imitate &mdash; elicits a
     different set of FiLM parameters via the FiLM generator which can be
-    understood as its representation in terms of how to modulate the FiLMed
+    understood as its representation in terms of how to modulate the FiLM-ed
     network. To help better understand the properties of this representation,
-    let's focus on two FiLMed models used in fairly different problem settings:
+    let's focus on two FiLM-ed models used in fairly different problem settings:
   </p>
   <ul>
     <li>
@@ -768,7 +762,7 @@
     "dense" may help explain why the style transfer model of Ghiasi et al.
     <d-cite key="ghiasi2017exploring"></d-cite> is able to perform style
     interpolations: any convex combination of FiLM parameters is likely to
-    correspond to a meaningful parametrization of the FiLMed network.
+    correspond to a meaningful parametrization of the FiLM-ed network.
   </p>
   <figure class="l-body" id="style-interpolation-diagram">
     <%= require("../static/diagrams/style-interpolation.svg") %>
@@ -795,7 +789,7 @@
   <p>
     At the very least, this may indicate that FiLM learns to operate in ways
     that are problem-specific, and that we should not expect to find a unified
-    and problem-independent explanation for FiLM's success in modulating FiLMed
+    and problem-independent explanation for FiLM's success in modulating FiLM-ed
     networks. Perhaps the compositional or discrete nature of visual reasoning
     requires the model to implement several well-defined modes of operation
     which are less necessary for style transfer.
@@ -917,7 +911,7 @@
   </p>
   <p>
     Finally, the fact that changes on the feature level alone are able to
-    compound into large and meaningful modulations of the FiLMed network is
+    compound into large and meaningful modulations of the FiLM-ed network is
     still very surprising to us, and hopefully future work will provide a better
     understanding of that phenomenon. For now, though, it is a question that
     evokes the even grander mystery of how neural networks in general compound
