@@ -140,6 +140,22 @@ d-figure > figure {
   outline: none;
   font-size: 25px;
   font-weight: 700;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 0.5em;
+  margin: 0.2em;
+  padding-left: 0px;
+  transition: 
+      color 0.1s ease-out,
+      padding 0.2s ease-in;
+}
+
+.collapsible:hover {
+  border-bottom: 1px solid inset;
+  color: rgba(0, 0, 0, 0.4);
+  padding-left: 5px;
+  transition: 
+      padding 0.1s ease-in-out;
 }
 
 .content {

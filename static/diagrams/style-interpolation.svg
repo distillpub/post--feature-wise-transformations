@@ -1,19 +1,19 @@
-<svg viewBox="0 0 704 300" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 704 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M352,10l0,280" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
   <g id="example-1" transform="translate(20, 0)">
-    <image x="0" y="0" width="180" style="clip-path: inset(0 0 0 0 round 6px);" class="stylized-image" xlink:href="images/stylized-1-1.jpg"/>
-    <image x="200" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-1.jpg"/>
-    <image x="0" y="220" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-1-1.jpg"/>
-    <image x="100" y="220" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-1-2.jpg"/>
+    <image x="0" y="0" width="180" height="180" style="clip-path: inset(0 0 0 0 round 6px);" class="stylized-image" xlink:href="images/stylized-1-1.jpg"/>
+    <image x="200" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-1.jpg"/>
+    <image x="0" y="220" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-1-1.jpg"/>
+    <image x="100" y="220" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-1-2.jpg"/>
     <g class="image-selector" transform="translate(3, 200)">
       <line x1="0" y1="0" x2="174" y2="0" class="figure-line"/>
     </g>
   </g>
   <g id="example-2" transform="translate(404, 0)">
-    <image x="0" y="0" width="180" style="clip-path: inset(0 0 0 0 round 6px);" class="stylized-image" xlink:href="images/stylized-2-1.jpg"/>
-    <image x="200" y="0" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-2.png"/>
-    <image x="0" y="220" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-1.png"/>
-    <image x="100" y="220" width="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-2.png"/>
+    <image x="0" y="0" width="180" height="180" style="clip-path: inset(0 0 0 0 round 6px);" class="stylized-image" xlink:href="images/stylized-2-1.jpg"/>
+    <image x="200" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-2.png"/>
+    <image x="0" y="220" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-1.png"/>
+    <image x="100" y="220" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-2.png"/>
     <g class="image-selector" transform="translate(3, 200)">
       <line x1="0" y1="0" x2="174" y2="0" class="figure-line"/>
     </g>
