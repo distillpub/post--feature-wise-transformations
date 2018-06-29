@@ -94,11 +94,11 @@
   <p>
     When approaching such problems, it often makes sense to process one source
     of information <em>in the context of</em> another; for instance, in the
-    right example above, one can extract meaning from the image
-    in the context of the question asked to answer it correctly. In machine
-    learning, we often refer to this context-based processing as
-    <em>conditioning</em>: the computation carried out by a model is conditioned
-    or <em>modulated</em> by information extracted from an auxiliary input.
+    right example above, one can extract meaning from the image in the context
+    of the question. In machine learning, we often refer to this context-based
+    processing as <em>conditioning</em>: the computation carried out by a model
+    is conditioned or <em>modulated</em> by information extracted from an
+    auxiliary input.
   </p>
   <p>
     Finding an effective way to condition on or fuse sources of information
@@ -233,8 +233,7 @@
     </d-footnote>
     There is some evidence to suggest that using both kinds of interactions
     is more effective than either alone
-    <d-cite key="perez2018film,yu2018guided"></d-cite>,
-    perhaps from getting the best of both worlds.
+    <d-cite key="perez2018film,yu2018guided"></d-cite>.
   </p>
   <p>
     All methods outlined above share the common trait that they act at the
@@ -242,19 +241,18 @@
     interactions between the conditioning representation and the conditioned
     network. It is certainly possible to use more complex interactions,
     but feature-wise interactions often strike a happy compromise between
-    effectiveness and efficiency: the number of conditioning scaling and/or
-    shifting coefficients to predict scales linearly with the number of features
-    in the network. Also, in practice, feature-wise transformations (often
-    compounded across multiple layers) frequently have enough capacity to
-    model complex phenomenon in various settings.
+    effectiveness and efficiency: the number of scaling and/or shifting
+    coefficients to predict scales linearly with the number of features in the
+    network. Also, in practice, feature-wise transformations (often compounded
+    across multiple layers) frequently have enough capacity to model complex
+    phenomenon in various settings.
   </p>
   <p>
     Lastly, these transformations only enforce a limited inductive bias
     &mdash; and remain domain-agnostic. This quality can be a downside, as
     some problems may be easier to solve with a stronger inductive bias.
     However, it is this characteristic which also enables these transformations
-    to be so widely effective across problem domains, as we will review later
-    on.
+    to be so widely effective across problem domains, as we will later review.
   </p>
   <h3>Nomenclature</h3>
   <p>
@@ -315,11 +313,11 @@
     In addition to being a good abstraction of conditional feature-wise
     transformations, the FiLM nomenclature lends itself well to the notion of a
     <em>task representation</em>. From the perspective of multi-task learning,
-    we can view the conditioning signal as the task description, and we can view the
-    concatenation of all FiLM scaling and shifting coefficients as both
-    an instruction on <em>how to modulate</em> the conditioned network and a
-    <em>representation</em> of the task at hand. We will explore and illustrate
-    this idea later on.
+    we can view the conditioning signal as the task description. More
+    specifically, we can view the concatenation of all FiLM scaling and shifting
+    coefﬁcients as both an instruction on <em>how to modulate</em> the
+    conditioned network and a <em>representation</em> of the task at hand. We
+    will explore and illustrate this idea later on.
   </p>
 
   <hr/>
@@ -517,7 +515,7 @@
   <button class="collapsible" content-name="generative-modeling" content-type="literature">Generative modeling<span style="float: right;">+</span></button>
   <p class="content" content-name="generative-modeling" content-type="literature">
     The conditional variant of DCGAN <d-cite key="radford2016unsupervised"></d-cite>,
-    a well-recognized class of network architectures for generative adversarial networks
+    a well-recognized network architecture for generative adversarial networks
     <d-cite key="goodfellow2014generative"></d-cite>, uses concatenation-based
     conditioning. The class label is broadcasted as a feature map and then
     concatenated to the input of convolutional and transposed convolutional

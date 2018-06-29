@@ -5,10 +5,10 @@
     <path id="big-row-left" d="M 0 6 a 6 6 0 0 1 6 -6 l 34 0 l 0 40 l -34 0 a 6 6 0 0 1 -6 -6 Z"/>
     <path id="big-row-middle" d="M 0 0 l 40 0 l 0 40 l -40 0 Z"/>
     <path id="big-row-right" d="M 0 0 l 34 0 a 6 6 0 0 1 6 6 l 0 28 a 6 6 0 0 1 -6 6 l -34 0 Z"/>
-    <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #80DEEA;"/>
-    <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #FFAB91;"/>
-    <rect id="convolutional-patch-positive" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #80DEEA;"/>
-    <rect id="convolutional-patch-negative" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #FFAB91;"/>
+    <rect id="vector-patch-positive" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #FFAB91;"/>
+    <rect id="vector-patch-negative" width="30" height="30" rx="6" ry="6" opacity="0.8" style="fill: #80DEEA;"/>
+    <rect id="convolutional-patch-positive" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #FFAB91;"/>
+    <rect id="convolutional-patch-negative" width="20" height="20" rx="6" ry="6" opacity="0.8" style="fill: #80DEEA;"/>
     <path id="convolutional-feature" d="M 0 0 l 30 0 l 0 30 l -30 0 Z"/>
     <g id="vector-arrow">
       <path d="M 0 0 l 0 -16"/>
