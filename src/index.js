@@ -537,6 +537,7 @@
                 })
                 .style("fill", colors[color])
                 .style("opacity", 0.6)
+                .style("cursor", "pointer")
                 .on("mouseover", function(d) {
                     tooltip.transition()
                         .duration(200)
