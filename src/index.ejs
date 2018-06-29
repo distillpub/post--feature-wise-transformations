@@ -128,7 +128,7 @@
     where the two inputs are images and category labels, respectively. For the
     purpose of this example, we are interested in building a generative model of
     images of various classes (puppy, boat, airplane, etc.). The model takes as
-    input a class and a source of random noise (i.e., a vector sampled from a
+    input a class and a source of random noise (e.g., a vector sampled from a
     normal distribution) and outputs an image sample for the requested class.
   </p>
   <figure class="l-body">
@@ -179,10 +179,11 @@
     <%= require("../static/diagrams/conditional-biasing.svg") %>
   </figure>
   <p>
-    Interestingly, conditional biasing is actually just another way to implement
-    concatenation-based conditioning. Consider a fully-connected linear layer
-    applied to a concatenated an input <d-math>\mathbf{x}</d-math> and
-    conditioning representation <d-math>\mathbf{z}</d-math>:
+    Interestingly, conditional biasing can be thought of as another way to
+    implement concatenation-based conditioning. Consider a fully-connected
+    linear layer applied to the concatenation of an input
+    <d-math>\mathbf{x}</d-math> and a conditioning representation
+    <d-math>\mathbf{z}</d-math>:
     <d-footnote>
       The same argument applies to convolutional networks, provided we ignore
       the border effects due to zero-padding.
@@ -201,7 +202,7 @@
   </figure>
   <p>
     A special instance of conditional scaling is feature-wise sigmoidal gating:
-    scaled each feature by a value between <d-math>0</d-math> and
+    we scale each feature by a value between <d-math>0</d-math> and
     <d-math>1</d-math> (enforced by applying the sigmoid function), as a
     function of the conditioning representation. Intuitively, this gating allows
     the conditioning information to select which features are passed forward
