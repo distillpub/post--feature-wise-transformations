@@ -158,7 +158,8 @@
     assumption that the input is where the model needs to use the conditioning information.
     Maybe this assumption is correct, or maybe it's not; perhaps the
     model does not need to incorporate the conditioning information until late
-    into the generation process. In this case, we would be forcing the model to
+    into the generation process (e.g., right before generating the final pixel
+    output when conditioning on texture). In this case, we would be forcing the model to
     carry this information around unaltered for many layers.
   </p>
   <p>
@@ -410,7 +411,7 @@
     biases.
   </p>
   <p class="content" content-name="style-transfer" content-type="literature">
-    So far, many of the models we covered have two sub-networks: a primary
+    So far, the models we covered have two sub-networks: a primary
     network in which feature-wise transformations are applied and a secondary
     network which outputs parameters for these transformations. However, this
     distinction between <em>FiLM-ed network</em> and <em>FiLM generator</em>
@@ -432,9 +433,8 @@
   </p>
   <button class="collapsible" content-name="image-recognition" content-type="literature">Image recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="image-recognition" content-type="literature">
-    Many models thus far condition on a separate source of conditioning
-    information, but there is nothing preventing us from considering a
-    neural network's hidden activations <em>themselves</em> as conditioning
+    As you may have read earlier, there is nothing preventing us from considering a
+    neural network's activations <em>themselves</em> as conditioning
     information. This idea gives rise to
     <em>self-conditioned</em> models.
   </p>
@@ -570,12 +570,12 @@
   <button class="collapsible" content-name="speech-recognition" content-type="literature">Speech recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="speech-recognition" content-type="literature">
     Kim et al.<d-cite key="kim2017dynamic"></d-cite> modulate a deep
-    bidirectional LSTM using <em>dynamic layer normalization</em>, a form
-    of conditional normalization similar to those discussed in the
-    <em>Visual question-answering</em> and <em>Style transfer</em> subsections.
-    Dynamic layer normalization can also be seen as an instance of FiLM where
-    the post-normalization feature-wise affine transformation is disabled and a
-    FiLM layer is placed immediately after the normalization operation.
+    bidirectional LSTM using a form
+    of conditional normalization. As discussed in the
+    <em>Visual question-answering</em> and <em>Style transfer</em> subsections,
+    conditional normalization can be seen as an instance of FiLM where
+    the post-normalization feature-wise affine transformation is replaced
+    with a FiLM layer.
   </p>
   <figure class="content l-body-outset" content-name="speech-recognition" content-type="literature">
     <%= require("../static/diagrams/dln.svg") %>
@@ -587,19 +587,19 @@
   </p>
   <button class="collapsible" content-name="domain-adaptation" content-type="literature">Domain adaptation and few-shot learning<span style="float: right;">+</span></button>
   <p class="content" content-name="domain-adaptation" content-type="literature">
-    On the domain adaptation front Li et al. <d-cite key="li2018adaptive"></d-cite>
-    find that we can benefit from updating the per-channel batch normalization
+    For domain adaptation, Li et al. <d-cite key="li2018adaptive"></d-cite>
+    find it effective to update the per-channel batch normalization
     statistics (mean and variance) of a network trained on one domain with that
-    network's statistics in a new, target domain. As was discussed in the
-    <em>Style transfer</em> subsection, this is akin to using the network as
+    network's statistics in a new, target domain. As discussed in the
+    <em>Style transfer</em> subsection, this operation is akin to using the network as
     both the FiLM generator and the FiLM-ed network. Notably, this approach,
     along with Adaptive Instance Normalization, has the particular advantage of
     not requiring any extra trainable parameters.
   </p>
   <p class="content" content-name="domain-adaptation" content-type="literature">
-    On the few-shot learning front Oreshkin et al.
-    <d-cite key="oreshkin2018tadam"></d-cite> explore the idea of using FiLM
-    layers to modulate a feature extractor used in a Prototypical Network-like
+    In few-shot learning, Oreshkin et al.
+    <d-cite key="oreshkin2018tadam"></d-cite> explore using FiLM
+    layers to modulate a feature extractor used in a Prototypical Network -like
     setup <d-cite key="snell2017prototypical"></d-cite>, where the FiLM
     parameters are predicted from the support set of a given few-shot learning
     episode.
@@ -698,7 +698,7 @@
     <%= require("../static/diagrams/film-as-bilinear.svg") %>
   </figure>
   <p class="content" content-name="bilinear" content-type="related">
-    For explicit applications of bilinear transformations,
+    For some applications of bilinear transformations,
     see the <a href="#bibliographic-notes">Bibliographic Notes</a>.
   </p>
 
@@ -778,6 +778,12 @@
   <figure class="l-body" id="question-interpolation-diagram">
     <%= require("../static/diagrams/question-interpolation.svg") %>
   </figure>
+  <p>
+    The network seems to be softly switching where in the image it is looking,
+    based on the task description. It is quite interesting these semantically
+    meaningful interpolation behaviors emerge, as the network has not been
+    directly trained to act this way, simply to perform well on the main task.
+  </p>
   <p>
     One interesting difference across the two problem settings is that, for the
     visual reasoning model, FiLM parameters sometimes form several sub-clusters
