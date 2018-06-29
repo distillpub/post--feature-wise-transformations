@@ -901,40 +901,25 @@
 
   <h2>Discussion</h2>
   <p>
-    Looking forward, there are several questions we would like to explore in
-    more depth. Our empirical analysis was performed only on networks using
-    feature-wise affine transformations. Different feature-wise transformation
-    mechanisms, such as sigmoidal gating and conditional biasing, may exhibit
-    slightly different behaviors which we think would be interesting to explore
-    in future work.
-  </p>
-  <p>
-    One of the strengths of feature-wise transformations is their general
-    applicability, which stems from the absense of a strong inductive bias.
-    Some problem settings may benefit from the inclusion of an inductive bias;
-    for instance, in the domain of visual reasoning, Compositional Attention
-    Networks <d-cite key="arad2018compositional"></d-cite> are more
-    sample-efficient and performant than FiLM on the CLEVR task, which they
-    achieve by explicitly biasing the model towards learning multiple,
-    compositional reasoning steps. There are various ways in which feature-wise
-    transformations could be combined with stronger inductive biases, which has
-    been investigated by some recent work
-    <d-cite key="bahdanau2018learning,yang2018dataset"></d-cite>, and we are
-    looking forward to seeing even more exploration of these hybrid approaches.
-  </p>
-  <p>
-    Another open question is the extent to which FiLM layers themselves
-    influence the emergence of linear task representations &mdash; the observed
-    property of FiLM architectures that allow for task interpolations,
-    analogies, and arithmetic. It is unclear to us whether the insertion of such
-    layers is alone responsible for this property, or if it arises from some
-    architectural feature in the FiLM generator.
+    Looking forward, there are still many unanswered questions.
+    Do these experimental observations on FiLM-based architectures generalize to
+    other related conditioning mechanisms, such as conditional biasing, sigmoidal
+    gating, HyperNetworks, and bilinear transformations? When do feature-wise
+    transformations outperform methods with stronger inductive biases and vice
+    versa? Recent work combines feature-wise transformations with stronger
+    inductive bias methods
+    <d-cite key="bahdanau2018learning,yang2018dataset"></d-cite>, which
+    could be an optimal middle ground. Also, to what extent are FiLM's
+    task representation properties
+    inherent to FiLM, and to what extent do they emerge from other features
+    of neural networks (i.e. non-linearities, FiLM generator
+    depth, etc.)?
   </p>
   <p>
     Finally, the fact that changes on the feature level alone are able to
     compound into large and meaningful modulations of the FiLM-ed network is
-    still very surprising to us, and hopefully future work will provide a better
-    explanation for this phenomenon. For now, though, it is a question that
+    still very surprising to us, and hopefully future work will uncover deeper
+    explanations. For now, though, it is a question that
     evokes the even grander mystery of how neural networks in general compound
     simple operations like matrix multiplications and element-wise
     non-linearities into semantically meaningful transformations.
