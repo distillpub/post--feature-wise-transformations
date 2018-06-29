@@ -609,8 +609,9 @@
 
   <h2>Related ideas</h2>
   <p>
-    Aside from methods which directly use feature-wise transformations, FiLM
-    connects more broadly with other methods and concepts.
+    Aside from methods which make direct use of feature-wise transformations,
+    the FiLM framework connects more broadly with the following methods and
+    concepts.
   </p>
   <div style="width: 100%">
     <button class="expand-collapse-button" content-type="related">expand all</button>
@@ -618,36 +619,31 @@
   <button class="collapsible" content-name="zero-shot" content-type="related">Zero-shot learning<span style="float: right;">+</span></button>
   <p class="content" content-name="zero-shot" content-type="related">
     The idea of learning a task representation shares a strong connection with
-    approaches in zero-shot learning.
-    In zero-shot learning, semantic task embeddings may be learned from
-    external information and then leveraged to make predictions about classes
-    without training examples. For instance, to
-    generalize to unseen object categories for image classification,
-    one may construct semantic task embeddings
-    from text-only descriptions and exploit objects' text-based relationships
-    to predict unseen image categories. Frome et al.
-    <d-cite key="frome2013devise"></d-cite>, Socher et al.
-    <d-cite key="socher2013zero"></d-cite>, and Norouzi et al.
+    zero-shot learning approaches.  In zero-shot learning, semantic task
+    embeddings may be learned from external information and then leveraged to
+    make predictions about classes without training examples. For instance, to
+    generalize to unseen object categories for image classification, one may
+    construct semantic task embeddings from text-only descriptions and exploit
+    objects' text-based relationships to make predictions for unseen image
+    categories. Frome et al. <d-cite key="frome2013devise"></d-cite>, Socher et
+    al.  <d-cite key="socher2013zero"></d-cite>, and Norouzi et al.
     <d-cite key="norouzi2014zero"></d-cite> are a few notable exemplars
     of this idea.
   </p>
   <button class="collapsible" content-name="hypernetworks" content-type="related">HyperNetworks<span style="float: right;">+</span></button>
   <p class="content" content-name="hypernetworks" content-type="related">
     The notion of a secondary network predicting the parameters of a primary
-    network is also well exemplified by HyperNetworks
-    <d-cite key="ha2016hypernetworks"></d-cite>, which predict weights
-    describing entire layers (e.g., in a recurrent neural network).
-    From this perspective, the FiLM
-    generator is a specialized HyperNetwork that
-    predicts the FiLM parameters of the FiLM-ed network. The main distinction
-    between the two resides in the number and specificity of predicted
-    parameters: FiLM requires predicting far fewer parameters than
-    Hypernetworks, but FiLM also has less capacity to modulate
-    other networks. The ideal trade-off between capacity and regularization (and
-    computational complexity) in using conditioning information is still an
-    ongoing area of investigation, and many proposed approaches lie on the
-    spectrum between FiLM and HyperNetworks (see
-    <a href="#bibliographic-notes">Bibliographic Notes</a>).
+    network is also well exemplified by HyperNetworks <d-cite
+    key="ha2016hypernetworks"></d-cite>, which predict weights for entire layers
+    (e.g., a recurrent neural network layer).  From this perspective, the FiLM
+    generator is a specialized HyperNetwork that predicts the FiLM parameters of
+    the FiLM-ed network. The main distinction between the two resides in the
+    number and specificity of predicted parameters: FiLM requires predicting far
+    fewer parameters than Hypernetworks, but also has less modulation potential.
+    The ideal trade-off between a conditioning mechanism's capacity,
+    regularization, and computational complexity is still an ongoing area of
+    investigation, and many proposed approaches lie on the spectrum between FiLM
+    and HyperNetworks (see <a href="#bibliographic-notes">Bibliographic Notes</a>).
   </p>
   <button class="collapsible" content-name="attention" content-type="related">Attention<span style="float: right;">+</span></button>
   <p class="content" content-name="attention" content-type="related">
@@ -706,13 +702,13 @@
 
   <h2>Properties of the learned task representation</h2>
   <p>
-    As hinted, in adopting the FiLM perspective we implicitly
-    introduce a notion of <em>task representation</em>: each task &mdash; be it
-    a question about an image or a painting style to imitate &mdash; elicits a
-    different set of FiLM parameters via the FiLM generator which can be
-    understood as its representation in terms of how to modulate the FiLM-ed
-    network. To help better understand the properties of this representation,
-    let's focus on two FiLM-ed models used in fairly different problem settings:
+    As hinted earlier, in adopting the FiLM perspective we implicitly introduce
+    a notion of <em>task representation</em>: each task &mdash; be it a question
+    about an image or a painting style to imitate &mdash; elicits a different
+    set of FiLM parameters via the FiLM generator which can be understood as its
+    representation in terms of how to modulate the FiLM-ed network. To help
+    better understand the properties of this representation, let's focus on two
+    FiLM-ed models used in fairly different problem settings:
   </p>
   <ul>
     <li>
@@ -751,11 +747,11 @@
     can be <d-math>\gamma</d-math>-aligned, <d-math>\beta</d-math>-aligned, or
     diagonal at varying angles. These findings suggest that the affine
     transformation in FiLM layers is not modulated in a single, consistent way,
-    i.e., mostly using <d-math>\gamma</d-math> only, <d-math>\beta</d-math>
-    only, or <d-math>\gamma</d-math> and <d-math>\beta</d-math> together in some
-    specific way. Maybe this is due to the affine transformation being
-    overspecified, or maybe this shows that FiLM layers can be used to perform
-    modulation operations in several distinct ways.
+    i.e., using <d-math>\gamma</d-math> only, <d-math>\beta</d-math> only, or
+    <d-math>\gamma</d-math> and <d-math>\beta</d-math> together in some specific
+    way. Maybe this is due to the affine transformation being overspecified, or
+    maybe this shows that FiLM layers can be used to perform modulation
+    operations in several distinct ways.
   </p>
   <p>
     Nevertheless, the fact that these parameter clusters are often somewhat
@@ -785,9 +781,11 @@
     directly trained to act this way, simply to perform well on the main task.
   </p>
   <p>
-    One interesting difference across the two problem settings is that, for the
-    visual reasoning model, FiLM parameters sometimes form several sub-clusters
-    for a given feature map, which is not true for the style transfer model.
+    Despite these similarities across problem settings, we also observe
+    qualitative differences in the way in which FiLM parameters cluster as a
+    function of the task description. Unlike the style transfer model, the
+    visual reasoning model sometimes exhibits several FiLM parameter
+    sub-clusters for a given feature map.
   </p>
   <figure class="l-body-outset" id="clevr-subcluster-diagram">
     <%= require("../static/diagrams/clevr-subcluster.svg") %>
@@ -800,16 +798,6 @@
     requires the model to implement several well-defined modes of operation
     which are less necessary for style transfer.
   </p>
-  <p>
-    The presence of sub-clusters in the case of the visual reasoning model also
-    suggests that question interpolations may not always work reliably, but
-    these sub-clusters don't preclude one from performing arithmetic on the
-    question representations, as Perez et al. <d-cite key="perez2018film"></d-cite>
-    reported.
-  </p>
-  <figure class="l-body">
-    <%= require("../static/diagrams/analogy.svg") %>
-  </figure>
   <p>
     Focusing on individual feature maps which exhibit sub-clusters, we can try
     to infer how questions regroup by color-coding the scatter plots by question
@@ -827,30 +815,64 @@
   <p>
     In cases where question types alone cannot explain the clustering of the
     FiLM parameters, we can turn to the conditioning content itself to gain
-    an understanding of the mechanism at play. Let's take a look at two more plots,
-    one for feature map 26 as in the previous figure, and another for a different
-    feature map exhibiting the same FiLM parameter clusters. This time we'll
-    see if coloring gamma-beta parameters by the words in the questions can
-    explain the clustering behaviour.
+    an understanding of the mechanism at play. Let's take a look at two more
+    plots: one for feature map 26 as in the previous figure, and another
+    for a different feature map, also exhibiting several subclusters. This time
+    we regroup points by the words which appear in their associated question.
   </p>
   <figure class="l-body-outset" id="clevr-subcluster-color-words-diagram">
     <%= require("../static/diagrams/clevr-subcluster-color-words.svg") %>
   </figure>
   <p>
-    In the left plot (feature map 26), the left subcluster corresponds
-    to questions discussing objects positioned "in front" of other objects, while
-    the right subcluster to those "behind" other objects.
-    In the right plot (feature map 92) we see some evidence of separation based
-    on object materials. The left subcluster corresponds to questions involving matte
-    and rubber objects, while the right subcluster contains questions about shiny, metal,
-    or metallic objects.
+    In the left plot, the left subcluster corresponds to questions involving
+    objects positioned <em>in front</em> of other objects, while the right
+    subcluster corresponds to questions involving objects positioned
+    <em>behind</em> other objects. In the right plot we see some evidence of
+    separation based on object material: the left subcluster corresponds to
+    questions involving <em>matte</em> and <em>rubber</em> objects, while the
+    right subcluster contains questions about <em>shiny</em> or
+    <em>metallic</em> objects.
   </p>
   <p>
-    The existence of this structure has already been explored, albeit more
-    indirectly, by Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
-    as well as Perez et al. <d-cite key="perez2018film"></d-cite>, who
-    applied t-SNE <d-cite key="maaten2008visualizing"></d-cite> on the FiLM
-    parameter values.
+    The presence of sub-clusters in the visual reasoning model also suggests
+    that question interpolations may not always work reliably, but these
+    sub-clusters don't preclude one from performing arithmetic on the question
+    representations, as Perez et al. <d-cite key="perez2018film"></d-cite>
+    report.
+  </p>
+  <figure class="l-body">
+    <%= require("../static/diagrams/analogy.svg") %>
+  </figure>
+  <p>
+    Perez et al. <d-cite key="perez2018film"></d-cite> report that this sort of
+    task analogy is not always successful in correcting the model's answer, but
+    it does point to an interesting fact about FiLM-ed networks: sometimes the
+    model makes a mistake not because it is incapable of computing the correct
+    output, but because it fails to produce the correct FiLM parameters for a
+    given task description. The flip side of this observation is that sometimes
+    the computational primitives learned by the FiLM-ed network are insufficient
+    to ensure good generalization. Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
+    report that the generalization capability of their style transfer network
+    very much depends on the number of style images it was trained on: if that
+    number is not large enough, the model has a hard time producing pastiches
+    for a new style image which exhibits very different stylistic properties.
+  </p>
+  <p>
+    This points to a separation between the various computational
+    primitives learned by the FiLM-ed network and the "numerical recipes"
+    learned by the FiLM generator: the model's ability to generalize depends
+    both on its ability to parse new forms of task descriptions and on it having
+    learned the required computational primitives to solve those tasks. We note
+    that this multi-faceted notion of generalization is inherited directly from
+    the multi-task point of view adopted by the FiLM framework.
+  </p>
+  <p>
+    Let's now turn our attention back to the overal structural properties of FiLM
+    parameters observed thus far. The existence of this structure has already
+    been explored, albeit more indirectly, by Ghiasi et al.
+    <d-cite key="ghiasi2017exploring"></d-cite> as well as Perez et al.
+    <d-cite key="perez2018film"></d-cite>, who applied t-SNE
+    <d-cite key="maaten2008visualizing"></d-cite> on the FiLM parameter values.
   </p>
   <figure class="l-body-outset" id="tsne-diagram">
     <%= require("../static/diagrams/tsne.svg") %>
@@ -859,8 +881,6 @@
     The projection on the left is inspired by a similar projection done by Perez
     et al. <d-cite key="perez2018film"></d-cite> for their visual reasoning
     model trained on CLEVR and shows how questions group by question type.
-  </p>
-  <p>
     The projection on the right is inspired by a similar projection done by
     Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite> for their style
     transfer network. The projection does not cluster artists as neatly as the
@@ -905,7 +925,8 @@
     compositional reasoning steps. There are various ways in which feature-wise
     transformations could be combined with stronger inductive biases, which has
     been investigated by some recent work
-    <d-cite key="bahdanau2018learning,yang2018dataset"></d-cite>.
+    <d-cite key="bahdanau2018learning,yang2018dataset"></d-cite>, and we are
+    looking forward to seeing even more exploration of these hybrid approaches.
   </p>
   <p>
     Another open question is the extent to which FiLM layers themselves
@@ -919,7 +940,7 @@
     Finally, the fact that changes on the feature level alone are able to
     compound into large and meaningful modulations of the FiLM-ed network is
     still very surprising to us, and hopefully future work will provide a better
-    understanding of that phenomenon. For now, though, it is a question that
+    explanation for this phenomenon. For now, though, it is a question that
     evokes the even grander mystery of how neural networks in general compound
     simple operations like matrix multiplications and element-wise
     non-linearities into semantically meaningful transformations.
@@ -1007,13 +1028,14 @@
   <p>
     This article would be nowhere near where it is today without the honest and
     constructive feedback we received from various people across several
-    organizations. We would like to thank Chris Olah from the Distill editorial
-    team for being so generous with his time and advice. We would also like to
-    thank Archy de Berker, Xavier Snelgrove, Pedro Oliveira Pinheiro, Alexei
-    Nordell-Markovits, Masha Krol, and Minh Dao from Element AI; Roland
-    Memisevic from TwentyBN; Dzmitry Bahdanau from MILA; Ameesh Shah from Rice
-    university; Eleni Triantafillou from Toronto University; Olivier Pietquin
-    and Jon Shlens from Goolgle Brain; and Jérémie Mary from Criteo.
+    organizations. We would like to thank Chris Olah and Shan Carter from the
+    Distill editorial team as well as Ludwig Shubert from Google Brain for being
+    so generous with their time and advice. We would also like to thank Archy de
+    Berker, Xavier Snelgrove, Pedro Oliveira Pinheiro, Alexei Nordell-Markovits,
+    Masha Krol, and Minh Dao from Element AI; Roland Memisevic from TwentyBN;
+    Dzmitry Bahdanau from MILA; Ameesh Shah from Rice University; Eleni
+    Triantafillou from Toronto University; Olivier Pietquin and Jon Shlens from
+    Google Brain; and Jérémie Mary from Criteo.
   </p>
 
   <d-footnote-list></d-footnote-list>
