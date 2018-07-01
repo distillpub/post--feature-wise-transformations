@@ -864,7 +864,7 @@
 
         focusAll();
     });
-    svgPanZoom = require('svg-pan-zoom')
+    svgPanZoom = require('svg-pan-zoom');
     var panZoom = svgPanZoom('#clevr-plot-svg', {
           viewportSelector: '#tsne-diagram #clevr-plot',
           zoomEnabled: true,
@@ -1012,7 +1012,7 @@
         focusAll();
     });
     
-   svgPanZoom = require('svg-pan-zoom')
+   svgPanZoom = require('svg-pan-zoom');
    var panZoom = svgPanZoom('#style-transfer-plot-svg', {
 	  viewportSelector: '#tsne-diagram #style-transfer-plot',
 	  zoomEnabled: true,
