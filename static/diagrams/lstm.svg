@@ -107,8 +107,7 @@
       </g>
       <g transform="translate(159, 257)">
         <rect width="70" height="40" class="figure-element figure-box figure-film-generator "/>
-        <text x="35" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
-        <text x="35" y="25" dy="0.4em" style="text-anchor: middle;" class="figure-text">generator</text>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
       </g>
       <g>
         <path d="M 288 257 L 288 240" class="figure-line"/>
@@ -116,8 +115,7 @@
       </g>
       <g transform="translate(254, 257)">
         <rect width="70" height="40" class="figure-element figure-box figure-film-generator"/>
-        <text x="35" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
-        <text x="35" y="25" dy="0.4em" style="text-anchor: middle;" class="figure-text">generator</text>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
       </g>
       <g>
         <path d="M 383 257 L 383 240" class="figure-line"/>
@@ -125,8 +123,7 @@
       </g>
       <g transform="translate(349, 257)">
         <rect width="70" height="40" class="figure-element figure-box figure-film-generator"/>
-        <text x="35" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
-        <text x="35" y="25" dy="0.4em" style="text-anchor: middle;" class="figure-text">generator</text>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
       </g>
       <g>
         <path d="M 478 257 L 478 240" class="figure-line"/>
@@ -134,8 +131,7 @@
       </g>
       <g transform="translate(444, 257)">
         <rect width="70" height="40" class="figure-element figure-box figure-film-generator"/>
-        <text x="35" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">FiLM</text>
-        <text x="35" y="25" dy="0.4em" style="text-anchor: middle;" class="figure-text">generator</text>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
       </g>
       <g transform="translate(30, 300)">
         <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
@@ -155,18 +151,18 @@
       <path d="M 100 330 L 472 330 A 6 6 0 0 0 478 324 L 478 302" class="figure-line"/>
       <use xlink:href="#arrow-up" transform="translate(478, 302)" class="figure-path"/>
       <!--<path d="M 30 395 C 30 387 30 376 50 376" class="figure-line"/>-->
-      <text x="50" y="390" dy="0.4em" style="text-anchor: middle;" class="figure-text"><tspan style="font-weight: bold;">x</tspan><tspan dy="5px" class="subscript">t</tspan></text>
-      <g transform="translate(60, 380)">
+      <text x="50" y="400" dy="0.4em" style="text-anchor: middle;" class="figure-text"><tspan style="font-weight: bold;">x</tspan><tspan dy="5px" class="subscript">t</tspan></text>
+      <g transform="translate(60, 390)">
         <use xlink:href="#row-left" transform="translate(0, 0)" class="figure-element"/>
         <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
         <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
       </g>
-      <g transform="translate(80, 300)">
-        <rect x="0" y="0" width="20" height="60" class="figure-film-generator figure-element figure-box"/>
-        <text x="10" y="30" dy="0.4em" transform="rotate(-90,10,30)" style="text-anchor: middle;" class="figure-text">Concat</text>
+      <g transform="translate(80, 290)">
+        <rect x="0" y="0" width="20" height="80" class="figure-element figure-box"/>
+        <text x="10" y="40" dy="0.4em" transform="rotate(-90,10,40)" style="text-anchor: middle;" class="figure-text">concatenate</text>
       </g>
-       <path d="M 90 380 L 90 365" class="figure-line"/>
-       <use xlink:href="#arrow-up" transform="translate(90, 365)" class="figure-path"/>
+       <path d="M 90 390 L 90 375" class="figure-line"/>
+       <use xlink:href="#arrow-up" transform="translate(90, 375)" class="figure-path"/>
     </g>
   </g>
 </svg>
