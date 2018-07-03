@@ -1,0 +1,168 @@
+<svg viewBox="0 0 704 360" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-up" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+  </defs>
+  <g transform="translate(50, 0)">
+    <!--<text x="120" y="330" dy="1em" class="figure-text">-->
+      <!--LSTMs utilize self-conditioned gating to regulate information flow.-->
+    <!--</text>-->
+    <g transform="translate(20, -60)">
+      <text x="0" y="95" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">c</tspan><tspan dy="5px" class="subscript">t-1</tspan></text>
+      <g transform="translate(30, 65)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      </g>
+      <g>
+        <path d="M 50 95 L 178 95" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(178, 95)" class="figure-path"/>
+        <g transform="translate(193, 95)">
+          <ellipse cx="0" cy="0" rx="10" ry="10" class="figure-element"/>
+          <ellipse rx="2" ry="2" class="figure-path"/>
+        </g>
+        <path d="M 203 95 L 368 95" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(368, 95)" class="figure-path"/>
+        <g transform="translate(383, 95)">
+          <ellipse rx="10" ry="10" class="figure-element"/>
+          <line x1="0" y1="-5" x2="0" y2="5" class="figure-line"/>
+          <line x1="-5" y1="0" x2="5" y2="0" class="figure-line"/>
+        </g>
+        <path d="M 393 95 L 472 95 A 6 6 0 0 1 478 101 L 478 119" class="figure-line"/>
+        <use xlink:href="#arrow-down" transform="translate(478, 119)" class="figure-path"/>
+      </g>
+      <g transform="translate(478, 133)">
+        <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+        <text dy="0.4em" style="text-anchor: middle;" class="figure-text">tanh</text>
+      </g>
+      <g>
+        <path d="M 460 95 L 530 95" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(530, 95)" class="figure-path"/>
+      </g>
+      <g transform="translate(535, 65)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      </g>
+      <text x="565" y="95" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">c</tspan><tspan dy="5px" class="subscript">t</tspan></text>
+      <g>
+        <path d="M 488 175 L 530 175" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(530, 175)" class="figure-path"/>
+      </g>
+      <g transform="translate(535, 145)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      </g>
+      <text x="565" y="175" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t</tspan></text>
+      <g>
+        <path d="M 383 110 L 383 165" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(383, 110)" class="figure-path"/>
+        <g transform="translate(383, 175)">
+          <ellipse cx="0" cy="0" rx="10" ry="10" class="figure-element"/>
+          <ellipse rx="2" ry="2" class="figure-path"/>
+        </g>
+        <path d="M 478 143 L 478 160" class="figure-line"/>
+        <use xlink:href="#arrow-down" transform="translate(478, 160)" class="figure-path"/>
+        <g transform="translate(478, 175)">
+          <ellipse cx="0" cy="0" rx="10" ry="10" class="figure-element"/>
+          <ellipse rx="2" ry="2" class="figure-path"/>
+        </g>
+        <path d="M 193 215 L 193 110" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(193, 110)" class="figure-path"/>
+      </g>
+      <g transform="translate(193, 225)">
+        <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+        <text dy="0.4em" style="text-anchor: middle;" class="figure-text">sigmoid</text>
+      </g>
+      <g>
+        <path d="M 288 215 L 288 181 A 6 6 0 0 1 294 175 L 368 175" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(368, 175)" class="figure-path"/>
+      </g>
+      <g transform="translate(288, 225)">
+        <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+        <text dy="0.4em" style="text-anchor: middle;" class="figure-text">sigmoid</text>
+      </g>
+      <g>
+        <path d="M 383 215 L 383 190" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(383, 190)" class="figure-path"/>
+      </g>
+      <g transform="translate(383, 225)">
+        <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+        <text dy="0.4em" style="text-anchor: middle;" class="figure-text">tanh</text>
+      </g>
+      <g>
+        <path d="M 478 215 L 478 190" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(478, 190)" class="figure-path"/>
+      </g>
+      <g transform="translate(478, 225)">
+        <rect x="-30" y="-10" width="60" height="20" class="figure-box figure-element"/>
+        <text dy="0.4em" style="text-anchor: middle;" class="figure-text">sigmoid</text>
+      </g>
+
+      <g>
+        <path d="M 193 257 L 193 240" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(193, 240)" class="figure-path"/>
+      </g>
+      <g transform="translate(159, 257)">
+        <rect width="70" height="40" class="figure-element figure-box figure-film-generator "/>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
+      </g>
+      <g>
+        <path d="M 288 257 L 288 240" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(288, 240)" class="figure-path"/>
+      </g>
+      <g transform="translate(254, 257)">
+        <rect width="70" height="40" class="figure-element figure-box figure-film-generator"/>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
+      </g>
+      <g>
+        <path d="M 383 257 L 383 240" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(383, 240)" class="figure-path"/>
+      </g>
+      <g transform="translate(349, 257)">
+        <rect width="70" height="40" class="figure-element figure-box figure-film-generator"/>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
+      </g>
+      <g>
+        <path d="M 478 257 L 478 240" class="figure-line"/>
+        <use xlink:href="#arrow-up" transform="translate(478, 240)" class="figure-path"/>
+      </g>
+      <g transform="translate(444, 257)">
+        <rect width="70" height="40" class="figure-element figure-box figure-film-generator"/>
+        <text x="35" y="20" dy="0.4em" style="text-anchor: middle;" class="figure-text">linear</text>
+      </g>
+      <g transform="translate(30, 300)">
+        <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+        <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      </g>
+      <text x="0" y="330" dy="0.4em" class="figure-text"><tspan style="font-weight: bold;">h</tspan><tspan dy="5px" class="subscript">t-1</tspan></text>
+      <path d="M 50 330 L 75 330" class="figure-line"/>
+      <use xlink:href="#arrow-right" transform="translate(75, 330)" class="figure-path"/>
+
+      <path d="M 100 330 L 187 330 A 6 6 0 0 0 193 324 L 193 302" class="figure-line"/>
+      <use xlink:href="#arrow-up" transform="translate(193, 302)" class="figure-path"/>
+      <path d="M 100 330 L 282 330 A 6 6 0 0 0 288 324 L 288 302" class="figure-line"/>
+      <use xlink:href="#arrow-up" transform="translate(288, 302)" class="figure-path"/>
+      <path d="M 100 330 L 377 330 A 6 6 0 0 0 383 324 L 383 302" class="figure-line"/>
+      <use xlink:href="#arrow-up" transform="translate(383, 302)" class="figure-path"/>
+      <path d="M 100 330 L 472 330 A 6 6 0 0 0 478 324 L 478 302" class="figure-line"/>
+      <use xlink:href="#arrow-up" transform="translate(478, 302)" class="figure-path"/>
+      <!--<path d="M 30 395 C 30 387 30 376 50 376" class="figure-line"/>-->
+      <text x="50" y="400" dy="0.4em" style="text-anchor: middle;" class="figure-text"><tspan style="font-weight: bold;">x</tspan><tspan dy="5px" class="subscript">t</tspan></text>
+      <g transform="translate(60, 390)">
+        <use xlink:href="#row-left" transform="translate(0, 0)" class="figure-element figure-film-generator"/>
+        <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element figure-film-generator"/>
+        <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element figure-film-generator"/>
+      </g>
+      <g transform="translate(80, 290)">
+        <rect x="0" y="0" width="20" height="80" class="figure-element figure-box"/>
+        <text x="10" y="40" dy="0.4em" transform="rotate(-90,10,40)" style="text-anchor: middle;" class="figure-text">concatenate</text>
+      </g>
+       <path d="M 90 390 L 90 375" class="figure-line"/>
+       <use xlink:href="#arrow-up" transform="translate(90, 375)" class="figure-path"/>
+    </g>
+  </g>
+</svg>
