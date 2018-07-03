@@ -461,6 +461,26 @@
   </figure>
   <button class="collapsible" content-name="nlp" content-type="literature">Natural language processing<span style="float: right;">+</span></button>
   <p class="content" content-name="nlp" content-type="literature">
+  For the task of statistical language modeling, LSTMs <d-cite key="hochreiter1997long,melis2017lstm"></d-cite>
+  constitute a popular class of recurrent network architectures. This type of architecture heavily relies on
+  feature-wise sigmoidal gating to control the information flow in and out of the memory cell.
+  </p>
+  <figure class="content l-body-outset" content-name="nlp" content-type="literature">
+    <%= require("../static/diagrams/lstm.svg") %>
+  </figure>
+
+  <p class="content" content-name="nlp" content-type="literature">
+    Also in the domain of language modeling, Dauphin et al. <d-cite key="dauphin2017language"></d-cite> use sigmoidal
+    gating in their proposed <em>gated linear unit</em>, which uses half of the
+    input features to apply feature-wise sigmoidal gating to the other half.
+    Gehring et al.  <d-cite key="gehring2017convolutional"></d-cite> adopt this
+    architectural feature, introducing a fast, parallelizable model for machine
+    translation in the form of a fully convolutional network.
+  </p>
+  <figure class="content l-body" content-name="nlp" content-type="literature">
+    <%= require("../static/diagrams/convseq2seq.svg") %>
+  </figure>
+  <p class="content" content-name="nlp" content-type="literature">
     The Gated-Attention Reader <d-cite key="dhingra2017gated"></d-cite>
     uses feature-wise scaling, extracting information
     from text by conditioning a document-reading network on a query. Its
@@ -472,17 +492,7 @@
   <figure class="content l-body" content-name="nlp" content-type="literature">
     <%= require("../static/diagrams/gated-attention-reader.svg") %>
   </figure>
-  <p class="content" content-name="nlp" content-type="literature">
-    Dauphin et al. <d-cite key="dauphin2017language"></d-cite> use sigmoidal
-    gating in their proposed <em>gated linear unit</em>, which uses half of the
-    input features to apply feature-wise sigmoidal gating to the other half.
-    Gehring et al.  <d-cite key="gehring2017convolutional"></d-cite> adopt this
-    architectural feature, introducing a fast, parallelizable model for machine
-    translation in the form of a fully convolutional network.
-  </p>
-  <figure class="content l-body" content-name="nlp" content-type="literature">
-    <%= require("../static/diagrams/convseq2seq.svg") %>
-  </figure>
+
   <button class="collapsible" content-name="reinforcement-learning" content-type="literature">Reinforcement learning<span style="float: right;">+</span></button>
   <p class="content" content-name="reinforcement-learning" content-type="literature">
     The Gated-Attention architecture <d-cite key="chaplot2017gated"></d-cite>
@@ -577,9 +587,6 @@
     the post-normalization feature-wise affine transformation is disabled and a
     FiLM layer is placed immediately after the normalization operation.
   </p>
-  <figure class="content l-body-outset" content-name="speech-recognition" content-type="literature">
-    <%= require("../static/diagrams/dln.svg") %>
-  </figure>
   <p class="content" content-name="speech-recognition" content-type="literature">
     The key difference here is that the conditioning signal does not come from
     an external source but rather from utterance
