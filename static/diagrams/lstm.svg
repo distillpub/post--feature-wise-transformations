@@ -153,9 +153,9 @@
       <!--<path d="M 30 395 C 30 387 30 376 50 376" class="figure-line"/>-->
       <text x="50" y="400" dy="0.4em" style="text-anchor: middle;" class="figure-text"><tspan style="font-weight: bold;">x</tspan><tspan dy="5px" class="subscript">t</tspan></text>
       <g transform="translate(60, 390)">
-        <use xlink:href="#row-left" transform="translate(0, 0)" class="figure-element"/>
-        <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element"/>
-        <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element"/>
+        <use xlink:href="#row-left" transform="translate(0, 0)" class="figure-element figure-film-generator"/>
+        <use xlink:href="#row-middle" transform="translate(20, 0)" class="figure-element figure-film-generator"/>
+        <use xlink:href="#row-right" transform="translate(40, 0)" class="figure-element figure-film-generator"/>
       </g>
       <g transform="translate(80, 290)">
         <rect x="0" y="0" width="20" height="80" class="figure-element figure-box"/>
