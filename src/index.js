@@ -326,39 +326,44 @@
 })();
 
 (function() {
-    var processExample = function(example) {
+    var processExample = function() {
         var svg = d3.select("#style-interpolation-diagram > svg");
-        var imageSelector = svg.select("#example-" + example + " > .image-selector");
+        var styleSelect1 = svg.selectAll("#style-1-select image").attr('cursor', 'pointer')
+        var styleSelect2 = svg.selectAll("#style-2-select image").attr('cursor', 'pointer');
+        var contentSelect = svg.selectAll("#content-select image").attr('cursor', 'pointer');
+        var interpolationImages = svg.selectAll("#interpolation image");
+        var selectedImages = {
+            'content': 0, 
+            'style1': 0, 
+            'style2': 0
+        };
 
-        var xMin = +imageSelector.select("line").attr("x1");
-        var xMax = +imageSelector.select("line").attr("x2");
-        var nTicks = 6;
-        var length = (xMax - xMin) / (nTicks - 1.0);
-        var ticks = [];
-        for(var i = 0; i < nTicks; i++) {
-          ticks.push(xMin + i * length);
+        var updateImages = function () {
+            interpolationImages.attr("xlink:href", function (d, i) {
+                const { content, style1, style2 } = selectedImages
+                const href = `images/stylized-${content}-${style1}-${style2}-${i + 1}.png`;
+                // TODO: return real href when images are done
+                return `images/stylized-1-${i + 1}.jpg`;
+            });
+
+            styleSelect1.style('opacity', (d, i) => i == selectedImages['style1'] ? 1: 0.1);
+            styleSelect2.style('opacity', (d, i) => i == selectedImages['style2'] ? 1: 0.1);
+            contentSelect.style('opacity', (d, i) => i == selectedImages['content'] ? 1: 0.1);
         }
 
+        var updateStyle = key => (d, i) => {
+            selectedImages[key] = i;
+            updateImages();
+        }
 
-        var circle = imageSelector.append("circle")
-            .attrs({"cx": ticks[0], "cy": 0, "r": 6})
-            .style("cursor", "pointer")
-            .classed("figure-path", true);
+        styleSelect1.on("click", updateStyle('style1'));
+        styleSelect2.on("click", updateStyle('style2'));
+        contentSelect.on("click", updateStyle('content'));
 
-        var drag = d3.drag()
-          .on("drag", function() {
-              var newX = Math.min(ticks[nTicks - 1], Math.max(ticks[0], d3.event.x));
-              var newTick = Math.round((newX - ticks[0]) / length);
-              newX = ticks[0] + length * newTick;
-              d3.select(this).attr("cx", newX);
-              svg.select("#example-" + example + " > .stylized-image")
-                  .attr("xlink:href", "images/stylized-" + example + "-" + (+newTick + 1) + ".jpg");
-          });
+        updateImages();
 
-        drag(circle);
     };
-    processExample("1");
-    processExample("2");
+    processExample();
 })();
 
 (function() {
