@@ -446,6 +446,14 @@
             scatterPlot.select("#y-axis-label")
                 .attrs({"x": xScale(0.0) + 10, "y": yMin});
 
+            var tooltip = d3.select("body").append("div")
+                .attr("id", "tooltip-clevr")
+                .attr("class", "tooltip figure-text")
+                .style("background", "#ddd")
+                .style("border-radius", "6px")
+                .style("padding", "10px")
+                .style("opacity", 0);
+
             // Display data points
             scatterPlot.selectAll("circle")
                 .data(dataset)
@@ -456,11 +464,25 @@
                     "r": 3.0,
                 })
                 .style("fill", colors[color])
-                .style("opacity", 0.6);
+                .style("opacity", 0.6)
+                .style("cursor", "pointer")
+                .on("mouseover", function(d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    tooltip.html(d.question.join(" ") + "?")
+                        .style("left", (d3.event.pageX + 5) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on("mouseout", function(d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
         });
     };
-    setUp('data/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
-    setUp('data/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
+    setUp('data/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
+    setUp('data/clevr_gamma_beta_words_subcluster_fm_76.json', 'second', 6);
 })();
 
 (function() {
@@ -515,7 +537,6 @@
             scatterPlot.select("#y-axis-label")
                 .attrs({"x": xScale(0.0) + 10, "y": yMin});
 
-
             var tooltip = d3.select("body").append("div")
                 .attr("id", "tooltip-clevr-words-clever")
                 .attr("class", "tooltip figure-text")
@@ -545,7 +566,6 @@
                         .style("top", (d3.event.pageY - 28) + "px");
                 })
                 .on("mouseout", function(d) {
-                    focusAll();
                     tooltip.transition()
                         .duration(500)
                         .style("opacity", 0);
@@ -686,6 +706,13 @@
             scatterPlot.select("#y-axis-label")
                 .attrs({"x": xScale(0.0) + 10, "y": yMin});
 
+            var tooltip = d3.select("body").append("div")
+                .attr("id", "tooltip-clevr-question-type-clever")
+                .attr("class", "tooltip figure-text")
+                .style("background", "#ddd")
+                .style("border-radius", "6px")
+                .style("padding", "10px")
+                .style("opacity", 0);
 
             // Dispatch data points into groups by question type
             scatterPlot.selectAll("g")
@@ -694,7 +721,7 @@
                 .style("opacity", 1.0)
                 .each(function(c, i) {
                     d3.select(this).selectAll("circle")
-                        .data(dataset.filter(function(d) { return d.question_type == i; }))
+                        .data(dataset.filter(function(d) { return d.type == i; }))
                         .enter().append("circle")
                         .attrs({
                             "cx": function(d) { return xScale(d.gamma); },
@@ -702,12 +729,28 @@
                             "r": 3.0,
                         })
                         .style("fill", function(d) { return colors[i]; })
-                        .style("opacity", 0.6);
+                        .style("opacity", 0.6)
+                        .style("cursor", "pointer")
+                        .on("mouseover", function(d) {
+                            focus(d.type);
+                            tooltip.transition()
+                                .duration(200)
+                                .style("opacity", .9);
+                            tooltip.html(d.question.join(" ") + "?")
+                                .style("left", (d3.event.pageX + 5) + "px")
+                                .style("top", (d3.event.pageY - 28) + "px");
+                        })
+                        .on("mouseout", function(d) {
+                            focusAll();
+                            tooltip.transition()
+                                .duration(500)
+                                .style("opacity", 0);
+                        });
                 });
         });
     };
-    setUp('data/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
-    setUp('data/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
+    setUp('data/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
+    setUp('data/clevr_gamma_beta_words_subcluster_fm_76.json', 'second', 6);
 
     var svg = d3.select("#clevr-subcluster-color-diagram > svg");
     var legend = svg.select("#legend");
