@@ -1,16 +1,16 @@
 <svg viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="interface">
     <g id="style-1-select">
-      <text x="0" y="0" dy="1em" class="figure-text"><tspan style="font-weight: bold;">Style 1</tspan></text>
-      <line x1="0" y1="1.5em" x2="80" y2="1.5em" class="figure-line" />
+      <text x="0" y="0" dy="1em" class="figure-text"><tspan style="font-weight: normal;">Style 1</tspan></text>
+      <line x1="0" y1="1.5em" x2="80" y2="1.5em" class="figure-line figure-faded" />
       <g transform="translate(0, 40)">
         <image x="0" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-1-1.jpg"/>
         <image x="0" y="100" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-1-2.jpg"/>
       </g>
     </g>
     <g id="style-2-select" transform="translate(900, 0)">
-      <text x="0" y="0" dy="1em" class="figure-text"><tspan style="font-weight: bold;">Style 2</tspan></text>
-      <line x1="0" y1="1.5em" x2="80" y2="1.5em" class="figure-line" />
+      <text x="0" y="0" dy="1em" class="figure-text"><tspan style="font-weight: normal;">Style 2</tspan></text>
+      <line x1="0" y1="1.5em" x2="80" y2="1.5em" class="figure-line figure-faded" />
       <g transform="translate(0, 40)">
         <image x="0" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-1.png"/>
         <image x="0" y="100" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-2.png"/>
@@ -27,8 +27,8 @@
       </g>
     </g>
     <g id="content-select" transform="translate(0, 240)">
-      <text x="0" y="0" dy="1em" class="figure-text"><tspan style="font-weight: bold;">Content Image</tspan></text>
-      <line x1="0" y1="1.5em" x2="480" y2="1.5em" class="figure-line" />
+      <text x="0" y="0" dy="1em" class="figure-text"><tspan style="font-weight: normal;">Content Image</tspan></text>
+      <line x1="0" y1="1.5em" x2="980" y2="1.5em" class="figure-line figure-faded" />
       <g transform="translate(0, 40)">
         <image x="0" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-1.jpg"/>
         <image x="100" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-2.png"/>
