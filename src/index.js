@@ -286,7 +286,7 @@
                 .data(colors)
               .enter().append("circle")
                 .attrs({
-                    "cx": function(d, i) { return 20 * i; },
+                    "cx": function(d, i) { return 18 * i; },
                     "cy": 0,
                     "r": 6,
                 })
@@ -464,30 +464,28 @@
 })();
 
 (function() {
+    var colors = [
+        "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+        "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+        "#8BC34A", "#CDDC39", "#FFEB3B",
+    ];
+
+    var question_words = [
+        "front", "behind", "left", "right",
+        "material", "rubber", "matte", "metal", "metallic", "shiny",
+    ];
+
     var setUp = function(filename, keyword, color) {
         // Get references to important tags
         var svg = d3.select("#clevr-subcluster-color-words-diagram > svg");
         var scatterPlot = svg.select("#" + keyword + "-plot");
         var boundingBox = scatterPlot.select("rect");
-        var legend = svg.select("#" + keyword + "-legend");
 
         // Retrieve scatter plot bounding box coordinates
         var xMin = parseInt(boundingBox.attr("x"));
         var xMax = xMin + parseInt(boundingBox.attr("width"));
         var yMin = parseInt(boundingBox.attr("y"));
         var yMax = yMin + parseInt(boundingBox.attr("height"));
-
-        var colors = [
-            "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-            "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-            "#8BC34A", "#CDDC39", "#FFEB3B",
-        ];
-
-
-        var question_words = [
-            "front", "behind", "left", "right",
-            "material", "rubber", "matte", "metal", "metallic", "shiny",
-        ];
 
         var dataset;
         var xScale;
@@ -565,64 +563,100 @@
                 .style("cursor", "pointer")
                 .style("opacity", 0.6)
                 .text(function(d) { return d; });
-
-            // Focuses on all points by resetting the opacities
-            var focusAll = function() {
-                legend.selectAll("text")
-                    .style("opacity", 0.6);
-                scatterPlot.selectAll("circle")
-                    .style("opacity", 1.0);
-            };
-
-            // Focuses on a single question type by lowering other
-            // question type opacities
-            var focus = function(word) {
-                legend.selectAll("text")
-                    .style("opacity", function(d, i) { return d == word ?  0.6 : 0.1; });
-                scatterPlot.selectAll("circle")
-                    .style("opacity", function(d, i) { return d.question.indexOf(word) >= 0 ?  1.0 : 0.1; })
-            };
-
-            // Add hovering behavior to legend
-            legend.selectAll("text")
-                .on("mouseover", function (d, i) {
-                    focus(d);
-                })
-                .on("mouseout", focusAll);
-
-            focusAll();
         });
     };
     setUp('data/clevr_gamma_beta_words_subcluster_fm_26.json', 'first', 0);
     setUp('data/clevr_gamma_beta_words_subcluster_fm_92.json', 'second', 8);
+
+    var svg = d3.select("#clevr-subcluster-color-words-diagram > svg");
+    var legend = svg.select("#legend");
+    var firstPlot = svg.select("#first-plot");
+    var secondPlot = svg.select("#second-plot");
+
+    // Create legend
+    legend.selectAll("circle")
+        .data(question_words)
+      .enter().append("circle")
+        .attrs({
+            "cx": 0,
+            "cy": function(d, i) { return 20 * i; },
+            "r": 6,
+        })
+        .style("stroke", "black")
+        .style("fill", "none")
+        .style("cursor", "pointer")
+        .style("opacity", 0.6);
+    legend.selectAll("text")
+        .data(question_words)
+      .enter().append("text")
+        .attrs({
+            "x": 20,
+            "y": function(d, i) { return 20 * i; },
+            "dy": "0.4em",
+        })
+        .classed("figure-text", true)
+        .style("cursor", "pointer")
+        .text(function(d) { return d; });
+
+    // Focuses on all points by resetting the opacities
+    var focusAll = function() {
+        legend.selectAll("circle")
+            .style("opacity", 0.6);
+        legend.selectAll("text")
+            .style("opacity", 0.6);
+        firstPlot.selectAll("circle")
+            .style("opacity", 1.0);
+        secondPlot.selectAll("circle")
+            .style("opacity", 1.0);
+    };
+
+    // Focuses on a single question type by lowering other
+    // question type opacities
+    var focus = function(word) {
+        legend.selectAll("circle")
+            .style("opacity", function(d, i) { return d == word ?  0.6 : 0.1; });
+        legend.selectAll("text")
+            .style("opacity", function(d, i) { return d == word ?  0.6 : 0.1; });
+        firstPlot.selectAll("circle")
+            .style("opacity", function(d, i) { return d.question.indexOf(word) >= 0 ?  1.0 : 0.1; })
+        secondPlot.selectAll("circle")
+            .style("opacity", function(d, i) { return d.question.indexOf(word) >= 0 ?  1.0 : 0.1; })
+    };
+
+    // Add hovering behavior to legend
+    legend.selectAll("text")
+        .on("mouseover", function (d, i) {
+            focus(d);
+        })
+        .on("mouseout", focusAll);
+
+    focusAll();
 })();
 
 (function() {
+    var colors = [
+        "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
+        "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+        "#8BC34A", "#CDDC39", "#FFEB3B",
+    ];
+
+    var question_types = [
+        "Exists", "Less than", "Greater than", "Count", "Query material",
+        "Query size", "Query color", "Query shape", "Equal color",
+        "Equal integer", "Equal shape", "Equal size", "Equal material"
+    ];
+
     var setUp = function(filename, keyword, color) {
         // Get references to important tags
         var svg = d3.select("#clevr-subcluster-color-diagram > svg");
         var scatterPlot = svg.select("#" + keyword + "-plot");
         var boundingBox = scatterPlot.select("rect");
-        var legend = svg.select("#" + keyword + "-legend");
 
         // Retrieve scatter plot bounding box coordinates
         var xMin = parseInt(boundingBox.attr("x"));
         var xMax = xMin + parseInt(boundingBox.attr("width"));
         var yMin = parseInt(boundingBox.attr("y"));
         var yMax = yMin + parseInt(boundingBox.attr("height"));
-
-        var colors = [
-            "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5",
-            "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
-            "#8BC34A", "#CDDC39", "#FFEB3B",
-        ];
-
-        var question_types = [
-            "Exists", "Less than", "Greater than", "Count", "Query material",
-            "Query size", "Query color", "Query shape", "Equal color",
-            "Equal integer", "Equal shape", "Equal size", "Equal material"
-        ];
-
 
         var dataset;
         var xScale;
@@ -670,58 +704,78 @@
                         .style("fill", function(d) { return colors[i]; })
                         .style("opacity", 0.6);
                 });
-            // Create legend
-            legend.selectAll("circle")
-                .data(colors)
-              .enter().append("circle")
-                .attrs({
-                    "cx": 0,
-                    "cy": function(d, i) { return 20 * i; },
-                    "r": 6,
-                })
-                .style("fill", function(d, i) { return colors[i]; })
-                .style("cursor", "pointer")
-                .style("opacity", 0.6);
-            legend.selectAll("text")
-                .data(question_types)
-              .enter().append("text")
-                .attrs({
-                    "x": 20,
-                    "y": function(d, i) { return 20 * i; },
-                    "dy": "0.4em",
-                })
-                .classed("figure-text", true)
-                .text(function(d) { return d; });
-
-            // Focuses on all points by resetting the opacities
-            var focusAll = function() {
-                legend.selectAll("circle")
-                    .style("opacity", 0.6);
-                scatterPlot.selectAll("g")
-                    .style("opacity", 1.0);
-            };
-
-            // Focuses on a single question type by lowering other
-            // question type opacities
-            var focus = function(j) {
-                legend.selectAll("circle")
-                    .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
-                scatterPlot.selectAll("g")
-                    .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
-            };
-
-            // Add hovering behavior to legend
-            legend.selectAll("circle")
-                .on("mouseover", function (d, i) {
-                    focus(i);
-                })
-                .on("mouseout", focusAll);
-
-            focusAll();
         });
     };
     setUp('data/clevr_gamma_beta_subcluster_fm_26.json', 'first', 0);
     setUp('data/clevr_gamma_beta_subcluster_fm_76.json', 'second', 6);
+
+    var svg = d3.select("#clevr-subcluster-color-diagram > svg");
+    var legend = svg.select("#legend");
+    var firstPlot = svg.select("#first-plot");
+    var secondPlot = svg.select("#second-plot");
+
+    // Create legend
+    legend.selectAll("circle")
+        .data(colors)
+      .enter().append("circle")
+        .attrs({
+            "cx": 0,
+            "cy": function(d, i) { return 20 * i; },
+            "r": 6,
+        })
+        .style("fill", function(d, i) { return colors[i]; })
+        .style("cursor", "pointer")
+        .style("opacity", 0.6);
+    legend.selectAll("text")
+        .data(question_types)
+      .enter().append("text")
+        .attrs({
+            "x": 20,
+            "y": function(d, i) { return 20 * i; },
+            "dy": "0.4em",
+        })
+        .classed("figure-text", true)
+        .style("cursor", "pointer")
+        .text(function(d) { return d; });
+
+    // Focuses on all points by resetting the opacities
+    var focusAll = function() {
+        legend.selectAll("circle")
+            .style("opacity", 0.6);
+        legend.selectAll("text")
+            .style("opacity", 0.6);
+        firstPlot.selectAll("g")
+            .style("opacity", 1.0);
+        secondPlot.selectAll("g")
+            .style("opacity", 1.0);
+    };
+
+    // Focuses on a single question type by lowering other
+    // question type opacities
+    var focus = function(j) {
+        legend.selectAll("circle")
+            .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+        legend.selectAll("text")
+            .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+        firstPlot.selectAll("g")
+            .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
+        secondPlot.selectAll("g")
+            .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
+    };
+
+    // Add hovering behavior to legend
+    legend.selectAll("circle")
+        .on("mouseover", function (d, i) {
+            focus(i);
+        })
+        .on("mouseout", focusAll);
+    legend.selectAll("text")
+        .on("mouseover", function (d, i) {
+            focus(i);
+        })
+        .on("mouseout", focusAll);
+
+    focusAll();
 })();
 
 (function() {
@@ -831,11 +885,14 @@
                 "dy": "0.4em",
             })
             .classed("figure-text", true)
+            .style("cursor", "pointer")
             .text(function(d) { return d; });
 
         // Focuses on all points by resetting the opacities
         var focusAll = function() {
             legend.selectAll("circle")
+                .style("opacity", 0.6);
+            legend.selectAll("text")
                 .style("opacity", 0.6);
             scatterPlot.selectAll("g")
                 .style("opacity", 1.0);
@@ -845,6 +902,8 @@
         // question type opacities
         var focus = function(j) {
             legend.selectAll("circle")
+                .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+            legend.selectAll("text")
                 .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
             scatterPlot.selectAll("g")
                 .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
@@ -861,6 +920,11 @@
                 focus(i);
             })
             .on("mouseout", focusAll);
+        legend.selectAll("text")
+            .on("mouseover", function (d, i) {
+                focus(i);
+            })
+            .on("mouseout", focusAll);
 
         focusAll();
     });
@@ -872,12 +936,12 @@
           center: true,
           minZoom: 0.1,
           controlIconsEnabled: false,
-        }).zoomAtPointBy(0.7, {x: -50, y: 250}); 
+        }).zoomAtPointBy(0.6, {x: -10, y: 180}); 
         
     svg.select("#clevr-zoom").on("click", function(d){
 		panZoom.resetZoom()
 		panZoom.resetPan()
-		panZoom.zoomAtPointBy(0.7, {x: -50, y: 250}); 
+		panZoom.zoomAtPointBy(0.6, {x: -10, y: 180}); 
 	});
        
 })();
@@ -978,11 +1042,14 @@
                 "dy": "0.4em",
             })
             .classed("figure-text", true)
+            .style("cursor", "pointer")
             .text(function(d) { return dataset.artists[d]; });
 
         // Focuses on all points by resetting the opacities
         var focusAll = function() {
             legend.selectAll("circle")
+                .style("opacity", 0.6);
+            legend.selectAll("text")
                 .style("opacity", 0.6);
             scatterPlot.selectAll("g")
                 .style("opacity", 1.0);
@@ -992,6 +1059,8 @@
         // question type opacities
         var focus = function(j) {
             legend.selectAll("circle")
+                .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
+            legend.selectAll("text")
                 .style("opacity", function(d, i) { return i == j ?  0.6 : 0.1; });
             scatterPlot.selectAll("g")
                 .style("opacity", function(d, i) { return i == j ?  1.0 : 0.1; })
@@ -1004,6 +1073,11 @@
 
         // Add hovering behavior to legend
         legend.selectAll("circle")
+            .on("mouseover", function (d, i) {
+                focus(i);
+            })
+            .on("mouseout", focusAll);
+        legend.selectAll("text")
             .on("mouseover", function (d, i) {
                 focus(i);
             })
@@ -1021,11 +1095,11 @@
 	  minZoom: 0.1, 
 	  controlIconsEnabled: false,
 	});
-	panZoom.zoomAtPointBy(0.7, {x: -50, y: 250}); 
+	panZoom.zoomAtPointBy(0.6, {x: -10, y: 180}); 
 	
 	d3.select("#style-zoom").on("click", function(d){
 		panZoom.resetZoom()
 		panZoom.resetPan()
-		panZoom.zoomAtPointBy(0.7, {x: -50, y: 250}); 
+		panZoom.zoomAtPointBy(0.6, {x: -10, y: 180}); 
 	});
 })();

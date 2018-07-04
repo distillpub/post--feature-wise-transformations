@@ -746,7 +746,7 @@
     feature map.  If we color-code each point according to the feature map it
     belongs to we observe the following:
   </p>
-  <figure class="l-body-outset" id="gamma-beta-diagram">
+  <figure class="l-body" id="gamma-beta-diagram">
     <%= require("../static/diagrams/gamma-beta.svg") %>
   </figure>
   <p>
@@ -791,7 +791,7 @@
     visual reasoning model sometimes exhibits several FiLM parameter
     sub-clusters for a given feature map.
   </p>
-  <figure class="l-body-outset" id="clevr-subcluster-diagram">
+  <figure class="l-body" id="clevr-subcluster-diagram">
     <%= require("../static/diagrams/clevr-subcluster.svg") %>
   </figure>
   <p>
@@ -807,7 +807,7 @@
     to infer how questions regroup by color-coding the scatter plots by question
     type.
   </p>
-  <figure class="l-body-outset" id="clevr-subcluster-color-diagram">
+  <figure class="l-body" id="clevr-subcluster-color-diagram">
     <%= require("../static/diagrams/clevr-subcluster-color.svg") %>
   </figure>
   <p>
@@ -824,7 +824,7 @@
     for a different feature map, also exhibiting several subclusters. This time
     we regroup points by the words which appear in their associated question.
   </p>
-  <figure class="l-body-outset" id="clevr-subcluster-color-words-diagram">
+  <figure class="l-body" id="clevr-subcluster-color-words-diagram">
     <%= require("../static/diagrams/clevr-subcluster-color-words.svg") %>
   </figure>
   <p>
@@ -878,6 +878,14 @@
     <d-cite key="perez2018film"></d-cite>, who applied t-SNE
     <d-cite key="maaten2008visualizing"></d-cite> on the FiLM parameter values.
   </p>
+  <div class="l-body-outset">
+    <svg width="888" height="46" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="20" dy="1em" class="figure-text">
+        t-SNE projection of FiLM parameters for many task descriptions.
+      </text>
+      <path d="M0,45l888,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+    </svg>
+  </div>
   <figure class="l-body-outset" id="tsne-diagram">
     <%= require("../static/diagrams/tsne.svg") %>
   </figure>

@@ -1,33 +1,32 @@
-<svg viewBox="0 0 888 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <path d="M444,10l0,460" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
-  <text x="10" y="10" dy="1em" class="figure-text">
-    <tspan>
-      FiLM parameters of the visual reasoning model for feature map
-    </tspan>
-    <tspan x="10" dy="1.5em">
-      26 of the first FiLM layer for 256 questions chosen randomly.
-    </tspan>
+<svg viewBox="0 0 704 410" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <text x="0" y="0" dy="1em" class="figure-text">
+    FiLM parameters of the
+    <tspan style="font-weight: bold;">visual reasoning model</tspan> for 256
+    questions chosen randomly.
   </text>
-  <text x="500" y="10" dy="1em" class="figure-text">
-    <tspan>
-      FiLM parameters of the visual reasoning model for feature map
-    </tspan>
-    <tspan x="500" dy="1.5em">
-      76 of the first FiLM layer for 256 questions chosen randomly.
-    </tspan>
+  <path d="M0,25l704,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="0" y="60" dy="1em" class="figure-text">
+    <tspan style="font-weight: bold;">Feature map 26</tspan> of the first FiLM
+    layer.
   </text>
+  <path d="M0,85l300,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="404" y="60" dy="1em" class="figure-text">
+    <tspan style="font-weight: bold;">Feature map 76</tspan> of the first FiLM
+    layer.
+  </text>
+  <path d="M404,85l300,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
   <g id="first-plot">
-    <rect x="10" y="100" width="360" height="360" style="fill: none;"/>
+    <rect x="10" y="110" width="300" height="300" style="fill: none;"/>
     <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
-    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" style="font-family: serif;" class="figure-text">γ</text>
     <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
-    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+    <text id="y-axis-label" x="0" y="0" dy="1em" style="font-family: serif;" class="figure-text">β</text>
   </g>
   <g id="second-plot">
-    <rect x="515" y="100" width="360" height="360" style="fill: none;"/>
+    <rect x="404" y="110" width="300" height="300" style="fill: none;"/>
     <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
-    <text id="x-axis-label" x="0" y="0" dy="0.4em" font-family="serif" class="figure-text">γ</text>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" style="font-family: serif;" class="figure-text">γ</text>
     <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
-    <text id="y-axis-label" x="0" y="0" dy="1em" font-family="serif" class="figure-text">β</text>
+    <text id="y-axis-label" x="0" y="0" dy="1em" style="font-family: serif;" class="figure-text">β</text>
   </g>
 </svg>
