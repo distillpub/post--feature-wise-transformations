@@ -341,9 +341,8 @@
         var updateImages = function () {
             interpolationImages.attr("xlink:href", function (d, i) {
                 const { content, style1, style2 } = selectedImages
-                const href = `images/stylized-${content}-${style1}-${style2}-${i + 1}.png`;
-                // TODO: return real href when images are done
-                return `images/stylized-1-${i + 1}.jpg`;
+                const href = `images/stylized-${content + 1}-${style1 + 1}-${style2 + 1}-${i + 1}.jpg`;
+                return href;
             });
 
             styleSelect1.style('opacity', (d, i) => i == selectedImages['style1'] ? 1: 0.1);

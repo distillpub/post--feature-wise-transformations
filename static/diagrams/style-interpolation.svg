@@ -12,8 +12,8 @@
       <text x="0" y="0" dy="1em" class="figure-text"><tspan style="font-weight: normal;">Style 2</tspan></text>
       <line x1="0" y1="1.5em" x2="80" y2="1.5em" class="figure-line figure-faded" />
       <g transform="translate(0, 40)">
-        <image x="0" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-1.png"/>
-        <image x="0" y="100" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-2.png"/>
+        <image x="0" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-1.jpg"/>
+        <image x="0" y="100" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/style-2-2.jpg"/>
       </g>
     </g>
     <g id="interpolation" transform="translate(100, 0)">
@@ -31,9 +31,9 @@
       <line x1="0" y1="1.5em" x2="980" y2="1.5em" class="figure-line figure-faded" />
       <g transform="translate(0, 40)">
         <image x="0" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-1.jpg"/>
-        <image x="100" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-2.png"/>
-        <image x="200" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-1.jpg"/>
-        <image x="300" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-1.jpg"/>
+        <image x="100" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-2.jpg"/>
+        <image x="200" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-3.jpg"/>
+        <image x="300" y="0" width="80" height="80" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/content-4.jpg"/>
       </g>
     </g>
   </g>
