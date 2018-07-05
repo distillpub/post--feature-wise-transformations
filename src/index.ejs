@@ -608,11 +608,12 @@
   </p>
   <p class="content" content-name="domain-adaptation" content-type="literature">
     For few-shot learning, Oreshkin et al.
-    <d-cite key="oreshkin2018tadam"></d-cite> explore using FiLM
-    layers to modulate a feature extractor used in a Prototypical Network -like
-    setup <d-cite key="snell2017prototypical"></d-cite>, where the FiLM
-    parameters are predicted from the support set of a given few-shot learning
-    episode.
+    <d-cite key="oreshkin2018tadam"></d-cite> explore the use of FiLM layers to
+    provide more robustness to variations in the input distribution across
+    few-shot learning episodes. The training set for a given episode is used to
+    produce FiLM parameters which modulate the feature extractor used in a
+    Prototypical Networks <d-cite key="snell2017prototypical"></d-cite>
+    meta-training procedure.
   </p>
 
   <hr/>
@@ -859,13 +860,17 @@
     it does point to an interesting fact about FiLM-ed networks: sometimes the
     model makes a mistake not because it is incapable of computing the correct
     output, but because it fails to produce the correct FiLM parameters for a
-    given task description. The flip side of this observation is that sometimes
-    the computational primitives learned by the FiLM-ed network are insufficient
-    to ensure good generalization. Ghiasi et al. <d-cite key="ghiasi2017exploring"></d-cite>
-    report that the generalization capability of their style transfer network
-    very much depends on the number of style images it was trained on: if that
-    number is not large enough, the model has a hard time producing pastiches
-    for a new style image which exhibits very different stylistic properties.
+    given task description. The reverse can also be true: if the set of tasks
+    the model was trained on is insufficiently rich, the computational
+    primitives learned by the FiLM-ed network may be insufficient to ensure good
+    generalization. For instance, a style transfer model may lack the ability to
+    produce zebra-like patterns if there are no stripes in the styles it was
+    trained on. This could explain why Ghiasi et al.
+    <d-cite key="ghiasi2017exploring"></d-cite> report that their style transfer
+    model's ability to produce pastiches for new styles degrades if it has been
+    trained on an insufficiently large number of styles. Note however that in
+    that case the FiLM generator's failure to generalize could also play a role,
+    and further analysis would be needed to draw a definitive conclusion.
   </p>
   <p>
     This points to a separation between the various computational
