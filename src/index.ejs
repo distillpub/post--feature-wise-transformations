@@ -351,6 +351,10 @@
     FiLM parameter values. Using these values, FiLM layers inserted within each
     residual block condition the visual pipeline. The model is trained
     end-to-end on image-question-answer triples.
+	The model was latter improved by <d-cite key="strub2018vision"></d-cite> 
+	which alternate between attending to the language input and generating FiLM layer parameters by using an attention mechanism. 
+	This approach was better able to scale to settings with longer input sequences such as dialogue and was evaluated on the GuessWhat?! <d-cite key="vries2017guesswhat"></d-cite>
+	and ReferIt <d-cite key="kazemzadeh2014referitgame"></d-cite> datasets.
   </p>
   <p class="content" content-name="vqa" content-type="literature">
     de Vries et al. <d-cite key="vries2017modulating"></d-cite> leverage FiLM
@@ -937,12 +941,19 @@
     transformations outperform methods with stronger inductive biases and vice
     versa? Recent work combines feature-wise transformations with stronger
     inductive bias methods
-    <d-cite key="bahdanau2018learning,yang2018dataset"></d-cite>, which
+    <d-cite key="bahdanau2018learning,yang2018dataset,strub2018vision"></d-cite>, which
     could be an optimal middle ground. Also, to what extent are FiLM's
     task representation properties
     inherent to FiLM, and to what extent do they emerge from other features
     of neural networks (i.e. non-linearities, FiLM generator
     depth, etc.)?
+  </p>
+  <p>
+	On a different note, several improvement may still be done on FiLM architectures, as new 
+	powerful attention mechanisms has been explored over the past years  <d-cite key="bahdanau2014neural,yang2016stacked,fukui2016multimodal"></d-cite>. 
+	For instance, while Ethan et al. <d-cite key="perez2018film"></d-cite> computed the FiLM parameters in a single pass, 
+	<d-cite key="strub2018visual"></d-cite> shows the benefit of computing the FiLM in an iterative fashion; 
+	alternating between attending to the language, extracting visual features and generating the FiLM parameters in a multi-hop fashion.
   </p>
   <p>
     Finally, the fact that changes on the feature level alone are able to
