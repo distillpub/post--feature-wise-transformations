@@ -273,11 +273,15 @@
     We say that a neural network is modulated using FiLM, or <em>FiLM-ed</em>,
     after inserting <em>FiLM layers</em> into its architecture. These layers are
     parametrized by some form of conditioning information, and the mapping from
-    conditioning information to FiLM parameters is called the <em>FiLM generator</em>.
+    conditioning information to FiLM parameters (i.e., the shifting and scaling
+    coefficients) is called the <em>FiLM generator</em>.
     In other words, the FiLM generator predicts the parameters of the FiLM
-    layers based on some auxiliary input. For simplicity, you can assume that
-    the FiLM generator outputs the concatenation of all FiLM parameters for the
-    network architecture.
+    layers based on some auxiliary input.
+    Note that the FiLM parameters are parameters in one network but predictions
+    from another network, so they aren't learnable parameters with fixed
+    weights as in the fully traditional sense.
+    For simplicity, you can assume that the FiLM generator outputs the
+    concatenation of all FiLM parameters for the network architecture.
   </p>
   <figure class="l-body">
     <%= require("../static/diagrams/film-architecture.svg") %>
@@ -461,9 +465,14 @@
   </figure>
   <button class="collapsible" content-name="nlp" content-type="literature">Natural language processing<span style="float: right;">+</span></button>
   <p class="content" content-name="nlp" content-type="literature">
-  For the task of statistical language modeling, LSTMs <d-cite key="hochreiter1997long,melis2017lstm"></d-cite>
-  constitute a popular class of recurrent network architectures. This type of architecture heavily relies on
-  feature-wise sigmoidal gating to control the information flow in and out of the memory cell.
+    For statistical language modeling (i.e., predicting the next word
+    in a sentence), the LSTM <d-cite key="hochreiter1997long,melis2017lstm"></d-cite>
+    constitutes a popular class of recurrent network architectures. The LSTM
+    relies heavily on feature-wise sigmoidal gating to control the
+    information flow in and out of the memory or context cell
+    <d-math>\mathbf{c}</d-math>, based on the hidden states
+    <d-math>\mathbf{h}</d-math> and inputs <d-math>\mathbf{x}</d-math> at
+    every timestep <d-math>\mathbf{t}</d-math>.
   </p>
   <figure class="content l-body" content-name="nlp" content-type="literature">
     <%= require("../static/diagrams/lstm.svg") %>
@@ -532,6 +541,13 @@
   <figure class="content l-body" content-name="generative-modeling" content-type="literature">
     <%= require("../static/diagrams/dcgan.svg") %>
   </figure>
+  <p class="content" content-name="generative-modeling" content-type="literature">
+    For convolutional layers, concatenation-based conditioning requires the
+    network to learn redundant convolutional parameters to interpret each
+    constant, conditioning feature map; as a result, directly applying a
+    conditional bias is more parameter efficient, but the two approaches are
+    still mathematically equivalent.
+  </p>
   <p class="content" content-name="generative-modeling" content-type="literature">
     PixelCNN <d-cite key="oord2016conditional"></d-cite>
     and WaveNet <d-cite key="oord2016wavenet"></d-cite> &mdash; two recent
@@ -937,12 +953,17 @@
     transformations outperform methods with stronger inductive biases and vice
     versa? Recent work combines feature-wise transformations with stronger
     inductive bias methods
-    <d-cite key="bahdanau2018learning,yang2018dataset"></d-cite>, which
-    could be an optimal middle ground. Also, to what extent are FiLM's
+    <d-cite key="strub2018visual,bahdanau2018learning,yang2018dataset"></d-cite>,
+    which could be an optimal middle ground. Also, to what extent are FiLM's
     task representation properties
     inherent to FiLM, and to what extent do they emerge from other features
     of neural networks (i.e. non-linearities, FiLM generator
-    depth, etc.)?
+    depth, etc.)? If you are interested in exploring these or other
+    questions about FiLM, we recommend looking into the code bases for
+    FiLM models for <a href="https://github.com/ethanjperez/film">visual reasoning</a>
+    <d-cite key="perez2018film"></d-cite> and <a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/arbitrary_image_stylization">style transfer</a>
+    <d-cite key="ghiasi2017exploring"></d-cite> which we used as a
+    starting point for our experiments here.
   </p>
   <p>
     Finally, the fact that changes on the feature level alone are able to
@@ -1041,9 +1062,10 @@
     so generous with their time and advice. We would also like to thank Archy de
     Berker, Xavier Snelgrove, Pedro Oliveira Pinheiro, Alexei Nordell-Markovits,
     Masha Krol, and Minh Dao from Element AI; Roland Memisevic from TwentyBN;
-    Dzmitry Bahdanau from MILA; Ameesh Shah from Rice University; Eleni
-    Triantafillou from Toronto University; Olivier Pietquin and Jon Shlens from
-    Google Brain; and Jérémie Mary from Criteo.
+    Dzmitry Bahdanau from MILA; Ameesh Shah and Will Levine from Rice
+    University; Dhanush Radhakrishnan from Roivant Sciences; Raymond Cano from
+    Plaid; Eleni Triantafillou from Toronto University; Olivier Pietquin and
+    Jon Shlens from Google Brain; and Jérémie Mary from Criteo.
   </p>
 
   <d-footnote-list></d-footnote-list>
