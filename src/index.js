@@ -670,6 +670,9 @@
         "Equal integer", "Equal shape", "Equal size", "Equal material"
     ];
 
+    // Ugly workaround for permuted question types in JSON file.
+    var question_type_mapping = [0, 2, 5, 8, 1, 4, 9, 10, 3, 6, 12, 7, 11];
+
     var setUp = function(filename, keyword, color) {
         // Get references to important tags
         var svg = d3.select("#clevr-subcluster-color-diagram > svg");
@@ -725,7 +728,7 @@
                 .style("opacity", 1.0)
                 .each(function(c, i) {
                     d3.select(this).selectAll("circle")
-                        .data(dataset.filter(function(d) { return d.type == i; }))
+                        .data(dataset.filter(function(d) { return question_type_mapping[d.type] == i; }))
                         .enter().append("circle")
                         .attrs({
                             "cx": function(d) { return xScale(d.gamma); },
@@ -736,7 +739,7 @@
                         .style("opacity", 0.6)
                         .style("cursor", "pointer")
                         .on("mouseover", function(d) {
-                            focus(d.type);
+                            focus(question_type_mapping[d.type]);
                             tooltip.transition()
                                 .duration(200)
                                 .style("opacity", .9);

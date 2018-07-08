@@ -172,7 +172,7 @@
     <%= require("../static/diagrams/concatenation-based-conditioning.svg") %>
   </figure>
   <p>
-    Another efficient way to integrate conditional information into the network
+    Another efficient way to integrate conditioning information into the network
     is via <em>conditional biasing</em>, namely, by adding a <em>bias</em> to
     the hidden layers based on the conditioning representation.
   </p>
@@ -204,7 +204,7 @@
   <p>
     A special instance of conditional scaling is feature-wise sigmoidal gating:
     we scale each feature by a value between <d-math>0</d-math> and
-    <d-math>1</d-math> (enforced by applying the sigmoid function), as a
+    <d-math>1</d-math> (enforced by applying the logistic function), as a
     function of the conditioning representation. Intuitively, this gating allows
     the conditioning information to select which features are passed forward
     and which are zeroed out.
@@ -355,7 +355,7 @@
     FiLM parameter values. Using these values, FiLM layers inserted within each
     residual block condition the visual pipeline. The model is trained
     end-to-end on image-question-answer triples. Strub et al.
-    <d-cite key="strub2018vision"></d-cite> later on improved on the model by
+    <d-cite key="strub2018visual"></d-cite> later on improved on the model by
     using an attention mechanism to alternate between attending to the language
     input and generating FiLM parameters layer by layer. This approach was
     better able to scale to settings with longer input sequences such as
@@ -439,7 +439,7 @@
     on a secondary network to predict the FiLM parameters from the style
     image, the main network itself is used to extract the style features
     used to compute FiLM parameters. Therefore, the model can be seen as
-    <em>both</em> the FiLM-ed network the FiLM generator.
+    <em>both</em> the FiLM-ed network and the FiLM generator.
   </p>
   <button class="collapsible" content-name="image-recognition" content-type="literature">Image recognition<span style="float: right;">+</span></button>
   <p class="content" content-name="image-recognition" content-type="literature">
@@ -840,10 +840,12 @@
     <%= require("../static/diagrams/clevr-subcluster-color.svg") %>
   </figure>
   <p>
-    Sometimes a clear pattern emerges, as in the right plot, where questions
-    related to counting and integer equality concentrate in the top-right
-    cluster. Sometimes it is harder to draw a conclusion, as in the left plot,
-    where question types are scattered across the three clusters.
+    Sometimes a clear pattern emerges, as in the right plot, where color-related
+    questions concentrate in the top-right cluster &mdash; we observe that
+    questions either are of type <em>Query color</em> or <em>Equal color</em>,
+    or contain concepts related to color. Sometimes it is harder to draw a
+    conclusion, as in the left plot, where question types are scattered across
+    the three clusters.
   </p>
   <p>
     In cases where question types alone cannot explain the clustering of the

@@ -21,16 +21,13 @@
         The <tspan style="font-weight: bold;">style transfer network</tspan>
       </tspan>
       <tspan x="0" dy="1.5em">
-        <tspan style="font-weight: bold;">network</tspan> is conditioned by
+        is conditioned by making
       </tspan>
       <tspan x="0" dy="1.5em">
-        making the instance
+        the instance normalization
       </tspan>
       <tspan x="0" dy="1.5em">
-        normalization parameters
-      </tspan>
-      <tspan x="0" dy="1.5em">
-        style-dependent.
+        parameters style-dependent.
       </tspan>
     </text>
     <g transform="translate(-15, 0)">
