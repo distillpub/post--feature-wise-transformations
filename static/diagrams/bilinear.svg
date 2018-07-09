@@ -34,7 +34,7 @@
       <tspan style="font-weight: bold;">z</tspan>.
     </tspan>
   </text>
-  <g transform="translate(300, 10)">
+  <g transform="translate(295, 10)">
     <g transform="translate(222, 0)">
       <use xlink:href="#big-row-left" transform="translate(0, 0)"  class="figure-filmed-network figure-element"/>
       <use xlink:href="#big-row-middle" transform="translate(40, 0)" class="figure-filmed-network figure-element"/>
