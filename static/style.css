@@ -103,18 +103,27 @@ d-figure > figure {
 }
 
 .figure-film-generator {
-  stroke: #006064;
-  fill: #80DEEA;
+  /* stroke: #006064; */
+  /* fill: #80DEEA; */
+  
+  stroke: hsl(203, 65%, 70%);
+  fill: hsl(203, 65%, 85%);
 }
 
 .figure-film-generator-shaded {
-  stroke: #006064;
-  fill: #00838F;
+  /* stroke: #006064; */
+  /* fill: #00838F; */
+  
+  stroke: hsl(203, 15%, 85%);
+  fill: hsl(203, 15%, 95%);
 }
 
 .figure-filmed-network {
-  stroke: #BF360C;
-  fill: #FFAB91;
+  /* stroke: #BF360C; */
+  /* fill: #FFAB91; */
+  
+  stroke: hsl(11, 65%, 70%);
+  fill: rgb(242, 203, 194);
 }
 
 .todo {
@@ -144,6 +153,8 @@ d-figure > figure {
   color: rgba(0, 0, 0, 0.8);
   padding: 0.5em;
   margin: 0.2em;
+  margin-left: 0;
+  padding-left: 0;
   transform: translateX(0px);
   transition: 
       color 0.1s ease-out,
@@ -158,7 +169,7 @@ d-figure > figure {
       transform 0.25s ease;
 }
 
-.content {
+d-article .content {
   display: none;
   overflow: hidden;
   background-color: none;
