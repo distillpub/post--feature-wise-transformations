@@ -289,6 +289,9 @@
                     "cx": function(d, i) { return 18 * i; },
                     "cy": 0,
                     "r": 6,
+                    "stroke-width": 10,
+                    "stroke-opacity": 0,
+                    "stroke": "red",
                 })
                 .style("fill", function(d, i) { return colors[i]; })
                 .style("cursor", "pointer")
@@ -605,6 +608,9 @@
             "cx": 0,
             "cy": function(d, i) { return 20 * i; },
             "r": 6,
+            "stroke-width": 10,
+            "stroke-opacity": 0,
+            "stroke": "red",
         })
         .style("stroke", "black")
         .style("fill", "none")
@@ -772,6 +778,9 @@
             "cx": 0,
             "cy": function(d, i) { return 20 * i; },
             "r": 6,
+            "stroke-width": 20,
+            "stroke-opacity": 0,
+            "stroke": "red",
         })
         .style("fill", function(d, i) { return colors[i]; })
         .style("cursor", "pointer")
@@ -922,6 +931,9 @@
                 "cx": 0,
                 "cy": function(d, i) { return 20 * i; },
                 "r": 6,
+                "stroke-width": 10,
+                "stroke-opacity": 0,
+                "stroke": "red",
             })
             .style("fill", function(d, i) { return colors[i]; })
             .style("cursor", "pointer")
@@ -1079,6 +1091,9 @@
                 "cx": 0,
                 "cy": function(d, i) { return 20 * i; },
                 "r": 6,
+                "stroke-width": 10,
+                "stroke-opacity": 0,
+                "stroke": "red",
             })
             .style("fill", function(d) { return colors[d]; })
             .style("cursor", "pointer")
