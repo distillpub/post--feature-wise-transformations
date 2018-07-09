@@ -1,0 +1,48 @@
+<svg viewBox="0 0 704 390" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <text x="0" y="0" dy="1em" class="figure-text">
+    FiLM parameters of the
+    <tspan style="font-weight: bold;">visual reasoning model</tspan> for 256
+    questions chosen randomly.
+  </text>
+  <path d="M0,30l704,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="0" y="60" dy="1em" class="figure-text">
+    <tspan>
+      <tspan style="font-weight: bold;">Feature map 26</tspan> suggests an object
+      position 
+    </tspan>
+    <tspan x="0" dy="1.5em">
+      separation mechanism.
+    </tspan>
+  </text>
+  <path d="M0,110l250,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="300" y="60" dy="1em" class="figure-text">
+    <tspan>
+      <tspan style="font-weight: bold;">Feature map 92</tspan> suggests an object
+      material 
+    </tspan>
+    <tspan x="300" dy="1.5em">
+      separation mechanism.
+    </tspan>
+  </text>
+  <path d="M300,110l250,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="590" y="60" dy="2.5em" class="figure-text">
+    Word in question
+  </text>
+  <path d="M590,110l114,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <g id="first-plot">
+    <rect x="0" y="130" width="250" height="250" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" style="font-family: serif;" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" style="font-family: serif;" class="figure-text">β</text>
+  </g>
+  <g id="second-plot">
+    <rect x="300" y="130" width="250" height="250" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" style="font-family: serif;" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" style="font-family: serif;" class="figure-text">β</text>
+  </g>
+  <g transform="translate(596, 130)" id="legend"></g>
+  <image x="677" y="120" height="27" width="27" xlink:href="images/pointer.svg"/>
+</svg>

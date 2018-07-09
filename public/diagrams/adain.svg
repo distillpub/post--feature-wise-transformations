@@ -1,0 +1,127 @@
+<svg viewBox="0 0 888 570" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+  </defs>
+  <g transform="translate(60, 160)">
+    <text x="200" y="-150" dy="1em" class="figure-text">
+      <tspan>
+        The model processes
+      </tspan>
+      <tspan x="200" dy="1.5em">
+        content and style images
+      </tspan>
+      <tspan x="200" dy="1.5em">
+        up to the adaptive instance
+      </tspan>
+      <tspan x="200" dy="1.5em">
+        normalization layer.
+      </tspan>
+    </text>
+    <text x="380" y="-150" dy="1em" class="figure-text">
+      <tspan>
+        FiLM parameters are
+      </tspan>
+      <tspan x="380" dy="1.5em">
+        computed as the spatial
+      </tspan>
+      <tspan x="380" dy="1.5em">
+        mean and standard
+      </tspan>
+      <tspan x="380" dy="1.5em">
+        deviation statistics of the
+      </tspan>
+      <tspan x="380" dy="1.5em">
+        style feature maps.
+      </tspan>
+    </text>
+    <text x="550" y="-150" dy="1em" class="figure-text">
+      <tspan>
+        The FiLM-ed feature maps
+      </tspan>
+      <tspan x="550" dy="1.5em">
+        are fed to the remainder
+      </tspan>
+      <tspan x="550" dy="1.5em">
+        of the network to produce
+      </tspan>
+      <tspan x="550" dy="1.5em">
+        the stylized image.
+      </tspan>
+    </text>
+    <image x="0" y="0" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/cassis_cap_lombard_opus_196.jpg"/>
+    <image x="0" y="250" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/tuebingen_neckarfront.jpg"/>
+    <g class="figure-faded">
+      <path d="M 96 298 L 195 298" class="figure-line"/>
+      <use xlink:href="#arrow-right" transform="translate(195, 298)" class="figure-path"/>
+    </g>
+    <g transform="translate(200, -50)">
+      <g class="figure-faded">
+        <path d="M -104 98 L -5 98" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(-5, 98)" class="figure-path"/>
+      </g>
+      <g transform="translate(0, 38)">
+        <rect width="90" height="120" class="figure-film-generator figure-element figure-box figure-faded"/>
+        <text x="45" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 45, 60)" class="figure-text figure-text-faded">sub-network</text>
+      </g>
+      <line stroke-dasharray="5,5" x1="45" y1="160" x2="45" y2="288" class="figure-line"/>
+      <g transform="translate(0, 288)">
+        <rect width="90" height="120" class="figure-filmed-network figure-element figure-box figure-faded"/>
+        <text x="45" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 45, 60)" class="figure-text figure-text-faded">sub-network</text>
+      </g>
+      <g class="figure-faded">
+        <path d="M 90 98 L 175 98" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(175, 98)" class="figure-path"/>
+      </g>
+      <g transform="translate(180, 38)">
+        <rect width="90" height="120" class="figure-film-generator figure-element figure-box"/>
+        <text x="45" y="60" dy="-0.5em" style="text-anchor: middle;" transform="rotate(-90, 45, 60)" class="figure-text">
+          <tspan style="font-family: serif;">γ, β</tspan><tspan> across</tspan>
+          <tspan x="45" dy="1.5em">spatial axes</tspan>
+        </text>
+      </g>
+      <path d="M 255 158 L 255 283" class="figure-line"/>
+      <use xlink:href="#arrow-down" transform="translate(255, 283)" class="figure-path"/>
+      <text x="250" y="200" dy="1.5em" style="text-anchor: end;" class="figure-text">FiLM</text>
+      <text x="250" y="215" dy="1.5em" style="text-anchor: end;" class="figure-text">parameters</text>
+      <g class="figure-faded">
+        <path d="M 90 348 L 175 348" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(175, 348)" class="figure-path"/>
+      </g>
+      <g transform="translate(180, 288)">
+        <rect width="35" height="120" class="figure-filmed-network figure-element figure-box figure-faded"/>
+        <text x="17.5" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 17.5, 60)" class="figure-text figure-text-faded">normalization</text>
+      </g>
+      <g class="figure-faded">
+        <path d="M 215 348 L 230 348" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(230, 348)" class="figure-path"/>
+      </g>
+      <g transform="translate(235, 288)">
+        <rect width="35" height="120" class="figure-filmed-network figure-element figure-box"/>
+        <text x="17.5" y="60" dy="0.4em" style="font-weight: bold; text-anchor: middle;" transform="rotate(-90, 17.5, 60)" class="figure-text">FiLM layer</text>
+      </g>
+      <g class="figure-faded">
+        <path d="M 270 348 L 345 348" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(345, 348)" class="figure-path"/>
+      </g>
+      <path d="M 175 410 L 175 420 L 275 420 L 275 410" style="stroke-width: 1px;" class="figure-line"/>
+      <text x="175" y="420" dy="1.5em" class="figure-text">
+        <tspan>
+          adaptive instance
+        </tspan>
+        <tspan x="175" dy="1.5em">
+          normalization
+        </tspan>
+      </text>
+      <g transform="translate(350, 288)">
+        <rect width="90" height="120" class="figure-filmed-network figure-element figure-box figure-faded"/>
+        <text x="45" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 45, 60)" class="figure-text figure-text-faded">sub-network</text>
+      </g>
+      <g class="figure-faded">
+        <path d="M 440 348 L 525 348" class="figure-line"/>
+        <use xlink:href="#arrow-right" transform="translate(525, 348)" class="figure-path"/>
+      </g>
+      <image x="530" y="300" width="96" height="96" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/tuebingen_neckarfront_cassis_cap_lombard_opus_196.jpg"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,85 @@
+<svg viewBox="0 0 704 230" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+    <path id="column-top" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z"/>
+    <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+    <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
+  </defs>
+  <text x="260" y="10" dy="1em" class="figure-text">
+    <tspan>
+      <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
+    </tspan>
+    <tspan x="260" dy="1.5em">
+      simply concatenates the conditioning
+    </tspan>
+    <tspan x="260" dy="1.5em">
+      representation to the input.
+    </tspan>
+  </text>
+  <text x="445" y="100" dy="0.4em" class="figure-text">
+    <tspan>
+      The result is passed
+    </tspan>
+    <tspan x="445" dy="1.5em">
+      through a linear layer
+    </tspan>
+    <tspan x="445" dy="1.5em">
+      to produce the output.
+    </tspan>
+  </text>
+  <g transform="translate(10, 70)">
+    <text x="0" y="90" dy="0.4em" class="figure-text">
+      input
+    </text>
+    <g transform="translate(40, 60)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+    </g>
+    <text x="191" y="-30" dy="-0.35em" style="text-anchor: end;" class="figure-text">
+      <tspan>conditioning</tspan>
+      <tspan x="191" dy="1.5em">representation</tspan>
+    </text>
+    <g transform="translate(201, -60)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+    </g>
+    <g transform="translate(191, 30)">
+      <rect width="40" height="120" class="figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
+    </g>
+    <g transform="translate(302, 30)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
+    </g>
+    <g transform="translate(380, 30)">
+      <rect width="40" height="120" class="figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
+    </g>
+    <g transform="translate(570, 50)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+    </g>
+    <text x="600" y="90" dy="0.4em" class="figure-text">
+      output
+    </text>
+    <path d="M 60 90 L 186 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
+    <path d="M 231 90 L 297 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
+    <path d="M 327 90 L 375 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(375, 90)" class="figure-path"/>
+    <path d="M 420 90 L 565 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(565, 90)" class="figure-path"/>
+    <path d="M 211 0 L 211 25" class="figure-line"/>
+    <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
+  </g>
+</svg>

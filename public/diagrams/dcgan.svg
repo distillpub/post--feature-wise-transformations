@@ -1,0 +1,73 @@
+<svg viewBox="0 0 704 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+  </defs>
+  <path d="M475,10l0,360" style="stroke-width: 1px; stroke: #666; opacity: 0.5"/>
+  <text x="10" y="10" class="figure-text">
+    <tspan>
+      <tspan style="font-weight: bold;">Concatenation-based conditioning</tspan>
+      is used in the class-conditional
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      DCGAN model. Each convolutional layer is concatenated with the
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      broadcased label along the channel axis.
+    </tspan>
+  </text>
+  <text x="495" y="10" class="figure-text">
+    <tspan>
+      The resulting stack of feature maps
+    </tspan>
+    <tspan x="495" dy="1.5em">
+      is then <tspan style="font-weight: bold;">convolved</tspan>
+      to produce the
+    </tspan>
+    <tspan x="495" dy="1.5em">
+      conditioned output.
+    </tspan>
+  </text>
+  <g transform="translate(10, 180)">
+    <g transform="translate(0, 30)">
+      <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+    </g>
+    <g transform="translate(191, 30)">
+      <rect width="40" height="120" class="figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">concatenate</text>
+    </g>
+    <g transform="translate(302, 30)">
+      <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <text x="30" y="30" dy="0.4em" class="figure-text">input</text>
+      <rect x="40" y="40" width="100" height="100" style="fill-opacity: 1;" class="figure-film-generator figure-element figure-box"/>
+      <text x="50" y="50" dy="0.4em" class="figure-text">class label</text>
+    </g>
+    <g transform="translate(493, 30)">
+      <rect width="40" height="120" class="figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">convolution</text>
+    </g>
+    <g transform="translate(564, 30)">
+      <rect x="0" y="0" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <rect x="10" y="10" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <rect x="20" y="20" width="100" height="100" style="fill-opacity: 1;" class="figure-filmed-network figure-element figure-box"/>
+      <text x="30" y="30" dy="0.4em" class="figure-text">output</text>
+    </g>
+    <path d="M 120 90 L 186 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(186, 90)" class="figure-path"/>
+    <path d="M 231 90 L 297 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(297, 90)" class="figure-path"/>
+    <path d="M 442 90 L 488 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(488, 90)" class="figure-path"/>
+    <path d="M 533 90 L 559 90" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(559, 90)" class="figure-path"/>
+    <path d="M 211 -50 L 211 25" class="figure-line"/>
+    <use xlink:href="#arrow-down" transform="translate(211, 25)" class="figure-path"/>
+    <text x="211" y="10" dy="-0.4em" transform="rotate(-90, 211, 10)" class="figure-text">broadcast</text>
+    <text x="211" y="-60" dy="-0.4em" style="text-anchor: middle; font-weight: bold;" class="figure-text">class label</text>
+  </g>
+</svg>

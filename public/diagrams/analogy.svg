@@ -1,0 +1,80 @@
+<svg viewBox="0 0 704 430" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M10,185l684,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+  </defs>
+  <text x="10" y="0" dy="1em" class="figure-text">
+    <tspan>
+      The model incorrectly answers a question
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      which involves an unseen combination
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      of concepts (in <tspan style="font-weight: bold">bold</tspan>).
+    </tspan>
+  </text>
+  <text x="10" y="220" dy="1em" class="figure-text">
+    <tspan>
+      Rather than using the FiLM parameters
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      of the FiLM generator, we can use those
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      produced by combining questions with
+    </tspan>
+    <tspan x="10" dy="1.5em">
+      familiar combinations of concepts (in
+    </tspan>
+    <tspan x="10" dy="1.5em">
+     <tspan style="font-weight: bold">bold</tspan>). This corrects the model's
+     answer.
+    </tspan>
+  </text>
+  <g transform="translate(90, 0)">
+    <image x="260" y="0" width="192" height="127.67" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/analogy_image.jpg"/>
+    <text x="260" y="150" style="font-style: italic;" class="figure-text">
+      Q: What is the <tspan style="font-weight: bold">blue</tspan> big <tspan style="font-weight: bold">cylinder</tspan> made of?
+    </text>
+    <text x="490" y="70" dy="-1em" style="font-style: italic;" class="figure-text">
+      Q ?
+    </text>
+    <path d="M 457 70 L 535 70" class="figure-path"/>
+    <use x="535" y="70" xlink:href="#arrow-right" class="figure-path"/>
+    <text x="545" y="70" dy="0.4em" class="figure-text" style="fill: red">Rubber ✘</text>
+    <image x="260" y="220" width="192" height="127.67" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/analogy_image.jpg"/>
+    <text x="260" y="370" style="font-style: italic;" class="figure-text">
+      <tspan>
+        Q<tspan dy="4px" class="subscript">A</tspan>
+      </tspan>
+      <tspan dy="-4px">
+        : What is the <tspan style="font-weight: bold">blue</tspan> big
+        <tspan style="font-weight: bold">sphere</tspan> made of?
+      </tspan>
+      <tspan x="260" dy="2em">
+        Q<tspan dy="4px" class="subscript">B</tspan>
+      </tspan>
+      <tspan dy="-4px">
+        : What is the <tspan style="font-weight: bold">green</tspan> big
+        <tspan style="font-weight: bold">cylinder</tspan> made of?
+      </tspan>
+      <tspan x="260" dy="2em">
+        Q<tspan dy="4px" class="subscript">C</tspan>
+      </tspan>
+      <tspan dy="-4px">
+        : What is the <tspan style="font-weight: bold">green</tspan> big
+        <tspan style="font-weight: bold">sphere</tspan> made of?
+      </tspan>
+    </text>
+    <text x="460" y="290" dy="-1em" style="font-style: italic;" class="figure-text">
+      <tspan>Q</tspan><tspan dy="4px" class="subscript">A</tspan>
+      <tspan dy="-4px">+ Q</tspan><tspan dy="4px" class="subscript">B</tspan>
+      <tspan dy="-4px">- Q</tspan><tspan dy="4px" class="subscript">C</tspan>
+      <tspan dy="-4px"> ?</tspan>
+    </text>
+    <path d="M 457 290 L 535 290" class="figure-path"/>
+    <use x="535" y="290" xlink:href="#arrow-right" class="figure-path"/>
+    <text x="545" y="290" dy="0.4em" class="figure-text" style="fill: green">Metal ✔</text>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg width="444" height="380" xmlns="http://www.w3.org/2000/svg" id="clevr-plot-svg">
+  <g id="clevr-plot" style="z-index: -1;">
+    <rect x="10" y="100" width="250" height="250" style="fill: none;"/>
+  </g>
+  <rect width="444" height="30" style="fill:white" transform="translate(0, 10)"/>
+  <rect width="150" height="360" style="fill:white" transform="translate(285, 10)"/>
+  <text x="0" y="10" dy="1em" class="figure-text">
+    <tspan style="font-weight: bold;">Visual reasoning model</tspan>
+  </text>
+  <path d="M0,35l250,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="290" y="10" dy="1em" class="figure-text">
+    Question type
+  </text>
+  <path d="M290,35l124,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <g transform="translate(300, 60)" id="clevr-legend"></g>
+  <image x="387" y="0" height="27" width="27" xlink:href="images/pointer.svg"/>
+  <g transform="translate(294, 340)" style="cursor: pointer;" id="clevr-zoom">
+    <rect width="120" height="20" class="figure-group figure-box"/>
+    <text x="60" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">Reset pan / zoom</text>
+  </g>
+ </svg> 
+  
+ <svg width="444" height="380" xmlns="http://www.w3.org/2000/svg" id="style-transfer-plot-svg">
+  <g id="style-transfer-plot" style="z-index: -1;">
+    <rect x="0" y="100" width="250" height="250" style="fill: none;"/>
+
+    <circle cx="212" cy="218" r="15" style="stroke-width: 4px; fill: none;" class="figure-element"/>
+
+  </g>
+  <rect width="444" height="30" style="fill:white" transform="translate(0, 10)"/>
+  <rect width="150" height="270" style="fill:white" transform="translate(285, 10)"/>
+  <text x="0" y="10" dy="1em" class="figure-text">
+    <tspan style="font-weight: bold;">Style transfer model</tspan>
+  </text>
+  <path d="M0,35l250,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="290" y="10" dy="1em" class="figure-text">
+    Artist name
+  </text>
+  <path d="M290,35l124,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <g transform="translate(300, 60)" id="style-transfer-legend"></g>
+  <image x="387" y="0" height="27" width="27" xlink:href="images/pointer.svg"/>
+
+  <g transform="translate(294, 240)" style="cursor: pointer;" id="style-zoom">
+    <rect width="120" height="20" class="figure-group figure-box"/>
+    <text x="60" y="10" dy="0.4em" style="text-anchor: middle;" class="figure-text">Reset pan / zoom</text>
+  </g>
+</svg>

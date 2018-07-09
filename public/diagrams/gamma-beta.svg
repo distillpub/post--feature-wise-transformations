@@ -1,0 +1,39 @@
+<svg viewBox="0 0 704 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <text x="0" y="0" dy="1em" class="figure-text">
+    FiLM parameters for <tspan style="font-weight: bold;">256 tasks</tspan> and
+    for <tspan style="font-weight: bold;">16 feature maps</tspan>, chosen randomly.
+  </text>
+  <path d="M0,25l888,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="0" y="60" dy="1em" style="font-weight: bold;" class="figure-text">
+    Visual reasoning model
+  </text>
+  <path d="M0,85l300,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <text x="387" y="60" dy="1em" style="font-weight: bold;" class="figure-text">
+    Style transfer model
+  </text>
+  <path d="M390,85l314,0" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <g id="clevr-plot">
+    <rect x="0" y="110" width="300" height="300" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" style="font-family: serif;" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" style="font-family: serif;" class="figure-text">β</text>
+  </g>
+  <text x="0" y="434" dy="1em" class="figure-text">
+    Feature map
+  </text>
+  <g transform="translate(6, 465)" id="clevr-legend"></g>
+  <image x="290" y="451.5" height="27" width="27" xlink:href="images/pointer.svg"/>
+  <g id="style-transfer-plot">
+    <rect x="387" y="110" width="300" height="300" style="fill: none;"/>
+    <path id="x-axis" d="M 0 0 L 0 0" class="figure-path"/>
+    <text id="x-axis-label" x="0" y="0" dy="0.4em" style="font-family: serif;" class="figure-text">γ</text>
+    <path d="M 0 0 L 0 0" id="y-axis" class="figure-path"/>
+    <text id="y-axis-label" x="0" y="0" dy="1em" style="font-family: serif;" class="figure-text">β</text>
+  </g>
+  <text x="387" y="434" dy="1em" class="figure-text">
+    Feature map
+  </text>
+  <g transform="translate(393, 465)" id="style-transfer-legend"></g>
+  <image x="677" y="451.5" height="27" width="27" xlink:href="images/pointer.svg"/>
+</svg>

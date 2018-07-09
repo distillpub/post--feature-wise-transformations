@@ -1,0 +1,73 @@
+<svg viewBox="0 0 704 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+    <path id="column-top" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z"/>
+    <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+    <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
+  </defs>
+  <text x="340" y="30" dy="1em" class="figure-text">
+    <tspan>
+      <tspan style="font-weight: bold;">Conditional scaling</tspan>
+      first maps the
+    </tspan>
+    <tspan x="340" dy="1.5em">
+      <tspan style="font-weight: bold;">conditioning representation</tspan> to a
+    </tspan>
+    <tspan x="340" dy="1.5em">
+      scaling vector.
+    </tspan>
+  </text>
+  <text x="340" y="200" dy="1em" class="figure-text">
+    <tspan>
+      The scaling vector is then multiplied
+    </tspan>
+    <tspan x="340" dy="1.5em">
+      with the input.
+    </tspan>
+  </text>
+  <g transform="translate(-10, 10)">
+    <text x="20" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">input</text>
+    <text x="605" y="250" dy="-0.5em" style="text-anchor: begin;" class="figure-text">output</text>
+    <g transform="translate(60, 200)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+    </g>
+    <path d="M 80 240 L 300 240" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(300, 240)" class="figure-path"/>
+    <g transform="translate(315, 240)">
+      <circle r="10" class="figure-element"/>
+      <ellipse rx="2" ry="2" class="figure-path"/>
+    </g>
+    <path d="M 325 240 L 570 240" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(570, 240)" class="figure-path"/>
+    <g transform="translate(575, 200)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+    </g>
+    <text x="20" y="60" dy="-0.5em" style="font-weight: bold;" class="figure-text">
+      <tspan>conditioning</tspan>
+      <tspan x="20" dy="1.5em">representation</tspan>
+    </text>
+    <g transform="translate(170, 0)">
+      <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">linear</text>
+    </g>
+    <g transform="translate(305, 20)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+    </g>
+    <path d="M 120 60  L 165 60" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(165, 60)" class="figure-path"/>
+    <path d="M 210 60  L 300 60" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(300, 60)" class="figure-path"/>
+    <path d="M 315 100 L 315 225" class="figure-line"/>
+    <use xlink:href="#arrow-down" transform="translate(315, 225)" class="figure-path"/>
+  </g>
+</svg>

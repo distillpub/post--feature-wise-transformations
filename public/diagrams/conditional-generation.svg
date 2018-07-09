@@ -1,0 +1,42 @@
+<svg viewBox="0 0 704 170" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+  </defs>
+  <g transform="translate(520, 0)">
+    <text x="0" y="10" dy="1em" class="figure-text">
+      <tspan>
+        A <tspan style="font-weight: bold;">decoder-based</tspan>
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        <tspan style="font-weight: bold;">generative model</tspan>
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        maps a source of
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        noise to a sample
+      <tspan x="0" dy="1.5em">
+        in the context of the
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        "puppy" class.
+      </tspan>
+    </text>
+  </g>
+  <g transform="translate(30, 0)">
+    <text x="0" y="85" dy="0.4em" class="figure-text">noise</text>
+    <path d="M 40 85 L 75 85" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(75, 85)" class="figure-path"/>
+    <text x="155" y="10" style="text-anchor: middle;" class="figure-text">"puppy"</text>
+    <path d="M 155 20 L 155 40" class="figure-line"/>
+    <use xlink:href="#arrow-down" transform="translate(155, 40)" class="figure-path"/>
+    <g transform="translate(80, 45)">
+      <rect width="150" height="80" class="figure-group figure-box"/>
+      <text x="75" y="40" dy="0.4em" style="text-anchor: middle;" class="figure-text">decoder</text>
+    </g>
+    <path d="M 230 85 L 300 85" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(300, 85)" class="figure-path"/>
+    <image x="305" y="10" width="150" height="150" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/puppy.jpg"/>
+  </g>
+</svg>

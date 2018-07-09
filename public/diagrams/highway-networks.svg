@@ -1,0 +1,88 @@
+<svg viewBox="0 0 704 380" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-up" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+    <path id="column-top" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z"/>
+    <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+    <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
+  </defs>
+  <g transform="translate(10, 10)">
+    <text x="0" y="180" dy="0.4em" class="figure-text">input</text>
+    <g transform="translate(40, 140)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+    </g>
+    <path d="M 65 180 L 285 180" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(285, 180)" class="figure-path"/>
+    <path d="M 65 180 C 115 180 65 50 115 60" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(115, 60)" class="figure-path"/>
+    <path d="M 65 180 C 115 180 65 310 115 300" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(115, 300)" class="figure-path"/>
+    <g transform="translate(120, 0)">
+      <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sub-network</text>
+    </g>
+    <path d="M 160 60 L 215 60" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(215, 60)" class="figure-path"/>
+    <g transform="translate(220, 20)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+    </g>
+    <path d="M 245 60 L 345 60" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(345, 60)" class="figure-path"/>
+    <g transform="translate(120, 240)">
+      <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoidal layer</text>
+    </g>
+    <path d="M 160 300 L 215 300" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(215, 300)" class="figure-path"/>
+    <g transform="translate(220, 260)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-film-generator figure-element"/>
+    </g>
+    <path d="M 245 300 L 294 300 a 6 6 0 0 0 6 -6 L 300 195" class="figure-line"/>
+    <use xlink:href="#arrow-up" transform="translate(300, 195)" class="figure-path"/>
+    <path d="M 245 300 L 354 300 a 6 6 0 0 0 6 -6 L 360 185" class="figure-line"/>
+    <path d="M 360 175 L 360 150" class="figure-line"/>
+    <use xlink:href="#arrow-up" transform="translate(360, 150)" class="figure-path"/>
+    <g transform="translate(330, 115)">
+      <rect width="60" height="30" class="figure-element figure-box"/>
+      <text x="30" y="15" dy="0.4em" style="text-anchor: middle;" class="figure-text">1 - x</text>
+    </g>
+    <path d="M 360 115 L 360 75" class="figure-line"/>
+    <use xlink:href="#arrow-up" transform="translate(360, 75)" class="figure-path"/>
+    <g transform="translate(300, 180)">
+      <circle r="10" class="figure-element"/>
+      <ellipse rx="2" ry="2" class="figure-path"/>
+    </g>
+    <path d="M 310 180 L 405 180" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(405, 180)" class="figure-path"/>
+    <g transform="translate(360, 60)">
+      <circle r="10" class="figure-element"/>
+      <ellipse rx="2" ry="2" class="figure-path"/>
+    </g>
+    <path d="M 370 60 L 414 60 a 6 6 0 0 1 6 6 L 420 165" class="figure-line"/>
+    <use xlink:href="#arrow-down" transform="translate(420, 165)" class="figure-path"/>
+    <g transform="translate(420, 180)">
+      <circle r="10" class="figure-element"/>
+      <path d="M -5 0 L 5 0" class="figure-line"/>
+      <path d="M 0 -5 L 0 5" class="figure-line"/>
+    </g>
+    <path d="M 430 180 L 535 180" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(535, 180)" class="figure-path"/>
+    <g transform="translate(540, 140)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-middle" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+    </g>
+    <text x="570" y="180" dy="0.4em" class="figure-text">output</text>
+  </g>
+</svg>

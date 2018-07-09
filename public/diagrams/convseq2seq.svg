@@ -1,0 +1,73 @@
+<svg viewBox="0 0 704 260" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path id="arrow-right" d="M 0 0 C -2.779 1 -5.376 2.445 -7.69 4.28 L -6.14 0 L -7.69 -4.28 C -5.376 -2.445 -2.779 -1 0 0 Z"/>
+    <path id="arrow-up" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z"/>
+    <path id="arrow-down" d="M 0 0 C 1 2.779 2.445 5.376 4.28 7.69 L 0 6.14 L -4.28 7.69 C -2.444 5.376 -1 2.770 0 0 Z" transform="rotate(180, 0, 0)"/>
+    <path id="column-top" d="M 0 6 a 6 6 0 0 1 6 -6 l 8 0 a 6 6 0 0 1 6 6 l 0 14 l -20 0 Z"/>
+    <path id="column-middle" d="M 0 0 l 20 0 l 0 20 l -20 0 Z"/>
+    <path id="column-bottom" d="M 0 0 l 20 0 l 0 14 a 6 6 0 0 1 -6 6 l -8 0 a 6 6 0 0 1 -6 -6 Z"/>
+  </defs>
+  <text x="380" y="10" dy="1em" class="figure-text">
+    <tspan>
+      The <tspan style="font-style: italic;">gated linear unit</tspan>
+      activation function
+    </tspan>
+    <tspan x="380" dy="1.5em">
+      uses <tspan style="font-weight: bold;">sigmoidal gating</tspan>. Half of the input
+    </tspan>
+    <tspan x="380" dy="1.5em">
+      features go through a sigmoid function
+    </tspan>
+    <tspan x="380" dy="1.5em">
+      to produce a gating vector.
+    </tspan>
+  </text>
+  <text x="380" y="170" dy="1em" class="figure-text">
+    <tspan>
+      The gating vector is then multiplied
+    </tspan>
+    <tspan x="380" dy="1.5em">
+      with the second half of the features.
+    </tspan>
+  </text>
+  <g transform="translate(10, 10)">
+    <text x="0" y="177.5" dy="0.4em" style="text-anchor: begin;" class="figure-text">input</text>
+    <g transform="translate(40, 120)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#row-middle" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#row-middle" transform="translate(0, 60)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#row-middle" transform="translate(0, 80)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 100)" class="figure-filmed-network figure-element"/>
+    </g>
+    <path d="M 60 210 L 319 210" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(319, 210)" class="figure-path"/>
+    <g transform="translate(334, 210)">
+      <circle r="10" class="figure-element"/>
+      <ellipse rx="2" ry="2" class="figure-path"/>
+    </g>
+    <path d="M 345 210 L 600 210" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(600, 210)" class="figure-path"/>
+    <path d="M 60 150 L 130 150 a 6 6 0 0 0 6 -6 L 136 66 a 6 6 0 0 1 6 -6 L 200 60" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(200, 60)" class="figure-path"/>
+    <g transform="translate(205, 0)">
+      <rect width="40" height="120" class="figure-film-generator figure-element figure-box"/>
+      <text x="20" y="60" dy="0.4em" style="text-anchor: middle;" transform="rotate(-90, 20, 60)" class="figure-text">sigmoid</text>
+    </g>
+    <path d="M 245 60 L 319 60" class="figure-line"/>
+    <use xlink:href="#arrow-right" transform="translate(319, 60)" class="figure-path"/>
+    <g transform="translate(324, 30)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-film-generator figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-film-generator figure-element"/>
+    </g>
+    <path d="M 334 90 L 334 195" class="figure-line"/>
+    <use xlink:href="#arrow-down" transform="translate(334, 195)" class="figure-path"/>
+    <g transform="translate(605, 180)">
+      <use xlink:href="#column-top" transform="translate(0, 0)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#row-middle" transform="translate(0, 20)" class="figure-filmed-network figure-element"/>
+      <use xlink:href="#column-bottom" transform="translate(0, 40)" class="figure-filmed-network figure-element"/>
+    </g>
+    <text x="630" y="210" dy="0.4em" style="text-anchor: begin;" class="figure-text">output</text>
+  </g>
+</svg>

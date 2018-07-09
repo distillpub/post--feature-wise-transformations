@@ -1,0 +1,73 @@
+<svg viewBox="0 0 704 290" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="justAlphaandWhite">
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 1
+                                                            0 0 0 0 1
+                                                            0 0 0 0 1
+                                                            0 0 0 1 0"/>
+    </filter>
+    <mask id="m-1">
+      <image filter="url(#justAlphaandWhite)" width="250" height="166.67" xlink:href="images/question-interpolation-1-mask-1.png"/>
+    </mask>
+    <mask id="m-2">
+      <image filter="url(#justAlphaandWhite)" width="250" height="166.67" xlink:href="images/question-interpolation-2-mask-1.png"/>
+    </mask>
+  </defs>
+  <path d="M352,10l0,260" style="stroke-width: 1px; stroke: #666; opacity: 0.15;"/>
+  <g id="example-1" transform="translate(20, 0)">
+    <image x="0" y="0" width="250" height="166.67" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/question-interpolation-1-input.png"/>
+    <g mask="url(#m-1)">
+      <rect x="0" y="0" width="250" height="166.67" style="fill: white; opacity: 0.9"/>
+    </g>
+    <g class="image-selector" transform="translate(3, 200)">
+      <line x1="0" y1="0" x2="244" y2="0" class="figure-line"/>
+    </g>
+    <text x="0" y="240" class="figure-text">
+      <tspan>
+        What shape is
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        the red thing left
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        of the sphere?
+      </tspan>
+    </text>
+    <text x="170" y="240" class="figure-text">
+      <tspan>
+        What shape is
+      </tspan>
+      <tspan x="170" dy="1.5em">
+        the red thing right
+      </tspan>
+      <tspan x="170" dy="1.5em">
+        of the sphere?
+      </tspan>
+    </text>
+  </g>
+  <g id="example-2" transform="translate(434, 0)">
+    <image x="0" y="0" width="250" height="166.67" style="clip-path: inset(0 0 0 0 round 6px);" xlink:href="images/question-interpolation-2-input.png"/>
+    <g mask="url(#m-2)">
+      <rect x="0" y="0" width="250" height="166.67" style="fill: white; opacity: 0.9"/>
+    </g>
+    <g class="image-selector" transform="translate(3, 200)">
+      <line x1="0" y1="0" x2="244" y2="0" class="figure-line"/>
+    </g>
+    <text x="0" y="240" class="figure-text">
+      <tspan>
+        How many brown
+      </tspan>
+      <tspan x="0" dy="1.5em">
+        things are there?
+      </tspan>
+    </text>
+    <text x="170" y="240" class="figure-text">
+      <tspan>
+        How many yellow
+      </tspan>
+      <tspan x="170" dy="1.5em">
+        things are there?
+      </tspan>
+    </text>
+  </g>
+</svg>
